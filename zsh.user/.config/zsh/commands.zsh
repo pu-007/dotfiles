@@ -21,6 +21,7 @@ alias wsl="wsl.exe"
 
 ialias re-cmp=": rm .zcompdump; compinit"
 ialias re-cmd="zinit update home--pu--.config--zsh/commands.zsh"
+ialias re-pkg="yay -Rnsc `pacman -Qdqt`"
 
 alias -g ...='../..'
 alias -g ....='../../..'
