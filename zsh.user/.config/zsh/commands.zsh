@@ -22,6 +22,7 @@ alias adb="adb.exe"
 alias fastboot="fastboot.exe"
 alias ollama="ollama.exe"
 alias wsl="wsl.exe"
+alias als="alias | rg "
 
 ialias re-cmp=": rm .zcompdump; compinit"
 ialias re-cmd="zinit update home--pu--.config--zsh/commands.zsh"
