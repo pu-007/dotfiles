@@ -5,6 +5,10 @@ ialias ll="eza -a --total-size --git-repos --icons -l "
 ialias lT="eza --tree -a -I '.git'"
 alias lt="lT -L "
 
+function gzr() {
+  cd $(git rev-parse --show-toplevel)
+}
+
 alias v="vi"
 ialias e="explorer.exe ."
 ialias ex="explorer.exe .;exit 0"
