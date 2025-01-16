@@ -1,0 +1,15 @@
+[init]
+	defaultBranch = main
+[core]
+	filemode = false
+[safe]
+	directory = /mnt/c/Users/zion/AppData/Roaming/Rime
+[user]
+	name = Zion Pu
+	email = pu.007@qq.com
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

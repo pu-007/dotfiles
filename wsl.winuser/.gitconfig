@@ -1,0 +1,9 @@
+[init]
+	defaultBranch = main
+[core]
+	filemode = false
+[user]
+	name = Zion Pu
+	email = pu.007@qq.com
+[core]
+	editor = \"C:\\Users\\pu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait

@@ -1,0 +1,20 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.16.3
+  generator: "Rime::SwitcherSettings"
+  modified_time: "Fri Jan  3 10:57:28 2025"
+  rime_version: 1.11.2
+patch:
+  ascii_composer:
+    good_old_caps_lock: true
+    switch_key: {Caps_Lock: clear, Control_L: noop, Control_R: noop, Shift_L: noop, Shift_R: commit_code}
+  schema_list:
+    - {schema: double_pinyin_flypy}
+    - {schema: rime_ice}
+  switcher:
+    abbreviate_options: true
+    caption: "「方案选单」"
+    fold_options: true
+    hotkeys: [F4]
+    option_list_separator: " / "
+    save_options: [ascii_punct, traditionalization, emoji, full_shape, search_single_char]
