@@ -3,7 +3,10 @@ export fpath=($fpath ~/.config/zsh/completions/)
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 export home="/mnt/c/Users/zion"
 export LIBGL_ALWAYS_INDIRECT=1
-#
+
+export _ZL_MATCH_MODE=1
+export _ZL_HYPHEN=1
+
 ### shell options
 export BROWSER="/usr/bin/wslview"
 export EDITOR="vi"
@@ -36,6 +39,14 @@ setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
+### jump dir
+function j() {
+    if [[ "$argv[1]" == "-"* ]]; then
+        _zlua "$@"
+    else
+        cd "$@" 2> /dev/null || _zlua "$@"
+    fi
+}
 
 ### for sync_directory_change
 sync_directory_change() {
