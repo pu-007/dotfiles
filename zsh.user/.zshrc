@@ -111,7 +111,8 @@ zinit wait lucid for \
       blockf \
       zsh-users/zsh-completions \
       OMZP::sudo \
-      jeffreytse/zsh-vi-mode
+      jeffreytse/zsh-vi-mode \
+      skywind3000/z.lua
 
 function zvm_after_init() {
   source ~/.config/zsh/fzf.zsh
@@ -119,7 +120,6 @@ function zvm_after_init() {
 zinit wait lucid is-snippet for \
   ~/.config/zsh/conda.zsh \
   ~/.config/zsh/commands.zsh \
-  ~/.config/zsh/zlua.zsh \
   ~/.config/zsh/powershell.zsh \
   ~/.config/zsh/br
 
