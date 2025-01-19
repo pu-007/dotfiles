@@ -48,7 +48,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.5.3",
+      "Version": "1.5.4",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -134,11 +134,165 @@
       }
     },
     {
+      "Id": "Daum.PotPlayer",
+      "Name": "PotPlayer-64 bit",
+      "Version": "24.12.16.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "DuongDieuPhap.ImageGlass",
+      "Name": "ImageGlass",
+      "Version": "9.2.0.1208",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Foxit.PhantomPDF.Subscription.MSI",
       "Name": "Foxit PDF Editor",
       "Version": "2024.4.0.27683",
       "Source": "winget",
       "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
+      }
+    },
+    {
+      "Id": "KB2919355",
+      "Name": "KB2919355",
+      "Version": "1.0.20160915",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "KB2919442",
+      "Name": "KB2919442",
+      "Version": "1.0.20160915",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "KB2999226",
+      "Name": "KB2999226",
+      "Version": "1.0.20181019",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "KB3033929",
+      "Name": "KB3033929",
+      "Version": "1.0.5",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "KB3035131",
+      "Name": "KB3035131",
+      "Version": "1.0.3",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -200,9 +354,9 @@
       }
     },
     {
-      "Id": "Microsoft.Edge",
-      "Name": "Microsoft Edge",
-      "Version": "131.0.2903.146",
+      "Id": "Microsoft.DotNet.DesktopRuntime.8",
+      "Name": "Microsoft Windows Desktop Runtime - 8\u2026",
+      "Version": "8.0.12",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -222,9 +376,9 @@
       }
     },
     {
-      "Id": "Microsoft.OneDrive",
-      "Name": "Microsoft OneDrive",
-      "Version": "23.038.0219.0001",
+      "Id": "Microsoft.DotNet.Runtime.8",
+      "Name": "Microsoft .NET Runtime - 8.0.12 (x86)",
+      "Version": "8.0.12",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -241,12 +395,100 @@
       "Updates": {
         "UpdatesIgnored": false,
         "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Microsoft.DotNet.Runtime.9",
+      "Name": "Microsoft .NET Runtime - 9.0.1 (x86)",
+      "Version": "9.0.1",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Microsoft.Edge",
+      "Name": "Microsoft Edge",
+      "Version": "132.0.2957.115",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
+      }
+    },
+    {
+      "Id": "Microsoft.OneDrive",
+      "Name": "Microsoft OneDrive",
+      "Version": "24.232.1118.0003",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
       }
     },
     {
       "Id": "Microsoft.PowerToys",
       "Name": "PowerToys (Preview) x64",
       "Version": "0.87.1",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Microsoft.UI.Xaml.2.7",
+      "Name": "Microsoft.UI.Xaml.2.7",
+      "Version": "7.2409.9001.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -378,7 +620,7 @@
     {
       "Id": "Microsoft.VCRedist.2015\u002B.x86",
       "Name": "Microsoft Visual C\u002B\u002B 2015-2022 Redist\u2026",
-      "Version": "14.32.31326.0",
+      "Version": "14.42.34433.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -400,7 +642,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code (User)",
-      "Version": "1.96.3",
+      "Version": "1.96.4",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -464,6 +706,28 @@
       }
     },
     {
+      "Id": "MouseInfo",
+      "Name": "MouseInfo",
+      "Version": "0.1.3",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Nvidia.CUDA",
       "Name": "NVIDIA CUDA Toolkit 12.6",
       "Version": "12.6",
@@ -509,8 +773,8 @@
     },
     {
       "Id": "Ollama.Ollama",
-      "Name": "Ollama version 0.5.6",
-      "Version": "0.5.6",
+      "Name": "Ollama version 0.5.7",
+      "Version": "0.5.7",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -552,9 +816,141 @@
       }
     },
     {
+      "Id": "PyAutoGUI",
+      "Name": "PyAutoGUI",
+      "Version": "0.9.54",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "PyGetWindow",
+      "Name": "PyGetWindow",
+      "Version": "0.0.9",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "PyMsgBox",
+      "Name": "PyMsgBox",
+      "Version": "1.0.9",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "PyRect",
+      "Name": "PyRect",
+      "Version": "0.2.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "PyScreeze",
+      "Name": "PyScreeze",
+      "Version": "0.1.30",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "PySocks",
       "Name": "PySocks",
       "Version": "1.7.1",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Pygments",
+      "Name": "Pygments",
+      "Version": "2.18.0",
       "Source": "pip",
       "ManagerName": "Pip",
       "InstallationOptions": {
@@ -621,6 +1017,28 @@
       "Id": "Rime.Weasel",
       "Name": "\u5C0F\u72FC\u6BEB\u8F93\u5165\u6CD5",
       "Version": "0.16.3.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "SimonKnuth.Scanner",
+      "Name": "\u626B\u63CF\u4EEA--\u5FEB\u901F\u548C\u7B80\u5355\u7684\u6587\u4EF6\u626B\u63CF",
+      "Version": "3.2.9.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -707,8 +1125,8 @@
     },
     {
       "Id": "Yuanli.uTools",
-      "Name": "uTools 6.0.1",
-      "Version": "6.0.1",
+      "Name": "uTools 6.1.0",
+      "Version": "6.1.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -772,6 +1190,50 @@
       }
     },
     {
+      "Id": "aiohttp",
+      "Name": "Aiohttp",
+      "Version": "3.9.5",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "aiosignal",
+      "Name": "Aiosignal",
+      "Version": "1.3.1",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "anaconda-anon-usage",
       "Name": "Anaconda Anon Usage",
       "Version": "0.5.0",
@@ -816,9 +1278,75 @@
       }
     },
     {
+      "Id": "attrs",
+      "Name": "Attrs",
+      "Version": "23.2.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "beautifulsoup4",
+      "Name": "Beautifulsoup4",
+      "Version": "4.12.3",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "boltons",
       "Name": "Boltons",
       "Version": "23.0.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "bs4",
+      "Name": "Bs4",
+      "Version": "0.0.2",
       "Source": "pip",
       "ManagerName": "Pip",
       "InstallationOptions": {
@@ -887,6 +1415,72 @@
       "Version": "3.3.2",
       "Source": "pip",
       "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "chocolatey-compatibility.extension",
+      "Name": "Chocolatey Compatibility.extension",
+      "Version": "1.0.0",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "chocolatey-core.extension",
+      "Name": "Chocolatey Core.extension",
+      "Version": "1.4.0",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "chocolatey-windowsupdate.extension",
+      "Name": "Chocolatey Windowsupdate.extension",
+      "Version": "1.0.5",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -1102,9 +1696,163 @@
       }
     },
     {
+      "Id": "dotnet",
+      "Name": "Dotnet",
+      "Version": "9.0.1",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "dotnet-8.0-desktopruntime",
+      "Name": "Dotnet 8.0 Desktopruntime",
+      "Version": "8.0.12",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "dotnet-8.0-runtime",
+      "Name": "Dotnet 8.0 Runtime",
+      "Version": "8.0.12",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "dotnet-9.0-runtime",
+      "Name": "Dotnet 9.0 Runtime",
+      "Version": "9.0.1",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "dotnet-runtime",
+      "Name": "Dotnet Runtime",
+      "Version": "9.0.1",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "exiftool",
+      "Name": "Exiftool",
+      "Version": "13.12.0",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "frozendict",
       "Name": "Frozendict",
       "Version": "2.4.2",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "frozenlist",
+      "Name": "Frozenlist",
+      "Version": "1.4.1",
       "Source": "pip",
       "ManagerName": "Pip",
       "InstallationOptions": {
@@ -1190,6 +1938,28 @@
       }
     },
     {
+      "Id": "imageglass",
+      "Name": "Imageglass",
+      "Version": "9.2.0.1208",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "jsonpatch",
       "Name": "Jsonpatch",
       "Version": "1.33",
@@ -1256,6 +2026,50 @@
       }
     },
     {
+      "Id": "markdown-it-py",
+      "Name": "Markdown It Py",
+      "Version": "3.0.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "mdurl",
+      "Name": "Mdurl",
+      "Version": "0.1.2",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "menuinst",
       "Name": "Menuinst",
       "Version": "2.2.0",
@@ -1278,9 +2092,119 @@
       }
     },
     {
+      "Id": "miservice_fork",
+      "Name": "Miservice Fork",
+      "Version": "2.7.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "multidict",
+      "Name": "Multidict",
+      "Version": "6.0.5",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "mutagen",
+      "Name": "Mutagen",
+      "Version": "1.47.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "packaging",
       "Name": "Packaging",
       "Version": "24.1",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "paho-mqtt",
+      "Name": "Paho Mqtt",
+      "Version": "2.1.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "parse_pip_search",
+      "Name": "Parse Pip Search",
+      "Version": "0.0.1",
       "Source": "pip",
       "ManagerName": "Pip",
       "InstallationOptions": {
@@ -1410,9 +2334,75 @@
       }
     },
     {
+      "Id": "pyperclip",
+      "Name": "Pyperclip",
+      "Version": "1.9.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "pytweening",
+      "Name": "Pytweening",
+      "Version": "1.2.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "requests",
       "Name": "Requests",
       "Version": "2.32.3",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "rich",
+      "Name": "Rich",
+      "Version": "13.7.1",
       "Source": "pip",
       "ManagerName": "Pip",
       "InstallationOptions": {
@@ -1498,9 +2488,53 @@
       }
     },
     {
+      "Id": "screeninfo",
+      "Name": "Screeninfo",
+      "Version": "0.8.1",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "setuptools",
       "Name": "Setuptools",
       "Version": "75.1.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "soupsieve",
+      "Name": "Soupsieve",
+      "Version": "2.6",
       "Source": "pip",
       "ManagerName": "Pip",
       "InstallationOptions": {
@@ -1591,6 +2625,28 @@
       "Version": "2.2.3",
       "Source": "pip",
       "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "vcredist140",
+      "Name": "Vcredist140",
+      "Version": "14.42.34433",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -1718,6 +2774,28 @@
       }
     },
     {
+      "Id": "yarl",
+      "Name": "Yarl",
+      "Version": "1.9.4",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "zstandard",
       "Name": "Zstandard",
       "Version": "0.23.0",
@@ -1751,8 +2829,14 @@
     {
       "Id": "ARP\\Machine\\X64\\O365EduCloudRetail",
       "Name": "Microsoft 365 - zh-cn",
-      "Version": "16.0.18025.20140",
+      "Version": "16.0.18324.20168",
       "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\Steam",
+      "Name": "Hades",
+      "Version": "Unknown",
+      "Source": "Steam"
     },
     {
       "Id": "ARP\\Machine\\X64\\{9E9798A8-213B-4C9E-A\u2026",
@@ -1863,6 +2947,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\Steam\u002B\u002B",
+      "Name": "Watt Toolkit",
+      "Version": "3.0.1320.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\UXPW_1_2_0",
       "Name": "UXP WebView Support",
       "Version": "1.2.0",
@@ -1893,6 +2983,48 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\Follow",
+      "Name": "Follow",
+      "Version": "0.3.1-beta0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-2FDF1B91_1.0.0.0_n\u2026",
+      "Name": "\u5C0F\u7231\u97F3\u7BB1\u64AD\u653E\u5668",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-4E674617_1.0.0.0_n\u2026",
+      "Name": "yacd",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-86E4A65F_1.0.0.0_n\u2026",
+      "Name": "Jellyfin",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-EC6CE47_1.0.0.0_ne\u2026",
+      "Name": "PhotoPrism",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-FAA30A86_1.0.0.0_n\u2026",
+      "Name": "Calibre",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-FDA2CBD8_1.0.0.0_n\u2026",
+      "Name": "Heimdall",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\22955VineelSai.ArchWSL_1.2.3.0_x\u2026",
       "Name": "Arch WSL",
       "Version": "1.2.3.0",
@@ -1902,6 +3034,24 @@
       "Id": "MSIX\\AdobeNotificationClient_6.0.0.1_\u2026",
       "Name": "Adobe Notification Client",
       "Version": "6.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.DirectXRuntime_9.29.19\u2026",
+      "Name": "DirectX",
+      "Version": "9.29.1974.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.GamingServices_26.95.2\u2026",
+      "Name": "\u6E38\u620F\u670D\u52A1",
+      "Version": "26.95.25001.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.LanguageExperiencePack\u2026",
+      "Name": "\u4E2D\u6587(\u7B80\u4F53)\u672C\u5730\u4F53\u9A8C\u5305",
+      "Version": "26100.18.39.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1923,9 +3073,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_23038.219\u2026",
+      "Id": "MSIX\\Microsoft.OfficePushNotification\u2026",
+      "Name": "OfficePushNotificationsUtility",
+      "Version": "16.0.18324.20168",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.OneDriveSync_24232.111\u2026",
       "Name": "OneDrive",
-      "Version": "23038.219.1.0",
+      "Version": "24232.1118.3.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1953,9 +3109,27 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\Microsoft.Services.Store.Engagem\u2026",
+      "Name": "Microsoft Engagement Framework",
+      "Version": "10.0.23012.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\Microsoft.StorePurchaseApp_22410\u2026",
       "Name": "Microsoft Store \u4F53\u9A8C\u4E3B\u673A",
       "Version": "22410.1401.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.VCLibs.110.00.UWPDeskt\u2026",
+      "Name": "Microsoft Visual C\u002B\u002B 2012 UWP Desktop\u2026",
+      "Version": "11.0.61135.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.VCLibs.120.00.UWPDeskt\u2026",
+      "Name": "Microsoft Visual C\u002B\u002B 2013 UWP Desktop\u2026",
+      "Version": "12.0.40653.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1971,15 +3145,33 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\Microsoft.WindowsCamera_2024.240\u2026",
+      "Name": "Windows \u76F8\u673A",
+      "Version": "2024.2408.1.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\Microsoft.WindowsNotepad_11.2410\u2026",
       "Name": "Windows \u8BB0\u4E8B\u672C",
       "Version": "11.2410.21.0",
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\Microsoft.WindowsSoundRecorder_1\u2026",
+      "Name": "Windows \u5F55\u97F3\u673A",
+      "Version": "11.2408.6.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\Microsoft.WindowsStore_22411.140\u2026",
       "Name": "Microsoft Store",
       "Version": "22411.1401.5.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.XboxGamingOverlay_7.22\u2026",
+      "Name": "Game Bar",
+      "Version": "7.224.11211.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1998,6 +3190,24 @@
       "Id": "MSIX\\NVIDIACorp.NVIDIAControlPanel_8.\u2026",
       "Name": "NVIDIA Control Panel",
       "Version": "8.1.967.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\chatgpt.com-DFCB3CE4_1.0.0.0_neu\u2026",
+      "Name": "ChatGPT",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\kimi.moonshot.cn-CFB72B7F_1.0.0.\u2026",
+      "Name": "kimi",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\www.doubao.com-3D65954F_1.0.0.0_\u2026",
+      "Name": "\u8C46\u5305",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     }
   ]

@@ -18,7 +18,7 @@ for dir in *.root; do
   fi
 done
 
-# 连接 *.root 目录到 /
+# 连接 *.winuser 目录到 C:/Users/zion
 for dir in *.winuser; do
   if [ -d "$dir" ]; then
     echo cp -r $dir/. /mnt/c/Users/zion/

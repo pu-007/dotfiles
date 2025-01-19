@@ -1,4 +1,3 @@
-export fpath=($fpath ~/.config/zsh/completions/)
 ### application options
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 export home="/mnt/c/Users/zion"
@@ -103,6 +102,7 @@ fi
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
+export fpath=($fpath ~/.config/zsh/completions/)
 autoload -U compinit && compinit
 ### plugins
 zinit wait lucid for \
@@ -113,13 +113,11 @@ zinit wait lucid for \
       OMZL::git.zsh \
       OMZP::archlinux \
       OMZP::colored-man-pages \
-      OMZP::command-not-found \
       OMZP::copypath \
       OMZL::termsupport.zsh \
       OMZP::git \
         atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
       zdharma-continuum/fast-syntax-highlighting \
-      blockf \
       zsh-users/zsh-completions \
       OMZP::sudo \
       jeffreytse/zsh-vi-mode \
@@ -129,10 +127,12 @@ function zvm_after_init() {
   source ~/.config/zsh/fzf.zsh
 }
 zinit wait lucid is-snippet for \
-  ~/.config/zsh/conda.zsh \
-  ~/.config/zsh/commands.zsh \
+  ~/.config/zsh/commands.zsh
+
+zinit wait'2' lucid is-snippet for \
   ~/.config/zsh/powershell.zsh \
-  ~/.config/zsh/br
+  ~/.config/zsh/br \
+  ~/.config/zsh/conda.zsh \
 
 zinit ice as"command" from"gh-r" \
           atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
