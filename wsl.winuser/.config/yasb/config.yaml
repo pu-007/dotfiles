@@ -31,10 +31,53 @@ bars:
       bottom: 0
       right: 0
     widgets:
-      left: ["traffic", "active_window"]
-      center: ["komorebi_active_layout", "komorebi_workspaces"]
-      right: ["media", "memory", "cpu"]
+      left: ["obs", "memory", "cpu", "traffic", "komorebi_workspaces"]
+      center: ["active_window"]
+      right: ["media", "microphone", "github", "komorebi_active_layout"]
 widgets:
+  obs:
+    type: "yasb.obs.ObsWidget"
+    options:
+      connection:
+        host: "localhost"
+        port: 4455
+        password: "123456"
+      icons:
+        recording: "\ueba7"
+        stopped: "\ueba5"
+        paused: "\ueba7"
+      hide_when_not_recording: false
+      blinking_icon: true
+  microphone:
+    type: "yasb.microphone.MicrophoneWidget"
+    options:
+      label: "<span>{icon}</span>"
+      label_alt: "<span>{icon}</span> {level}%"
+      icons:
+        normal: "\uf130"
+        muted: "\uf131"
+      callbacks:
+        on_left: "toggle_mute"
+        on_middle: "toggle_label"
+        on_right: "exec cmd.exe /c start ms-settings:sound"
+  github:
+    type: "yasb.github.GithubWidget"
+    options:
+      label: "<span>\ueba1</span>"
+      label_alt: "Notifications {data}" # {data} return number of unread notification
+      token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # GitHub Personal access tokens (classic) https://github.com/settings/tokens
+      max_notification: 20 # Max number of notification displaying in menu max: 50
+      only_unread: false # Show only unread or all notifications;
+      max_field_size: 54 # Max characters in title before truncation.
+      update_interval: 300 # Check for new notification in seconds
+      menu:
+        blur: True # Enable blur effect for the menu
+        round_corners: True # Enable round corners for the menu (this option is not supported on Windows 10)
+        round_corners_type: "normal" # Set the type of round corners for the menu (normal, small) (this option is not supported on Windows 10)
+        border_color: "System" # Set the border color for the menu (this option is not supported on Windows 10)
+        alignment: "right"
+        direction: "down"
+        distance: 6
   brightness:
     type: "yasb.brightness.BrightnessWidget"
     options:
@@ -71,7 +114,7 @@ widgets:
       show_thumbnail: true
       controls_only: false
       controls_left: true
-      hide_empty: true
+      hide_empty: false
       thumbnail_alpha: 128
       thumbnail_padding: 0
       thumbnail_corner_radius: 0
@@ -96,7 +139,7 @@ widgets:
       label_no_window: ""
       label_icon: true
       label_icon_size: 14
-      max_length: 32
+      max_length: 128
       max_length_ellipsis: "..."
       monitor_exclusive: true
   clock:
@@ -153,9 +196,9 @@ widgets:
         paused: "PAUSED"
       container_padding:
         top: 0
-        left: 8
+        left: 0
         bottom: 0
-        right: 8
+        right: 0
       callbacks:
         on_left: "next_layout"
         on_middle: "toggle_monocle"

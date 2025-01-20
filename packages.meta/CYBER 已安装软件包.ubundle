@@ -24,6 +24,28 @@
       }
     },
     {
+      "Id": "9MSSGKG348SP",
+      "Name": "Windows Web Experience Pack",
+      "Version": "524.34401.20.0",
+      "Source": "mssto\u2026",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Adobe.CreativeCloud",
       "Name": "Adobe Creative Cloud",
       "Version": "6.4.0.361",
@@ -200,116 +222,6 @@
       }
     },
     {
-      "Id": "KB2919355",
-      "Name": "KB2919355",
-      "Version": "1.0.20160915",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "KB2919442",
-      "Name": "KB2919442",
-      "Version": "1.0.20160915",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "KB2999226",
-      "Name": "KB2999226",
-      "Version": "1.0.20181019",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "KB3033929",
-      "Name": "KB3033929",
-      "Version": "1.0.5",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "KB3035131",
-      "Name": "KB3035131",
-      "Version": "1.0.3",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "LGUG2Z.komorebi",
       "Name": "komorebi",
       "Version": "0.1.33",
@@ -376,50 +288,6 @@
       }
     },
     {
-      "Id": "Microsoft.DotNet.Runtime.8",
-      "Name": "Microsoft .NET Runtime - 8.0.12 (x86)",
-      "Version": "8.0.12",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "Microsoft.DotNet.Runtime.9",
-      "Name": "Microsoft .NET Runtime - 9.0.1 (x86)",
-      "Version": "9.0.1",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
       "Version": "132.0.2957.115",
@@ -437,8 +305,8 @@
         "Version": ""
       },
       "Updates": {
-        "UpdatesIgnored": true,
-        "IgnoredVersion": "*"
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
       }
     },
     {
@@ -1432,72 +1300,6 @@
       }
     },
     {
-      "Id": "chocolatey-compatibility.extension",
-      "Name": "Chocolatey Compatibility.extension",
-      "Version": "1.0.0",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "chocolatey-core.extension",
-      "Name": "Chocolatey Core.extension",
-      "Version": "1.4.0",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "chocolatey-windowsupdate.extension",
-      "Name": "Chocolatey Windowsupdate.extension",
-      "Version": "1.0.5",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "colorama",
       "Name": "Colorama",
       "Version": "0.4.6",
@@ -1696,138 +1498,6 @@
       }
     },
     {
-      "Id": "dotnet",
-      "Name": "Dotnet",
-      "Version": "9.0.1",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "dotnet-8.0-desktopruntime",
-      "Name": "Dotnet 8.0 Desktopruntime",
-      "Version": "8.0.12",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "dotnet-8.0-runtime",
-      "Name": "Dotnet 8.0 Runtime",
-      "Version": "8.0.12",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "dotnet-9.0-runtime",
-      "Name": "Dotnet 9.0 Runtime",
-      "Version": "9.0.1",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "dotnet-runtime",
-      "Name": "Dotnet Runtime",
-      "Version": "9.0.1",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "exiftool",
-      "Name": "Exiftool",
-      "Version": "13.12.0",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "frozendict",
       "Name": "Frozendict",
       "Version": "2.4.2",
@@ -1921,28 +1591,6 @@
       "Version": "3.7",
       "Source": "pip",
       "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "imageglass",
-      "Name": "Imageglass",
-      "Version": "9.2.0.1208",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -2642,28 +2290,6 @@
       }
     },
     {
-      "Id": "vcredist140",
-      "Name": "Vcredist140",
-      "Version": "14.42.34433",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "voidtools.Everything",
       "Name": "Everything 1.4.1.1026 (x64)",
       "Version": "1.4.1.1026",
@@ -2829,7 +2455,7 @@
     {
       "Id": "ARP\\Machine\\X64\\O365EduCloudRetail",
       "Name": "Microsoft 365 - zh-cn",
-      "Version": "16.0.18324.20168",
+      "Version": "16.0.18324.20194",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2884,6 +2510,18 @@
       "Id": "ARP\\Machine\\X64\\{E8F347A5-A5C0-457C-9\u2026",
       "Name": "NVIDIA Nsight Visual Studio Edition 2\u2026",
       "Version": "24.3.0.24164",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\1237807960_is1",
+      "Name": "Dead Cells",
+      "Version": "1.26.0",
+      "Source": "GOG"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\????",
+      "Name": "\u58A8\u5C06\u52A9\u624B 1.0.4.2",
+      "Version": "1.0.4.2",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2947,12 +2585,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\Steam\u002B\u002B",
-      "Name": "Watt Toolkit",
-      "Version": "3.0.1320.0",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X86\\UXPW_1_2_0",
       "Name": "UXP WebView Support",
       "Version": "1.2.0",
@@ -2987,42 +2619,6 @@
       "Name": "Follow",
       "Version": "0.3.1-beta0",
       "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "MSIX\\192.168.100.1-2FDF1B91_1.0.0.0_n\u2026",
-      "Name": "\u5C0F\u7231\u97F3\u7BB1\u64AD\u653E\u5668",
-      "Version": "1.0.0.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\192.168.100.1-4E674617_1.0.0.0_n\u2026",
-      "Name": "yacd",
-      "Version": "1.0.0.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\192.168.100.1-86E4A65F_1.0.0.0_n\u2026",
-      "Name": "Jellyfin",
-      "Version": "1.0.0.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\192.168.100.1-EC6CE47_1.0.0.0_ne\u2026",
-      "Name": "PhotoPrism",
-      "Version": "1.0.0.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\192.168.100.1-FAA30A86_1.0.0.0_n\u2026",
-      "Name": "Calibre",
-      "Version": "1.0.0.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\192.168.100.1-FDA2CBD8_1.0.0.0_n\u2026",
-      "Name": "Heimdall",
-      "Version": "1.0.0.0",
-      "Source": "Microsoft Store"
     },
     {
       "Id": "MSIX\\22955VineelSai.ArchWSL_1.2.3.0_x\u2026",
@@ -3075,7 +2671,7 @@
     {
       "Id": "MSIX\\Microsoft.OfficePushNotification\u2026",
       "Name": "OfficePushNotificationsUtility",
-      "Version": "16.0.18324.20168",
+      "Version": "16.0.18324.20194",
       "Source": "Microsoft Store"
     },
     {
@@ -3139,6 +2735,18 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\Microsoft.WidgetsPlatformRuntime\u2026",
+      "Name": "Widgets Platform Runtime",
+      "Version": "1.6.1.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.5_\u2026",
+      "Name": "WindowsAppRuntime.1.5",
+      "Version": "5001.373.1736.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_\u2026",
       "Name": "WindowsAppRuntime.1.6",
       "Version": "6000.373.1641.0",
@@ -3183,7 +2791,7 @@
     {
       "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.2\u2026",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.24112.22.0",
+      "Version": "1.24121.37.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3193,20 +2801,8 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\chatgpt.com-DFCB3CE4_1.0.0.0_neu\u2026",
-      "Name": "ChatGPT",
-      "Version": "1.0.0.0",
-      "Source": "Microsoft Store"
-    },
-    {
       "Id": "MSIX\\kimi.moonshot.cn-CFB72B7F_1.0.0.\u2026",
-      "Name": "kimi",
-      "Version": "1.0.0.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\www.doubao.com-3D65954F_1.0.0.0_\u2026",
-      "Name": "\u8C46\u5305",
+      "Name": "KiMi",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     }

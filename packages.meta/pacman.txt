@@ -2,7 +2,6 @@ archlinuxcn-keyring
 aspell
 base
 base-devel
-bat
 broot
 btop
 cifs-utils
