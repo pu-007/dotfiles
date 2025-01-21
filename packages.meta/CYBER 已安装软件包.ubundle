@@ -332,28 +332,6 @@
       }
     },
     {
-      "Id": "Microsoft.PowerToys",
-      "Name": "PowerToys (Preview) x64",
-      "Version": "0.87.1",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "Microsoft.UI.Xaml.2.7",
       "Name": "Microsoft.UI.Xaml.2.7",
       "Version": "7.2409.9001.0",
@@ -599,6 +577,28 @@
       "Id": "Nvidia.CUDA",
       "Name": "NVIDIA CUDA Toolkit 12.6",
       "Version": "12.6",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "OBSProject.OBSStudio",
+      "Name": "OBS Studio",
+      "Version": "31.0.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2678,24 +2678,6 @@
       "Id": "MSIX\\Microsoft.OneDriveSync_24232.111\u2026",
       "Name": "OneDrive",
       "Version": "24232.1118.3.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.PowerToys.FileLocksmit\u2026",
-      "Name": "PowerToys FileLocksmith Context Menu",
-      "Version": "0.87.1.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.PowerToys.ImageResizer\u2026",
-      "Name": "PowerToys ImageResizer Context Menu",
-      "Version": "0.87.1.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.PowerToys.PowerRenameC\u2026",
-      "Name": "PowerToys PowerRename Context Menu",
-      "Version": "0.87.1.0",
       "Source": "Microsoft Store"
     },
     {
