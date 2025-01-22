@@ -31,9 +31,9 @@ bars:
       bottom: 0
       right: 0
     widgets:
-      left: ["obs", "memory", "cpu", "traffic", "komorebi_workspaces"]
+      left: ["memory", "cpu", "traffic", "komorebi_workspaces"]
       center: ["active_window"]
-      right: ["media", "microphone", "github", "komorebi_active_layout"]
+      right: ["media", "microphone", "github", "obs", "komorebi_active_layout"]
 widgets:
   obs:
     type: "yasb.obs.ObsWidget"
@@ -65,7 +65,7 @@ widgets:
     options:
       label: "<span>\ueba1</span>"
       label_alt: "Notifications {data}" # {data} return number of unread notification
-      token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # GitHub Personal access tokens (classic) https://github.com/settings/tokens
+      token: REDACTED
       max_notification: 20 # Max number of notification displaying in menu max: 50
       only_unread: false # Show only unread or all notifications;
       max_field_size: 54 # Max characters in title before truncation.
@@ -203,28 +203,6 @@ widgets:
         on_left: "next_layout"
         on_middle: "toggle_monocle"
         on_right: "prev_layout"
-  weather:
-    type: "yasb.weather.WeatherWidget"
-    options:
-      label: "<span>{icon}</span> {temp}"
-      label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-      api_key: "24b6c2cda6d84066b0304531241908"
-      update_interval: 600 #Update interval in seconds, Min 600
-      hide_decimal: true
-      location: "Xian, Shaan Xi" # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
-      callbacks:
-        on_left: "toggle_label"
-      icons:
-        sunnyDay: "\udb81\udd99"
-        clearNight: "\udb81\udd94"
-        cloudyDay: "\uebaa"
-        cloudyNight: "\uebaa"
-        rainyDay: "\udb81\udd96"
-        rainyNight: "\udb81\udd96"
-        snowyIcyDay: "\udb81\udd92"
-        snowyIcyNight: "\udb81\udd92"
-        blizzard: "\udb81\udd93"
-        default: "\uebaa"
   volume:
     type: "yasb.volume.VolumeWidget"
     options:
