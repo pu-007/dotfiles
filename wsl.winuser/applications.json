@@ -10,6 +10,11 @@
       }
     ]
   },
+  "Flomo": {
+    "tray_and_multi_window": [
+      { "kind": "Exe", "id": "flomo.exe", "matching_strategy": "Equals" }
+    ]
+  },
   "WindowsTerminal": {
     "tray_and_multi_window": [
       {
