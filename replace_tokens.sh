@@ -18,7 +18,9 @@ replace_token() {
   fi
 }
 
-# 遍历所有传入的文件
-for file in "$@"; do
-  replace_token "$file"
-done
+replace_token ./wsl.winuser/.config/yasb/config.yaml
+
+# # 遍历所有传入的文件
+# for file in "$@"; do
+#   replace_token "$file"
+# done
