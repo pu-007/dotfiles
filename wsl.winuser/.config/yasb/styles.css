@@ -9,7 +9,7 @@
 .yasb-bar {
   padding: 0;
   margin: 0;
-  background-color: rgb(30, 30, 46);
+  background-color: rgba(30, 30, 46, 128);
 }
 .widget {
   padding: 0 8px;
@@ -52,7 +52,7 @@
   margin-bottom: 10px;
   color: rgba(191, 202, 219, 0.726);
   font-weight: 600;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "JetXW", Tahoma, Geneva, Verdana, sans-serif;
 }
 .power-menu-widget .label {
   color: #f38ba8;
@@ -83,7 +83,7 @@
   font-size: 16px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "JetXW", Tahoma, Geneva, Verdana, sans-serif;
 }
 .power-menu-popup .button .icon {
   font-size: 48px;
@@ -226,7 +226,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 15px;
   font-weight: 400;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "JetXW", Tahoma, Geneva, Verdana, sans-serif;
   padding: 8px;
   color: white;
   background-color: rgba(17, 17, 27, 0.75);
@@ -235,7 +235,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 12px;
   padding: 4px 8px 6px 8px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "JetXW", Tahoma, Geneva, Verdana, sans-serif;
   color: #9399b2;
   background-color: rgba(17, 17, 27, 0.75);
 }
@@ -254,7 +254,7 @@
 .github-menu .contents .item .title,
 .github-menu .contents .item .description {
   color: #9399b2;
-  font-family: Segoe UI;
+  font-family: JetXW;
 }
 .github-menu .contents .item .title {
   font-size: 14px;
