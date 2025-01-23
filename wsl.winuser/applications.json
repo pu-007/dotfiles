@@ -10,6 +10,11 @@
       }
     ]
   },
+  "Doubao": {
+    "tray_and_multi_window": [
+      { "kind": "Exe", "id": "Doubao.exe", "matching_strategy": "Equals" }
+    ]
+  },
   "Flomo": {
     "tray_and_multi_window": [
       { "kind": "Exe", "id": "flomo.exe", "matching_strategy": "Equals" }

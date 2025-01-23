@@ -112,6 +112,28 @@
       }
     },
     {
+      "Id": "ByteDance.Doubao",
+      "Name": "\u8C46\u5305",
+      "Version": "1.41.5",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Daum.PotPlayer",
       "Name": "PotPlayer",
       "Version": "24.12.16.0",
@@ -772,9 +794,53 @@
       }
     },
     {
+      "Id": "Upscayl.Upscayl",
+      "Name": "Upscayl",
+      "Version": "2.15.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Valve.Steam",
       "Name": "Steam",
       "Version": "2.10.91.91",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Xmind.Xmind",
+      "Name": "Xmind",
+      "Version": "25.1.1061",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -991,6 +1057,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\PreSonus Studio One 7",
+      "Name": "PreSonus Studio One 7",
+      "Version": "7.0.0.102470",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\Steam App 1145360",
       "Name": "Hades",
       "Version": "Unknown",
@@ -1179,6 +1251,12 @@
     {
       "Id": "ARP\\User\\X64\\Follow",
       "Name": "Follow",
+      "Version": "0.3.2-beta0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\Follow",
+      "Name": "Follow",
       "Version": "0.3.1-beta0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
@@ -1187,6 +1265,60 @@
       "Name": "PixPin \u7248\u672C 1.9.11.3",
       "Version": "1.9.11.3",
       "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-2FDF1B91_1.0.0.0_neutral__02pbbbs9q2xnj",
+      "Name": "\u5C0F\u7231\u97F3\u7BB1\u64AD\u653E\u5668",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-4E674617_1.0.0.1_neutral__4bdqv9ahb3r3y",
+      "Name": "yacd",
+      "Version": "1.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-61C56E71_1.0.0.0_neutral__3m895byq36rhj",
+      "Name": "AList",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-85EB5213_1.0.0.0_neutral__3ttmrn0dcr0jy",
+      "Name": "Openwrt",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-86E4A65F_1.0.0.0_neutral__nz25ppnwr7fs4",
+      "Name": "Jellyfin",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-D0B73F3E_1.0.0.0_neutral__3ttmrn0dcr0jy",
+      "Name": "AriaNg - Remote",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-EC6CE47_1.0.0.0_neutral__62w88vw04ffp2",
+      "Name": "PhotoPrism",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-FAA30A86_1.0.0.0_neutral__9xt3ztcj8dkmc",
+      "Name": "Calibre Web",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-FDA2CBD8_1.0.0.0_neutral__26pp0dsypza06",
+      "Name": "Heimdall",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
     },
     {
       "Id": "MSIX\\192.168.100.181-C25A5C2_1.0.0.0_neutral__4sjf43s0np6pc",
@@ -1204,6 +1336,12 @@
       "Id": "MSIX\\AdobeNotificationClient_6.0.0.1_x86__enpm4xejd91yc",
       "Name": "Adobe Notification Client",
       "Version": "6.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Exafunction.Windsurf_1.0.0.0_neutral__ebj5frz4mxjwy",
+      "Name": "Windsurf",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1423,8 +1561,68 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\kimi.moonshot.cn-CFB72B7F_1.0.0.0_neutral__fsmhydxgm6x52",
+      "Id": "MSIX\\bibigpt.co-1B586F0D_1.0.0.0_neutral__hm255km7c9akc",
+      "Name": "BibiGPT \u00B7 \u97F3\u89C6\u9891\u4E00\u952E\u603B\u7ED3",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\chatgpt.com-DFCB3CE4_1.0.0.0_neutral__ch69rtgtz055j",
+      "Name": "ChatGPT",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\cobalt.tools-9CE8271E_1.0.0.0_neutral__25vfs1my8q9v6",
+      "Name": "cobalt",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\dash.302.ai-D2A23C8A_1.0.0.0_neutral__wdamecvg8gp1c",
+      "Name": "\u200E302",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\kimi.moonshot.cn-CFB72B7F_1.0.0.1_neutral__fsmhydxgm6x52",
       "Name": "KiMi",
+      "Version": "1.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\mail.google.com-FCFEA3FA_1.0.0.0_neutral__vq8mrer2vmnwe",
+      "Name": "Gmail",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\pointerpointer.com-6290C47_1.0.0.0_neutral__jr5mdk16kg1xg",
+      "Name": "Pointer Pointer",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\shenyandayi.com-A71EC7E7_1.0.0.0_neutral__25t0bqkvhepdj",
+      "Name": "\u6DF1\u8A00\u8FBE\u610F",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\weread.qq.com-6A0F0C7D_1.0.0.0_neutral__nvz1dck0d7q0r",
+      "Name": "\u5FAE\u4FE1\u8BFB\u4E66",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\www.yyai8.com-6AAEBD01_1.0.0.0_neutral__0xdm2d7c3p9j8",
+      "Name": "\u8FB9\u754CAI",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\wx.mail.qq.com-3DCE9947_1.0.0.0_neutral__z2hgftjm3tqzw",
+      "Name": "QQ\u90AE\u7BB1",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     }

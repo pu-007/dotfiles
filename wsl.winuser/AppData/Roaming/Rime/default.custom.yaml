@@ -7,14 +7,48 @@ customization:
 patch:
   ascii_composer:
     good_old_caps_lock: true
-    switch_key: {Caps_Lock: clear, Control_L: noop, Control_R: noop, Shift_L: noop, Shift_R: commit_code}
+    switch_key:
+      {
+        Caps_Lock: clear,
+        Control_L: noop,
+        Control_R: noop,
+        Shift_L: noop,
+        Shift_R: commit_code,
+      }
   schema_list:
-    - {schema: double_pinyin_flypy}
-    - {schema: rime_ice}
+    - { schema: double_pinyin_flypy }
+    - { schema: rime_ice }
   switcher:
     abbreviate_options: true
     caption: "「方案选单」"
     fold_options: true
     hotkeys: [F4]
     option_list_separator: " / "
-    save_options: [ascii_punct, traditionalization, emoji, full_shape, search_single_char]
+    save_options:
+      [ascii_punct, traditionalization, emoji, full_shape, search_single_char]
+  key_binder:
+    select_first_character: "bracketleft" # 左中括号 [
+    select_last_character: "bracketright" # 右中括号 ]
+
+    bindings:
+      - { when: has_menu, accept: Shift+Tab, send: Page_Up }
+      - { when: has_menu, accept: Tab, send: Page_Down }
+      - { when: always, toggle: full_shape, accept: Control+Shift+exclam } # 切换全半角
+
+      # 将小键盘 0~9 . 映射到主键盘，数字金额大写的 Lua 如 R1234.5678 可使用小键盘输入
+      - { accept: KP_0, send: 0, when: composing }
+      - { accept: KP_1, send: 1, when: composing }
+      - { accept: KP_2, send: 2, when: composing }
+      - { accept: KP_3, send: 3, when: composing }
+      - { accept: KP_4, send: 4, when: composing }
+      - { accept: KP_5, send: 5, when: composing }
+      - { accept: KP_6, send: 6, when: composing }
+      - { accept: KP_7, send: 7, when: composing }
+      - { accept: KP_8, send: 8, when: composing }
+      - { accept: KP_9, send: 9, when: composing }
+      - { accept: KP_Decimal, send: period, when: composing }
+      # 将小键盘 + - * / 映射到主键盘，使计算器 如 1+2-3*4 可使用小键盘输入
+      - { accept: KP_Multiply, send: asterisk, when: composing }
+      - { accept: KP_Add, send: plus, when: composing }
+      - { accept: KP_Subtract, send: minus, when: composing }
+      - { accept: KP_Divide, send: slash, when: composing }
