@@ -104,6 +104,8 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 export fpath=($fpath ~/.config/zsh/completions/)
 autoload -U compinit && compinit
+# for command-not-found:
+# sudo pkgfile --update
 ### plugins
 zinit wait lucid for \
       OMZL::functions.zsh\
@@ -113,6 +115,7 @@ zinit wait lucid for \
       OMZL::git.zsh \
       OMZP::archlinux \
       OMZP::colored-man-pages \
+      OMZP::command-not-found \
       OMZP::copypath \
       OMZL::termsupport.zsh \
       OMZP::git \

@@ -25,6 +25,8 @@ alias fastboot="fastboot.exe"
 alias ollama="ollama.exe"
 alias wsl="wsl.exe"
 alias als="alias | rg "
+ialias ai-commit="ai-commit --PROVIDER=ollama --MODEL=qwen2.5"
+ialias 'gc@'='git reset --soft HEAD^'
 
 ialias re-cmp=": rm .zcompdump; compinit"
 ialias re-cmd="zinit update home--pu--.config--zsh/commands.zsh"

@@ -68,28 +68,6 @@
       }
     },
     {
-      "Id": "AmN.yasb",
-      "Name": "yasb",
-      "Version": "1.5.4",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "Anaconda.Miniconda3",
       "Name": "Miniconda3",
       "Version": "py312_24.11.1-0",
@@ -779,7 +757,7 @@
       "ManagerName": "Winget",
       "InstallationOptions": {
         "SkipHashCheck": false,
-        "InteractiveInstallation": true,
+        "InteractiveInstallation": false,
         "RunAsAdministrator": false,
         "Architecture": "",
         "InstallationScope": "",
@@ -1409,9 +1387,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.122.1030.55_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.123.106.1_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.122.1030.55",
+      "Version": "2025.123.106.1",
       "Source": "Microsoft Store"
     },
     {
