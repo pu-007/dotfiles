@@ -1255,12 +1255,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\User\\X64\\Follow",
-      "Name": "Follow",
-      "Version": "0.3.1-beta0",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\User\\X64\\{506270E7-E3B5-4157-B53A-3BFFE8E418DB}_is1",
       "Name": "PixPin \u7248\u672C 1.9.11.3",
       "Version": "1.9.11.3",
@@ -1525,9 +1519,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.123.106.1_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.124.459.33_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.123.106.1",
+      "Version": "2025.124.459.33",
       "Source": "Microsoft Store"
     },
     {
@@ -1567,6 +1561,12 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\chat.deepseek.com-95B731F6_1.0.0.0_neutral__w2jz3x6ee1x0m",
+      "Name": "deepseek",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\chatgpt.com-DFCB3CE4_1.0.0.0_neutral__ch69rtgtz055j",
       "Name": "ChatGPT",
       "Version": "1.0.0.0",
@@ -1581,6 +1581,12 @@
     {
       "Id": "MSIX\\dash.302.ai-D2A23C8A_1.0.0.0_neutral__wdamecvg8gp1c",
       "Name": "\u200E302",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\hailuoai.com-DEFE775_1.0.0.0_neutral__cpzp37enjkysp",
+      "Name": "\u6D77\u87BA AI",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
