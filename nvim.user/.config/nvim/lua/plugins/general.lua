@@ -22,6 +22,12 @@ return {
           model = "qwen2.5-coder",
         },
       },
+      file_selector = {
+        --- @alias FileSelectorProvider "native" | "fzf" | "mini.pick" | "snacks" | "telescope" | string
+        provider = "fzf",
+        -- Options override for custom providers
+        provider_opts = {},
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
@@ -71,7 +77,6 @@ return {
           "avante_mentions",
           "avante_files",
         },
-        cmdline = {},
         providers = {
           avante_commands = {
             name = "avante_commands",
@@ -92,10 +97,6 @@ return {
             opts = {},
           },
         },
-      },
-      keymap = {
-        preset = "enter",
-        ["<C-y>"] = { "select_and_accept" },
       },
     },
   },
