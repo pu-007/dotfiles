@@ -24,6 +24,28 @@
       }
     },
     {
+      "Id": "Adobe.Acrobat.Pro",
+      "Name": "Adobe Acrobat Pro",
+      "Version": "24.005.20320",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Adobe.CreativeCloud",
       "Name": "Adobe Creative Cloud",
       "Version": "6.5.0.348",
@@ -156,6 +178,28 @@
       }
     },
     {
+      "Id": "ChuyuTeam.DISM\u002B\u002B",
+      "Name": "DISM\u002B\u002B Multi Language",
+      "Version": "10.1.1002.2",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Daum.PotPlayer",
       "Name": "PotPlayer",
       "Version": "24.12.16.0",
@@ -197,28 +241,6 @@
       "Updates": {
         "UpdatesIgnored": false,
         "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "Foxit.PhantomPDF.Subscription.MSI",
-      "Name": "Foxit PDF Editor (MSI)",
-      "Version": "2024.4.0.27683",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": true,
-        "IgnoredVersion": "*"
       }
     },
     {
@@ -1319,9 +1341,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\192.168.100.1-EC6CE47_1.0.0.0_neutral__62w88vw04ffp2",
+      "Id": "MSIX\\192.168.100.1-EC6CE47_1.0.0.1_neutral__62w88vw04ffp2",
       "Name": "PhotoPrism",
-      "Version": "1.0.0.0",
+      "Version": "1.0.0.1",
       "Source": "Microsoft Store"
     },
     {
@@ -1346,6 +1368,12 @@
       "Id": "MSIX\\22955VineelSai.ArchWSL_1.2.3.0_x64__qz230bc1wsk9j",
       "Name": "Arch WSL",
       "Version": "1.2.3.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\AdobeAcrobatDCCoreApp_23.1.0.0_x64__pc75e8sa7ep4e",
+      "Name": "Adobe Acrobat",
+      "Version": "23.1.0.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1541,9 +1569,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.124.1300.19_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.126.323.50_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.124.1300.19",
+      "Version": "2025.126.323.50",
       "Source": "Microsoft Store"
     },
     {
@@ -1579,6 +1607,12 @@
     {
       "Id": "MSIX\\bibigpt.co-1B586F0D_1.0.0.0_neutral__hm255km7c9akc",
       "Name": "BibiGPT \u00B7 \u97F3\u89C6\u9891\u4E00\u952E\u603B\u7ED3",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\cephalon.cloud-C6935C8_1.0.0.0_neutral__dwhjjjvebpapa",
+      "Name": "\u7AEF\u8111\u4E91",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
@@ -1619,8 +1653,14 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\mail.google.com-FCFEA3FA_1.0.0.0_neutral__vq8mrer2vmnwe",
+      "Id": "MSIX\\mail.google.com-FCFEA3FA_1.0.0.1_neutral__vq8mrer2vmnwe",
       "Name": "Gmail",
+      "Version": "1.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\outlook.live.com-E069DD9B_1.0.0.0_neutral__ad12m90dr0gt2",
+      "Name": "Outlook (PWA)",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
@@ -1639,6 +1679,12 @@
     {
       "Id": "MSIX\\weread.qq.com-6A0F0C7D_1.0.0.0_neutral__nvz1dck0d7q0r",
       "Name": "\u5FAE\u4FE1\u8BFB\u4E66",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\www.autodl.com-6371FD64_1.0.0.0_neutral__txgbva7knp7g8",
+      "Name": "AutoDLCould",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
