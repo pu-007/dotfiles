@@ -39,3 +39,6 @@ patch:
     Obsidian.exe:
       ascii_mode: true
       vim_mode: true
+    Cursor.exe:
+      ascii_mode: true
+      vim_mode: true
