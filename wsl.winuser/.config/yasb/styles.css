@@ -109,7 +109,8 @@
   margin-right: 4px;
 }
 .cpu-widget .icon,
-.memory-widget .icon {
+.memory-widget .icon,
+.custom-widget .icon {
   font-size: 14px;
   color: #cba6f7;
 }
@@ -135,7 +136,8 @@
   font-size: 18px;
 }
 .cpu-widget,
-.memory-widget {
+.memory-widget,
+.custom-widget {
   border-bottom: 1px solid #cba6f7;
   background-color: rgba(203, 166, 247, 0);
 }

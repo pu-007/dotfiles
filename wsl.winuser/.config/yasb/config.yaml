@@ -31,10 +31,29 @@ bars:
       bottom: 0
       right: 0
     widgets:
-      left: ["memory", "cpu", "traffic", "komorebi_workspaces"]
+      left: ["memory", "cpu", "nvidia_usage", "komorebi_workspaces"]
       center: ["active_window"]
-      right: ["media", "microphone", "github", "obs", "komorebi_active_layout"]
+      right:
+        [
+          "media",
+          "microphone",
+          "github",
+          "obs",
+          "komorebi_active_layout",
+          "traffic",
+        ]
 widgets:
+  nvidia_usage:
+    type: "yasb.custom.CustomWidget"
+    options:
+      label: "<span>\uf4bc</span> {data}"
+      label_alt: "<span>\uf4bc</span> GPU: {data}"
+      class_name: "system-widget"
+      exec_options:
+        run_cmd: "powershell nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader"
+        run_interval: 1000
+        return_format: "string"
+        hide_empty: false
   obs:
     type: "yasb.obs.ObsWidget"
     options:
@@ -128,7 +147,7 @@ widgets:
     options:
       label: "<span>\uf4bc</span> {virtual_mem_percent}%"
       label_alt: "<span>\uf4bc</span> {virtual_mem_outof}"
-      update_interval: 10000
+      update_interval: 1000
       callbacks:
         on_right: "exec cmd /c Taskmgr"
   active_window:
@@ -246,7 +265,7 @@ widgets:
     options:
       label: "<span>\uf4bc</span> {info[percent][total]}%"
       label_alt: "<span>\uf437</span> {info[histograms][cpu_percent]}"
-      update_interval: 2000
+      update_interval: 1000
       histogram_icons:
         - '\u2581' # 0%
         - '\u2581' # 10%
