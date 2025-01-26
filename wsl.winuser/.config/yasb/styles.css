@@ -9,7 +9,7 @@
 .yasb-bar {
   padding: 0;
   margin: 0;
-  background-color: rgba(30, 30, 46, 128);
+  background-color: rgba(30, 30, 46, 188);
 }
 .widget {
   padding: 0 8px;
@@ -42,10 +42,10 @@
   color: #b4befe;
 }
 .komorebi-workspaces .ws-btn.active {
-  color: #94e2d5;
+  color: #8ec07c;
   font-weight: 900;
   width: 30px;
-  border-bottom-color: #94e2d5;
+  border-bottom-color: #8ec07c;
 }
 .uptime {
   font-size: 14px;
@@ -112,7 +112,7 @@
 .memory-widget .icon,
 .custom-widget .icon {
   font-size: 14px;
-  color: #cba6f7;
+  color: #fbf1c7;
 }
 .weather-widget,
 .brightness-widget {
@@ -138,13 +138,13 @@
 .cpu-widget,
 .memory-widget,
 .custom-widget {
-  border-bottom: 1px solid #cba6f7;
+  border-bottom: 1px solid #fbf1c7;
   background-color: rgba(203, 166, 247, 0);
 }
 .cpu-widget .label,
 .memory-widget .label,
 .custom-widget .label {
-  color: #cba6f7;
+  color: #fbf1c7;
 }
 .volume-widget {
   border-bottom: 1px solid #89b4fa;
