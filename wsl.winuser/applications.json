@@ -20,6 +20,15 @@
       { "kind": "Exe", "id": "flomo.exe", "matching_strategy": "Equals" }
     ]
   },
+  "Potplayer": {
+    "tray_and_multi_window": [
+      {
+        "kind": "Exe",
+        "id": "PotPlayerMini64.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  },
   "WindowsTerminal": {
     "tray_and_multi_window": [
       {

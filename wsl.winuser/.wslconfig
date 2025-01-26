@@ -2,6 +2,8 @@
 networkingMode=mirrored
 firewall=false
 dnsProxy=false
+memory=0         
+processors=0     
 kernelCommandLine = cgroup_no_v1=all systemd.unified_cgroup_hierarchy=1
 [experimental]
 hostAddressLoopback=true
