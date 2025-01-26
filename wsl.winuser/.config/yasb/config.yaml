@@ -46,11 +46,11 @@ widgets:
   nvidia_usage:
     type: "yasb.custom.CustomWidget"
     options:
-      label: "<span>\uf4bc</span> {data}"
-      label_alt: "<span>\uf4bc</span> GPU: {data}"
+      label: "<span>\ue6ae</span> {data}%"
+      label_alt: "<span>\ue6ae</span> GPU: {data}"
       class_name: "system-widget"
       exec_options:
-        run_cmd: "powershell nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader"
+        run_cmd: "powershell.exe (nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader) -replace ' %', ''"
         run_interval: 1000
         return_format: "string"
         hide_empty: false

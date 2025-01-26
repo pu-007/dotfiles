@@ -142,7 +142,8 @@
   background-color: rgba(203, 166, 247, 0);
 }
 .cpu-widget .label,
-.memory-widget .label {
+.memory-widget .label,
+.custom-widget .label {
   color: #cba6f7;
 }
 .volume-widget {
