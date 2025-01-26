@@ -90,6 +90,28 @@
       }
     },
     {
+      "Id": "Anysphere.Cursor",
+      "Name": "Cursor",
+      "Version": "0.44.11",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "AutoHotkey.AutoHotkey",
       "Name": "AutoHotkey",
       "Version": "2.0.18",
@@ -1519,9 +1541,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.124.459.33_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.124.1300.19_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.124.459.33",
+      "Version": "2025.124.1300.19",
       "Source": "Microsoft Store"
     },
     {
