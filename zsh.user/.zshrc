@@ -38,15 +38,6 @@ setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
-### jump dir
-function j() {
-    if [[ "$argv[1]" == "-"* ]]; then
-        _zlua "$@"
-    else
-        cd "$@" 2> /dev/null || _zlua "$@"
-    fi
-}
-
 ### for sync_directory_change
 sync_directory_change() {
   pwd | tr -d '\n' > "$home/.workdir"
@@ -123,8 +114,7 @@ zinit wait lucid for \
       zdharma-continuum/fast-syntax-highlighting \
       zsh-users/zsh-completions \
       OMZP::sudo \
-      jeffreytse/zsh-vi-mode \
-      skywind3000/z.lua
+      jeffreytse/zsh-vi-mode
 
 function zvm_after_init() {
   source ~/.config/zsh/fzf.zsh
@@ -134,7 +124,7 @@ zinit wait lucid is-snippet for \
 
 zinit wait'2' lucid is-snippet for \
   ~/.config/zsh/powershell.zsh \
-  ~/.config/zsh/br \
+  ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/conda.zsh \
 
 zinit ice as"command" from"gh-r" \
