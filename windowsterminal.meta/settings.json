@@ -1,15 +1,7 @@
 {
   "$help": "https://aka.ms/terminal-documentation",
-  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "$schema": "https://aka.ms/terminal-profiles-schema-preview",
   "actions": [
-    {
-      "command": "unbound",
-      "keys": "ctrl+v"
-    },
-    {
-      "command": "unbound",
-      "keys": "ctrl+c"
-    },
     {
       "command": {
         "action": "copy",
@@ -22,23 +14,39 @@
       "id": "User.paste"
     },
     {
-      "command": "find",
-      "id": "User.find",
-      "keys": "ctrl+shift+f"
-    },
-    {
       "command": {
         "action": "splitPane",
         "split": "auto",
         "splitMode": "duplicate"
       },
-      "id": "User.splitPane.A6751878",
-      "keys": "alt+shift+d"
+      "id": "User.splitPane.A6751878"
+    },
+    {
+      "command": "find",
+      "id": "User.find"
     }
   ],
   "copyFormatting": "none",
   "copyOnSelect": false,
   "defaultProfile": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
+  "keybindings": [
+    {
+      "id": "User.find",
+      "keys": "ctrl+shift+f"
+    },
+    {
+      "id": null,
+      "keys": "ctrl+v"
+    },
+    {
+      "id": null,
+      "keys": "ctrl+c"
+    },
+    {
+      "id": "User.splitPane.A6751878",
+      "keys": "alt+shift+d"
+    }
+  ],
   "newTabMenu": [
     {
       "type": "remainingProfiles"
