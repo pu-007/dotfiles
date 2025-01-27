@@ -129,14 +129,14 @@
         "Version": ""
       },
       "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
       }
     },
     {
       "Id": "AutoHotkey.AutoHotkey",
       "Name": "AutoHotkey",
-      "Version": "2.0.18",
+      "Version": "2.0.19",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -158,7 +158,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.41.5",
+      "Version": "1.41.6",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -334,7 +334,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "132.0.2957.115",
+      "Version": "132.0.2957.127",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -349,8 +349,8 @@
         "Version": ""
       },
       "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
       }
     },
     {
@@ -818,7 +818,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat Beta",
-      "Version": "4.0.2.10",
+      "Version": "4.0.2.13",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1144,14 +1144,14 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver",
-      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 561.17",
-      "Version": "561.17",
+      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 566.36",
+      "Version": "566.36",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.GFExperience",
-      "Name": "NVIDIA GeForce Experience 3.28.0.417",
-      "Version": "3.28.0.417",
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.NvApp",
+      "Name": "NVIDIA \u5E94\u7528\u7A0B\u5E8F 11.0.1.189",
+      "Version": "11.0.1.189",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1162,14 +1162,14 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_FrameViewSdk",
-      "Name": "NVIDIA FrameView SDK 1.3.8513.32290073",
-      "Version": "1.3.8513.32290073",
+      "Name": "NVIDIA FrameView SDK 1.4.10624.35034762",
+      "Version": "1.4.10624.35034762",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_HDAudio.Driver",
-      "Name": "NVIDIA HD \u97F3\u9891\u9A71\u52A8\u7A0B\u5E8F 1.4.0.1",
-      "Version": "1.4.0.1",
+      "Name": "NVIDIA HD \u97F3\u9891\u9A71\u52A8\u7A0B\u5E8F 1.4.2.6",
+      "Version": "1.4.2.6",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1329,9 +1329,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\192.168.100.1-86E4A65F_1.0.0.0_neutral__nz25ppnwr7fs4",
+      "Id": "MSIX\\192.168.100.1-86E4A65F_1.0.0.1_neutral__nz25ppnwr7fs4",
       "Name": "Jellyfin",
-      "Version": "1.0.0.0",
+      "Version": "1.0.0.1",
       "Source": "Microsoft Store"
     },
     {
@@ -1569,9 +1569,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.126.323.50_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.127.417.25_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.126.323.50",
+      "Version": "2025.127.417.25",
       "Source": "Microsoft Store"
     },
     {
