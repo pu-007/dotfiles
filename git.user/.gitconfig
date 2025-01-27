@@ -4,6 +4,7 @@
 	filemode = false
 [safe]
 	directory = /mnt/c/Users/zion/AppData/Roaming/Rime
+	directory = /mnt/e/Obsidian/
 [user]
 	name = Zion Pu
 	email = pu.007@qq.com
