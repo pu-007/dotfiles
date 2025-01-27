@@ -58,4 +58,4 @@ export XMODIFIERS=@im=fcitx
 export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
 
-fcitx5 --disable=wayland -d --verbose '*'=0
+LANG=zh_CN.UTF-8 fcitx5 --disable=wayland -d --verbose '*'=0
