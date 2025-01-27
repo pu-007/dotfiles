@@ -75,6 +75,7 @@ pyside6
 python-dnspython
 python-keyring
 python-pyxdg
+qt5-wayland
 rdma-core
 ripgrep
 rust
@@ -101,8 +102,8 @@ vulkan-swrast
 vulkan-tools
 weston
 wget
+win32yank-bin
 wslu
-xclip
 xdg-desktop-portal
 xmake
 xorg-server
