@@ -7,3 +7,9 @@
 	email = pu.007@qq.com
 [core]
 	editor = \"C:\\Users\\pu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
+[credential]
+	helper = manager
+[safe]
+	directory = //192.168.100.1/Passport/Obsidian
+[credential "http://192.168.100.1:3001"]
+	provider = generic

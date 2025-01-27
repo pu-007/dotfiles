@@ -47,7 +47,7 @@ widgets:
     type: "yasb.custom.CustomWidget"
     options:
       label: "<span>\ue6ae</span> {data}%"
-      label_alt: "<span>\ue6ae</span> GPU: {data}"
+      label_alt: "GPU::{data}%"
       class_name: "system-widget"
       exec_options:
         run_cmd: "powershell.exe (nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader) -replace ' %', ''"
@@ -145,8 +145,8 @@ widgets:
   memory:
     type: "yasb.memory.MemoryWidget"
     options:
-      label: "<span>\uf4bc</span> {virtual_mem_percent}%"
-      label_alt: "<span>\uf4bc</span> {virtual_mem_outof}"
+      label: "<span>\uefc5</span> {virtual_mem_percent}%"
+      label_alt: "<span>\uefc5</span> {virtual_mem_outof}"
       update_interval: 1000
       callbacks:
         on_right: "exec cmd /c Taskmgr"
