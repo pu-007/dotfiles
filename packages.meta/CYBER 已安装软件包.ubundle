@@ -70,7 +70,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.5.5",
+      "Version": "1.5.7",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -225,6 +225,50 @@
       "Id": "DuongDieuPhap.ImageGlass",
       "Name": "ImageGlass",
       "Version": "9.2.0.1208",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Git.Git",
+      "Name": "Git",
+      "Version": "2.47.1.2",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "GitHub.GitLFS",
+      "Name": "Git LFS",
+      "Version": "3.6.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -664,7 +708,7 @@
     {
       "Id": "Obsidian.Obsidian",
       "Name": "Obsidian",
-      "Version": "1.7.7",
+      "Version": "1.8.4",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1150,14 +1194,14 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver",
-      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 566.36",
-      "Version": "566.36",
+      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 572.16",
+      "Version": "572.16",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.NvApp",
-      "Name": "NVIDIA \u5E94\u7528\u7A0B\u5E8F 11.0.1.189",
-      "Version": "11.0.1.189",
+      "Name": "NVIDIA \u5E94\u7528\u7A0B\u5E8F 11.0.2.312",
+      "Version": "11.0.2.312",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1168,14 +1212,14 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_FrameViewSdk",
-      "Name": "NVIDIA FrameView SDK 1.4.10624.35034762",
-      "Version": "1.4.10624.35034762",
+      "Name": "NVIDIA FrameView SDK 1.5.10819.35301613",
+      "Version": "1.5.10819.35301613",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_HDAudio.Driver",
-      "Name": "NVIDIA HD \u97F3\u9891\u9A71\u52A8\u7A0B\u5E8F 1.4.2.6",
-      "Version": "1.4.2.6",
+      "Name": "NVIDIA HD \u97F3\u9891\u9A71\u52A8\u7A0B\u5E8F 1.4.3.2",
+      "Version": "1.4.3.2",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1587,9 +1631,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.131.742.25_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.201.1418.45_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.131.742.25",
+      "Version": "2025.201.1418.45",
       "Source": "Microsoft Store"
     },
     {
@@ -1703,6 +1747,12 @@
     {
       "Id": "MSIX\\www.autodl.com-6371FD64_1.0.0.0_neutral__txgbva7knp7g8",
       "Name": "AutoDLCould",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\www.n.cn-952E2013_1.0.0.0_neutral__b02ymq2zw4z3c",
+      "Name": "\u7EB3\u7C73AI\u641C\u7D22",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },

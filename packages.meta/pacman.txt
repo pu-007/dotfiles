@@ -10,7 +10,6 @@ cifs-utils
 clinfo
 cmake
 cuda
-dolphin
 eza
 fcitx5
 fcitx5-chinese-addons
@@ -27,10 +26,10 @@ fish
 freerdp2
 fzf
 gdb
-gedit
 git
 git-delta
 git-filter-repo
+git-lfs
 git-secrets
 github-cli
 gitleaks
@@ -39,6 +38,7 @@ gnome-keyring
 go
 hunspell
 imagemagick
+inkscape
 jdk-openjdk
 kio-admin
 lazygit
@@ -55,7 +55,6 @@ miniconda3
 nano
 neovim
 neovim-symlinks
-nodejs
 noto-cjk-fontconfig
 noto-fonts-cjk
 npm
@@ -72,9 +71,11 @@ prettier
 prettier-plugin-latex
 pulseaudio
 pyside6
+python-certifi
 python-dnspython
 python-keyring
 python-pyxdg
+python-requests
 qt5-wayland
 rdma-core
 ripgrep
