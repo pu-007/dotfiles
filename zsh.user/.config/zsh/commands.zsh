@@ -45,6 +45,7 @@ function gzr() {
 }
 
 alias v="vi"
+alias rv="nvim +'FzfLua oldfiles'"
 ialias e="explorer.exe ."
 ialias ex="explorer.exe .;exit 0"
 ialias p="powershell.exe"
@@ -72,6 +73,7 @@ ialias winget="winget.exe"
 alias als="alias | rg "
 ialias ai-commit="ai-commit --PROVIDER=ollama --MODEL=qwen2.5-coder  --commit-type 'Grasp the main points and short, git commit messages only, no other comments'"
 ialias 'gc@'='git reset --soft HEAD^'
+alias qc="gaa; ai-commit"
 
 ialias re-cmp=": rm .zcompdump; compinit"
 ialias re-cmd="zinit update home--pu--.config--zsh/commands.zsh"
