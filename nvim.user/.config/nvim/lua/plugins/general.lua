@@ -70,6 +70,7 @@ return {
         compat = { "avante_commands", "avante_mentions", "avante_files" },
         default = {
           "lsp",
+          "cmdline",
           "path",
           "snippets",
           "buffer",

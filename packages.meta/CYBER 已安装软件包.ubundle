@@ -596,9 +596,9 @@
       }
     },
     {
-      "Id": "Microsoft.WindowsTerminal",
-      "Name": "Windows Terminal",
-      "Version": "1.21.3231.0",
+      "Id": "Microsoft.WindowsTerminal.Preview",
+      "Name": "Windows Terminal Preview",
+      "Version": "1.22.3232.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1131,6 +1131,12 @@
       "Source": "Steam"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{95140000-2000-0409-1000-0000000FF1CE}",
+      "Name": "Microsoft Filter Pack 2.0",
+      "Version": "14.0.7015.1000",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{9E9798A8-213B-4C9E-AFBA-EBB0F9FF6533}",
       "Name": "NVIDIA Nsight Systems 2024.5.1",
       "Version": "24.5.1.113",
@@ -1275,6 +1281,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\{A83692D5-3E9B-4E95-9E7E-B5DF7536C09D}_is1",
+      "Name": "AnyTXT Searcher 1.3",
+      "Version": "Unknown",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\{E157C5F4-C544-4DCA-85A4-6C415C3E36BC}",
       "Name": "Multi-Function Suite M7206W",
       "Version": "1.0.0.0",
@@ -1300,8 +1312,8 @@
     },
     {
       "Id": "ARP\\User\\X64\\{506270E7-E3B5-4157-B53A-3BFFE8E418DB}_is1",
-      "Name": "PixPin \u7248\u672C 1.9.11.3",
-      "Version": "1.9.11.3",
+      "Name": "PixPin \u7248\u672C 1.9.11.6",
+      "Version": "1.9.11.6",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1317,9 +1329,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\192.168.100.1-61C56E71_1.0.0.0_neutral__3m895byq36rhj",
+      "Id": "MSIX\\192.168.100.1-61C56E71_1.0.0.1_neutral__3m895byq36rhj",
       "Name": "AList",
-      "Version": "1.0.0.0",
+      "Version": "1.0.0.1",
       "Source": "Microsoft Store"
     },
     {
@@ -1332,6 +1344,12 @@
       "Id": "MSIX\\192.168.100.1-86E4A65F_1.0.0.1_neutral__nz25ppnwr7fs4",
       "Name": "Jellyfin",
       "Version": "1.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-91963FB9_1.0.0.0_neutral__ha3wyb0a2pge6",
+      "Name": "Gogs",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1569,9 +1587,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.127.417.25_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.131.742.25_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.127.417.25",
+      "Version": "2025.131.742.25",
       "Source": "Microsoft Store"
     },
     {
@@ -1581,9 +1599,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.24112.110.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.24121.85.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.24112.110.0",
+      "Version": "1.24121.85.0",
       "Source": "Microsoft Store"
     },
     {
