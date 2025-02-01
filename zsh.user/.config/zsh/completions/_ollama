@@ -1,0 +1,194 @@
+#compdef ollama.exe
+
+# Source:
+# https://github.com/ocodo/ollama_zsh_completion/blob/main/_ollama
+# Contributions:
+# Principal contributions by:
+# - ChatGPT [ZSH Expert](https://chatgpt.com/g/g-XczdbjXSW-zsh-expert) as the primary creator.
+# - Guidance and revisions by [obeone](https://github.com/obeone).
+# - Conversion to zsh plugin, refinements and extensions by [jasonm23](https://github.com/jason23)
+
+# Fetch online ollama library models
+fetch_ollama_library_models() {
+    python3 --version > /dev/null 2>&1
+    if [ $? -eq 0 ];then
+        python3 -c "
+import requests
+from html.parser import HTMLParser
+
+class ScrapeOllamaLibraries(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.links = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'a' and any(attr[0] == 'href' for attr in attrs):
+            href_value = [attr[1] for attr in attrs if attr[0] == 'href'][0]
+            if '/library/' in href_value:
+                processed_link = href_value.replace('/library/', '')
+                self.links.append(processed_link)
+
+url = 'https://ollama.com/library'
+try:
+    response = requests.get(url)
+    response.raise_for_status()  # Check if request was successful (status code 200)
+    html_content = response.text
+    parser = ScrapeOllamaLibraries()
+    parser.feed(html_content)
+    result = '\n'.join(parser.links)
+    print(result)
+except requests.exceptions.RequestException as e:
+    print(f'Failed to fetch model list from ollama.com [{str(e)}]')
+"
+    fi
+}
+
+# Cache online ollama library models
+cached_models() {
+    local cache_age
+    local cached_file=~/.cache/ollama_library_models.cache
+    local timeout=3600 # 1hr cache
+
+    if [[ -f "$cached_file" ]];then
+       if [[ "$OSTYPE" == "darwin"* ]]; then
+           cache_age=$(( $(date +%s) - $(stat -f %m "${cached_file}") ))
+       else
+           cache_age=$(( $(date +%s) - $(stat -c "%Y" "${cached_file}") ))
+       fi
+    fi
+
+    if [[ ! -f "${cached_file}" || ${cache_age} > ${timeout} ]]; then
+        cleaned_models=$(fetch_ollama_library_models)
+        if [ $? -eq 0 ]; then
+            echo "${cleaned_models}" > "${cached_file}"
+        fi
+    else
+        cleaned_models=$(cat "${cached_file}")
+    fi
+
+    local -a models=("${(@f)"$(<$cached_file)"}")
+    print -r -- ${(qq)models}
+}
+
+# Pass ollama library models to completion
+_ollama_library_models() {
+    local -a models=("${(@Q)${(z)$(cached_models)}}")
+    _describe models 'models' models
+}
+
+# Fetch local models
+_fetch_ollama_models() {
+    local -a models
+    local output="$(ollama list 2>/dev/null | sed 's/:/\\:/g')"  # Escape colons for zsh
+    if [[ -z "$output" ]]; then
+        _message "no models available or 'ollama list' failed"
+        return 1
+    fi
+    models=("${(@f)$(echo "$output" | awk 'NR>1 {print $1}')}")
+    if [[ ${#models} -eq 0 ]]; then
+        _message "no models found"
+        return 1
+    fi
+    _describe 'model names' models
+}
+
+# Main completion function
+_ollama() {
+    local -a commands=(
+        'serve:Start ollama'
+        'create:Create a model from a Modelfile'
+        'show:Show information for a model'
+        'run:Run a model'
+        'pull:Pull a model from a registry'
+        'push:Push a model to a registry'
+        'list:List models'
+        'cp:Copy a model'
+        'rm:Remove a model'
+        'help:Help about any command'
+    )
+
+    _arguments -C \
+        '1: :->command' \
+        '*:: :->args'
+
+    case $state in
+        command)
+            _describe -t commands 'ollama command' commands
+        ;;
+        args)
+            case $words[1] in
+                serve)
+                    _arguments \
+                        '--host[Specify the host and port]:host and port:' \
+                        '--origins[Set allowed origins]:origins:' \
+                        '--models[Path to the models directory]:path:_directories' \
+                        '--keep-alive[Duration to keep models in memory]:duration:'
+                ;;
+                create)
+                    _arguments \
+                        '-f+[Specify the file name]:file:_files'
+                ;;
+                show)
+                    _arguments \
+                        '--license[Show license of a model]' \
+                        '--modelfile[Show Modelfile of a model]' \
+                        '--parameters[Show parameters of a model]' \
+                        '--system[Show system message of a model]' \
+                        '--template[Show template of a model]' \
+                        '*::model:->model'
+                    if [[ $state == model ]]; then
+                        _fetch_ollama_models
+                    fi
+                ;;
+                run)
+                    _arguments \
+                        '--format[Specify the response format]:format:' \
+                        '--insecure[Use an insecure registry]' \
+                        '--nowordwrap[Disable word wrap]' \
+                        '--keepalive[Duration to keep a model loaded (e.g. 5m)]:duration:' \
+                        '--verbose[Show verbose output]' \
+                        '*::model and prompt:->model_and_prompt'
+                    if [[ $state == model_and_prompt ]]; then
+                        _fetch_ollama_models
+                        _message "enter prompt"
+                    fi
+                ;;
+                push)
+                    _arguments \
+                        '--insecure[Use an insecure registry]' \
+                        '*::model:->model'
+                    if [[ $state == model ]]; then
+                        _fetch_ollama_models
+                    fi
+                ;;
+                pull)
+                    _arguments \
+                        '*::model:->model'
+                    if [[ $state == model ]]; then
+                        _ollama_library_models
+                    fi
+                    ;;
+                list)
+                    _message "no additional arguments for list"
+                ;;
+                cp)
+                    _arguments \
+                        '1:source model:_fetch_ollama_models' \
+                        '2:target model:_fetch_ollama_models'
+                ;;
+                rm)
+                    _arguments \
+                        '*::models:->models'
+                    if [[ $state == models ]]; then
+                        _fetch_ollama_models
+                    fi
+                ;;
+                help)
+                    _describe -t commands '' commands
+                ;;
+            esac
+        ;;
+    esac
+}
+
+_ollama

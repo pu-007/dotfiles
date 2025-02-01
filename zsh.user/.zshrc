@@ -46,42 +46,6 @@ sync_directory_change() {
 autoload -U add-zsh-hook
 add-zsh-hook chpwd sync_directory_change
 
-### zsh plugins
-# blank aliases
-typeset -g baliases=()
-
-balias() {
-  alias -g $@
-  args="$@"
-  args=${args%%\=*}
-  baliases+=(${args##* })
-}
-
-# ignored aliases
-typeset -g ialiases=()
-
-ialias() {
-  alias $@
-  args="$@"
-  args=${args%%\=*}
-  ialiases+=(${args##* })
-}
-
-expand-alias-space() {
-  [[ $LBUFFER =~ "\<(${(j:|:)baliases})\$" ]]; insertBlank=$?
-  if [[ ! $LBUFFER =~ "\<(${(j:|:)ialiases})\$" ]]; then
-    zle _expand_alias
-  fi
-  zle self-insert
-  if [[ "$insertBlank" = "0" ]]; then
-    zle backward-delete-char
-  fi
-}
-zle -N expand-alias-space
-
-bindkey " " expand-alias-space
-bindkey -M isearch " " magic-space
-
 ### autoload zinit
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
@@ -94,11 +58,10 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 export fpath=($fpath ~/.config/zsh/completions/)
-autoload -U compinit && compinit
 # for command-not-found:
 # sudo pkgfile --update
 ### plugins
-zinit wait lucid for \
+zinit wait'1' lucid for \
       OMZL::functions.zsh\
 	    OMZL::clipboard.zsh \
       OMZP::extract \
@@ -112,13 +75,21 @@ zinit wait lucid for \
       OMZP::git \
         atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
       zdharma-continuum/fast-syntax-highlighting \
+        atload"compdef _adb adb.exe" \
       zsh-users/zsh-completions \
       OMZP::sudo \
       jeffreytse/zsh-vi-mode
 
 function zvm_after_init() {
   source ~/.config/zsh/fzf.zsh
+  bindkey -M vicmd 'H' beginning-of-line
+  bindkey -M vicmd 'L' end-of-line
+  zinit ice as"command" from"gh-r" \
+            atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+            atpull"%atclone" src"init.zsh"
+  zinit light starship/starship
 }
+
 zinit wait lucid is-snippet for \
   ~/.config/zsh/commands.zsh
 
@@ -127,14 +98,8 @@ zinit wait'2' lucid is-snippet for \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/conda.zsh \
 
-zinit ice as"command" from"gh-r" \
-          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-          atpull"%atclone" src"init.zsh"
-zinit light starship/starship
 
 zinit light-mode for \
       Aloxaf/fzf-tab
 
-bindkey -M vicmd 'H' beginning-of-line
-bindkey -M vicmd 'L' end-of-line
-
+autoload -U compinit && compinit

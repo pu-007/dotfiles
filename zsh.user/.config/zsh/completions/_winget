@@ -1,0 +1,107 @@
+#compdef winget winget.exe
+
+_winget() {
+  local -a commands
+  local curcontext="$curcontext" state line
+
+  commands=(
+    'install:Install the specified application'
+    'show:Show information about an application'
+    'source:Manage sources of applications'
+    'search:Find and show basic info of apps'
+    'list:Display installed apps'
+    'upgrade:Shows and performs available upgrades'
+    'uninstall:Uninstalls the given application'
+    'hash:Helper to hash installer files'
+    'validate:Validates a manifest file'
+    'settings:Open settings or set administrator settings'
+    'features:Shows the status of experimental features'
+    'export:Exports a list of the installed packages'
+    'import:Installs all the packages in a file'
+  )
+
+  _arguments -C \
+    '(-v --version)'{-v,--version}'[Display version information]' \
+    '(-i --info)'{-i,--info}'[Display general info of the tool]' \
+    '(-? --help)'{-\?,--help}'[Show help]' \
+    '1: :->cmds' \
+    '*:: :->args'
+
+  case $state in
+    cmds)
+      _describe -t commands 'winget commands' commands
+      ;;
+    args)
+      case $line[1] in
+        install)
+          _arguments \
+            '--id[The ID of the package to install]' \
+            '--name[The name of the package to install]' \
+            '--moniker[The moniker of the package to install]' \
+            '--version[The version of the package to install]' \
+            '--source[The source to search for the package in]' \
+            '--exact[Find package using exact match]' \
+            '--interactive[Request interactive installation]' \
+            '--silent[Request silent installation]' \
+            '--log[Log location]' \
+            '--override[Override arguments to be passed to the installer]'
+          ;;
+        search)
+          _arguments \
+            '--id[Find package using ID]' \
+            '--name[Find package using name]' \
+            '--moniker[Find package using moniker]' \
+            '--tag[Find package using tag]' \
+            '--command[Find package using command]' \
+            '--source[Find package using source]' \
+            '--count[Show number of results]' \
+            '--exact[Find package using exact match]'
+          ;;
+        list)
+          _arguments \
+            '--id[Find package using ID]' \
+            '--name[Find package using name]' \
+            '--moniker[Find package using moniker]' \
+            '--source[Find package using source]' \
+            '--tag[Find package using tag]' \
+            '--count[Show number of results]' \
+            '--exact[Find package using exact match]'
+          ;;
+        uninstall)
+          _arguments \
+            '--id[The ID of the package to uninstall]' \
+            '--name[The name of the package to uninstall]' \
+            '--moniker[The moniker of the package to uninstall]' \
+            '--version[The version of the package to uninstall]' \
+            '--exact[Find package using exact match]' \
+            '--interactive[Request interactive uninstall]' \
+            '--silent[Request silent uninstall]'
+          ;;
+        upgrade)
+          _arguments \
+            '--id[The ID of the package to upgrade]' \
+            '--name[The name of the package to upgrade]' \
+            '--moniker[The moniker of the package to upgrade]' \
+            '--version[The version to upgrade to]' \
+            '--exact[Find package using exact match]' \
+            '--interactive[Request interactive upgrade]' \
+            '--silent[Request silent upgrade]' \
+            '--all[Update all installed packages]'
+          ;;
+        source)
+          local -a source_commands
+          source_commands=(
+            'add:Add a new source'
+            'list:List current sources'
+            'update:Update current sources'
+            'remove:Remove a source'
+            'reset:Reset sources'
+          )
+          _describe -t commands 'winget source commands' source_commands
+          ;;
+      esac
+      ;;
+  esac
+}
+
+_winget "$@"
