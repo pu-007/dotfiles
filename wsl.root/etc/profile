@@ -51,11 +51,3 @@ unset TERMCAP
 
 # Man is much better than us at figuring this out
 unset MANPATH
-
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-export SDL_IM_MODULE=fcitx
-export GLFW_IM_MODULE=ibus
-
-LANG=zh_CN.UTF-8 fcitx5 --disable=wayland -d --verbose '*'=0
