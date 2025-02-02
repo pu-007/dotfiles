@@ -75,9 +75,9 @@ ialias gac="ai-commit --PROVIDER=ollama --MODEL=qwen2.5-coder  --commit-type 'Gr
 ialias 'gc@'='git reset --soft HEAD^'
 alias gaac="gaa; gac"
 
-ialias re-cmp=": rm .zcompdump; compinit"
-ialias re-cmd="zinit update home--pu--.config--zsh/commands.zsh"
-ialias re-pkg="yay -Rnsc `pacman -Qdqt`" # dispose of packages that are superfluous
+alias re-cmp=": rm .zcompdump; compinit"
+alias re-cmd="zinit update home--pu--.config--zsh/commands.zsh"
+alias re-pkg="pacman -Qdqt | xargs yay -Rnsc"
 alias re-cursor="p 'irm https://raw.githubusercontent.com/yuaotian/go-cursor-help/refs/heads/master/scripts/run/cursor_win_id_modifier.ps1 | iex'"
 
 alias -g ...='../..'
