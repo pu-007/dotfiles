@@ -71,9 +71,9 @@ alias wsl="wsl.exe"
 alias wg="winget.exe"
 ialias winget="winget.exe"
 alias als="alias | rg "
-ialias ai-commit="ai-commit --PROVIDER=ollama --MODEL=qwen2.5-coder  --commit-type 'Grasp the main points and short, git commit messages only, no other comments'"
+ialias gac="ai-commit --PROVIDER=ollama --MODEL=qwen2.5-coder  --commit-type 'Grasp the main points and short, git commit messages only, no other comments'"
 ialias 'gc@'='git reset --soft HEAD^'
-alias qc="gaa; ai-commit"
+alias gaac="gaa; gac"
 
 ialias re-cmp=": rm .zcompdump; compinit"
 ialias re-cmd="zinit update home--pu--.config--zsh/commands.zsh"
@@ -108,7 +108,22 @@ alias -s js=v
 alias -s c=v
 alias -s txt=v
 alias -s md=v
+alias -s txt=v
 alias -s toml=v
 alias -s {yaml,yml}=v
 alias -s json=v
 
+update_all () {
+        echo "Updating pip packages..."
+        pip list --outdated | awk 'NR > 2 {print $1}' | xargs -n1 pip install --upgrade --progress-bar on
+        echo "Pip packages updated."
+        echo "Updating conda packages..."
+        conda update --all -y
+        echo "Conda packages updated."
+        echo "Updating npm global packages..."
+        sudo npm outdated -g --json | jq -r 'keys | .[]' | xargs -n1 sudo npm install -g
+        echo "npm global packages updated."
+        echo "Updating pacman packages..."
+        sudo pacman -Syu --noconfirm
+        echo "Pacman packages updated."
+}
