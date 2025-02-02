@@ -1175,6 +1175,12 @@
       "Source": "Steam"
     },
     {
+      "Id": "ARP\\Machine\\X64\\Steam App 730",
+      "Name": "Counter-Strike 2",
+      "Version": "Unknown",
+      "Source": "Steam"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{95140000-2000-0409-1000-0000000FF1CE}",
       "Name": "Microsoft Filter Pack 2.0",
       "Version": "14.0.7015.1000",
@@ -1351,7 +1357,7 @@
     {
       "Id": "ARP\\User\\X64\\Follow",
       "Name": "Follow",
-      "Version": "0.3.2-beta0",
+      "Version": "0.3.3-beta0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1631,9 +1637,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.201.1418.45_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.202.653.40_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.201.1418.45",
+      "Version": "2025.202.653.40",
       "Source": "Microsoft Store"
     },
     {

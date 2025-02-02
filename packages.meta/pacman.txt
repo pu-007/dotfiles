@@ -21,7 +21,6 @@ fd
 ffmpegthumbnailer
 ffmpegthumbnailer-mp3
 ffmpegthumbs
-firefox
 fish
 freerdp2
 fzf
@@ -38,7 +37,6 @@ gnome-keyring
 go
 hunspell
 imagemagick
-inkscape
 jdk-openjdk
 kio-admin
 lazygit
@@ -54,6 +52,7 @@ mesa-utils
 miniconda3
 nano
 neovim
+neovim-qt
 neovim-symlinks
 noto-cjk-fontconfig
 noto-fonts-cjk
@@ -79,6 +78,7 @@ python-requests
 qt5-wayland
 rdma-core
 ripgrep
+rsync
 rust
 rust-analyzer
 sqlfluff
@@ -86,6 +86,8 @@ stow
 sudo
 texlive-binextra
 tk
+tldr
+tmux
 tokei
 trash-cli
 tree-sitter-cli
@@ -101,9 +103,11 @@ vulkan-intel
 vulkan-mesa-layers
 vulkan-swrast
 vulkan-tools
+wayland-utils
 weston
 wget
 win32yank-bin
+wlroots
 wslu
 xdg-desktop-portal
 xmake
