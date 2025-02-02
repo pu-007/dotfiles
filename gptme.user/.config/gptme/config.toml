@@ -15,6 +15,9 @@ response_preference = "Don't explain basic concepts"
 OPENAI_BASE_URL = "https://api.302.ai/v1"
 MODEL = "local/gpt-4o-mini"
 
+# Please set the OPENAI_API_KEY in your ~/.zshenv file to ensure privacy.
+# export OPENAI_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
 #### 3. siliconflow.cn
 
 TOOL_FORMAT = "markdown"                                              # Select the tool formal. One of `markdown`, `xml`, `tool`
