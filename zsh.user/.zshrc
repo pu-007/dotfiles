@@ -30,8 +30,6 @@ expand-alias-space() {
 }
 zle -N expand-alias-space
 
-bindkey " " expand-alias-space
-bindkey -M isearch " " magic-space
 ### application options
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 export home="/mnt/c/Users/zion"
@@ -95,46 +93,54 @@ export fpath=($fpath ~/.config/zsh/completions/)
 # for command-not-found:
 # sudo pkgfile --update
 ### plugins
-zinit wait'1' lucid for \
-      OMZL::functions.zsh\
-	    OMZL::clipboard.zsh \
-      OMZP::extract \
-      OMZP::cp \
-      OMZL::git.zsh \
-      OMZP::archlinux \
-      OMZP::colored-man-pages \
-      OMZP::command-not-found \
-      OMZP::copypath \
-      OMZL::termsupport.zsh \
-      OMZP::git \
-        atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-      zdharma-continuum/fast-syntax-highlighting \
-        atload"compdef _adb adb.exe" \
-      zsh-users/zsh-completions \
-      jeffreytse/zsh-vi-mode
-
-function zvm_after_init() {
-  source ~/.config/zsh/fzf.zsh
-  bindkey -M vicmd 'H' beginning-of-line
-  bindkey -M vicmd 'L' end-of-line
-  zinit ice as"command" from"gh-r" \
-            atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-            atpull"%atclone" src"init.zsh"
-  zinit light starship/starship
-}
+zinit wait lucid for \
+  jeffreytse/zsh-vi-mode
 
 zinit wait lucid is-snippet for \
   ~/.config/zsh/zoxide.zsh \
-  ~/.config/zsh/commands.zsh 
+  ~/.config/zsh/commands.zsh \
+  ~/.config/zsh/conda.zsh
 
-zinit wait'2' lucid is-snippet for \
-  ~/.config/zsh/powershell.zsh \
-  ~/.config/zsh/conda.zsh \
-  OMZP::sudo \
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+### for the init line
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
 
+function zvm_after_init() {
+  bindkey " " expand-alias-space
+  bindkey -M isearch " " magic-space
+  bindkey -M vicmd 'H' beginning-of-line
+  bindkey -M vicmd 'L' end-of-line
+  bindkey "^[[A" up-line-or-beginning-search # Up
+  bindkey "^[[B" down-line-or-beginning-search # Down
 
-zinit light-mode for \
-      Aloxaf/fzf-tab
+  zinit wait lucid is-snippet for \
+    ~/.config/zsh/powershell.zsh \
+    ~/.config/zsh/fzf.zsh
+
+  zinit wait lucid for \
+    Aloxaf/fzf-tab \
+      atload"zle reset-prompt" as"command" from"gh-r" atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" atpull"%atclone" src"init.zsh" \
+    starship/starship \
+    OMZP::sudo \
+    OMZP::extract \
+    OMZP::cp \
+    OMZP::colored-man-pages \
+    OMZP::command-not-found \
+    OMZP::copypath \
+    OMZL::functions.zsh\
+    OMZL::clipboard.zsh \
+    OMZL::git.zsh \
+    OMZL::termsupport.zsh \
+    OMZP::git \
+      atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+      atload"compdef _adb adb.exe" \
+    zsh-users/zsh-completions \
+}
 
 # Frequently Used Commands
 
