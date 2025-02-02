@@ -1,57 +1,7 @@
-typeset -g baliases=()
-
-balias() {
-  alias -g $@
-  args="$@"
-  args=${args%%\=*}
-  baliases+=(${args##* })
-}
-
-# ignored aliases
-typeset -g ialiases=()
-
-ialias() {
-  alias $@
-  args="$@"
-  args=${args%%\=*}
-  ialiases+=(${args##* })
-}
-
-expand-alias-space() {
-  [[ $LBUFFER =~ "\<(${(j:|:)baliases})\$" ]]; insertBlank=$?
-  if [[ ! $LBUFFER =~ "\<(${(j:|:)ialiases})\$" ]]; then
-    zle _expand_alias
-  fi
-  zle self-insert
-  if [[ "$insertBlank" = "0" ]]; then
-    zle backward-delete-char
-  fi
-}
-zle -N expand-alias-space
-
-bindkey " " expand-alias-space
-bindkey -M isearch " " magic-space
-
-ialias eza="eza -I 'NTUSER.DAT*|ntuser.*'"
-ialias l="eza --git -a --icons -l  "
-ialias la="eza  -a --icons --no-git "
-ialias ll="eza -a --total-size --git-repos --icons -l "
-ialias lT="eza --tree -a -I '.git'"
-alias lt="lT -L "
-alias z=j
-
 function gzr() {
   cd $(git rev-parse --show-toplevel)
 }
 
-alias v="vi"
-alias rv="nvim +'FzfLua oldfiles'"
-ialias e="explorer.exe ."
-ialias ex="explorer.exe .;exit 0"
-ialias p="powershell.exe"
-ialias c="cmd.exe"
-ialias a="gptme"
-balias h="$home/"
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
