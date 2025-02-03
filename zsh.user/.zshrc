@@ -33,11 +33,11 @@ ialias ex="explorer.exe .;exit 0"
 ialias p="powershell.exe"
 ialias c="cmd.exe"
 ialias a="gptme"
+export home="/mnt/c/Users/zion"
 balias h="$home/"
 
 ### application options
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
-export home="/mnt/c/Users/zion"
 export LIBGL_ALWAYS_INDIRECT=1
 
 export _ZL_MATCH_MODE=1
