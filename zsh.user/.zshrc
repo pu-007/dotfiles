@@ -105,7 +105,7 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-### for the init line
+# In Defense of Maintaining Search History Despite the Absence of FZF-History-Search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
@@ -114,6 +114,8 @@ function zvm_after_init() {
   bindkey -M isearch " " magic-space
   bindkey -M vicmd 'H' beginning-of-line
   bindkey -M vicmd 'L' end-of-line
+  bindkey -M vicmd 'k' up-line-or-beginning-search
+  bindkey -M vicmd 'j' down-line-or-beginning-search
   bindkey "^[[A" up-line-or-beginning-search # Up
   bindkey "^[[B" down-line-or-beginning-search # Down
 
