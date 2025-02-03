@@ -18,17 +18,22 @@ ialias() {
   ialiases+=(${args##* })
 }
 
-expand-alias-space() {
-  [[ $LBUFFER =~ "\<(${(j:|:)baliases})\$" ]]; insertBlank=$?
-  if [[ ! $LBUFFER =~ "\<(${(j:|:)ialiases})\$" ]]; then
-    zle _expand_alias
-  fi
-  zle self-insert
-  if [[ "$insertBlank" = "0" ]]; then
-    zle backward-delete-char
-  fi
-}
-zle -N expand-alias-space
+ialias eza="eza -I 'NTUSER.DAT*|ntuser.*'"
+ialias l="eza --git -a --icons -l  "
+ialias la="eza  -a --icons --no-git "
+ialias ll="eza -a --total-size --git-repos --icons -l "
+ialias lT="eza --tree -a -I '.git'"
+alias lt="lT -L "
+alias z=j
+alias v="vi"
+# ialias rv="nvim +'FzfLua oldfiles'"
+ialias rv="cat ~/.config/nvim/recent_files.txt | fzf | xargs nvim"
+ialias e="explorer.exe ."
+ialias ex="explorer.exe .;exit 0"
+ialias p="powershell.exe"
+ialias c="cmd.exe"
+ialias a="gptme"
+balias h="$home/"
 
 ### application options
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
@@ -43,16 +48,13 @@ export BROWSER="/usr/bin/wslview"
 export EDITOR="vi"
 export TERMINFO=/usr/share/terminfo
 
-# 设置历史记录保存的文件路径
-export HISTFILE=~/.zsh_history
-
-# 设置历史记录保存的条目数
-export HISTSIZE=10000
-export SAVEHIST=10000
-
-# 历史记录相关配置
+# 补全结果中显示隐藏文件
 setopt globdots
 
+### 历史记录相关配置
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
 setopt EXTENDED_HISTORY       # 为历史记录中的命令添加时间戳
 setopt HIST_EXPIRE_DUPS_FIRST # 先删除旧的重复命令
 setopt HIST_IGNORE_DUPS       # 忽略重复命令
@@ -77,6 +79,14 @@ sync_directory_change() {
 
 autoload -U add-zsh-hook
 add-zsh-hook chpwd sync_directory_change
+### arrows to search history
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+# In Defense of Maintaining Search History Despite the Absence of FZF-History-Search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
 
 ### autoload zinit
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -88,10 +98,9 @@ if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
 fi
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
+autoload -U compinit && compinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 export fpath=($fpath ~/.config/zsh/completions/)
-# for command-not-found:
-# sudo pkgfile --update
 ### plugins
 zinit wait lucid for \
   jeffreytse/zsh-vi-mode
@@ -101,15 +110,19 @@ zinit wait lucid is-snippet for \
   ~/.config/zsh/commands.zsh \
   ~/.config/zsh/conda.zsh
 
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-# In Defense of Maintaining Search History Despite the Absence of FZF-History-Search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
+function expand-alias-space() {
+  [[ $LBUFFER =~ "\<(${(j:|:)baliases})\$" ]]; insertBlank=$?
+  if [[ ! $LBUFFER =~ "\<(${(j:|:)ialiases})\$" ]]; then
+    zle _expand_alias
+  fi
+  zle self-insert
+  if [[ "$insertBlank" = "0" ]]; then
+    zle backward-delete-char
+  fi
+}
 
 function zvm_after_init() {
+  zle -N expand-alias-space
   bindkey " " expand-alias-space
   bindkey -M isearch " " magic-space
   bindkey -M vicmd 'H' beginning-of-line
@@ -123,9 +136,11 @@ function zvm_after_init() {
     ~/.config/zsh/powershell.zsh \
     ~/.config/zsh/fzf.zsh
 
+  # for command-not-found:
+  # sudo pkgfile --update
   zinit wait lucid for \
     Aloxaf/fzf-tab \
-      atload"zle reset-prompt" as"command" from"gh-r" atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" atpull"%atclone" src"init.zsh" \
+      reset-prompt nocd atload"zle .reset-prompt" as"command" from"gh-r" atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" atpull"%atclone" src"init.zsh" \
     starship/starship \
     OMZP::sudo \
     OMZP::extract \
@@ -143,25 +158,3 @@ function zvm_after_init() {
       atload"compdef _adb adb.exe" \
     zsh-users/zsh-completions \
 }
-
-# Frequently Used Commands
-
-ialias eza="eza -I 'NTUSER.DAT*|ntuser.*'"
-ialias l="eza --git -a --icons -l  "
-ialias la="eza  -a --icons --no-git "
-ialias ll="eza -a --total-size --git-repos --icons -l "
-ialias lT="eza --tree -a -I '.git'"
-alias lt="lT -L "
-alias z=j
-alias v="vi"
-# ialias rv="nvim +'FzfLua oldfiles'"
-ialias rv="cat ~/.config/nvim/recent_files.txt | fzf | xargs nvim"
-ialias e="explorer.exe ."
-ialias ex="explorer.exe .;exit 0"
-ialias p="powershell.exe"
-ialias c="cmd.exe"
-ialias a="gptme"
-balias h="$home/"
-
-
-autoload -U compinit && compinit
