@@ -4,17 +4,17 @@ Name=Default
 # Layout
 Default Layout=us
 # Default Input Method
-DefaultIM=shuangpin
+DefaultIM=keyboard-cn
 
 [Groups/0/Items/0]
 # Name
-Name=keyboard-us
+Name=shuangpin
 # Layout
 Layout=
 
 [Groups/0/Items/1]
 # Name
-Name=shuangpin
+Name=keyboard-cn
 # Layout
 Layout=
 
