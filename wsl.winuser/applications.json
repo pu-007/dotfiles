@@ -1,6 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/master/schema.asc.json",
 
+  // "WSLg": {
+  //   "tray_and_multi_window": [
+  //     { "kind": "Exe", "id": "msrdc.exe", "matching_strategy": "Equals" }
+  //   ],
+  //   "manage": [
+  //     { "kind": "Exe", "id": "msrdc.exe", "matching_strategy": "Equals" }
+  //   ]
+  // },
+
   "1Password": {
     "ignore": [
       {
