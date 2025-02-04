@@ -76,6 +76,6 @@ update_all () {
         sudo npm outdated -g --json | jq -r 'keys | .[]' | xargs -n1 sudo npm install -g
         echo "npm global packages updated."
         echo "Updating pacman packages..."
-        sudo pacman -Syu --noconfirm
+        yay -Syyu --noconfirm
         echo "Pacman packages updated."
 }
