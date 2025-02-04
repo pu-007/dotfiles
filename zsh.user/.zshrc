@@ -96,11 +96,9 @@ if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
         print -P "%F{33} %F{34}Installation successful.%f%b" || \
         print -P "%F{160} The clone has failed.%f%b"
 fi
-source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-autoload -Uz _zinit
-autoload -U compinit && compinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
 export fpath=($fpath ~/.config/zsh/completions/)
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -U compinit && compinit
 ### plugins
 zinit wait lucid for \
   jeffreytse/zsh-vi-mode
