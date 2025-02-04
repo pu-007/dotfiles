@@ -61,4 +61,4 @@ ReloadKomorebi() {
 
 ; Apps
 <!Enter::Run("wt.exe")
-<!Esc::Run(format("wt.exe -p Arch -d {}", FileRead("C:\Users\zion\.workdir")))
+<!Esc::Run(format('wt.exe -p Arch -d "{}"', FileRead("C:\Users\zion\.workdir")))

@@ -13,6 +13,7 @@ function y() {
 }
 
 alias py="python"
+alias wy="p python"
 alias iy="ipython"
 alias adb="adb.exe"
 alias fastboot="fastboot.exe"

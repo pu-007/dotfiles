@@ -106,7 +106,7 @@ zinit wait lucid for \
 zinit wait lucid is-snippet for \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
-  ~/.config/zsh/conda.zsh
+  ~/.config/zsh/powershell.zsh \
 
 function expand-alias-space() {
   [[ $LBUFFER =~ "\<(${(j:|:)baliases})\$" ]]; insertBlank=$?
@@ -131,8 +131,8 @@ function zvm_after_init() {
   bindkey "^[[B" down-line-or-beginning-search # Down
 
   zinit wait lucid is-snippet for \
-    ~/.config/zsh/powershell.zsh \
-    ~/.config/zsh/fzf.zsh
+    ~/.config/zsh/fzf.zsh \
+    ~/.config/zsh/conda.zsh
 
   # for command-not-found:
   # sudo pkgfile --update
