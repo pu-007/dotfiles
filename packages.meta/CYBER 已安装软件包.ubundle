@@ -598,7 +598,7 @@
     {
       "Id": "Microsoft.WSL",
       "Name": "Windows Subsystem for Linux",
-      "Version": "2.4.8.0",
+      "Version": "2.4.10.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -679,8 +679,8 @@
         "Version": ""
       },
       "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
       }
     },
     {
@@ -1637,9 +1637,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.202.653.40_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.204.331.18_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.202.653.40",
+      "Version": "2025.204.331.18",
       "Source": "Microsoft Store"
     },
     {
@@ -1697,6 +1697,12 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\cloud.siliconflow.cn-9C7EC7CD_1.0.0.0_neutral__f3dyqbv611xwc",
+      "Name": "SiliconCloud",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\cobalt.tools-9CE8271E_1.0.0.0_neutral__25vfs1my8q9v6",
       "Name": "cobalt",
       "Version": "1.0.0.0",
@@ -1718,6 +1724,12 @@
       "Id": "MSIX\\kimi.moonshot.cn-CFB72B7F_1.0.0.1_neutral__fsmhydxgm6x52",
       "Name": "KiMi",
       "Version": "1.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\localhost-45C893EA_1.0.0.0_neutral__8b13a12v8s1e2",
+      "Name": "Open WebUI",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
