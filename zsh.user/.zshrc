@@ -140,6 +140,8 @@ function zvm_after_init() {
     Aloxaf/fzf-tab \
       reset-prompt nocd atload"zle .reset-prompt" as"command" from"gh-r" atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" atpull"%atclone" src"init.zsh" \
     starship/starship \
+      atinit"bash -c 'exec -a ollama tail -f /dev/null &';export ZSH_OLLAMA_MODEL=qwen2.5"\
+    plutowang/zsh-ollama-command \
     OMZP::sudo \
     OMZP::extract \
     OMZP::cp \
