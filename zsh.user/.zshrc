@@ -31,10 +31,12 @@ ialias rv="cat ~/.config/nvim/recent_files.txt | fzf | xargs nvim"
 ialias e="explorer.exe ."
 ialias ex="explorer.exe .;exit 0"
 ialias p="powershell.exe"
-ialias c="cmd.exe"
 ialias a="gptme"
-export home="/mnt/c/Users/zion"
-balias h="$home/"
+export win_home="/mnt/c/Users/zion"
+balias 'c:'="/mnt/c/"
+balias 'd:'="/mnt/d/"
+balias 'e:'="/mnt/e/"
+balias h="$win_home/"
 
 ### application options
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
@@ -74,7 +76,7 @@ setopt pushd_ignore_dups
 setopt pushdminus
 ### for sync_directory_change
 sync_directory_change() {
-  pwd | tr -d '\n' > "$home/.workdir"
+  pwd | tr -d '\n' > "$win_home/.workdir"
 }
 
 autoload -U add-zsh-hook
