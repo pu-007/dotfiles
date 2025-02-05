@@ -21,6 +21,14 @@ format = "[$symbol]($style) "
 style = "bold blue"
 disabled = false
 
+# [directory]
+# fish_style_pwd_dir_length = 2
+
+[directory.substitutions]
+'/mnt/c' = 'C:'
+'/mnt/d' = 'D:'
+'/mnt/e' = 'E:'
+
 [os.symbols]
 Windows = " "
 Arch = " "
