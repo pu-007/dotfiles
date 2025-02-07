@@ -38,6 +38,29 @@ balias 'd:'="/mnt/d/"
 balias 'e:'="/mnt/e/"
 balias h="$win_home/"
 
+function ghd() {
+  # 检查参数是否提供
+  if [ -z "$1" ]; then
+    echo "Usage: ghd <github_blob_url>"
+    return 1
+  fi
+
+  # 提取 GitHub blob URL 的各个部分
+  local url="$1"
+  local raw_url=$(echo "$url" | sed 's/github.com/raw.githubusercontent.com/g' | sed 's/blob\//\//g')
+
+  # 下载文件并保存到当前目录
+  local filename=$(basename "$raw_url")
+  curl -L -o "$filename" "$raw_url"
+
+  if [ $? -eq 0 ]; then
+    echo "File downloaded successfully: $filename"
+  else
+    echo "Failed to download file from $raw_url"
+    return 1
+  fi
+}
+
 ### application options
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 export LIBGL_ALWAYS_INDIRECT=1

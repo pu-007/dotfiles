@@ -66,7 +66,7 @@ alias -s toml=v
 alias -s {yaml,yml}=v
 alias -s json=v
 
-update_all () {
+update-all () {
         echo "Updating pip packages..."
         pip list --outdated | awk 'NR > 2 {print $1}' | xargs -n1 pip install --upgrade --progress-bar on
         echo "Pip packages updated."
