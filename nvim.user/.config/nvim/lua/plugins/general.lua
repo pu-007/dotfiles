@@ -7,6 +7,16 @@ return {
     },
   },
   { "sainnhe/gruvbox-material" },
+  -- { "noearc/jieba.nvim", dependencies = { "noearc/jieba-lua" }, opts = {} },
+  {
+    "kkew3/jieba.vim",
+    tag = "v1.0.4",
+    build = "./build.sh",
+    init = function()
+      vim.g.jieba_vim_lazy = 1
+      vim.g.jieba_vim_keymap = 1
+    end,
+  },
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
