@@ -24,8 +24,8 @@
       }
     },
     {
-      "Id": "Adobe.Acrobat.Pro",
-      "Name": "Adobe Acrobat Pro",
+      "Id": "Adobe.Acrobat.Reader.64-bit",
+      "Name": "Adobe Acrobat Reader (64-bit)",
       "Version": "24.005.20320",
       "Source": "winget",
       "ManagerName": "Winget",
@@ -70,7 +70,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.5.7",
+      "Version": "1.5.8",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -180,7 +180,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.41.6",
+      "Version": "1.42.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -422,7 +422,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "24.244.1204.0003",
+      "Version": "25.005.0112.0003",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -466,7 +466,7 @@
     {
       "Id": "Microsoft.UI.Xaml.2.8",
       "Name": "Microsoft.UI.Xaml",
-      "Version": "8.2310.30001.0",
+      "Version": "8.2501.31001.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -3121,7 +3121,7 @@
     {
       "Id": "ARP\\Machine\\X64\\O365EduCloudRetail - zh-cn",
       "Name": "Microsoft 365 - zh-cn",
-      "Version": "16.0.18324.20194",
+      "Version": "16.0.18429.20132",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3151,12 +3151,6 @@
     {
       "Id": "ARP\\Machine\\X64\\Steam App 588650",
       "Name": "Dead Cells",
-      "Version": "Unknown",
-      "Source": "Steam"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\Steam App 730",
-      "Name": "Counter-Strike 2",
       "Version": "Unknown",
       "Source": "Steam"
     },
@@ -3348,8 +3342,8 @@
     },
     {
       "Id": "ARP\\User\\X64\\{506270E7-E3B5-4157-B53A-3BFFE8E418DB}_is1",
-      "Name": "PixPin \u7248\u672C 1.9.11.6",
-      "Version": "1.9.11.6",
+      "Name": "PixPin \u7248\u672C 1.9.11.8",
+      "Version": "1.9.11.8",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3497,15 +3491,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18324.20194_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18429.20132_neutral__8wekyb3d8bbwe",
       "Name": "OfficePushNotificationsUtility",
-      "Version": "16.0.18324.20194",
+      "Version": "16.0.18429.20132",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_24244.1204.3.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25005.112.3.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "24244.1204.3.0",
+      "Version": "25005.112.3.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3623,9 +3617,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.205.1103.58_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.207.944.28_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.205.1103.58",
+      "Version": "2025.207.944.28",
       "Source": "Microsoft Store"
     },
     {
@@ -3641,9 +3635,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.Client.WebExperience_524.34401.20.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.Client.WebExperience_525.1301.30.0_x64__cw5n1h2txyewy",
       "Name": "Windows Web Experience Pack",
-      "Version": "524.34401.20.0",
+      "Version": "525.1301.30.0",
       "Source": "Microsoft Store"
     },
     {
