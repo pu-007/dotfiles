@@ -29,7 +29,8 @@ alias gaac="gaa; gac"
 alias re-cmp=": rm .zcompdump; compinit"
 alias re-cmd="zinit update home--pu--.config--zsh/commands.zsh"
 alias re-pkg="pacman -Qdqt | xargs yay -Rnsc"
-alias re-cursor="p 'irm https://raw.githubusercontent.com/yuaotian/go-cursor-help/refs/heads/master/scripts/run/cursor_win_id_modifier.ps1 | iex'"
+# utilize Cline in place of Cursor
+# alias re-cursor="p 'irm https://raw.githubusercontent.com/yuaotian/go-cursor-help/refs/heads/master/scripts/run/cursor_win_id_modifier.ps1 | iex'"
 
 alias yai="yay -S"
 
