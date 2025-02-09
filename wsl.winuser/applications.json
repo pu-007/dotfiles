@@ -10,6 +10,12 @@
   //   ]
   // },
 
+  "JoyToKey": {
+    "tray_and_multi_window": [
+      { "kind": "Exe", "id": "JoyToKey.exe", "matching_strategy": "Equals" }
+    ]
+  },
+
   "1Password": {
     "ignore": [
       {
