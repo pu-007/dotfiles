@@ -126,7 +126,9 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -U compinit && compinit
 ### plugins
 zinit wait lucid for \
-  jeffreytse/zsh-vi-mode
+  jeffreytse/zsh-vi-mode \
+    reset-prompt nocd atload"zle .reset-prompt" as"command" from"gh-r" atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" atpull"%atclone" src"init.zsh" \
+  starship/starship
 
 zinit wait lucid is-snippet for \
   ~/.config/zsh/zoxide.zsh \
@@ -163,8 +165,6 @@ function zvm_after_init() {
   # sudo pkgfile --update
   zinit wait lucid for \
     Aloxaf/fzf-tab \
-      reset-prompt nocd atload"zle .reset-prompt" as"command" from"gh-r" atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" atpull"%atclone" src"init.zsh" \
-    starship/starship \
       atinit"bash -c 'exec -a ollama tail -f /dev/null &';export ZSH_OLLAMA_MODEL=qwen2.5"\
     plutowang/zsh-ollama-command \
     OMZP::sudo \
