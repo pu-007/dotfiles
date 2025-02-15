@@ -70,7 +70,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.5.8",
+      "Version": "1.5.91",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -158,7 +158,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.42.6",
+      "Version": "1.45.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -244,50 +244,6 @@
       }
     },
     {
-      "Id": "Git.Git",
-      "Name": "Git",
-      "Version": "2.47.1.2",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "GitHub.GitLFS",
-      "Name": "Git LFS",
-      "Version": "3.6.1",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "Jinja2",
       "Name": "Jinja2",
       "Version": "3.1.5",
@@ -354,6 +310,28 @@
       }
     },
     {
+      "Id": "LocalSend.LocalSend",
+      "Name": "LocalSend",
+      "Version": "1.16.1",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "MarkupSafe",
       "Name": "MarkupSafe",
       "Version": "3.0.2",
@@ -400,7 +378,7 @@
     {
       "Id": "Microsoft.DotNet.DesktopRuntime.8",
       "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
-      "Version": "8.0.12",
+      "Version": "8.0.13",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -422,7 +400,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "132.0.2957.140",
+      "Version": "133.0.3065.59",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -576,7 +554,7 @@
     {
       "Id": "Microsoft.VCRedist.2015\u002B.x64",
       "Name": "Microsoft Visual C\u002B\u002B 2015-2022 Redistributable (x64)",
-      "Version": "14.42.34433.0",
+      "Version": "14.42.34438.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -620,7 +598,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.97.0",
+      "Version": "1.97.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -642,7 +620,7 @@
     {
       "Id": "Microsoft.WSL",
       "Name": "Windows Subsystem for Linux",
-      "Version": "2.4.10.0",
+      "Version": "2.4.11.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -796,7 +774,7 @@
     {
       "Id": "Ollama.Ollama",
       "Name": "Ollama",
-      "Version": "0.5.7",
+      "Version": "0.5.11",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1148,7 +1126,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "5.10.7",
+      "Version": "5.11.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1192,7 +1170,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat Beta",
-      "Version": "4.0.2.13",
+      "Version": "4.0.2.17",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1962,7 +1940,29 @@
     {
       "Id": "git",
       "Name": "Git",
-      "Version": "2.47.1.2",
+      "Version": "2.48.1",
+      "Source": "main",
+      "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "git-lfs",
+      "Name": "Git Lfs",
+      "Version": "3.6.1",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -3853,7 +3853,7 @@
     {
       "Id": "ARP\\Machine\\X64\\O365EduCloudRetail - zh-cn",
       "Name": "Microsoft 365 - zh-cn",
-      "Version": "16.0.18429.20132",
+      "Version": "16.0.18429.20158",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4013,6 +4013,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\PCCast",
+      "Name": "\u4E50\u64AD\u6295\u5C4F",
+      "Version": "3.15.23.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\PHSP_26_2",
       "Name": "Adobe Photoshop 2025",
       "Version": "26.2.0.140",
@@ -4061,12 +4067,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\{EBF21C82-423E-49FD-BCBD-88C08397CB44}_is1",
-      "Name": "JoyToKey version 7.1.0",
-      "Version": "7.1.0",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\User\\X64\\1c69d6f0-819e-59ee-95e7-e2b930a46bea",
       "Name": "Motrix 1.8.19",
       "Version": "1.8.19",
@@ -4085,15 +4085,75 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\com.android.vending",
+      "Name": "Play \u5546\u5E97",
+      "Version": "44.8.15-31 [0] [PR] 722808866",
+      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
+    },
+    {
+      "Id": "ARP\\User\\X64\\com.google.android.apps.nbu.files",
+      "Name": "\u6587\u4EF6\u6781\u5BA2",
+      "Version": "1.6328.720891598.0-release",
+      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
+    },
+    {
+      "Id": "ARP\\User\\X64\\com.google.android.gms",
+      "Name": "Google Play \u670D\u52A1",
+      "Version": "25.06.32 (190800-724425688)",
+      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
+    },
+    {
+      "Id": "ARP\\User\\X64\\com.google.android.googlequicksearchbox",
+      "Name": "Google",
+      "Version": "13.21.16.26.x86_64",
+      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
+    },
+    {
+      "Id": "ARP\\User\\X64\\com.google.ar.core",
+      "Name": "Google Play Services for AR",
+      "Version": "1.47.243160293",
+      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
+    },
+    {
+      "Id": "ARP\\User\\X64\\com.hpplay.happyplay.aw",
+      "Name": "\u4E50\u64AD\u6295\u5C4F",
+      "Version": "8.16.32",
+      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
+    },
+    {
+      "Id": "ARP\\User\\X64\\com.microsoft.launcher",
+      "Name": "\u5FAE\u8F6F\u684C\u9762",
+      "Version": "6.241202.1.1162300",
+      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
+    },
+    {
+      "Id": "ARP\\User\\X64\\f8941786-352c-5c22-bea5-7886c3ac4a8f",
+      "Name": "JoyTyping",
+      "Version": "1.0.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\mark.via.gp",
+      "Name": "Via",
+      "Version": "6.2.0",
+      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
+    },
+    {
       "Id": "ARP\\User\\X64\\{506270E7-E3B5-4157-B53A-3BFFE8E418DB}_is1",
       "Name": "PixPin \u7248\u672C 1.9.11.8",
       "Version": "1.9.11.8",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "MSIX\\192.168.100.1-2FDF1B91_1.0.0.0_neutral__02pbbbs9q2xnj",
+      "Id": "MSIX\\18184wherewhere.AndroidAppInstaller_0.1.25.0_x64__4v4sx105x6y4r",
+      "Name": "APK \u5B89\u88C5\u7A0B\u5E8F",
+      "Version": "0.1.25.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-2FDF1B91_1.0.0.1_neutral__02pbbbs9q2xnj",
       "Name": "\u5C0F\u7231\u97F3\u7BB1\u64AD\u653E\u5668",
-      "Version": "1.0.0.0",
+      "Version": "1.0.0.1",
       "Source": "Microsoft Store"
     },
     {
@@ -4235,15 +4295,21 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18429.20132_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18429.20158_neutral__8wekyb3d8bbwe",
       "Name": "OfficePushNotificationsUtility",
-      "Version": "16.0.18429.20132",
+      "Version": "16.0.18429.20158",
       "Source": "Microsoft Store"
     },
     {
       "Id": "MSIX\\Microsoft.OneDriveSync_25005.112.3.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
       "Version": "25005.112.3.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.ScreenSketch_11.2409.25.0_x64__8wekyb3d8bbwe",
+      "Name": "\u622A\u56FE\u5DE5\u5177",
+      "Version": "11.2409.25.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4307,9 +4373,21 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WidgetsPlatformRuntime_1.6.1.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WidgetsPlatformRuntime_1.6.2.0_x64__8wekyb3d8bbwe",
       "Name": "Widgets Platform Runtime",
-      "Version": "1.6.1.0",
+      "Version": "1.6.2.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.3_3000.934.1904.0_x64__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.3",
+      "Version": "3000.934.1904.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.3_3000.934.1904.0_x86__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.3",
+      "Version": "3000.934.1904.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4331,9 +4409,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.373.1641.0_x86__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.401.2352.0_x64__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.6",
-      "Version": "6000.373.1641.0",
+      "Version": "6000.401.2352.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.401.2352.0_x86__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.6",
+      "Version": "6000.401.2352.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4361,9 +4445,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.211.208.12_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.215.604.24_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.211.208.12",
+      "Version": "2025.215.604.24",
       "Source": "Microsoft Store"
     },
     {
@@ -4379,15 +4463,21 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\MicrosoftCorporationII.WindowsSubsystemForAndroid_2407.40000.4.0_x64__8wekyb3d8bbwe",
+      "Name": "Windows Subsystem for AndroidTM and Android Apps",
+      "Version": "2407.40000.4.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\MicrosoftWindows.Client.WebExperience_525.1301.30.0_x64__cw5n1h2txyewy",
       "Name": "Windows Web Experience Pack",
       "Version": "525.1301.30.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25011.11.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25012.50.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25011.11.0",
+      "Version": "1.25012.50.0",
       "Source": "Microsoft Store"
     },
     {
