@@ -120,6 +120,7 @@ return {
         "tsx",
         "typescript",
         "latex",
+        -- python-pylatexenc for latex2text
       })
     end,
   },
