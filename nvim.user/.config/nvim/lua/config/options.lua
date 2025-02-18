@@ -13,3 +13,5 @@ vim.g.lazyvim_python_ruff = "ruff"
 vim.opt.laststatus = 3
 
 vim.g.python3_host_prog = "/opt/miniconda3/bin/python3"
+
+vim.g.lazyvim_picker = "fzf"
