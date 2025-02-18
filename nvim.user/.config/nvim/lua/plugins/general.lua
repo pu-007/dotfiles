@@ -10,7 +10,7 @@ return {
   -- { "noearc/jieba.nvim", dependencies = { "noearc/jieba-lua" }, opts = {} },
   {
     "kkew3/jieba.vim",
-    tag = "v1.0.4",
+    -- tag = "v1.0.4",
     build = "./build.sh",
     init = function()
       vim.g.jieba_vim_lazy = 1

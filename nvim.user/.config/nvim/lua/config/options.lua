@@ -11,3 +11,5 @@ vim.g.lazyvim_python_ruff = "ruff"
 
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
+
+vim.g.python3_host_prog = "/opt/miniconda3/bin/python3"
