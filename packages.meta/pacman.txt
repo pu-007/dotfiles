@@ -27,6 +27,8 @@ fish
 freerdp2
 fzf
 gdb
+gedit
+gedit-plugins
 git
 git-delta
 git-filter-repo
@@ -37,6 +39,7 @@ gitleaks
 glu
 gnome-keyring
 go
+gtk-engine-murrine
 hunspell
 hyperfine
 imagemagick
@@ -63,6 +66,7 @@ nuspell
 nvidia-settings
 nvidia-utils
 opencl-rusticl-mesa
+orchis-theme
 pkgfile
 podman
 podman-compose
@@ -76,6 +80,7 @@ python-certifi
 python-dnspython
 python-keyring
 python-matplotlib
+python-pylatexenc
 python-pyxdg
 python-requests
 python-scipy
@@ -89,6 +94,7 @@ speech-dispatcher
 sqlfluff
 stow
 sudo
+tela-circle-icon-theme-all
 tesseract-data-chi_sim
 tesseract-data-eng
 texlive-binextra
@@ -104,6 +110,7 @@ unzip
 vdpauinfo
 vimv-git
 viu
+vte3
 vulkan-intel
 vulkan-mesa-layers
 vulkan-swrast
@@ -112,6 +119,7 @@ wayland-utils
 weston
 wget
 win32yank-bin
+wl-clipboard
 wlroots
 wslu
 xdg-desktop-portal
