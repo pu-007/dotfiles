@@ -158,7 +158,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.45.4",
+      "Version": "1.45.5",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -3392,7 +3392,7 @@
     {
       "Id": "th-ch.YouTubeMusic",
       "Name": "YouTube Music",
-      "Version": "3.7.2",
+      "Version": "3.7.4",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -3834,8 +3834,8 @@
   "incompatible_packages": [
     {
       "Id": "ARP\\Machine\\X64\\411ce4c0-0fbb-5462-84d3-941b5e267ae7",
-      "Name": "flomo 5.25.11",
-      "Version": "5.25.11",
+      "Name": "flomo 5.25.12",
+      "Version": "5.25.12",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4081,13 +4081,19 @@
     {
       "Id": "ARP\\User\\X64\\com.android.vending",
       "Name": "Play \u5546\u5E97",
-      "Version": "44.8.15-31 [0] [PR] 722808866",
+      "Version": "44.9.19-31 [0] [PR] 725679144",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
       "Id": "ARP\\User\\X64\\com.google.android.apps.nbu.files",
       "Name": "\u6587\u4EF6\u6781\u5BA2",
       "Version": "1.6328.720891598.0-release",
+      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
+    },
+    {
+      "Id": "ARP\\User\\X64\\com.google.android.contactkeys",
+      "Name": "Android System Key Verifier",
+      "Version": "1.101.715898552",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -4106,6 +4112,12 @@
       "Id": "ARP\\User\\X64\\com.google.android.partnersetup",
       "Name": "Google Partner Setup",
       "Version": "100.652836256",
+      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
+    },
+    {
+      "Id": "ARP\\User\\X64\\com.google.android.webview",
+      "Name": "Android System WebView",
+      "Version": "132.0.6834.163",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -4415,9 +4427,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsCamera_2024.2408.1.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsCamera_2025.2501.1.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u76F8\u673A",
-      "Version": "2024.2408.1.0",
+      "Version": "2025.2501.1.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4433,15 +4445,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22411.1401.5.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22501.1401.4.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22411.1401.5.0",
+      "Version": "22501.1401.4.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.218.822.30_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.222.1359.37_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.218.822.30",
+      "Version": "2025.222.1359.37",
       "Source": "Microsoft Store"
     },
     {
@@ -4478,12 +4490,6 @@
       "Id": "MSIX\\NVIDIACorp.NVIDIAControlPanel_8.1.967.0_x64__56jybvy8sckqj",
       "Name": "NVIDIA Control Panel",
       "Version": "8.1.967.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\app.hyperbolic.xyz-50168C48_1.0.0.0_neutral__mpf7kerz41qat",
-      "Name": "Hyperbolic AI Dashboard",
-      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4538,12 +4544,6 @@
       "Id": "MSIX\\kimi.moonshot.cn-CFB72B7F_1.0.0.1_neutral__fsmhydxgm6x52",
       "Name": "KiMi",
       "Version": "1.0.0.1",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\lobechat.com-96DB8114_1.0.0.0_neutral__411mqt2783wnp",
-      "Name": "LobeChat",
-      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4603,6 +4603,12 @@
     {
       "Id": "MSIX\\wx.mail.qq.com-3DCE9947_1.0.0.0_neutral__z2hgftjm3tqzw",
       "Name": "QQ\u90AE\u7BB1",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\xiaohumini.site-89054ED0_1.0.0.0_neutral__g6cx5sxd3113y",
+      "Name": "xiaohumini_API",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     }

@@ -75,6 +75,7 @@ pre-commit
 prettier
 prettier-plugin-latex
 pulseaudio
+pypinyin
 pyside6
 python-certifi
 python-dnspython
@@ -92,6 +93,7 @@ rust
 rust-analyzer
 speech-dispatcher
 sqlfluff
+starship
 stow
 sudo
 tela-circle-icon-theme-all
