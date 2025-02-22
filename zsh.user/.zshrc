@@ -178,6 +178,7 @@ function zvm_after_init() {
     OMZL::clipboard.zsh \
     OMZL::git.zsh \
     OMZL::termsupport.zsh \
+    pu-007/pinyin-completion \
     OMZP::git \
       atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
