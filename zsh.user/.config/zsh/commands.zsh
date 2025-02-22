@@ -29,6 +29,7 @@ alias gaac="gaa; gac"
 alias re-cmp=": rm .zcompdump; compinit"
 alias re-cmd="zinit update home--pu--.config--zsh/commands.zsh"
 alias re-pkg="pacman -Qdqt | xargs yay -Rnsc"
+alias re-cmake-install="sudo xargs rm < install_manifest.txt"
 # utilize Cline in place of Cursor
 # alias re-cursor="p 'irm https://raw.githubusercontent.com/yuaotian/go-cursor-help/refs/heads/master/scripts/run/cursor_win_id_modifier.ps1 | iex'"
 
@@ -53,6 +54,7 @@ ialias 9='cd -9'
 alias md="mkdir -p"
 #ialias rm='echo "This is not the command you are looking for."; false'
 alias rm="trash-put"
+
 
 alias -s html=v
 alias -s css=v

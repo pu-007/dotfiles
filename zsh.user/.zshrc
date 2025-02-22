@@ -127,8 +127,9 @@ autoload -U compinit && compinit
 ### plugins
 zinit wait lucid for \
   jeffreytse/zsh-vi-mode \
-    reset-prompt nocd atload"zle .reset-prompt" as"command" from"gh-r" atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" atpull"%atclone" src"init.zsh" \
-  starship/starship
+
+zinit wait'!0' lucid is-snippet nocd for \
+  ~/.config/zsh/starship.zsh
 
 zinit wait lucid is-snippet for \
   ~/.config/zsh/zoxide.zsh \
@@ -181,5 +182,5 @@ function zvm_after_init() {
       atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
       atload"compdef _adb adb.exe" \
-    zsh-users/zsh-completions \
+    zsh-users/zsh-completions
 }
