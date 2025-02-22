@@ -65,7 +65,7 @@ widgets:
         recording: "\ueba7"
         stopped: "\ueba5"
         paused: "\ueba7"
-      hide_when_not_recording: false
+      hide_when_not_recording: true
       blinking_icon: true
   microphone:
     type: "yasb.microphone.MicrophoneWidget"

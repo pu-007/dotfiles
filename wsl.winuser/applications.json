@@ -10,6 +10,16 @@
   //   ]
   // },
 
+  "PhoneLink": {
+    "floating": [
+      {
+        "kind": "Exe",
+        "id": "PhoneExperienceHost.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  },
+
   "JoyToKey": {
     "tray_and_multi_window": [
       { "kind": "Exe", "id": "JoyToKey.exe", "matching_strategy": "Equals" }
