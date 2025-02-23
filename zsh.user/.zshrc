@@ -62,6 +62,7 @@ function ghd() {
 }
 
 ### application options
+export VCPKG_ROOT=$HOME/.local/share/vcpkg
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 export LIBGL_ALWAYS_INDIRECT=1
 
@@ -122,6 +123,7 @@ if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
         print -P "%F{160} The clone has failed.%f%b"
 fi
 export fpath=($fpath ~/.config/zsh/completions/)
+export PATH="$PATH:$HOME/go/bin"
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -U compinit && compinit
 ### plugins
@@ -165,7 +167,7 @@ function zvm_after_init() {
   # for command-not-found:
   # sudo pkgfile --update
   zinit wait lucid for \
-    Aloxaf/fzf-tab \
+    pu-007/pinyin-completion \
       atinit"bash -c 'exec -a ollama tail -f /dev/null &';export ZSH_OLLAMA_MODEL=qwen2.5"\
     plutowang/zsh-ollama-command \
     OMZP::sudo \
@@ -178,10 +180,10 @@ function zvm_after_init() {
     OMZL::clipboard.zsh \
     OMZL::git.zsh \
     OMZL::termsupport.zsh \
-    pu-007/pinyin-completion \
     OMZP::git \
       atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
       atload"compdef _adb adb.exe" \
-    zsh-users/zsh-completions
+    zsh-users/zsh-completions \
+    Aloxaf/fzf-tab
 }
