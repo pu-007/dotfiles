@@ -10,6 +10,16 @@
   //   ]
   // },
 
+  "Cherry Studio": {
+    "tray_and_multi_window": [
+      {
+        "kind": "Exe",
+        "id": "Cherry Studio.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  },
+
   "PhoneLink": {
     "floating": [
       {
