@@ -70,7 +70,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.5.91",
+      "Version": "1.6.4",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -158,7 +158,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.45.5",
+      "Version": "1.46.5",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -268,7 +268,7 @@
     {
       "Id": "LGUG2Z.komorebi",
       "Name": "komorebi",
-      "Version": "0.1.33",
+      "Version": "0.1.34",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -312,7 +312,7 @@
     {
       "Id": "LocalSend.LocalSend",
       "Name": "LocalSend",
-      "Version": "1.16.1",
+      "Version": "1.17.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -752,7 +752,7 @@
     {
       "Id": "Obsidian.Obsidian",
       "Name": "Obsidian",
-      "Version": "1.8.4",
+      "Version": "1.8.7",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2229,6 +2229,28 @@
       "Version": "2.1",
       "Source": "pip",
       "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "kangfenmao.CherryStudio",
+      "Name": "Cherry Studio",
+      "Version": "0.9.30",
+      "Source": "winget",
+      "ManagerName": "Winget",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -4117,7 +4139,7 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.webview",
       "Name": "Android System WebView",
-      "Version": "132.0.6834.163",
+      "Version": "133.0.6943.121",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -4451,9 +4473,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.222.1359.37_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.223.830.39_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.222.1359.37",
+      "Version": "2025.223.830.39",
       "Source": "Microsoft Store"
     },
     {
@@ -4501,6 +4523,12 @@
     {
       "Id": "MSIX\\cephalon.cloud-C6935C8_1.0.0.0_neutral__dwhjjjvebpapa",
       "Name": "\u7AEF\u8111\u4E91",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\character.ai-9A9DEE02_1.0.0.0_neutral__1n3bvx2n1xrmr",
+      "Name": "character.ai",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
