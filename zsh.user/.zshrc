@@ -62,6 +62,9 @@ function ghd() {
 }
 
 ### application options
+
+export GO111MODULE=on
+
 export VCPKG_ROOT=$HOME/.local/share/vcpkg
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 export LIBGL_ALWAYS_INDIRECT=1
@@ -113,6 +116,10 @@ zle -N down-line-or-beginning-search
 # In Defense of Maintaining Search History Despite the Absence of FZF-History-Search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
+
+# for fzf-tab
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+
 
 ### autoload zinit
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -166,8 +173,9 @@ function zvm_after_init() {
 
   # for command-not-found:
   # sudo pkgfile --update
+  # pu-007/pinyin-completion (go pinyin version)
   zinit wait lucid for \
-    pu-007/pinyin-completion \
+    oldkingOK/pinyin-completion \
       atinit"bash -c 'exec -a ollama tail -f /dev/null &';export ZSH_OLLAMA_MODEL=qwen2.5"\
     plutowang/zsh-ollama-command \
     OMZP::sudo \

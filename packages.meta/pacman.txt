@@ -9,6 +9,7 @@ chafa
 cifs-utils
 clinfo
 cmake
+cpp-pinyin
 cuda
 dolphin
 eza
@@ -67,6 +68,7 @@ nvidia-settings
 nvidia-utils
 opencl-rusticl-mesa
 orchis-theme
+pandoc-cli
 pkgfile
 podman
 podman-compose
@@ -75,7 +77,6 @@ pre-commit
 prettier
 prettier-plugin-latex
 pulseaudio
-pypinyin
 pyside6
 python-certifi
 python-dnspython
@@ -109,6 +110,7 @@ tree-sitter-cli
 ueberzugpp
 unrar
 unzip
+vcpkg
 vdpauinfo
 vimv-git
 viu

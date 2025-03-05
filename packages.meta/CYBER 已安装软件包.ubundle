@@ -68,6 +68,28 @@
       }
     },
     {
+      "Id": "AdrienAllard.FileConverter",
+      "Name": "File Converter",
+      "Version": "2.1.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "AmN.yasb",
       "Name": "yasb",
       "Version": "1.6.4",
@@ -134,75 +156,9 @@
       }
     },
     {
-      "Id": "Brotli",
-      "Name": "Brotli",
-      "Version": "1.0.9",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "ByteDance.Doubao",
-      "Name": "\u8C46\u5305",
-      "Version": "1.46.5",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "ChuyuTeam.DISM\u002B\u002B",
       "Name": "DISM\u002B\u002B Multi Language",
       "Version": "10.1.1002.2",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "Daum.PotPlayer",
-      "Name": "PotPlayer",
-      "Version": "24.12.16.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -227,28 +183,6 @@
       "Version": "9.2.0.1208",
       "Source": "winget",
       "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "Jinja2",
-      "Name": "Jinja2",
-      "Version": "3.1.5",
-      "Source": "pip",
-      "ManagerName": "Pip",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -332,31 +266,9 @@
       }
     },
     {
-      "Id": "MarkupSafe",
-      "Name": "MarkupSafe",
-      "Version": "3.0.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "Microsoft.AppInstaller",
       "Name": "App Installer",
-      "Version": "1.24.25200.0",
+      "Version": "1.25.320.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -400,7 +312,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "133.0.3065.69",
+      "Version": "133.0.3065.92",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -422,7 +334,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.010.0119.0002",
+      "Version": "25.015.0126.0002",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -642,7 +554,7 @@
     {
       "Id": "Microsoft.WinGet.Client",
       "Name": "Microsoft.WinGet.Client",
-      "Version": "1.9.25190",
+      "Version": "1.10.340",
       "Source": "PSGallery",
       "ManagerName": "PowerShell",
       "InstallationOptions": {
@@ -667,28 +579,6 @@
       "Version": "1.23.10353.0",
       "Source": "winget",
       "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "MouseInfo",
-      "Name": "MouseInfo",
-      "Version": "0.1.3",
-      "Source": "pip",
-      "ManagerName": "Pip",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -774,251 +664,9 @@
     {
       "Id": "Ollama.Ollama",
       "Name": "Ollama",
-      "Version": "0.5.11",
+      "Version": "0.5.12",
       "Source": "winget",
       "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "Pillow",
-      "Name": "Pillow",
-      "Version": "10.1.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "PyAutoGUI",
-      "Name": "PyAutoGUI",
-      "Version": "0.9.54",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "PyGetWindow",
-      "Name": "PyGetWindow",
-      "Version": "0.0.9",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "PyMsgBox",
-      "Name": "PyMsgBox",
-      "Version": "1.0.9",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "PyQt5",
-      "Name": "PyQt5",
-      "Version": "5.15.10",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "PyQt5_sip",
-      "Name": "PyQt5 Sip",
-      "Version": "12.13.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "PyRect",
-      "Name": "PyRect",
-      "Version": "0.2.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "PyScreeze",
-      "Name": "PyScreeze",
-      "Version": "0.1.30",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "PySocks",
-      "Name": "PySocks",
-      "Version": "1.7.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "PyYAML",
-      "Name": "PyYAML",
-      "Version": "6.0.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "Pygments",
-      "Name": "Pygments",
-      "Version": "2.18.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -1170,7 +818,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat Beta",
-      "Version": "4.0.2.17",
+      "Version": "4.0.2.22",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1234,6 +882,30 @@
       }
     },
     {
+      "Id": "XP8BSBGQW2DKS0",
+      "Name": "PotPlayer",
+      "Version": "25.02.27.0",
+      "Source": "msstore",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [
+          ""
+        ],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
+      }
+    },
+    {
       "Id": "Xmind.Xmind",
       "Name": "Xmind",
       "Version": "25.1.1061",
@@ -1283,622 +955,6 @@
       "Version": "35.0.2",
       "Source": "community",
       "ManagerName": "Chocolatey",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "aiohttp",
-      "Name": "Aiohttp",
-      "Version": "3.9.5",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "aiosignal",
-      "Name": "Aiosignal",
-      "Version": "1.3.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "anaconda-anon-usage",
-      "Name": "Anaconda Anon Usage",
-      "Version": "0.5.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "archspec",
-      "Name": "Archspec",
-      "Version": "0.2.3",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "attrs",
-      "Name": "Attrs",
-      "Version": "23.2.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "beautifulsoup4",
-      "Name": "Beautifulsoup4",
-      "Version": "4.12.3",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "boltons",
-      "Name": "Boltons",
-      "Version": "23.0.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "bs4",
-      "Name": "Bs4",
-      "Version": "0.0.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "cachetools",
-      "Name": "Cachetools",
-      "Version": "5.5.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "certifi",
-      "Name": "Certifi",
-      "Version": "2025.1.31",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "cffi",
-      "Name": "Cffi",
-      "Version": "1.17.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "charset-normalizer",
-      "Name": "Charset Normalizer",
-      "Version": "3.3.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "colorama",
-      "Name": "Colorama",
-      "Version": "0.4.6",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "conda",
-      "Name": "Conda",
-      "Version": "24.11.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "conda-anaconda-telemetry",
-      "Name": "Conda Anaconda Telemetry",
-      "Version": "0.1.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "conda-content-trust",
-      "Name": "Conda Content Trust",
-      "Version": "0.2.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "conda-libmamba-solver",
-      "Name": "Conda Libmamba Solver",
-      "Version": "24.9.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "conda-package-handling",
-      "Name": "Conda Package Handling",
-      "Version": "2.4.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "conda_package_streaming",
-      "Name": "Conda Package Streaming",
-      "Version": "0.11.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "contourpy",
-      "Name": "Contourpy",
-      "Version": "1.3.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "cryptography",
-      "Name": "Cryptography",
-      "Version": "43.0.3",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "cycler",
-      "Name": "Cycler",
-      "Version": "0.11.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "distro",
-      "Name": "Distro",
-      "Version": "1.9.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "filelock",
-      "Name": "Filelock",
-      "Version": "3.13.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "fonttools",
-      "Name": "Fonttools",
-      "Version": "4.55.3",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "frozendict",
-      "Name": "Frozendict",
-      "Version": "2.4.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "frozenlist",
-      "Name": "Frozenlist",
-      "Version": "1.4.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "fsspec",
-      "Name": "Fsspec",
-      "Version": "2025.2.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -1982,1265 +1038,11 @@
       }
     },
     {
-      "Id": "gmpy2",
-      "Name": "Gmpy2",
-      "Version": "2.2.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "google-api-core",
-      "Name": "Google Api Core",
-      "Version": "2.24.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "google-api-python-client",
-      "Name": "Google Api Python Client",
-      "Version": "2.107.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "google-auth",
-      "Name": "Google Auth",
-      "Version": "2.38.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "google-auth-httplib2",
-      "Name": "Google Auth Httplib2",
-      "Version": "0.2.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "googleapis-common-protos",
-      "Name": "Googleapis Common Protos",
-      "Version": "1.66.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "grpcio",
-      "Name": "Grpcio",
-      "Version": "1.59.5",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "httplib2",
-      "Name": "Httplib2",
-      "Version": "0.22.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "huggingface-hub",
-      "Name": "Huggingface Hub",
-      "Version": "0.28.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "idna",
-      "Name": "Idna",
-      "Version": "3.7",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "jsonpatch",
-      "Name": "Jsonpatch",
-      "Version": "1.33",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "jsonpointer",
-      "Name": "Jsonpointer",
-      "Version": "2.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "0.9.30",
+      "Version": "1.0.4",
       "Source": "winget",
       "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "keyboard",
-      "Name": "Keyboard",
-      "Version": "0.13.5",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "kiwisolver",
-      "Name": "Kiwisolver",
-      "Version": "1.4.8",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "latex-ocr-server",
-      "Name": "Latex Ocr Server",
-      "Version": "0.1.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "libmambapy",
-      "Name": "Libmambapy",
-      "Version": "1.5.11",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "markdown-it-py",
-      "Name": "Markdown It Py",
-      "Version": "3.0.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "matplotlib",
-      "Name": "Matplotlib",
-      "Version": "3.10.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "mdurl",
-      "Name": "Mdurl",
-      "Version": "0.1.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "menuinst",
-      "Name": "Menuinst",
-      "Version": "2.2.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "miservice_fork",
-      "Name": "Miservice Fork",
-      "Version": "2.7.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "mkl-service",
-      "Name": "Mkl Service",
-      "Version": "2.4.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "mkl_fft",
-      "Name": "Mkl Fft",
-      "Version": "1.3.11",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "mkl_random",
-      "Name": "Mkl Random",
-      "Version": "1.2.8",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "mpmath",
-      "Name": "Mpmath",
-      "Version": "1.3.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "multidict",
-      "Name": "Multidict",
-      "Version": "6.0.5",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "mutagen",
-      "Name": "Mutagen",
-      "Version": "1.47.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "networkx",
-      "Name": "Networkx",
-      "Version": "3.4.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "numpy",
-      "Name": "Numpy",
-      "Version": "2.0.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "packaging",
-      "Name": "Packaging",
-      "Version": "24.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "paho-mqtt",
-      "Name": "Paho Mqtt",
-      "Version": "2.1.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "parse_pip_search",
-      "Name": "Parse Pip Search",
-      "Version": "0.0.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "pip",
-      "Name": "Pip",
-      "Version": "24.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "platformdirs",
-      "Name": "Platformdirs",
-      "Version": "3.10.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "pluggy",
-      "Name": "Pluggy",
-      "Version": "1.5.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "ply",
-      "Name": "Ply",
-      "Version": "3.11",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "proto-plus",
-      "Name": "Proto Plus",
-      "Version": "1.26.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "protobuf",
-      "Name": "Protobuf",
-      "Version": "5.29.3",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "psutil",
-      "Name": "Psutil",
-      "Version": "6.1.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "pyasn1",
-      "Name": "Pyasn1",
-      "Version": "0.6.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "pyasn1_modules",
-      "Name": "Pyasn1 Modules",
-      "Version": "0.4.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "pycosat",
-      "Name": "Pycosat",
-      "Version": "0.6.6",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "pycparser",
-      "Name": "Pycparser",
-      "Version": "2.21",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "pygame",
-      "Name": "Pygame",
-      "Version": "2.6.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "pyparsing",
-      "Name": "Pyparsing",
-      "Version": "3.2.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "pyperclip",
-      "Name": "Pyperclip",
-      "Version": "1.9.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "pystray",
-      "Name": "Pystray",
-      "Version": "0.19.5",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "python-dateutil",
-      "Name": "Python Dateutil",
-      "Version": "2.9.0.post0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "pytweening",
-      "Name": "Pytweening",
-      "Version": "1.2.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "pywin32",
-      "Name": "Pywin32",
-      "Version": "308",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "regex",
-      "Name": "Regex",
-      "Version": "2024.11.6",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "requests",
-      "Name": "Requests",
-      "Version": "2.32.3",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "rich",
-      "Name": "Rich",
-      "Version": "13.7.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "rsa",
-      "Name": "Rsa",
-      "Version": "4.9",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "ruamel.yaml",
-      "Name": "Ruamel.yaml",
-      "Version": "0.18.6",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "ruamel.yaml.clib",
-      "Name": "Ruamel.yaml.clib",
-      "Version": "0.2.8",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "safetensors",
-      "Name": "Safetensors",
-      "Version": "0.5.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -3280,407 +1082,11 @@
       }
     },
     {
-      "Id": "screeninfo",
-      "Name": "Screeninfo",
-      "Version": "0.8.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "setuptools",
-      "Name": "Setuptools",
-      "Version": "75.1.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "sip",
-      "Name": "Sip",
-      "Version": "6.7.12",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "six",
-      "Name": "Six",
-      "Version": "1.16.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "soupsieve",
-      "Name": "Soupsieve",
-      "Version": "2.6",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "sympy",
-      "Name": "Sympy",
-      "Version": "1.13.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "th-ch.YouTubeMusic",
       "Name": "YouTube Music",
       "Version": "3.7.4",
       "Source": "winget",
       "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "tokenizers",
-      "Name": "Tokenizers",
-      "Version": "0.15.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "torch",
-      "Name": "Torch",
-      "Version": "2.5.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "torchaudio",
-      "Name": "Torchaudio",
-      "Version": "2.5.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "torchvision",
-      "Name": "Torchvision",
-      "Version": "0.20.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "tornado",
-      "Name": "Tornado",
-      "Version": "6.4.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "tqdm",
-      "Name": "Tqdm",
-      "Version": "4.66.5",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "transformers",
-      "Name": "Transformers",
-      "Version": "4.35.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "truststore",
-      "Name": "Truststore",
-      "Version": "0.8.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "typing_extensions",
-      "Name": "Typing Extensions",
-      "Version": "4.12.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "unicodedata2",
-      "Name": "Unicodedata2",
-      "Version": "15.1.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "uritemplate",
-      "Name": "Uritemplate",
-      "Version": "4.1.1",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "urllib3",
-      "Name": "Urllib3",
-      "Version": "2.2.3",
-      "Source": "pip",
-      "ManagerName": "Pip",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -3720,121 +1126,11 @@
       }
     },
     {
-      "Id": "wheel",
-      "Name": "Wheel",
-      "Version": "0.44.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "win-inet-pton",
-      "Name": "Win Inet Pton",
-      "Version": "1.1.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "wslPath",
-      "Name": "WslPath",
-      "Version": "0.4.2",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "xanderfrangos.twinkletray",
       "Name": "Twinkle Tray",
       "Version": "1.16.6",
       "Source": "winget",
       "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "yarl",
-      "Name": "Yarl",
-      "Version": "1.9.4",
-      "Source": "pip",
-      "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "zstandard",
-      "Name": "Zstandard",
-      "Version": "0.23.0",
-      "Source": "pip",
-      "ManagerName": "Pip",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -3870,6 +1166,12 @@
       "Id": "ARP\\Machine\\X64\\Maxon Cinema 4D 21dfe06799abe2ae3158256cab5a7eedc3b47cf7819357d221ef995f9446c559",
       "Name": "Maxon Cinema 4D 2025",
       "Version": "2025.0.2",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\Melodyne 5_is1",
+      "Name": "Melodyne 5",
+      "Version": "5.4.1",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3915,6 +1217,18 @@
       "Source": "Steam"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{5E65448D-1EC4-4966-AC8B-804E8A69C642}",
+      "Name": "NVIDIA Nsight Compute 2020.1.1",
+      "Version": "20.1.1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{8B452603-A2AA-4D3E-A29A-54183ECA515B}",
+      "Name": "NVIDIA Nsight Systems 2020.3.2",
+      "Version": "20.3.2.6",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{95140000-2000-0409-1000-0000000FF1CE}",
       "Name": "Microsoft Filter Pack 2.0",
       "Version": "14.0.7015.1000",
@@ -3927,9 +1241,21 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\{B1CDE6DA-837D-488C-888B-75A700222FDE}",
-      "Name": "NVIDIA Nsight Compute 2024.3.2",
-      "Version": "24.3.2.0",
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDADevelopment_11.0",
+      "Name": "NVIDIA CUDA Development 11.0",
+      "Version": "11.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDADocument_11.0",
+      "Name": "NVIDIA CUDA Documentation 11.0",
+      "Version": "11.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDARuntimes_11.0",
+      "Name": "NVIDIA CUDA Runtime 11.0",
+      "Version": "11.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3960,6 +1286,30 @@
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_HDAudio.Driver",
       "Name": "NVIDIA HD \u97F3\u9891\u9A71\u52A8\u7A0B\u5E8F 1.4.3.2",
       "Version": "1.4.3.2",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_nsight_nvtx_11.0",
+      "Name": "NVIDIA CUDA Nsight NVTX 11.0",
+      "Version": "11.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_samples_11.0",
+      "Name": "NVIDIA CUDA Samples 11.0",
+      "Version": "11.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_visual_studio_integration_11.0",
+      "Name": "NVIDIA CUDA Visual Studio Integration 11.0",
+      "Version": "11.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{B56D2F88-8865-40FD-B7AC-F074EE4D201D}",
+      "Name": "NVIDIA Tools Extension SDK (NVTX) - 64 bit",
+      "Version": "1.00.00.00",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4002,6 +1352,12 @@
       "Id": "ARP\\Machine\\X86\\AUDT_25_0",
       "Name": "Adobe Audition 2025",
       "Version": "25.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\EveryonePiano_is1",
+      "Name": "EveryonePiano 2.5",
+      "Version": "2.5.9.4",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4103,13 +1459,13 @@
     {
       "Id": "ARP\\User\\X64\\com.android.vending",
       "Name": "Play \u5546\u5E97",
-      "Version": "44.9.19-31 [0] [PR] 725679144",
+      "Version": "45.1.12-31 [0] [PR] 729649519",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
       "Id": "ARP\\User\\X64\\com.google.android.apps.nbu.files",
       "Name": "\u6587\u4EF6\u6781\u5BA2",
-      "Version": "1.6328.720891598.0-release",
+      "Version": "1.6413.724871129.0-release",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -4127,7 +1483,7 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.googlequicksearchbox",
       "Name": "Google",
-      "Version": "16.5.37.ve.x86_64",
+      "Version": "16.6.28.ve.x86_64",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -4281,9 +1637,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.GamingServices_26.95.25001.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.GamingServices_27.98.11001.0_x64__8wekyb3d8bbwe",
       "Name": "\u6E38\u620F\u670D\u52A1",
-      "Version": "26.95.25001.0",
+      "Version": "27.98.11001.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4329,9 +1685,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25010.119.2.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25015.126.2.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25010.119.2.0",
+      "Version": "25015.126.2.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4455,9 +1811,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2410.21.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2412.16.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BB0\u4E8B\u672C",
-      "Version": "11.2410.21.0",
+      "Version": "11.2412.16.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4467,15 +1823,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22501.1401.4.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22501.1401.7.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22501.1401.4.0",
+      "Version": "22501.1401.7.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.223.830.39_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.303.1621.15_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.223.830.39",
+      "Version": "2025.303.1621.15",
       "Source": "Microsoft Store"
     },
     {
@@ -4485,9 +1841,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25011.56.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25012.100.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25011.56.0",
+      "Version": "1.25012.100.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4569,12 +1925,6 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\kimi.moonshot.cn-CFB72B7F_1.0.0.1_neutral__fsmhydxgm6x52",
-      "Name": "KiMi",
-      "Version": "1.0.0.1",
-      "Source": "Microsoft Store"
-    },
-    {
       "Id": "MSIX\\localhost-45C893EA_1.0.0.0_neutral__8b13a12v8s1e2",
       "Name": "Open WebUI",
       "Version": "1.0.0.0",
@@ -4589,6 +1939,12 @@
     {
       "Id": "MSIX\\outlook.live.com-E069DD9B_1.0.0.0_neutral__ad12m90dr0gt2",
       "Name": "Outlook (PWA)",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\picwish.cn-D4CFAF84_1.0.0.0_neutral__scwbw0r38nhj6",
+      "Name": "\u4F50\u7CD6 - \u5728\u7EBF\u56FE\u7247\u5904\u7406\u5DE5\u5177_\u5728\u7EBF\u62A0\u56FE_\u8BC1\u4EF6\u7167\u6362\u5E95\u8272_\u53BB\u6C34\u5370_\u7167\u7247\u4FEE\u590D",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
