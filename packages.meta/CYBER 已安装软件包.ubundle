@@ -268,7 +268,7 @@
     {
       "Id": "Microsoft.AppInstaller",
       "Name": "App Installer",
-      "Version": "1.25.320.0",
+      "Version": "1.25.340.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -334,7 +334,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.015.0126.0002",
+      "Version": "25.020.0202.0001",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1685,15 +1685,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25015.126.2.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25020.202.1.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25015.126.2.0",
+      "Version": "25020.202.1.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.ScreenSketch_11.2409.25.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.ScreenSketch_11.2501.7.0_x64__8wekyb3d8bbwe",
       "Name": "\u622A\u56FE\u5DE5\u5177",
-      "Version": "11.2409.25.0",
+      "Version": "11.2501.7.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1829,9 +1829,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.303.1621.15_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.307.851.4_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.303.1621.15",
+      "Version": "2025.307.851.4",
       "Source": "Microsoft Store"
     },
     {
@@ -1841,9 +1841,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25012.100.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25012.107.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25012.100.0",
+      "Version": "1.25012.107.0",
       "Source": "Microsoft Store"
     },
     {
