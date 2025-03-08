@@ -119,6 +119,8 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 
 # for fzf-tab
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:z:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:j:*' fzf-preview 'eza -1 --color=always $realpath'
 
 
 ### autoload zinit

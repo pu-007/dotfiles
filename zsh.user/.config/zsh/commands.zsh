@@ -30,6 +30,7 @@ alias re-cmp=": rm .zcompdump; compinit"
 alias re-cmd="zinit update home--pu--.config--zsh/commands.zsh"
 alias re-pkg="pacman -Qdqt | xargs yay -Rnsc"
 alias re-cmake-install="sudo xargs rm < install_manifest.txt"
+alias re-mirror="sudo reflector --country China --protocol https --latest 10 --sort rate --save /etc/pacman.d/mirrorlist"
 # utilize Cline in place of Cursor
 # alias re-cursor="p 'irm https://raw.githubusercontent.com/yuaotian/go-cursor-help/refs/heads/master/scripts/run/cursor_win_id_modifier.ps1 | iex'"
 
