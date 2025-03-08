@@ -1,5 +1,7 @@
 #!/bin/bash
 
+komorebic.exe fetch-app-specific-configuration
+
 # 遍历当前目录下所有 *.winuser 目录
 for dotfiles_dir in ./*.winuser; do
   if [ -d "$dotfiles_dir" ]; then
