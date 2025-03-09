@@ -175,5 +175,6 @@ yay
 yazi-git
 zathura-git
 zathura-pdf-mupdf-git
+zbar
 zoxide
 zsh
