@@ -47,6 +47,13 @@
       ]
     }
   ],
+  "manage_rules": [
+    {
+      "kind": "Title",
+      "id": "Kimi",
+      "match": "Contains"
+    }
+  ],
   "ignore_rules": [
     {
       "kind": "Exe",
