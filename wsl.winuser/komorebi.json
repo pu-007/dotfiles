@@ -50,6 +50,11 @@
   "ignore_rules": [
     {
       "kind": "Exe",
+      "id": "Weixin.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
       "id": "Quicker.exe",
       "matching_strategy": "Equals"
     },
@@ -57,14 +62,14 @@
       "kind": "Exe",
       "id": "CrossDeviceStreamingHost.exe",
       "matching_strategy": "Equals"
-    }
-  ],
-  "floating_applications": [
+    },
     {
       "kind": "Title",
       "id": "uTools",
       "matching_strategy": "Equals"
-    },
+    }
+  ],
+  "floating_applications": [
     {
       "kind": "Exe",
       "id": "PhoneExperienceHost.exe",
