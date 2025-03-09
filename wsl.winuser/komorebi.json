@@ -57,6 +57,11 @@
   "ignore_rules": [
     {
       "kind": "Exe",
+      "id": "AutoHotkey64.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
       "id": "Weixin.exe",
       "matching_strategy": "Equals"
     },
