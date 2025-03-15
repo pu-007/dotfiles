@@ -101,6 +101,8 @@ setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
+
+setopt interactivecomments # 交互式注释
 ### for sync_directory_change
 sync_directory_change() {
   pwd | tr -d '\n' > "$win_home/.workdir"
@@ -146,6 +148,8 @@ zinit wait lucid is-snippet for \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
   ~/.config/zsh/powershell.zsh \
+  ~/.config/zsh/conda.zsh \
+  ~/.config/zsh/shelloracle.zsh
 
 function expand-alias-space() {
   [[ $LBUFFER =~ "\<(${(j:|:)baliases})\$" ]]; insertBlank=$?
@@ -170,8 +174,7 @@ function zvm_after_init() {
   bindkey "^[[B" down-line-or-beginning-search # Down
 
   zinit wait lucid is-snippet for \
-    ~/.config/zsh/fzf.zsh \
-    ~/.config/zsh/conda.zsh
+    ~/.config/zsh/fzf.zsh
 
   # for command-not-found:
   # sudo pkgfile --update
@@ -180,10 +183,11 @@ function zvm_after_init() {
   # gptme for CLI agents;
   # codegenx for commond completion while inputing;
   # ai-commit for git commit
+  #       atinit"bash -c 'exec -a ollama tail -f /dev/null &';export ZSH_OLLAMA_MODEL=qwen2.5"\
+    # plutowang/zsh-ollama-command \
+
   zinit wait lucid for \
     oldkingOK/pinyin-completion \
-      atinit"bash -c 'exec -a ollama tail -f /dev/null &';export ZSH_OLLAMA_MODEL=qwen2.5"\
-    plutowang/zsh-ollama-command \
     OMZP::sudo \
     OMZP::extract \
     OMZP::cp \
