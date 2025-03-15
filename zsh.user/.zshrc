@@ -176,6 +176,10 @@ function zvm_after_init() {
   # for command-not-found:
   # sudo pkgfile --update
   # pu-007/pinyin-completion (go pinyin version)
+  # AI:
+  # gptme for CLI agents;
+  # codegenx for commond completion while inputing;
+  # ai-commit for git commit
   zinit wait lucid for \
     oldkingOK/pinyin-completion \
       atinit"bash -c 'exec -a ollama tail -f /dev/null &';export ZSH_OLLAMA_MODEL=qwen2.5"\

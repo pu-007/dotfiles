@@ -25,6 +25,7 @@ alias als="alias | rg "
 ialias gac="ai-commit --PROVIDER=ollama --MODEL=qwen2.5-coder  --commit-type 'Grasp the main points and short, git commit messages only, no other comments'"
 ialias 'gc@'='git reset --soft HEAD^'
 alias gaac="gaa; gac"
+alias c="cmd.exe"
 
 alias re-cmp=": rm .zcompdump; compinit"
 alias re-cmd="zinit update home--pu--.config--zsh/commands.zsh"
