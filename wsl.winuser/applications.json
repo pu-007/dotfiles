@@ -20,7 +20,19 @@
         "kind": "Class",
         "id": "Vst3PlugWindow",
         "matching_strategy": "Legacy"
-      }
+      },
+      [
+        {
+          "kind": "Class",
+          "id": "Ableton Live Window Class",
+          "matching_strategy": "Equals"
+        },
+        {
+          "kind": "Title",
+          "id": "Ableton",
+          "matching_strategy": "DoesNotContain"
+        }
+      ]
     ]
   },
   "Adobe Creative Cloud": {
@@ -29,6 +41,15 @@
         "kind": "Class",
         "id": "CreativeCloudDesktopWindowClass",
         "matching_strategy": "Legacy"
+      }
+    ]
+  },
+  "Adobe Photshop": {
+    "ignore": [
+      {
+        "kind": "Class",
+        "id": "PSDialogBox",
+        "matching_strategy": "Equals"
       }
     ]
   },
@@ -1607,6 +1628,11 @@
         "kind": "Exe",
         "id": "PowerToys.PowerAccent.exe",
         "matching_strategy": "Equals"
+      },
+      {
+        "kind": "Exe",
+        "id": "PowerToys.AdvancedPaste.exe",
+        "matching_strategy": "Equals"
       }
     ]
   },
@@ -2188,6 +2214,13 @@
     ]
   },
   "VLC": {
+    "object_name_change": [
+      {
+        "kind": "Exe",
+        "id": "vlc.exe",
+        "matching_strategy": "Equals"
+      }
+    ],
     "ignore": [
       [
         {
@@ -2222,7 +2255,7 @@
         {
           "kind": "Title",
           "id": "Preferences",
-          "matching_strategy": "Equals"
+          "matching_strategy": "Contains"
         }
       ],
       [

@@ -67,6 +67,11 @@
     },
     {
       "kind": "Exe",
+      "id": "QQ.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
       "id": "Quicker.exe",
       "matching_strategy": "Equals"
     },

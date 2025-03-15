@@ -176,15 +176,10 @@ function zvm_after_init() {
   zinit wait lucid is-snippet for \
     ~/.config/zsh/fzf.zsh
 
-  # for command-not-found:
-  # sudo pkgfile --update
-  # pu-007/pinyin-completion (go pinyin version)
   # AI:
-  # gptme for CLI agents;
-  # codegenx for commond completion while inputing;
-  # ai-commit for git commit
-  #       atinit"bash -c 'exec -a ollama tail -f /dev/null &';export ZSH_OLLAMA_MODEL=qwen2.5"\
-    # plutowang/zsh-ollama-command \
+  # gptme for CLI agents <claude-3.7-sonnet>
+  # shelloracle for shell commands completion <claude-3.7-sonnet>
+  # ai-commit for git commit <ollama/qwen2.5/coder>
 
   zinit wait lucid for \
     oldkingOK/pinyin-completion \
