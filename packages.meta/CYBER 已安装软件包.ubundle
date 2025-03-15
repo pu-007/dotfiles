@@ -134,6 +134,28 @@
       }
     },
     {
+      "Id": "Anysphere.Cursor",
+      "Name": "Cursor",
+      "Version": "0.46.11",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
+      }
+    },
+    {
       "Id": "AutoHotkey.AutoHotkey",
       "Name": "AutoHotkey",
       "Version": "2.0.19",
@@ -312,7 +334,7 @@
     {
       "Id": "Microsoft.DotNet.DesktopRuntime.8",
       "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
-      "Version": "8.0.13",
+      "Version": "8.0.14",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -334,7 +356,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "134.0.3124.51",
+      "Version": "134.0.3124.66",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -642,16 +664,18 @@
     {
       "Id": "OBSProject.OBSStudio",
       "Name": "OBS Studio",
-      "Version": "31.0.1",
+      "Version": "31.0.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
         "SkipHashCheck": false,
-        "InteractiveInstallation": false,
+        "InteractiveInstallation": true,
         "RunAsAdministrator": false,
         "Architecture": "",
         "InstallationScope": "",
-        "CustomParameters": [],
+        "CustomParameters": [
+          ""
+        ],
         "PreRelease": false,
         "CustomInstallLocation": "",
         "Version": ""
@@ -796,7 +820,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "5.11.1",
+      "Version": "5.12.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -818,7 +842,7 @@
     {
       "Id": "Tencent.QQ.NT",
       "Name": "QQ",
-      "Version": "9.9.17.31363",
+      "Version": "9.9.18.32869",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1062,7 +1086,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.0.6",
+      "Version": "1.1.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1109,6 +1133,28 @@
       "Version": "3.7.5",
       "Source": "winget",
       "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "uv",
+      "Name": "Uv",
+      "Version": "0.6.6",
+      "Source": "main",
+      "ManagerName": "Scoop",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -1199,7 +1245,7 @@
     {
       "Id": "ARP\\Machine\\X64\\O365EduCloudRetail - zh-cn",
       "Name": "Microsoft 365 - zh-cn",
-      "Version": "16.0.18429.20158",
+      "Version": "16.0.18526.20144",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1487,7 +1533,7 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.apps.nbu.files",
       "Name": "\u6587\u4EF6\u6781\u5BA2",
-      "Version": "1.6413.724871129.0-release",
+      "Version": "1.6574.731181640.1-release",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -1517,7 +1563,7 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.webview",
       "Name": "Android System WebView",
-      "Version": "133.0.6943.137",
+      "Version": "133.0.6943.138",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -1549,18 +1595,6 @@
       "Name": "PixPin \u7248\u672C 1.9.11.8",
       "Version": "1.9.11.8",
       "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "MSIX\\124.222.106.127-A8CC08C4_1.0.0.0_neutral__0ea2rrp67zccp",
-      "Name": "Wordpress",
-      "Version": "1.0.0.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\124.222.106.127-E4A918A2_1.0.0.0_neutral__99t61kfprf1k8",
-      "Name": "\u5B9D\u5854\u9762\u677F\u00B7\u817E\u8BAF\u4E91\u4E13\u4EAB\u7248",
-      "Version": "1.0.0.0",
-      "Source": "Microsoft Store"
     },
     {
       "Id": "MSIX\\18184wherewhere.AndroidAppInstaller_0.1.25.0_x64__4v4sx105x6y4r",
@@ -1713,9 +1747,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18429.20158_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18526.20144_neutral__8wekyb3d8bbwe",
       "Name": "OfficePushNotificationsUtility",
-      "Version": "16.0.18429.20158",
+      "Version": "16.0.18526.20144",
       "Source": "Microsoft Store"
     },
     {
@@ -1833,9 +1867,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.401.2352.0_x86__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.424.1611.0_x64__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.6",
-      "Version": "6000.401.2352.0",
+      "Version": "6000.424.1611.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.424.1611.0_x86__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.6",
+      "Version": "6000.424.1611.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1863,9 +1903,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.309.414.51_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.315.217.33_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.309.414.51",
+      "Version": "2025.315.217.33",
       "Source": "Microsoft Store"
     },
     {
@@ -1875,9 +1915,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25012.107.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25021.67.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25012.107.0",
+      "Version": "1.25021.67.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1893,9 +1933,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25012.50.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25021.28.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25012.50.0",
+      "Version": "1.25021.28.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1983,6 +2023,12 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\newsnow.busiyi.world-55AB118E_1.0.0.0_neutral__sbfdxy9q8bdwj",
+      "Name": "NewsNow",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\orcaterm.cloud.tencent.com-4643C742_1.0.0.0_neutral__p3xypzpn9cd2m",
       "Name": "\u817E\u8BAF\u4E91 OrcaTerm",
       "Version": "1.0.0.0",
@@ -2009,6 +2055,18 @@
     {
       "Id": "MSIX\\shenyandayi.com-A71EC7E7_1.0.0.0_neutral__25t0bqkvhepdj",
       "Name": "\u6DF1\u8A00\u8FBE\u610F",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\sxcmdz.cn-55F7CBC1_1.0.0.0_neutral__4yy8rfxzvjmpr",
+      "Name": "WordPress",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\sxcmdz.cn-5AB30D15_1.0.0.0_neutral__he7dhwr356t8e",
+      "Name": "\u5B9D\u5854\u9762\u677F\u00B7\u817E\u8BAF\u4E91\u4E13\u4EAB\u7248",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
