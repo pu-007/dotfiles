@@ -148,7 +148,6 @@ zinit wait lucid is-snippet for \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
   ~/.config/zsh/powershell.zsh \
-  ~/.config/zsh/conda.zsh \
   ~/.config/zsh/shelloracle.zsh
 
 function expand-alias-space() {
@@ -200,3 +199,5 @@ function zvm_after_init() {
     zsh-users/zsh-completions \
     Aloxaf/fzf-tab
 }
+
+export PATH="$PATH:$HOME/.local/bin"
