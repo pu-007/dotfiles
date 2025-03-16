@@ -92,7 +92,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.6.4",
+      "Version": "1.6.5",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -109,50 +109,6 @@
       "Updates": {
         "UpdatesIgnored": false,
         "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "Anaconda.Miniconda3",
-      "Name": "Miniconda3",
-      "Version": "py312_24.11.1-0",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": true,
-        "IgnoredVersion": "*"
-      }
-    },
-    {
-      "Id": "Anysphere.Cursor",
-      "Name": "Cursor",
-      "Version": "0.46.11",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": true,
-        "IgnoredVersion": "*"
       }
     },
     {
@@ -178,9 +134,9 @@
       }
     },
     {
-      "Id": "ByteDance.Trae",
-      "Name": "Trae",
-      "Version": "1.97.2",
+      "Id": "ByteDance.Doubao",
+      "Name": "\u8C46\u5305",
+      "Version": "1.48.7",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -554,7 +510,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.98.0",
+      "Version": "1.98.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -576,7 +532,7 @@
     {
       "Id": "Microsoft.WSL",
       "Name": "Windows Subsystem for Linux",
-      "Version": "2.4.11.0",
+      "Version": "2.5.1.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -710,7 +666,7 @@
     {
       "Id": "Ollama.Ollama",
       "Name": "Ollama",
-      "Version": "0.5.13",
+      "Version": "0.6.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -820,7 +776,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "5.12.1",
+      "Version": "5.12.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -864,7 +820,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat Beta",
-      "Version": "4.0.2.26",
+      "Version": "4.0.2.28",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1106,6 +1062,28 @@
       }
     },
     {
+      "Id": "nodejs",
+      "Name": "Nodejs",
+      "Version": "23.10.0",
+      "Source": "main",
+      "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "scoop-search",
       "Name": "Scoop Search",
       "Version": "2.0.0",
@@ -1245,7 +1223,7 @@
     {
       "Id": "ARP\\Machine\\X64\\O365EduCloudRetail - zh-cn",
       "Name": "Microsoft 365 - zh-cn",
-      "Version": "16.0.18526.20144",
+      "Version": "16.0.18526.20168",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1747,9 +1725,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18526.20144_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18526.20168_neutral__8wekyb3d8bbwe",
       "Name": "OfficePushNotificationsUtility",
-      "Version": "16.0.18526.20144",
+      "Version": "16.0.18526.20168",
       "Source": "Microsoft Store"
     },
     {
@@ -1903,9 +1881,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.315.217.33_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.316.722.40_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.315.217.33",
+      "Version": "2025.316.722.40",
       "Source": "Microsoft Store"
     },
     {
@@ -1987,6 +1965,12 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\console.volcengine.com-DE47D5F6_1.0.0.0_neutral__17w659j22ctbe",
+      "Name": "\u706B\u5C71\u5F15\u64CE\u63A7\u5236\u53F0",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\dash.302.ai-D2A23C8A_1.0.0.0_neutral__wdamecvg8gp1c",
       "Name": "\u200E302",
       "Version": "1.0.0.0",
@@ -2007,6 +1991,12 @@
     {
       "Id": "MSIX\\hailuoai.com-DEFE775_1.0.0.0_neutral__cpzp37enjkysp",
       "Name": "\u6D77\u87BA AI",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\lmarena.ai-55A6426B_1.0.0.0_neutral__9jqjpnk1gbrta",
+      "Name": "lmarena leaderboard",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
@@ -2055,6 +2045,12 @@
     {
       "Id": "MSIX\\shenyandayi.com-A71EC7E7_1.0.0.0_neutral__25t0bqkvhepdj",
       "Name": "\u6DF1\u8A00\u8FBE\u610F",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\smithery.ai-18C4B700_1.0.0.0_neutral__p5m5tc7cbx34w",
+      "Name": "Smithery - Model Context Protocol Registry",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },

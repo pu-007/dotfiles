@@ -56,7 +56,6 @@ lua51
 luarocks
 markdownlint-cli2
 mesa-utils
-miniconda3
 nano
 neofetch
 neovim
@@ -80,9 +79,12 @@ pulseaudio
 pyside6
 python-certifi
 python-dnspython
+python-jieba
 python-keyring
 python-matplotlib
+python-pipx
 python-pylatexenc
+python-pynvim
 python-pyxdg
 python-requests
 python-scipy
@@ -111,6 +113,7 @@ tree-sitter-cli
 ueberzugpp
 unrar
 unzip
+uv
 vcpkg
 vdpauinfo
 vimv-git
