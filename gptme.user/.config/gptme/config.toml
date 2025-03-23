@@ -7,13 +7,4 @@ response_preference = "Don't explain basic concepts"
 OPENAI_BASE_URL = "https://xiaohumini.site/v1"
 MODEL = "local/claude-3-7-sonnet-thinking"
 
-# Uncomment to change tool configuration
-#TOOL_FORMAT = "markdown" # Select the tool formal. One of `markdown`, `xml`, `tool`
-#TOOL_ALLOWLIST = "save,append,patch,ipython,shell,browser"  # Comma separated list of allowed tools
-#TOOL_MODULES = "gptme.tools,custom.tools" # List of python comma separated python module path
-
-# Return file content in error for non-matching patches
 GPTME_PATCH_RECOVERY = true
-
-[rag]
-enabled = false
