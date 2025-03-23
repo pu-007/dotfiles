@@ -127,7 +127,6 @@ wayland-utils
 weston
 wget
 win32yank-bin
-wl-clipboard
 wlroots
 wslu
 xdg-desktop-portal
