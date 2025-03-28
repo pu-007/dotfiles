@@ -1,5 +1,3 @@
-# /etc/profile
-
 # Append "$1" to $PATH when not already in.
 # This function API is accessible to scripts in /etc/profile.d
 append_path() {
@@ -51,3 +49,5 @@ unset TERMCAP
 
 # Man is much better than us at figuring this out
 unset MANPATH
+
+# export XDG_RUNTIME_DIR="/tmp/"
