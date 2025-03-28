@@ -41,6 +41,7 @@ glu
 gnome-keyring
 go
 gtk-engine-murrine
+hspell
 hunspell
 hyperfine
 imagemagick
@@ -49,6 +50,7 @@ kio-admin
 lazygit
 less
 libva-utils
+libvoikko
 lldb
 lua
 lua-sec
@@ -82,6 +84,7 @@ python-dnspython
 python-jieba
 python-keyring
 python-matplotlib
+python-pip
 python-pipx
 python-pylatexenc
 python-pynvim

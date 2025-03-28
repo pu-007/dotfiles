@@ -136,7 +136,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.48.7",
+      "Version": "1.49.10",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -181,6 +181,72 @@
       "Id": "DuongDieuPhap.ImageGlass",
       "Name": "ImageGlass",
       "Version": "9.2.0.1208",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Google.AndroidStudio",
+      "Name": "Android Studio",
+      "Version": "2024.3.1.13",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Henry\u002B\u002B.MemReduct",
+      "Name": "Mem Reduct",
+      "Version": "3.5.1",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "JanDeDobbeleer.OhMyPosh",
+      "Name": "Oh My Posh",
+      "Version": "25.5.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -312,7 +378,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "134.0.3124.72",
+      "Version": "134.0.3124.85",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -334,7 +400,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.031.0217.0003",
+      "Version": "25.035.0223.0003",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -351,6 +417,28 @@
       "Updates": {
         "UpdatesIgnored": true,
         "IgnoredVersion": "*"
+      }
+    },
+    {
+      "Id": "Microsoft.PowerShell",
+      "Name": "PowerShell",
+      "Version": "7.5.0.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
       }
     },
     {
@@ -442,6 +530,72 @@
       }
     },
     {
+      "Id": "Microsoft.VCRedist.2005.x86",
+      "Name": "Microsoft Visual C\u002B\u002B 2005 Redistributable",
+      "Version": "8.0.61001",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Microsoft.VCRedist.2008.x64",
+      "Name": "Microsoft Visual C\u002B\u002B 2008 Redistributable - x64",
+      "Version": "9.0.30729.6161",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Microsoft.VCRedist.2008.x86",
+      "Name": "Microsoft Visual C\u002B\u002B 2008 Redistributable - x86",
+      "Version": "9.0.30729.6161",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Microsoft.VCRedist.2010.x64",
       "Name": "Microsoft Visual C\u002B\u002B 2010 x64 Redistributable",
       "Version": "10.0.40219",
@@ -483,6 +637,50 @@
       "Updates": {
         "UpdatesIgnored": true,
         "IgnoredVersion": "*"
+      }
+    },
+    {
+      "Id": "Microsoft.VCRedist.2012.x64",
+      "Name": "Microsoft Visual C\u002B\u002B 2012 Redistributable (x64)",
+      "Version": "11.0.61030.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Microsoft.VCRedist.2012.x86",
+      "Name": "Microsoft Visual C\u002B\u002B 2012 Redistributable (x86)",
+      "Version": "11.0.61030.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
       }
     },
     {
@@ -688,7 +886,7 @@
     {
       "Id": "Ollama.Ollama",
       "Name": "Ollama",
-      "Version": "0.6.1",
+      "Version": "0.6.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -864,7 +1062,7 @@
     {
       "Id": "Tencent.QQ.NT",
       "Name": "QQ",
-      "Version": "9.9.18.32869",
+      "Version": "9.9.18.33139",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -886,7 +1084,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat Beta",
-      "Version": "4.0.2.28",
+      "Version": "4.0.3.11",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1018,11 +1216,11 @@
       }
     },
     {
-      "Id": "adb",
-      "Name": "Adb",
-      "Version": "35.0.2",
-      "Source": "community",
-      "ManagerName": "Chocolatey",
+      "Id": "eza",
+      "Name": "Eza",
+      "Version": "0.20.24",
+      "Source": "main",
+      "ManagerName": "Scoop",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -1064,7 +1262,7 @@
     {
       "Id": "git",
       "Name": "Git",
-      "Version": "2.48.1",
+      "Version": "2.49.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -1106,11 +1304,55 @@
       }
     },
     {
+      "Id": "gradle",
+      "Name": "Gradle",
+      "Version": "8.13",
+      "Source": "main",
+      "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.1.5",
+      "Version": "1.1.10",
       "Source": "winget",
       "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "kotlin",
+      "Name": "Kotlin",
+      "Version": "2.1.20",
+      "Source": "main",
+      "ManagerName": "Scoop",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -1132,6 +1374,28 @@
       "Name": "Nodejs",
       "Version": "23.10.0",
       "Source": "main",
+      "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "openjdk17",
+      "Name": "Openjdk17",
+      "Version": "17.0.2-8",
+      "Source": "java",
       "ManagerName": "Scoop",
       "InstallationOptions": {
         "SkipHashCheck": false,
@@ -1218,7 +1482,7 @@
     {
       "Id": "uv",
       "Name": "Uv",
-      "Version": "0.6.6",
+      "Version": "0.6.9",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -1297,6 +1561,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\BD5E2A628C2263FAEC66A4BFF2E88B897427E4C3",
+      "Name": "Windows \u9A71\u52A8\u7A0B\u5E8F\u5305 - MediaTek Inc. (wdm_usb) Ports  (01/22/2015 3.0.1504.0)",
+      "Version": "01/22/2015 3.0.1504.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\Maxon Cinema 4D 21dfe06799abe2ae3158256cab5a7eedc3b47cf7819357d221ef995f9446c559",
       "Name": "Maxon Cinema 4D 2025",
       "Version": "2025.0.2",
@@ -1349,6 +1619,12 @@
       "Name": "Dead Cells",
       "Version": "Unknown",
       "Source": "Steam"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{02A39130-2CF3-30CA-8623-30F6071A4221}",
+      "Name": "Microsoft Visual C\u002B\u002B 2008 Redistributable - x64 9.0.21022",
+      "Version": "9.0.21022",
+      "Source": "\u672C\u5730\u7535\u8111"
     },
     {
       "Id": "ARP\\Machine\\X64\\{5E65448D-1EC4-4966-AC8B-804E8A69C642}",
@@ -1453,6 +1729,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{ad8a2fa1-06e7-4b0d-927d-6e54b3d31028}",
+      "Name": "Microsoft Visual C\u002B\u002B 2005 Redistributable (x64)",
+      "Version": "8.0.61000",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\1237807960_is1",
       "Name": "Dead Cells",
       "Version": "1.26.0",
@@ -1525,6 +1807,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\LenovoUsbDriver",
+      "Name": "LenovoUsbDriver 1.1.52",
+      "Version": "1.1.52",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\PHSP_26_2",
       "Name": "Adobe Photoshop 2025",
       "Version": "26.2.0.140",
@@ -1543,6 +1831,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\{404581d0-19c1-47ba-bcd3-10178793c239}",
+      "Name": "Intel(R) Chipset Device Software",
+      "Version": "10.1.19600.8418",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\{6b220f45-42ca-435c-95fd-1764cb849122}",
       "Name": "loopMIDI",
       "Version": "1.0.16.27",
@@ -1552,6 +1846,12 @@
       "Id": "ARP\\Machine\\X86\\{889610CC-4337-4BDB-AC3B-4F21806C0BDE}_is1",
       "Name": "UniGetUI",
       "Version": "3.1.5",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\{A09D5493-0D9F-3211-B3BF-DD7ABBB318C1}",
+      "Name": "Microsoft Visual C\u002B\u002B 2008 Redistributable - x86 9.0.21022",
+      "Version": "9.0.21022",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1570,6 +1870,12 @@
       "Id": "ARP\\Machine\\X86\\{E157C5F4-C544-4DCA-85A4-6C415C3E36BC}",
       "Name": "Multi-Function Suite M7206W",
       "Version": "1.0.0.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\{F132AF7F-7BCA-4EDE-8A7C-958108FE7DBC}",
+      "Name": "Realtek Audio Driver",
+      "Version": "6.0.9670.1",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1819,9 +2125,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25031.217.3.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25035.223.3.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25031.217.3.0",
+      "Version": "25035.223.3.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1837,9 +2143,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.ScreenSketch_11.2501.7.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.ScreenSketch_11.2502.18.0_x64__8wekyb3d8bbwe",
       "Name": "\u622A\u56FE\u5DE5\u5177",
-      "Version": "11.2501.7.0",
+      "Version": "11.2502.18.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1963,27 +2269,27 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2412.16.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2501.30.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BB0\u4E8B\u672C",
-      "Version": "11.2412.16.0",
+      "Version": "11.2501.30.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsSoundRecorder_11.2408.6.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsSoundRecorder_11.2502.0.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u5F55\u97F3\u673A",
-      "Version": "11.2408.6.0",
+      "Version": "11.2502.0.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22502.1401.4.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22502.1401.7.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22502.1401.4.0",
+      "Version": "22502.1401.7.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.323.135.14_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.328.1030.37_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.323.135.14",
+      "Version": "2025.328.1030.37",
       "Source": "Microsoft Store"
     },
     {
@@ -1993,9 +2299,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25021.67.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25022.70.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25021.67.0",
+      "Version": "1.25022.70.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2005,21 +2311,27 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.Client.WebExperience_525.5100.30.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.Client.WebExperience_525.5100.40.0_x64__cw5n1h2txyewy",
       "Name": "Windows Web Experience Pack",
-      "Version": "525.5100.30.0",
+      "Version": "525.5100.40.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25021.28.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25022.57.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25021.28.0",
+      "Version": "1.25022.57.0",
       "Source": "Microsoft Store"
     },
     {
       "Id": "MSIX\\NVIDIACorp.NVIDIAControlPanel_8.1.967.0_x64__56jybvy8sckqj",
       "Name": "NVIDIA Control Panel",
       "Version": "8.1.967.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\RealtekSemiconductorCorp.RealtekAudioControl_1.50.323.0_x64__dt26b99r8h8gj",
+      "Name": "Realtek Audio Control",
+      "Version": "1.50.323.0",
       "Source": "Microsoft Store"
     },
     {
