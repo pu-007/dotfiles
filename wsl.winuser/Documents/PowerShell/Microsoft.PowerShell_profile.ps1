@@ -1,4 +1,4 @@
-oh-my-posh init pwsh | Invoke-Expression
+# oh-my-posh init pwsh | Invoke-Expression
 
 function l {
     eza --git -a --icons -l

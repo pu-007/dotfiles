@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# 手动处理 starter 快捷方式
+
 komorebic.exe fetch-app-specific-configuration
 
 # 遍历当前目录下所有 *.winuser 目录
