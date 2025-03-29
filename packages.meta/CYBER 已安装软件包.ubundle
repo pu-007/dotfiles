@@ -1460,7 +1460,7 @@
     {
       "Id": "th-ch.YouTubeMusic",
       "Name": "YouTube Music",
-      "Version": "3.7.5",
+      "Version": "3.8.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2287,9 +2287,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.328.1030.37_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.328.1442.47_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.328.1030.37",
+      "Version": "2025.328.1442.47",
       "Source": "Microsoft Store"
     },
     {

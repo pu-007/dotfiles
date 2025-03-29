@@ -45,6 +45,7 @@ hspell
 hunspell
 hyperfine
 imagemagick
+ipython
 jdk-openjdk
 kio-admin
 lazygit
@@ -79,11 +80,13 @@ prettier
 prettier-plugin-latex
 pulseaudio
 pyside6
+python-black
 python-certifi
 python-dnspython
 python-jieba
 python-keyring
 python-matplotlib
+python-pickleshare
 python-pip
 python-pipx
 python-pylatexenc
@@ -176,6 +179,7 @@ xorg-xwayland
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
+yapf
 yay
 yazi-git
 zathura-git
