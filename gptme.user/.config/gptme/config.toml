@@ -5,6 +5,6 @@ response_preference = "Don't explain basic concepts"
 [env]
 
 OPENAI_BASE_URL = "https://xiaohumini.site/v1"
-MODEL = "local/claude-3-7-sonnet-thinking"
+MODEL = "local/gemini-2.5-pro-exp-03-25"
 
 GPTME_PATCH_RECOVERY = true

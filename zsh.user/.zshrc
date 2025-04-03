@@ -176,8 +176,8 @@ function zvm_after_init() {
     ~/.config/zsh/fzf.zsh
 
   # AI:
-  # gptme for CLI agents <claude-3.7-sonnet>
-  # shelloracle for shell commands completion <claude-3.7-sonnet>
+  # gptme for CLI agents <gemini-2.5-pro-exp-03-25>
+  # shelloracle for shell commands completion <gemini-2.5-pro-exp-03-25>
   # ai-commit for git commit <ollama/qwen2.5/coder>
 
   zinit wait lucid for \
