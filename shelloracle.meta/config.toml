@@ -1,0 +1,7 @@
+[shelloracle]
+provider = "OpenAICompat"
+
+[provider.OpenAICompat]
+api_key = "<yourKey>"
+base_url = "https://xiaohumini.site/v1"
+model = "gemini-2.5-pro-exp-03-25"
