@@ -92,7 +92,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.6.5",
+      "Version": "1.6.7",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -202,7 +202,29 @@
     {
       "Id": "Google.AndroidStudio",
       "Name": "Android Studio",
-      "Version": "2024.3.1.13",
+      "Version": "2024.3.1.14",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Google.Chrome.EXE",
+      "Name": "Google Chrome (EXE)",
+      "Version": "135.0.7049.42",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -246,7 +268,7 @@
     {
       "Id": "JanDeDobbeleer.OhMyPosh",
       "Name": "Oh My Posh",
-      "Version": "25.5.1",
+      "Version": "25.6.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -268,7 +290,7 @@
     {
       "Id": "LGUG2Z.komorebi",
       "Name": "komorebi",
-      "Version": "0.1.34",
+      "Version": "0.1.35",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -354,6 +376,28 @@
       }
     },
     {
+      "Id": "Microsoft.CLRTypesSQLServer.2019",
+      "Name": "Microsoft System CLR Types for SQL Server 2019",
+      "Version": "15.0.2000.5",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Microsoft.DotNet.DesktopRuntime.8",
       "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
       "Version": "8.0.14",
@@ -378,7 +422,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "134.0.3124.85",
+      "Version": "134.0.3124.93",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -400,7 +444,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.035.0223.0003",
+      "Version": "25.041.0303.0002",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -728,6 +772,28 @@
       }
     },
     {
+      "Id": "Microsoft.VisualStudio.2022.Community",
+      "Name": "Visual Studio Community 2022",
+      "Version": "17.13.5",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
       "Version": "1.98.2",
@@ -840,7 +906,7 @@
     {
       "Id": "OBSProject.OBSStudio",
       "Name": "OBS Studio",
-      "Version": "31.0.2",
+      "Version": "31.0.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -886,7 +952,7 @@
     {
       "Id": "Ollama.Ollama",
       "Name": "Ollama",
-      "Version": "0.6.2",
+      "Version": "0.6.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1040,7 +1106,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "5.12.3",
+      "Version": "5.13.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1150,7 +1216,7 @@
     {
       "Id": "XP8BSBGQW2DKS0",
       "Name": "PotPlayer",
-      "Version": "25.02.27.0",
+      "Version": "25.03.13.0",
       "Source": "msstore",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1304,6 +1370,28 @@
       }
     },
     {
+      "Id": "gow",
+      "Name": "Gow",
+      "Version": "0.8.0",
+      "Source": "main",
+      "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "gradle",
       "Name": "Gradle",
       "Version": "8.13",
@@ -1328,7 +1416,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.1.10",
+      "Version": "1.1.17",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1351,6 +1439,28 @@
       "Id": "kotlin",
       "Name": "Kotlin",
       "Version": "2.1.20",
+      "Source": "main",
+      "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "miKTex",
+      "Name": "MiKTex",
+      "Version": "24.1",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -1396,6 +1506,28 @@
       "Name": "Openjdk17",
       "Version": "17.0.2-8",
       "Source": "java",
+      "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "pandoc",
+      "Name": "Pandoc",
+      "Version": "3.6.4",
+      "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
         "SkipHashCheck": false,
@@ -1482,7 +1614,7 @@
     {
       "Id": "uv",
       "Name": "Uv",
-      "Version": "0.6.9",
+      "Version": "0.6.10",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -1550,8 +1682,8 @@
   "incompatible_packages": [
     {
       "Id": "ARP\\Machine\\X64\\411ce4c0-0fbb-5462-84d3-941b5e267ae7",
-      "Name": "flomo 5.25.12",
-      "Version": "5.25.12",
+      "Name": "flomo 5.25.32",
+      "Version": "5.25.32",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1630,6 +1762,12 @@
       "Id": "ARP\\Machine\\X64\\{5E65448D-1EC4-4966-AC8B-804E8A69C642}",
       "Name": "NVIDIA Nsight Compute 2020.1.1",
       "Version": "20.1.1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{6F320B93-EE3C-4826-85E0-ADF79F8D4C61}",
+      "Name": "Microsoft Visual Studio Installer",
+      "Version": "3.13.2069.59209",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1831,6 +1969,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\{1851460E-0E63-4117-B5BA-25A2F045801B}",
+      "Name": "vs_CoreEditorFonts",
+      "Version": "17.7.40001",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\{404581d0-19c1-47ba-bcd3-10178793c239}",
       "Name": "Intel(R) Chipset Device Software",
       "Version": "10.1.19600.8418",
@@ -1840,6 +1984,12 @@
       "Id": "ARP\\Machine\\X86\\{6b220f45-42ca-435c-95fd-1764cb849122}",
       "Name": "loopMIDI",
       "Version": "1.0.16.27",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\{71684ad3-afc2-4a65-9d45-92ef58510f18}",
+      "Name": "Windows Software Development Kit - Windows 10.0.22621.3233",
+      "Version": "10.1.22621.3233",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1879,6 +2029,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\{F1E37C98-16B7-421F-BA33-6C5B5400012A}",
+      "Name": "Windows SDK AddOn",
+      "Version": "10.1.0.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\1c69d6f0-819e-59ee-95e7-e2b930a46bea",
       "Name": "Motrix 1.8.19",
       "Version": "1.8.19",
@@ -1899,13 +2055,13 @@
     {
       "Id": "ARP\\User\\X64\\com.android.vending",
       "Name": "Play \u5546\u5E97",
-      "Version": "45.4.26-31 [0] [PR] 737705585",
+      "Version": "45.5.23-31 [0] [PR] 740399850",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
       "Id": "ARP\\User\\X64\\com.google.android.apps.nbu.files",
       "Name": "\u6587\u4EF6\u6781\u5BA2",
-      "Version": "1.6574.731181640.1-release",
+      "Version": "1.6574.739091442.4-release",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -1917,13 +2073,13 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.gms",
       "Name": "Google Play \u670D\u52A1",
-      "Version": "25.06.32 (190800-724425688)",
+      "Version": "25.10.36 (190800-739992411)",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
       "Id": "ARP\\User\\X64\\com.google.android.googlequicksearchbox",
       "Name": "Google",
-      "Version": "16.10.40.ve.x86_64",
+      "Version": "16.11.37.ve.x86_64",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -1935,7 +2091,7 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.webview",
       "Name": "Android System WebView",
-      "Version": "134.0.6998.39",
+      "Version": "134.0.6998.135",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -2125,9 +2281,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25035.223.3.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25041.303.2.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25035.223.3.0",
+      "Version": "25041.303.2.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2167,9 +2323,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.StorePurchaseApp_22411.1401.1.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.StorePurchaseApp_22502.1401.1.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store \u4F53\u9A8C\u4E3B\u673A",
-      "Version": "22411.1401.1.0",
+      "Version": "22502.1401.1.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2269,9 +2425,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2501.30.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2501.31.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BB0\u4E8B\u672C",
-      "Version": "11.2501.30.0",
+      "Version": "11.2501.31.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2287,9 +2443,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.328.1442.47_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.403.1257.53_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.328.1442.47",
+      "Version": "2025.403.1257.53",
       "Source": "Microsoft Store"
     },
     {
@@ -2332,6 +2488,12 @@
       "Id": "MSIX\\RealtekSemiconductorCorp.RealtekAudioControl_1.50.323.0_x64__dt26b99r8h8gj",
       "Name": "Realtek Audio Control",
       "Version": "1.50.323.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\aistudio.google.com-7E563D5D_1.0.0.0_neutral__7dcaewqngx7tp",
+      "Name": "Google AI Studio",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2403,6 +2565,12 @@
     {
       "Id": "MSIX\\hailuoai.com-DEFE775_1.0.0.0_neutral__cpzp37enjkysp",
       "Name": "\u6D77\u87BA AI",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\ikuuu.one-E3D21224_1.0.0.0_neutral__ba2cd799rmwd0",
+      "Name": "Ikuuu",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
