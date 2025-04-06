@@ -1,16 +1,16 @@
 #Requires AutoHotkey v2.0.2
 #SingleInstance Force
 
-; 按下CapsLock时触发四个修饰键的按下状态
-CapsLock:: {
-    Send "{Ctrl Down}{Shift Down}{LWin Down}{Alt Down}"
-}
-
-; 释放CapsLock时释放所有修饰键
-CapsLock Up:: {
-    Send "{Ctrl Up}{Shift Up}{LWin Up}{Alt Up}"
-}
-
+; CapsLock:: {
+;     Send "{Ctrl Down}{Shift Down}{LWin Down}{Alt Down}"
+;     SetCapsLockState("AlwaysOff") ; 按下CapsLock时触发四个修饰键的按下状态
+; }
+;
+; ; 释放CapsLock时释放所有修饰键
+; CapsLock Up:: {
+;     Send "{Ctrl Up}{Shift Up}{LWin Up}{Alt Up}"
+;     SetCapsLockState("AlwaysOff") ; 按下CapsLock时触发四个修饰键的按下状态
+; }
 ; 定义一个函数来执行komorebi命令
 Komorebic(cmd) {
     RunWait(format("komorebic.exe {}", cmd), , "Hide")
