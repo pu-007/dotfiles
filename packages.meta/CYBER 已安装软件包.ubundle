@@ -92,7 +92,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.6.8",
+      "Version": "1.6.9",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -136,7 +136,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.49.10",
+      "Version": "1.51.10",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -195,8 +195,8 @@
         "Version": ""
       },
       "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
       }
     },
     {
@@ -246,7 +246,7 @@
     {
       "Id": "Google.Chrome.EXE",
       "Name": "Google Chrome (EXE)",
-      "Version": "135.0.7049.42",
+      "Version": "135.0.7049.85",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -268,7 +268,7 @@
     {
       "Id": "Henry\u002B\u002B.MemReduct",
       "Name": "Mem Reduct",
-      "Version": "3.5.1",
+      "Version": "3.5.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -290,7 +290,7 @@
     {
       "Id": "JanDeDobbeleer.OhMyPosh",
       "Name": "Oh My Posh",
-      "Version": "25.6.0",
+      "Version": "25.13.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -422,7 +422,7 @@
     {
       "Id": "Microsoft.DotNet.DesktopRuntime.8",
       "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
-      "Version": "8.0.14",
+      "Version": "8.0.15",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -444,7 +444,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "135.0.3179.54",
+      "Version": "135.0.3179.66",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -466,7 +466,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.041.0303.0002",
+      "Version": "25.046.0310.0005",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -489,28 +489,6 @@
       "Id": "Microsoft.PowerShell",
       "Name": "PowerShell",
       "Version": "7.5.0.0",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "Microsoft.PowerToys",
-      "Name": "PowerToys",
-      "Version": "0.89.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -796,7 +774,7 @@
     {
       "Id": "Microsoft.VisualStudio.2022.Community",
       "Name": "Visual Studio Community 2022",
-      "Version": "17.13.5",
+      "Version": "17.13.6",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -818,7 +796,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.98.2",
+      "Version": "1.99.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -974,7 +952,7 @@
     {
       "Id": "Ollama.Ollama",
       "Name": "Ollama",
-      "Version": "0.6.3",
+      "Version": "0.6.5",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1040,7 +1018,7 @@
     {
       "Id": "Python.Python.3.13",
       "Name": "Python 3.13",
-      "Version": "3.13.2",
+      "Version": "3.13.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1107,6 +1085,28 @@
       "Id": "Rime.Weasel",
       "Name": "Weasel",
       "Version": "0.16.3.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Schniz.fnm",
+      "Name": "Fast Node Manager",
+      "Version": "1.38.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1193,8 +1193,8 @@
     },
     {
       "Id": "Tencent.WeChat.Universal",
-      "Name": "WeChat Beta",
-      "Version": "4.0.3.22",
+      "Name": "WeChat",
+      "Version": "4.0.3.36",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1328,7 +1328,7 @@
     {
       "Id": "Yuanli.uTools",
       "Name": "uTools",
-      "Version": "7.0.0",
+      "Version": "7.1.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1372,7 +1372,7 @@
     {
       "Id": "fzf",
       "Name": "Fzf",
-      "Version": "0.61.0",
+      "Version": "0.61.1",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -1482,7 +1482,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.1.17",
+      "Version": "1.2.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1702,7 +1702,7 @@
     {
       "Id": "uv",
       "Name": "Uv",
-      "Version": "0.6.12",
+      "Version": "0.6.14",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2107,7 +2107,7 @@
     {
       "Id": "ARP\\Machine\\X86\\{D63F7A9D-E379-4AEA-B8F0-BE5C9F6B90D5}_is1",
       "Name": "\u77E5\u7280\u601D\u7EF4\u5BFC\u56FE",
-      "Version": "3.3.2.2248",
+      "Version": "3.3.6.2310",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2149,7 +2149,7 @@
     {
       "Id": "ARP\\User\\X64\\com.android.vending",
       "Name": "Play \u5546\u5E97",
-      "Version": "45.5.23-31 [0] [PR] 740399850",
+      "Version": "45.7.17-31 [0] [PR] 744026385",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -2161,7 +2161,7 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.contactkeys",
       "Name": "Android System Key Verifier",
-      "Version": "1.120.728154432",
+      "Version": "1.136.740371305",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -2173,7 +2173,7 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.googlequicksearchbox",
       "Name": "Google",
-      "Version": "16.11.37.ve.x86_64",
+      "Version": "16.12.40.ve.x86_64",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -2199,12 +2199,6 @@
       "Name": "\u5FAE\u8F6F\u684C\u9762",
       "Version": "6.241202.1.1162300",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
-    },
-    {
-      "Id": "ARP\\User\\X64\\f8941786-352c-5c22-bea5-7886c3ac4a8f",
-      "Name": "JoyTyping",
-      "Version": "1.0.0",
-      "Source": "\u672C\u5730\u7535\u8111"
     },
     {
       "Id": "ARP\\User\\X64\\mark.via.gp",
@@ -2375,21 +2369,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25041.303.2.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25046.310.5.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25041.303.2.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.PowerToys.FileLocksmithContextMenu_0.89.0.0_neutral__8wekyb3d8bbwe",
-      "Name": "PowerToys FileLocksmith Context Menu",
-      "Version": "0.89.0.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.PowerToys.ImageResizerContextMenu_0.89.0.0_neutral__8wekyb3d8bbwe",
-      "Name": "PowerToys ImageResizer Context Menu",
-      "Version": "0.89.0.0",
+      "Version": "25046.310.5.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2507,9 +2489,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.424.1611.0_x86__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.457.2140.0_x64__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.6",
-      "Version": "6000.424.1611.0",
+      "Version": "6000.457.2140.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.457.2140.0_x86__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.6",
+      "Version": "6000.457.2140.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2537,9 +2525,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.405.1230.56_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.412.353.52_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.405.1230.56",
+      "Version": "2025.412.353.52",
       "Source": "Microsoft Store"
     },
     {
@@ -2549,9 +2537,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25022.70.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25031.60.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25022.70.0",
+      "Version": "1.25031.60.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2570,6 +2558,18 @@
       "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25022.57.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
       "Version": "1.25022.57.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\MicrosoftWindows.NarratorScript.Excel_1.0.14.0_neutral__cw5n1h2txyewy",
+      "Name": "Narrator Extension - Excel",
+      "Version": "1.0.14.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\MicrosoftWindows.NarratorScript.Outlook_1.0.8.0_neutral__cw5n1h2txyewy",
+      "Name": "NarratorExtension - Outlook",
+      "Version": "1.0.8.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2768,6 +2768,12 @@
       "Id": "MSIX\\www.pulsemcp.com-61D35EAF_1.0.0.1_neutral__whn2bcg137m8p",
       "Name": "PulseMCP   Keep up-to-date with MCP",
       "Version": "1.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\www.redian.me-CBBC3FB8_1.0.0.0_neutral__fbkr0fv50a0eg",
+      "Name": "\u4ECA\u65E5\u70ED\u70B9 - \u805A\u5408\u6BCF\u65E5\u70ED\u95E8\u3001\u6709\u8DA3\u8D44\u8BAF",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
