@@ -37,8 +37,8 @@
   "manage_rules": [
     {
       "kind": "Title",
-      "id": "Kimi",
-      "match": "Contains"
+      "id": "Kimi - 会推理解析，能深度思考的AI助手",
+      "match": "Equals"
     }
   ],
   "ignore_rules": [
@@ -70,6 +70,11 @@
     {
       "kind": "Title",
       "id": "uTools",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Title",
+      "id": "Arch_quake",
       "matching_strategy": "Equals"
     }
   ],
@@ -114,11 +119,6 @@
     {
       "kind": "Exe",
       "id": "PotPlayerMini64.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Exe",
-      "id": "WindowsTerminal.exe",
       "matching_strategy": "Equals"
     },
     {

@@ -1,6 +1,9 @@
 #Requires AutoHotkey v2.0.2
 #SingleInstance Force
 
+; CapsLock is able to send esc in ClasLockX, so we can use it to send Esc
+$Esc::Capslock
+
 ; CapsLock:: {
 ;     Send "{Ctrl Down}{Shift Down}{LWin Down}{Alt Down}"
 ;     SetCapsLockState("AlwaysOff") ; 按下CapsLock时触发四个修饰键的按下状态
@@ -56,8 +59,7 @@ ReloadKomorebi() {
 <!+r::ReloadKomorebi()
 <!p::Komorebic("toggle-pause")  ; Alt+P 暂停/恢复窗口管理
 
-<!+Enter::Komorebic("promote")
-<!+Esc::Komorebic("close")
+<!+p::Komorebic("promote")
 <!m::Komorebic("minimize")
 <!f::Komorebic("toggle-maximize")
 <!t::Komorebic("toggle-float")
@@ -69,5 +71,8 @@ ReloadKomorebi() {
 <!+]::Komorebic("cycle-move next")
 
 ; Apps
+; 启动终端
 <!Enter::Run("wt.exe")
-<!Esc::Run(format('wt.exe -p Arch -d "{}"', FileRead("C:\Users\zion\.workdir")))
+<!+Enter::Run(format('wt.exe -p Arch -d "{}"', FileRead("C:\Users\zion\.workdir")))
+^+#n::Run("wt.exe -p Arch wsl nvim -c 'read !win32yank.exe -o'")
+; 命令行让 wt 打开/显示 quake 窗口， 指定 profile
