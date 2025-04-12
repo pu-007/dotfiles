@@ -4,16 +4,16 @@
     "actions": 
     [
         {
+            "command": "paste",
+            "id": "User.paste"
+        },
+        {
             "command": 
             {
                 "action": "copy",
                 "singleLine": false
             },
             "id": "User.copy.644BA8F2"
-        },
-        {
-            "command": "paste",
-            "id": "User.paste"
         },
         {
             "command": "find",
@@ -36,6 +36,10 @@
     "keybindings": 
     [
         {
+            "id": "Terminal.QuakeMode",
+            "keys": "alt+`"
+        },
+        {
             "id": null,
             "keys": "ctrl+v"
         },
@@ -50,6 +54,10 @@
         {
             "id": "User.splitPane.A6751878",
             "keys": "alt+shift+d"
+        },
+        {
+            "id": null,
+            "keys": "win+sc(41)"
         }
     ],
     "newTabMenu": 
@@ -123,6 +131,24 @@
                 "hidden": false,
                 "name": "Developer PowerShell for VS 2022",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "colorScheme": "GruvboxMaterialMediumDark",
+                "commandline": "C:\\Windows\\system32\\wsl.exe -d Arch",
+                "cursorShape": "filledBox",
+                "font": 
+                {
+                    "face": "JetXW"
+                },
+                "guid": "{cb49fafb-dc9b-401a-a6ad-df007d849f51}",
+                "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
+                "name": "Arch_quake",
+                "opacity": 70,
+                "pathTranslationStyle": "wsl",
+                "startingDirectory": "~",
+                "suppressApplicationTitle": true,
+                "useAcrylic": true
             }
         ]
     },
