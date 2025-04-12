@@ -4,16 +4,6 @@
 ; CapsLock is able to send esc in ClasLockX, so we can use it to send Esc
 $Esc::Capslock
 
-; CapsLock:: {
-;     Send "{Ctrl Down}{Shift Down}{LWin Down}{Alt Down}"
-;     SetCapsLockState("AlwaysOff") ; 按下CapsLock时触发四个修饰键的按下状态
-; }
-;
-; ; 释放CapsLock时释放所有修饰键
-; CapsLock Up:: {
-;     Send "{Ctrl Up}{Shift Up}{LWin Up}{Alt Up}"
-;     SetCapsLockState("AlwaysOff") ; 按下CapsLock时触发四个修饰键的按下状态
-; }
 ; 定义一个函数来执行komorebi命令
 Komorebic(cmd) {
     RunWait(format("komorebic.exe {}", cmd), , "Hide")
@@ -75,4 +65,3 @@ ReloadKomorebi() {
 <!Enter::Run("wt.exe")
 <!+Enter::Run(format('wt.exe -p Arch -d "{}"', FileRead("C:\Users\zion\.workdir")))
 ^+#n::Run("wt.exe -p Arch wsl nvim -c 'read !win32yank.exe -o'")
-; 命令行让 wt 打开/显示 quake 窗口， 指定 profile
