@@ -39,8 +39,8 @@ add-p-command-line() {
   {
     # Toggle the 'p' prefix on and off
     case "$BUFFER" in
-      p\ *) __add-p-replace-buffer "p" "" ;;
-      *) LBUFFER="p $LBUFFER" ;;
+      p\ *) __add-p-replace-buffer "p -Command" "" ;;
+      *) LBUFFER="p -Command $LBUFFER" ;;
     esac
   } always {
     # Preserve beginning space
