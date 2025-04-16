@@ -112,6 +112,28 @@
       }
     },
     {
+      "Id": "Anysphere.Cursor",
+      "Name": "Cursor",
+      "Version": "0.48.8",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
+      }
+    },
+    {
       "Id": "AutoHotkey.AutoHotkey",
       "Name": "AutoHotkey",
       "Version": "2.0.19",
@@ -310,6 +332,116 @@
       }
     },
     {
+      "Id": "KB2919355",
+      "Name": "KB2919355",
+      "Version": "1.0.20160915",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "KB2919442",
+      "Name": "KB2919442",
+      "Version": "1.0.20160915",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "KB2999226",
+      "Name": "KB2999226",
+      "Version": "1.0.20181019",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "KB3033929",
+      "Name": "KB3033929",
+      "Version": "1.0.5",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "KB3035131",
+      "Name": "KB3035131",
+      "Version": "1.0.3",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "LGUG2Z.komorebi",
       "Name": "komorebi",
       "Version": "0.1.35",
@@ -444,7 +576,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "135.0.3179.66",
+      "Version": "135.0.3179.73",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -466,7 +598,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.046.0310.0005",
+      "Version": "25.051.0317.0003",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -709,6 +841,50 @@
       "Id": "Microsoft.VCRedist.2012.x86",
       "Name": "Microsoft Visual C\u002B\u002B 2012 Redistributable (x86)",
       "Version": "11.0.61030.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Microsoft.VCRedist.2013.x64",
+      "Name": "Microsoft Visual C\u002B\u002B 2013 Redistributable (x64)",
+      "Version": "12.0.40664.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Microsoft.VCRedist.2013.x86",
+      "Name": "Microsoft Visual C\u002B\u002B 2013 Redistributable (x86)",
+      "Version": "12.0.40664.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1038,6 +1214,28 @@
       }
     },
     {
+      "Id": "QL-Win.QuickLook",
+      "Name": "QuickLook",
+      "Version": "3.7.3.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "RamenSoftware.Windhawk",
       "Name": "Windhawk",
       "Version": "1.5.1",
@@ -1082,6 +1280,50 @@
       }
     },
     {
+      "Id": "RedHat.Podman",
+      "Name": "Podman",
+      "Version": "5.4.2",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "RedHat.Podman-Desktop",
+      "Name": "Podman Desktop",
+      "Version": "1.17.2",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Rime.Weasel",
       "Name": "Weasel",
       "Version": "0.16.3.0",
@@ -1104,9 +1346,9 @@
       }
     },
     {
-      "Id": "Schniz.fnm",
-      "Name": "Fast Node Manager",
-      "Version": "1.38.1",
+      "Id": "SimonKnuth.Scanner",
+      "Name": "Scanner",
+      "Version": "3.2.9.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1126,9 +1368,9 @@
       }
     },
     {
-      "Id": "SimonKnuth.Scanner",
-      "Name": "Scanner",
-      "Version": "3.2.9.0",
+      "Id": "SumatraPDF.SumatraPDF",
+      "Name": "SumatraPDF",
+      "Version": "3.5.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1304,6 +1546,28 @@
       }
     },
     {
+      "Id": "XPDNZ8H1ZPXV0W",
+      "Name": "Canva \u53EF\u753B",
+      "Version": "1.106.0",
+      "Source": "msstore",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Xmind.Xmind",
       "Name": "Xmind",
       "Version": "25.1.1061",
@@ -1331,6 +1595,94 @@
       "Version": "7.1.0",
       "Source": "winget",
       "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "capslockx",
+      "Name": "Capslockx",
+      "Version": "1.34.12",
+      "Source": "npm",
+      "ManagerName": "Npm",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "chocolatey-compatibility.extension",
+      "Name": "Chocolatey Compatibility.extension",
+      "Version": "1.0.0",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "chocolatey-core.extension",
+      "Name": "Chocolatey Core.extension",
+      "Version": "1.4.0",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "chocolatey-windowsupdate.extension",
+      "Name": "Chocolatey Windowsupdate.extension",
+      "Version": "1.0.5",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -1612,6 +1964,50 @@
       }
     },
     {
+      "Id": "python",
+      "Name": "Python",
+      "Version": "3.13.3",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "python3",
+      "Name": "Python3",
+      "Version": "3.13.3",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "ripgrep",
       "Name": "Ripgrep",
       "Version": "14.1.1",
@@ -1722,6 +2118,50 @@
       }
     },
     {
+      "Id": "vcredist140",
+      "Name": "Vcredist140",
+      "Version": "14.42.34438.20250221",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "vcredist2015",
+      "Name": "Vcredist2015",
+      "Version": "14.0.24215.20170201",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "voidtools.Everything",
       "Name": "Everything",
       "Version": "1.4.1.1026",
@@ -1770,8 +2210,8 @@
   "incompatible_packages": [
     {
       "Id": "ARP\\Machine\\X64\\411ce4c0-0fbb-5462-84d3-941b5e267ae7",
-      "Name": "flomo 5.25.32",
-      "Version": "5.25.32",
+      "Name": "flomo 5.25.41",
+      "Version": "5.25.41",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1784,6 +2224,12 @@
       "Id": "ARP\\Machine\\X64\\BD5E2A628C2263FAEC66A4BFF2E88B897427E4C3",
       "Name": "Windows \u9A71\u52A8\u7A0B\u5E8F\u5305 - MediaTek Inc. (wdm_usb) Ports  (01/22/2015 3.0.1504.0)",
       "Version": "01/22/2015 3.0.1504.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\FairlightAudioAccelerator_is1",
+      "Name": "Fairlight Audio Accelerator Utility",
+      "Version": "1.0.15",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1807,7 +2253,7 @@
     {
       "Id": "ARP\\Machine\\X64\\O365EduCloudRetail - zh-cn",
       "Name": "Microsoft 365 - zh-cn",
-      "Version": "16.0.18623.20156",
+      "Version": "16.0.18623.20178",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1853,9 +2299,21 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{07A5B5D9-8D8E-4330-B352-1B1038273B1D}",
+      "Name": "DaVinci Resolve Control Panels",
+      "Version": "2.3.2.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{5E65448D-1EC4-4966-AC8B-804E8A69C642}",
       "Name": "NVIDIA Nsight Compute 2020.1.1",
       "Version": "20.1.1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{6403CDE6-B8BE-41A9-9887-8D369B2086E5}",
+      "Name": "Node.js",
+      "Version": "23.11.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1955,9 +2413,21 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{D89568C5-2607-4EB9-8173-3F032A0E6F16}",
+      "Name": "Blackmagic RAW Common Components",
+      "Version": "4.5",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{E8F347A5-A5C0-457C-9682-472A947BBCDC}",
       "Name": "NVIDIA Nsight Visual Studio Edition 2024.3.0.24164",
       "Version": "24.3.0.24164",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{EBDB9BA2-16D8-4BE9-8146-9EF0170F32DB}",
+      "Name": "DaVinci Resolve",
+      "Version": "20.0.00023",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2147,6 +2617,18 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\OKPlus 13.0",
+      "Name": "OKPlus",
+      "Version": "13.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\OneKeyTools10 10.15.1",
+      "Name": "OneKeyTools10",
+      "Version": "10.15.1",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\com.android.vending",
       "Name": "Play \u5546\u5E97",
       "Version": "45.7.17-31 [0] [PR] 744026385",
@@ -2173,7 +2655,7 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.googlequicksearchbox",
       "Name": "Google",
-      "Version": "16.12.40.ve.x86_64",
+      "Version": "16.13.42.ve.x86_64",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -2208,14 +2690,14 @@
     },
     {
       "Id": "ARP\\User\\X64\\{506270E7-E3B5-4157-B53A-3BFFE8E418DB}_is1",
-      "Name": "PixPin \u7248\u672C 1.9.11.8",
-      "Version": "1.9.11.8",
+      "Name": "PixPin \u7248\u672C 2.0.0.3",
+      "Version": "2.0.0.3",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "MSIX\\18184wherewhere.AndroidAppInstaller_0.1.25.0_x64__4v4sx105x6y4r",
+      "Id": "MSIX\\18184wherewhere.AndroidAppInstaller_0.1.26.0_x64__4v4sx105x6y4r",
       "Name": "APK \u5B89\u88C5\u7A0B\u5E8F",
-      "Version": "0.1.25.0",
+      "Version": "0.1.26.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2363,15 +2845,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18623.20156_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18623.20178_neutral__8wekyb3d8bbwe",
       "Name": "OfficePushNotificationsUtility",
-      "Version": "16.0.18623.20156",
+      "Version": "16.0.18623.20178",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25046.310.5.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25051.317.3.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25046.310.5.0",
+      "Version": "25051.317.3.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2525,9 +3007,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.412.353.52_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.416.1131.59_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.412.353.52",
+      "Version": "2025.416.1131.59",
       "Source": "Microsoft Store"
     },
     {
@@ -2555,9 +3037,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25022.57.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25031.45.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25022.57.0",
+      "Version": "1.25031.45.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2588,6 +3070,12 @@
       "Id": "MSIX\\aistudio.google.com-7E563D5D_1.0.0.1_neutral__7dcaewqngx7tp",
       "Name": "Google AI Studio",
       "Version": "1.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\app.napkin.ai-295D8279_1.0.0.0_neutral__5exwnzrt1jmqe",
+      "Name": "napkin",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2756,6 +3244,12 @@
       "Id": "MSIX\\www.autodl.com-6371FD64_1.0.0.1_neutral__txgbva7knp7g8",
       "Name": "AutoDLCould",
       "Version": "1.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\www.coze.cn-2138A990_1.0.0.0_neutral__98c6x0x689bqp",
+      "Name": "\u4E3B\u9875 - \u6263\u5B50",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
