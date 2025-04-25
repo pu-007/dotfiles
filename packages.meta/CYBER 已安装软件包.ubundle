@@ -48,7 +48,7 @@
     {
       "Id": "Adobe.CreativeCloud",
       "Name": "Adobe Creative Cloud",
-      "Version": "6.5.0.348",
+      "Version": "6.6.0.611",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -158,7 +158,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.51.10",
+      "Version": "1.53.7",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -246,7 +246,7 @@
     {
       "Id": "Google.AndroidStudio",
       "Name": "Android Studio",
-      "Version": "2024.3.1.14",
+      "Version": "2024.3.1.15",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -268,7 +268,29 @@
     {
       "Id": "Google.Chrome.EXE",
       "Name": "Google Chrome (EXE)",
-      "Version": "135.0.7049.85",
+      "Version": "135.0.7049.115",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Gyan.FFmpeg",
+      "Name": "FFmpeg",
+      "Version": "7.1.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -291,28 +313,6 @@
       "Id": "Henry\u002B\u002B.MemReduct",
       "Name": "Mem Reduct",
       "Version": "3.5.2",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "JanDeDobbeleer.OhMyPosh",
-      "Name": "Oh My Posh",
-      "Version": "25.13.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -444,7 +444,7 @@
     {
       "Id": "LGUG2Z.komorebi",
       "Name": "komorebi",
-      "Version": "0.1.35",
+      "Version": "0.1.36",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -510,7 +510,7 @@
     {
       "Id": "Microsoft.AppInstaller",
       "Name": "App Installer",
-      "Version": "1.25.340.0",
+      "Version": "1.25.390.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -576,7 +576,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "135.0.3179.73",
+      "Version": "135.0.3179.85",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -598,7 +598,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.051.0317.0003",
+      "Version": "25.056.0324.0003",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -972,7 +972,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.99.2",
+      "Version": "1.99.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1170,50 +1170,6 @@
       }
     },
     {
-      "Id": "Python.Launcher",
-      "Name": "Python Launcher",
-      "Version": "\u003E 3.12.0",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "Python.Python.3.13",
-      "Name": "Python 3.13",
-      "Version": "3.13.3",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "QL-Win.QuickLook",
       "Name": "QuickLook",
       "Version": "3.7.3.0",
@@ -1304,7 +1260,7 @@
     {
       "Id": "RedHat.Podman-Desktop",
       "Name": "Podman Desktop",
-      "Version": "1.17.2",
+      "Version": "1.18.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1390,6 +1346,28 @@
       }
     },
     {
+      "Id": "SunlightStudio.TBTool",
+      "Name": "\u56FE\u5427\u5DE5\u5177\u7BB1",
+      "Version": "2025.02",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
       "Version": "5.13.1",
@@ -1414,7 +1392,7 @@
     {
       "Id": "Tencent.QQ.NT",
       "Name": "QQ",
-      "Version": "9.9.18.33800",
+      "Version": "9.9.19.34467",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1436,7 +1414,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
-      "Version": "4.0.3.36",
+      "Version": "4.0.3.42",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1834,7 +1812,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.2.2",
+      "Version": "1.2.5",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2210,8 +2188,8 @@
   "incompatible_packages": [
     {
       "Id": "ARP\\Machine\\X64\\411ce4c0-0fbb-5462-84d3-941b5e267ae7",
-      "Name": "flomo 5.25.41",
-      "Version": "5.25.41",
+      "Name": "flomo 5.25.42",
+      "Version": "5.25.42",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2239,6 +2217,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\MSOfficePLUS",
+      "Name": "\u5FAE\u8F6FOfficePLUS",
+      "Version": "3.8.0.13669",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\Maxon Cinema 4D 21dfe06799abe2ae3158256cab5a7eedc3b47cf7819357d221ef995f9446c559",
       "Name": "Maxon Cinema 4D 2025",
       "Version": "2025.0.2",
@@ -2253,7 +2237,13 @@
     {
       "Id": "ARP\\Machine\\X64\\O365EduCloudRetail - zh-cn",
       "Name": "Microsoft 365 - zh-cn",
-      "Version": "16.0.18623.20178",
+      "Version": "16.0.18623.20208",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\Pantum M6760DW Series",
+      "Name": "Pantum M6760DW Series",
+      "Version": "2.7.35",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2360,14 +2350,14 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver",
-      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 572.16",
-      "Version": "572.16",
+      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 576.02",
+      "Version": "576.02",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.NvApp",
-      "Name": "NVIDIA \u5E94\u7528\u7A0B\u5E8F 11.0.2.312",
-      "Version": "11.0.2.312",
+      "Name": "NVIDIA \u5E94\u7528\u7A0B\u5E8F 11.0.3.232",
+      "Version": "11.0.3.232",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2378,8 +2368,8 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_FrameViewSdk",
-      "Name": "NVIDIA FrameView SDK 1.5.10819.35301613",
-      "Version": "1.5.10819.35301613",
+      "Name": "NVIDIA FrameView SDK 1.5.10920.35420203",
+      "Version": "1.5.10920.35420203",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2461,9 +2451,9 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\AME_25_1",
+      "Id": "ARP\\Machine\\X86\\AME_25_2",
       "Name": "Adobe Media Encoder 2025",
-      "Version": "25.1",
+      "Version": "25.2",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2479,21 +2469,21 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\FLPR_24_0_7",
+      "Id": "ARP\\Machine\\X86\\FLPR_24_0_8",
       "Name": "Adobe Animate 2024",
-      "Version": "24.0.7",
+      "Version": "24.0.8",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\IDSN_20_1",
+      "Id": "ARP\\Machine\\X86\\IDSN_20_2",
       "Name": "Adobe InDesign 2025",
-      "Version": "20.1",
+      "Version": "20.2",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\ILST_29_2_1",
+      "Id": "ARP\\Machine\\X86\\ILST_29_4",
       "Name": "Adobe Illustrator 2025",
-      "Version": "29.2.1",
+      "Version": "29.4",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2503,9 +2493,9 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\LRCC_8_1",
+      "Id": "ARP\\Machine\\X86\\LRCC_8_2",
       "Name": "Adobe Lightroom",
-      "Version": "8.1",
+      "Version": "8.2",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2515,21 +2505,21 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\PHSP_26_2",
+      "Id": "ARP\\Machine\\X86\\PHSP_26_5",
       "Name": "Adobe Photoshop 2025",
-      "Version": "26.2.0.140",
+      "Version": "26.5.0.16",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\PPRO_25_1",
+      "Id": "ARP\\Machine\\X86\\PPRO_25_2_1",
       "Name": "Adobe Premiere Pro 2025",
-      "Version": "25.1",
+      "Version": "25.2.1",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\UXPW_1_2_0",
+      "Id": "ARP\\Machine\\X86\\UXPW_1_3_0",
       "Name": "UXP WebView Support",
-      "Version": "1.2.0",
+      "Version": "1.3.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2631,7 +2621,7 @@
     {
       "Id": "ARP\\User\\X64\\com.android.vending",
       "Name": "Play \u5546\u5E97",
-      "Version": "45.7.17-31 [0] [PR] 744026385",
+      "Version": "45.9.19-31 [0] [PR] 749105629",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -2655,7 +2645,7 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.googlequicksearchbox",
       "Name": "Google",
-      "Version": "16.13.42.ve.x86_64",
+      "Version": "16.14.40.ve.x86_64",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -2667,7 +2657,7 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.webview",
       "Name": "Android System WebView",
-      "Version": "134.0.6998.135",
+      "Version": "135.0.7049.38",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -2803,9 +2793,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.GamingServices_27.99.7001.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.GamingServices_28.100.8001.0_x64__8wekyb3d8bbwe",
       "Name": "\u6E38\u620F\u670D\u52A1",
-      "Version": "27.99.7001.0",
+      "Version": "28.100.8001.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2845,15 +2835,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18623.20178_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18623.20208_neutral__8wekyb3d8bbwe",
       "Name": "OfficePushNotificationsUtility",
-      "Version": "16.0.18623.20178",
+      "Version": "16.0.18623.20208",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25051.317.3.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25056.324.3.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25051.317.3.0",
+      "Version": "25056.324.3.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2983,9 +2973,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsCamera_2025.2501.1.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsCamera_2025.2502.17.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u76F8\u673A",
-      "Version": "2025.2501.1.0",
+      "Version": "2025.2502.17.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3001,27 +2991,27 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22502.1401.11.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22503.1401.4.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22502.1401.11.0",
+      "Version": "22503.1401.4.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.416.1131.59_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.425.1357.24_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.416.1131.59",
+      "Version": "2025.425.1357.24",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.XboxGamingOverlay_7.225.3271.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.XboxGamingOverlay_7.225.4081.0_x64__8wekyb3d8bbwe",
       "Name": "Game Bar",
-      "Version": "7.225.3271.0",
+      "Version": "7.225.4081.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25031.60.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25032.76.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25031.60.0",
+      "Version": "1.25032.76.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3031,15 +3021,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.Client.WebExperience_525.5100.40.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.Client.WebExperience_525.8401.30.0_x64__cw5n1h2txyewy",
       "Name": "Windows Web Experience Pack",
-      "Version": "525.5100.40.0",
+      "Version": "525.8401.30.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25031.45.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25032.52.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25031.45.0",
+      "Version": "1.25032.52.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3058,6 +3048,24 @@
       "Id": "MSIX\\NVIDIACorp.NVIDIAControlPanel_8.1.967.0_x64__56jybvy8sckqj",
       "Name": "NVIDIA Control Panel",
       "Version": "8.1.967.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\PDFShellExt_4.0.0.0_x64__8wekyb3d8bbwe",
+      "Name": "PDFToolExtension",
+      "Version": "4.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0",
+      "Name": "Python 3.13",
+      "Version": "3.13.1008.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\QQExtension_1.0.0.0_neutral__mgek679tqnc4e",
+      "Name": "QQExtension",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3130,6 +3138,12 @@
       "Id": "MSIX\\dash.302.ai-D2A23C8A_1.0.0.1_neutral__wdamecvg8gp1c",
       "Name": "\u200E302",
       "Version": "1.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\gaojiua.com-F6F9C790_1.0.0.0_neutral__p8zmbnkq70vp4",
+      "Name": "\u7B14\u888B",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
