@@ -24,7 +24,7 @@ bars:
       windows_app_bar: true
     dimensions:
       width: "100%"
-      height: 46
+      height: 40
     padding:
       top: 0
       left: 0
@@ -158,7 +158,7 @@ widgets:
       label_no_window: ""
       label_icon: true
       label_icon_size: 14
-      max_length: 128
+      max_length: 40
       max_length_ellipsis: "..."
       monitor_exclusive: true
   clock:
