@@ -620,7 +620,7 @@
     {
       "Id": "Microsoft.PowerShell",
       "Name": "PowerShell",
-      "Version": "7.5.0.0",
+      "Version": "7.5.1.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1038,7 +1038,7 @@
     {
       "Id": "Microsoft.WindowsTerminal.Preview",
       "Name": "Windows Terminal Preview",
-      "Version": "1.23.10732.0",
+      "Version": "1.23.11132.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1283,6 +1283,28 @@
       "Id": "PyScreeze",
       "Name": "PyScreeze",
       "Version": "1.0.1",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Pygments",
+      "Name": "Pygments",
+      "Version": "2.19.1",
       "Source": "pip",
       "ManagerName": "Pip",
       "InstallationOptions": {
@@ -1722,6 +1744,50 @@
       }
     },
     {
+      "Id": "beautifulsoup4",
+      "Name": "Beautifulsoup4",
+      "Version": "4.13.4",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "bs4",
+      "Name": "Bs4",
+      "Version": "0.0.2",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "capslockx",
       "Name": "Capslockx",
       "Version": "1.34.12",
@@ -1744,9 +1810,53 @@
       }
     },
     {
+      "Id": "certifi",
+      "Name": "Certifi",
+      "Version": "2025.1.31",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "chardet",
       "Name": "Chardet",
       "Version": "5.2.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "charset-normalizer",
+      "Name": "Charset Normalizer",
+      "Version": "3.4.1",
       "Source": "pip",
       "ManagerName": "Pip",
       "InstallationOptions": {
@@ -1964,6 +2074,28 @@
       }
     },
     {
+      "Id": "idna",
+      "Name": "Idna",
+      "Version": "3.10",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
       "Version": "1.2.7",
@@ -1991,6 +2123,50 @@
       "Version": "2.1.20",
       "Source": "main",
       "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "markdown-it-py",
+      "Name": "Markdown It Py",
+      "Version": "3.0.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "mdurl",
+      "Name": "Mdurl",
+      "Version": "0.1.2",
+      "Source": "pip",
+      "ManagerName": "Pip",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -2079,6 +2255,28 @@
       "Version": "3.6.4",
       "Source": "main",
       "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "parse_pip_search",
+      "Name": "Parse Pip Search",
+      "Version": "0.0.1",
+      "Source": "pip",
+      "ManagerName": "Pip",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -2228,6 +2426,50 @@
       }
     },
     {
+      "Id": "requests",
+      "Name": "Requests",
+      "Version": "2.32.3",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "rich",
+      "Name": "Rich",
+      "Version": "14.0.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "ripgrep",
       "Name": "Ripgrep",
       "Version": "14.1.1",
@@ -2294,6 +2536,28 @@
       }
     },
     {
+      "Id": "soupsieve",
+      "Name": "Soupsieve",
+      "Version": "2.7",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "th-ch.YouTubeMusic",
       "Name": "YouTube Music",
       "Version": "3.8.1",
@@ -2316,9 +2580,53 @@
       }
     },
     {
+      "Id": "typing_extensions",
+      "Name": "Typing Extensions",
+      "Version": "4.13.2",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "urllib3",
+      "Name": "Urllib3",
+      "Version": "2.4.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "uv",
       "Name": "Uv",
-      "Version": "0.6.16",
+      "Version": "0.6.17",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2467,7 +2775,7 @@
     {
       "Id": "ARP\\Machine\\X64\\Maxon Cinema 4D 21dfe06799abe2ae3158256cab5a7eedc3b47cf7819357d221ef995f9446c559",
       "Name": "Maxon Cinema 4D 2025",
-      "Version": "2025.0.2",
+      "Version": "2025.1.2",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2687,9 +2995,9 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\AEFT_25_1",
+      "Id": "ARP\\Machine\\X86\\AEFT_25_2_2",
       "Name": "Adobe After Effects 2025",
-      "Version": "25.1",
+      "Version": "25.2.2",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2699,9 +3007,9 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\AUDT_25_0",
+      "Id": "ARP\\Machine\\X86\\AUDT_25_2",
       "Name": "Adobe Audition 2025",
-      "Version": "25.0",
+      "Version": "25.2",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2711,33 +3019,27 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\FLPR_24_0_8",
-      "Name": "Adobe Animate 2024",
-      "Version": "24.0.8",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X86\\IDSN_20_2",
+      "Id": "ARP\\Machine\\X86\\IDSN_20_3",
       "Name": "Adobe InDesign 2025",
-      "Version": "20.2",
+      "Version": "20.3",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\ILST_29_4",
+      "Id": "ARP\\Machine\\X86\\ILST_29_5",
       "Name": "Adobe Illustrator 2025",
-      "Version": "29.4",
+      "Version": "29.5",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\KBRG_15_0_2",
+      "Id": "ARP\\Machine\\X86\\KBRG_15_0_4",
       "Name": "Adobe Bridge 2025",
-      "Version": "15.0.2",
+      "Version": "15.0.4",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\LRCC_8_2",
+      "Id": "ARP\\Machine\\X86\\LRCC_8_3",
       "Name": "Adobe Lightroom",
-      "Version": "8.2",
+      "Version": "8.3",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2747,15 +3049,15 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\PHSP_26_5",
+      "Id": "ARP\\Machine\\X86\\PHSP_26_6",
       "Name": "Adobe Photoshop 2025",
-      "Version": "26.5.0.16",
+      "Version": "26.6.0.14",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\PPRO_25_2_1",
+      "Id": "ARP\\Machine\\X86\\PPRO_25_2_3",
       "Name": "Adobe Premiere Pro 2025",
-      "Version": "25.2.1",
+      "Version": "25.2.3",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3239,9 +3541,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.426.201.14_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.426.955.9_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.426.201.14",
+      "Version": "2025.426.955.9",
       "Source": "Microsoft Store"
     },
     {

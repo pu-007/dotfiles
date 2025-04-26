@@ -16,6 +16,10 @@
             "id": "User.copy.644BA8F2"
         },
         {
+            "command": "find",
+            "id": "User.find"
+        },
+        {
             "command": 
             {
                 "action": "splitPane",
@@ -23,10 +27,6 @@
                 "splitMode": "duplicate"
             },
             "id": "User.splitPane.A6751878"
-        },
-        {
-            "command": "find",
-            "id": "User.find"
         }
     ],
     "compatibility.allowHeadless": true,
@@ -36,16 +36,16 @@
     "keybindings": 
     [
         {
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
+            "id": "Terminal.QuakeMode",
+            "keys": "alt+`"
         },
         {
             "id": null,
             "keys": "ctrl+v"
         },
         {
-            "id": "Terminal.QuakeMode",
-            "keys": "alt+`"
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
         },
         {
             "id": null,
@@ -91,36 +91,7 @@
         "list": 
         [
             {
-                "colorScheme": "GruvboxMaterialMediumLight",
-                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-                "font": 
-                {
-                    "face": "JetXW"
-                },
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
-                "name": "Windows PowerShell"
-            },
-            {
-                "colorScheme": "GruvboxMaterialMediumLight",
-                "commandline": "%SystemRoot%\\System32\\cmd.exe",
-                "experimental.retroTerminalEffect": false,
-                "font": 
-                {
-                    "face": "JetXW"
-                },
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": false,
-                "name": "\u547d\u4ee4\u63d0\u793a\u7b26"
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": false,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            },
-            {
-                "colorScheme": "GruvboxMaterialMediumLight",
+                "colorScheme": "GruvboxMaterialHardDark",
                 "cursorShape": "filledBox",
                 "font": 
                 {
@@ -134,22 +105,23 @@
                 "useAcrylic": true
             },
             {
+                "colorScheme": "GruvboxMaterialHardDark",
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
                 "source": "Windows.Terminal.PowershellCore"
             },
             {
-                "guid": "{f739e9a0-5b59-5a2b-a305-6c9d74dbd289}",
+                "colorScheme": "GruvboxMaterialMediumDark",
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "experimental.retroTerminalEffect": false,
+                "font": 
+                {
+                    "face": "JetXW"
+                },
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "hidden": false,
-                "name": "Developer Command Prompt for VS 2022",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{9bdc2de1-2a6a-51f3-be7a-d52a9847425a}",
-                "hidden": false,
-                "name": "Developer PowerShell for VS 2022",
-                "source": "Windows.Terminal.VisualStudio"
+                "name": "\u547d\u4ee4\u63d0\u793a\u7b26"
             },
             {
                 "colorScheme": "GruvboxMaterialMediumLight",
@@ -174,6 +146,35 @@
                 "hidden": false,
                 "name": "podman-machine-default",
                 "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{f739e9a0-5b59-5a2b-a305-6c9d74dbd289}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{9bdc2de1-2a6a-51f3-be7a-d52a9847425a}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "colorScheme": "GruvboxMaterialMediumLight",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "font": 
+                {
+                    "face": "JetXW"
+                },
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell"
             }
         ]
     },
