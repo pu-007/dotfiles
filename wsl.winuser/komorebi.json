@@ -45,6 +45,11 @@
       "kind": "Title",
       "id": "Kimi - 会推理解析，能深度思考的AI助手",
       "match": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "WeChatAppEx.exe",
+      "match": "Equals"
     }
   ],
   "ignore_rules": [
