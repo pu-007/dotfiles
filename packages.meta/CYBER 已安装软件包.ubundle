@@ -46,28 +46,6 @@
       }
     },
     {
-      "Id": "Adobe.CreativeCloud",
-      "Name": "Adobe Creative Cloud",
-      "Version": "6.6.0.611",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "AdrienAllard.FileConverter",
       "Name": "File Converter",
       "Version": "2.1.0",
@@ -112,28 +90,6 @@
       }
     },
     {
-      "Id": "Anysphere.Cursor",
-      "Name": "Cursor",
-      "Version": "0.48.8",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": true,
-        "IgnoredVersion": "*"
-      }
-    },
-    {
       "Id": "AutoHotkey.AutoHotkey",
       "Name": "AutoHotkey",
       "Version": "2.0.19",
@@ -158,7 +114,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.53.7",
+      "Version": "1.54.4",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -181,6 +137,28 @@
       "Id": "ChuyuTeam.DISM\u002B\u002B",
       "Name": "DISM\u002B\u002B Multi Language",
       "Version": "10.1.1002.2",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "CrystalRich.LockHunter",
+      "Name": "LockHunter",
+      "Version": "3.4.3.146",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -268,7 +246,7 @@
     {
       "Id": "Google.Chrome.EXE",
       "Name": "Google Chrome (EXE)",
-      "Version": "135.0.7049.115",
+      "Version": "136.0.7103.49",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -576,7 +554,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "135.0.3179.85",
+      "Version": "135.0.3179.98",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -598,7 +576,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.056.0324.0003",
+      "Version": "25.060.0330.0003",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1546,7 +1524,7 @@
     {
       "Id": "Tencent.QQ.NT",
       "Name": "QQ",
-      "Version": "9.9.19.34606",
+      "Version": "9.9.19.34740",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1744,9 +1722,53 @@
       }
     },
     {
+      "Id": "asttokens",
+      "Name": "Asttokens",
+      "Version": "3.0.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "beautifulsoup4",
       "Name": "Beautifulsoup4",
       "Version": "4.13.4",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "black",
+      "Name": "Black",
+      "Version": "25.1.0",
       "Source": "pip",
       "ManagerName": "Pip",
       "InstallationOptions": {
@@ -1942,6 +1964,94 @@
       }
     },
     {
+      "Id": "click",
+      "Name": "Click",
+      "Version": "8.1.8",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "colorama",
+      "Name": "Colorama",
+      "Version": "0.4.6",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "decorator",
+      "Name": "Decorator",
+      "Version": "5.2.1",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "executing",
+      "Name": "Executing",
+      "Version": "2.2.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "eza",
       "Name": "Eza",
       "Version": "0.21.2",
@@ -2096,9 +2206,75 @@
       }
     },
     {
+      "Id": "ipython",
+      "Name": "Ipython",
+      "Version": "9.2.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "ipython_pygments_lexers",
+      "Name": "Ipython Pygments Lexers",
+      "Version": "1.1.1",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "jedi",
+      "Name": "Jedi",
+      "Version": "0.19.2",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.2.7",
+      "Version": "1.2.10",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2162,6 +2338,28 @@
       }
     },
     {
+      "Id": "matplotlib-inline",
+      "Name": "Matplotlib Inline",
+      "Version": "0.1.7",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "mdurl",
       "Name": "Mdurl",
       "Version": "0.1.2",
@@ -2189,6 +2387,28 @@
       "Version": "24.1",
       "Source": "main",
       "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "mypy_extensions",
+      "Name": "Mypy Extensions",
+      "Version": "1.1.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -2250,6 +2470,28 @@
       }
     },
     {
+      "Id": "packaging",
+      "Name": "Packaging",
+      "Version": "25.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "pandoc",
       "Name": "Pandoc",
       "Version": "3.6.4",
@@ -2294,6 +2536,50 @@
       }
     },
     {
+      "Id": "parso",
+      "Name": "Parso",
+      "Version": "0.8.4",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "pathspec",
+      "Name": "Pathspec",
+      "Version": "0.12.1",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "pip",
       "Name": "Pip",
       "Version": "25.0.1",
@@ -2316,9 +2602,75 @@
       }
     },
     {
+      "Id": "platformdirs",
+      "Name": "Platformdirs",
+      "Version": "4.3.7",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "prompt_toolkit",
+      "Name": "Prompt Toolkit",
+      "Version": "3.0.51",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "psutil",
       "Name": "Psutil",
       "Version": "7.0.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "pure_eval",
+      "Name": "Pure Eval",
+      "Version": "0.2.3",
       "Source": "pip",
       "ManagerName": "Pip",
       "InstallationOptions": {
@@ -2558,11 +2910,55 @@
       }
     },
     {
+      "Id": "stack-data",
+      "Name": "Stack Data",
+      "Version": "0.6.3",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "th-ch.YouTubeMusic",
       "Name": "YouTube Music",
-      "Version": "3.8.1",
+      "Version": "3.9.0",
       "Source": "winget",
       "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "traitlets",
+      "Name": "Traitlets",
+      "Version": "5.14.3",
+      "Source": "pip",
+      "ManagerName": "Pip",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -2626,7 +3022,7 @@
     {
       "Id": "uv",
       "Name": "Uv",
-      "Version": "0.6.17",
+      "Version": "0.7.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2712,11 +3108,55 @@
       }
     },
     {
+      "Id": "wcwidth",
+      "Name": "Wcwidth",
+      "Version": "0.2.13",
+      "Source": "pip",
+      "ManagerName": "Pip",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "xanderfrangos.twinkletray",
       "Name": "Twinkle Tray",
       "Version": "1.16.6",
       "Source": "winget",
       "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "yapf",
+      "Name": "Yapf",
+      "Version": "0.43.0",
+      "Source": "pip",
+      "ManagerName": "Pip",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -2809,20 +3249,8 @@
       "Source": "Steam"
     },
     {
-      "Id": "ARP\\Machine\\X64\\Steam App 1288310",
-      "Name": "\u70DF\u706B",
-      "Version": "Unknown",
-      "Source": "Steam"
-    },
-    {
       "Id": "ARP\\Machine\\X64\\Steam App 2138710",
       "Name": "Sifu",
-      "Version": "Unknown",
-      "Source": "Steam"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\Steam App 2358720",
-      "Name": "\u9ED1\u795E\u8BDD:\u609F\u7A7A",
       "Version": "Unknown",
       "Source": "Steam"
     },
@@ -2995,12 +3423,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\AEFT_25_2_2",
-      "Name": "Adobe After Effects 2025",
-      "Version": "25.2.2",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X86\\AME_25_2",
       "Name": "Adobe Media Encoder 2025",
       "Version": "25.2",
@@ -3019,51 +3441,15 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\IDSN_20_3",
-      "Name": "Adobe InDesign 2025",
-      "Version": "20.3",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X86\\ILST_29_5",
-      "Name": "Adobe Illustrator 2025",
-      "Version": "29.5",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X86\\KBRG_15_0_4",
       "Name": "Adobe Bridge 2025",
       "Version": "15.0.4",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\LRCC_8_3",
-      "Name": "Adobe Lightroom",
-      "Version": "8.3",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X86\\LenovoUsbDriver",
       "Name": "LenovoUsbDriver 1.1.52",
       "Version": "1.1.52",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X86\\PHSP_26_6",
-      "Name": "Adobe Photoshop 2025",
-      "Version": "26.6.0.14",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X86\\PPRO_25_2_3",
-      "Name": "Adobe Premiere Pro 2025",
-      "Version": "25.2.3",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X86\\UXPW_1_3_0",
-      "Name": "UXP WebView Support",
-      "Version": "1.3.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3171,7 +3557,7 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.apps.nbu.files",
       "Name": "\u6587\u4EF6\u6781\u5BA2",
-      "Version": "1.6574.739091442.4-release",
+      "Version": "1.7223.750851483.1-release",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -3183,13 +3569,13 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.gms",
       "Name": "Google Play \u670D\u52A1",
-      "Version": "25.10.36 (190800-739992411)",
+      "Version": "25.14.34 (190800-748828228)",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
       "Id": "ARP\\User\\X64\\com.google.android.googlequicksearchbox",
       "Name": "Google",
-      "Version": "16.14.40.ve.x86_64",
+      "Version": "16.15.39.ve.x86_64",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -3201,7 +3587,7 @@
     {
       "Id": "ARP\\User\\X64\\com.google.android.webview",
       "Name": "Android System WebView",
-      "Version": "135.0.7049.38",
+      "Version": "135.0.7049.111",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -3219,7 +3605,7 @@
     {
       "Id": "ARP\\User\\X64\\mark.via.gp",
       "Name": "Via",
-      "Version": "6.3.1",
+      "Version": "6.4.0",
       "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
     },
     {
@@ -3385,9 +3771,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25056.324.3.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25060.330.3.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25056.324.3.0",
+      "Version": "25060.330.3.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3397,9 +3783,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.SecHealthUI_1000.26100.1.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.SecHealthUI_1000.27777.1008.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u5B89\u5168\u4E2D\u5FC3",
-      "Version": "1000.26100.1.0",
+      "Version": "1000.27777.1008.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3415,9 +3801,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.StorePurchaseApp_22502.1401.1.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.StorePurchaseApp_22503.1401.2.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store \u4F53\u9A8C\u4E3B\u673A",
-      "Version": "22502.1401.1.0",
+      "Version": "22503.1401.2.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3535,15 +3921,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22503.1401.4.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22503.1401.6.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22503.1401.4.0",
+      "Version": "22503.1401.6.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.426.955.9_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.430.2235.4_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.426.955.9",
+      "Version": "2025.430.2235.4",
       "Source": "Microsoft Store"
     },
     {
