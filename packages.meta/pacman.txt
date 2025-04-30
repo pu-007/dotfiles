@@ -4,6 +4,7 @@ aspell
 base
 base-devel
 bat
+bleachbit
 btop
 chafa
 cifs-utils
@@ -37,7 +38,6 @@ git-filter-repo
 git-lfs
 git-secrets
 github-cli
-gitleaks
 glu
 gnome-keyring
 go
