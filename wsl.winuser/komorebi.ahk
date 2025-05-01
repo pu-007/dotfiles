@@ -44,8 +44,10 @@ Komorebic(cmd) {
 ; 窗口管理选项
 ReloadKomorebi() {
   RunWait("taskkill /F /IM komorebi.exe")
-  RunWait("yasbc reload")
+  RunWait("taskkill /F /IM yasb.exe")
+  RunWait("taskkill /fi 'STATUS eq NOT RESPONDING' /im explorer.exe /f")
   RunWait("komorebic-no-console.exe start --ahk")
+  Run("yasb")
 }
 <!+r::ReloadKomorebi()
 <!p::Komorebic("toggle-pause")  ; Alt+P 暂停/恢复窗口管理
