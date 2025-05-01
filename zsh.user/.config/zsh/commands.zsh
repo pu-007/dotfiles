@@ -22,8 +22,8 @@ alias wsl="wsl.exe"
 alias wg="winget.exe"
 ialias winget="winget.exe"
 alias als="alias | rg "
-ialias gac="ai-commit --PROVIDER=ollama --MODEL=qwen2.5-coder  --commit-type 'Grasp the main points and short, git commit messages only, no other comments'"
-ialias 'gc@'='git reset --soft HEAD^'
+ialias gac="ai-commit --PROVIDER=ollama --MODEL=qwen2.5-coder --emoji --commit-type 'Grasp the main points and short, giving a git commit messages only, no other comments'"
+alias 'gc@'='git reset --soft HEAD^'
 alias gaac="gaa; gac"
 alias c="cmd.exe"
 

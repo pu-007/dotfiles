@@ -85,6 +85,7 @@ pyside6
 python-black
 python-certifi
 python-dnspython
+python-gitpython
 python-jieba
 python-keyring
 python-matplotlib
