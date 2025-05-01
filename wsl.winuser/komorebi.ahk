@@ -46,7 +46,7 @@ ReloadKomorebi() {
   RunWait("taskkill /F /IM komorebi.exe")
   RunWait("taskkill /F /IM yasb.exe")
   RunWait("taskkill /fi 'STATUS eq NOT RESPONDING' /im explorer.exe /f")
-  RunWait("komorebic-no-console.exe start --ahk")
+  Run("komorebic-no-console.exe start --ahk")
   Run("yasb")
 }
 <!+r::ReloadKomorebi()
