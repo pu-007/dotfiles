@@ -22,8 +22,8 @@ alias wsl="wsl.exe"
 alias wg="winget.exe"
 ialias winget="winget.exe"
 alias als="alias | rg "
-ialias gac="git diff --staged | gptme -t shell 'Generate git commit message based on the diff that follows Conventional Commit style, intelligently determine whether to generate a detailed description based on the difference. And then commit.'"
-alias 'gc@'='git reset --soft HEAD^'
+ialias gac="git diff --staged | gptme -t shell 'Commit staged files with a commit message generated based on the diff displayed below. The message must follow the Conventional Commit style and intelligently determine whether to include a detailed description based on the diff.'"
+ialias 'gc@'='git reset --soft HEAD^'
 alias gaac="gaa; gac"
 alias c="cmd.exe"
 
