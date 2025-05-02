@@ -147,8 +147,7 @@ zinit wait'!0' lucid is-snippet nocd for \
 zinit wait lucid is-snippet for \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
-  ~/.config/zsh/powershell.zsh \
-  ~/.config/zsh/shelloracle.zsh
+  ~/.config/zsh/powershell.zsh
 
 function expand-alias-space() {
   [[ $LBUFFER =~ "\<(${(j:|:)baliases})\$" ]]; insertBlank=$?
@@ -175,10 +174,8 @@ function zvm_after_init() {
   zinit wait lucid is-snippet for \
     ~/.config/zsh/fzf.zsh
 
-  # AI:
+  # AI: use gptme for all suggestion
   # gptme for CLI agents <gemini-2.5-pro-exp-03-25>
-  # shelloracle for shell commands completion <gemini-2.5-pro-exp-03-25>
-  # ai-commit for git commit <ollama/qwen2.5/coder>
 
   zinit wait lucid for \
     oldkingOK/pinyin-completion \
