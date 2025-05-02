@@ -8,6 +8,6 @@ repos:
         pass_filenames: true
         stages: [pre-commit]
   - repo: https://github.com/zricethezav/gitleaks
-    rev: v8.25.0
+    rev: v8.25.1
     hooks:
       - id: gitleaks

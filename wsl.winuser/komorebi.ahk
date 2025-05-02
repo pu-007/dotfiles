@@ -40,8 +40,18 @@ Komorebic(cmd) {
 <!-::Komorebic("resize-axis horizontal decrease")  ; Alt+- 横向减少大小
 <!+=::Komorebic("resize-axis vertical increase")  ; Alt+Shift+= 纵向增加大小
 <!+_::Komorebic("resize-axis vertical decrease")  ; Alt+Shift+_ 纵向减少大小
+; Resize the focused window  
+<!+left::Komorebic("resize left decrease")  
+<!+right::Komorebic("resize left increase")  
+<!+up::Komorebic("resize up decrease")  
+<!+down::Komorebic("resize up increase")  
 
 ; 窗口管理选项
+QuickReloadKomorebi() {
+  RunWait("taskkill /F /IM komorebi.exe", , "Hide")
+  Run("komorebic-no-console.exe start --ahk")
+}
+<!r::QuickReloadKomorebi()
 ReloadKomorebi() {
   RunWait("taskkill /F /IM komorebi.exe", , "Hide")
   RunWait("taskkill /F /IM yasb.exe", , "Hide")
@@ -51,21 +61,58 @@ ReloadKomorebi() {
   Run("yasb")
 }
 <!+r::ReloadKomorebi()
-<!p::Komorebic("toggle-pause")  ; Alt+P 暂停/恢复窗口管理
+<!+p::Komorebic("toggle-pause")  ; Alt+P 暂停/恢复窗口管理
 
-<!+p::Komorebic("promote")
-<!m::Komorebic("minimize")
-<!f::Komorebic("toggle-maximize")
+<!p::Komorebic("promote")
+<!m::Komorebic("toggle-maximize")
+<!+m::Komorebic("minimize")
+; Toggle monocle layout (full screen for focused window while preserving tiling)  
+<!f::Komorebic("toggle-monocle")  
 <!t::Komorebic("toggle-float")
 
-<![::Komorebic("cycle-focus previous")
-<!]::Komorebic("cycle-focus next")
+; Cycle Focus (previous/next)  
+<![::Komorebic("cycle-focus previous")  
+<!]::Komorebic("cycle-focus next")  
+  
+; Cycle Move (previous/next)  
+<!{::Komorebic("cycle-move previous")  
+<!}::Komorebic("cycle-move next")  
+  
+; Cycle Layout (previous/next)  
+<!;::Komorebic("cycle-layout previous")  
+<!'::Komorebic("cycle-layout next")  
+  
+; Layout Shortcuts  
+<!,::Komorebic("change-layout vertical-stack")  
+<!<::Komorebic("change-layout right-main-vertical-stack")  
+<!.::Komorebic("change-layout bsp")  
+<!>::Komorebic("change-layout grid")  
+<!/::Komorebic("change-layout ultrawide-vertical-stack")  
+<!?::Komorebic("change-layout horizontal-stack")
 
-<!+[::Komorebic("cycle-move previous")
-<!+]::Komorebic("cycle-move next")
+; Flip the current layout  
+<!+x::Komorebic("flip-layout x")  
+<!+y::Komorebic("flip-layout y")  
 
 ; Apps
 ; 启动终端
 <!Enter::Run("wt.exe")
 <!+Enter::Run(format('wt.exe -p Arch -d "{}"', FileRead("C:\Users\zion\.workdir")))
 ^+#n::Run("wt.exe -p Arch wsl nvim -c 'read !win32yank.exe -o'")
+
+; Focus monitors  
+<!F1::Komorebic("focus-monitor 0")  
+<!F2::Komorebic("focus-monitor 1")  
+  
+; Cycle through monitors  
+<!+F1::Komorebic("cycle-monitor previous")  
+<!+F2::Komorebic("cycle-monitor next")
+
+; Stack windows in a direction  
+<!s::Komorebic("stack left")  
+<!+s::Komorebic("unstack")  
+  
+; Cycle through stacked windows  
+<!PgUp::Komorebic("cycle-stack previous")  
+<!PgDn::Komorebic("cycle-stack next")
+
