@@ -6,17 +6,27 @@
 # ///
 
 from gettext import find
+from typing import Callable
 import subprocess
+import time
 import pyautogui
 import os
 from time import sleep
 
 
-def find_window_by_title(title):
-    app_window = None
-    while not app_window:
+def find_window_by_title(
+    title: str, action: Callable, timeout: float = 5.0
+) -> list | None:
+    app_window = []
+    elapsed_time = 0
+    while not app_window and elapsed_time < timeout:
         app_window = pyautogui.getWindowsWithTitle(title)
-    return app_window
+        if not app_window:
+            sleep(0.5)
+            elapsed_time += 0.5
+    if action:
+        action(app_window)
+    return app_window if app_window else None
 
 
 # 启动应用，支持通过 title 来判断是否成功启动，支持自定义快捷键来隐藏窗口的 hook, lazy 在窗口激活后延迟多少秒发送快捷键
@@ -76,18 +86,6 @@ launch_app(
 )
 
 launch_app(
-    [r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe", "/autorun"],
-    cwd=r"C:\Users\zion\AppData\Local\Programs\QuickLook",
-    delay=1,
-    hook=lambda: launch_app(
-        [r"C:\Users\zion\AppData\Roaming\npm\node_modules\capslockx\CapsLockX.exe"],
-        cwd=r"C:\Users\zion\AppData\Roaming\npm\node_modules\capslockx",
-        hook=lambda: find_window_by_title("Arch")[0].close(),
-        delay=2,
-    ),
-)
-
-launch_app(
     [r"C:\Program Files\Yasb\yasb.exe"],
     cwd=r"C:\Program Files\Yasb",
 )
@@ -99,4 +97,17 @@ launch_app(
 launch_app(
     [r"C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe"],
     cwd=r"C:\Users\zion\AppData\Local\Programs\Ollama",
+)
+
+launch_app(
+    # 先打开 quick look 然后再次打开 capslockx，可以避免空格键无法出发 quicklook，原因未知
+    [r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe", "/autorun"],
+    cwd=r"C:\Users\zion\AppData\Local\Programs\QuickLook",
+    delay=1,
+    hook=lambda: launch_app(
+        [r"C:\Users\zion\AppData\Roaming\npm\node_modules\capslockx\CapsLockX.exe"],
+        cwd=r"C:\Users\zion\AppData\Roaming\npm\node_modules\capslockx",
+        hook=lambda: find_window_by_title("Arch", lambda w: w[0].close()),
+        delay=2,
+    ),
 )
