@@ -2,6 +2,7 @@
 	defaultBranch = main
 [core]
 	filemode = false
+	quotepath = false
 [safe]
 	directory = /mnt/c/Users/zion/AppData/Roaming/Rime
 	directory = /mnt/e/Obsidian/
