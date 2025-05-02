@@ -4,7 +4,11 @@ response_preference = "Fluent and Not cumbersome"
 
 [env]
 
-OPENAI_BASE_URL = "https://xiaohumini.site/v1"
-MODEL = "local/gemini-2.5-flash-preview-04-17"
+#### openai compatible
+# OPENAI_BASE_URL = "https://xiaohumini.site/v1"
+# MODEL = "local/gemini-2.5-flash-preview-04-17"
+#### local
 # OPENAI_BASE_URL = "http://127.0.0.1:11434/v1"
 # MODEL = "local/qwen3:14b"
+#### Gemini
+MODEL = "gemini/gemini-2.5-flash-preview-04-17"
