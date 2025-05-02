@@ -1,6 +1,6 @@
 [prompt]
-about_user = "高中生"
-response_preference = "用中文回答"
+about_user = "A high school student."
+response_preference = "Fluent and Not cumbersome"
 
 [env]
 
