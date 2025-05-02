@@ -1,10 +1,10 @@
 [prompt]
-about_user = "I am a curious human programmer."
-response_preference = "Don't explain basic concepts"
+about_user = "高中生"
+response_preference = "用中文回答"
 
 [env]
 
 OPENAI_BASE_URL = "https://xiaohumini.site/v1"
-MODEL = "local/gemini-2.5-pro-exp-03-25"
-
-GPTME_PATCH_RECOVERY = true
+MODEL = "local/gemini-2.5-flash-preview-04-17"
+# OPENAI_BASE_URL = "http://127.0.0.1:11434/v1"
+# MODEL = "local/qwen3:14b"
