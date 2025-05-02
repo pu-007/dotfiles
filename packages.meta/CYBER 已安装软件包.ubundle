@@ -26,7 +26,7 @@
     {
       "Id": "Adobe.Acrobat.Reader.64-bit",
       "Name": "Adobe Acrobat Reader (64-bit)",
-      "Version": "24.005.20320",
+      "Version": "25.001.20467",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -43,6 +43,28 @@
       "Updates": {
         "UpdatesIgnored": true,
         "IgnoredVersion": "*"
+      }
+    },
+    {
+      "Id": "Adobe.CreativeCloud",
+      "Name": "Adobe Creative Cloud",
+      "Version": "6.6.0.611",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
       }
     },
     {
@@ -1128,7 +1150,7 @@
     {
       "Id": "Ollama.Ollama",
       "Name": "Ollama",
-      "Version": "0.6.6",
+      "Version": "0.6.7",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1326,7 +1348,7 @@
     {
       "Id": "RamenSoftware.Windhawk",
       "Name": "Windhawk",
-      "Version": "1.5.1",
+      "Version": "1.6.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1660,28 +1682,6 @@
       "Name": "Canva \u53EF\u753B",
       "Version": "1.106.0",
       "Source": "msstore",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "Xmind.Xmind",
-      "Name": "Xmind",
-      "Version": "25.1.1061",
-      "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
         "SkipHashCheck": false,
@@ -2167,6 +2167,28 @@
       "Version": "8.14",
       "Source": "main",
       "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "graphite2",
+      "Name": "Graphite2",
+      "Version": "0.0.1",
+      "Source": "pip",
+      "ManagerName": "Pip",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -3022,7 +3044,7 @@
     {
       "Id": "uv",
       "Name": "Uv",
-      "Version": "0.7.0",
+      "Version": "0.7.2",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -3183,12 +3205,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\95bb7581-be83-5b19-8b6f-bb3671bb09f1",
-      "Name": "AskManyAI 0.1.0",
-      "Version": "0.1.0",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X64\\BD5E2A628C2263FAEC66A4BFF2E88B897427E4C3",
       "Name": "Windows \u9A71\u52A8\u7A0B\u5E8F\u5305 - MediaTek Inc. (wdm_usb) Ports  (01/22/2015 3.0.1504.0)",
       "Version": "01/22/2015 3.0.1504.0",
@@ -3204,12 +3220,6 @@
       "Id": "ARP\\Machine\\X64\\Find.Same.Images.OK",
       "Name": "Find.Same.Images.OK",
       "Version": "Unknown",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\MSOfficePLUS",
-      "Name": "\u5FAE\u8F6FOfficePLUS",
-      "Version": "3.8.0.13669",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3261,6 +3271,12 @@
       "Source": "Steam"
     },
     {
+      "Id": "ARP\\Machine\\X64\\TEAM R2R DVREMU2 Manager_is1",
+      "Name": "TEAM R2R DVREMU2 Manager",
+      "Version": "1.0.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{02A39130-2CF3-30CA-8623-30F6071A4221}",
       "Name": "Microsoft Visual C\u002B\u002B 2008 Redistributable - x64 9.0.21022",
       "Version": "9.0.21022",
@@ -3270,6 +3286,12 @@
       "Id": "ARP\\Machine\\X64\\{07A5B5D9-8D8E-4330-B352-1B1038273B1D}",
       "Name": "DaVinci Resolve Control Panels",
       "Version": "2.3.2.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{2C560ED6-D8F3-44EB-8F29-58407E335104}",
+      "Name": "DaVinci Resolve",
+      "Version": "20.0.00023",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3288,6 +3310,12 @@
       "Id": "ARP\\Machine\\X64\\{6F320B93-EE3C-4826-85E0-ADF79F8D4C61}",
       "Name": "Microsoft Visual Studio Installer",
       "Version": "3.13.2069.59209",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{7D134E85-E739-40B1-A2A2-2A6883C088F7}",
+      "Name": "DaVinci Resolve Renderer",
+      "Version": "20.0.00023",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3393,12 +3421,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\{EBDB9BA2-16D8-4BE9-8146-9EF0170F32DB}",
-      "Name": "DaVinci Resolve",
-      "Version": "20.0.00023",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X64\\{ad8a2fa1-06e7-4b0d-927d-6e54b3d31028}",
       "Name": "Microsoft Visual C\u002B\u002B 2005 Redistributable (x64)",
       "Version": "8.0.61000",
@@ -3420,6 +3442,12 @@
       "Id": "ARP\\Machine\\X86\\????",
       "Name": "\u58A8\u5C06\u52A9\u624B 1.0.4.2",
       "Version": "1.0.4.2",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\AEFT_25_2_2",
+      "Name": "Adobe After Effects 2025",
+      "Version": "25.2.2",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3447,9 +3475,39 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\LRCC_8_3",
+      "Name": "Adobe Lightroom",
+      "Version": "8.3",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\LenovoUsbDriver",
       "Name": "LenovoUsbDriver 1.1.52",
       "Version": "1.1.52",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\PHSP_26_6",
+      "Name": "Adobe Photoshop 2025",
+      "Version": "26.6.0.14",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\PPRO_25_2_3",
+      "Name": "Adobe Premiere Pro 2025",
+      "Version": "25.2.3",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\ShanaEncoder",
+      "Name": "ShanaEncoder 7.4",
+      "Version": "7.4",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\UXPW_1_3_0",
+      "Name": "UXP WebView Support",
+      "Version": "1.3.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3927,9 +3985,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.430.2235.4_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.502.350.51_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.430.2235.4",
+      "Version": "2025.502.350.51",
       "Source": "Microsoft Store"
     },
     {
@@ -3978,12 +4036,6 @@
       "Id": "MSIX\\NVIDIACorp.NVIDIAControlPanel_8.1.967.0_x64__56jybvy8sckqj",
       "Name": "NVIDIA Control Panel",
       "Version": "8.1.967.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\PDFShellExt_4.0.0.0_x64__8wekyb3d8bbwe",
-      "Name": "PDFToolExtension",
-      "Version": "4.0.0.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4128,6 +4180,12 @@
       "Id": "MSIX\\newsnow.busiyi.world-55AB118E_1.0.0.1_neutral__sbfdxy9q8bdwj",
       "Name": "NewsNow",
       "Version": "1.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\notebooklm.google.com-1E59E403_1.0.0.0_neutral__5tpj27g3mr7p4",
+      "Name": "NotebookLM",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {

@@ -12,8 +12,11 @@ clinfo
 cmake
 cpp-pinyin
 cuda
+ddcutil
+directx-headers
 dolphin
 eza
+fastfetch
 fcitx5
 fcitx5-chinese-addons
 fcitx5-configtool
@@ -61,7 +64,6 @@ luarocks
 markdownlint-cli2
 mesa-utils
 nano
-neofetch
 neovim
 neovim-qt
 neovim-symlinks
@@ -100,6 +102,7 @@ python-scipy
 python-tariff
 qt5-wayland
 rdma-core
+read-edid
 reflector
 ripgrep
 rsync
