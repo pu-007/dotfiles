@@ -134,6 +134,28 @@
       }
     },
     {
+      "Id": "Baidu.BaiduNetdisk",
+      "Name": "\u767E\u5EA6\u7F51\u76D8",
+      "Version": "7.55.1",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
       "Version": "1.54.4",
@@ -1524,7 +1546,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "5.13.1",
+      "Version": "5.14",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2055,6 +2077,28 @@
       "Id": "eza",
       "Name": "Eza",
       "Version": "0.21.2",
+      "Source": "main",
+      "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "fastfetch",
+      "Name": "Fastfetch",
+      "Version": "2.42.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -3289,9 +3333,9 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\{2C560ED6-D8F3-44EB-8F29-58407E335104}",
+      "Id": "ARP\\Machine\\X64\\{244B085C-3D9D-4034-A393-74C26A98CDFA}",
       "Name": "DaVinci Resolve",
-      "Version": "20.0.00023",
+      "Version": "20.0.00027",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3313,12 +3357,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\{7D134E85-E739-40B1-A2A2-2A6883C088F7}",
-      "Name": "DaVinci Resolve Renderer",
-      "Version": "20.0.00023",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X64\\{8B452603-A2AA-4D3E-A29A-54183ECA515B}",
       "Name": "NVIDIA Nsight Systems 2020.3.2",
       "Version": "20.3.2.6",
@@ -3334,6 +3372,12 @@
       "Id": "ARP\\Machine\\X64\\{9E9798A8-213B-4C9E-AFBA-EBB0F9FF6533}",
       "Name": "NVIDIA Nsight Systems 2024.5.1",
       "Version": "24.5.1.113",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{B2F3D147-AAE7-4BA4-9263-880F857C03BF}",
+      "Name": "DaVinci Resolve Renderer",
+      "Version": "20.0.00027",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3356,8 +3400,8 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver",
-      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 576.02",
-      "Version": "576.02",
+      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 576.28",
+      "Version": "576.28",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3607,66 +3651,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\User\\X64\\com.android.vending",
-      "Name": "Play \u5546\u5E97",
-      "Version": "45.9.19-31 [0] [PR] 749105629",
-      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
-    },
-    {
-      "Id": "ARP\\User\\X64\\com.google.android.apps.nbu.files",
-      "Name": "\u6587\u4EF6\u6781\u5BA2",
-      "Version": "1.7223.750851483.1-release",
-      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
-    },
-    {
-      "Id": "ARP\\User\\X64\\com.google.android.contactkeys",
-      "Name": "Android System Key Verifier",
-      "Version": "1.136.740371305",
-      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
-    },
-    {
-      "Id": "ARP\\User\\X64\\com.google.android.gms",
-      "Name": "Google Play \u670D\u52A1",
-      "Version": "25.14.34 (190800-748828228)",
-      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
-    },
-    {
-      "Id": "ARP\\User\\X64\\com.google.android.googlequicksearchbox",
-      "Name": "Google",
-      "Version": "16.15.39.ve.x86_64",
-      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
-    },
-    {
-      "Id": "ARP\\User\\X64\\com.google.android.partnersetup",
-      "Name": "Google Partner Setup",
-      "Version": "100.652836256",
-      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
-    },
-    {
-      "Id": "ARP\\User\\X64\\com.google.android.webview",
-      "Name": "Android System WebView",
-      "Version": "135.0.7049.111",
-      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
-    },
-    {
-      "Id": "ARP\\User\\X64\\com.google.ar.core",
-      "Name": "Google Play Services for AR",
-      "Version": "1.48.250340293",
-      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
-    },
-    {
-      "Id": "ARP\\User\\X64\\com.microsoft.launcher",
-      "Name": "\u5FAE\u8F6F\u684C\u9762",
-      "Version": "6.241202.1.1162300",
-      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
-    },
-    {
-      "Id": "ARP\\User\\X64\\mark.via.gp",
-      "Name": "Via",
-      "Version": "6.4.0",
-      "Source": "\u5B89\u5353\u5B50\u7CFB\u7EDF"
-    },
-    {
       "Id": "ARP\\User\\X64\\{506270E7-E3B5-4157-B53A-3BFFE8E418DB}_is1",
       "Name": "PixPin \u7248\u672C 2.0.0.3",
       "Version": "2.0.0.3",
@@ -3751,6 +3735,12 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\3AD8A913.49937325EFC59_1.0.15.0_x64__j4r74wbqry4cc",
+      "Name": "BaiduNetdiskService",
+      "Version": "1.0.15.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\AdobeAcrobatDCCoreApp_23.1.0.0_x64__pc75e8sa7ep4e",
       "Name": "Adobe Acrobat",
       "Version": "23.1.0.0",
@@ -3760,6 +3750,12 @@
       "Id": "MSIX\\AdobeNotificationClient_6.0.0.1_x86__enpm4xejd91yc",
       "Name": "Adobe Notification Client",
       "Version": "6.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\BaiduNetdisk.DesktopSyncClient_7.17.5.6_neutral__r5kxaep58dem0",
+      "Name": "\u767E\u5EA6\u7F51\u76D8",
+      "Version": "7.17.5.6",
       "Source": "Microsoft Store"
     },
     {
@@ -3799,6 +3795,18 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\Microsoft.NET.Native.Framework.1.7_1.7.27413.0_x64__8wekyb3d8bbwe",
+      "Name": "Microsoft .Net Native Framework Package 1.7",
+      "Version": "1.7.27413.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.NET.Native.Framework.1.7_1.7.27413.0_x86__8wekyb3d8bbwe",
+      "Name": "Microsoft .Net Native Framework Package 1.7",
+      "Version": "1.7.27413.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\Microsoft.NET.Native.Framework.2.2_2.2.29512.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft .Net Native Framework Package 2.2",
       "Version": "2.2.29512.0",
@@ -3808,6 +3816,18 @@
       "Id": "MSIX\\Microsoft.NET.Native.Framework.2.2_2.2.29512.0_x86__8wekyb3d8bbwe",
       "Name": "Microsoft .Net Native Framework Package 2.2",
       "Version": "2.2.29512.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.NET.Native.Runtime.1.7_1.7.27422.0_x64__8wekyb3d8bbwe",
+      "Name": "Microsoft .Net Native Runtime Package 1.7",
+      "Version": "1.7.27422.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.NET.Native.Runtime.1.7_1.7.27422.0_x86__8wekyb3d8bbwe",
+      "Name": "Microsoft .Net Native Runtime Package 1.7",
+      "Version": "1.7.27422.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3985,9 +4005,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.502.350.51_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.502.951.50_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.502.350.51",
+      "Version": "2025.502.951.50",
       "Source": "Microsoft Store"
     },
     {
@@ -4000,12 +4020,6 @@
       "Id": "MSIX\\Microsoft.YourPhone_1.25032.76.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
       "Version": "1.25032.76.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\MicrosoftCorporationII.WindowsSubsystemForAndroid_2407.40000.4.0_x64__8wekyb3d8bbwe",
-      "Name": "Windows Subsystem for AndroidTM and Android Apps",
-      "Version": "2407.40000.4.0",
       "Source": "Microsoft Store"
     },
     {
