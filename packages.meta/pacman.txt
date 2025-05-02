@@ -14,7 +14,6 @@ cpp-pinyin
 cuda
 ddcutil
 directx-headers
-dolphin
 eza
 fastfetch
 fcitx5
@@ -33,8 +32,7 @@ fontforge
 freerdp2
 fzf
 gdb
-gedit
-gedit-plugins
+gimp
 git
 git-delta
 git-filter-repo
@@ -153,6 +151,7 @@ vcpkg
 vdpauinfo
 vimv-git
 viu
+vlc
 vte3
 vulkan-intel
 vulkan-mesa-layers
