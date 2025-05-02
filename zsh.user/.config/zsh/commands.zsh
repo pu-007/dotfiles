@@ -22,7 +22,7 @@ alias wsl="wsl.exe"
 alias wg="winget.exe"
 ialias winget="winget.exe"
 alias als="alias | rg "
-ialias gac="ai-commit --PROVIDER=ollama --MODEL=qwen2.5-coder --emoji --commit-type 'Grasp the main points and short, giving a git commit messages only, no other comments'"
+ialias gac="git diff --staged | gptme 'commit the staged files and write commit message based on the diff'"
 alias 'gc@'='git reset --soft HEAD^'
 alias gaac="gaa; gac"
 alias c="cmd.exe"
