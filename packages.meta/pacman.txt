@@ -33,6 +33,7 @@ freerdp2
 fzf
 gdb
 gimp
+gimp-help-zh_cn
 git
 git-delta
 git-filter-repo
@@ -61,6 +62,7 @@ lua51
 luarocks
 markdownlint-cli2
 mesa-utils
+moreutils
 nano
 neovim
 neovim-qt
@@ -149,7 +151,7 @@ unzip
 uv
 vcpkg
 vdpauinfo
-vimv-git
+vimv
 viu
 vlc
 vte3
