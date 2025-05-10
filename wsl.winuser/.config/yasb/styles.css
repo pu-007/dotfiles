@@ -52,7 +52,7 @@
   margin-bottom: 10px;
   color: rgba(191, 202, 219, 0.726);
   font-weight: 600;
-  font-family: "JetXW", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "JetXW";
 }
 .power-menu-widget .label {
   color: #f38ba8;
@@ -69,7 +69,7 @@
   height: 120px;
   border-radius: 8px;
   background-color: rgb(41, 42, 58);
-  font-family: "SegoeUI";
+  font-family: "JetXW";
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin: 8px;
@@ -83,7 +83,7 @@
   font-size: 16px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
-  font-family: "JetXW", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "JetXW";
 }
 .power-menu-popup .button .icon {
   font-size: 48px;
@@ -229,7 +229,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 15px;
   font-weight: 400;
-  font-family: "JetXW", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "JetXW";
   padding: 8px;
   color: white;
   background-color: rgba(17, 17, 27, 0.75);
@@ -238,7 +238,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 12px;
   padding: 4px 8px 6px 8px;
-  font-family: "JetXW", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "JetXW";
   color: #9399b2;
   background-color: rgba(17, 17, 27, 0.75);
 }
