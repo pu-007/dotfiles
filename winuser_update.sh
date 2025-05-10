@@ -36,3 +36,5 @@ for dotfiles_dir in ./*.winuser; do
     echo "$dotfiles_dir is not a directory. Skipping."
   fi
 done
+
+./replace_tokens.sh
