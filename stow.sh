@@ -9,14 +9,14 @@ for dir in *.user; do
   fi
 done
 
-# 连接 *.root 目录到 /
-for dir in *.root; do
-  if [ -d "$dir" ]; then
-    # 使用 stow 连接
-    echo sudo stow --adopt -t / "$dir"
-    sudo stow --adopt -t / "$dir"
-  fi
-done
+# # 连接 *.root 目录到 /
+# for dir in *.root; do
+#   if [ -d "$dir" ]; then
+#     # 使用 stow 连接
+#     echo sudo stow --adopt -t / "$dir"
+#     sudo stow --adopt -t / "$dir"
+#   fi
+# done
 
 # 连接 *.winuser 目录到 C:/Users/zion
 # for dir in *.winuser; do

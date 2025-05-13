@@ -118,8 +118,52 @@ zle -N down-line-or-beginning-search
 # In Defense of Maintaining Search History Despite the Absence of FZF-History-Search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
-
-# for fzf-tab
+# FZF Config and fzf-tab
+export FZF_DEFAULT_OPTS="
+--layout=reverse -m
+--style full
+--preview='pistol {}'
+--highlight-line
+--color='
+  fg:#ebdbb2 fg+:#8ec07c
+  bg: bg+:#282828 alt-bg:
+  hl:#689d6a hl+:#8ec07c
+  pointer:#8ec07c marker:#689d6a
+  header:#689d6a
+  spinner:#689d6a info:#8ec07c
+  prompt:#8ec07c query:#ebdbb2
+  border:#928374
+'"
+# CTRL-T - Paste the selected files and directories onto the command-line
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+# :CTRL-R - Paste the selected command from history onto the command-line
+# CTRL-Y to copy the command into clipboard using pbcopy
+export FZF_CTRL_R_OPTS="
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | win32yank.exe -i)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+# ALT-C - cd into the selected directory
+# Print tree structure in the preview window
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target"
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# custom fzf flags
+# NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
+zstyle ':fzf-tab:*' fzf-flags --bind=tab:accept
+# To make fzf-tab follow FZF_DEFAULT_OPTS.
+# switch group using `<` and `>`
+zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:z:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:j:*' fzf-preview 'eza -1 --color=always $realpath'
