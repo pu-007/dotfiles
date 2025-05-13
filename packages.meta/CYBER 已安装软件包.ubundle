@@ -90,9 +90,31 @@
       }
     },
     {
+      "Id": "AltSnap.AltSnap",
+      "Name": "AltSnap",
+      "Version": "1.64",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.7.0",
+      "Version": "1.7.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -268,7 +290,7 @@
     {
       "Id": "Google.AndroidStudio",
       "Name": "Android Studio",
-      "Version": "2024.3.1.15",
+      "Version": "2024.3.2.14",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -598,7 +620,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "136.0.3240.50",
+      "Version": "136.0.3240.64",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -994,7 +1016,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.99.3",
+      "Version": "1.100.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1348,7 +1370,7 @@
     {
       "Id": "QL-Win.QuickLook",
       "Name": "QuickLook",
-      "Version": "4.0.0.0",
+      "Version": "4.0.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1546,7 +1568,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "5.14",
+      "Version": "5.14.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1727,6 +1749,28 @@
       "Version": "7.1.1",
       "Source": "winget",
       "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "altsnap",
+      "Name": "Altsnap",
+      "Version": "1.64.0",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -2164,7 +2208,7 @@
     {
       "Id": "fzf",
       "Name": "Fzf",
-      "Version": "0.61.3",
+      "Version": "0.62.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2558,6 +2602,28 @@
       }
     },
     {
+      "Id": "mulaRahul.Keyviz",
+      "Name": "Keyviz",
+      "Version": "1.0.6",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": ""
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "mypy_extensions",
       "Name": "Mypy Extensions",
       "Version": "1.1.0",
@@ -2582,7 +2648,7 @@
     {
       "Id": "nodejs",
       "Name": "Nodejs",
-      "Version": "23.11.0",
+      "Version": "24.0.1",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -3308,7 +3374,7 @@
     {
       "Id": "uv",
       "Name": "Uv",
-      "Version": "0.7.2",
+      "Version": "0.7.3",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -3730,6 +3796,12 @@
       "Id": "ARP\\Machine\\X86\\AUDT_25_2",
       "Name": "Adobe Audition 2025",
       "Version": "25.2",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\BongoCat",
+      "Name": "BongoCat",
+      "Version": "0.3.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4231,9 +4303,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.510.1300.19_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.513.247.6_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.510.1300.19",
+      "Version": "2025.513.247.6",
       "Source": "Microsoft Store"
     },
     {
