@@ -1,0 +1,7 @@
+[[plugin.deps]]
+use = "pu-007/office"
+rev = "e4428bc"
+hash = "9c68763dd4f2799f7cfee1e9c3e819a9"
+
+[flavor]
+deps = []
