@@ -303,7 +303,7 @@
     {
       "Id": "DuongDieuPhap.ImageGlass",
       "Name": "ImageGlass",
-      "Version": "9.3.0.514",
+      "Version": "9.3.2.520",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -349,7 +349,7 @@
     {
       "Id": "Google.Chrome.EXE",
       "Name": "Google Chrome (EXE)",
-      "Version": "136.0.7103.114",
+      "Version": "137.0.7151.41",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1016,7 +1016,7 @@
     {
       "Id": "Microsoft.VCRedist.2015\u002B.x64",
       "Name": "Microsoft Visual C\u002B\u002B 2015-2022 Redistributable (x64)",
-      "Version": "14.42.34438.0",
+      "Version": "14.44.35112.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1039,7 +1039,7 @@
     {
       "Id": "Microsoft.VCRedist.2015\u002B.x86",
       "Name": "Microsoft Visual C\u002B\u002B 2015-2022 Redistributable (x86)",
-      "Version": "14.42.34433.0",
+      "Version": "14.44.35112.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1062,7 +1062,7 @@
     {
       "Id": "Microsoft.VisualStudio.2022.Community",
       "Name": "Visual Studio Community 2022",
-      "Version": "17.13.7",
+      "Version": "17.14.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1085,7 +1085,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.100.0",
+      "Version": "1.100.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1271,7 +1271,7 @@
     {
       "Id": "Ollama.Ollama",
       "Name": "Ollama",
-      "Version": "0.7.0",
+      "Version": "0.7.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1685,7 +1685,7 @@
     {
       "Id": "Tencent.QQ.NT",
       "Name": "QQ",
-      "Version": "9.9.19.34740",
+      "Version": "9.9.19.35341",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1708,7 +1708,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
-      "Version": "4.0.3.43",
+      "Version": "4.0.5.16",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1966,29 +1966,6 @@
       "Version": "0.0.2",
       "Source": "pip",
       "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": "",
-        "SkipMinorUpdates": false
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "capslockx",
-      "Name": "Capslockx",
-      "Version": "1.34.12",
-      "Source": "npm",
-      "ManagerName": "Npm",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -2285,7 +2262,7 @@
     {
       "Id": "fastfetch",
       "Name": "Fastfetch",
-      "Version": "2.43.0",
+      "Version": "2.44.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2423,7 +2400,7 @@
     {
       "Id": "gradle",
       "Name": "Gradle",
-      "Version": "8.14",
+      "Version": "8.14.1",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2584,7 +2561,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.3.5",
+      "Version": "1.3.11",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2791,7 +2768,7 @@
     {
       "Id": "nodejs",
       "Name": "Nodejs",
-      "Version": "24.0.2",
+      "Version": "24.1.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -3527,7 +3504,7 @@
     {
       "Id": "uv",
       "Name": "Uv",
-      "Version": "0.7.5",
+      "Version": "0.7.7",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -4031,15 +4008,15 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\{6b220f45-42ca-435c-95fd-1764cb849122}",
-      "Name": "loopMIDI",
-      "Version": "1.0.16.27",
+      "Id": "ARP\\Machine\\X86\\{50106ec5-d0ec-4ea1-9e01-e9899676ba3f}",
+      "Name": "Windows Software Development Kit - Windows 10.0.26100.3916",
+      "Version": "10.1.26100.3916",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\{71684ad3-afc2-4a65-9d45-92ef58510f18}",
-      "Name": "Windows Software Development Kit - Windows 10.0.22621.3233",
-      "Version": "10.1.22621.3233",
+      "Id": "ARP\\Machine\\X86\\{6b220f45-42ca-435c-95fd-1764cb849122}",
+      "Name": "loopMIDI",
+      "Version": "1.0.16.27",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4082,6 +4059,12 @@
       "Id": "ARP\\Machine\\X86\\{F1E37C98-16B7-421F-BA33-6C5B5400012A}",
       "Name": "Windows SDK AddOn",
       "Version": "10.1.0.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\{b72d4013-dd88-405a-9f9d-e88c278dcefe}",
+      "Name": "Windows Software Development Kit - Windows 10.0.22621.5040",
+      "Version": "10.1.22621.5040",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4475,9 +4458,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.523.1516.7_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.524.139.56_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.523.1516.7",
+      "Version": "2025.524.139.56",
       "Source": "Microsoft Store"
     },
     {
