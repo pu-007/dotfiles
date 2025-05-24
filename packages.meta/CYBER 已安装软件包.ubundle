@@ -1,5 +1,5 @@
 {
-  "export_version": 2,
+  "export_version": 2.1,
   "packages": [
     {
       "Id": "7zip",
@@ -16,7 +16,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -38,7 +39,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": true,
@@ -60,7 +62,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -82,7 +85,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -104,7 +108,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -126,7 +131,31 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Anki.Anki",
+      "Name": "Anki",
+      "Version": "25.05",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -148,7 +177,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -170,7 +200,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -180,7 +211,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.54.10",
+      "Version": "1.56.6",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -192,7 +223,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -214,7 +246,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -236,7 +269,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -258,7 +292,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": true,
@@ -268,7 +303,7 @@
     {
       "Id": "DuongDieuPhap.ImageGlass",
       "Name": "ImageGlass",
-      "Version": "9.2.0.1208",
+      "Version": "9.3.0.514",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -280,7 +315,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -302,7 +338,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -312,7 +349,7 @@
     {
       "Id": "Google.Chrome.EXE",
       "Name": "Google Chrome (EXE)",
-      "Version": "136.0.7103.93",
+      "Version": "136.0.7103.114",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -324,7 +361,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -346,7 +384,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -368,7 +407,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -390,7 +430,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -412,7 +453,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -434,7 +476,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -456,7 +499,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -478,7 +522,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -500,7 +545,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -522,7 +568,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -544,7 +591,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -566,7 +614,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -588,7 +637,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -598,7 +648,7 @@
     {
       "Id": "Microsoft.DotNet.DesktopRuntime.8",
       "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
-      "Version": "8.0.15",
+      "Version": "8.0.16",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -610,7 +660,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -620,7 +671,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "136.0.3240.64",
+      "Version": "136.0.3240.76",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -632,7 +683,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": true,
@@ -642,7 +694,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.065.0406.0002",
+      "Version": "25.075.0420.0002",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -654,7 +706,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": true,
@@ -676,7 +729,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -698,7 +752,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -720,7 +775,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -742,7 +798,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -764,7 +821,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -786,7 +844,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -808,7 +867,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -830,7 +890,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": true,
@@ -852,7 +913,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": true,
@@ -874,7 +936,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -896,7 +959,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -918,7 +982,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -940,7 +1005,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -962,7 +1028,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -984,7 +1051,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": true,
@@ -994,7 +1062,7 @@
     {
       "Id": "Microsoft.VisualStudio.2022.Community",
       "Name": "Visual Studio Community 2022",
-      "Version": "17.13.6",
+      "Version": "17.13.7",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1006,7 +1074,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1028,7 +1097,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1050,7 +1120,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1072,7 +1143,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1094,7 +1166,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1116,7 +1189,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1138,7 +1212,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": true,
@@ -1162,7 +1237,8 @@
         ],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1184,7 +1260,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1194,7 +1271,7 @@
     {
       "Id": "Ollama.Ollama",
       "Name": "Ollama",
-      "Version": "0.6.8",
+      "Version": "0.7.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1206,7 +1283,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1228,7 +1306,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1250,7 +1329,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1272,7 +1352,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1294,7 +1375,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1316,7 +1398,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1338,7 +1421,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1360,7 +1444,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1382,7 +1467,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1404,7 +1490,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1426,7 +1513,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1448,7 +1536,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1470,7 +1559,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1492,7 +1582,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1514,7 +1605,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1536,7 +1628,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1558,7 +1651,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1568,7 +1662,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "5.14.2",
+      "Version": "5.14.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1580,7 +1674,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1602,7 +1697,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1624,7 +1720,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1646,7 +1743,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1668,7 +1766,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1690,7 +1789,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1714,33 +1814,12 @@
         ],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": true,
         "IgnoredVersion": "*"
-      }
-    },
-    {
-      "Id": "XPDNZ8H1ZPXV0W",
-      "Name": "Canva \u53EF\u753B",
-      "Version": "1.106.0",
-      "Source": "msstore",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
       }
     },
     {
@@ -1758,7 +1837,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1780,7 +1860,31 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "apktool",
+      "Name": "Apktool",
+      "Version": "2.11.1",
+      "Source": "main",
+      "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1802,7 +1906,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1824,7 +1929,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1846,7 +1952,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1868,7 +1975,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1890,7 +1998,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1912,7 +2021,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1934,7 +2044,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1956,7 +2067,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -1978,7 +2090,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2000,7 +2113,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2022,7 +2136,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2044,7 +2159,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2066,7 +2182,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2088,7 +2205,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2110,7 +2228,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2132,7 +2251,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2154,7 +2274,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2164,7 +2285,7 @@
     {
       "Id": "fastfetch",
       "Name": "Fastfetch",
-      "Version": "2.42.0",
+      "Version": "2.43.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2176,7 +2297,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2198,7 +2320,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2220,7 +2343,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2242,7 +2366,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2264,7 +2389,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2286,7 +2412,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2308,7 +2435,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2330,7 +2458,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2352,7 +2481,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2374,7 +2504,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2396,7 +2527,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2418,7 +2550,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2440,7 +2573,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2450,7 +2584,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.2.10",
+      "Version": "1.3.5",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2462,7 +2596,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2472,7 +2607,7 @@
     {
       "Id": "kotlin",
       "Name": "Kotlin",
-      "Version": "2.1.20",
+      "Version": "2.1.21",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2484,7 +2619,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2506,7 +2642,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2528,7 +2665,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2550,7 +2688,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2572,7 +2711,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2594,7 +2734,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2616,7 +2757,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2638,7 +2780,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2648,7 +2791,7 @@
     {
       "Id": "nodejs",
       "Name": "Nodejs",
-      "Version": "24.0.1",
+      "Version": "24.0.2",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2660,7 +2803,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2682,7 +2826,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2704,7 +2849,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2726,7 +2872,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2748,7 +2895,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2770,29 +2918,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "pandoc",
-      "Name": "Pandoc",
-      "Version": "3.6.4",
-      "Source": "main",
-      "ManagerName": "Scoop",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2814,7 +2941,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2836,7 +2964,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2858,7 +2987,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2880,7 +3010,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2902,7 +3033,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2924,7 +3056,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2946,7 +3079,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2968,7 +3102,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -2990,7 +3125,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3012,7 +3148,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3034,7 +3171,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3056,7 +3194,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3078,7 +3217,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3100,7 +3240,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3122,7 +3263,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3144,7 +3286,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3166,7 +3309,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3188,7 +3332,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3210,7 +3355,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3232,7 +3378,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3254,7 +3401,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3276,7 +3424,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3298,7 +3447,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3320,7 +3470,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3342,7 +3493,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3364,7 +3516,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3374,7 +3527,7 @@
     {
       "Id": "uv",
       "Name": "Uv",
-      "Version": "0.7.3",
+      "Version": "0.7.5",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -3386,7 +3539,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3408,11 +3562,12 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
       }
     },
     {
@@ -3430,7 +3585,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3452,7 +3608,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3474,7 +3631,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3484,7 +3642,7 @@
     {
       "Id": "xanderfrangos.twinkletray",
       "Name": "Twinkle Tray",
-      "Version": "1.16.6",
+      "Version": "1.16.7",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -3496,7 +3654,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3518,7 +3677,8 @@
         "CustomParameters": [],
         "PreRelease": false,
         "CustomInstallLocation": "",
-        "Version": ""
+        "Version": "",
+        "SkipMinorUpdates": false
       },
       "Updates": {
         "UpdatesIgnored": false,
@@ -3567,7 +3727,7 @@
     {
       "Id": "ARP\\Machine\\X64\\O365EduCloudRetail - zh-cn",
       "Name": "Microsoft 365 - zh-cn",
-      "Version": "16.0.18730.20142",
+      "Version": "16.0.18730.20168",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3603,6 +3763,12 @@
     {
       "Id": "ARP\\Machine\\X64\\Steam App 588650",
       "Name": "Dead Cells",
+      "Version": "Unknown",
+      "Source": "Steam"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\Steam App 601150",
+      "Name": "Devil May Cry 5",
       "Version": "Unknown",
       "Source": "Steam"
     },
@@ -3645,7 +3811,7 @@
     {
       "Id": "ARP\\Machine\\X64\\{6F320B93-EE3C-4826-85E0-ADF79F8D4C61}",
       "Name": "Microsoft Visual Studio Installer",
-      "Version": "3.13.2069.59209",
+      "Version": "3.14.2075.50697",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3879,7 +4045,7 @@
     {
       "Id": "ARP\\Machine\\X86\\{889610CC-4337-4BDB-AC3B-4F21806C0BDE}_is1",
       "Name": "UniGetUI",
-      "Version": "3.1.5",
+      "Version": "3.2.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4141,27 +4307,27 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18730.20142_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18730.20168_neutral__8wekyb3d8bbwe",
       "Name": "OfficePushNotificationsUtility",
-      "Version": "16.0.18730.20142",
+      "Version": "16.0.18730.20168",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25065.406.2.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25075.420.2.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25065.406.2.0",
+      "Version": "25075.420.2.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.ScreenSketch_11.2502.18.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.ScreenSketch_11.2503.29.0_x64__8wekyb3d8bbwe",
       "Name": "\u622A\u56FE\u5DE5\u5177",
-      "Version": "11.2502.18.0",
+      "Version": "11.2503.29.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.SecHealthUI_1000.27777.1008.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.SecHealthUI_1000.27840.1000.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u5B89\u5168\u4E2D\u5FC3",
-      "Version": "1000.27777.1008.0",
+      "Version": "1000.27840.1000.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4273,9 +4439,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.457.2140.0_x86__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.486.517.0_x64__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.6",
-      "Version": "6000.457.2140.0",
+      "Version": "6000.486.517.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.486.517.0_x86__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.6",
+      "Version": "6000.486.517.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4285,9 +4457,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2501.31.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2503.16.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BB0\u4E8B\u672C",
-      "Version": "11.2501.31.0",
+      "Version": "11.2503.16.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4297,15 +4469,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22503.1401.6.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22504.1401.13.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22503.1401.6.0",
+      "Version": "22504.1401.13.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.513.247.6_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.523.1516.7_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.513.247.6",
+      "Version": "2025.523.1516.7",
       "Source": "Microsoft Store"
     },
     {
@@ -4315,9 +4487,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25032.82.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25042.85.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25032.82.0",
+      "Version": "1.25042.85.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4435,8 +4607,20 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\file.ankichinas.cn-D685C8A9_1.0.0.0_neutral__m6cz7kmxjqdkc",
+      "Name": "Anki\u4E2D\u6587\u7F51-\u4E0B\u8F7DAnki\u5BA2\u6237\u7AEF\u3001\u5361\u724C\u8D44\u6E90-Anki\u4E2D\u6587\u8D44\u6E90\u7F51",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\gaojiua.com-F6F9C790_1.0.0.0_neutral__p8zmbnkq70vp4",
       "Name": "\u7B14\u888B",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\gemini.google.com-D0A8E439_1.0.0.0_neutral__vn3jms8s81tkg",
+      "Name": "Gemini",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },

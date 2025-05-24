@@ -55,6 +55,7 @@ jdk-openjdk
 kio-admin
 lazygit
 less
+libreoffice-fresh
 libva-utils
 libvoikko
 lldb
@@ -74,9 +75,10 @@ npm
 nuspell
 nvidia-settings
 nvidia-utils
-opencl-rusticl-mesa
+opencl-mesa
 orchis-theme
 pandoc-cli
+pistol-bin
 pkgfile
 podman
 podman-compose
@@ -111,9 +113,11 @@ python-tariff
 python-websockets
 python-xattr
 qt5-wayland
+qt6-multimedia
 rdma-core
 read-edid
 reflector
+rhino
 ripgrep
 rsync
 rtmpdump
