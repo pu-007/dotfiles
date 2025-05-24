@@ -5,3 +5,4 @@ git add ./packages.meta/
 git commit -m "pkg update"
 scoop cleanup -a -g -k
 sudo pkgfile --update
+komorebic.exe fetch-app-specific-configuration

@@ -3,8 +3,6 @@
 # 手动处理 starter 快捷方式
 # TODO：考虑使用 hardlink 替代复制
 
-komorebic.exe fetch-app-specific-configuration
-
 # 遍历当前目录下所有 *.winuser 目录
 for dotfiles_dir in ./*.winuser; do
   if [ -d "$dotfiles_dir" ]; then
