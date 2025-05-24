@@ -91,10 +91,6 @@ launch_app(
 )
 
 launch_app(
-    [r"C:\Users\zion\Apps\catime.exe"],
-)
-
-launch_app(
     [r"C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe"],
     cwd=r"C:\Users\zion\AppData\Local\Programs\Ollama",
 )
