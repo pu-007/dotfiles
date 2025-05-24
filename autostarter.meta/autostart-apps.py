@@ -107,6 +107,7 @@ launch_app(
     hook=lambda: launch_app(
         [r"C:\Users\zion\AppData\Roaming\npm\node_modules\capslockx\CapsLockX.exe"],
         cwd=r"C:\Users\zion\AppData\Roaming\npm\node_modules\capslockx",
+        # 会莫名其妙地出现一个 wt 窗口，原因未知，只能自动关闭
         hook=lambda: find_window_by_title("Arch", lambda w: w[0].close()),
         delay=2,
     ),

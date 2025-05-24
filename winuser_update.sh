@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # 手动处理 starter 快捷方式
+# TODO：考虑使用 hardlink 替代复制
 
 komorebic.exe fetch-app-specific-configuration
 
