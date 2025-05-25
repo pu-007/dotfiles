@@ -11,4 +11,4 @@ response_preference = "Fluent and Not cumbersome"
 # OPENAI_BASE_URL = "http://127.0.0.1:11434/v1"
 # MODEL = "local/qwen3:14b"
 #### Gemini
-MODEL = "gemini/gemini-2.5-flash-preview-04-17"
+MODEL = "gemini/gemini-2.5-flash-preview-05-20"
