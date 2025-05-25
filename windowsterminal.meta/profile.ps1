@@ -3,6 +3,10 @@
 # Install-Module PSFzf
 # Install-Module WslInterop
 
+$env:SHELL = "pwsh"
+$env:EDITOR = "vim"
+$env:FZF_DEFAULT_OPTS = "--with-shell='pwsh -Command' --ansi"
+
 ### PSReadLine
 Set-PSReadLineOption -EditMode Vi
 Set-PSReadLineKeyHandler -Chord Ctrl+l -Function ClearScreen
@@ -26,7 +30,7 @@ $commandOverride = [ScriptBlock] { param($Location) Write-Host $Location }
 Set-PsFzfOption -AltCCommand $commandOverride
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Set-PsFzfOption -TabExpansion
-
+Set-PsFzfOption -EnableAliasFuzzyEdit -EnableAliasFuzzyFasd -EnableAliasFuzzyHistory -EnableAliasFuzzyKillProcess -EnableAliasFuzzySetLocation -EnableAliasFuzzyScoop -EnableAliasFuzzySetEverything -EnableAliasFuzzyZLocation -EnableAliasFuzzyGitStatus
 ### WslInterop
 # use native linux commands from WSL instead of GOW.
 Import-WslCommand "yay", "awk", "fd", "find", "grep", "head", "less", "man", "sed", "seq", "ssh", "sudo", "tail", "touch", "vim", "wc", "bat"
@@ -50,4 +54,8 @@ function lT {
 }
 function lt {
     lT -L
+}
+
+function e {
+    vim $args
 }

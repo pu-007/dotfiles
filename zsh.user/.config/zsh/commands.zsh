@@ -25,8 +25,9 @@ alias als="alias | rg "
 ialias gac="~/dotfiles/git_staged_summary.sh --no-color | gptme --non-interactive -t shell 'Commit staged files directly with a commit message generated based on the infomation displayed below. The message must follow the Conventional Commit style(i.e. <type>[optional scope]: <description>) in English and intelligently determine whether to include a detailed description based on the diff. If there are multiple lines, use mutile -m in git args instead of \n in message'"
 alias gdd="~/dotfiles/git_staged_summary.sh"
 ialias 'gc@'='git reset --soft HEAD^'
-alias gaac="gaa; gac"
+alias aic="gaa; gac"
 alias c="cmd.exe"
+alias b="bat"
 
 alias re-cmp=": rm .zcompdump; compinit"
 alias re-cmd="zinit update home--pu--.config--zsh/commands.zsh"
