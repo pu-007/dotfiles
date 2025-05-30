@@ -152,4 +152,21 @@ return {
       size = 15,
     },
   },
+  {
+    "chomosuke/typst-preview.nvim",
+    -- lazy = false, -- or ft = 'typst'
+    ft = "typst",
+    -- version = "1.*",
+    opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+  },
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "tinymist",
+        "ruff",
+        "ty",
+      },
+    },
+  },
 }
