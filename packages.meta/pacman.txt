@@ -77,6 +77,7 @@ nvidia-settings
 nvidia-utils
 opencl-mesa
 orchis-theme
+otf-libertinus
 pandoc-cli
 pistol-bin
 pkgfile
@@ -101,6 +102,7 @@ python-mutagen
 python-pickleshare
 python-pip
 python-pipx
+python-pyautogui
 python-pycryptodome
 python-pycryptodomex
 python-pylatexenc
@@ -160,6 +162,9 @@ tmux
 tokei
 trash-cli
 tree-sitter-cli
+ttf-linux-libertine
+typst
+typstyle
 ueberzugpp
 unrar
 unzip
