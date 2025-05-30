@@ -211,7 +211,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.56.6",
+      "Version": "1.57.8",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -349,7 +349,7 @@
     {
       "Id": "Google.Chrome.EXE",
       "Name": "Google Chrome (EXE)",
-      "Version": "137.0.7151.55",
+      "Version": "137.0.7151.56",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1016,7 +1016,7 @@
     {
       "Id": "Microsoft.VCRedist.2015\u002B.x64",
       "Name": "Microsoft Visual C\u002B\u002B 2015-2022 Redistributable (x64)",
-      "Version": "14.44.35112.1",
+      "Version": "14.44.35208.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1032,14 +1032,14 @@
         "SkipMinorUpdates": false
       },
       "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
       }
     },
     {
       "Id": "Microsoft.VCRedist.2015\u002B.x86",
       "Name": "Microsoft Visual C\u002B\u002B 2015-2022 Redistributable (x86)",
-      "Version": "14.44.35112.1",
+      "Version": "14.44.35208.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1062,7 +1062,7 @@
     {
       "Id": "Microsoft.VisualStudio.2022.Community",
       "Name": "Visual Studio Community 2022",
-      "Version": "17.14.2",
+      "Version": "17.14.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1294,7 +1294,7 @@
     {
       "Id": "Ollama.Ollama",
       "Name": "Ollama",
-      "Version": "0.7.1",
+      "Version": "0.9.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1593,7 +1593,7 @@
     {
       "Id": "RedHat.Podman-Desktop",
       "Name": "Podman Desktop",
-      "Version": "1.18.1",
+      "Version": "1.19.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1754,7 +1754,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
-      "Version": "4.0.5.16",
+      "Version": "4.0.5.18",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -4048,7 +4048,7 @@
     {
       "Id": "ARP\\Machine\\X86\\BongoCat",
       "Name": "BongoCat",
-      "Version": "0.3.0",
+      "Version": "0.5.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4580,9 +4580,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.530.817.42_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.530.1218.3_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.530.817.42",
+      "Version": "2025.530.1218.3",
       "Source": "Microsoft Store"
     },
     {
