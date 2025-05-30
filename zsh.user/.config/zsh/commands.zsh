@@ -40,6 +40,7 @@ alias wws="ssh -i ~/.ssh/cyber.pem root@124.222.106.127"
 # alias re-cursor="p 'irm https://raw.githubusercontent.com/yuaotian/go-cursor-help/refs/heads/master/scripts/run/cursor_win_id_modifier.ps1 | iex'"
 
 alias yai="yay -S"
+alias yas="yay -Ss"
 
 alias -g ...='../..'
 alias -g ....='../../..'

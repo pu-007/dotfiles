@@ -226,6 +226,8 @@ function zvm_after_init() {
     OMZP::sudo \
     OMZP::extract \
     OMZP::cp \
+      atload"bindkey '^X' create_completion"\
+    tom-doerr/zsh_codex \
     OMZP::colored-man-pages \
     OMZP::command-not-found \
     OMZP::copypath \
