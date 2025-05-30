@@ -39,10 +39,12 @@ export DOTFILES_STORE="~/dotfiles"
 
 - B-> A
 
-  - 2.1 quick proceed all files, just run:
-    `fd . c.mnt -H -t f -x python scripts.meta/config_linker.py --no-confirm-deletion {}`
-  - specify files or directories manually:
-    `python scripts.meta/config_linker.py ~/dotfiles/c.mnt/Users/zion/.config <other_files_or_dirs>`
+(speciall file: .wslconfig, komorebi.json)
+
+- 2.1 quick proceed all files, just run:
+  `fd . c.mnt -H -t f -x python scripts.meta/config_linker.py --no-confirm-deletion {}`
+- specify files or directories manually:
+  `python scripts.meta/config_linker.py ~/dotfiles/c.mnt/Users/zion/.config <other_files_or_dirs>`
 
 2. type
 
