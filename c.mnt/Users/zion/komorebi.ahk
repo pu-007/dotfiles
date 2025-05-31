@@ -47,12 +47,14 @@ Komorebic(cmd) {
 <!+down::Komorebic("resize up increase")  
 
 ; 窗口管理选项
-QuickReloadKomorebi() {
+; alt+r 重新加载 komorebi
+ReloadOne() {
   RunWait("taskkill /F /IM komorebi.exe", , "Hide")
   Run("komorebic-no-console.exe start --ahk")
 }
-<!r::QuickReloadKomorebi()
-ReloadKomorebi() {
+<!r::ReloadOne()
+; alt+shift+r 重新加载 komorebi, explorer, yasb
+ReloadTwo() {
   RunWait("taskkill /F /IM komorebi.exe", , "Hide")
   RunWait("taskkill /F /IM yasb.exe", , "Hide")
   RunWait("taskkill /F /IM explorer.exe", ,"Hide")
@@ -60,7 +62,17 @@ ReloadKomorebi() {
   Run("komorebic-no-console.exe start --ahk")
   Run("yasb")
 }
-<!+r::ReloadKomorebi()
+<!+r::ReloadTwo()
+; ctrl+shift+r 重新加载 komorebi, yasb
+ReloadThree() {
+  RunWait("taskkill /F /IM komorebi.exe", , "Hide")
+  RunWait("taskkill /F /IM yasb.exe", , "Hide")
+  Run("komorebic-no-console.exe start --ahk")
+  Run("yasb")
+}
+^+r::ReloadThree()
+; ReloadFour :: ctrl+shift+win+r :: explorer only, defined in UTools
+
 <!+p::Komorebic("toggle-pause")  ; Alt+P 暂停/恢复窗口管理
 
 <!p::Komorebic("promote")
