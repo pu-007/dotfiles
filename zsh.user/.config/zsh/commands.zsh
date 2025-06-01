@@ -23,6 +23,7 @@ alias wg="winget.exe"
 ialias winget="winget.exe"
 alias als="alias | rg "
 alias gdd="$DOTFILE_STORE/scripts.meta/git_staged_summary.sh"
+alias md2pdf="python $DOTFILE_STORE/scripts.meta/md2pdf.py"
 export AI_COMMIT_PROMPT='"Commit staged files directly with a commit message generated based on the infomation displayed below. The message must follow the Conventional Commit style(i.e. <type>[optional scope]: <description>) in English and intelligently determine whether to include a detailed description based on the diff. If there are multiple lines, use mutile -m in git args instead of \n in message"'
 ialias gac="gdd --no-color | gptme --non-interactive -t shell $AI_COMMIT_PROMPT"
 ialias 'gc@'='git reset --soft HEAD^'
@@ -30,8 +31,10 @@ alias aic="gaa; gac"
 alias c="cmd.exe"
 alias b="bat"
 
+
 alias re-cmp=": rm .zcompdump; compinit"
-alias re-cmd="zinit update home--pu--.config--zsh/commands.zsh"
+alias uc="zinit update home--pu--.config--zsh/commands.zsh"
+alias ec="v $DOTFILE_STORE/zsh.user/.config/zsh/commands.zsh"
 alias re-pkg="pacman -Qdqt | xargs yay -Rnsc"
 alias re-cmake-install="sudo xargs rm < install_manifest.txt"
 alias re-mirror="sudo reflector --country China --protocol https --latest 10 --sort rate --save /etc/pacman.d/mirrorlist"

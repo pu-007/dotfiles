@@ -26,6 +26,7 @@ ialias lT="eza --tree -a -I '.git'"
 alias lt="lT -L "
 alias z=j
 alias v="vi"
+alias R="source ~/.zshrc"
 # ialias rv="nvim +'FzfLua oldfiles'"
 ialias rv="cat ~/.config/nvim/recent_files.txt | fzf | xargs nvim"
 ialias e="explorer.exe ."
