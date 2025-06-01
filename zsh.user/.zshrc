@@ -189,6 +189,7 @@ zinit wait'!0' lucid is-snippet nocd for \
   ~/.config/zsh/starship.zsh
 
 zinit wait lucid is-snippet for \
+    atload"alias cd=j" \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
   ~/.config/zsh/powershell.zsh
