@@ -26,7 +26,7 @@ export DOTFILES_STORE="~/dotfiles"
 
   - Plan 2(link files respectively):yield files, create its parents, and stow them respectively
 
-    1.2. Existing Windows Config <==> Symlinks to Arch on Windows
+    1.2. Existing Windows Config <==> Symlinks to Arch on Windows (or copy mode optionally)
 
 - A->B: Windows to WSL stotage
 
