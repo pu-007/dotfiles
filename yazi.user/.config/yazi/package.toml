@@ -1,7 +1,7 @@
 [[plugin.deps]]
-use = "pu-007/office"
-rev = "e4428bc"
-hash = "9c68763dd4f2799f7cfee1e9c3e819a9"
+use = "yazi-rs/plugins:git"
+rev = "63f9650"
+hash = "bf6f074cd41ee33c3360341d168f9733"
 
 [flavor]
 deps = []
