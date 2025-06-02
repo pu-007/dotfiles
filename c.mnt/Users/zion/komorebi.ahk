@@ -119,6 +119,7 @@ ReloadThree() {
 <!Enter::Run("wt.exe")
 <!+Enter::Run(format('wt.exe -p Arch -d "{}"', FileRead("C:\Users\zion\.workdir")))
 ^+#n::Run("wt.exe -p Arch wsl nvim -c 'read !win32yank.exe -o'")
++#e::Run("wsl.exe zsh -ic 'y /mnt/c/Users/zion/Desktop/'")
 
 ; Focus monitors  
 <!F1::Komorebic("focus-monitor 0")  

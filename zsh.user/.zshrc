@@ -18,6 +18,14 @@ ialias() {
   ialiases+=(${args##* })
 }
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 ialias eza="eza -I 'NTUSER.DAT*|ntuser.*'"
 ialias l="eza --git -a --icons -l  "
 ialias la="eza  -a --icons --no-git "
