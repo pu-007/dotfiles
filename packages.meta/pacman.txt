@@ -183,7 +183,7 @@ wayland-utils
 weston
 wget
 win32yank-bin
-wlroots
+wlroots0.18
 wslu
 xdg-desktop-portal
 xdotool

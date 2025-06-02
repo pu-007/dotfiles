@@ -142,7 +142,7 @@
     {
       "Id": "Anki.Anki",
       "Name": "Anki",
-      "Version": "25.05",
+      "Version": "25.02.6",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -416,6 +416,29 @@
       }
     },
     {
+      "Id": "JohnMacFarlane.Pandoc",
+      "Name": "Pandoc",
+      "Version": "3.7.0.2",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "KB2919355",
       "Name": "KB2919355",
       "Version": "1.0.20160915",
@@ -533,7 +556,7 @@
     {
       "Id": "LGUG2Z.komorebi",
       "Name": "komorebi",
-      "Version": "0.1.36",
+      "Version": "0.1.37",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -580,6 +603,29 @@
       "Id": "LocalSend.LocalSend",
       "Name": "LocalSend",
       "Version": "1.17.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "MiKTeX.MiKTeX",
+      "Name": "MiKTeX",
+      "Version": "24.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2630,7 +2676,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.3.12",
+      "Version": "1.4.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2725,29 +2771,6 @@
       "Version": "0.1.2",
       "Source": "pip",
       "ManagerName": "Pip",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": "",
-        "SkipMinorUpdates": false
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "miKTex",
-      "Name": "MiKTex",
-      "Version": "24.1",
-      "Source": "main",
-      "ManagerName": "Scoop",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -3758,15 +3781,15 @@
   "incompatible_packages_info": "Incompatible packages cannot be installed from WingetUI, but they have been listed here for logging purposes.",
   "incompatible_packages": [
     {
-      "Id": "ARP\\Machine\\X64\\411ce4c0-0fbb-5462-84d3-941b5e267ae7",
-      "Name": "flomo 5.25.51",
-      "Version": "5.25.51",
+      "Id": "ARP\\Machine\\X64\\402a107a-9bf0-5290-9a9d-68f93d8798e3",
+      "Name": "doc2x 1.5.3",
+      "Version": "1.5.3",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\BD5E2A628C2263FAEC66A4BFF2E88B897427E4C3",
-      "Name": "Windows \u9A71\u52A8\u7A0B\u5E8F\u5305 - MediaTek Inc. (wdm_usb) Ports  (01/22/2015 3.0.1504.0)",
-      "Version": "01/22/2015 3.0.1504.0",
+      "Id": "ARP\\Machine\\X64\\411ce4c0-0fbb-5462-84d3-941b5e267ae7",
+      "Name": "flomo 5.25.52",
+      "Version": "5.25.52",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3818,12 +3841,6 @@
       "Source": "Steam"
     },
     {
-      "Id": "ARP\\Machine\\X64\\Steam App 2138710",
-      "Name": "Sifu",
-      "Version": "Unknown",
-      "Source": "Steam"
-    },
-    {
       "Id": "ARP\\Machine\\X64\\Steam App 3117820",
       "Name": "\u82CF\u4E39\u7684\u6E38\u620F",
       "Version": "Unknown",
@@ -3845,6 +3862,12 @@
       "Id": "ARP\\Machine\\X64\\TEAM R2R DVREMU2 Manager_is1",
       "Name": "TEAM R2R DVREMU2 Manager",
       "Version": "1.0.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\f8941786-352c-5c22-bea5-7886c3ac4a8f",
+      "Name": "MinerU",
+      "Version": "0.5.3",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4070,12 +4093,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\LenovoUsbDriver",
-      "Name": "LenovoUsbDriver 1.1.52",
-      "Version": "1.1.52",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X86\\PHSP_26_6",
       "Name": "Adobe Photoshop 2025",
       "Version": "26.6.0.14",
@@ -4136,21 +4153,9 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\{A83692D5-3E9B-4E95-9E7E-B5DF7536C09D}_is1",
-      "Name": "AnyTXT Searcher 1.3",
-      "Version": "Unknown",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X86\\{D63F7A9D-E379-4AEA-B8F0-BE5C9F6B90D5}_is1",
       "Name": "\u77E5\u7280\u601D\u7EF4\u5BFC\u56FE",
       "Version": "3.3.6.2310",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X86\\{E157C5F4-C544-4DCA-85A4-6C415C3E36BC}",
-      "Name": "Multi-Function Suite M7206W",
-      "Version": "1.0.0.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4580,9 +4585,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.530.1218.3_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.601.2427.12_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.530.1218.3",
+      "Version": "2025.601.2427.12",
       "Source": "Microsoft Store"
     },
     {
@@ -4604,9 +4609,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25032.52.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25042.38.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25032.52.0",
+      "Version": "1.25042.38.0",
       "Source": "Microsoft Store"
     },
     {
