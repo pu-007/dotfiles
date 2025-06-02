@@ -3,6 +3,7 @@
   "app_specific_configuration_path": "$Env:USERPROFILE/applications.json",
   "window_hiding_behaviour": "Cloak",
   "cross_monitor_move_behaviour": "Insert",
+  "mouse_follows_focus": true,
   "default_workspace_padding": 8,
   "default_container_padding": 8,
   "border": true,
@@ -13,6 +14,12 @@
     "stack": "#458588",
     "monocle": "#b16286",
     "unfocused": "#808080"
+  },
+  "animation": {
+    "enabled": true,
+    "duration": 250,
+    "fps": 180,
+    "style": "EaseOutSine"
   },
   "monitors": [
     {

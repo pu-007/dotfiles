@@ -53,22 +53,20 @@ ReloadOne() {
   Run("komorebic-no-console.exe start --ahk")
 }
 <!r::ReloadOne()
-; alt+shift+r 重新加载 komorebi, explorer, yasb
+; alt+shift+r 重新加载 komorebi, explorer, komorebi-bar
 ReloadTwo() {
   RunWait("taskkill /F /IM komorebi.exe", , "Hide")
-  RunWait("taskkill /F /IM yasb.exe", , "Hide")
-  RunWait("taskkill /F /IM explorer.exe", ,"Hide")
-  Run("explorer.exe")
-  Run("komorebic-no-console.exe start --ahk")
-  Run("yasb")
+  RunWait("taskkill /F /IM komorebi-bar.exe", , "Hide")
+  Run("komorebic-no-console.exe start --ahk --bar")
 }
 <!+r::ReloadTwo()
-; ctrl+shift+r 重新加载 komorebi, yasb
+; ctrl+shift+r 重新加载 komorebi, komorebi-bar, explorer
 ReloadThree() {
   RunWait("taskkill /F /IM komorebi.exe", , "Hide")
-  RunWait("taskkill /F /IM yasb.exe", , "Hide")
-  Run("komorebic-no-console.exe start --ahk")
-  Run("yasb")
+  RunWait("taskkill /F /IM komorebi-bar.exe", , "Hide")
+  RunWait("taskkill /F /IM explorer.exe", ,"Hide")
+  Run("explorer.exe")
+  Run("komorebic-no-console.exe start --ahk --bar")
 }
 ^+r::ReloadThree()
 ; ReloadFour :: ctrl+shift+win+r :: explorer only, defined in UTools

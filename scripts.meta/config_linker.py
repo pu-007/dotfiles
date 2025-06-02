@@ -14,7 +14,8 @@ DEFAULT_WSL_DISTRO_NAME = "Arch"  # Change if your distro name is different
 # --- Helper Functions for Command Execution ---
 
 
-def _run_wsl_command_helper(command_parts: list, dry_run: bool = False) -> bool:
+def _run_wsl_command_helper(command_parts: list,
+                            dry_run: bool = False) -> bool:
     """
     Executes a command directly in WSL (e.g., rm -rf).
     Returns True on success, False on failure.
@@ -22,7 +23,9 @@ def _run_wsl_command_helper(command_parts: list, dry_run: bool = False) -> bool:
     # command_parts should be a list, e.g., ['rm', '-rf', '/path/to/target']
     print(f"  INTERNAL WSL CMD: {' '.join(command_parts)}")
     if dry_run:
-        print("    (DRY_RUN _run_wsl_command_helper) Command not actually executed.")
+        print(
+            "    (DRY_RUN _run_wsl_command_helper) Command not actually executed."
+        )
         return True  # Simulate success for dry run
 
     try:
@@ -38,12 +41,13 @@ def _run_wsl_command_helper(command_parts: list, dry_run: bool = False) -> bool:
         if result.stdout.strip():
             print(f"    STDOUT: {result.stdout.strip()}")
         if result.stderr.strip():
-            print(
-                f"    STDERR: {result.stderr.strip()}"
-            )  # rm -rf usually silent on success
+            print(f"    STDERR: {result.stderr.strip()}"
+                  )  # rm -rf usually silent on success
 
         if result.returncode != 0:
-            print(f"    WSL command failed with return code: {result.returncode}")
+            print(
+                f"    WSL command failed with return code: {result.returncode}"
+            )
             return False
         return True
     except Exception as e:
@@ -53,9 +57,8 @@ def _run_wsl_command_helper(command_parts: list, dry_run: bool = False) -> bool:
         return False
 
 
-def _run_windows_cmd_via_pwsh_helper(
-    cmd_command_parts_list: list, dry_run: bool = False
-) -> bool:
+def _run_windows_cmd_via_pwsh_helper(cmd_command_parts_list: list,
+                                     dry_run: bool = False) -> bool:
     """
     Executes a Windows CMD command (like mklink) via PowerShell from WSL.
     cmd_command_parts_list should be a list for cmd, e.g., ['mklink', '/D', '"C:\\Link"', '"\\\\Target"']
@@ -98,7 +101,9 @@ def _run_windows_cmd_via_pwsh_helper(
             print(f"    STDERR: {result.stderr.strip()}")
 
         if result.returncode != 0:
-            print(f"    Windows command failed with return code: {result.returncode}")
+            print(
+                f"    Windows command failed with return code: {result.returncode}"
+            )
             return False
         # Assuming return code 0 means success for mklink for now
         return True
@@ -167,19 +172,19 @@ def create_windows_symlink(
     windows_item_via_mnt_c = Path("/mnt/c") / relative_path
     try:
         windows_item_via_mnt_c.parent.mkdir(
-            parents=True, exist_ok=True
-        )  # Ensure parent directory exists
+            parents=True, exist_ok=True)  # Ensure parent directory exists
     except OSError:  # when the parent directory already exists, this will raise an OSError because os does not support detection of WSL symlinks
         ...
     windows_item_via_mnt_c_str = str(windows_item_via_mnt_c)
-    print(f"  Equivalent Windows item (via /mnt/c): {windows_item_via_mnt_c_str}")
+    print(
+        f"  Equivalent Windows item (via /mnt/c): {windows_item_via_mnt_c_str}"
+    )
 
     # Deletion logic
     path_to_delete_obj = Path(windows_item_via_mnt_c_str)
     try:
-        item_exists_on_windows_side = (
-            path_to_delete_obj.exists() or path_to_delete_obj.is_symlink()
-        )
+        item_exists_on_windows_side = (path_to_delete_obj.exists()
+                                       or path_to_delete_obj.is_symlink())
     except OSError:  # syslink to WSL alread exists in Windows, however, os.stat fails to detect with OSError
         item_exists_on_windows_side = True
 
@@ -189,9 +194,8 @@ def create_windows_symlink(
                 f"    (DRY_RUN) Would target '{windows_item_via_mnt_c_str}' for deletion."
             )
         else:  # Not dry_run and item exists, so consider actual deletion
-            if (
-                confirm_deletion and path_to_delete_obj.is_dir()
-            ):  # Prompt for any directory (real or symlink to dir)
+            if (confirm_deletion and path_to_delete_obj.is_dir()
+                ):  # Prompt for any directory (real or symlink to dir)
                 user_confirm = input(
                     f"    CONFIRM DELETION of directory '{windows_item_via_mnt_c_str}' on /mnt/c? (yes/no): "
                 ).lower()
@@ -208,9 +212,11 @@ def create_windows_symlink(
             # So, proceed with actual deletion attempt.
             # The path_to_delete_obj string is fine as is for rm -rf argument
             if not _run_wsl_command_helper(
-                ["rm", "-rf", windows_item_via_mnt_c_str], dry_run=False
-            ):  # Actual deletion attempt
-                print(f"  ERROR: Deletion of '{windows_item_via_mnt_c_str}' failed.")
+                ["rm", "-rf", windows_item_via_mnt_c_str],
+                    dry_run=False):  # Actual deletion attempt
+                print(
+                    f"  ERROR: Deletion of '{windows_item_via_mnt_c_str}' failed."
+                )
                 return False  # Hard failure
     else:  # Item does not exist on /mnt/c
         print(
@@ -223,28 +229,39 @@ def create_windows_symlink(
     # 2. Determine paths for mklink
     windows_link_name_on_c_drive = Path("C:/") / relative_path
     # Ensure backslashes for CMD, and quote for mklink command construction
-    windows_link_name_str_for_cmd = str(windows_link_name_on_c_drive).replace("/", "\\")
+    windows_link_name_str_for_cmd = str(windows_link_name_on_c_drive).replace(
+        "/", "\\")
 
     wsl_item_abs_path_for_unc = str(wsl_item_path).replace(
-        "/", "\\"
-    )  # wsl_item_path is already absolute & resolved
+        "/", "\\")  # wsl_item_path is already absolute & resolved
     wsl_network_target_str = f"\\\\wsl$\\{wsl_distro_name}{wsl_item_abs_path_for_unc}"
     # For modern Windows: f"\\\\wsl.localhost\\{wsl_distro_name}{wsl_item_abs_path_for_unc}" also works
 
     print(f'  Windows link name to create: "{windows_link_name_str_for_cmd}"')
     print(f'  Windows link target (WSL UNC): "{wsl_network_target_str}"')
 
-    mklink_cmd_parts = ["mklink"]
-    if wsl_item_path.is_dir():
-        mklink_cmd_parts.append("/D")
+    # mklink_cmd_parts = ["mklink"]
+    # if wsl_item_path.is_dir():
+    #     mklink_cmd_parts.append("/D")
+    #
+    # # Paths for mklink must be quoted if they contain spaces.
+    # # The f-string with \"...\" handles this when creating the command parts.
+    # mklink_cmd_parts.append(f'"{windows_link_name_str_for_cmd}"')
+    # mklink_cmd_parts.append(f'"{wsl_network_target_str}"')
+    #
+    # TODO: switch copy and symlink mode. now it use copy mode temporarily, because symlink mode has loads of issues
 
-    # Paths for mklink must be quoted if they contain spaces.
-    # The f-string with \"...\" handles this when creating the command parts.
-    mklink_cmd_parts.append(f'"{windows_link_name_str_for_cmd}"')
+    mklink_cmd_parts = ["copy", "/Y"]
+    if wsl_item_path.is_dir():
+        mklink_cmd_parts = ["xcopy", "/E", "/I",
+                            "/Y"]  # Use xcopy for directories
     mklink_cmd_parts.append(f'"{wsl_network_target_str}"')
+    mklink_cmd_parts.append(f'"{windows_link_name_str_for_cmd}"')
 
     if not _run_windows_cmd_via_pwsh_helper(mklink_cmd_parts, dry_run=dry_run):
-        print(f"  ERROR: mklink command failed for '{windows_link_name_str_for_cmd}'.")
+        print(
+            f"  ERROR: mklink command failed for '{windows_link_name_str_for_cmd}'."
+        )
         return False
 
     print(f"  Successfully processed and linked '{wsl_item_path_str}'.")
@@ -264,7 +281,8 @@ def main_cli():
         metavar="WSL_FULL_PATH",
         type=str,
         nargs="+",
-        help="One or more full paths in WSL to create links for (e.g., ~/dotfiles/c.mnt/Users/zion/.config).",
+        help=
+        "One or more full paths in WSL to create links for (e.g., ~/dotfiles/c.mnt/Users/zion/.config).",
     )
     parser.add_argument(
         "--wsl-config-root",
@@ -282,7 +300,8 @@ def main_cli():
         "--no-confirm-deletion",  # Changed flag name for clarity
         action="store_false",
         dest="confirm_deletion",  # confirm_deletion will be True by default
-        help="Do not ask for confirmation before deleting existing directories on the Windows side.",
+        help=
+        "Do not ask for confirmation before deleting existing directories on the Windows side.",
     )
     parser.add_argument(
         "--dry-run",
@@ -294,7 +313,8 @@ def main_cli():
         "--non-interactive",  # Added --ci alias
         action="store_true",
         dest="ci_mode",
-        help="Run non-interactively (implies --no-confirm-deletion for individual items and no main prompt). Useful for scripts.",
+        help=
+        "Run non-interactively (implies --no-confirm-deletion for individual items and no main prompt). Useful for scripts.",
     )
 
     args = parser.parse_args()
@@ -302,10 +322,10 @@ def main_cli():
     # Resolve paths once at the beginning
     try:
         resolved_wsl_config_root = str(
-            Path(args.wsl_config_root).expanduser().resolve(strict=True)
-        )
+            Path(args.wsl_config_root).expanduser().resolve(strict=True))
     except FileNotFoundError:
-        print(f"Error: WSL config root '{args.wsl_config_root}' does not exist.")
+        print(
+            f"Error: WSL config root '{args.wsl_config_root}' does not exist.")
         exit(1)
 
     resolved_wsl_paths = []
@@ -353,7 +373,9 @@ def main_cli():
                 "  Confirmation will be asked before deleting existing directories on /mnt/c."
             )
         else:
-            print("  Confirmation for deleting existing directories on /mnt/c is OFF.")
+            print(
+                "  Confirmation for deleting existing directories on /mnt/c is OFF."
+            )
         print("---")
         try:
             if effective_confirm_deletion:
@@ -376,7 +398,8 @@ def main_cli():
             wsl_item_path_str=wsl_path_str,
             wsl_config_root_str=resolved_wsl_config_root,
             wsl_distro_name=args.distro_name,
-            confirm_deletion=effective_confirm_deletion,  # Pass the mode-adjusted flag
+            confirm_deletion=
+            effective_confirm_deletion,  # Pass the mode-adjusted flag
             dry_run=args.dry_run,
         )
         # create_windows_symlink returns True for success OR user skip, False for error
@@ -399,7 +422,8 @@ def main_cli():
             failure_count += 1
 
         # A small pause between items if not in CI mode
-        if not args.ci_mode and not args.dry_run and len(resolved_wsl_paths) > 1:
+        if not args.ci_mode and not args.dry_run and len(
+                resolved_wsl_paths) > 1:
             time.sleep(0.1)
 
     print("\n--- Summary ---")
