@@ -4,8 +4,8 @@
   "font_family": "JetXW",
   "theme": {
     "palette": "Base16",
-    "name": "Ashes",
-    "accent": "Base0D"
+    "name": "GruvboxDarkHard",
+    "accent": "Base0C"
   },
   "left_widgets": [
     {
