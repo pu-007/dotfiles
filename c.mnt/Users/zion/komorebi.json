@@ -25,23 +25,43 @@
     {
       "workspaces": [
         {
-          "name": "I",
+          "name": "一",
           "layout": "BSP"
         },
         {
-          "name": "II",
+          "name": "二",
           "layout": "BSP"
         },
         {
-          "name": "III",
+          "name": "三",
           "layout": "BSP"
         },
         {
-          "name": "IV",
+          "name": "四",
           "layout": "BSP"
         },
         {
-          "name": "V",
+          "name": "五",
+          "layout": "BSP"
+        },
+        {
+          "name": "六",
+          "layout": "BSP"
+        },
+        {
+          "name": "七",
+          "layout": "BSP"
+        },
+        {
+          "name": "八",
+          "layout": "BSP"
+        },
+        {
+          "name": "九",
+          "layout": "BSP"
+        },
+        {
+          "name": "十",
           "layout": "BSP"
         }
       ]
