@@ -56,6 +56,9 @@ function lt {
     lT -L
 }
 
-function e {
+function v {
     vim $args
+}
+function e {
+    explorer .
 }
