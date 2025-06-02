@@ -12,7 +12,7 @@
       "Komorebi": {
         "workspaces": {
           "enable": true,
-          "hide_empty_workspaces": false
+          "hide_empty_workspaces": true
         },
         "layout": {
           "enable": true
@@ -48,25 +48,25 @@
     {
       "Network": {
         "enable": true,
-        "show_total_data_transmitted": true,
+        "show_total_data_transmitted": false,
         "show_network_activity": true
       }
     },
     {
       "Date": {
-        "enable": true,
+        "enable": false,
         "format": "DayDateMonthYear"
       }
     },
     {
       "Time": {
-        "enable": true,
+        "enable": false,
         "format": "TwentyFourHour"
       }
     },
     {
       "Battery": {
-        "enable": true
+        "enable": false
       }
     }
   ]
