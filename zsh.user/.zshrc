@@ -201,7 +201,8 @@ zinit wait lucid is-snippet for \
     atload"alias cd=j" \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
-  ~/.config/zsh/powershell.zsh
+  ~/.config/zsh/powershell.zsh \
+  ~/.x-cmd.root/X
 
 function expand-alias-space() {
   [[ $LBUFFER =~ "\<(${(j:|:)baliases})\$" ]]; insertBlank=$?
@@ -228,16 +229,13 @@ function zvm_after_init() {
   zinit wait lucid is-snippet for \
     ~/.config/zsh/fzf.zsh
 
-  # AI: use gptme for all suggestion
-  # gptme for CLI agents <gemini-2.5-pro-exp-03-25>
-
   zinit wait lucid for \
     oldkingOK/pinyin-completion \
     OMZP::sudo \
-    OMZP::extract \
     OMZP::cp \
-      atload"bindkey '^X' create_completion"\
-    tom-doerr/zsh_codex \
+      atinit"export ZSH_CODEX_PREEXECUTE_COMMENT='true'" \
+      atload"bindkey '^O' create_completion"\
+    pu-007/zsh_codex \
     OMZP::colored-man-pages \
     OMZP::command-not-found \
     OMZP::copypath \
@@ -250,7 +248,7 @@ function zvm_after_init() {
     zdharma-continuum/fast-syntax-highlighting \
       atload"compdef _adb adb.exe" \
     zsh-users/zsh-completions \
-    Aloxaf/fzf-tab
+    Aloxaf/fzf-tab \
 }
 
 export PATH="$PATH:$HOME/.local/bin"

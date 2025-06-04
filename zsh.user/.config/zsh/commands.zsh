@@ -20,10 +20,11 @@ export AI_COMMIT_PROMPT='"Commit staged files directly with a commit message gen
 ialias gac="gdd --no-color | gptme --non-interactive -t shell $AI_COMMIT_PROMPT"
 ialias 'gc@'='git reset --soft HEAD^'
 alias aic="gaa; gac"
-alias c="cmd.exe"
 alias b="bat"
 
 
+alias ci="win32yank.exe -i"
+alias co="win32yank.exe -o"
 alias re-cmp=": rm .zcompdump; compinit"
 alias uc="zinit update home--pu--.config--zsh/commands.zsh"
 alias ec="v $DOTFILE_STORE/zsh.user/.config/zsh/commands.zsh"
