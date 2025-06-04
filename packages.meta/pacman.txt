@@ -185,6 +185,7 @@ wget
 win32yank-bin
 wlroots0.18
 wslu
+x-cmd
 xdg-desktop-portal
 xdotool
 xf86-video-vesa
