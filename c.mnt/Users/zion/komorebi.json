@@ -16,7 +16,7 @@
     "unfocused": "#808080"
   },
   "animation": {
-    "enabled": true,
+    "enabled": false,
     "duration": 200,
     "fps": 120,
     "style": "EaseOutSine"
