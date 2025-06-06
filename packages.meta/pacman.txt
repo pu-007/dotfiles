@@ -76,6 +76,7 @@ nuspell
 nvidia-settings
 nvidia-utils
 opencl-mesa
+openfst
 orchis-theme
 otf-libertinus
 pandoc-cli
@@ -99,6 +100,7 @@ python-jieba
 python-keyring
 python-matplotlib
 python-mutagen
+python-omegaconf
 python-pickleshare
 python-pip
 python-pipx
@@ -107,6 +109,7 @@ python-pycryptodome
 python-pycryptodomex
 python-pylatexenc
 python-pynvim
+python-pytorch-cuda
 python-pyxattr
 python-pyxdg
 python-requests
@@ -125,6 +128,7 @@ rsync
 rtmpdump
 rust
 rust-analyzer
+sentencepiece
 speech-dispatcher
 sqlfluff
 starship
