@@ -3,17 +3,29 @@
   "monitor": 0,
   "font_family": "JetXW",
   "theme": {
-    "palette": "Base16",
-    "name": "GruvboxDarkHard",
-    "accent": "Base0C"
+    "palette": "Catppuccin",
+    "name": "Latte"
   },
+  "height": 40,
+  "transparency_alpha": 192,
   "left_widgets": [
+    {
+      "Media": {
+        "enable": true
+      }
+    },
     {
       "Komorebi": {
         "workspaces": {
           "enable": true,
           "hide_empty_workspaces": true
-        },
+        }
+      }
+    }
+  ],
+  "center_widgets": [
+    {
+      "Komorebi": {
         "layout": {
           "enable": true
         },
@@ -31,42 +43,28 @@
       }
     },
     {
-      "Media": {
-        "enable": true
-      }
-    },
-    {
       "Storage": {
         "enable": true
       }
     },
     {
       "Memory": {
-        "enable": true
+        "enable": true,
+        "label_prefix": "Icon"
+      }
+    },
+    {
+      "Cpu": {
+        "enable": true,
+        "label_prefix": "Icon"
       }
     },
     {
       "Network": {
         "enable": true,
-        "show_total_data_transmitted": false,
-        "show_network_activity": true
-      }
-    },
-    {
-      "Date": {
-        "enable": false,
-        "format": "DayDateMonthYear"
-      }
-    },
-    {
-      "Time": {
-        "enable": false,
-        "format": "TwentyFourHour"
-      }
-    },
-    {
-      "Battery": {
-        "enable": false
+        "show_default_interface": false,
+        "show_activity": true,
+        "show_total_activity": false
       }
     }
   ]

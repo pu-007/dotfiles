@@ -202,6 +202,7 @@ zinit wait lucid is-snippet for \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
   ~/.config/zsh/powershell.zsh \
+  ~/.config/zsh/xcmd.zsh \
   ~/.x-cmd.root/X
 
 function expand-alias-space() {

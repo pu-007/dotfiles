@@ -81,7 +81,7 @@ return {
     end,
     opts = {
       provider = "xiaohu",
-      vendors = {
+      providers = {
         xiaohu = {
           __inherited_from = "openai",
           endpoint = "https://xiaohumini.site/v1",
