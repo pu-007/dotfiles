@@ -83,13 +83,19 @@ launch_app(
     cwd=r"C:\Program Files\komorebi",
 )
 
-launch_app(
-    [r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"],
-    cwd=r"C:\Users\zion\Apps\CapsLockX",
-)
+
+def _close_all_matched_windows(window_list: list):
+    return [i.close() for i in window_list]
+
+
+def _close_unexpected_window():
+    find_window_by_title("Arch", _close_all_matched_windows)
+    find_window_by_title("CapsLockX-Core.ahk", _close_all_matched_windows)
+
 
 launch_app(
     # 先打开 quick look 然后再次打开 capslockx，可以避免空格键无法出发 quicklook，原因未知
+    # 又突然好了，可以不用打开两次 CapsLockX 了，鬼知道为什么，啥也没干
     [
         r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe",
         "/autorun"
@@ -99,9 +105,8 @@ launch_app(
     hook=lambda: launch_app(
         [r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"],
         cwd=r"C:\Users\zion\Apps\CapsLockX",
-        # 会莫名其妙地出现一个 wt 窗口，原因未知，只能自动关闭
-        hook=lambda: find_window_by_title("Arch", lambda w:
-                                          [i.close() for i in w]),
+        # 会莫名其妙地出现一个 wt 或者 auto hotkey 窗口，原因未知，只能自动关闭
+        hook=lambda: _close_unexpected_window(),
         delay=2,
     ),
 )
