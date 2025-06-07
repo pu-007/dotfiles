@@ -32,7 +32,6 @@ ialias la="eza  -a --icons --no-git "
 ialias ll="eza -a --total-size --git-repos --icons -l "
 ialias lT="eza --tree -a -I '.git'"
 alias lt="lT -L "
-alias z=j
 alias v="vi"
 alias R="source ~/.zshrc"
 # ialias rv="nvim +'FzfLua oldfiles'"
@@ -46,6 +45,7 @@ balias 'c:'="/mnt/c/"
 balias 'd:'="/mnt/d/"
 balias 'e:'="/mnt/e/"
 balias h="$win_home/"
+alias j="jj"
 
 function ghd() {
   # 检查参数是否提供
