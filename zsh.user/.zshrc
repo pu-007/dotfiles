@@ -198,7 +198,7 @@ zinit wait'!0' lucid is-snippet nocd for \
   ~/.config/zsh/starship.zsh
 
 zinit wait lucid is-snippet for \
-    atload"alias cd=j" \
+    atload"alias cd=z" \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
   ~/.config/zsh/powershell.zsh \
@@ -228,7 +228,8 @@ function zvm_after_init() {
   bindkey "^[[B" down-line-or-beginning-search # Down
 
   zinit wait lucid is-snippet for \
-    ~/.config/zsh/fzf.zsh
+    ~/.config/zsh/fzf.zsh \
+    ~/.config/zsh/conda.zsh
 
   zinit wait lucid for \
     oldkingOK/pinyin-completion \
