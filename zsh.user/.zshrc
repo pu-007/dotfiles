@@ -254,6 +254,7 @@ function zvm_after_init() {
 }
 
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/.moon/bin:$PATH"
 export DOTFILE_STORE="$HOME/dotfiles"
 export CUDA_HOME="/opt/cuda/"
 

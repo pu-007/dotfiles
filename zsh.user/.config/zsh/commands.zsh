@@ -7,6 +7,8 @@ function gzr() {
 alias py="python"
 alias apy="source .venv/bin/activate"
 alias wy="p python"
+alias xz="x z"
+alias uz="x uz"
 alias iy="ipython"
 alias adb="adb.exe"
 alias fastboot="fastboot.exe"
