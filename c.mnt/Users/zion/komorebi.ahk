@@ -119,7 +119,7 @@ ReloadThree() {
 <!Enter::Run("wt.exe")
 <!+Enter::Run(format('wt.exe -p Arch -d "{}"', FileRead("C:\Users\zion\.workdir")))
 ^+#n::Run("wt.exe -p Arch wsl nvim -c 'read !win32yank.exe -o'")
-+#e::Run("wsl.exe zsh -ic 'y /mnt/c/Users/zion/Desktop/'")
++#e::Run("wsl.exe zsh -ic 'y /mnt/c/Users/zion/Downloads/'")
 
 ; Focus monitors  
 <!F1::Komorebic("focus-monitor 0")  
@@ -130,9 +130,22 @@ ReloadThree() {
 <!+F2::Komorebic("cycle-monitor next")
 
 ; Stack windows in a direction  
-<!s::Komorebic("stack left")  
-<!+s::Komorebic("unstack")  
-  
+<!\::Komorebic("stack left")  
+<!+\::Komorebic("unstack")  
+
+AutoWechat() {
+    ; 检查 Weixin.exe 进程是否存在
+    if !ProcessExist("Weixin.exe")
+    {
+        ; 如果不存在，就运行它
+        Run("C:\Program Files\Tencent\Weixin\Weixin.exe")
+    } else {
+        ; Send ctrl+shift+alt+F12 to toggle WeChat
+        Send("^+!{F12}")
+    }
+}
+^+w::AutoWechat()  ; Ctrl+Shift+W 启动/切换微信
+
 ; Cycle through stacked windows  
 <!PgUp::Komorebic("cycle-stack previous")  
 <!PgDn::Komorebic("cycle-stack next")
