@@ -52,12 +52,16 @@ hyperfine
 imagemagick
 ipython
 jdk-openjdk
+jujutsu
 kio-admin
 lazygit
+lazyjj
 less
+libc++
 libreoffice-fresh
 libva-utils
 libvoikko
+libxcrypt-compat
 lldb
 lua
 lua-sec
@@ -65,6 +69,7 @@ lua51
 luarocks
 markdownlint-cli2
 mesa-utils
+miniconda3
 moreutils
 nano
 neovim
@@ -81,6 +86,7 @@ orchis-theme
 otf-libertinus
 pandoc-cli
 pistol-bin
+pixi
 pkgfile
 podman
 podman-compose
@@ -115,6 +121,7 @@ python-pyxdg
 python-requests
 python-scipy
 python-tariff
+python-transformers
 python-websockets
 python-xattr
 qt5-wayland
@@ -172,7 +179,6 @@ typstyle
 ueberzugpp
 unrar
 unzip
-uv
 vcpkg
 vdpauinfo
 vimv

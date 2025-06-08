@@ -117,6 +117,52 @@
       }
     },
     {
+      "Id": "Anaconda.Miniconda3",
+      "Name": "Miniconda3",
+      "Version": "py310_24.9.2-0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
+      }
+    },
+    {
+      "Id": "Anjok07.UltimateVocalRemover",
+      "Name": "Ultimate Vocal Remover",
+      "Version": "5.6.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Anki.Anki",
       "Name": "Anki",
       "Version": "25.02.6",
@@ -275,6 +321,29 @@
       "Updates": {
         "UpdatesIgnored": true,
         "IgnoredVersion": "*"
+      }
+    },
+    {
+      "Id": "Discord.Discord",
+      "Name": "Discord",
+      "Version": "1.0.9194",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
       }
     },
     {
@@ -1085,7 +1154,7 @@
     {
       "Id": "Microsoft.VisualStudio.2022.Community",
       "Name": "Visual Studio Community 2022",
-      "Version": "17.14.3",
+      "Version": "17.14.4",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1108,7 +1177,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.100.2",
+      "Version": "1.100.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1223,7 +1292,7 @@
     {
       "Id": "NetEase.CloudMusic",
       "Name": "\u7F51\u6613\u4E91\u97F3\u4E50",
-      "Version": "3.1.10.203938",
+      "Version": "3.1.11.203994",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1545,6 +1614,52 @@
       }
     },
     {
+      "Id": "Python.Launcher",
+      "Name": "Python Launcher",
+      "Version": "\u003E 3.12.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Python.Python.3.13",
+      "Name": "Python 3.13",
+      "Version": "3.13.4",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "QL-Win.QuickLook",
       "Name": "QuickLook",
       "Version": "4.0.1",
@@ -1616,7 +1731,7 @@
     {
       "Id": "RedHat.Podman",
       "Name": "Podman",
-      "Version": "5.4.2",
+      "Version": "5.5.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1662,7 +1777,7 @@
     {
       "Id": "Rime.Weasel",
       "Name": "Weasel",
-      "Version": "0.17.3.0",
+      "Version": "0.17.4.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1754,7 +1869,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "5.14.3",
+      "Version": "5.15.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2377,7 +2492,7 @@
     {
       "Id": "fastfetch",
       "Name": "Fastfetch",
-      "Version": "2.44.0",
+      "Version": "2.45.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2515,7 +2630,7 @@
     {
       "Id": "gradle",
       "Name": "Gradle",
-      "Version": "8.14.1",
+      "Version": "8.14.2",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -3251,7 +3366,7 @@
     {
       "Id": "python",
       "Name": "Python",
-      "Version": "3.13.3",
+      "Version": "3.13.4",
       "Source": "community",
       "ManagerName": "Chocolatey",
       "InstallationOptions": {
@@ -3274,7 +3389,30 @@
     {
       "Id": "python3",
       "Name": "Python3",
-      "Version": "3.13.3",
+      "Version": "3.13.4",
+      "Source": "community",
+      "ManagerName": "Chocolatey",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "python313",
+      "Name": "Python313",
+      "Version": "3.13.4",
       "Source": "community",
       "ManagerName": "Chocolatey",
       "InstallationOptions": {
@@ -3389,7 +3527,7 @@
     {
       "Id": "scoop-search",
       "Name": "Scoop Search",
-      "Version": "2.0.0",
+      "Version": "2.1.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -3596,7 +3734,7 @@
     {
       "Id": "uv",
       "Name": "Uv",
-      "Version": "0.7.9",
+      "Version": "0.7.11",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -3877,6 +4015,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{000420DE-0A08-46D7-A941-E6120CB6D9CA}",
+      "Name": "NVIDIA Nsight Systems 2022.4.2",
+      "Version": "22.4.2.1",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{02A39130-2CF3-30CA-8623-30F6071A4221}",
       "Name": "Microsoft Visual C\u002B\u002B 2008 Redistributable - x64 9.0.21022",
       "Version": "9.0.21022",
@@ -3937,21 +4081,21 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDADevelopment_11.0",
-      "Name": "NVIDIA CUDA Development 11.0",
-      "Version": "11.0",
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDADevelopment_11.8",
+      "Name": "NVIDIA CUDA Development 11.8",
+      "Version": "11.8",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDADocument_11.0",
-      "Name": "NVIDIA CUDA Documentation 11.0",
-      "Version": "11.0",
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDADocument_11.8",
+      "Name": "NVIDIA CUDA Documentation 11.8",
+      "Version": "11.8",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDARuntimes_11.0",
-      "Name": "NVIDIA CUDA Runtime 11.0",
-      "Version": "11.0",
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDARuntimes_11.8",
+      "Name": "NVIDIA CUDA Runtime 11.8",
+      "Version": "11.8",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3991,15 +4135,9 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_nsight_nvtx_11.0",
-      "Name": "NVIDIA CUDA Nsight NVTX 11.0",
-      "Version": "11.0",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_samples_11.0",
-      "Name": "NVIDIA CUDA Samples 11.0",
-      "Version": "11.0",
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_nsight_nvtx_11.8",
+      "Name": "NVIDIA CUDA Nsight NVTX 11.8",
+      "Version": "11.8",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4009,15 +4147,15 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\{B56D2F88-8865-40FD-B7AC-F074EE4D201D}",
-      "Name": "NVIDIA Tools Extension SDK (NVTX) - 64 bit",
-      "Version": "1.00.00.00",
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_visual_studio_integration_11.8",
+      "Name": "NVIDIA CUDA Visual Studio Integration 11.8",
+      "Version": "11.8",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\{B6EC51DD-CE9E-45A0-95E7-8096948A7942}",
-      "Name": "NVIDIA Nsight Compute 2024.1.0",
-      "Version": "24.1.0.0",
+      "Id": "ARP\\Machine\\X64\\{B56D2F88-8865-40FD-B7AC-F074EE4D201D}",
+      "Name": "NVIDIA Tools Extension SDK (NVTX) - 64 bit",
+      "Version": "1.00.00.00",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4030,6 +4168,12 @@
       "Id": "ARP\\Machine\\X64\\{E8F347A5-A5C0-457C-9682-472A947BBCDC}",
       "Name": "NVIDIA Nsight Visual Studio Edition 2024.3.0.24164",
       "Version": "24.3.0.24164",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{E9655DE8-6B03-4792-B81D-4D57722ED17C}",
+      "Name": "NVIDIA Nsight Compute 2022.3.0",
+      "Version": "22.3.0.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4189,6 +4333,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\53484976-a3c3-518d-a572-4baa926ba04d",
+      "Name": "AlgerMusicPlayer 4.7.1",
+      "Version": "4.7.1",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\74e53be0-38d8-5309-9f12-098b05fb2a1b",
       "Name": "MIDI Jar 1.7.0",
       "Version": "1.7.0",
@@ -4228,6 +4378,12 @@
       "Id": "MSIX\\11413PtruceanBogdan.Wintoys_2.0.81.0_x64__ankwhmsh70gj6",
       "Name": "Wintoys",
       "Version": "2.0.81.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\127.0.0.1-79617D4D_1.0.0.0_neutral__8veb5ec80nvtp",
+      "Name": "IndexTTS Demo",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4609,9 +4765,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.606.1229.55_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.607.2359.53_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.606.1229.55",
+      "Version": "2025.607.2359.53",
       "Source": "Microsoft Store"
     },
     {
@@ -4819,6 +4975,12 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\mvsep.com-265BE0CC_1.0.0.0_neutral__hhbzkg32xc92j",
+      "Name": "MVSEP - \u97F3\u4E50\u4E0E\u8BED\u97F3\u5206\u79BB",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\newsnow.busiyi.world-55AB118E_1.0.0.1_neutral__sbfdxy9q8bdwj",
       "Name": "NewsNow",
       "Version": "1.0.0.1",
@@ -4852,6 +5014,12 @@
       "Id": "MSIX\\pointerpointer.com-6290C47_1.0.0.1_neutral__jr5mdk16kg1xg",
       "Name": "Pointer Pointer",
       "Version": "1.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\prompt.qpipi.com-32CB863D_1.0.0.0_neutral__44zv3034spz6t",
+      "Name": "Stable Diffusion \u0026 NovelAI TAG Prompt\u63D0\u793A\u5728\u7EBF\u751F\u6210\u5668",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
