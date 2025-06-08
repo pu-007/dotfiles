@@ -135,8 +135,7 @@ ReloadThree() {
 
 AutoWechat() {
     ; 检查 Weixin.exe 进程是否存在
-    if !ProcessExist("Weixin.exe")
-    {
+    if !ProcessExist("Weixin.exe") {
         ; 如果不存在，就运行它
         Run("C:\Program Files\Tencent\Weixin\Weixin.exe")
     } else {
@@ -145,6 +144,19 @@ AutoWechat() {
     }
 }
 ^+w::AutoWechat()  ; Ctrl+Shift+W 启动/切换微信
+
+AutoQQ() {
+    ; 检查 Weixin.exe 进程是否存在
+    if !ProcessExist("QQ.exe") {
+        ; 如果不存在，就运行它
+        Run("C:\Program Files\Tencent\QQNT\QQ.exe")
+    } else {
+        ; Send win+ctrl+F12 to toggle QQ
+        Send("^#{F12}")
+    }
+}
+^+q::AutoQQ()  ; Ctrl+Shift+Q 启动/切换 QQ
+
 
 ; Cycle through stacked windows  
 <!PgUp::Komorebic("cycle-stack previous")  
