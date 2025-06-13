@@ -85,6 +85,7 @@ openfst
 orchis-theme
 otf-libertinus
 pandoc-cli
+payload-dumper-go
 pistol-bin
 pixi
 pkgfile

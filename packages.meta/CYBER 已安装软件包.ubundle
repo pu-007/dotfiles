@@ -96,7 +96,7 @@
     {
       "Id": "AltSnap.AltSnap",
       "Name": "AltSnap",
-      "Version": "1.64",
+      "Version": "1.65",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -234,7 +234,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.58.6",
+      "Version": "1.59.6",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -395,7 +395,7 @@
     {
       "Id": "Google.Chrome.EXE",
       "Name": "Google Chrome (EXE)",
-      "Version": "137.0.7151.69",
+      "Version": "137.0.7151.104",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -763,7 +763,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "137.0.3296.62",
+      "Version": "137.0.3296.68",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -786,7 +786,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.085.0504.0002",
+      "Version": "25.091.0512.0001",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1430,6 +1430,29 @@
       }
     },
     {
+      "Id": "OnOff.Onlook",
+      "Name": "Onlook",
+      "Version": "0.2.30",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "PSFzf",
       "Name": "PSFzf",
       "Version": "2.6.7",
@@ -1844,29 +1867,6 @@
       }
     },
     {
-      "Id": "SunlightStudio.TBTool",
-      "Name": "\u56FE\u5427\u5DE5\u5177\u7BB1",
-      "Version": "2025.02",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": "",
-        "SkipMinorUpdates": false
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
       "Version": "5.15.2",
@@ -1915,7 +1915,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
-      "Version": "4.0.5.18",
+      "Version": "4.0.5.23",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -3734,7 +3734,7 @@
     {
       "Id": "uv",
       "Name": "Uv",
-      "Version": "0.7.11",
+      "Version": "0.7.12",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -3951,7 +3951,7 @@
     {
       "Id": "ARP\\Machine\\X64\\O365EduCloudRetail - zh-cn",
       "Name": "Microsoft 365 - zh-cn",
-      "Version": "16.0.18827.20128",
+      "Version": "16.0.18827.20140",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3981,6 +3981,12 @@
     {
       "Id": "ARP\\Machine\\X64\\Steam App 3117820",
       "Name": "\u82CF\u4E39\u7684\u6E38\u620F",
+      "Version": "Unknown",
+      "Source": "Steam"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\Steam App 493340",
+      "Name": "\u8FC7\u5C71\u8F66\u4E4B\u661F",
       "Version": "Unknown",
       "Source": "Steam"
     },
@@ -4033,6 +4039,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{1DF98968-764F-4AC4-AAF3-E7E50B2831BA}",
+      "Name": "NVIDIA Nsight Compute 2023.1.0",
+      "Version": "23.1.0.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{244B085C-3D9D-4034-A393-74C26A98CDFA}",
       "Name": "DaVinci Resolve",
       "Version": "20.0.00027",
@@ -4075,6 +4087,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{A397B122-A879-40D8-941A-68122D92B3B6}",
+      "Name": "NVIDIA Nsight Systems 2023.1.2",
+      "Version": "23.1.2.43",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{B2F3D147-AAE7-4BA4-9263-880F857C03BF}",
       "Name": "DaVinci Resolve Renderer",
       "Version": "20.0.00027",
@@ -4087,15 +4105,33 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDADevelopment_12.1",
+      "Name": "NVIDIA CUDA Development 12.1",
+      "Version": "12.1",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDADocument_11.8",
       "Name": "NVIDIA CUDA Documentation 11.8",
       "Version": "11.8",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDADocument_12.1",
+      "Name": "NVIDIA CUDA Documentation 12.1",
+      "Version": "12.1",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDARuntimes_11.8",
       "Name": "NVIDIA CUDA Runtime 11.8",
       "Version": "11.8",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_CUDARuntimes_12.1",
+      "Name": "NVIDIA CUDA Runtime 12.1",
+      "Version": "12.1",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4153,6 +4189,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_visual_studio_integration_12.1",
+      "Name": "NVIDIA CUDA Visual Studio Integration 12.1",
+      "Version": "12.1",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{B56D2F88-8865-40FD-B7AC-F074EE4D201D}",
       "Name": "NVIDIA Tools Extension SDK (NVTX) - 64 bit",
       "Version": "1.00.00.00",
@@ -4168,12 +4210,6 @@
       "Id": "ARP\\Machine\\X64\\{E8F347A5-A5C0-457C-9682-472A947BBCDC}",
       "Name": "NVIDIA Nsight Visual Studio Edition 2024.3.0.24164",
       "Version": "24.3.0.24164",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\{E9655DE8-6B03-4792-B81D-4D57722ED17C}",
-      "Name": "NVIDIA Nsight Compute 2022.3.0",
-      "Version": "22.3.0.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -4321,6 +4357,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\{FD34423E-DD11-471D-9542-8B425FBD29AF}",
+      "Name": "\u56FE\u5427\u5DE5\u5177\u7BB1",
+      "Version": "2025.02",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\{b72d4013-dd88-405a-9f9d-e88c278dcefe}",
       "Name": "Windows Software Development Kit - Windows 10.0.22621.5040",
       "Version": "10.1.22621.5040",
@@ -4381,15 +4423,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\127.0.0.1-79617D4D_1.0.0.0_neutral__8veb5ec80nvtp",
-      "Name": "IndexTTS Demo",
-      "Version": "1.0.0.0",
-      "Source": "Microsoft Store"
-    },
-    {
       "Id": "MSIX\\18184wherewhere.AndroidAppInstaller_0.1.26.0_x64__4v4sx105x6y4r",
       "Name": "APK \u5B89\u88C5\u7A0B\u5E8F",
       "Version": "0.1.26.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\192.168.100.1-24568E62_1.0.0.0_neutral__4bdqv9ahb3r3y",
+      "Name": "MetaCubeXD",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4585,15 +4627,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18827.20128_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18827.20140_neutral__8wekyb3d8bbwe",
       "Name": "OfficePushNotificationsUtility",
-      "Version": "16.0.18827.20128",
+      "Version": "16.0.18827.20140",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25085.504.2.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25091.512.1.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25085.504.2.0",
+      "Version": "25091.512.1.0",
       "Source": "Microsoft Store"
     },
     {
@@ -4765,9 +4807,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.607.2359.53_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.613.1106.26_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.607.2359.53",
+      "Version": "2025.613.1106.26",
       "Source": "Microsoft Store"
     },
     {
