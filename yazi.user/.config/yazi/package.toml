@@ -1,12 +1,47 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "63f9650"
+rev = "aeca767"
 hash = "bf6f074cd41ee33c3360341d168f9733"
 
 [[plugin.deps]]
 use = "tshanli/libreoffice"
 rev = "f97de6d"
 hash = "f9adaa389c38c08e455bd23a9278e3be"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "aeca767"
+hash = "a7ab702e1ef0c097defbc976ed34c186"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-filter"
+rev = "aeca767"
+hash = "4d82cd9e7534d976f000edf9c0f68d8f"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:types"
+rev = "aeca767"
+hash = "c255054d6a70754db6cb96b97ad1ccd7"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:lsar"
+rev = "aeca767"
+hash = "24208b1d2144e2f91fd580c3f8e07326"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-paste"
+rev = "aeca767"
+hash = "6fe47945aff6571d76f3beb65099ad7a"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:jump-to-char"
+rev = "aeca767"
+hash = "30fc0b37f03a597b92d387268319450f"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:diff"
+rev = "aeca767"
+hash = "47865a70cade14a0b9b6bc6a54f16bdb"
 
 [flavor]
 deps = []

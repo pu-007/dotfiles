@@ -199,7 +199,7 @@ zinit wait'!0' lucid is-snippet nocd for \
   ~/.config/zsh/starship.zsh
 
 zinit wait lucid is-snippet for \
-    atload"alias cd=z" \
+    atload"ialias z='__zoxide_z'; ialias zi='__zoxide_zi'; alias cd=z" \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
   ~/.config/zsh/powershell.zsh \

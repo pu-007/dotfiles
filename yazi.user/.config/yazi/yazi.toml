@@ -31,4 +31,6 @@ prepend_previewers = [
   { name = "*.ods", run = "libreoffice" },
   # Open Presentation Type
   { name = "*.odp", run = "libreoffice" },
+  { mime = "application/{,g}zip", run = "lsar" },
+  { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", run = "lsar" },
 ]

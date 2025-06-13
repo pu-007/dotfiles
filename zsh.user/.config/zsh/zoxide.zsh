@@ -65,8 +65,6 @@ function __zoxide_zi() {
 # Commands for zoxide. Disable these using --no-cmd.
 #
 
-alias z='__zoxide_z'
-alias zi='__zoxide_zi'
 
 # Completions.
 if [[ -o zle ]]; then
