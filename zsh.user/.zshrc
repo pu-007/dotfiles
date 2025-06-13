@@ -26,6 +26,7 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+ialias ff="fastfetch"
 ialias eza="eza -I 'NTUSER.DAT*|ntuser.*'"
 ialias l="eza --git -a --icons -l  "
 ialias la="eza  -a --icons --no-git "

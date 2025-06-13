@@ -3,5 +3,10 @@ use = "yazi-rs/plugins:git"
 rev = "63f9650"
 hash = "bf6f074cd41ee33c3360341d168f9733"
 
+[[plugin.deps]]
+use = "tshanli/libreoffice"
+rev = "f97de6d"
+hash = "f9adaa389c38c08e455bd23a9278e3be"
+
 [flavor]
 deps = []

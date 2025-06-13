@@ -10,3 +10,25 @@ run = "git"
 id = "git"
 name = "*/"
 run = "git"
+
+[plugin]
+prepend_previewers = [
+  # TODO: improve performance. It's slow for office files. Consider integrating with QuickLook.
+  # Office Documents
+  { mime = "application/openxmlformats-officedocument.*", run = "libreoffice" },
+  { mime = "application/oasis.opendocument.*", run = "libreoffice" },
+  { mime = "application/ms-*", run = "libreoffice" },
+  { mime = "application/msword", run = "libreoffice" },
+  # Word
+  { name = "*.doc{,x}", run = "libreoffice" },
+  # Excel
+  { name = "*.xls{,x}", run = "libreoffice" },
+  # Powerpoint
+  { name = "*.ppt{,x}", run = "libreoffice" },
+  # Open Document Type
+  { name = "*.odt", run = "libreoffice" },
+  # Open Spreesheet Type
+  { name = "*.ods", run = "libreoffice" },
+  # Open Presentation Type
+  { name = "*.odp", run = "libreoffice" },
+]
