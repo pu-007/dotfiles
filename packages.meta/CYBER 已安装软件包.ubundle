@@ -117,6 +117,29 @@
       }
     },
     {
+      "Id": "Anaconda.Miniconda3",
+      "Name": "Miniconda3",
+      "Version": "py313_25.3.1-1",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
+      }
+    },
+    {
       "Id": "Anjok07.UltimateVocalRemover",
       "Name": "Ultimate Vocal Remover",
       "Version": "5.6.0",
@@ -188,7 +211,7 @@
     {
       "Id": "Baidu.BaiduNetdisk",
       "Name": "\u767E\u5EA6\u7F51\u76D8",
-      "Version": "7.55.1",
+      "Version": "7.57.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -298,29 +321,6 @@
       "Updates": {
         "UpdatesIgnored": true,
         "IgnoredVersion": "*"
-      }
-    },
-    {
-      "Id": "Discord.Discord",
-      "Name": "Discord",
-      "Version": "1.0.9194",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": "",
-        "SkipMinorUpdates": false
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
       }
     },
     {
@@ -1154,7 +1154,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.100.3",
+      "Version": "1.101.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1547,7 +1547,7 @@
     {
       "Id": "RedHat.Podman-Desktop",
       "Name": "Podman Desktop",
-      "Version": "1.19.1",
+      "Version": "1.19.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1639,7 +1639,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "5.15.2",
+      "Version": "5.15.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1848,7 +1848,7 @@
     {
       "Id": "altsnap",
       "Name": "Altsnap",
-      "Version": "1.64.0",
+      "Version": "1.65.0",
       "Source": "community",
       "ManagerName": "Chocolatey",
       "InstallationOptions": {
@@ -2124,7 +2124,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.4.1",
+      "Version": "1.4.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2193,7 +2193,7 @@
     {
       "Id": "nodejs",
       "Name": "Nodejs",
-      "Version": "24.1.0",
+      "Version": "24.2.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -3312,9 +3312,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.613.1236.53_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.613.1315.26_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.613.1236.53",
+      "Version": "2025.613.1315.26",
       "Source": "Microsoft Store"
     },
     {
