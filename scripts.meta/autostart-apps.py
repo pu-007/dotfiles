@@ -3,6 +3,7 @@ import os
 from typing import Callable, Coroutine, List, Union, Optional
 
 import pyautogui
+import psutil
 
 
 async def async_find_window_by_title(title: str,
@@ -30,6 +31,22 @@ async def async_find_window_by_title(title: str,
             await asyncio.to_thread(action, app_window)
 
     return app_window if app_window else None
+
+
+def wait_for_process(process_name):
+    """
+    Waits for a process with the given name to start.
+
+    Args:
+        process_name (str): The name of the process to wait for.
+    """
+    print(f"Waiting for '{process_name}' to start...")
+    while True:
+        for proc in psutil.process_iter(['name']):
+            if proc.info['name'] == process_name:
+                print(f"'{process_name}' has started.")
+                return
+        time.sleep(1)  # Wait for 1 second before checking again
 
 
 async def async_launch_app(
@@ -115,17 +132,25 @@ def _close_all_matched_windows(window_list: list):
             print(f"Could not close window {i.title}: {e}")
 
 
-async def _close_unexpected_windows_async():
-    """Finds and closes known unexpected windows."""
-    await async_find_window_by_title("Arch", _close_all_matched_windows)
-    await async_find_window_by_title("CapsLockX-Core.ahk",
-                                     _close_all_matched_windows)
-
-
 async def close_doubao_window_async():
     """Finds and closes the Doubao window."""
     print("Hook: Attempting to close Doubao window...")
     await async_find_window_by_title("豆包 - 字节跳动旗下 AI 智能助手 - 豆包",
+                                     _close_all_matched_windows)
+
+
+async def launch_quicklook_and_capslockx_with_cleanup():
+    await async_launch_app([
+        r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe",
+        "/autorun"
+    ])
+    wait_for_process("QuickLook.exe")
+    await async_launch_app(
+        [r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"],
+        cwd=r"C:\Users\zion\Apps\CapsLockX",
+    )
+    await async_find_window_by_title("Arch", _close_all_matched_windows)
+    await async_find_window_by_title("CapsLockX-Core.ahk",
                                      _close_all_matched_windows)
 
 
@@ -134,33 +159,11 @@ async def main():
     Main function to create and run all app launch tasks concurrently.
     """
 
-    # Define the hook for CapsLockX which closes unexpected windows
-    async def launch_capslock_with_cleanup():
-        await async_launch_app(
-            [r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"],
-            cwd=r"C:\Users\zion\Apps\CapsLockX",
-            delay=2,
-            hook=_close_unexpected_windows_async,
-        )
-
-    # Define the hook for QuickLook which launches CapsLockX
-    async def launch_quicklook_with_hook():
-        await async_launch_app(
-            [
-                r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe",
-                "/autorun",
-            ],
-            cwd=r"C:\Users\zion\AppData\Local\Programs\QuickLook",
-            delay=1,
-            hook=launch_capslock_with_cleanup,
-        )
-
     tasks = [
         # Launch Doubao and then close it via hook
         asyncio.create_task(
             async_launch_app(
                 r"C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe",
-                delay=3,  # Wait a bit for the window to appear before closing
                 hook=close_doubao_window_async,
             )),
         # Launch komorebi
@@ -175,7 +178,7 @@ async def main():
                 cwd=r"C:\Program Files\komorebi",
             )),
         # Launch QuickLook, which in turn will launch CapsLockX with its cleanup hook
-        asyncio.create_task(launch_quicklook_with_hook()),
+        asyncio.create_task(launch_quicklook_and_capslockx_with_cleanup()),
 
         # Launch Ollama
         asyncio.create_task(
@@ -191,7 +194,7 @@ async def main():
                 commands=["wt.exe", "-w", "_quake", "-p", "Arch_quake"],
                 hook=create_hide_window_hook(window_title="Arch_quake",
                                              hotkey_combination=["alt", "`"],
-                                             delay=2))),
+                                             delay=3))),
     ]
 
     print("--- Starting all applications concurrently ---")
