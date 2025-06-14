@@ -35,3 +35,8 @@ desc = "QuickLook file/dir"
 on = "e"
 run = "shell -- explorer.exe . "
 desc = "Open with Explor "
+
+# [[mgr.prepend_keymap]]
+# on = "<C-y>"
+# run = "plugin system-clipboard"
+# desc = "Copy to system clipboard"
