@@ -33,22 +33,6 @@ async def async_find_window_by_title(title: str,
     return app_window if app_window else None
 
 
-def wait_for_process(process_name):
-    """
-    Waits for a process with the given name to start.
-
-    Args:
-        process_name (str): The name of the process to wait for.
-    """
-    print(f"Waiting for '{process_name}' to start...")
-    while True:
-        for proc in psutil.process_iter(['name']):
-            if proc.info['name'] == process_name:
-                print(f"'{process_name}' has started.")
-                return
-        time.sleep(1)  # Wait for 1 second before checking again
-
-
 async def async_launch_app(
     commands: Union[str, List[str]],
     cwd: Optional[str] = None,
@@ -139,16 +123,25 @@ async def close_doubao_window_async():
                                      _close_all_matched_windows)
 
 
-async def launch_quicklook_and_capslockx_with_cleanup():
-    await async_launch_app([
-        r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe",
-        "/autorun"
-    ])
-    wait_for_process("QuickLook.exe")
+async def launch_capslockx():
+    for _ in range(6):
+        for proc in psutil.process_iter(['name']):
+            if proc.name() == "QuickLook.exe":
+                break
+        await asyncio.sleep(1)
     await async_launch_app(
         [r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"],
         cwd=r"C:\Users\zion\Apps\CapsLockX",
     )
+
+
+async def launch_quicklook_and_capslockx_with_cleanup():
+    await async_launch_app([
+        "pwsh.exe", "-Command",
+        r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe",
+        "/autorun"
+    ])
+    await launch_capslockx()
     await async_find_window_by_title("Arch", _close_all_matched_windows)
     await async_find_window_by_title("CapsLockX-Core.ahk",
                                      _close_all_matched_windows)
