@@ -23,6 +23,7 @@ export AI_COMMIT_PROMPT='"Commit staged files directly with a commit message gen
 ialias gac="gdd --no-color | gptme --non-interactive -t shell $AI_COMMIT_PROMPT"
 ialias 'gc@'='git reset --soft HEAD^'
 alias aic="gaa; gac"
+alias aicp="aic; git push"
 alias b="bat"
 
 

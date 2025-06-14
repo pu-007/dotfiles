@@ -43,5 +43,10 @@ use = "yazi-rs/plugins:diff"
 rev = "aeca767"
 hash = "47865a70cade14a0b9b6bc6a54f16bdb"
 
+[[plugin.deps]]
+use = "pu-007/quicklook"
+rev = "bff98b7"
+hash = "9603eab05099447c8782b73c84e019ad"
+
 [flavor]
 deps = []
