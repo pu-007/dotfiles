@@ -1685,7 +1685,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
-      "Version": "4.0.5.23",
+      "Version": "4.0.5.26",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2400,7 +2400,7 @@
     {
       "Id": "xanderfrangos.twinkletray",
       "Name": "Twinkle Tray",
-      "Version": "1.16.7",
+      "Version": "1.16.6",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -3312,9 +3312,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.613.1315.26_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.614.503.12_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.613.1315.26",
+      "Version": "2025.614.503.12",
       "Source": "Microsoft Store"
     },
     {

@@ -30,3 +30,8 @@ desc = "Diff the selected with the hovered file"
 on = "\\"
 run = "plugin quicklook"
 desc = "QuickLook file/dir"
+
+[[mgr.prepend_keymap]]
+on = "e"
+run = "shell -- explorer.exe . "
+desc = "Open with Explor "
