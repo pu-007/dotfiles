@@ -1,125 +1,207 @@
-# /// script
-# requires-python = ">=3.13"
-# dependencies = [
-#     "pyautogui",
-# ]
-# ///
-
-from typing import Callable
-import subprocess
-import pyautogui
+import asyncio
 import os
-from time import sleep
+from typing import Callable, Coroutine, List, Union, Optional
+
+import pyautogui
 
 
-def find_window_by_title(title: str,
-                         action: Callable,
-                         timeout: float = 5.0) -> list | None:
-    app_window = []
+async def async_find_window_by_title(title: str,
+                                     action: Optional[Callable] = None,
+                                     timeout: float = 5.0) -> Optional[list]:
+    """
+    Asynchronously finds a window by its title and performs an action.
+    Runs blocking pyautogui calls in a separate thread.
+    """
     elapsed_time = 0
+    app_window = []
     while not app_window and elapsed_time < timeout:
-        app_window = pyautogui.getWindowsWithTitle(title)
+        # Run blocking I/O in a separate thread to not block the event loop
+        app_window = await asyncio.to_thread(pyautogui.getWindowsWithTitle,
+                                             title)
         if not app_window:
-            sleep(0.5)
+            await asyncio.sleep(0.5)
             elapsed_time += 0.5
-    if action:
-        action(app_window)
+
+    if app_window and action:
+        # Also run the action in a thread if it's a blocking call
+        if asyncio.iscoroutinefunction(action):
+            await action(app_window)
+        else:
+            await asyncio.to_thread(action, app_window)
+
     return app_window if app_window else None
 
 
-# 启动应用，支持通过 title 来判断是否成功启动，支持自定义快捷键来隐藏窗口的 hook, lazy 在窗口激活后延迟多少秒发送快捷键
-def launch_and_hind_app(commands, window_title, hotkey_combination, delay=0):
+async def async_launch_app(
+    commands: Union[str, List[str]],
+    cwd: Optional[str] = None,
+    delay: float = 0,
+    hook: Optional[Callable[[], Union[None, Coroutine]]] = None,
+):
+    """
+    Asynchronously launches an application.
+    Supports an optional hook function (sync or async) after a delay.
+    """
+    if isinstance(commands, str):
+        commands = [commands]
+    exe_name = os.path.basename(commands[0])
 
-    exe_name = os.path.basename(
-        commands if isinstance(commands, str) else commands[0])
     try:
-        subprocess.run(commands, check=True)
-        print(f"{exe_name} 启动成功。")
-        find_window_by_title(
-            window_title,
-            lambda w: w[0].activate() if w else None,
-            timeout=5,
-        )
-        sleep(delay)
-        try:
-            pyautogui.hotkey(*hotkey_combination)
-            print(f"快捷键 {hotkey_combination} 已发送，窗口应已处理。")
-        except Exception as e:
-            print(f"发送快捷键失败：{str(e)}")
-    except subprocess.CalledProcessError:
-        print(f"启动 {exe_name} 失败")
-
-
-# 启动应用，不隐藏，不检测是否启动，支持自定义 hook 函数
-def launch_app(commands, hook=None, cwd=None, delay=0):
-    exe_name = os.path.basename(
-        commands if isinstance(commands, str) else commands[0])
-    try:
-        subprocess.Popen(commands, cwd=cwd, shell=True)
-        print(f"{exe_name} 启动成功。")
-        sleep(delay)
+        await asyncio.create_subprocess_exec(*commands, cwd=cwd)
+        print(f"{exe_name} launched successfully.")
+        if delay > 0:
+            await asyncio.sleep(delay)
         if hook:
-            hook()
+            if asyncio.iscoroutinefunction(hook):
+                await hook()
+            else:
+                # Run sync hook in a thread to avoid blocking
+                await asyncio.to_thread(hook)
     except Exception as e:
-        print(f"启动 {exe_name} 失败: {str(e)}")
+        print(f"Failed to launch {exe_name}: {e}")
 
 
-# # 调用豆包
-launch_and_hind_app(
-    r"C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe",
-    "豆包 - 字节跳动旗下 AI 智能助手 - 豆包",
-    ["ctrl", "shift", "a"],
-)
+def create_hide_window_hook(window_title: str,
+                            hotkey_combination: List[str],
+                            delay: float = 0):
+    """
+    Factory function that creates an async hook to find, activate, and hide a window.
+    """
 
-launch_and_hind_app([r"wt.exe", "-w", "_quake", "-p", "Arch_quake"],
-                    "Arch_quake", ["alt", "`"],
-                    delay=2)
+    async def hide_window_hook():
+        """The actual hook that will be executed to hide a window."""
+        if delay > 0:
+            await asyncio.sleep(delay)
 
-launch_app(
-    [
-        r"C:\Program Files\komorebi\bin\komorebic-no-console.exe", "start",
-        "--ahk", "--bar"
-    ],
-    cwd=r"C:\Program Files\komorebi",
-)
+        def activate_window(w: list):
+            """Activates the first window in the list."""
+            if w and w[0]:
+                print(f"Activating window for hotkey: {w[0].title}")
+                w[0].activate()
+
+        # Wait for the window to appear and activate it
+        window = await async_find_window_by_title(window_title,
+                                                  action=activate_window,
+                                                  timeout=10)
+
+        if not window:
+            print(
+                f"Warning: Window with title '{window_title}' not found for sending hotkey."
+            )
+            return
+
+        try:
+            print(
+                f"Sending hotkey {hotkey_combination} to hide window '{window_title}'."
+            )
+            await asyncio.to_thread(pyautogui.hotkey, *hotkey_combination)
+            print(f"Hotkey {hotkey_combination} sent successfully.")
+        except Exception as e:
+            print(f"Failed to send hotkey for '{window_title}': {e}")
+
+    return hide_window_hook
 
 
 def _close_all_matched_windows(window_list: list):
-    return [i.close() for i in window_list]
+    """Action to close all windows in a list."""
+    if not window_list:
+        return
+    print(f"Closing {len(window_list)} window(s)...")
+    for i in window_list:
+        try:
+            print(f"Closing window: {i.title}")
+            i.close()
+        except Exception as e:
+            print(f"Could not close window {i.title}: {e}")
 
 
-def _close_unexpected_window():
-    find_window_by_title("Arch", _close_all_matched_windows)
-    find_window_by_title("CapsLockX-Core.ahk", _close_all_matched_windows)
+async def _close_unexpected_windows_async():
+    """Finds and closes known unexpected windows."""
+    await async_find_window_by_title("Arch", _close_all_matched_windows)
+    await async_find_window_by_title("CapsLockX-Core.ahk",
+                                     _close_all_matched_windows)
 
 
-launch_app(
-    # 先打开 quick look 然后再次打开 capslockx，可以避免空格键无法出发 quicklook，原因未知
-    # 又突然好了，可以不用打开两次 CapsLockX 了，鬼知道为什么，啥也没干
-    [
-        r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe",
-        "/autorun"
-    ],
-    cwd=r"C:\Users\zion\AppData\Local\Programs\QuickLook",
-    delay=1,
-    hook=lambda: launch_app(
-        [r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"],
-        cwd=r"C:\Users\zion\Apps\CapsLockX",
-        # 会莫名其妙地出现一个 wt 或者 auto hotkey 窗口，原因未知，只能自动关闭
-        hook=lambda: _close_unexpected_window(),
-        delay=2,
-    ),
-)
+async def close_doubao_window_async():
+    """Finds and closes the Doubao window."""
+    print("Hook: Attempting to close Doubao window...")
+    await async_find_window_by_title("豆包 - 字节跳动旗下 AI 智能助手 - 豆包",
+                                     _close_all_matched_windows)
 
-# for lazy load
 
-# sleep(3)
+async def main():
+    """
+    Main function to create and run all app launch tasks concurrently.
+    """
 
-launch_app(
-    [r"C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe"],
-    cwd=r"C:\Users\zion\AppData\Local\Programs\Ollama",
-)
+    # Define the hook for CapsLockX which closes unexpected windows
+    async def launch_capslock_with_cleanup():
+        await async_launch_app(
+            [r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"],
+            cwd=r"C:\Users\zion\Apps\CapsLockX",
+            delay=2,
+            hook=_close_unexpected_windows_async,
+        )
 
-# launch_app(
-#     # C:\Users\zion\AppData\Local\Microsoft\WinGet\Links\catime.exe
-#     [r"C:\Users\zion\AppData\Local\Microsoft\WinGet\Links\catime.exe"], )
+    # Define the hook for QuickLook which launches CapsLockX
+    async def launch_quicklook_with_hook():
+        await async_launch_app(
+            [
+                r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe",
+                "/autorun",
+            ],
+            cwd=r"C:\Users\zion\AppData\Local\Programs\QuickLook",
+            delay=1,
+            hook=launch_capslock_with_cleanup,
+        )
+
+    tasks = [
+        # Launch Doubao and then close it via hook
+        asyncio.create_task(
+            async_launch_app(
+                r"C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe",
+                delay=3,  # Wait a bit for the window to appear before closing
+                hook=close_doubao_window_async,
+            )),
+        # Launch komorebi
+        asyncio.create_task(
+            async_launch_app(
+                [
+                    r"C:\Program Files\komorebi\bin\komorebic-no-console.exe",
+                    "start",
+                    "--ahk",
+                    "--bar",
+                ],
+                cwd=r"C:\Program Files\komorebi",
+            )),
+        # Launch QuickLook, which in turn will launch CapsLockX with its cleanup hook
+        asyncio.create_task(launch_quicklook_with_hook()),
+
+        # Launch Ollama
+        asyncio.create_task(
+            async_launch_app(
+                [
+                    r"C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe"
+                ],
+                cwd=r"C:\Users\zion\AppData\Local\Programs\Ollama",
+            )),
+        # Launch Windows Terminal Quake mode and hide it via hook
+        asyncio.create_task(
+            async_launch_app(
+                commands=["wt.exe", "-w", "_quake", "-p", "Arch_quake"],
+                hook=create_hide_window_hook(window_title="Arch_quake",
+                                             hotkey_combination=["alt", "`"],
+                                             delay=2))),
+    ]
+
+    print("--- Starting all applications concurrently ---")
+    await asyncio.gather(*tasks)
+    print("--- All application launch tasks have been processed ---")
+
+
+if __name__ == "__main__":
+    # On Windows, you might need to set a different event loop policy
+    # for asyncio subprocesses to work correctly in some environments.
+    # asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
+    pyautogui.FAILSAFE = False
+    asyncio.run(main())
