@@ -13,7 +13,6 @@ run = "git"
 
 [plugin]
 prepend_previewers = [
-  # TODO: improve performance. It's slow for office files. Consider integrating with QuickLook.
   # Office Documents
   { mime = "application/openxmlformats-officedocument.*", run = "libreoffice" },
   { mime = "application/oasis.opendocument.*", run = "libreoffice" },
@@ -33,4 +32,15 @@ prepend_previewers = [
   { name = "*.odp", run = "libreoffice" },
   { mime = "application/{,g}zip", run = "lsar" },
   { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", run = "lsar" },
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/subrip", run = "mediainfo" },
+  { name = "*.csv", run = 'piper -- rich -j --left --panel=rounded --guides --line-numbers --force-terminal "$1"' },   # for csv files
+  { name = "*.md", run = 'piper -- rich -j --left --panel=rounded --guides --line-numbers --force-terminal "$1"' },    # for markdown (.md) files
+  { name = "*.rst", run = 'piper -- rich -j --left --panel=rounded --guides --line-numbers --force-terminal "$1"' },   # for restructured text (.rst) files
+  { name = "*.ipynb", run = 'piper -- rich -j --left --panel=rounded --guides --line-numbers --force-terminal "$1"' }, # for jupyter notebooks (.ipynb)
+]
+
+prepend_preloaders = [
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/subrip", run = "mediainfo" },
 ]

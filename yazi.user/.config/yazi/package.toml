@@ -48,5 +48,20 @@ use = "pu-007/quicklook"
 rev = "7aae095"
 hash = "35a272ffc617482031d88305f96c5a17"
 
+[[plugin.deps]]
+use = "Rolv-Apneseth/starship"
+rev = "6a0f3f7"
+hash = "d5a74d95c2e8194ac352c5e10e81e64f"
+
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "a7d1aa6"
+hash = "844133c7247cda086819d63a9ca5e457"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:piper"
+rev = "aeca767"
+hash = "2bdc137505b8d9a0cc867a57d0e99b01"
+
 [flavor]
 deps = []

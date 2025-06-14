@@ -8,3 +8,5 @@ require("quicklook"):setup({
 	quicklook_path = "/mnt/c/Users/zion/AppData/Local/Programs/QuickLook/QuickLook.exe",
 	debug = true,
 })
+
+require("starship"):setup()
