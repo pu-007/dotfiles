@@ -66,8 +66,8 @@
         "SkipMinorUpdates": false
       },
       "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
       }
     },
     {
@@ -756,8 +756,8 @@
         "SkipMinorUpdates": false
       },
       "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
       }
     },
     {
@@ -1662,7 +1662,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "5.15.3",
+      "Version": "5.15.4",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2145,6 +2145,29 @@
       }
     },
     {
+      "Id": "iSlide.iSlide",
+      "Name": "iSlide Tools",
+      "Version": "8.1.1.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
       "Version": "1.4.2",
@@ -2477,12 +2500,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\O365EduCloudRetail - zh-cn",
-      "Name": "Microsoft 365 - zh-cn",
-      "Version": "16.0.18827.20140",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X64\\Pantum M6760DW Series",
       "Name": "Pantum M6760DW Series",
       "Version": "2.7.35",
@@ -2492,6 +2509,12 @@
       "Id": "ARP\\Machine\\X64\\PreSonus Studio One 7",
       "Name": "PreSonus Studio One 7",
       "Version": "7.0.0.102470",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\ProPlus2024Volume - zh-cn",
+      "Name": "Microsoft Office LTSC \u4E13\u4E1A\u589E\u5F3A\u7248 2024 - zh-cn",
+      "Version": "16.0.17932.20396",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3161,12 +3184,6 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OfficePushNotificationUtility_16.0.18827.20140_neutral__8wekyb3d8bbwe",
-      "Name": "OfficePushNotificationsUtility",
-      "Version": "16.0.18827.20140",
-      "Source": "Microsoft Store"
-    },
-    {
       "Id": "MSIX\\Microsoft.OneDriveSync_25091.512.1.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
       "Version": "25091.512.1.0",
@@ -3365,9 +3382,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.614.935.41_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.615.731.28_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.614.935.41",
+      "Version": "2025.615.731.28",
       "Source": "Microsoft Store"
     },
     {

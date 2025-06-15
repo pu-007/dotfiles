@@ -11,6 +11,7 @@ btop
 chafa
 cifs-utils
 clinfo
+clipboard-bin
 cmake
 cpp-pinyin
 cuda
@@ -68,6 +69,7 @@ lua-sec
 lua51
 luarocks
 markdownlint-cli2
+mediainfo
 mesa-utils
 miniconda3
 moreutils
@@ -131,6 +133,7 @@ rdma-core
 read-edid
 reflector
 rhino
+rich-cli
 ripgrep
 rsync
 rtmpdump
@@ -180,6 +183,7 @@ typstyle
 ueberzugpp
 unrar
 unzip
+uv
 vcpkg
 vdpauinfo
 vimv
@@ -190,6 +194,7 @@ vulkan-intel
 vulkan-mesa-layers
 vulkan-swrast
 vulkan-tools
+wayland-protocols
 wayland-utils
 weston
 wget
