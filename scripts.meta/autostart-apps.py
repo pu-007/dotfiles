@@ -7,10 +7,11 @@ import psutil
 
 
 async def async_find_window_by_title(title: str,
-                                     action: Optional[Callable] = None,
-                                     timeout: float = 5.0) -> Optional[list]:
+                                     hook: Optional[Callable] = None,
+                                     timeout: float = 5.0,
+                                     interval: float = 0.3) -> Optional[list]:
     """
-    Asynchronously finds a window by its title and performs an action.
+    Asynchronously finds a window by its title and performs a hook function.
     Runs blocking pyautogui calls in a separate thread.
     """
     elapsed_time = 0
@@ -20,15 +21,15 @@ async def async_find_window_by_title(title: str,
         app_window = await asyncio.to_thread(pyautogui.getWindowsWithTitle,
                                              title)
         if not app_window:
-            await asyncio.sleep(0.5)
-            elapsed_time += 0.5
+            await asyncio.sleep(interval)
+            elapsed_time += interval
 
-    if app_window and action:
+    if app_window and hook:
         # Also run the action in a thread if it's a blocking call
-        if asyncio.iscoroutinefunction(action):
-            await action(app_window)
+        if asyncio.iscoroutinefunction(hook):
+            await hook(app_window)
         else:
-            await asyncio.to_thread(action, app_window)
+            await asyncio.to_thread(hook, app_window)
 
     return app_window if app_window else None
 
@@ -82,7 +83,7 @@ def create_hide_window_hook(window_title: str,
 
         # Wait for the window to appear and activate it
         window = await async_find_window_by_title(window_title,
-                                                  action=activate_window,
+                                                  hook=activate_window,
                                                   timeout=10)
 
         if not window:
@@ -123,16 +124,27 @@ async def close_doubao_window_async():
                                      _close_all_matched_windows)
 
 
-async def launch_capslockx():
-    for _ in range(6):
+async def _wait_for_prog(name, timeout: int = 6, interval: int = 1) -> bool:
+    for _ in range(timeout):
         for proc in psutil.process_iter(['name']):
-            if proc.name() == "QuickLook.exe":
-                break
-        await asyncio.sleep(1)
+            if proc.name() == name:
+                return True
+        await asyncio.sleep(interval)
+    return False
+
+
+async def launch_capslockx():
+    await _wait_for_prog("QuickLook.exe")
     await async_launch_app(
         [r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"],
         cwd=r"C:\Users\zion\Apps\CapsLockX",
     )
+
+
+async def launch_quicker_clipboard():
+    await _wait_for_prog("Quicker.exe", timeout=6, interval=1)
+    await asyncio.to_thread(pyautogui.hotkey, "ctrl", "shift", "x")
+    await async_find_window_by_title("剪贴板", _close_all_matched_windows)
 
 
 async def launch_quicklook_and_capslockx_with_cleanup():
@@ -188,6 +200,8 @@ async def main():
                 hook=create_hide_window_hook(window_title="Arch_quake",
                                              hotkey_combination=["alt", "`"],
                                              delay=3))),
+        asyncio.create_task(
+            launch_quicker_clipboard()),  # Launch Quicker clipboard
     ]
 
     print("--- Starting all applications concurrently ---")
