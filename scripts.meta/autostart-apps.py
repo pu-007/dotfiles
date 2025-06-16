@@ -133,14 +133,6 @@ async def _wait_for_prog(name, timeout: int = 6, interval: int = 1) -> bool:
     return False
 
 
-async def launch_capslockx():
-    await _wait_for_prog("QuickLook.exe")
-    await async_launch_app(
-        [r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"],
-        cwd=r"C:\Users\zion\Apps\CapsLockX",
-    )
-
-
 async def launch_quicker_clipboard():
     await _wait_for_prog("Quicker.exe", timeout=6, interval=1)
     await asyncio.to_thread(pyautogui.hotkey, "ctrl", "shift", "x")
@@ -153,7 +145,11 @@ async def launch_quicklook_and_capslockx_with_cleanup():
         r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe",
         "/autorun"
     ])
-    await launch_capslockx()
+    await _wait_for_prog("QuickLook.exe")
+    await async_launch_app(
+        [r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"],
+        cwd=r"C:\Users\zion\Apps\CapsLockX",
+    )
     await async_find_window_by_title("Arch", _close_all_matched_windows)
     await async_find_window_by_title("CapsLockX-Core.ahk",
                                      _close_all_matched_windows)
