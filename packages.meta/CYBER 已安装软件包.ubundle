@@ -234,7 +234,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.59.6",
+      "Version": "1.60.6",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -763,7 +763,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "137.0.3296.68",
+      "Version": "137.0.3296.83",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -786,7 +786,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.091.0512.0001",
+      "Version": "25.095.0518.0002",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1154,7 +1154,7 @@
     {
       "Id": "Microsoft.VisualStudio.2022.Community",
       "Name": "Visual Studio Community 2022",
-      "Version": "17.14.5",
+      "Version": "\u003C 17.14.6",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1270,29 +1270,6 @@
       "Id": "NetEase.CloudMusic",
       "Name": "\u7F51\u6613\u4E91\u97F3\u4E50",
       "Version": "3.1.11.203994",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": "",
-        "SkipMinorUpdates": false
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "Nutstore.Nutstore",
-      "Name": "Nutstore",
-      "Version": "7.2.8",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1479,6 +1456,29 @@
       "Id": "QL-Win.QuickLook",
       "Name": "QuickLook",
       "Version": "4.0.2.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "RSSNext.Folo",
+      "Name": "Folo",
+      "Version": "0.4.9",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2944,12 +2944,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\User\\X64\\Folo",
-      "Name": "Folo",
-      "Version": "0.4.9",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\User\\X64\\OKPlus 13.0",
       "Name": "OKPlus",
       "Version": "13.0",
@@ -2974,9 +2968,9 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "MSIX\\11413PtruceanBogdan.Wintoys_2.0.81.0_x64__ankwhmsh70gj6",
+      "Id": "MSIX\\11413PtruceanBogdan.Wintoys_2.0.91.0_x64__ankwhmsh70gj6",
       "Name": "Wintoys",
-      "Version": "2.0.81.0",
+      "Version": "2.0.91.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3184,9 +3178,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25091.512.1.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25095.518.2.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25091.512.1.0",
+      "Version": "25095.518.2.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3322,13 +3316,13 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.486.517.0_x86__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.519.329.0_x64__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.6",
-      "Version": "6000.486.517.0",
+      "Version": "6000.519.329.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.519.329.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.6_6000.519.329.0_x86__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.6",
       "Version": "6000.519.329.0",
       "Source": "Microsoft Store"
@@ -3382,9 +3376,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.615.731.28_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.620.348.1_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.615.731.28",
+      "Version": "2025.620.348.1",
       "Source": "Microsoft Store"
     },
     {
@@ -3439,12 +3433,6 @@
       "Id": "MSIX\\NVIDIACorp.NVIDIAControlPanel_8.1.967.0_x64__56jybvy8sckqj",
       "Name": "NVIDIA Control Panel",
       "Version": "8.1.967.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Nutstore.Sync.DesktopClient_7.2.8.0_neutral__8cbew8s75sr8g",
-      "Name": "\u575A\u679C\u4E91",
-      "Version": "7.2.8.0",
       "Source": "Microsoft Store"
     },
     {
