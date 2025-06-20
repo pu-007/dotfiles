@@ -117,6 +117,29 @@
       }
     },
     {
+      "Id": "AmN.yasb",
+      "Name": "yasb",
+      "Version": "1.7.6",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Anaconda.Miniconda3",
       "Name": "Miniconda3",
       "Version": "py313_25.3.1-1",
@@ -165,7 +188,7 @@
     {
       "Id": "Anki.Anki",
       "Name": "Anki",
-      "Version": "25.02.6",
+      "Version": "25.02.7",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -372,7 +395,7 @@
     {
       "Id": "Google.Chrome.EXE",
       "Name": "Google Chrome (EXE)",
-      "Version": "137.0.7151.104",
+      "Version": "137.0.7151.120",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1177,7 +1200,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.101.0",
+      "Version": "1.101.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1200,7 +1223,7 @@
     {
       "Id": "Microsoft.WSL",
       "Name": "Windows Subsystem for Linux",
-      "Version": "2.5.7.0",
+      "Version": "2.5.9.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1269,7 +1292,7 @@
     {
       "Id": "NetEase.CloudMusic",
       "Name": "\u7F51\u6613\u4E91\u97F3\u4E50",
-      "Version": "3.1.11.203994",
+      "Version": "3.1.12.204072",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1363,7 +1386,7 @@
     {
       "Id": "Ollama.Ollama",
       "Name": "Ollama",
-      "Version": "0.9.0",
+      "Version": "0.9.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1389,6 +1412,29 @@
       "Version": "0.2.30",
       "Source": "winget",
       "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "PSFzf",
+      "Name": "PSFzf",
+      "Version": "2.6.10",
+      "Source": "PSGallery",
+      "ManagerName": "PowerShell7",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -1456,29 +1502,6 @@
       "Id": "QL-Win.QuickLook",
       "Name": "QuickLook",
       "Version": "4.0.2.0",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": "",
-        "SkipMinorUpdates": false
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "RSSNext.Folo",
-      "Name": "Folo",
-      "Version": "0.4.9",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1685,7 +1708,7 @@
     {
       "Id": "Tencent.QQ.NT",
       "Name": "QQ",
-      "Version": "9.9.19.35469",
+      "Version": "9.9.20.36330",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1915,6 +1938,29 @@
       }
     },
     {
+      "Id": "bat",
+      "Name": "Bat",
+      "Version": "0.25.0",
+      "Source": "main",
+      "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "chocolatey-compatibility.extension",
       "Name": "Chocolatey Compatibility.extension",
       "Version": "1.0.0",
@@ -2030,6 +2076,29 @@
       }
     },
     {
+      "Id": "fd",
+      "Name": "Fd",
+      "Version": "10.2.0",
+      "Source": "main",
+      "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "fzf",
       "Name": "Fzf",
       "Version": "0.62.0",
@@ -2078,7 +2147,7 @@
     {
       "Id": "git",
       "Name": "Git",
-      "Version": "2.49.0",
+      "Version": "2.50.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2170,7 +2239,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.4.2",
+      "Version": "1.4.4",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -3376,9 +3445,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.620.348.1_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.620.915.59_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.620.348.1",
+      "Version": "2025.620.915.59",
       "Source": "Microsoft Store"
     },
     {
