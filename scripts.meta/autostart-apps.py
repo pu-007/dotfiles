@@ -155,7 +155,7 @@ async def launch_windowsterminal_with_quake():
                                window_title="special_quake_window_title",
                                hotkey_combination=["alt", "`"],
                            ),
-                           delay=1)
+                           delay=2)
     await async_find_window_by_title("Arch", _close_all_matched_windows)
 
 
