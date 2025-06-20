@@ -40,6 +40,13 @@ if (-not $WslDefaultParameterValues) {
     $WslDefaultParameterValues = @{}
 }
 $WslDefaultParameterValues["eza"] = "-I 'NTUSER.DAT*|ntuser.*'"
+
+function iy {
+    ipython $args
+}
+function py {
+    python $args
+}
 function l {
     eza  --git -a --icons -l
 }

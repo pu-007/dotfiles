@@ -1,6 +1,5 @@
 import asyncio
 import subprocess
-import os
 from typing import Callable, Coroutine, List, Union, Optional
 
 import pyautogui
@@ -43,32 +42,20 @@ async def async_launch_app(
     delay: float = 0,
     hook: Optional[Callable[[], Union[None, Coroutine]]] = None,
 ):
-    """
-    Asynchronously launches an application.
-    Supports an optional hook function (sync or async) after a delay.
-    """
-    if isinstance(commands, str):
-        commands = [commands]
-    exe_name = os.path.basename(commands[0])
-
-    try:
-        await asyncio.to_thread(
-            lambda: subprocess.Popen(commands,
-                                     shell=False,
-                                     close_fds=True,
-                                     cwd=cwd,
-                                     creationflags=DETACHED_PROCESS))
-        print(f"{exe_name} launched successfully.")
-        if delay > 0:
-            await asyncio.sleep(delay)
-        if hook:
-            if asyncio.iscoroutinefunction(hook):
-                await hook()
-            else:
-                # Run sync hook in a thread to avoid blocking
-                await asyncio.to_thread(hook)
-    except Exception as e:
-        print(f"Failed to launch {exe_name}: {e}")
+    await asyncio.to_thread(
+        lambda: subprocess.Popen(commands,
+                                 shell=False,
+                                 close_fds=True,
+                                 cwd=cwd,
+                                 creationflags=DETACHED_PROCESS))
+    if delay > 0:
+        await asyncio.sleep(delay)
+    if hook:
+        if asyncio.iscoroutinefunction(hook):
+            await hook()
+        else:
+            # Run sync hook in a thread to avoid blocking
+            await asyncio.to_thread(hook)
 
 
 def create_hide_window_hook(window_title: str,
@@ -125,7 +112,9 @@ def _close_all_matched_windows(window_list: list):
             print(f"Could not close window {i.title}: {e}")
 
 
-async def _wait_for_prog(name, timeout: int = 6, interval: float = 1) -> bool:
+async def _wait_for_prog(name,
+                         timeout: int = 5,
+                         interval: float = 0.3) -> bool:
     for _ in range(timeout):
         for proc in psutil.process_iter(['name']):
             if proc.name() == name:
@@ -136,7 +125,7 @@ async def _wait_for_prog(name, timeout: int = 6, interval: float = 1) -> bool:
 
 async def launch_quicker_clipboard():
     await async_launch_app(r"C:\Program Files\Quicker\Quicker.exe")
-    await _wait_for_prog("Quicker.exe", timeout=5, interval=0.5)
+    await asyncio.sleep(5)
     await asyncio.to_thread(pyautogui.hotkey, "ctrl", "shift", "x")
     await async_find_window_by_title("剪贴板", _close_all_matched_windows)
 
@@ -148,15 +137,8 @@ async def launch_quicklook_and_capslockx():
     ])
     await _wait_for_prog("QuickLook.exe")
     await async_launch_app([r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"], )
-
-
-async def cleanup():
-    # 启动 CapsLockX 后有概率出现 ahk 窗口
     await async_find_window_by_title("CapsLockX-Core.ahk",
                                      _close_all_matched_windows)
-    await asyncio.sleep(1.5)
-    # 有概率随机出现终端窗口，原因未知，可能与启动新进程有关
-    await async_find_window_by_title("Arch", _close_all_matched_windows)
 
 
 async def _close_doubao_window_async():
@@ -164,9 +146,22 @@ async def _close_doubao_window_async():
                                      _close_all_matched_windows)
 
 
+async def launch_windowsterminal_with_quake():
+    # TODO : fix logic
+    await async_launch_app(commands=[
+        "wt.exe", "-w", "_quake", "-p", "special_quake_window_title"
+    ],
+                           hook=create_hide_window_hook(
+                               window_title="special_quake_window_title",
+                               hotkey_combination=["alt", "`"],
+                           ),
+                           delay=1)
+    await async_find_window_by_title("Arch", _close_all_matched_windows)
+
+
 async def main():
+    # fmt: off
     await asyncio.gather(
-        asyncio.create_task(cleanup()),
         asyncio.create_task(
             async_launch_app(
                 [r"C:\Program Files\Everything\Everything.exe", "-startup"])),
@@ -202,16 +197,12 @@ async def main():
             async_launch_app(
                 r"C:\Users\zion\AppData\Roaming\AltSnap\AltSnap.exe")),
         asyncio.create_task(
-            async_launch_app(
-                r"C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe")
-        ),
+            async_launch_app([
+                r'C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe'
+            ])),
         # Launch Windows Terminal Quake mode and hide it via hook
-        asyncio.create_task(
-            async_launch_app(
-                commands=["wt.exe", "-w", "_quake", "-p", "Arch_quake"],
-                hook=create_hide_window_hook(window_title="Arch_quake",
-                                             hotkey_combination=["alt", "`"],
-                                             delay=1.5))),
+        asyncio.create_task(launch_windowsterminal_with_quake()),
+        #
         # Launch Quicker clipboard
         asyncio.create_task(launch_quicker_clipboard()),
         asyncio.create_task(
@@ -224,7 +215,18 @@ async def main():
         asyncio.create_task(
             async_launch_app(
                 r"C:\Program Files (x86)\Tobias Erichsen\loopMIDI\loopMIDI.exe"
-            )))
+            )),
+        asyncio.create_task(
+            async_launch_app([
+                r"C:\Program Files (x86)\Stardock\Fences\Fences.exe",
+                "/startup"
+            ])),
+        asyncio.create_task(
+            async_launch_app(
+                r"C:\Users\zion\Apps\Controller Companion\ControllerCompanion.exe"
+            ))
+        )
+    # fmt: on
 
 
 if __name__ == "__main__":

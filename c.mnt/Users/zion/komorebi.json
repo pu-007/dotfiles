@@ -117,7 +117,7 @@
     },
     {
       "kind": "Title",
-      "id": "Arch_quake",
+      "id": "special_quake_window_title",
       "matching_strategy": "Equals"
     }
   ],
