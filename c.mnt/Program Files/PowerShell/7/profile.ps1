@@ -5,7 +5,7 @@
 
 $env:SHELL = "pwsh"
 $env:EDITOR = "vim"
-$env:FZF_DEFAULT_OPTS = "--with-shell='pwsh -Command' --ansi"
+$env:FZF_DEFAULT_OPTS = "--preview-window=hidden"
 
 ### PSReadLine
 Set-PSReadLineOption -EditMode Vi
@@ -33,7 +33,7 @@ Set-PsFzfOption -TabExpansion
 Set-PsFzfOption -EnableAliasFuzzyEdit -EnableAliasFuzzyFasd -EnableAliasFuzzyHistory -EnableAliasFuzzyKillProcess -EnableAliasFuzzySetLocation -EnableAliasFuzzyScoop -EnableAliasFuzzySetEverything -EnableAliasFuzzyZLocation -EnableAliasFuzzyGitStatus
 ### WslInterop
 # use native linux commands from WSL instead of GOW.
-Import-WslCommand "yay", "awk", "fd", "find", "grep", "head", "less", "man", "sed", "seq", "ssh", "sudo", "tail", "touch", "vim", "wc", "bat"
+Import-WslCommand "yay", "awk", "find", "grep", "head", "less", "man", "sed", "seq", "ssh", "sudo", "tail", "touch", "vim", "wc"
 
 #### Alias
 if (-not $WslDefaultParameterValues) {

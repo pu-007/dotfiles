@@ -1,9 +1,12 @@
 import asyncio
+import subprocess
 import os
 from typing import Callable, Coroutine, List, Union, Optional
 
 import pyautogui
 import psutil
+
+DETACHED_PROCESS = 0x00000008
 
 
 async def async_find_window_by_title(title: str,
@@ -49,7 +52,12 @@ async def async_launch_app(
     exe_name = os.path.basename(commands[0])
 
     try:
-        await asyncio.create_subprocess_exec(*commands, cwd=cwd)
+        await asyncio.to_thread(
+            lambda: subprocess.Popen(commands,
+                                     shell=False,
+                                     close_fds=True,
+                                     cwd=cwd,
+                                     creationflags=DETACHED_PROCESS))
         print(f"{exe_name} launched successfully.")
         if delay > 0:
             await asyncio.sleep(delay)
@@ -117,14 +125,7 @@ def _close_all_matched_windows(window_list: list):
             print(f"Could not close window {i.title}: {e}")
 
 
-async def close_doubao_window_async():
-    """Finds and closes the Doubao window."""
-    print("Hook: Attempting to close Doubao window...")
-    await async_find_window_by_title("豆包 - 字节跳动旗下 AI 智能助手 - 豆包",
-                                     _close_all_matched_windows)
-
-
-async def _wait_for_prog(name, timeout: int = 6, interval: int = 1) -> bool:
+async def _wait_for_prog(name, timeout: int = 6, interval: float = 1) -> bool:
     for _ in range(timeout):
         for proc in psutil.process_iter(['name']):
             if proc.name() == name:
@@ -134,80 +135,98 @@ async def _wait_for_prog(name, timeout: int = 6, interval: int = 1) -> bool:
 
 
 async def launch_quicker_clipboard():
-    await _wait_for_prog("Quicker.exe", timeout=6, interval=1)
+    await async_launch_app(r"C:\Program Files\Quicker\Quicker.exe")
+    await _wait_for_prog("Quicker.exe", timeout=5, interval=0.5)
     await asyncio.to_thread(pyautogui.hotkey, "ctrl", "shift", "x")
     await async_find_window_by_title("剪贴板", _close_all_matched_windows)
 
 
-async def launch_quicklook_and_capslockx_with_cleanup():
+async def launch_quicklook_and_capslockx():
     await async_launch_app([
-        "pwsh.exe", "-Command",
         r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe",
-        "/autorun"
+        "-autorun"
     ])
     await _wait_for_prog("QuickLook.exe")
-    await async_launch_app(
-        [r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"],
-        cwd=r"C:\Users\zion\Apps\CapsLockX",
-    )
-    await async_find_window_by_title("Arch", _close_all_matched_windows)
+    await async_launch_app([r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"], )
+
+
+async def cleanup():
+    # 启动 CapsLockX 后有概率出现 ahk 窗口
     await async_find_window_by_title("CapsLockX-Core.ahk",
+                                     _close_all_matched_windows)
+    await asyncio.sleep(1.5)
+    # 有概率随机出现终端窗口，原因未知，可能与启动新进程有关
+    await async_find_window_by_title("Arch", _close_all_matched_windows)
+
+
+async def _close_doubao_window_async():
+    await async_find_window_by_title("豆包 - 字节跳动旗下 AI 智能助手 - 豆包",
                                      _close_all_matched_windows)
 
 
 async def main():
-    """
-    Main function to create and run all app launch tasks concurrently.
-    """
-
-    tasks = [
-        # Launch Doubao and then close it via hook
+    await asyncio.gather(
+        asyncio.create_task(cleanup()),
+        asyncio.create_task(
+            async_launch_app(
+                [r"C:\Program Files\Everything\Everything.exe", "-startup"])),
         asyncio.create_task(
             async_launch_app(
                 r"C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe",
-                hook=close_doubao_window_async,
+                hook=_close_doubao_window_async,
             )),
         # Launch komorebi
         asyncio.create_task(
-            async_launch_app(
-                [
-                    r"C:\Program Files\komorebi\bin\komorebic-no-console.exe",
-                    "start",
-                    "--ahk",
-                    "--bar",
-                ],
-                cwd=r"C:\Program Files\komorebi",
-            )),
-        # Launch QuickLook, which in turn will launch CapsLockX with its cleanup hook
-        asyncio.create_task(launch_quicklook_and_capslockx_with_cleanup()),
-
-        # Launch Ollama
+            async_launch_app([
+                r"C:\Program Files\komorebi\bin\komorebic-no-console.exe",
+                "start",
+            ])),
         asyncio.create_task(
             async_launch_app(
-                [
-                    r"C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe"
-                ],
-                cwd=r"C:\Users\zion\AppData\Local\Programs\Ollama",
-            )),
+                r"C:\Users\zion\AppData\Local\Programs\utools\uTools.exe")),
+        asyncio.create_task(
+            async_launch_app([
+                r"C:\Program Files\AutoHotkey\v2\AutoHotkey.exe",
+                r"C:\Users\zion\komorebi.ahk"
+            ])),
+        asyncio.create_task(
+            async_launch_app(r"C:\Program Files\YASB\yasb.exe")),
+        asyncio.create_task(
+            async_launch_app(r"C:\Program Files\Mem Reduct\memreduct.exe")),
+        # With QuickLook launched, execute capslockx.
+        asyncio.create_task(launch_quicklook_and_capslockx()),
+        asyncio.create_task(
+            async_launch_app(
+                r"C:\Users\zion\AppData\Local\Programs\Motrix\Motrix.exe")),
+        asyncio.create_task(
+            async_launch_app(
+                r"C:\Users\zion\AppData\Roaming\AltSnap\AltSnap.exe")),
+        asyncio.create_task(
+            async_launch_app(
+                r"C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe")
+        ),
         # Launch Windows Terminal Quake mode and hide it via hook
         asyncio.create_task(
             async_launch_app(
                 commands=["wt.exe", "-w", "_quake", "-p", "Arch_quake"],
                 hook=create_hide_window_hook(window_title="Arch_quake",
                                              hotkey_combination=["alt", "`"],
-                                             delay=3))),
+                                             delay=1.5))),
+        # Launch Quicker clipboard
+        asyncio.create_task(launch_quicker_clipboard()),
         asyncio.create_task(
-            launch_quicker_clipboard()),  # Launch Quicker clipboard
-    ]
-
-    print("--- Starting all applications concurrently ---")
-    await asyncio.gather(*tasks)
-    print("--- All application launch tasks have been processed ---")
+            async_launch_app(
+                r"C:\Users\zion\AppData\Local\Programs\twinkle-tray\Twinkle Tray.exe"
+            )),
+        asyncio.create_task(
+            async_launch_app(
+                r"C:\Users\zion\AppData\Local\Programs\PixPin\PixPin.exe")),
+        asyncio.create_task(
+            async_launch_app(
+                r"C:\Program Files (x86)\Tobias Erichsen\loopMIDI\loopMIDI.exe"
+            )))
 
 
 if __name__ == "__main__":
-    # On Windows, you might need to set a different event loop policy
-    # for asyncio subprocesses to work correctly in some environments.
-    # asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
     pyautogui.FAILSAFE = False
     asyncio.run(main())
