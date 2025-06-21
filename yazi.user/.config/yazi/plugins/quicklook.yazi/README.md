@@ -35,6 +35,22 @@ run = "plugin quicklook"
 desc = "Quick look file/dir"
 ```
 
+4. Setup Python Environment
+
+To activate automatically, you need to install `pyautogui` in your Python environment.
+
+```bash
+pip install pyautogui
+```
+
+Or you can choose vbs commands to activate QuickLook, but it may not work in some cases.
+
+```Lua
+[[powershell.exe -Command "Add-Type -AssemblyName Microsoft.VisualBasic; [Microsoft.VisualBasic.Interaction]::AppActivate('QuickLook')"]]
+```
+
+The method will be opptional in the future, and you can choose to use it or not.
+
 ## Brief Introduction
 
 1. if in Windows mounted dir

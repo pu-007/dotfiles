@@ -60,8 +60,8 @@ hash = "2143a53182dbbe935a1abd1623424aa5"
 
 [[plugin.deps]]
 use = "pu-007/quicklook"
-rev = "674bf38"
-hash = "d7d89db78c23c469081fa8aed3b78ff5"
+rev = "f3666d8"
+hash = "784d820b5742efe4c64d4fe5d3dde414"
 
 [flavor]
 deps = []
