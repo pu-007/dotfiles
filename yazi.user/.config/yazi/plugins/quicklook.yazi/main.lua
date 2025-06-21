@@ -87,9 +87,22 @@ function M.entry()
 	end
 
 	os.execute(quicklook_exe_wsl .. " " .. file_path_win .. " -top")
-	os.execute(
-		[[powershell.exe -Command "Add-Type -AssemblyName Microsoft.VisualBasic; [Microsoft.VisualBasic.Interaction]::AppActivate('QuickLook')"]]
-	)
+
+	local pipe = io.popen("pwsh.exe -Command python.exe -", "w")
+
+	pipe:write([[
+from time import time, sleep
+from pyautogui import getWindowsWithTitle
+
+end_time = time() + 3
+while time() <= end_time:
+    windows = getWindowsWithTitle("QuickLook")
+    if windows:
+        for window in windows:
+            window.activate()
+        break
+]])
+	pipe:close()
 end
 
 return M
