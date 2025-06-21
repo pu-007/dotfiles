@@ -692,6 +692,29 @@
       }
     },
     {
+      "Id": "MichaelTippach.ASIO4ALL",
+      "Name": "ASIO4ALL",
+      "Version": "2.16",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Microsoft.AppInstaller",
       "Name": "App Installer",
       "Version": "1.25.390.0",
@@ -781,6 +804,29 @@
       "Updates": {
         "UpdatesIgnored": true,
         "IgnoredVersion": "*"
+      }
+    },
+    {
+      "Id": "Microsoft.DotNet.Runtime.3_1",
+      "Name": "Microsoft .NET Runtime 3.1",
+      "Version": "3.1.27",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
       }
     },
     {
@@ -1522,6 +1568,29 @@
       }
     },
     {
+      "Id": "RSSNext.Folo",
+      "Name": "Folo",
+      "Version": "0.5.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "RamenSoftware.Windhawk",
       "Name": "Windhawk",
       "Version": "1.6.1",
@@ -2055,7 +2124,7 @@
     {
       "Id": "fastfetch",
       "Name": "Fastfetch",
-      "Version": "2.45.0",
+      "Version": "2.46.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2196,29 +2265,6 @@
       "Version": "8.14.2",
       "Source": "main",
       "ManagerName": "Scoop",
-      "InstallationOptions": {
-        "SkipHashCheck": false,
-        "InteractiveInstallation": false,
-        "RunAsAdministrator": false,
-        "Architecture": "",
-        "InstallationScope": "",
-        "CustomParameters": [],
-        "PreRelease": false,
-        "CustomInstallLocation": "",
-        "Version": "",
-        "SkipMinorUpdates": false
-      },
-      "Updates": {
-        "UpdatesIgnored": false,
-        "IgnoredVersion": ""
-      }
-    },
-    {
-      "Id": "iSlide.iSlide",
-      "Name": "iSlide Tools",
-      "Version": "8.1.1.0",
-      "Source": "winget",
-      "ManagerName": "Winget",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -2545,6 +2591,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\424abc11-aca9-452f-8b47-4klc6fh21b36_is1",
+      "Name": "Steinberg SpectraLayers 11",
+      "Version": "11.0.30.387",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\FairlightAudioAccelerator_is1",
       "Name": "Fairlight Audio Accelerator Utility",
       "Version": "1.0.15",
@@ -2575,15 +2627,15 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\PreSonus Studio One 7",
-      "Name": "PreSonus Studio One 7",
-      "Version": "7.0.0.102470",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X64\\ProPlus2024Volume - zh-cn",
       "Name": "Microsoft Office LTSC \u4E13\u4E1A\u589E\u5F3A\u7248 2024 - zh-cn",
       "Version": "16.0.17932.20396",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\Rectify11",
+      "Name": "Rectify11",
+      "Version": "3.2.70.2",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2641,9 +2693,21 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\iZotope RX 11 Audio Editor Advanced_is1",
+      "Name": "iZotope RX 11 Audio Editor Advanced",
+      "Version": "11.2.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{000420DE-0A08-46D7-A941-E6120CB6D9CA}",
       "Name": "NVIDIA Nsight Systems 2022.4.2",
       "Version": "22.4.2.1",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{0224CA8C-FD43-4397-94CE-319B9471016A}",
+      "Name": "Steinberg Activation Manager",
+      "Version": "1.6.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2701,6 +2765,18 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{9529D195-8127-42F5-BA54-8D862E941920}",
+      "Name": "Steinberg MediaBay",
+      "Version": "1.2.40",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{9B51C20E-93B6-4825-9848-858A0957246C}",
+      "Name": "Steinberg Cubase 14",
+      "Version": "14.0.30",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{9E9798A8-213B-4C9E-AFBA-EBB0F9FF6533}",
       "Name": "NVIDIA Nsight Systems 2024.5.1",
       "Version": "24.5.1.113",
@@ -2710,6 +2786,12 @@
       "Id": "ARP\\Machine\\X64\\{A397B122-A879-40D8-941A-68122D92B3B6}",
       "Name": "NVIDIA Nsight Systems 2023.1.2",
       "Version": "23.1.2.43",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{AA78592A-F13C-4C8E-B849-7A398001FA7F}",
+      "Name": "Steinberg Library Manager",
+      "Version": "3.2.50",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3445,9 +3527,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.620.915.59_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.621.1028.52_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.620.915.59",
+      "Version": "2025.621.1028.52",
       "Source": "Microsoft Store"
     },
     {
@@ -3760,6 +3842,12 @@
       "Id": "MSIX\\www.n.cn-952E2013_1.0.0.1_neutral__b02ymq2zw4z3c",
       "Name": "\u7EB3\u7C73AI\u641C\u7D22",
       "Version": "1.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\www.phind.com-3FFE6DF_1.0.0.0_neutral__eg2jxf6y8f396",
+      "Name": "Phind",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
