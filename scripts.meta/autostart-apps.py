@@ -123,13 +123,6 @@ async def _wait_for_prog(name,
     return False
 
 
-async def launch_quicker_clipboard():
-    await async_launch_app(r"C:\Program Files\Quicker\Quicker.exe")
-    await asyncio.sleep(5)
-    await asyncio.to_thread(pyautogui.hotkey, "ctrl", "shift", "x")
-    await async_find_window_by_title("剪贴板", _close_all_matched_windows)
-
-
 async def launch_quicklook_and_capslockx():
     await async_launch_app([
         r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe",
@@ -146,17 +139,23 @@ async def _close_doubao_window_async():
                                      _close_all_matched_windows)
 
 
-async def launch_windowsterminal_with_quake():
-    # TODO : fix logic
-    await async_launch_app(commands=[
-        "wt.exe", "-w", "_quake", "-p", "special_quake_window_title"
-    ],
-                           hook=create_hide_window_hook(
-                               window_title="special_quake_window_title",
-                               hotkey_combination=["alt", "`"],
-                           ),
-                           delay=2)
+async def quake_and_clipboard_cleanup():
     await async_find_window_by_title("Arch", _close_all_matched_windows)
+    await asyncio.sleep(5)
+    await asyncio.to_thread(pyautogui.hotkey, "alt", "`")
+    await asyncio.sleep(1)
+    await asyncio.to_thread(pyautogui.hotkey, "ctrl", "shift", "x")
+    await async_find_window_by_title("剪贴板", _close_all_matched_windows)
+
+
+async def launch_quake_and_clipboard():
+    await async_launch_app(r"C:\Program Files\Quicker\Quicker.exe")
+    await async_launch_app(
+        commands=[
+            "wt.exe", "-w", "_quake", "-p", "special_quake_window_title"
+        ],
+        hook=quake_and_clipboard_cleanup,
+    )
 
 
 async def main():
@@ -196,15 +195,8 @@ async def main():
         asyncio.create_task(
             async_launch_app(
                 r"C:\Users\zion\AppData\Roaming\AltSnap\AltSnap.exe")),
-        asyncio.create_task(
-            async_launch_app([
-                r'C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe'
-            ])),
-        # Launch Windows Terminal Quake mode and hide it via hook
-        asyncio.create_task(launch_windowsterminal_with_quake()),
-        #
-        # Launch Quicker clipboard
-        asyncio.create_task(launch_quicker_clipboard()),
+        # Launch Windows Terminal Quake and quicker clipboarder as the order is important
+        asyncio.create_task(launch_quake_and_clipboard()),
         asyncio.create_task(
             async_launch_app(
                 r"C:\Users\zion\AppData\Local\Programs\twinkle-tray\Twinkle Tray.exe"
@@ -224,7 +216,26 @@ async def main():
         asyncio.create_task(
             async_launch_app(
                 r"C:\Users\zion\Apps\Controller Companion\ControllerCompanion.exe"
-            ))
+            )),
+        asyncio.create_task(
+            async_launch_app([
+                r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe', r'--no-startup-window', r'--win-session-start'
+            ])),
+        # asyncio.create_task(
+        #     async_launch_app(
+        #         r"C:\Windows\Rectify11\Rectify11TrayTool.exe"
+        #     )),
+        # asyncio.create_task(
+        #     async_launch_app([
+        #         r'C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe'
+        #     ])),
+        # asyncio.create_task(
+        #   async_launch_app(
+        #     cwd=r"C:\Users\zion\AppData\local\Programs\podman-desktop",
+        #     commands=[
+        #         r"C:\Users\zion\AppData\local\Programs\podman-desktop\Podman Desktop.exe",
+        #         "--minimized"
+        #     ]))
         )
     # fmt: on
 

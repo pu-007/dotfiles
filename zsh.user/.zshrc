@@ -188,7 +188,6 @@ if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
         print -P "%F{160} The clone has failed.%f%b"
 fi
 export fpath=($fpath ~/.config/zsh/completions/)
-export PATH="$PATH:$HOME/go/bin"
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -U compinit && compinit
 ### plugins
@@ -255,8 +254,8 @@ function zvm_after_init() {
 }
 
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$HOME/.moon/bin:$PATH"
+export PATH="$PATH:$HOME/.moon/bin:"
+export PATH="$PATH:$HOME/go/bin"
 export DOTFILE_STORE="$HOME/dotfiles"
 export CUDA_HOME="/opt/cuda/"
-
 export HF_ENDPOINT="https://hf-mirror.com"
