@@ -37,12 +37,26 @@ async def _async_launch_app(
                                  creationflags=subprocess.DETACHED_PROCESS))
 
 
+def _find_first_process_sync(name: str) -> Optional[psutil.Process]:
+    """
+    同步地查找第一个匹配名称的进程。
+    找到一个后立即返回，以提高效率。
+    """
+    # 使用生成器表达式 (p for p in ...) 和 next()
+    # next() 会在找到第一个元素后立即停止迭代
+    try:
+        return next(p for p in psutil.process_iter(['name'])
+                    if p.name() == name)
+    except StopIteration:
+        # 如果生成器耗尽（即没有找到匹配的进程），next() 会抛出 StopIteration
+        return None
+
+
 async def _wait_for(name, timeout: float = 5.0, interval: float = 0.3) -> None:
     end_time = time() + timeout
     while time() <= end_time:
-        matched_process = await asyncio.to_thread(
-            lambda:
-            [p for p in psutil.process_iter(['name']) if p.name() == name])
+        matched_process = await asyncio.to_thread(_find_first_process_sync,
+                                                  name)
         if matched_process:
             return
         await asyncio.sleep(interval)
