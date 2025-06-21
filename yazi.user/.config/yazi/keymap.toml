@@ -33,7 +33,7 @@ desc = "QuickLook file/dir"
 
 [[mgr.prepend_keymap]]
 on = "e"
-run = "shell -- explorer.exe . "
+run = "shell -- explorer.exe . & exit"
 desc = "Open with Explor "
 
 # [[mgr.prepend_keymap]]
