@@ -85,9 +85,7 @@ widgets:
       label: "<span>\ueba1</span>"
       label_alt: "Notifications {data}" # {data} return number of unread notification
       # set in env variable YASB_GITHUB_TOKEN
-      # Managed in ZSH env and Windows environment variables
-      # TODO: secret management
-      # token: REDACTED
+      token: env
       max_notification: 20 # Max number of notification displaying in menu max: 50
       only_unread: false # Show only unread or all notifications;
       max_field_size: 54 # Max characters in title before truncation.
