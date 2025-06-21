@@ -24,6 +24,7 @@ ialias gac="gdd --no-color | gptme --non-interactive -t shell $AI_COMMIT_PROMPT"
 ialias 'gc@'='git reset --soft HEAD^'
 alias aic="gaa; gac"
 alias aicp="aic; git push"
+alias lg="lazygit"
 alias b="bat"
 
 
@@ -72,6 +73,7 @@ alias -s js=v
 alias -s c=v
 alias -s txt=v
 alias -s md=v
+alias -s ini=v
 alias -s txt=v
 alias -s toml=v
 alias -s {yaml,yml}=v
