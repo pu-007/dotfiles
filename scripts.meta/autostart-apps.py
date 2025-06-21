@@ -40,9 +40,9 @@ async def _async_launch_app(
 async def _wait_for(name, timeout: float = 5.0, interval: float = 0.3) -> None:
     end_time = time() + timeout
     while time() <= end_time:
-        matched_process = [
-            p for p in psutil.process_iter(['name']) if p.name() == name
-        ]
+        matched_process = await asyncio.to_thread(
+            lambda:
+            [p for p in psutil.process_iter(['name']) if p.name() == name])
         if matched_process:
             return
         await asyncio.sleep(interval)
