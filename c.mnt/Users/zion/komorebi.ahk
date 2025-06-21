@@ -2,7 +2,9 @@
 #SingleInstance Force
 
 ; CapsLock is able to send esc in ClasLockX, so we can use it to send Esc
-$Esc::Capslock
+; $Esc::Capslock
+
+SetCapsLockState("AlwaysOff")  ; 确保 CapsLock 永远关闭
 
 ; 定义一个函数来执行komorebi命令
 Komorebic(cmd) {
