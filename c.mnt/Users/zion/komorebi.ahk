@@ -1,10 +1,12 @@
 #Requires AutoHotkey v2.0.2
 #SingleInstance Force
-
-; CapsLock is able to send esc in ClasLockX, so we can use it to send Esc
-; $Esc::Capslock
-
-SetCapsLockState("AlwaysOff")  ; 确保 CapsLock 永远关闭
+;
+; Shift+Esc 发送 Esc 并关闭 Caps Lock
+EscAndOffCapsLock() {
+  SetCapsLockState(0)
+  Send("{Esc}")
+}
++Esc::EscAndOffCapsLock()  
 
 ; 定义一个函数来执行komorebi命令
 Komorebic(cmd) {
@@ -62,14 +64,14 @@ Komorebic(cmd) {
 ; alt+r 重新加载 komorebi
 ReloadOne() {
   RunWait("taskkill /F /IM komorebi.exe", , "Hide")
-  Run("komorebic-no-console.exe start")
+  Run("komorebic-no-console.exe start --ahk")
 }
 <!r::ReloadOne()
 ; alt+shift+r 重新加载 komorebi, explorer, komorebi-bar
 ReloadTwo() {
   RunWait("taskkill /F /IM komorebi.exe", , "Hide")
   RunWait("taskkill /F /IM yasb.exe", , "Hide")
-  Run("komorebic-no-console.exe start")
+  Run("komorebic-no-console.exe start --ahk")
   Run("yasb.exe")
 }
 <!+r::ReloadTwo()
@@ -79,7 +81,7 @@ ReloadThree() {
   RunWait("taskkill /F /IM yasb.exe", , "Hide")
   RunWait("taskkill /F /IM explorer.exe", ,"Hide")
   Run("explorer.exe")
-  Run("komorebic-no-console.exe start")
+  Run("komorebic-no-console.exe start --ahk")
   Run("yasb.exe")
 }
 ^+r::ReloadThree()
