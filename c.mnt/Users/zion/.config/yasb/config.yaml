@@ -32,7 +32,7 @@ bars:
       right: 0
     widgets:
       left: ["memory", "cpu", "nvidia_usage", "komorebi_workspaces"]
-      center: ["active_window"]
+      center: ["komorebi_stack"]
       right:
         [
           "media",
@@ -43,6 +43,23 @@ bars:
           "traffic",
         ]
 widgets:
+  komorebi_stack:
+    type: "komorebi.stack.StackWidget"
+    options:
+      label_offline: "Offline"
+      label_window: "{title}"
+      label_window_active: "⚡ {title}"
+      label_no_window: "No Window"
+      label_zero_index: false
+      show_icons: "always"
+      icon_size: 14
+      max_length: 10
+      max_length_active: 50
+      max_length_ellipsis: ".."
+      hide_if_offline: false
+      show_only_stack: false
+      animation: true
+      enable_scroll_switching: true
   nvidia_usage:
     type: "yasb.custom.CustomWidget"
     options:
@@ -151,17 +168,6 @@ widgets:
       update_interval: 1000
       callbacks:
         on_right: "exec cmd /c Taskmgr"
-  active_window:
-    type: "yasb.active_window.ActiveWindowWidget"
-    options:
-      label: "{win[title]}"
-      label_alt: "[class_name='{win[class_name]}' exe='{win[process][name]}' hwnd={win[hwnd]}]"
-      label_no_window: ""
-      label_icon: true
-      label_icon_size: 14
-      max_length: 40
-      max_length_ellipsis: "..."
-      monitor_exclusive: true
   clock:
     type: "yasb.clock.ClockWidget"
     options:
