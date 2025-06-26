@@ -234,7 +234,7 @@
     {
       "Id": "Baidu.BaiduNetdisk",
       "Name": "\u767E\u5EA6\u7F51\u76D8",
-      "Version": "7.57.0",
+      "Version": "7.57.5",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -257,7 +257,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.60.6",
+      "Version": "1.61.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -372,7 +372,7 @@
     {
       "Id": "Google.AndroidStudio",
       "Name": "Android Studio",
-      "Version": "2024.3.2.15",
+      "Version": "2025.1.1.13",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -395,7 +395,7 @@
     {
       "Id": "Google.Chrome.EXE",
       "Name": "Google Chrome (EXE)",
-      "Version": "137.0.7151.120",
+      "Version": "138.0.7204.50",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -717,7 +717,7 @@
     {
       "Id": "Microsoft.AppInstaller",
       "Name": "App Installer",
-      "Version": "1.25.390.0",
+      "Version": "1.26.400.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -809,7 +809,7 @@
     {
       "Id": "Microsoft.DotNet.Runtime.3_1",
       "Name": "Microsoft .NET Runtime 3.1",
-      "Version": "3.1.27",
+      "Version": "3.1.32",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -832,7 +832,7 @@
     {
       "Id": "Microsoft.Edge",
       "Name": "Microsoft Edge",
-      "Version": "137.0.3296.83",
+      "Version": "137.0.3296.93",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -878,7 +878,7 @@
     {
       "Id": "Microsoft.PowerShell",
       "Name": "PowerShell",
-      "Version": "7.5.1.0",
+      "Version": "7.5.2.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1292,7 +1292,7 @@
     {
       "Id": "Microsoft.WinGet.Client",
       "Name": "Microsoft.WinGet.Client",
-      "Version": "1.10.340",
+      "Version": "1.11.400",
       "Source": "PSGallery",
       "ManagerName": "PowerShell",
       "InstallationOptions": {
@@ -1315,7 +1315,7 @@
     {
       "Id": "Microsoft.WindowsTerminal.Preview",
       "Name": "Windows Terminal Preview",
-      "Version": "1.23.11132.0",
+      "Version": "1.23.11752.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1639,7 +1639,7 @@
     {
       "Id": "RedHat.Podman",
       "Name": "Podman",
-      "Version": "5.5.1",
+      "Version": "5.5.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1800,7 +1800,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
-      "Version": "4.0.5.26",
+      "Version": "4.0.5.27",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1869,7 +1869,7 @@
     {
       "Id": "VladElaina.Catime",
       "Name": "Catime",
-      "Version": "1.1.1",
+      "Version": "1.1.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1940,7 +1940,7 @@
     {
       "Id": "Yuanli.uTools",
       "Name": "uTools",
-      "Version": "7.1.1",
+      "Version": "7.2.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2101,7 +2101,7 @@
     {
       "Id": "eza",
       "Name": "Eza",
-      "Version": "0.21.4",
+      "Version": "0.21.5",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2285,7 +2285,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.4.4",
+      "Version": "1.4.5",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2308,7 +2308,7 @@
     {
       "Id": "kotlin",
       "Name": "Kotlin",
-      "Version": "2.1.21",
+      "Version": "2.2.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2354,7 +2354,7 @@
     {
       "Id": "nodejs",
       "Name": "Nodejs",
-      "Version": "24.2.0",
+      "Version": "24.3.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2467,6 +2467,29 @@
       }
     },
     {
+      "Id": "squirreldisk.SquirrelDisk",
+      "Name": "SquirrelDisk",
+      "Version": "0.3.4",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "th-ch.YouTubeMusic",
       "Name": "YouTube Music",
       "Version": "3.9.0",
@@ -2561,7 +2584,7 @@
     {
       "Id": "xanderfrangos.twinkletray",
       "Name": "Twinkle Tray",
-      "Version": "1.16.6",
+      "Version": "1.17.0-beta2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2630,12 +2653,6 @@
       "Id": "ARP\\Machine\\X64\\ProPlus2024Volume - zh-cn",
       "Name": "Microsoft Office LTSC \u4E13\u4E1A\u589E\u5F3A\u7248 2024 - zh-cn",
       "Version": "16.0.17932.20396",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\Rectify11",
-      "Name": "Rectify11",
-      "Version": "3.2.70.2",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2750,6 +2767,12 @@
       "Id": "ARP\\Machine\\X64\\{6F320B93-EE3C-4826-85E0-ADF79F8D4C61}",
       "Name": "Microsoft Visual Studio Installer",
       "Version": "3.14.2075.50697",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{88FA97F8-8770-42BC-9082-E2E641447D81}",
+      "Name": "Lazyeat",
+      "Version": "0.3.11",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3263,9 +3286,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.GamingServices_28.100.8001.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.GamingServices_29.102.17001.0_x64__8wekyb3d8bbwe",
       "Name": "\u6E38\u620F\u670D\u52A1",
-      "Version": "28.100.8001.0",
+      "Version": "29.102.17001.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3359,9 +3382,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.StorePurchaseApp_22504.1401.4.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.StorePurchaseApp_22505.1401.0.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store \u4F53\u9A8C\u4E3B\u673A",
-      "Version": "22504.1401.4.0",
+      "Version": "22505.1401.0.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3503,9 +3526,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsCamera_2025.2502.17.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsCamera_2025.2505.2.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u76F8\u673A",
-      "Version": "2025.2502.17.0",
+      "Version": "2025.2505.2.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3521,15 +3544,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22504.1401.19.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22505.1401.15.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22504.1401.19.0",
+      "Version": "22505.1401.15.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.621.1028.52_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.626.1001.9_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.621.1028.52",
+      "Version": "2025.626.1001.9",
       "Source": "Microsoft Store"
     },
     {
@@ -3539,9 +3562,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25042.96.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25052.76.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25042.96.0",
+      "Version": "1.25052.76.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3563,9 +3586,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25042.38.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25052.36.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25042.38.0",
+      "Version": "1.25052.36.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3581,9 +3604,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\NVIDIACorp.NVIDIAControlPanel_8.1.967.0_x64__56jybvy8sckqj",
+      "Id": "MSIX\\NVIDIACorp.NVIDIAControlPanel_8.1.968.0_x64__56jybvy8sckqj",
       "Name": "NVIDIA Control Panel",
-      "Version": "8.1.967.0",
+      "Version": "8.1.968.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3601,6 +3624,12 @@
     {
       "Id": "MSIX\\Stardock.Fences.DesktopMenu_1.0.0.0_neutral__a8b8bqct24ect",
       "Name": "Stardock Fences Desktop Menu",
+      "Version": "1.0.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\agent.minimaxi.com-9360C6C1_1.0.0.0_neutral__84wqydnzj0kcr",
+      "Name": "MiniMax AI Agent",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
@@ -3716,6 +3745,12 @@
       "Id": "MSIX\\ikuuu.one-E3D21224_1.0.0.1_neutral__ba2cd799rmwd0",
       "Name": "Ikuuu",
       "Version": "1.0.0.1",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\kimi.moonshot.cn-CFB72B7F_1.0.0.0_neutral__fsmhydxgm6x52",
+      "Name": "Kimi",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {

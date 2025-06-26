@@ -35,6 +35,7 @@ fontforge
 freerdp2
 fzf
 gdb
+gemini-cli-git
 gimp
 gimp-help-zh_cn
 git
