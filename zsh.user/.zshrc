@@ -233,7 +233,6 @@ function zvm_after_init() {
 
   zinit wait lucid for \
     oldkingOK/pinyin-completion \
-    OMZP::sudo \
     OMZP::cp \
       atinit"export ZSH_CODEX_PREEXECUTE_COMMENT='true'" \
       atload"bindkey '^O' create_completion"\
