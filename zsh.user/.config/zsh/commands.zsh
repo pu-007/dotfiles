@@ -39,9 +39,8 @@ alias re-pkg="pacman -Qdqt | xargs yay -Rnsc"
 alias re-cmake-install="sudo xargs rm < install_manifest.txt"
 alias re-mirror="sudo reflector --country China --protocol https --latest 10 --sort rate --save /etc/pacman.d/mirrorlist"
 
-alias wws="ssh -i ~/.ssh/cyber.pem root@124.222.106.127"
-# utilize Cline in place of Cursor
-# alias re-cursor="p 'irm https://raw.githubusercontent.com/yuaotian/go-cursor-help/refs/heads/master/scripts/run/cursor_win_id_modifier.ps1 | iex'"
+# ssh to openwrt server
+alias wrt="ssh root@192.168.100.1"
 
 alias yai="yay -S"
 alias yas="yay -Ss"
