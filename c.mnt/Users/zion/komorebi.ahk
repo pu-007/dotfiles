@@ -1,12 +1,9 @@
 #Requires AutoHotkey v2.0.2
 #SingleInstance Force
 ;
-; Shift+Esc 发送 Esc 并关闭 Caps Lock
-EscAndOffCapsLock() {
-    SetCapsLockState(0)
-    Send("{Esc}")
-}
-+Esc:: EscAndOffCapsLock()
+; Shift+Esc 关闭 Capslock ; Ctrl+Esc 打开 Capslock
++Esc::SetCapsLockState(0)
+^Esc::SetCapsLockState(1)
 
 ; 定义一个函数来执行komorebi命令
 Komorebic(cmd) {
