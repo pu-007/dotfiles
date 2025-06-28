@@ -370,6 +370,29 @@
       }
     },
     {
+      "Id": "Genymobile.scrcpy",
+      "Name": "scrcpy",
+      "Version": "3.3.1",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Google.AndroidStudio",
       "Name": "Android Studio",
       "Version": "2025.1.1.13",
@@ -1246,7 +1269,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.101.1",
+      "Version": "1.101.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1432,7 +1455,7 @@
     {
       "Id": "Ollama.Ollama",
       "Name": "Ollama",
-      "Version": "0.9.2",
+      "Version": "0.9.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2101,7 +2124,7 @@
     {
       "Id": "eza",
       "Name": "Eza",
-      "Version": "0.21.5",
+      "Version": "0.21.6",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2285,7 +2308,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.4.5",
+      "Version": "1.4.6",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2620,6 +2643,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\607E81836F3E58EDC7289F7B7047149AE2C7F301",
+      "Name": "Windows \u9A71\u52A8\u7A0B\u5E8F\u5305 - libusb-win32 WorldCup Device (02/23/2013 1.2.6.0)",
+      "Version": "02/23/2013 1.2.6.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\FairlightAudioAccelerator_is1",
       "Name": "Fairlight Audio Accelerator Utility",
       "Version": "1.0.15",
@@ -2668,6 +2697,12 @@
       "Source": "Steam"
     },
     {
+      "Id": "ARP\\Machine\\X64\\Steam App 2567870",
+      "Name": "Chained Together",
+      "Version": "Unknown",
+      "Source": "Steam"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\Steam App 3117820",
       "Name": "\u82CF\u4E39\u7684\u6E38\u620F",
       "Version": "Unknown",
@@ -2688,6 +2723,12 @@
     {
       "Id": "ARP\\Machine\\X64\\Steam App 601150",
       "Name": "Devil May Cry 5",
+      "Version": "Unknown",
+      "Source": "Steam"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\Steam App 728880",
+      "Name": "Overcooked! 2",
       "Version": "Unknown",
       "Source": "Steam"
     },
@@ -3004,6 +3045,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\NeteaseGacc",
+      "Name": "UU\u52A0\u901F\u5668",
+      "Version": "5.52.2.435",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\PHSP_26_6",
       "Name": "Adobe Photoshop 2025",
       "Version": "26.6.0.14",
@@ -3031,6 +3078,12 @@
       "Id": "ARP\\Machine\\X86\\UXPW_1_3_0",
       "Name": "UXP WebView Support",
       "Version": "1.3.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\Watt\u52A0\u901F\u5668",
+      "Name": "Watt\u52A0\u901F\u5668",
+      "Version": "7.30.1404.2",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3073,6 +3126,12 @@
       "Id": "ARP\\Machine\\X86\\{D63F7A9D-E379-4AEA-B8F0-BE5C9F6B90D5}_is1",
       "Name": "\u77E5\u7280\u601D\u7EF4\u5BFC\u56FE",
       "Version": "3.3.6.2310",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\{ECC3713C-08A4-40E3-95F1-7D0704F1CE5E}",
+      "Name": "PL-2303 USB-to-Serial",
+      "Version": "1.1.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3358,9 +3417,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.ScreenSketch_11.2503.29.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.ScreenSketch_11.2504.42.0_x64__8wekyb3d8bbwe",
       "Name": "\u622A\u56FE\u5DE5\u5177",
-      "Version": "11.2503.29.0",
+      "Version": "11.2504.42.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3532,9 +3591,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2503.16.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2504.62.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BB0\u4E8B\u672C",
-      "Version": "11.2503.16.0",
+      "Version": "11.2504.62.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3544,15 +3603,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22505.1401.15.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22505.1401.17.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22505.1401.15.0",
+      "Version": "22505.1401.17.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.626.1001.9_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.628.314.16_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.626.1001.9",
+      "Version": "2025.628.314.16",
       "Source": "Microsoft Store"
     },
     {
@@ -3580,9 +3639,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.Client.WebExperience_525.10401.30.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.Client.WebExperience_525.15301.20.0_x64__cw5n1h2txyewy",
       "Name": "Windows Web Experience Pack",
-      "Version": "525.10401.30.0",
+      "Version": "525.15301.20.0",
       "Source": "Microsoft Store"
     },
     {
