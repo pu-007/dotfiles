@@ -25,6 +25,19 @@ async def _close_windows_by_title(title: str,
         await asyncio.sleep(interval)
 
 
+async def _minimize_windows_by_title(title: str,
+                                     timeout: float = 5.0,
+                                     interval: float = 0.3) -> None:
+    end_time = time() + timeout
+    while time() <= end_time:
+        windows = await asyncio.to_thread(pyautogui.getWindowsWithTitle, title)
+        if windows:
+            for window in windows:
+                window.minimize()
+            return
+        await asyncio.sleep(interval)
+
+
 async def _async_launch_app(
     commands: Union[str, List[str]],
     cwd: Optional[str] = None,
@@ -77,10 +90,11 @@ async def launch_quake_and_clipboard():
     await _async_launch_app(commands=[
         "wt.exe", "-w", "_quake", "-p", "special_quake_window_title"
     ])
-    await _close_windows_by_title("Arch")
-    await asyncio.sleep(5)
-    await asyncio.to_thread(pyautogui.hotkey, "alt", "`")
-    await asyncio.sleep(1)
+    await asyncio.sleep(3)
+    await _minimize_windows_by_title("special_quake_window_title")
+
+    await _wait_for("Quicker.exe")
+    await asyncio.sleep(3)
     await asyncio.to_thread(pyautogui.hotkey, "ctrl", "shift", "x")
     await _close_windows_by_title("剪贴板")
 
