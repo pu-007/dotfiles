@@ -7,30 +7,32 @@ customization:
 patch:
   "style/color_scheme": lost_temple
   style/font_face: "JetXW"
-  style/label_font_face: "JetXW"       # 标签字体
-  style/comment_font_face: "JetXW"     # 注释字体
+  style/label_font_face: "JetXW" # 标签字体
+  style/comment_font_face: "JetXW" # 注释字体
   app_options:
     firefox.exe:
-      inline_preedit: true   # 行内显示预编辑区：规避 <https://github.com/rime/weasel/issues/946>
-    cmd.exe:               # 带 .exe 的进程名：Weasel 15.0 及之前版本须小写
-      ascii_mode: true     # 英文模式
+      inline_preedit: true # 行内显示预编辑区：规避 <https://github.com/rime/weasel/issues/946>
+    cmd.exe: # 带 .exe 的进程名：Weasel 15.0 及之前版本须小写
+      ascii_mode: true # 英文模式
     conhost.exe:
+      ascii_mode: true
+    explorer.exe:
       ascii_mode: true
     WindowsTerminal.exe:
       ascii_mode: true
       vim_mode: true
     wt.exe:
       ascii_mode: true
-      vim_mode: true       # vim 模式, Esc <C-c> <C-[> 切换到 ascii 状态
+      vim_mode: true # vim 模式, Esc <C-c> <C-[> 切换到 ascii 状态
     pwsh.exe:
       ascii_mode: true
-      vim_mode: true       # vim 模式, Esc <C-c> <C-[> 切换到 ascii 状态
+      vim_mode: true # vim 模式, Esc <C-c> <C-[> 切换到 ascii 状态
     powershell.exe:
       ascii_mode: true
-      vim_mode: true       # vim 模式, Esc <C-c> <C-[> 切换到 ascii 状态
+      vim_mode: true # vim 模式, Esc <C-c> <C-[> 切换到 ascii 状态
     nvim-qt.exe:
       ascii_mode: true
-      vim_mode: true       # vim 模式, Esc <C-c> <C-[> 切换到 ascii 状态
+      vim_mode: true # vim 模式, Esc <C-c> <C-[> 切换到 ascii 状态
     Code.exe:
       ascii_mode: true
       vim_mode: true
