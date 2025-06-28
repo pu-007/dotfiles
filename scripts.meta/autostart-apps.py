@@ -130,11 +130,16 @@ async def main():
             r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe',
             r'--no-startup-window', r'--win-session-start'
         ]),
-
-        # launch(
-        #     r"C:\Windows\Rectify11\Rectify11TrayTool.exe"),
-        # launch(
-        #     [r'C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe']),
+        launch(
+            r"C:\Program Files\Pantum\ptm6700\SCANNER\PushScan\ptm6700PushMonitor.exe"
+        ),
+        launch([
+            r"C:\Windows\System32\DriverStore\FileRepository\realtekservice.inf_amd64_d2d4c5f34960aaac\RtkAudUService64.exe",
+            "-background"
+        ]),
+        launch(r"C:\Program Files\Rime\weasel-0.17.4\WeaselServer.exe"),
+        launch([r'C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe'
+                ]),
         # launch(
         #     task_input=[
         #         r"C:\Users\zion\AppData\local\Programs\podman-desktop\Podman Desktop.exe",
