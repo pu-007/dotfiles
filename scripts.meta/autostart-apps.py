@@ -45,8 +45,10 @@ async def _async_launch_app(
             close_fds=True,
             cwd=cwd,
             creationflags=subprocess.DETACHED_PROCESS))
-    except:
-        pass
+    except FileNotFoundError as e:
+        print(f"Error launching application: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
 
 def _find_first_process_sync(name: str) -> Optional[psutil.Process]:
@@ -89,6 +91,7 @@ async def launch_quicklook_and_capslockx():
 async def launch_wt_quake():
     await _async_launch_app(
         ["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"])
+    await asyncio.sleep(5)
     await _minimize_windows_by_title("special_quake_window_title")
 
 
@@ -127,8 +130,6 @@ async def main():
             r"C:\Users\zion\AppData\Local\Programs\twinkle-tray\Twinkle Tray.exe"
         ),
         launch(r"C:\Users\zion\AppData\Local\Programs\PixPin\PixPin.exe"),
-        launch(
-            r"C:\Program Files (x86)\Tobias Erichsen\loopMIDI\loopMIDI.exe"),
         launch(
             [r"C:\Program Files (x86)\Stardock\Fences\Fences.exe",
              "/startup"]),
