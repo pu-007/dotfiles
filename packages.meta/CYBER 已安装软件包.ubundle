@@ -257,7 +257,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.62.4",
+      "Version": "1.62.5",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -350,6 +350,29 @@
       "Id": "DuongDieuPhap.ImageGlass",
       "Name": "ImageGlass",
       "Version": "9.3.2.520",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "EcoPaste.EcoPaste",
+      "Name": "EcoPaste",
+      "Version": "0.5.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1315,7 +1338,7 @@
     {
       "Id": "NetEase.CloudMusic",
       "Name": "\u7F51\u6613\u4E91\u97F3\u4E50",
-      "Version": "3.1.12.204072",
+      "Version": "3.1.13.204183",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1731,7 +1754,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "5.16",
+      "Version": "5.16.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1800,7 +1823,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
-      "Version": "4.0.6.13",
+      "Version": "4.0.6.17",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1940,7 +1963,7 @@
     {
       "Id": "Yuanli.uTools",
       "Name": "uTools",
-      "Version": "7.2.0",
+      "Version": "7.2.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2124,7 +2147,7 @@
     {
       "Id": "fastfetch",
       "Name": "Fastfetch",
-      "Version": "2.46.0",
+      "Version": "2.47.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2285,7 +2308,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.4.7",
+      "Version": "1.4.8",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -3166,6 +3189,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\9f333b2d4a90448b29284c64e0771bc2",
+      "Name": "Openwrt",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\OKPlus 13.0",
       "Name": "OKPlus",
       "Version": "13.0",
@@ -3175,6 +3204,12 @@
       "Id": "ARP\\User\\X64\\OneKeyTools10 10.15.1",
       "Name": "OneKeyTools10",
       "Version": "10.15.1",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\f7a58666ee7b4f8d6cd990d7bef45585",
+      "Name": "XiaoHuAPI",
+      "Version": "1.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3490,9 +3525,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.703.1329.21_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.705.1401.51_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.703.1329.21",
+      "Version": "2025.705.1401.51",
       "Source": "Microsoft Store"
     },
     {
@@ -3529,6 +3564,12 @@
       "Id": "MSIX\\MicrosoftWindows.NarratorScript.Outlook_1.0.8.0_neutral__cw5n1h2txyewy",
       "Name": "NarratorExtension - Outlook",
       "Version": "1.0.8.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\MicrosoftWindows.Speech.zh-CN.1_1.0.22.0_x64__cw5n1h2txyewy",
+      "Name": "Speech Pack - Chinese (Simplified)",
+      "Version": "1.0.22.0",
       "Source": "Microsoft Store"
     },
     {

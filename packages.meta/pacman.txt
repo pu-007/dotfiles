@@ -135,6 +135,7 @@ reflector
 rhino
 rich-cli
 ripgrep
+ripgrep-all
 rsync
 rtmpdump
 rust
