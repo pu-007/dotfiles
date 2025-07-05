@@ -81,6 +81,11 @@
   ],
   "ignore_rules": [
     {
+      "kind": "Title",
+      "id": "EcoPaste",
+      "matching_strategy": "Equals"
+    },
+    {
       "kind": "Exe",
       "id": "bongo-cat.exe",
       "matching_strategy": "Equals"

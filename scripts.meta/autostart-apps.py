@@ -9,8 +9,8 @@ import psutil
 
 
 async def _close_windows_by_title(title: str,
-                                  timeout: float = 5.0,
-                                  interval: float = 0.3) -> None:
+                                  timeout: float = 10.0,
+                                  interval: float = 0.2) -> list | None:
     """
     Asynchronously finds a window by its title and performs a hook function.
     Runs blocking pyautogui calls in a separate thread.
@@ -19,22 +19,18 @@ async def _close_windows_by_title(title: str,
     while time() <= end_time:
         windows = await asyncio.to_thread(pyautogui.getWindowsWithTitle, title)
         if windows:
-            for window in windows:
-                window.close()
-            return
+            return [w.close() for w in windows]
         await asyncio.sleep(interval)
 
 
 async def _minimize_windows_by_title(title: str,
-                                     timeout: float = 5.0,
-                                     interval: float = 0.3) -> None:
+                                     timeout: float = 10.0,
+                                     interval: float = 0.2) -> list | None:
     end_time = time() + timeout
     while time() <= end_time:
         windows = await asyncio.to_thread(pyautogui.getWindowsWithTitle, title)
         if windows:
-            for window in windows:
-                window.minimize()
-            return
+            return [w.minimize() for w in windows]
         await asyncio.sleep(interval)
 
 
@@ -42,12 +38,15 @@ async def _async_launch_app(
     commands: Union[str, List[str]],
     cwd: Optional[str] = None,
 ):
-    await asyncio.to_thread(
-        lambda: subprocess.Popen(commands,
-                                 shell=False,
-                                 close_fds=True,
-                                 cwd=cwd,
-                                 creationflags=subprocess.DETACHED_PROCESS))
+    try:
+        await asyncio.to_thread(lambda: subprocess.Popen(
+            commands,
+            shell=False,
+            close_fds=True,
+            cwd=cwd,
+            creationflags=subprocess.DETACHED_PROCESS))
+    except:
+        pass
 
 
 def _find_first_process_sync(name: str) -> Optional[psutil.Process]:
@@ -65,7 +64,9 @@ def _find_first_process_sync(name: str) -> Optional[psutil.Process]:
         return None
 
 
-async def _wait_for(name, timeout: float = 5.0, interval: float = 0.3) -> None:
+async def _wait_for(name,
+                    timeout: float = 10.0,
+                    interval: float = 0.2) -> None:
     end_time = time() + timeout
     while time() <= end_time:
         matched_process = await asyncio.to_thread(_find_first_process_sync,
@@ -85,18 +86,10 @@ async def launch_quicklook_and_capslockx():
     await _close_windows_by_title("CapsLockX-Core.ahk")
 
 
-async def launch_quake_and_clipboard():
-    await _async_launch_app(r"C:\Program Files\Quicker\Quicker.exe")
-    await _async_launch_app(commands=[
-        "wt.exe", "-w", "_quake", "-p", "special_quake_window_title"
-    ])
-    await asyncio.sleep(3)
+async def launch_wt_quake():
+    await _async_launch_app(
+        ["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"])
     await _minimize_windows_by_title("special_quake_window_title")
-
-    await _wait_for("Quicker.exe")
-    await asyncio.sleep(3)
-    await asyncio.to_thread(pyautogui.hotkey, "ctrl", "shift", "x")
-    await _close_windows_by_title("剪贴板")
 
 
 async def launch_doubao():
@@ -111,20 +104,22 @@ def launch(commands: str | list, cwd: str | None = None) -> asyncio.Task:
 
 async def main():
     await asyncio.gather(
-        asyncio.create_task(launch_quicklook_and_capslockx()),
         asyncio.create_task(launch_doubao()),
-        asyncio.create_task(launch_quake_and_clipboard()),
+        asyncio.create_task(launch_wt_quake()),
+        asyncio.create_task(launch_quicklook_and_capslockx()),
+        launch(r"C:\Program Files\EcoPaste\EcoPaste.exe"),
+        launch(r"C:\Program Files\Quicker\Quicker.exe"),
         launch([r"C:\Program Files\Everything\Everything.exe", "-startup"]),
         launch([
             r"C:\Program Files\komorebi\bin\komorebic-no-console.exe",
             "start",
         ]),
-        launch(r"C:\Users\zion\AppData\Local\Programs\utools\uTools.exe"),
         launch([
             r"C:\Program Files\AutoHotkey\v2\AutoHotkey.exe",
             r"C:\Users\zion\komorebi.ahk"
         ]),
         launch(r"C:\Program Files\YASB\yasb.exe"),
+        launch(r"C:\Users\zion\AppData\Local\Programs\utools\uTools.exe"),
         launch(r"C:\Program Files\Mem Reduct\memreduct.exe"),
         launch(r"C:\Users\zion\AppData\Local\Programs\Motrix\Motrix.exe"),
         launch(r"C:\Users\zion\AppData\Roaming\AltSnap\AltSnap.exe"),
@@ -140,10 +135,6 @@ async def main():
         launch(
             r"C:\Users\zion\Apps\Controller Companion\ControllerCompanion.exe"
         ),
-        launch([
-            r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe',
-            r'--no-startup-window', r'--win-session-start'
-        ]),
         launch(
             r"C:\Program Files\Pantum\ptm6700\SCANNER\PushScan\ptm6700PushMonitor.exe"
         ),
@@ -154,12 +145,11 @@ async def main():
         launch(r"C:\Program Files\Rime\weasel-0.17.4\WeaselServer.exe"),
         launch([r'C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe'
                 ]),
-        # launch(
-        #     task_input=[
-        #         r"C:\Users\zion\AppData\local\Programs\podman-desktop\Podman Desktop.exe",
-        #         "--minimized"
-        #     ],
-        #     cwd=r"C:\Users\zion\AppData\local\Programs\podman-desktop")
+        launch([
+            r"C:\Users\zion\AppData\local\Programs\podman-desktop\Podman Desktop.exe",
+            "--minimized"
+        ],
+               cwd=r"C:\Users\zion\AppData\local\Programs\podman-desktop"),
     )
 
 
