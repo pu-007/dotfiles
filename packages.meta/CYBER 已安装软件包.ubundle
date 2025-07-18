@@ -4,7 +4,7 @@
     {
       "Id": "7zip",
       "Name": "7zip",
-      "Version": "24.09",
+      "Version": "25.00",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -119,7 +119,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.7.6",
+      "Version": "1.7.8",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -257,7 +257,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.62.5",
+      "Version": "1.64.7",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -418,7 +418,7 @@
     {
       "Id": "Google.AndroidStudio",
       "Name": "Android Studio",
-      "Version": "2025.1.1.13",
+      "Version": "2025.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -786,7 +786,7 @@
     {
       "Id": "Microsoft.DotNet.DesktopRuntime.8",
       "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
-      "Version": "8.0.17",
+      "Version": "8.0.18",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -853,9 +853,55 @@
       }
     },
     {
+      "Id": "Microsoft.EdgeWebView2Runtime",
+      "Name": "Microsoft Edge WebView2 Runtime",
+      "Version": "138.0.3351.95",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "Microsoft.Office.2010.FilterPacks",
+      "Name": "Microsoft Office 2010 Filter Packs",
+      "Version": "\u003E 14.0.4730.1010",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.105.0601.0002",
+      "Version": "25.115.0615.0002",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1177,7 +1223,7 @@
     {
       "Id": "Microsoft.VCRedist.2015\u002B.x64",
       "Name": "Microsoft Visual C\u002B\u002B 2015-2022 Redistributable (x64)",
-      "Version": "14.44.35208.0",
+      "Version": "14.44.35211.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1200,7 +1246,7 @@
     {
       "Id": "Microsoft.VCRedist.2015\u002B.x86",
       "Name": "Microsoft Visual C\u002B\u002B 2015-2022 Redistributable (x86)",
-      "Version": "14.44.35208.0",
+      "Version": "14.44.35211.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1223,7 +1269,7 @@
     {
       "Id": "Microsoft.VisualStudio.2022.Community",
       "Name": "Visual Studio Community 2022",
-      "Version": "\u003C 17.14.6",
+      "Version": "\u003C 17.14.9",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1246,7 +1292,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.101.2",
+      "Version": "1.102.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1292,7 +1338,7 @@
     {
       "Id": "Microsoft.WinGet.Client",
       "Name": "Microsoft.WinGet.Client",
-      "Version": "1.11.400",
+      "Version": "1.11.410",
       "Source": "PSGallery",
       "ManagerName": "PowerShell",
       "InstallationOptions": {
@@ -1336,9 +1382,32 @@
       }
     },
     {
+      "Id": "Microsoft.XNARedist",
+      "Name": "Microsoft XNA Framework Redistributable Refresh",
+      "Version": "4.0.30901.0",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
       "Id": "NetEase.CloudMusic",
       "Name": "\u7F51\u6613\u4E91\u97F3\u4E50",
-      "Version": "3.1.13.204183",
+      "Version": "3.1.14.204222",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1384,7 +1453,7 @@
     {
       "Id": "OBSProject.OBSStudio",
       "Name": "OBS Studio",
-      "Version": "31.0.4",
+      "Version": "31.1.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1432,7 +1501,7 @@
     {
       "Id": "Ollama.Ollama",
       "Name": "Ollama",
-      "Version": "0.9.5",
+      "Version": "0.9.6",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1754,7 +1823,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "5.16.1",
+      "Version": "5.16.3",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1823,7 +1892,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
-      "Version": "4.0.6.17",
+      "Version": "4.0.6.21",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -1938,7 +2007,7 @@
     {
       "Id": "XP8BSBGQW2DKS0",
       "Name": "PotPlayer",
-      "Version": "25.05.14.0",
+      "Version": "25.06.25.0",
       "Source": "msstore",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2009,9 +2078,32 @@
     {
       "Id": "apktool",
       "Name": "Apktool",
-      "Version": "2.11.1",
+      "Version": "2.12.0",
       "Source": "main",
       "ManagerName": "Scoop",
+      "InstallationOptions": {
+        "SkipHashCheck": false,
+        "InteractiveInstallation": false,
+        "RunAsAdministrator": false,
+        "Architecture": "",
+        "InstallationScope": "",
+        "CustomParameters": [],
+        "PreRelease": false,
+        "CustomInstallLocation": "",
+        "Version": "",
+        "SkipMinorUpdates": false
+      },
+      "Updates": {
+        "UpdatesIgnored": false,
+        "IgnoredVersion": ""
+      }
+    },
+    {
+      "Id": "ayangweb.BongoCat",
+      "Name": "BongoCat",
+      "Version": "0.6.2",
+      "Source": "winget",
+      "ManagerName": "Winget",
       "InstallationOptions": {
         "SkipHashCheck": false,
         "InteractiveInstallation": false,
@@ -2124,7 +2216,7 @@
     {
       "Id": "eza",
       "Name": "Eza",
-      "Version": "0.21.6",
+      "Version": "0.22.1",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2193,7 +2285,7 @@
     {
       "Id": "fzf",
       "Name": "Fzf",
-      "Version": "0.63.0",
+      "Version": "0.64.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2239,7 +2331,7 @@
     {
       "Id": "git",
       "Name": "Git",
-      "Version": "2.50.0.2",
+      "Version": "2.50.1",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2285,7 +2377,7 @@
     {
       "Id": "gradle",
       "Name": "Gradle",
-      "Version": "8.14.2",
+      "Version": "8.14.3",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2308,7 +2400,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.4.8",
+      "Version": "1.4.11",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2377,7 +2469,7 @@
     {
       "Id": "nodejs",
       "Name": "Nodejs",
-      "Version": "24.3.0",
+      "Version": "24.4.0",
       "Source": "main",
       "ManagerName": "Scoop",
       "InstallationOptions": {
@@ -2515,7 +2607,7 @@
     {
       "Id": "th-ch.YouTubeMusic",
       "Name": "YouTube Music",
-      "Version": "3.9.0",
+      "Version": "3.10.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -2681,7 +2773,7 @@
     {
       "Id": "ARP\\Machine\\X64\\ProPlus2024Volume - zh-cn",
       "Name": "Microsoft Office LTSC \u4E13\u4E1A\u589E\u5F3A\u7248 2024 - zh-cn",
-      "Version": "16.0.17932.20396",
+      "Version": "16.0.17932.20428",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2705,6 +2797,12 @@
     {
       "Id": "ARP\\Machine\\X64\\Steam App 3117820",
       "Name": "\u82CF\u4E39\u7684\u6E38\u620F",
+      "Version": "Unknown",
+      "Source": "Steam"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\Steam App 413150",
+      "Name": "Stardew Valley",
       "Version": "Unknown",
       "Source": "Steam"
     },
@@ -2820,12 +2918,6 @@
       "Id": "ARP\\Machine\\X64\\{8B452603-A2AA-4D3E-A29A-54183ECA515B}",
       "Name": "NVIDIA Nsight Systems 2020.3.2",
       "Version": "20.3.2.6",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\{95140000-2000-0409-1000-0000000FF1CE}",
-      "Name": "Microsoft Filter Pack 2.0",
-      "Version": "14.0.7015.1000",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3021,12 +3113,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\BongoCat",
-      "Name": "BongoCat",
-      "Version": "0.5.0",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X86\\EveryonePiano_is1",
       "Name": "EveryonePiano 2.5",
       "Version": "2.5.9.4",
@@ -3081,6 +3167,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\thunder_is1",
+      "Name": "\u8FC5\u96F7",
+      "Version": "12.2.0.2900",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\{1851460E-0E63-4117-B5BA-25A2F045801B}",
       "Name": "vs_CoreEditorFonts",
       "Version": "17.7.40001",
@@ -3090,18 +3182,6 @@
       "Id": "ARP\\Machine\\X86\\{404581d0-19c1-47ba-bcd3-10178793c239}",
       "Name": "Intel(R) Chipset Device Software",
       "Version": "10.1.19600.8418",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X86\\{50106ec5-d0ec-4ea1-9e01-e9899676ba3f}",
-      "Name": "Windows Software Development Kit - Windows 10.0.26100.3916",
-      "Version": "10.1.26100.3916",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X86\\{6b220f45-42ca-435c-95fd-1764cb849122}",
-      "Name": "loopMIDI",
-      "Version": "1.0.16.27",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3159,6 +3239,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\{a174f9c3-3990-44e0-9904-1c5218139b20}",
+      "Name": "Windows Software Development Kit - Windows 10.0.26100.4188",
+      "Version": "10.1.26100.4188",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\{b72d4013-dd88-405a-9f9d-e88c278dcefe}",
       "Name": "Windows Software Development Kit - Windows 10.0.22621.5040",
       "Version": "10.1.22621.5040",
@@ -3171,8 +3257,20 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\1d431877f18ee1a847178e717e7f10f0",
+      "Name": "\u5C0F\u7231\u97F3\u7BB1\u64CD\u63A7\u9762\u677F",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\44dd7394f510feb39ed9d474add3f8e0",
       "Name": "Google Gemini",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\4c81404a7021fab8989d119d03b3fedc",
+      "Name": "Google AI Studio",
       "Version": "1.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
@@ -3204,6 +3302,12 @@
       "Id": "ARP\\User\\X64\\OneKeyTools10 10.15.1",
       "Name": "OneKeyTools10",
       "Version": "10.15.1",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\eaff7eed69cb8cb7bc667f134efbf6dc",
+      "Name": "Heimdall",
+      "Version": "1.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -3291,9 +3395,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.GamingServices_29.102.17001.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.GamingServices_29.103.2001.0_x64__8wekyb3d8bbwe",
       "Name": "\u6E38\u620F\u670D\u52A1",
-      "Version": "29.102.17001.0",
+      "Version": "29.103.2001.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3351,9 +3455,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.ScreenSketch_11.2504.42.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25115.615.2.0_neutral__8wekyb3d8bbwe",
+      "Name": "OneDrive",
+      "Version": "25115.615.2.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.ScreenSketch_11.2505.21.0_x64__8wekyb3d8bbwe",
       "Name": "\u622A\u56FE\u5DE5\u5177",
-      "Version": "11.2504.42.0",
+      "Version": "11.2505.21.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3375,9 +3485,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.StorePurchaseApp_22505.1401.0.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.StorePurchaseApp_22505.1401.1.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store \u4F53\u9A8C\u4E3B\u673A",
-      "Version": "22505.1401.0.0",
+      "Version": "22505.1401.1.0",
       "Source": "Microsoft Store"
     },
     {
@@ -3519,21 +3629,21 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22505.1401.17.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22506.1401.7.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22505.1401.17.0",
+      "Version": "22506.1401.7.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.705.1401.51_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.718.426.53_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.705.1401.51",
+      "Version": "2025.718.426.53",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25052.76.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25061.44.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25052.76.0",
+      "Version": "1.25061.44.0",
       "Source": "Microsoft Store"
     },
     {
