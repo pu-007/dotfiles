@@ -35,6 +35,7 @@ fontforge
 freerdp2
 fzf
 gdb
+gemini-cli
 gimp
 gimp-help-zh_cn
 git
@@ -46,7 +47,6 @@ github-cli
 glu
 gnome-keyring
 go
-google-gemini-cli-git
 gtk-engine-murrine
 hspell
 hunspell

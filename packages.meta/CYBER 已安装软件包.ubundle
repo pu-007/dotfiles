@@ -86,6 +86,13 @@
     {
       "Id": "Baidu.BaiduNetdisk",
       "Name": "\u767E\u5EA6\u7F51\u76D8",
+      "Version": "7.59.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Baidu.BaiduNetdisk",
+      "Name": "\u767E\u5EA6\u7F51\u76D8",
       "Version": "7.58.0",
       "Source": "winget",
       "ManagerName": "Winget"
@@ -93,7 +100,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.64.8",
+      "Version": "1.65.4",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -283,7 +290,7 @@
     {
       "Id": "Microsoft.EdgeWebView2Runtime",
       "Name": "Microsoft Edge WebView2 Runtime",
-      "Version": "138.0.3351.95",
+      "Version": "138.0.3351.109",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -436,6 +443,13 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
+      "Version": "1.102.2",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Microsoft.VisualStudioCode",
+      "Name": "Microsoft Visual Studio Code",
       "Version": "1.102.1",
       "Source": "winget",
       "ManagerName": "Winget"
@@ -450,7 +464,7 @@
     {
       "Id": "Microsoft.WinGet.Client",
       "Name": "Microsoft.WinGet.Client",
-      "Version": "1.11.410",
+      "Version": "1.11.440",
       "Source": "PSGallery",
       "ManagerName": "PowerShell"
     },
@@ -471,7 +485,7 @@
     {
       "Id": "NetEase.CloudMusic",
       "Name": "\u7F51\u6613\u4E91\u97F3\u4E50",
-      "Version": "3.1.14.204222",
+      "Version": "3.1.15.204255",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -577,7 +591,7 @@
     {
       "Id": "RedHat.Podman-Desktop",
       "Name": "Podman Desktop",
-      "Version": "1.20.1",
+      "Version": "1.20.2",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -605,7 +619,21 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
+      "Version": "5.16.6",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Telegram.TelegramDesktop",
+      "Name": "Telegram Desktop",
       "Version": "5.16.4",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Tencent.QQ.NT",
+      "Name": "QQ",
+      "Version": "9.9.20.37625",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -620,6 +648,13 @@
       "Id": "Tencent.TencentMeeting",
       "Name": "Tencent Meeting",
       "Version": "3.36.1.445",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Tencent.WeChat.Universal",
+      "Name": "WeChat",
+      "Version": "4.0.6.26",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -693,6 +728,13 @@
     {
       "Id": "ayangweb.BongoCat",
       "Name": "BongoCat",
+      "Version": "0.7.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "ayangweb.BongoCat",
+      "Name": "BongoCat",
       "Version": "0.6.2",
       "Source": "winget",
       "ManagerName": "Winget"
@@ -728,14 +770,14 @@
     {
       "Id": "eza",
       "Name": "Eza",
-      "Version": "0.22.1",
+      "Version": "0.23.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
     {
       "Id": "fastfetch",
       "Name": "Fastfetch",
-      "Version": "2.48.0",
+      "Version": "2.48.1",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -743,6 +785,13 @@
       "Id": "fd",
       "Name": "Fd",
       "Version": "10.2.0",
+      "Source": "main",
+      "ManagerName": "Scoop"
+    },
+    {
+      "Id": "fzf",
+      "Name": "Fzf",
+      "Version": "0.65.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -780,6 +829,13 @@
       "Version": "8.14.3",
       "Source": "main",
       "ManagerName": "Scoop"
+    },
+    {
+      "Id": "kangfenmao.CherryStudio",
+      "Name": "Cherry Studio",
+      "Version": "1.5.3",
+      "Source": "winget",
+      "ManagerName": "Winget"
     },
     {
       "Id": "kangfenmao.CherryStudio",
@@ -1433,6 +1489,18 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\2b8717399eee97a06e5086912b894add",
+      "Name": "ME Frp",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\3db6f63a90afda09bbe56457a0a18dbe",
+      "Name": "Jellyfin",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\44dd7394f510feb39ed9d474add3f8e0",
       "Name": "Google Gemini",
       "Version": "1.0",
@@ -1448,6 +1516,12 @@
       "Id": "ARP\\User\\X64\\53484976-a3c3-518d-a572-4baa926ba04d",
       "Name": "AlgerMusicPlayer 4.7.1",
       "Version": "4.7.1",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\6bc140ae72f44f53d8b1a2b31fb673bc",
+      "Name": "\u817E\u8BAF\u4E91",
+      "Version": "1.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1475,9 +1549,33 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\a3f36336e210b19dd3b12374530f59ba",
+      "Name": "LoCyanFrp",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\ba35d085ced9dc8fbd7394344c06455c",
+      "Name": "GitHub Proxy",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\cbfa03b2-5cc3-5d62-b734-078e4e2617e2",
       "Name": "Yakit 1.4.3-718",
       "Version": "1.4.3-718",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\d1001b21df0453c8c20e88f0ce851ecf",
+      "Name": "MetaCubeXD",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\da66c8c98a639cc60bd24a95d219859b",
+      "Name": "DNSPod",
+      "Version": "1.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1817,15 +1915,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.722.2222.44_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.728.315.37_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.722.2222.44",
+      "Version": "2025.728.315.37",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25061.44.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25061.45.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25061.44.0",
+      "Version": "1.25061.45.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1841,9 +1939,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25061.25.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25062.30.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25061.25.0",
+      "Version": "1.25062.30.0",
       "Source": "Microsoft Store"
     },
     {
