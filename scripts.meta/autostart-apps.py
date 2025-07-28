@@ -144,8 +144,8 @@ async def main():
             "-background"
         ]),
         launch(r"C:\Program Files\Rime\weasel-0.17.4\WeaselServer.exe"),
-        launch([r'C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe'
-                ]),
+        # launch([r'C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe'
+        #         ]),
         launch([
             r"C:\Users\zion\AppData\local\Programs\podman-desktop\Podman Desktop.exe",
             "--minimized"

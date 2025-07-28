@@ -1,21 +1,6 @@
 -- luacheck: globals Command Url cx fs ps rt th ui ya
 
----@alias Color string|"reset"|"black"|"white"|"red"|"lightred"|"green"|"lightgreen"|"yellow"|"lightyellow"|"blue"|"lightblue"|"magenta"|"lightmagenta"|"cyan"|"lightcyan"|"gray"|"darkgray"
 ---@alias Stdio integer
-
----@alias Sendable nil|boolean|number|string|Url|{ [Sendable]: Sendable }
----@alias Renderable ui.Bar|ui.Border|ui.Clear|ui.Gauge|ui.Line|ui.List|ui.Text
-
----@class (exact) Pos
----@field [1] "top-left"|"top-center"|"top-right"|"bottom-left"|"bottom-center"|"bottom-right"|"center"|"hovered"
----@field x integer
----@field y integer
----@field w integer
----@field h integer
----@overload fun(value: {
----  [1]: "top-left"|"top-center"|"top-right"|"bottom-left"|"bottom-center"|"bottom-right"|"center"|"hovered",
----  x: integer?, y: integer?, w: integer?, h: integer?,
----}): self
 
 ---@class (exact) Recv
 ---@field recv fun(self: self): string
@@ -38,6 +23,47 @@ th = th
 ui = ui
 ---@type ya
 ya = ya
+
+-- A set of constants representing the origin of a position.
+-- |       |                                                                                                                                          |
+-- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+-- | Alias | `"top-left"` \| `"top-center"` \| `"top-right"` \| `"bottom-left"` \| `"bottom-center"` \| `"bottom-right"` \| `"center"` \| `"hovered"` |
+---@alias Origin "top-left"|"top-center"|"top-right"|"bottom-left"|"bottom-center"|"bottom-right"|"center"|"hovered"
+-- A value that can be sent across threads. See [Sendable value](/docs/plugins/overview#sendable) for more details.
+-- |       |                                                                                   |
+-- | ----- | --------------------------------------------------------------------------------- |
+-- | Alias | `nil` \| `boolean` \| `number` \| `string` \| `Url` \| `{ [Sendable]: Sendable }` |
+---@alias Sendable nil|boolean|number|string|Url|{ [Sendable]: Sendable }
+-- An element that can be rendered.
+-- |       |                                                                       |
+-- | ----- | --------------------------------------------------------------------- |
+-- | Alias | `Bar` \| `Border` \| `Clear` \| `Gauge` \| `Line` \| `List` \| `Text` |
+---@alias Renderable ui.Bar|ui.Border|ui.Clear|ui.Gauge|ui.Line|ui.List|ui.Text
+-- A value that can be covariantly treated as a [`Pos`](/docs/plugins/layout#pos).
+-- |       |                                                                                |
+-- | ----- | ------------------------------------------------------------------------------ |
+-- | Alias | `Pos` \| `{ [1]: Origin, x: integer?, y: integer?, w: integer?, h: integer? }` |
+---@alias AsPos ui.Pos|{ [1]: Origin, x: integer?, y: integer?, w: integer?, h: integer? }
+-- A value that can be covariantly treated as a [`Span`](/docs/plugins/layout#span).
+-- |       |                    |
+-- | ----- | ------------------ |
+-- | Alias | `string` \| `Span` |
+---@alias AsSpan string|ui.Span
+-- A value that can be covariantly treated as a [`Line`](/docs/plugins/layout#line).
+-- |       |                                                          |
+-- | ----- | -------------------------------------------------------- |
+-- | Alias | `string` \| `Span` \| `Line` \| `(string\|Span\|Line)[]` |
+---@alias AsLine string|ui.Span|ui.Line|(string|ui.Span|ui.Line)[]
+-- A value that can be covariantly treated as a [`Text`](/docs/plugins/layout#text).
+-- |       |                                                          |
+-- | ----- | -------------------------------------------------------- |
+-- | Alias | `string` \| `Span` \| `Line` \| `(string\|Span\|Line)[]` |
+---@alias AsText string|ui.Span|ui.Line|(string|ui.Span|ui.Line)[]
+-- A set of constants representing colors.
+-- |       |                                                                                                                                                                                                                                                                     |
+-- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+-- | Alias | `"black"` \| `"white"` \| `"red"` \| `"lightred"` \| `"green"` \| `"lightgreen"` \| `"yellow"` \| `"lightyellow"` \| `"blue"` \| `"lightblue"` \| `"magenta"` \| `"lightmagenta"` \| `"cyan"` \| `"lightcyan"` \| `"gray"` \| `"darkgray"` \| `"reset"` \| `string` |
+---@alias AsColor "black"|"white"|"red"|"lightred"|"green"|"lightgreen"|"yellow"|"lightyellow"|"blue"|"lightblue"|"magenta"|"lightmagenta"|"cyan"|"lightcyan"|"gray"|"darkgray"|"reset"|string
 
 -- Create a Url:
 -- ```lua
@@ -467,25 +493,63 @@ ya = ya
 -- | Return   | `Self`    |
 ---@overload fun(top: integer, right: integer, bottom: integer, left: integer): ui.Pad
 
+-- `Pos` represents a position, which is composed of an origin and an offset relative to that origin:
+-- ```lua
+-- ui.Pos { "center", x = 5, y = 3, w = 20, h = 10 }
+-- ```
+-- Its only parameter is a table containing the following keys:
+-- - `[1]`: [Origin](/docs/plugins/aliases#origin) of the position.
+-- - `x`: X-offset relative to the origin, default is 0.
+-- - `y`: Y-offset relative to the origin, default is 0.
+-- - `w`: Width, default is 0.
+-- - `h`: Height, default is 0.
+---@class (exact) ui.Pos
+-- X-offset relative to the origin.
+-- |      |           |
+-- | ---- | --------- |
+-- | Type | `integer` |
+---@field x integer
+-- Y-offset relative to the origin.
+-- |      |           |
+-- | ---- | --------- |
+-- | Type | `integer` |
+---@field y integer
+-- Width of the position.
+-- |      |           |
+-- | ---- | --------- |
+-- | Type | `integer` |
+---@field w integer
+-- Height of the position.
+-- |      |           |
+-- | ---- | --------- |
+-- | Type | `integer` |
+---@field h integer
+-- Make a new position.
+-- | In/Out  | Type                                                                  |
+-- | ------- | --------------------------------------------------------------------- |
+-- | `value` | `{ [1]: Origin, x?: integer, y?: integer, w?: integer, h?: integer }` |
+-- | Return  | `Self`                                                                |
+---@overload fun(value: { [1]: Origin, x?: integer, y?: integer, w?: integer, h?: integer }): ui.Pos
+
 -- Create a style:
 -- ```lua
 -- ui.Style()
 -- ```
 ---@class (exact) ui.Style
 -- Apply a foreground color.
--- | In/Out  | Type                                             |
--- | ------- | ------------------------------------------------ |
--- | `self`  | `Self`                                           |
--- | `color` | [`Color`](/docs/configuration/theme#types.color) |
--- | Return  | `self`                                           |
----@field fg fun(self: self, color: Color): self
+-- | In/Out  | Type                                        |
+-- | ------- | ------------------------------------------- |
+-- | `self`  | `Self`                                      |
+-- | `color` | [`AsColor`](/docs/plugins/aliases#as-color) |
+-- | Return  | `self`                                      |
+---@field fg fun(self: self, color: AsColor): self
 -- Apply a background color.
--- | In/Out  | Type                                             |
--- | ------- | ------------------------------------------------ |
--- | `self`  | `Self`                                           |
--- | `color` | [`Color`](/docs/configuration/theme#types.color) |
--- | Return  | `self`                                           |
----@field bg fun(self: self, color: Color): self
+-- | In/Out  | Type                                        |
+-- | ------- | ------------------------------------------- |
+-- | `self`  | `Self`                                      |
+-- | `color` | [`AsColor`](/docs/plugins/aliases#as-color) |
+-- | Return  | `self`                                      |
+---@field bg fun(self: self, color: AsColor): self
 -- Apply a bold style.
 -- | In/Out | Type   |
 -- | ------ | ------ |
@@ -597,19 +661,19 @@ ya = ya
 -- ```
 ---@field style fun(self: self, style: ui.Style): self
 -- Apply a foreground color.
--- | In/Out  | Type                                             |
--- | ------- | ------------------------------------------------ |
--- | `self`  | `Self`                                           |
--- | `color` | [`Color`](/docs/configuration/theme#types.color) |
--- | Return  | `self`                                           |
----@field fg fun(self: self, color: Color): self
+-- | In/Out  | Type                                        |
+-- | ------- | ------------------------------------------- |
+-- | `self`  | `Self`                                      |
+-- | `color` | [`AsColor`](/docs/plugins/aliases#as-color) |
+-- | Return  | `self`                                      |
+---@field fg fun(self: self, color: AsColor): self
 -- Apply a background color.
--- | In/Out  | Type                                             |
--- | ------- | ------------------------------------------------ |
--- | `self`  | `Self`                                           |
--- | `color` | [`Color`](/docs/configuration/theme#types.color) |
--- | Return  | `self`                                           |
----@field bg fun(self: self, color: Color): self
+-- | In/Out  | Type                                        |
+-- | ------- | ------------------------------------------- |
+-- | `self`  | `Self`                                      |
+-- | `color` | [`AsColor`](/docs/plugins/aliases#as-color) |
+-- | Return  | `self`                                      |
+---@field bg fun(self: self, color: AsColor): self
 -- Apply a bold style.
 -- | In/Out | Type   |
 -- | ------ | ------ |
@@ -673,11 +737,11 @@ ya = ya
 -- | Return | `self` |
 ---@field reset fun(self: self): self
 -- Make a new span.
--- | In/Out  | Type               |
--- | ------- | ------------------ |
--- | `value` | `string` \| `Self` |
--- | Return  | `Self`             |
----@overload fun(value: string|self): ui.Span
+-- | In/Out  | Type                                      |
+-- | ------- | ----------------------------------------- |
+-- | `value` | [`AsSpan`](/docs/plugins/aliases#as-span) |
+-- | Return  | `Self`                                    |
+---@overload fun(value: AsSpan): ui.Span
 
 -- `ui.Line` represents a line, consisting of multiple `ui.Span`s, and it accepts a table of them:
 -- ```lua
@@ -737,19 +801,19 @@ ya = ya
 -- ```
 ---@field style fun(self: self, style: ui.Style): self
 -- Apply a foreground color.
--- | In/Out  | Type                                             |
--- | ------- | ------------------------------------------------ |
--- | `self`  | `Self`                                           |
--- | `color` | [`Color`](/docs/configuration/theme#types.color) |
--- | Return  | `self`                                           |
----@field fg fun(self: self, color: Color): self
+-- | In/Out  | Type                                        |
+-- | ------- | ------------------------------------------- |
+-- | `self`  | `Self`                                      |
+-- | `color` | [`AsColor`](/docs/plugins/aliases#as-color) |
+-- | Return  | `self`                                      |
+---@field fg fun(self: self, color: AsColor): self
 -- Apply a background color.
--- | In/Out  | Type                                             |
--- | ------- | ------------------------------------------------ |
--- | `self`  | `Self`                                           |
--- | `color` | [`Color`](/docs/configuration/theme#types.color) |
--- | Return  | `self`                                           |
----@field bg fun(self: self, color: Color): self
+-- | In/Out  | Type                                        |
+-- | ------- | ------------------------------------------- |
+-- | `self`  | `Self`                                      |
+-- | `color` | [`AsColor`](/docs/plugins/aliases#as-color) |
+-- | Return  | `self`                                      |
+---@field bg fun(self: self, color: AsColor): self
 -- Apply a bold style.
 -- | In/Out | Type   |
 -- | ------ | ------ |
@@ -813,11 +877,11 @@ ya = ya
 -- | Return | `self` |
 ---@field reset fun(self: self): self
 -- Make a new line.
--- | In/Out  | Type                                                     |
--- | ------- | -------------------------------------------------------- |
--- | `value` | `string` \| `Span` \| `Self` \| `(string\|Span\|Self)[]` |
--- | Return  | `Self`                                                   |
----@overload fun(value: string|ui.Span|self|(string|ui.Span|self)[]): ui.Line
+-- | In/Out  | Type                                      |
+-- | ------- | ----------------------------------------- |
+-- | `value` | [`AsLine`](/docs/plugins/aliases#as-line) |
+-- | Return  | `Self`                                    |
+---@overload fun(value: AsLine): ui.Line
 
 -- `ui.Text` is used to represent multi-line text, it takes a table of `ui.Line`:
 -- ```lua
@@ -879,19 +943,19 @@ ya = ya
 -- ```
 ---@field style fun(self: self, style: ui.Style): self
 -- Apply a foreground color.
--- | In/Out  | Type                                             |
--- | ------- | ------------------------------------------------ |
--- | `self`  | `Self`                                           |
--- | `color` | [`Color`](/docs/configuration/theme#types.color) |
--- | Return  | `self`                                           |
----@field fg fun(self: self, color: Color): self
+-- | In/Out  | Type                                        |
+-- | ------- | ------------------------------------------- |
+-- | `self`  | `Self`                                      |
+-- | `color` | [`AsColor`](/docs/plugins/aliases#as-color) |
+-- | Return  | `self`                                      |
+---@field fg fun(self: self, color: AsColor): self
 -- Apply a background color.
--- | In/Out  | Type                                             |
--- | ------- | ------------------------------------------------ |
--- | `self`  | `Self`                                           |
--- | `color` | [`Color`](/docs/configuration/theme#types.color) |
--- | Return  | `self`                                           |
----@field bg fun(self: self, color: Color): self
+-- | In/Out  | Type                                        |
+-- | ------- | ------------------------------------------- |
+-- | `self`  | `Self`                                      |
+-- | `color` | [`AsColor`](/docs/plugins/aliases#as-color) |
+-- | Return  | `self`                                      |
+---@field bg fun(self: self, color: AsColor): self
 -- Apply a bold style.
 -- | In/Out | Type   |
 -- | ------ | ------ |
@@ -955,11 +1019,11 @@ ya = ya
 -- | Return | `self` |
 ---@field reset fun(self: self): self
 -- Make a new text.
--- | In/Out  | Type                                                     |
--- | ------- | -------------------------------------------------------- |
--- | `value` | `string` \| `Span` \| `Line` \| `(string\|Span\|Line)[]` |
--- | Return  | `Self`                                                   |
----@overload fun(value: string|ui.Span|ui.Line|(string|ui.Span|ui.Line)[]): ui.Text
+-- | In/Out  | Type                                      |
+-- | ------- | ----------------------------------------- |
+-- | `value` | [`AsText`](/docs/plugins/aliases#as-text) |
+-- | Return  | `Self`                                    |
+---@overload fun(value: AsText): ui.Text
 
 -- Create a layout:
 -- ```lua
@@ -1765,22 +1829,22 @@ ya = ya
 -- | ---- | ---------------------- |
 -- | Type | [`rt::Term`](#rt-term) |
 ---@field term rt__Term
--- User preferences under [`[mgr]`](/docs/configuration/yazi#mgr).
+-- User preferences under [\[mgr\]](/docs/configuration/yazi#mgr).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field mgr table
--- User preferences under [`[plugin]`](/docs/configuration/yazi#plugin).
+-- User preferences under [\[plugin\]](/docs/configuration/yazi#plugin).
 -- |      |                            |
 -- | ---- | -------------------------- |
 -- | Type | [`rt::Plugin`](#rt-plugin) |
 ---@field plugin rt__Plugin
--- User preferences under [`[preview]`](/docs/configuration/yazi#preview).
+-- User preferences under [\[preview\]](/docs/configuration/yazi#preview).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field preview table
--- User preferences under [`[tasks]`](/docs/configuration/yazi#tasks).
+-- User preferences under [\[tasks\]](/docs/configuration/yazi#tasks).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
@@ -1788,67 +1852,67 @@ ya = ya
 
 -- You can access the user's theme and flavor configuration through `th`.
 ---@class (exact) th
--- See [`[mgr]`](/docs/configuration/theme#mgr).
+-- See [\[mgr\]](/docs/configuration/theme#mgr).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field mgr table
--- See [`[tabs]`](/docs/configuration/theme#tabs).
+-- See [\[tabs\]](/docs/configuration/theme#tabs).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field tabs table
--- See [`[mode]`](/docs/configuration/theme#mode).
+-- See [\[mode\]](/docs/configuration/theme#mode).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field mode table
--- See [`[status]`](/docs/configuration/theme#status).
+-- See [\[status\]](/docs/configuration/theme#status).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field status table
--- See [`[which]`](/docs/configuration/theme#which).
+-- See [\[which\]](/docs/configuration/theme#which).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field which table
--- See [`[confirm]`](/docs/configuration/theme#confirm).
+-- See [\[confirm\]](/docs/configuration/theme#confirm).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field confirm table
--- See [`[spot]`](/docs/configuration/theme#spot).
+-- See [\[spot\]](/docs/configuration/theme#spot).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field spot table
--- See [`[notify]`](/docs/configuration/theme#notify).
+-- See [\[notify\]](/docs/configuration/theme#notify).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field notify table
--- See [`[pick]`](/docs/configuration/theme#pick).
+-- See [\[pick\]](/docs/configuration/theme#pick).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field pick table
--- See [`[input]`](/docs/configuration/theme#input).
+-- See [\[input\]](/docs/configuration/theme#input).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field input table
--- See [`[cmp]`](/docs/configuration/theme#cmp).
+-- See [\[cmp\]](/docs/configuration/theme#cmp).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field cmp table
--- See [`[tasks]`](/docs/configuration/theme#tasks).
+-- See [\[tasks\]](/docs/configuration/theme#tasks).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
 ---@field tasks table
--- See [`[help]`](/docs/configuration/theme#help).
+-- See [\[help\]](/docs/configuration/theme#help).
 -- |      |         |
 -- | ---- | ------- |
 -- | Type | `table` |
@@ -1972,13 +2036,9 @@ ya = ya
 --   title = "Archive name:",
 --   -- Default value
 --   value = "",
---   -- Position, which is a table:
---   --   `1`: Origin position, available values: "top-left", "top-center", "top-right",
---   --        "bottom-left", "bottom-center", "bottom-right", "center", and "hovered".
---   --   `x`: X offset from the origin position.
---   --   `y`: Y offset from the origin position.
---   --   `w`: Width of the input.
---   --   `h`: Height of the input.
+--   -- Whether to obscure the input.
+--   obscure = false,
+--   -- Position
 --   position = { "top-center", y = 3, w = 40 },
 --   -- Whether to report user input in real time.
 --   realtime = false,
@@ -2008,12 +2068,12 @@ ya = ya
 --   ya.dbg(value)
 -- end
 -- ```
--- | In/Out    | Type                                                                                      |
--- | --------- | ----------------------------------------------------------------------------------------- |
--- | `opts`    | `{ title: string, value: string?, position: Pos, realtime: boolean?, debounce: number? }` |
--- | Return    | `(string?, integer)` \| `Recv`                                                            |
--- | Available | Async context only                                                                        |
----@field input fun(opts: { title: string, value: string?, position: Pos, realtime: boolean?, debounce: number? }): (string?, integer)|Recv
+-- | In/Out    | Type                                                                                                           |
+-- | --------- | -------------------------------------------------------------------------------------------------------------- |
+-- | `opts`    | `{ title: string, value: string?, obscure: boolean?, position: AsPos, realtime: boolean?, debounce: number? }` |
+-- | Return    | `(string?, integer)` \| `Recv`                                                                                 |
+-- | Available | Async context only                                                                                             |
+---@field input fun(opts: { title: string, value: string?, obscure: boolean?, position: AsPos, realtime: boolean?, debounce: number? }): (string?, integer)|Recv
 -- Send a foreground notification to the user:
 -- ```lua
 -- ya.notify {
@@ -2027,11 +2087,28 @@ ya = ya
 --   level = "info",
 -- }
 -- ```
--- | In/Out | Type                                                                   |
--- | ------ | ---------------------------------------------------------------------- |
--- | `opts` | `{ title: string, content: string, timeout: number?, level: string? }` |
--- | Return | `unknown`                                                              |
----@field notify fun(opts: { title: string, content: string, timeout: number?, level: string? }): unknown
+-- | In/Out | Type                                                                                       |
+-- | ------ | ------------------------------------------------------------------------------------------ |
+-- | `opts` | `{ title: string, content: string, timeout: number, level: "info"\|"warn"\|"error"\|nil }` |
+-- | Return | `unknown`                                                                                  |
+---@field notify fun(opts: { title: string, content: string, timeout: number, level: "info"|"warn"|"error"|nil }): unknown
+-- Request user confirmation:
+-- ```lua
+-- local answer = ya.confirm {
+--   -- Position
+--   pos = { "center", w = 40, h = 10 },
+--   -- Title
+--   title = "Test",
+--   -- Body
+--   body = "Hello, World!",
+-- }
+-- ```
+-- | In/Out    | Type                                          |
+-- | --------- | --------------------------------------------- |
+-- | `opts`    | `{ pos: AsPos, title: AsLine, body: AsText }` |
+-- | Return    | `boolean`                                     |
+-- | Available | Async context only                            |
+---@field confirm fun(opts: { pos: AsPos, title: AsLine, body: AsText }): boolean
 -- Append messages to [the log file](/docs/plugins/overview#logging) at the debug level:
 -- ```lua
 -- ya.dbg("Hello", "World!")                       -- Multiple arguments are supported
@@ -2648,10 +2725,10 @@ ya = ya
 
 -- 
 ---@class (exact) Output
--- [Status](#status) of the child process.
--- |      |          |
--- | ---- | -------- |
--- | Type | `Status` |
+-- Status of the child process.
+-- |      |                     |
+-- | ---- | ------------------- |
+-- | Type | [`Status`](#status) |
 ---@field status Status
 -- Stdout of the child process.
 -- |      |          |
@@ -2722,6 +2799,17 @@ ya = ya
 -- ui.Pad(top, right, bottom, left)
 -- ```
 ---@field Pad fun(top: integer, right: integer, bottom: integer, left: integer): ui.Pad
+-- `Pos` represents a position, which is composed of an origin and an offset relative to that origin:
+-- ```lua
+-- ui.Pos { "center", x = 5, y = 3, w = 20, h = 10 }
+-- ```
+-- Its only parameter is a table containing the following keys:
+-- - `[1]`: [Origin](/docs/plugins/aliases#origin) of the position.
+-- - `x`: X-offset relative to the origin, default is 0.
+-- - `y`: Y-offset relative to the origin, default is 0.
+-- - `w`: Width, default is 0.
+-- - `h`: Height, default is 0.
+---@field Pos fun(value: { [1]: Origin, x?: integer, y?: integer, w?: integer, h?: integer }): ui.Pos
 -- Create a style:
 -- ```lua
 -- ui.Style()
@@ -2738,7 +2826,7 @@ ya = ya
 -- |         |                   |                                                  |
 -- | ------- | ----------------- | ------------------------------------------------ |
 -- | Inherit | [`Style`](#style) | To call [`Style`](#style) methods on it directly |
----@field Span fun(value: string|self): ui.Span
+---@field Span fun(value: AsSpan): ui.Span
 -- `ui.Line` represents a line, consisting of multiple `ui.Span`s, and it accepts a table of them:
 -- ```lua
 -- ui.Line { ui.Span("foo"), ui.Span("bar") }
@@ -2757,7 +2845,7 @@ ya = ya
 -- |         |                   |                                                  |
 -- | ------- | ----------------- | ------------------------------------------------ |
 -- | Inherit | [`Style`](#style) | To call [`Style`](#style) methods on it directly |
----@field Line fun(value: string|ui.Span|self|(string|ui.Span|self)[]): ui.Line
+---@field Line fun(value: AsLine): ui.Line
 -- `ui.Text` is used to represent multi-line text, it takes a table of `ui.Line`:
 -- ```lua
 -- ui.Text { ui.Line("foo"), ui.Line("bar") }
@@ -2777,7 +2865,7 @@ ya = ya
 -- |         |                   |                                                  |
 -- | ------- | ----------------- | ------------------------------------------------ |
 -- | Inherit | [`Style`](#style) | To call [`Style`](#style) methods on it directly |
----@field Text fun(value: string|ui.Span|ui.Line|(string|ui.Span|ui.Line)[]): ui.Text
+---@field Text fun(value: AsText): ui.Text
 -- Create a layout:
 -- ```lua
 -- local areas = ui.Layout()
