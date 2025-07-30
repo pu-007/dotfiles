@@ -110,7 +110,8 @@
 }
 .cpu-widget .icon,
 .memory-widget .icon,
-.custom-widget .icon {
+.custom-widget .icon,
+.gpu-widget .icon {
   font-size: 14px;
   color: #fbf1c7;
 }
@@ -137,13 +138,15 @@
 }
 .cpu-widget,
 .memory-widget,
-.custom-widget {
+.custom-widget,
+.gpu-widget {
   border-bottom: 1px solid #fbf1c7;
   background-color: rgba(203, 166, 247, 0);
 }
 .cpu-widget .label,
 .memory-widget .label,
-.custom-widget .label {
+.custom-widget .label,
+.gpu-widget .label {
   color: #fbf1c7;
 }
 .volume-widget {
