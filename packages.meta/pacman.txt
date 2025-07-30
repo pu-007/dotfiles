@@ -132,6 +132,7 @@ qt6-multimedia
 rdma-core
 read-edid
 reflector
+resvg
 rhino
 rich-cli
 ripgrep
@@ -249,7 +250,7 @@ xorg-xwininfo
 xorg-xwud
 yapf
 yay
-yazi-git
+yazi
 yt-dlp
 zathura-git
 zathura-pdf-mupdf-git

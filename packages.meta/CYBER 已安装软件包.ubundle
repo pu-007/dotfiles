@@ -91,13 +91,6 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "Baidu.BaiduNetdisk",
-      "Name": "\u767E\u5EA6\u7F51\u76D8",
-      "Version": "7.58.0",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
       "Version": "1.65.4",
@@ -304,7 +297,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.122.0624.0004",
+      "Version": "25.127.0701.0006",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -436,7 +429,7 @@
     {
       "Id": "Microsoft.VisualStudio.2022.Community",
       "Name": "Visual Studio Community 2022",
-      "Version": "\u003C 17.14.9",
+      "Version": "17.14.8",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -444,13 +437,6 @@
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
       "Version": "1.102.2",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "Microsoft.VisualStudioCode",
-      "Name": "Microsoft Visual Studio Code",
-      "Version": "1.102.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -503,7 +489,7 @@
     {
       "Id": "OBSProject.OBSStudio",
       "Name": "OBS Studio",
-      "Version": "31.1.1",
+      "Version": "31.1.2",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -519,18 +505,18 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "Ollama.Ollama",
-      "Name": "Ollama",
-      "Version": "0.9.6",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
       "Id": "OnOff.Onlook",
       "Name": "Onlook",
       "Version": "0.2.32",
       "Source": "winget",
       "ManagerName": "Winget"
+    },
+    {
+      "Id": "PSFzf",
+      "Name": "PSFzf",
+      "Version": "2.6.14",
+      "Source": "PSGallery",
+      "ManagerName": "PowerShell7"
     },
     {
       "Id": "PSFzf",
@@ -624,23 +610,9 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "Telegram.TelegramDesktop",
-      "Name": "Telegram Desktop",
-      "Version": "5.16.4",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
       "Id": "Tencent.QQ.NT",
       "Name": "QQ",
       "Version": "9.9.20.37625",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "Tencent.QQ.NT",
-      "Name": "QQ",
-      "Version": "9.9.20.36580",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -655,13 +627,6 @@
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
       "Version": "4.0.6.26",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "Tencent.WeChat.Universal",
-      "Name": "WeChat",
-      "Version": "4.0.6.21",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -696,7 +661,7 @@
     {
       "Id": "XP8BSBGQW2DKS0",
       "Name": "PotPlayer",
-      "Version": "25.06.25.0",
+      "Version": "210428",
       "Source": "msstore",
       "ManagerName": "Winget",
       "Updates": {
@@ -729,13 +694,6 @@
       "Id": "ayangweb.BongoCat",
       "Name": "BongoCat",
       "Version": "0.7.0",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "ayangweb.BongoCat",
-      "Name": "BongoCat",
-      "Version": "0.6.2",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -796,13 +754,6 @@
       "ManagerName": "Scoop"
     },
     {
-      "Id": "fzf",
-      "Name": "Fzf",
-      "Version": "0.64.0",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
       "Id": "geekuninstaller",
       "Name": "Geekuninstaller",
       "Version": "1.5.2.165",
@@ -834,13 +785,6 @@
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
       "Version": "1.5.3",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "kangfenmao.CherryStudio",
-      "Name": "Cherry Studio",
-      "Version": "1.5.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -1399,12 +1343,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\{1A434D02-8C9A-41A2-9BBE-C97A1E31ABC1}_is1",
-      "Name": "\u6EF4\u7B54\u6E05\u5355 \u7248\u672C 6.3.2.0",
-      "Version": "6.3.2.0",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X86\\{404581d0-19c1-47ba-bcd3-10178793c239}",
       "Name": "Intel(R) Chipset Device Software",
       "Version": "10.1.19600.8418",
@@ -1615,9 +1553,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\18184wherewhere.AndroidAppInstaller_0.1.26.0_x64__4v4sx105x6y4r",
+      "Id": "MSIX\\18184wherewhere.AndroidAppInstaller_0.1.27.0_x64__4v4sx105x6y4r",
       "Name": "APK \u5B89\u88C5\u7A0B\u5E8F",
-      "Version": "0.1.26.0",
+      "Version": "0.1.27.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1735,9 +1673,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25122.624.4.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25127.701.6.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25122.624.4.0",
+      "Version": "25127.701.6.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1915,15 +1853,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.728.315.37_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.730.225.2_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.728.315.37",
+      "Version": "2025.730.225.2",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25061.45.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25061.51.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25061.45.0",
+      "Version": "1.25061.51.0",
       "Source": "Microsoft Store"
     },
     {
