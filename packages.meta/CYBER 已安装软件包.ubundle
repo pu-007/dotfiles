@@ -47,7 +47,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.7.8",
+      "Version": "1.7.9",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -93,7 +93,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.65.4",
+      "Version": "1.66.5",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -244,7 +244,7 @@
     {
       "Id": "Microsoft.AppInstaller",
       "Name": "App Installer",
-      "Version": "1.26.400.0",
+      "Version": "1.26.430.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -429,14 +429,14 @@
     {
       "Id": "Microsoft.VisualStudio.2022.Community",
       "Name": "Visual Studio Community 2022",
-      "Version": "17.14.8",
+      "Version": "17.14.10",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.102.2",
+      "Version": "1.102.3",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -693,7 +693,7 @@
     {
       "Id": "ayangweb.BongoCat",
       "Name": "BongoCat",
-      "Version": "0.7.0",
+      "Version": "0.7.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -1679,9 +1679,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.ScreenSketch_11.2505.21.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.ScreenSketch_11.2506.25.0_x64__8wekyb3d8bbwe",
       "Name": "\u622A\u56FE\u5DE5\u5177",
-      "Version": "11.2505.21.0",
+      "Version": "11.2506.25.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1847,15 +1847,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22506.1401.7.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22506.1401.9.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22506.1401.7.0",
+      "Version": "22506.1401.9.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.730.225.2_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.731.538.50_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.730.225.2",
+      "Version": "2025.731.538.50",
       "Source": "Microsoft Store"
     },
     {
@@ -1877,9 +1877,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25062.30.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25062.33.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25062.30.0",
+      "Version": "1.25062.33.0",
       "Source": "Microsoft Store"
     },
     {
