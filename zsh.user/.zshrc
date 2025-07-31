@@ -38,40 +38,14 @@ alias lt="lT -L "
 alias v="vi"
 alias R="source ~/.zshrc"
 ialias i="nvim +'FzfLua oldfiles'"
-# ialias i="cat ~/.config/nvim/recent_files.txt | fzf | xargs nvim"
 ialias e="explorer.exe ."
 ialias ex="explorer.exe .;exit 0"
 ialias p="pwsh.exe"
-ialias a="gptme"
 export win_home="/mnt/c/Users/zion"
 balias 'c:'="/mnt/c/"
 balias 'd:'="/mnt/d/"
 balias 'e:'="/mnt/e/"
 balias h="$win_home/"
-alias j="jj"
-
-function ghd() {
-  # 检查参数是否提供
-  if [ -z "$1" ]; then
-    echo "Usage: ghd <github_blob_url>"
-    return 1
-  fi
-
-  # 提取 GitHub blob URL 的各个部分
-  local url="$1"
-  local raw_url=$(echo "$url" | sed 's/github.com/raw.githubusercontent.com/g' | sed 's/blob\//\//g')
-
-  # 下载文件并保存到当前目录
-  local filename=$(basename "$raw_url")
-  curl -L -o "$filename" "$raw_url"
-
-  if [ $? -eq 0 ]; then
-    echo "File downloaded successfully: $filename"
-  else
-    echo "Failed to download file from $raw_url"
-    return 1
-  fi
-}
 
 ### application options
 
@@ -200,7 +174,7 @@ zinit wait'!0' lucid is-snippet nocd for \
   ~/.config/zsh/starship.zsh
 
 zinit wait lucid is-snippet for \
-    atload"ialias z='__zoxide_z'; ialias zi='__zoxide_zi'; alias cd=z" \
+    atload"ialias z='__zoxide_z'; ialias zi='__zoxide_zi'" \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
   ~/.config/zsh/powershell.zsh \

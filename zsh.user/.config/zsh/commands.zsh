@@ -1,8 +1,36 @@
+alias aic="aicommit2"
+alias Aic="aic -a"
+alias acp="aic; git push"
+alias Acp="Aic; git push"
+
+alias j="jj"
 function gzr() {
   cd $(git rev-parse --show-toplevel)
 }
+ialias 'gc@'='git reset --soft HEAD^'
+alias lg="lazygit"
+function ghd() {
+  # 检查参数是否提供
+  if [ -z "$1" ]; then
+    echo "Usage: ghd <github_blob_url>"
+    return 1
+  fi
 
+  # 提取 GitHub blob URL 的各个部分
+  local url="$1"
+  local raw_url=$(echo "$url" | sed 's/github.com/raw.githubusercontent.com/g' | sed 's/blob\//\//g')
 
+  # 下载文件并保存到当前目录
+  local filename=$(basename "$raw_url")
+  curl -L -o "$filename" "$raw_url"
+
+  if [ $? -eq 0 ]; then
+    echo "File downloaded successfully: $filename"
+  else
+    echo "Failed to download file from $raw_url"
+    return 1
+  fi
+}
 
 alias py="python"
 alias apy="source .venv/bin/activate"
@@ -19,14 +47,7 @@ ialias scrcpy="scrcpy.exe"
 alias padmode="scrcpy --new-display=1920x1080 --video-codec=h265 --always-on-top --fullscreen --disable-screensaver --video-buffer=50 --audio-buffer=200 --gamepad=uhid"
 ialias winget="winget.exe"
 alias als="alias | rg "
-alias gdd="$DOTFILE_STORE/scripts.meta/git_staged_summary.sh"
 alias md2pdf="python $DOTFILE_STORE/scripts.meta/md2pdf.py"
-export AI_COMMIT_PROMPT='"Commit staged files directly with a commit message generated based on the infomation displayed below. The message must follow the Conventional Commit style(i.e. <type>[optional scope]: <description>) in English and intelligently determine whether to include a detailed description based on the diff. If there are multiple lines, use mutile -m in git args instead of \n in message"'
-ialias gac="gdd --no-color | gptme --non-interactive -t shell $AI_COMMIT_PROMPT"
-ialias 'gc@'='git reset --soft HEAD^'
-alias aic="gaa; gac"
-alias aicp="aic; git push"
-alias lg="lazygit"
 alias b="bat"
 
 
@@ -74,18 +95,3 @@ alias -s txt=v
 alias -s toml=v
 alias -s {yaml,yml}=v
 alias -s json=v
-
-update-all () {
-        echo "Updating pip packages..."
-        pip list --outdated | awk 'NR > 2 {print $1}' | xargs -n1 pip install --upgrade --progress-bar on
-        echo "Pip packages updated."
-        echo "Updating conda packages..."
-        conda update --all -y
-        echo "Conda packages updated."
-        echo "Updating npm global packages..."
-        sudo npm outdated -g --json | jq -r 'keys | .[]' | xargs -n1 sudo npm install -g
-        echo "npm global packages updated."
-        echo "Updating pacman packages..."
-        yay -Syyu --noconfirm
-        echo "Pacman packages updated."
-}
