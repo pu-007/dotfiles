@@ -1,7 +1,7 @@
 [init]
 	defaultBranch = main
 [core]
-	filemode = false
+	filemode = true
 	quotepath = false
 [safe]
 	directory = /mnt/c/Users/zion/AppData/Roaming/Rime
