@@ -1,5 +1,5 @@
 alias aic="aicommit2"
-alias Aic="aicommit2 --all"
+alias Aic="gaa; aicommit2"
 alias acp="aic; git push"
 alias Acp="Aic; git push"
 
