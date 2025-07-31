@@ -260,3 +260,5 @@ export PATH="$PATH:$HOME/go/bin"
 export DOTFILE_STORE="$HOME/dotfiles"
 export CUDA_HOME="/opt/cuda/"
 export HF_ENDPOINT="https://hf-mirror.com"
+
+export GEMINI_MODEL="gemini-2.5-flash"

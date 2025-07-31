@@ -4,11 +4,5 @@ response_preference = "Fluent and Not cumbersome"
 
 [env]
 
-#### openai compatible
-# OPENAI_BASE_URL = "https://xiaohumini.site/v1"
-# MODEL = "local/gemini-2.5-flash-preview-04-17"
-#### local
-# OPENAI_BASE_URL = "http://127.0.0.1:11434/v1"
-# MODEL = "local/qwen3:14b"
-#### Gemini
+# use git version (git+https://github.com/gptme/gptme) to get metadata
 MODEL = "gemini/gemini-2.5-flash"
