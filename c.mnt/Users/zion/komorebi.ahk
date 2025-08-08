@@ -10,6 +10,8 @@ Komorebic(cmd) {
     RunWait(format("komorebic.exe {}", cmd), , "Hide")
 }
 
+<!c:: Komorebic("close")  ; Alt+C 关闭当前窗口
+
 ; 焦点窗口
 <!h:: Komorebic("focus left")  ; Alt+H 焦点左移
 <!j:: Komorebic("focus down")  ; Alt+J 焦点下移

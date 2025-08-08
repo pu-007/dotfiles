@@ -78,16 +78,6 @@ async def _wait_for(name,
         await asyncio.sleep(interval)
 
 
-async def launch_quicklook_and_capslockx():
-    await _async_launch_app([
-        r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe",
-        "-autorun"
-    ])
-    await _wait_for("QuickLook.exe")
-    await _async_launch_app([r"C:\Users\zion\Apps\CapsLockX\CapsLockX.exe"], )
-    await _close_windows_by_title("CapsLockX-Core.ahk")
-
-
 async def launch_wt_quake():
     await _async_launch_app(
         ["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"])
@@ -109,7 +99,6 @@ async def main():
     await asyncio.gather(
         asyncio.create_task(launch_doubao()),
         asyncio.create_task(launch_wt_quake()),
-        asyncio.create_task(launch_quicklook_and_capslockx()),
         launch(r"C:\Program Files\EcoPaste\EcoPaste.exe"),
         launch(r"C:\Program Files\Quicker\Quicker.exe"),
         launch([r"C:\Program Files\Everything\Everything.exe", "-startup"]),
@@ -144,13 +133,20 @@ async def main():
             "-background"
         ]),
         launch(r"C:\Program Files\Rime\weasel-0.17.4\WeaselServer.exe"),
-        # launch([r'C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe'
-        #         ]),
         launch([
             r"C:\Users\zion\AppData\local\Programs\podman-desktop\Podman Desktop.exe",
             "--minimized"
         ],
                cwd=r"C:\Users\zion\AppData\local\Programs\podman-desktop"),
+        launch([
+            r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe",
+            "-autorun"
+        ]),
+        launch([
+            r"C:\Program Files\AutoHotkey\v1.1.37.02\AutoHotkeyU64_UIA.exe",
+            R"C:\Users\zion\Apps\capslock-plus\CapsLock+.ahk"
+        ],
+               cwd=r"C:\Users\zion\Apps\capslock-plus"),
     )
 
 
