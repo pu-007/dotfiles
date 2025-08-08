@@ -44,9 +44,11 @@ git-filter-repo
 git-lfs
 git-secrets
 github-cli
+glow
 glu
 gnome-keyring
 go
+google-chrome
 gtk-engine-murrine
 hspell
 hunspell
@@ -87,6 +89,7 @@ openfst
 orchis-theme
 otf-libertinus
 pandoc-cli
+paru
 payload-dumper-go
 pistol-bin
 pixi
@@ -134,7 +137,6 @@ read-edid
 reflector
 resvg
 rhino
-rich-cli
 ripgrep
 ripgrep-all
 rsync
