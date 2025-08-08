@@ -1,16 +1,54 @@
 #Requires AutoHotkey v2.0.2
 #SingleInstance Force
-;
-; Shift+Esc 关闭 Capslock ; Ctrl+Esc 打开 Capslock
-+Esc::SetCapsLockState(0)
-^Esc::SetCapsLockState(1)
+
+; ### CapsLock 切换 ###
+
+^Esc::SwapCapsLock()  ; 切换 CapsLock 状态
+
+SwapCapsLock(){
+    if GetKeyState("CapsLock", "T") {
+        SetCapsLockState(0)  ; 如果 CapsLock 开启，则关闭
+    } else {
+        SetCapsLockState(1)  ; 如果 CapsLock 关闭，则开启
+    }
+}
+
+; ### Alt 键交换 ###
+
++Esc::SwapAlt() ; 交换左右 alt
+
+global altSwapped := false
+
+
+SwapAlt() {
+  global altSwapped
+  altSwapped := !altSwapped
+}
+
+#HotIf altSwapped
+; 以下代码不可用，因为他就相当于循环定义，右变成左，左发送右然后又被映射到左
+; LAlt::RAlt
+; RAlt::LAlt
+
+; 以下代码不可用。理论上是可以避免循环，但不知道为啥和上面一样 fuck，切换后左右 alt 都会变成左 alt
+; $LAlt::RAlt
+; $RAlt::LAlt
+
+; 没有办法实现左右 alt 直接交换，但是可以让左 alt 穿透(~作用)
+; 即按下左alt时候，会在发送左alt的同时发送右alt
+; 而下面的keybindings是纯左alt，所以可以相当于按下了原功能alt
+; 大概是这样
+~LAlt::RAlt
+$RAlt::LAlt
+#HotIf
+
+; ### Komorebi ###
 
 ; 定义一个函数来执行komorebi命令
 Komorebic(cmd) {
     RunWait(format("komorebic.exe {}", cmd), , "Hide")
 }
 
-<!c:: Komorebic("close")  ; Alt+C 关闭当前窗口
 
 ; 焦点窗口
 <!h:: Komorebic("focus left")  ; Alt+H 焦点左移
@@ -91,6 +129,7 @@ ReloadThree() {
 <!p:: Komorebic("promote")
 <!m:: Komorebic("toggle-maximize")
 <!+m:: Komorebic("minimize")
+Capslock & z::Send("!{F4}")
 ; Toggle monocle layout (full screen for focused window while preserving tiling)
 <!f:: Komorebic("toggle-monocle")
 <!t:: Komorebic("toggle-float")
