@@ -1,5 +1,5 @@
-alias aic="aicommit2"
-alias Aic="gaa; aicommit2"
+alias aic="aicommit2 --auto-select --include-body"
+alias Aic="gaa; aic"
 alias acp="aic; git push"
 alias Acp="Aic; git push"
 
