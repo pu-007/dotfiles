@@ -13,33 +13,26 @@ SwapCapsLock(){
     }
 }
 
-; ### Alt 键交换 ###
+; ### Alt 键交换 (持久化版本) ###
 
-+Esc::SwapAlt() ; 交换左右 alt
+; 保存配置文件路径（在脚本同目录）
+iniFile := A_ScriptDir "\komorebiahk_settings.ini"
 
-global altSwapped := false
+; 启动时读取 altSwapped 值（默认 false）
+global altSwapped := (IniRead(iniFile, "Settings", "AltSwapped", "0") = "1")
 
-
-SwapAlt() {
-  global altSwapped
-  altSwapped := !altSwapped
+; Shift+Esc 切换左右 Alt
++Esc:: {
+    global altSwapped, iniFile
+    altSwapped := !altSwapped
+    IniWrite(altSwapped ? "1" : "0", iniFile, "Settings", "AltSwapped")
+    ToolTip "Alt 交换: " (altSwapped ? "开启" : "关闭")
+    SetTimer () => ToolTip(), -1000
 }
 
 #HotIf altSwapped
-; 以下代码不可用，因为他就相当于循环定义，右变成左，左发送右然后又被映射到左
-; LAlt::RAlt
-; RAlt::LAlt
-
-; 以下代码不可用。理论上是可以避免循环，但不知道为啥和上面一样 fuck，切换后左右 alt 都会变成左 alt
-; $LAlt::RAlt
-; $RAlt::LAlt
-
-; 没有办法实现左右 alt 直接交换，但是可以让左 alt 穿透(~作用)
-; 即按下左alt时候，会在发送左alt的同时发送右alt
-; 而下面的keybindings是纯左alt，所以可以相当于按下了原功能alt
-; 大概是这样
-~LAlt::RAlt
-$RAlt::LAlt
+~LAlt::RAlt ; 物理左 Alt -> lalt + ralt (间接让 komorebi keybindings 失效)
+$RAlt::LAlt ; 物理右 Alt -> lalt
 #HotIf
 
 ; ### Komorebi ###
@@ -99,21 +92,19 @@ Komorebic(cmd) {
 
 ; 窗口管理选项
 ; alt+r 重新加载 komorebi
-ReloadOne() {
+<!r:: {
     RunWait("taskkill /F /IM komorebi.exe", , "Hide")
     Run("komorebic-no-console.exe start --ahk")
 }
-<!r:: ReloadOne()
-; alt+shift+r 重新加载 komorebi, explorer, komorebi-bar
-ReloadTwo() {
+; alt+shift+r 重新加载 komorebi, yasb
+<!+r:: {
     RunWait("taskkill /F /IM komorebi.exe", , "Hide")
     RunWait("taskkill /F /IM yasb.exe", , "Hide")
     Run("komorebic-no-console.exe start --ahk")
     Run("yasb.exe")
 }
-<!+r:: ReloadTwo()
-; ctrl+shift+r 重新加载 komorebi, komorebi-bar, explorer
-ReloadThree() {
+; ctrl+shift+r 重新加载 komorebi, yasb, explorer
+^+r:: {
     RunWait("taskkill /F /IM komorebi.exe", , "Hide")
     RunWait("taskkill /F /IM yasb.exe", , "Hide")
     RunWait("taskkill /F /IM explorer.exe", , "Hide")
@@ -121,15 +112,22 @@ ReloadThree() {
     Run("komorebic-no-console.exe start --ahk")
     Run("yasb.exe")
 }
-^+r:: ReloadThree()
-; ReloadFour :: ctrl+shift+win+r :: explorer only, defined in UTools
 
 <!+p:: Komorebic("toggle-pause")  ; Alt+P 暂停/恢复窗口管理
 
 <!p:: Komorebic("promote")
 <!m:: Komorebic("toggle-maximize")
 <!+m:: Komorebic("minimize")
-Capslock & z::Send("!{F4}")
+<!z::WinClose("A")
+<!+z::
+{
+    try {
+        pid := WinGetPID("A")  ; Get process ID of active windo2
+        ProcessClose(pid)      ; Force kill process
+    } catch Error as e {
+        MsgBox "Failed to kill process: " e.Message
+    }
+}
 ; Toggle monocle layout (full screen for focused window while preserving tiling)
 <!f:: Komorebic("toggle-monocle")
 <!t:: Komorebic("toggle-float")
@@ -166,8 +164,6 @@ Capslock & z::Send("!{F4}")
 ; 启动终端
 <!Enter:: Run("wt.exe")
 <!+Enter:: Run(format('wt.exe -p Arch -d "{}"', FileRead("C:\Users\zion\.workdir")))
-^+#n:: Run("wt.exe -p Arch wsl nvim -c 'read !win32yank.exe -o'")
-#y:: Run("wsl.exe zsh -ic 'y /mnt/c/Users/zion/Downloads/'")
 
 ; Focus monitors
 <!F1:: Komorebic("focus-monitor 0")
@@ -180,8 +176,10 @@ Capslock & z::Send("!{F4}")
 ; Stack windows in a direction
 <!\:: Komorebic("stack left")
 <!+\:: Komorebic("unstack")
-
-AutoWechat() {
+; ### hyper keys and terminal app ###
+; some are defiend in uTools, ecopaste
+; Hyper + W 启动/切换微信
+^+!#w:: {
     ; 检查 Weixin.exe 进程是否存在
     if !ProcessExist("Weixin.exe") {
         ; 如果不存在，就运行它
@@ -191,9 +189,8 @@ AutoWechat() {
         Send("^+!{F12}")
     }
 }
-^+w:: AutoWechat()  ; Ctrl+Shift+W 启动/切换微信
-
-AutoQQ() {
+; Hyper + Q 启动/切换 QQ
+^+!#q:: {
     ; 检查 Weixin.exe 进程是否存在
     if !ProcessExist("QQ.exe") {
         ; 如果不存在，就运行它
@@ -203,4 +200,6 @@ AutoQQ() {
         Send("^#{F12}")
     }
 }
-^+q:: AutoQQ()  ; Ctrl+Shift+Q 启动/切换 QQ
+; Hyper + n nvim edit
+^+!#n:: Run("wt.exe -p Arch wsl nvim -c 'read !win32yank.exe -o'")
+#y:: Run("wsl.exe zsh -ic 'y /mnt/c/Users/zion/Downloads/'")
