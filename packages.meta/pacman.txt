@@ -17,6 +17,7 @@ cpp-pinyin
 cuda
 ddcutil
 directx-headers
+dos2unix
 eza
 fastfetch
 fcitx5

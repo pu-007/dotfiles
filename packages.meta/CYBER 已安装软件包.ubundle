@@ -153,7 +153,7 @@
     {
       "Id": "Google.AndroidStudio",
       "Name": "Android Studio",
-      "Version": "2025.1",
+      "Version": "2025.1.2.11",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -1494,6 +1494,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\6effa0de37da158efa4096d516001e81",
+      "Name": "ChatGPT",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\74e53be0-38d8-5309-9f12-098b05fb2a1b",
       "Name": "MIDI Jar 1.7.0",
       "Version": "1.7.0",
@@ -1740,9 +1746,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.StorePurchaseApp_22506.1401.3.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.StorePurchaseApp_22506.1401.4.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store \u4F53\u9A8C\u4E3B\u673A",
-      "Version": "22506.1401.3.0",
+      "Version": "22506.1401.4.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1890,9 +1896,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.808.1116.21_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.811.514.8_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.808.1116.21",
+      "Version": "2025.811.514.8",
       "Source": "Microsoft Store"
     },
     {
