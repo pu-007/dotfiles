@@ -3,6 +3,7 @@
 [core]
 	filemode = true
 	quotepath = false
+	pager = delta
 [safe]
 	directory = /mnt/c/Users/zion/AppData/Roaming/Rime
 	directory = /mnt/e/Obsidian/
@@ -23,3 +24,9 @@
 	process = git-lfs filter-process
 [push]
 	autoSetupRemote = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+[merge]
+	conflictStyle = zdiff3

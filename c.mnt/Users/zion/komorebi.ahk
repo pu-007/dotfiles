@@ -118,7 +118,13 @@ Komorebic(cmd) {
 <!p:: Komorebic("promote")
 <!m:: Komorebic("toggle-maximize")
 <!+m:: Komorebic("minimize")
-<!z::WinClose("A")
+<!z:: {
+  try {
+    WinClose("A")
+  } catch Error as e {
+    MsgBox "Failed to close window: " e.Message
+  }
+}
 <!+z::
 {
     try {
