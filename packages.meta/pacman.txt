@@ -8,6 +8,8 @@ base-devel
 bat
 bleachbit
 btop
+btrfs-progs
+caddy
 chafa
 cifs-utils
 clinfo
@@ -17,6 +19,8 @@ cpp-pinyin
 cuda
 ddcutil
 directx-headers
+docker
+docker-buildx
 dos2unix
 eza
 fastfetch
@@ -83,6 +87,7 @@ neovim-symlinks
 noto-fonts-cjk
 npm
 nuspell
+nvidia-container-toolkit
 nvidia-settings
 nvidia-utils
 opencl-mesa
@@ -92,12 +97,10 @@ otf-libertinus
 pandoc-cli
 paru
 payload-dumper-go
+pigz
 pistol-bin
 pixi
 pkgfile
-podman
-podman-compose
-podman-docker
 pre-commit
 prettier
 prettier-plugin-latex

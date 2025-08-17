@@ -9,17 +9,6 @@
       "ManagerName": "Scoop"
     },
     {
-      "Id": "Adobe.Acrobat.Reader.64-bit",
-      "Name": "Adobe Acrobat Reader (64-bit)",
-      "Version": "25.001.20467",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "Updates": {
-        "UpdatesIgnored": true,
-        "IgnoredVersion": "*"
-      }
-    },
-    {
       "Id": "Adobe.CreativeCloud",
       "Name": "Adobe Creative Cloud",
       "Version": "6.7.0.278",
@@ -100,7 +89,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.67.3",
+      "Version": "1.68.6",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -128,6 +117,13 @@
         "UpdatesIgnored": true,
         "IgnoredVersion": "*"
       }
+    },
+    {
+      "Id": "Docker.DockerDesktop",
+      "Name": "Docker Desktop",
+      "Version": "4.44.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
     },
     {
       "Id": "DuongDieuPhap.ImageGlass",
@@ -304,7 +300,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.130.0706.0004",
+      "Version": "25.137.0715.0001",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -549,7 +545,7 @@
     {
       "Id": "QL-Win.QuickLook",
       "Name": "QuickLook",
-      "Version": "4.0.2.0",
+      "Version": "4.1.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -571,20 +567,6 @@
       "Id": "RandyRants.SharpKeys",
       "Name": "SharpKeys",
       "Version": "3.9.4000",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "RedHat.Podman",
-      "Name": "Podman",
-      "Version": "5.5.2",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "RedHat.Podman-Desktop",
-      "Name": "Podman Desktop",
-      "Version": "1.20.2",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -824,6 +806,13 @@
       "ManagerName": "Scoop"
     },
     {
+      "Id": "rcmaehl.MSEdgeRedirect",
+      "Name": "MSEdgeRedirect",
+      "Version": "0.8.0.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
       "Id": "ripgrep",
       "Name": "Ripgrep",
       "Version": "14.1.1",
@@ -903,6 +892,12 @@
       "Id": "ARP\\Machine\\X64\\424abc11-aca9-452f-8b47-4klc6fh21b36_is1",
       "Name": "Steinberg SpectraLayers 11",
       "Version": "11.0.30.387",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\4fe1d619-948d-532d-b616-2e6ae5243edd",
+      "Name": "GitHub Stars Manager 0.1.3",
+      "Version": "0.1.3",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1620,12 +1615,6 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\AdobeAcrobatDCCoreApp_23.1.0.0_x64__pc75e8sa7ep4e",
-      "Name": "Adobe Acrobat",
-      "Version": "23.1.0.0",
-      "Source": "Microsoft Store"
-    },
-    {
       "Id": "MSIX\\AdobeNotificationClient_7.0.2.14_x64__enpm4xejd91yc",
       "Name": "Adobe Native Client",
       "Version": "7.0.2.14",
@@ -1716,9 +1705,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25130.706.4.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25137.715.1.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25130.706.4.0",
+      "Version": "25137.715.1.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1884,21 +1873,21 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2504.62.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2506.35.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BB0\u4E8B\u672C",
-      "Version": "11.2504.62.0",
+      "Version": "11.2506.35.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22506.1401.9.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22506.1401.10.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22506.1401.9.0",
+      "Version": "22506.1401.10.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.811.514.8_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.816.1555.29_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.811.514.8",
+      "Version": "2025.816.1555.29",
       "Source": "Microsoft Store"
     },
     {
