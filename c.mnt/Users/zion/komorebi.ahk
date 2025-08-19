@@ -1,18 +1,6 @@
 #Requires AutoHotkey v2.0.2
 #SingleInstance Force
 
-; ### CapsLock 切换 ###
-
-^Esc::SwapCapsLock()  ; 切换 CapsLock 状态
-
-SwapCapsLock(){
-    if GetKeyState("CapsLock", "T") {
-        SetCapsLockState(0)  ; 如果 CapsLock 开启，则关闭
-    } else {
-        SetCapsLockState(1)  ; 如果 CapsLock 关闭，则开启
-    }
-}
-
 ; ### Alt 键交换 (持久化版本) ###
 
 ; 保存配置文件路径（在脚本同目录）
@@ -21,8 +9,7 @@ iniFile := A_ScriptDir "\komorebiahk_settings.ini"
 ; 启动时读取 altSwapped 值（默认 false）
 global altSwapped := (IniRead(iniFile, "Settings", "AltSwapped", "0") = "1")
 
-; Shift+Esc 切换左右 Alt
-+Esc:: {
+Esc & F1:: {
     global altSwapped, iniFile
     altSwapped := !altSwapped
     IniWrite(altSwapped ? "1" : "0", iniFile, "Settings", "AltSwapped")
