@@ -134,19 +134,11 @@ async def main():
         ]),
         launch(r"C:\Program Files\Rime\weasel-0.17.4\WeaselServer.exe"),
         launch([
-            r"C:\Users\zion\AppData\local\Programs\podman-desktop\Podman Desktop.exe",
-            "--minimized"
-        ],
-               cwd=r"C:\Users\zion\AppData\local\Programs\podman-desktop"),
-        launch([
             r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe",
             "-autorun"
         ]),
-        launch([
-            r"C:\Program Files\AutoHotkey\v1.1.37.02\AutoHotkeyU64_UIA.exe",
-            R"C:\Users\zion\Apps\capslock-plus\CapsLock+.ahk"
-        ],
-               cwd=r"C:\Users\zion\Apps\capslock-plus"),
+        launch(r"C:\Users\zion\Apps\capslockpp\CapsLock++.exe"),
+        launch(r"C:\Program Files\Docker\Docker\Docker Desktop.exe"),
     )
 
 

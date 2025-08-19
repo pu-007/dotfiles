@@ -235,4 +235,8 @@ export DOTFILE_STORE="$HOME/dotfiles"
 export CUDA_HOME="/opt/cuda/"
 export HF_ENDPOINT="https://hf-mirror.com"
 
-export GEMINI_MODEL="gemini-2.5-flash"
+# use gemini-balance in docker as backend
+export GEMINI_MODEL="gemini-2.5-pro"
+export GOOGLE_GEMINI_BASE_URL="http://localhost:8000"
+export GEMINI_API_KEY="sk-123456"
+
