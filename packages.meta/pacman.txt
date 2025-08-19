@@ -80,6 +80,7 @@ mediainfo
 mesa-utils
 miniconda3
 moreutils
+mpv
 nano
 neovim
 neovim-qt
@@ -257,7 +258,6 @@ xorg-xwud
 yapf
 yay
 yazi
-yt-dlp
 zathura-git
 zathura-pdf-mupdf-git
 zbar
