@@ -1,0 +1,14 @@
+(local-port-to-path) {
+	@path_{args[0]} `{path.0} == "{args[0]}"`
+	handle @path_{args[0]} {
+		reverse_proxy localhost:{args[1]}
+	}
+}
+:11454 {
+	import local-port-to-path photo 2342
+	import local-port-to-path jellyfin 8096
+	import local-port-to-path alist 5244
+	handle {
+		respond "Caddy Server is running."
+	}
+}
