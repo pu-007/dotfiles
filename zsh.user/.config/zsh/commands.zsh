@@ -65,6 +65,8 @@ alias wrt="ssh root@192.168.100.1"
 
 alias yai="yay -S"
 alias yas="yay -Ss"
+alias yar="yay -Rnsc"
+alias yaif="yay -S --overwrite='*'"
 
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -86,6 +88,7 @@ alias -s html=v
 alias -s css=v
 alias -s ts=v
 # alias -s py=v
+alias -s py='env python'
 alias -s js=v
 alias -s c=v
 alias -s txt=v
