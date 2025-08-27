@@ -36,7 +36,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.7.9",
+      "Version": "1.8.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -82,7 +82,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.69.7",
+      "Version": "1.69.9",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -221,13 +221,6 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "MiKTeX.MiKTeX",
-      "Name": "MiKTeX",
-      "Version": "24.1",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
       "Id": "MichaelTippach.ASIO4ALL",
       "Name": "ASIO4ALL",
       "Version": "2.16",
@@ -276,7 +269,7 @@
     {
       "Id": "Microsoft.EdgeWebView2Runtime",
       "Name": "Microsoft Edge WebView2 Runtime",
-      "Version": "139.0.3405.111",
+      "Version": "139.0.3405.119",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -447,7 +440,7 @@
     {
       "Id": "Microsoft.WindowsTerminal.Preview",
       "Name": "Windows Terminal Preview",
-      "Version": "1.23.12102.0",
+      "Version": "1.24.2372.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -490,7 +483,7 @@
     {
       "Id": "Obsidian.Obsidian",
       "Name": "Obsidian",
-      "Version": "1.8.10",
+      "Version": "1.9.10",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -568,6 +561,13 @@
       "Id": "Rime.Weasel",
       "Name": "Weasel",
       "Version": "0.17.4.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Rustlang.Rustup",
+      "Name": "Rustup: the Rust toolchain installer",
+      "Version": "1.28.2",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -677,6 +677,20 @@
       "ManagerName": "Scoop"
     },
     {
+      "Id": "cargo-binstall",
+      "Name": "Cargo Binstall",
+      "Version": "1.15.1",
+      "Source": "crates.io",
+      "ManagerName": "Cargo"
+    },
+    {
+      "Id": "cargo-update",
+      "Name": "Cargo Update",
+      "Version": "18.0.0",
+      "Source": "crates.io",
+      "ManagerName": "Cargo"
+    },
+    {
       "Id": "chocolatey-compatibility.extension",
       "Name": "Chocolatey Compatibility.extension",
       "Version": "1.0.0",
@@ -735,7 +749,7 @@
     {
       "Id": "git",
       "Name": "Git",
-      "Version": "2.50.1",
+      "Version": "2.51.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -851,12 +865,12 @@
     {
       "Id": "xanderfrangos.twinkletray",
       "Name": "Twinkle Tray",
-      "Version": "1.17.0-beta2",
+      "Version": "1.17.0",
       "Source": "winget",
       "ManagerName": "Winget"
     }
   ],
-  "incompatible_packages_info": "Incompatible packages cannot be installed from UniGetUI, either because they came from a local source (for example Local PC)or because the package manager was unavailable. Nevertheless, they have been listed here for logging purposes.",
+  "incompatible_packages_info": "Incompatible packages cannot be installed from UniGetUI, either because they came from a local source (for example Local PC) or because the package manager was unavailable. Nevertheless, they have been listed here for logging purposes.",
   "incompatible_packages": [
     {
       "Id": "ARP\\Machine\\X64\\402a107a-9bf0-5290-9a9d-68f93d8798e3",
@@ -1172,14 +1186,14 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver",
-      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 580.97",
-      "Version": "580.97",
+      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 581.08",
+      "Version": "581.08",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.NvApp",
-      "Name": "NVIDIA App 11.0.4.526",
-      "Version": "11.0.4.526",
+      "Name": "NVIDIA App 11.0.5.245",
+      "Version": "11.0.5.245",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1190,8 +1204,8 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_FrameViewSdk",
-      "Name": "NVIDIA FrameView SDK 1.5.10920.35420203",
-      "Version": "1.5.10920.35420203",
+      "Name": "NVIDIA FrameView SDK 1.5.11504.36206172",
+      "Version": "1.5.11504.36206172",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1359,7 +1373,7 @@
     {
       "Id": "ARP\\Machine\\X86\\{889610CC-4337-4BDB-AC3B-4F21806C0BDE}_is1",
       "Name": "UniGetUI",
-      "Version": "3.3.1",
+      "Version": "3.3.2",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1519,12 +1533,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\User\\X64\\abd0a590b877c213f1af86d9f3d3c898",
-      "Name": "Gemini Balance",
-      "Version": "1.0",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\User\\X64\\ba35d085ced9dc8fbd7394344c06455c",
       "Name": "GitHub Proxy",
       "Version": "1.0",
@@ -1579,6 +1587,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\{7B0CC9B6-78D5-4103-A070-EC35B69E92B8}_is1",
+      "Name": "\u56FE\u5427\u5DE5\u5177\u7BB12025.07",
+      "Version": "2025.07",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "MSIX\\11413PtruceanBogdan.Wintoys_2.0.91.0_x64__ankwhmsh70gj6",
       "Name": "Wintoys",
       "Version": "2.0.91.0",
@@ -1603,9 +1617,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\AppUp.IntelArcSoftware_25.26.1602.0_x64__8j3eq9eme6ctt",
+      "Id": "MSIX\\AppUp.IntelArcSoftware_25.30.1705.0_x64__8j3eq9eme6ctt",
       "Name": "Intel\u00AE Graphics Software",
-      "Version": "25.26.1602.0",
+      "Version": "25.30.1705.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1861,21 +1875,21 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22506.1401.10.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22507.1401.6.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22506.1401.10.0",
+      "Version": "22507.1401.6.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.824.822.51_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.827.1329.5_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.824.822.51",
+      "Version": "2025.827.1329.5",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25072.63.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25081.83.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25072.63.0",
+      "Version": "1.25081.83.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1897,9 +1911,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25071.33.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25072.52.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25071.33.0",
+      "Version": "1.25072.52.0",
       "Source": "Microsoft Store"
     },
     {
