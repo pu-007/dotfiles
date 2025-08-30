@@ -82,7 +82,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.69.9",
+      "Version": "1.70.7",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -483,7 +483,7 @@
     {
       "Id": "Obsidian.Obsidian",
       "Name": "Obsidian",
-      "Version": "1.9.10",
+      "Version": "1.9.12",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -609,7 +609,7 @@
     {
       "Id": "Tencent.TencentMeeting",
       "Name": "Tencent Meeting",
-      "Version": "3.36.10.416",
+      "Version": "3.37.1.426",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -728,7 +728,7 @@
     {
       "Id": "fd",
       "Name": "Fd",
-      "Version": "10.2.0",
+      "Version": "10.3.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -1095,12 +1095,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\{88FA97F8-8770-42BC-9082-E2E641447D81}",
-      "Name": "Lazyeat",
-      "Version": "0.3.11",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X64\\{8B452603-A2AA-4D3E-A29A-54183ECA515B}",
       "Name": "NVIDIA Nsight Systems 2020.3.2",
       "Version": "20.3.2.6",
@@ -1242,6 +1236,12 @@
       "Id": "ARP\\Machine\\X64\\{B56D2F88-8865-40FD-B7AC-F074EE4D201D}",
       "Name": "NVIDIA Tools Extension SDK (NVTX) - 64 bit",
       "Version": "1.00.00.00",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{D6D4524F-1902-452A-A0D2-520E7BC00FA9}",
+      "Name": "Lazyeat",
+      "Version": "1.1.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1869,9 +1869,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2506.35.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2507.26.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BB0\u4E8B\u672C",
-      "Version": "11.2506.35.0",
+      "Version": "11.2507.26.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1881,9 +1881,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.827.1329.5_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.830.211.54_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.827.1329.5",
+      "Version": "2025.830.211.54",
       "Source": "Microsoft Store"
     },
     {
