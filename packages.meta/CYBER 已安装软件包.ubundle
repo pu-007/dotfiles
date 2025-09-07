@@ -75,14 +75,14 @@
     {
       "Id": "Blinue.Magpie",
       "Name": "Magpie",
-      "Version": "0.12.0-preview1",
+      "Version": "0.12.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.70.7",
+      "Version": "1.71.6",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -125,7 +125,7 @@
     {
       "Id": "Docker.DockerDesktop",
       "Name": "Docker Desktop",
-      "Version": "4.44.3",
+      "Version": "4.45.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -140,6 +140,13 @@
       "Id": "EcoPaste.EcoPaste",
       "Name": "EcoPaste",
       "Version": "0.5.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "FastCopy.FastCopy",
+      "Name": "FastCopy",
+      "Version": "5.10.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -269,7 +276,7 @@
     {
       "Id": "Microsoft.EdgeWebView2Runtime",
       "Name": "Microsoft Edge WebView2 Runtime",
-      "Version": "139.0.3405.119",
+      "Version": "139.0.3405.125",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -287,7 +294,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.140.0720.0001",
+      "Version": "25.149.0803.0003",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -470,6 +477,13 @@
       }
     },
     {
+      "Id": "Nvidia.PhysX",
+      "Name": "NVIDIA PhysX System Software",
+      "Version": "9.23.1019",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
       "Id": "OBSProject.OBSStudio",
       "Name": "OBS Studio",
       "Version": "31.1.2",
@@ -602,7 +616,7 @@
     {
       "Id": "Tencent.QQ.NT",
       "Name": "QQ",
-      "Version": "9.9.20.37625",
+      "Version": "9.9.21.38711",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -616,7 +630,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
-      "Version": "4.1.0.21",
+      "Version": "4.1.0.30",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -721,7 +735,7 @@
     {
       "Id": "fastfetch",
       "Name": "Fastfetch",
-      "Version": "2.50.2",
+      "Version": "2.51.1",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -784,7 +798,7 @@
     {
       "Id": "nodejs",
       "Name": "Nodejs",
-      "Version": "24.6.0",
+      "Version": "24.7.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -1191,12 +1205,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.PhysX",
-      "Name": "NVIDIA PhysX \u7CFB\u7EDF\u8F6F\u4EF6 9.23.1019",
-      "Version": "9.23.1019",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_FrameViewSdk",
       "Name": "NVIDIA FrameView SDK 1.5.11504.36206172",
       "Version": "1.5.11504.36206172",
@@ -1373,7 +1381,7 @@
     {
       "Id": "ARP\\Machine\\X86\\{889610CC-4337-4BDB-AC3B-4F21806C0BDE}_is1",
       "Name": "UniGetUI",
-      "Version": "3.3.2",
+      "Version": "3.3.3",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1582,8 +1590,8 @@
     },
     {
       "Id": "ARP\\User\\X64\\{64A08551-4F88-4748-B9E2-8D0371EFD7C1}_is1",
-      "Name": "LLC_MOD_Toolbox \u7248\u672C 1.2.1",
-      "Version": "1.2.1",
+      "Name": "LLC_MOD_Toolbox \u7248\u672C 1.3.0",
+      "Version": "1.3.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1641,9 +1649,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.GamingServices_30.104.13001.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.GamingServices_30.104.29001.0_x64__8wekyb3d8bbwe",
       "Name": "\u6E38\u620F\u670D\u52A1",
-      "Version": "30.104.13001.0",
+      "Version": "30.104.29001.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1701,15 +1709,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25140.720.1.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25149.803.3.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25140.720.1.0",
+      "Version": "25149.803.3.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.ScreenSketch_11.2506.25.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.ScreenSketch_11.2507.15.0_x64__8wekyb3d8bbwe",
       "Name": "\u622A\u56FE\u5DE5\u5177",
-      "Version": "11.2506.25.0",
+      "Version": "11.2507.15.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1875,15 +1883,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22507.1401.6.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22507.1401.7.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22507.1401.6.0",
+      "Version": "22507.1401.7.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.830.211.54_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.906.1231.35_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.830.211.54",
+      "Version": "2025.906.1231.35",
       "Source": "Microsoft Store"
     },
     {
@@ -1911,9 +1919,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25072.52.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25081.52.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25072.52.0",
+      "Version": "1.25081.52.0",
       "Source": "Microsoft Store"
     },
     {
