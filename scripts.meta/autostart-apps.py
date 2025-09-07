@@ -139,6 +139,7 @@ async def main():
         ]),
         launch(r"C:\Users\zion\Apps\capslockpp\CapsLock++.exe"),
         launch(r"C:\Program Files\Docker\Docker\Docker Desktop.exe"),
+        launch(r"C:\Users\zion\Apps\ProjectEye\ProjectEye.exe"),
     )
 
 
