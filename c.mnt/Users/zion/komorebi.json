@@ -17,9 +17,9 @@
   },
   "animation": {
     "enabled": false,
-    "duration": 200,
+    "duration": 180,
     "fps": 120,
-    "style": "EaseOutSine"
+    "style": "EaseInOutSine"
   },
   "monitors": [
     {
@@ -123,6 +123,11 @@
     {
       "kind": "Title",
       "id": "special_quake_window_title",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Title",
+      "id": "flomo - 快捷输入",
       "matching_strategy": "Equals"
     }
   ],

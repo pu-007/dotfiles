@@ -91,12 +91,19 @@ async def launch_doubao():
     await _close_windows_by_title("豆包 - 字节跳动旗下 AI 智能助手 - 豆包")
 
 
+async def launch_flomo():
+    await _async_launch_app(r"C:\Program Files\flomo\flomo.exe")
+    await asyncio.sleep(3)
+    await _minimize_windows_by_title("flomo")
+
+
 def launch(commands: str | list, cwd: str | None = None) -> asyncio.Task:
     return asyncio.create_task(_async_launch_app(commands, cwd))
 
 
 async def main():
     await asyncio.gather(
+        asyncio.create_task(launch_flomo()),
         asyncio.create_task(launch_doubao()),
         asyncio.create_task(launch_wt_quake()),
         launch(r"C:\Program Files\EcoPaste\EcoPaste.exe"),
@@ -140,7 +147,6 @@ async def main():
         launch(r"C:\Users\zion\Apps\capslockpp\CapsLock++.exe"),
         launch(r"C:\Program Files\Docker\Docker\Docker Desktop.exe"),
         launch(r"C:\Users\zion\Apps\ProjectEye\ProjectEye.exe"),
-        launch(r"C:\Program Files\flomo\flomo.exe"),
     )
 
 
