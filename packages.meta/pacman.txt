@@ -41,7 +41,6 @@ fontforge
 freerdp2
 fzf
 gdb
-gemini-cli
 gimp
 gimp-help-zh_cn
 git
@@ -54,7 +53,6 @@ glow
 glu
 gnome-keyring
 go
-google-chrome
 gtk-engine-murrine
 hspell
 hunspell
@@ -83,6 +81,7 @@ mesa-utils
 miniconda3
 moreutils
 mpv
+msgpack-cxx
 nano
 neovim
 neovim-qt
@@ -120,6 +119,7 @@ python-keyring
 python-matplotlib
 python-mutagen
 python-omegaconf
+python-ormsgpack
 python-pickleshare
 python-pip
 python-pipx
@@ -135,6 +135,7 @@ python-requests
 python-scipy
 python-tariff
 python-transformers
+python-u-msgpack
 python-websockets
 python-xattr
 qt5-wayland
