@@ -93,7 +93,7 @@ async def launch_doubao():
 
 async def launch_flomo():
     await _async_launch_app(r"C:\Program Files\flomo\flomo.exe")
-    await asyncio.sleep(3)
+    await asyncio.sleep(8)
     await _minimize_windows_by_title("flomo")
 
 

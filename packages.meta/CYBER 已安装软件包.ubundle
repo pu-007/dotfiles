@@ -36,7 +36,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.8.0",
+      "Version": "1.8.2",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -61,7 +61,7 @@
     {
       "Id": "Anki.Anki",
       "Name": "Anki",
-      "Version": "25.02.7",
+      "Version": "25.09",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -103,7 +103,7 @@
     {
       "Id": "Daum.PotPlayer",
       "Name": "PotPlayer",
-      "Version": "25.06.25.0",
+      "Version": "25.09.09.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -125,7 +125,7 @@
     {
       "Id": "Docker.DockerDesktop",
       "Name": "Docker Desktop",
-      "Version": "4.45.0",
+      "Version": "4.46.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -153,7 +153,7 @@
     {
       "Id": "Genymobile.scrcpy",
       "Name": "scrcpy",
-      "Version": "3.3.1",
+      "Version": "3.3.2",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -167,7 +167,7 @@
     {
       "Id": "JohnMacFarlane.Pandoc",
       "Name": "Pandoc",
-      "Version": "3.7.0.2",
+      "Version": "3.8",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -251,7 +251,7 @@
     {
       "Id": "Microsoft.DotNet.DesktopRuntime.8",
       "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
-      "Version": "8.0.19",
+      "Version": "8.0.20",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -305,7 +305,7 @@
     {
       "Id": "Microsoft.PowerShell",
       "Name": "PowerShell",
-      "Version": "7.5.2.0",
+      "Version": "7.5.3.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -433,14 +433,14 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.103.2",
+      "Version": "1.104.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "Microsoft.WinGet.Client",
       "Name": "Microsoft.WinGet.Client",
-      "Version": "1.11.440",
+      "Version": "1.11.460",
       "Source": "PSGallery",
       "ManagerName": "PowerShell"
     },
@@ -461,7 +461,7 @@
     {
       "Id": "NetEase.CloudMusic",
       "Name": "\u7F51\u6613\u4E91\u97F3\u4E50",
-      "Version": "3.1.17.204416",
+      "Version": "3.1.19.204510",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -602,7 +602,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "6.1.2",
+      "Version": "6.1.3",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -616,7 +616,7 @@
     {
       "Id": "Tencent.TencentMeeting",
       "Name": "Tencent Meeting",
-      "Version": "3.37.1.426",
+      "Version": "3.37.10.401",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -784,14 +784,14 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.5.9",
+      "Version": "1.5.10",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "kotlin",
       "Name": "Kotlin",
-      "Version": "2.2.10",
+      "Version": "2.2.20",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -805,7 +805,7 @@
     {
       "Id": "nodejs",
       "Name": "Nodejs",
-      "Version": "24.7.0",
+      "Version": "24.8.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -854,7 +854,7 @@
     {
       "Id": "th-ch.YouTubeMusic",
       "Name": "YouTube Music",
-      "Version": "3.10.0",
+      "Version": "3.11.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -897,6 +897,12 @@
       "Id": "ARP\\Machine\\X64\\402a107a-9bf0-5290-9a9d-68f93d8798e3",
       "Name": "doc2x 1.5.5",
       "Version": "1.5.5",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\411ce4c0-0fbb-5462-84d3-941b5e267ae7",
+      "Name": "flomo 5.25.91",
+      "Version": "5.25.91",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1890,6 +1896,12 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\Microsoft.WindowsCalculator_11.2502.2.0_x64__8wekyb3d8bbwe",
+      "Name": "Windows \u8BA1\u7B97\u5668",
+      "Version": "11.2502.2.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\Microsoft.WindowsNotepad_11.2507.26.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BB0\u4E8B\u672C",
       "Version": "11.2507.26.0",
@@ -1902,9 +1914,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.913.500.46_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.913.721.11_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.913.500.46",
+      "Version": "2025.913.721.11",
       "Source": "Microsoft Store"
     },
     {
