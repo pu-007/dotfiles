@@ -98,3 +98,41 @@ alias -s txt=v
 alias -s toml=v
 alias -s {yaml,yml}=v
 alias -s json=v
+
+# 批量调整音频速率（放慢/加快）
+# 用法：
+#   speedup_audio 0.7 file1.mp3 file2.mp3 ...
+#   speedup_audio 1.5 input/*.mp3
+speedup_audio() {
+    local speed=$1
+    shift  # 移除第一个参数（速率），剩下的都是文件
+
+    if [ -z "$speed" ]; then
+        echo "用法: speedup_audio <速率> <文件1> [文件2] ..."
+        echo "例如: speedup_audio 0.7 input.mp3"
+        return 1
+    fi
+
+    for file in "$@"; do
+        # 检查文件是否存在
+        if [ ! -f "$file" ]; then
+            echo "[警告] 文件不存在: $file"
+            continue
+        fi
+
+        # 获取文件名和扩展名
+        filename=$(basename -- "$file")
+        extension="${filename##*.}"
+        name="${filename%.*}"
+
+        # 输出文件名：原文件名 + _slow(或_speed) + 扩展名
+        if (( $(echo "$speed < 1" | bc -l) )); then
+            output="${name}_slow.${extension}"
+        else
+            output="${name}_fast.${extension}"
+        fi
+
+        echo "正在处理: $file -> $output"
+        ffmpeg -i "$file" -filter:a "atempo=$speed" -c:a libmp3lame -b:a 320k -map_metadata 0 -y "$output"
+    done
+}
