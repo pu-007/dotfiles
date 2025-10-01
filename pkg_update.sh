@@ -8,4 +8,7 @@ sudo pkgfile --update
 conda update --all -y
 #sudo npm -g update -y
 sudo npm install -g @google/gemini-cli
+sudo npm install -g aicommit2
 komorebic.exe fetch-app-specific-configuration
+pip cache purge
+docker system prune
