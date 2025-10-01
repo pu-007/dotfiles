@@ -195,4 +195,4 @@ Komorebic(cmd) {
 }
 ; Hyper + n nvim edit
 ^+!#n:: Run("wt.exe -p Arch wsl nvim -c 'read !win32yank.exe -o'")
-#y:: Run("wsl.exe zsh -ic 'y /mnt/c/Users/zion/Downloads/'")
+#y:: Run("wsl.exe zsh -ic 'y /mnt/d/Downloads/'")
