@@ -58,5 +58,10 @@ use = "pu-007/quicklook"
 rev = "f3666d8"
 hash = "784d820b5742efe4c64d4fe5d3dde414"
 
+[[plugin.deps]]
+use = "macydnah/office"
+rev = "41ebef8"
+hash = "5805affd3ae8adcb3c72b6997d21c0a6"
+
 [flavor]
 deps = []

@@ -29,14 +29,14 @@
     {
       "Id": "AltSnap.AltSnap",
       "Name": "AltSnap",
-      "Version": "1.65",
+      "Version": "1.66",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.8.2",
+      "Version": "1.8.3",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -75,7 +75,7 @@
     {
       "Id": "Baidu.BaiduNetdisk",
       "Name": "\u767E\u5EA6\u7F51\u76D8",
-      "Version": "7.60.5",
+      "Version": "7.60.7",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -132,7 +132,7 @@
     {
       "Id": "Docker.DockerDesktop",
       "Name": "Docker Desktop",
-      "Version": "4.46.0",
+      "Version": "4.47.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -160,7 +160,7 @@
     {
       "Id": "Genymobile.scrcpy",
       "Name": "scrcpy",
-      "Version": "3.3.2",
+      "Version": "3.3.3",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -216,7 +216,7 @@
     {
       "Id": "LGUG2Z.komorebi",
       "Name": "komorebi",
-      "Version": "0.1.37",
+      "Version": "0.1.38",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -239,7 +239,11 @@
       "Name": "Cinema 4D 2025",
       "Version": "2025.1.2",
       "Source": "winget",
-      "ManagerName": "Winget"
+      "ManagerName": "Winget",
+      "Updates": {
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
+      }
     },
     {
       "Id": "MichaelTippach.ASIO4ALL",
@@ -251,7 +255,7 @@
     {
       "Id": "Microsoft.AppInstaller",
       "Name": "App Installer",
-      "Version": "1.26.430.0",
+      "Version": "1.26.510.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -447,14 +451,14 @@
     {
       "Id": "Microsoft.VisualStudio.2022.Community",
       "Name": "Visual Studio Community 2022",
-      "Version": "17.14.12",
+      "Version": "17.14.16",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.104.0",
+      "Version": "1.104.2",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -480,13 +484,6 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "NetEase.CloudMusic",
-      "Name": "\u7F51\u6613\u4E91\u97F3\u4E50",
-      "Version": "3.1.19.204510",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
       "Id": "Nvidia.CUDA",
       "Name": "NVIDIA CUDA Toolkit",
       "Version": "12.6",
@@ -507,7 +504,7 @@
     {
       "Id": "OBSProject.OBSStudio",
       "Name": "OBS Studio",
-      "Version": "31.1.2",
+      "Version": "32.0.1",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -637,14 +634,14 @@
     {
       "Id": "Tencent.TencentMeeting",
       "Name": "Tencent Meeting",
-      "Version": "3.37.10.401",
+      "Version": "3.38.1.421",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
-      "Version": "4.1.0.34",
+      "Version": "4.1.1.19",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -677,23 +674,16 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "altsnap",
-      "Name": "Altsnap",
-      "Version": "1.65.0",
-      "Source": "community",
-      "ManagerName": "Chocolatey"
-    },
-    {
       "Id": "apktool",
       "Name": "Apktool",
-      "Version": "2.12.0",
+      "Version": "2.12.1",
       "Source": "main",
       "ManagerName": "Scoop"
     },
     {
       "Id": "ayangweb.BongoCat",
       "Name": "BongoCat",
-      "Version": "0.7.1",
+      "Version": "0.8.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -707,14 +697,14 @@
     {
       "Id": "calibre.calibre",
       "Name": "calibre",
-      "Version": "8.10.0",
+      "Version": "8.11.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "cargo-binstall",
       "Name": "Cargo Binstall",
-      "Version": "1.15.4",
+      "Version": "1.15.6",
       "Source": "crates.io",
       "ManagerName": "Cargo"
     },
@@ -756,14 +746,14 @@
     {
       "Id": "eza",
       "Name": "Eza",
-      "Version": "0.23.2",
+      "Version": "0.23.3",
       "Source": "main",
       "ManagerName": "Scoop"
     },
     {
       "Id": "fastfetch",
       "Name": "Fastfetch",
-      "Version": "2.52.0",
+      "Version": "2.53.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -784,7 +774,7 @@
     {
       "Id": "geeksoftwareGmbH.PDF24Creator",
       "Name": "PDF24 Creator",
-      "Version": "11.28.1",
+      "Version": "11.28.2",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -798,7 +788,7 @@
     {
       "Id": "git",
       "Name": "Git",
-      "Version": "2.51.0",
+      "Version": "2.51.0.2",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -833,7 +823,7 @@
     {
       "Id": "nodejs",
       "Name": "Nodejs",
-      "Version": "24.8.0",
+      "Version": "24.9.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -1414,6 +1404,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\{2c1d2274-0b9c-437b-8937-60ed881f6678}",
+      "Name": "Windows Software Development Kit - Windows 10.0.26100.4654",
+      "Version": "10.1.26100.4654",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\{404581d0-19c1-47ba-bcd3-10178793c239}",
       "Name": "Intel(R) Chipset Device Software",
       "Version": "10.1.19600.8418",
@@ -1474,12 +1470,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X86\\{a174f9c3-3990-44e0-9904-1c5218139b20}",
-      "Name": "Windows Software Development Kit - Windows 10.0.26100.4188",
-      "Version": "10.1.26100.4188",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X86\\{b72d4013-dd88-405a-9f9d-e88c278dcefe}",
       "Name": "Windows Software Development Kit - Windows 10.0.22621.5040",
       "Version": "10.1.22621.5040",
@@ -1524,6 +1514,12 @@
     {
       "Id": "ARP\\User\\X64\\4c81404a7021fab8989d119d03b3fedc",
       "Name": "Google AI Studio",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\4feb68021bf607e54a3f441b5f770c88",
+      "Name": "CYATA\u4E50\u5668\u4E50\u5668\u4E50\u5668\u4E50\u5668\u4E50\u5668\u5B66\u4E60\u5DE5\u5177",
       "Version": "1.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
@@ -1966,9 +1962,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.1001.247.32_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.1001.937.26_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.1001.247.32",
+      "Version": "2025.1001.937.26",
       "Source": "Microsoft Store"
     },
     {
