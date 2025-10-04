@@ -2,6 +2,7 @@ alias aic="GEMINI_API_KEY= aicommit2 --auto-select --include-body"
 alias Aic="gaa; aic"
 alias acp="aic; git push"
 alias Acp="Aic; git push"
+alias G="gemini"
 
 alias j="jj"
 function gzr() {
