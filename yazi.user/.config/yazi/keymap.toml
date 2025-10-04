@@ -31,10 +31,18 @@ on = "\\"
 run = "plugin quicklook"
 desc = "QuickLook file/dir"
 
+## TODO find a way to open explore then quit yazi automatically
 [[mgr.prepend_keymap]]
 on = "e"
-run = "shell -- explorer.exe . & exit"
+run = "shell -- explorer.exe . & pkill yazi"
 desc = "Open with Explor "
+
+[[mgr.prepend_keymap]]
+on = "<Enter>"
+run = "shell -- xdg-open $@ & pkill yazi"
+desc = "Open the selected files"
+
+## TODO find a way to open a file then auto quit yazi
 
 # [[mgr.prepend_keymap]]
 # on = "<C-y>"
