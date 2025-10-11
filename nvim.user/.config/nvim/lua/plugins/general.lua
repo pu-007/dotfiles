@@ -6,6 +6,11 @@ return {
       colorscheme = "gruvbox-material",
     },
   },
+  -- TODO update paredit when it supports treesitter main branch
+  {
+    "julienvincent/nvim-paredit",
+    enabled = false,
+  },
   { "sainnhe/gruvbox-material" },
   {
     "kkew3/jieba.vim",
@@ -101,7 +106,6 @@ return {
     build = "make",
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
@@ -132,18 +136,6 @@ return {
       },
     },
   },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      -- add tsx and treesitter
-      vim.list_extend(opts.ensure_installed, {
-        "tsx",
-        "typescript",
-        "latex",
-        -- python-pylatexenc for latex2text
-      })
-    end,
-  },
   { "CRAG666/code_runner.nvim", config = true },
   {
     "CRAG666/betterTerm.nvim",
@@ -158,16 +150,6 @@ return {
     ft = "typst",
     -- version = "1.*",
     opts = {}, -- lazy.nvim will implicitly calls `setup {}`
-  },
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "tinymist",
-        "ruff",
-        "ty",
-      },
-    },
   },
   {
     "stevearc/conform.nvim",
