@@ -155,7 +155,7 @@ Komorebic(cmd) {
 
 ; Apps
 ; 启动终端
-<!Enter:: Run("wt.exe")
+<!Enter:: Run("wt.exe -p Arch -d D:\Downloads")
 <!+Enter:: Run(format('wt.exe -p Arch -d "{}"', FileRead("C:\Users\zion\.workdir")))
 
 ; Focus monitors

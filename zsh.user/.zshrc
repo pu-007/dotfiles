@@ -1,4 +1,3 @@
-cd /mnt/d/Downloads
 ### better alias
 typeset -g baliases=()
 
