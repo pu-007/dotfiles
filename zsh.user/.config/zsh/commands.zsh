@@ -3,6 +3,8 @@ alias Aic="gaa; aic"
 alias acp="aic; git push"
 alias Acp="Aic; git push"
 alias G="gemini"
+alias dkc="docker compose"
+alias dcu="docker compose up -d"
 
 alias j="jj"
 function gzr() {
@@ -100,11 +102,7 @@ alias -s toml=v
 alias -s {yaml,yml}=v
 alias -s json=v
 
-# 批量调整音频速率（放慢/加快）
-# 用法：
-#   speedup_audio 0.7 file1.mp3 file2.mp3 ...
-#   speedup_audio 1.5 input/*.mp3
-speedup_audio() {
+function speedup-audio() {
     local speed=$1
     shift  # 移除第一个参数（速率），剩下的都是文件
 
@@ -113,6 +111,9 @@ speedup_audio() {
         echo "例如: speedup_audio 0.7 input.mp3"
         return 1
     fi
+
+    # 替换小数点为下划线，避免文件名问题
+    speed_label=$(echo "$speed" | tr '.' '_')
 
     for file in "$@"; do
         # 检查文件是否存在
@@ -126,14 +127,61 @@ speedup_audio() {
         extension="${filename##*.}"
         name="${filename%.*}"
 
-        # 输出文件名：原文件名 + _slow(或_speed) + 扩展名
-        if (( $(echo "$speed < 1" | bc -l) )); then
-            output="${name}_slow.${extension}"
-        else
-            output="${name}_fast.${extension}"
-        fi
+        # 输出文件名：原文件名 + _速率值 + 扩展名
+        output="${name}_${speed_label}x.${extension}"
 
         echo "正在处理: $file -> $output"
-        ffmpeg -i "$file" -filter:a "atempo=$speed" -c:a libmp3lame -b:a 320k -map_metadata 0 -y "$output"
+        # 使用VBR模式减小体积，质量等级4（可根据需要调整）
+        ffmpeg -i "$file" -filter:a "atempo=$speed" -c:a libmp3lame -q:a 4 -map_metadata 0 -y "$output"
     done
+}
+
+export ITTS_DIR="/mnt/c/Users/zion/Apps/index-tts-vllm"
+
+function itts {
+  local itts_script=("python" "$ITTS_DIR/itts.py")
+  local success_keyword="可用的语音角色"
+  local max_wait=60       # 启动 Docker 后最大等待时间（秒）
+  local sleep_sec=3       # 每次检测间隔
+
+  # 检测服务是否可用
+  check_service() {
+    if output=$(timeout 5 "${itts_script[@]}" --get-voices 2>&1); then
+      echo "$output" | grep -q "$success_keyword"
+      return $?
+    else
+      return 1
+    fi
+  }
+
+  # 先检测一次
+  if check_service; then
+    echo "服务已就绪，直接执行命令..."
+    "${itts_script[@]}" "$@"
+    return 0
+  fi
+
+  # API 未启动，立即启动 Docker
+  echo "API 未启动，启动 Docker 容器..."
+  (cd "$ITTS_DIR" && docker compose up -d)
+
+  # 等待服务初始化完成
+  echo "等待服务初始化完成..."
+  local ready=0
+  for ((i=0; i<max_wait; i+=sleep_sec)); do
+    if check_service; then
+      ready=1
+      break
+    fi
+    echo "$(date +'%H:%M:%S') - API 仍未就绪，等待 ${sleep_sec}s..."
+    sleep $sleep_sec
+  done
+
+  if [ $ready -eq 0 ]; then
+    echo "服务启动超时，未能检测到关键词 '$success_keyword'"
+    return 1
+  fi
+
+  echo "服务已就绪，执行命令..."
+  "${itts_script[@]}" "$@"
 }
