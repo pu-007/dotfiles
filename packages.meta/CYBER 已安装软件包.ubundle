@@ -89,7 +89,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.75.6",
+      "Version": "1.75.7",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -294,7 +294,7 @@
     {
       "Id": "Microsoft.EdgeWebView2Runtime",
       "Name": "Microsoft Edge WebView2 Runtime",
-      "Version": "140.0.3485.94",
+      "Version": "141.0.3537.71",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -319,7 +319,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.164.0824.0003",
+      "Version": "25.174.0907.0003",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -555,6 +555,13 @@
       "ManagerName": "PowerShell7"
     },
     {
+      "Id": "PasteIntoFile.PasteIntoFile",
+      "Name": "Paste Into File",
+      "Version": "5.5.0.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
       "Id": "PowerShellGet",
       "Name": "PowerShellGet",
       "Version": "2.2.5",
@@ -620,7 +627,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "6.1.3",
+      "Version": "6.2.2",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -739,7 +746,7 @@
     {
       "Id": "chrox.Readest",
       "Name": "Readest",
-      "Version": "0.9.81",
+      "Version": "0.9.82",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -802,7 +809,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.6.2",
+      "Version": "1.6.3",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -1430,7 +1437,7 @@
     {
       "Id": "ARP\\Machine\\X86\\{D63F7A9D-E379-4AEA-B8F0-BE5C9F6B90D5}_is1",
       "Name": "\u77E5\u7280\u601D\u7EF4\u5BFC\u56FE",
-      "Version": "3.3.6.2310",
+      "Version": "3.6.0.2676",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1473,6 +1480,12 @@
       "Id": "ARP\\Machine\\X86\\{b72d4013-dd88-405a-9f9d-e88c278dcefe}",
       "Name": "Windows Software Development Kit - Windows 10.0.22621.5040",
       "Version": "10.1.22621.5040",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\0065a7ea37eef2418da737e91117a08c",
+      "Name": "QQ\u90AE\u7BB1",
+      "Version": "1.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1526,6 +1539,12 @@
     {
       "Id": "ARP\\User\\X64\\5664f1e1fc98a232368de4804ec071ec",
       "Name": "Phind",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\5a59e28d310d73f01a90c05df33d2dcb",
+      "Name": "\u4ECA\u65E5\u70ED\u699C",
       "Version": "1.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
@@ -1602,6 +1621,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\da2554aa1a4b82d43bb14a9921852a6e",
+      "Name": "DeepSeek",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\da66c8c98a639cc60bd24a95d219859b",
       "Name": "DNSPod",
       "Version": "1.0",
@@ -1650,9 +1675,9 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "MSIX\\11413PtruceanBogdan.Wintoys_2.0.91.0_x64__ankwhmsh70gj6",
+      "Id": "MSIX\\11413PtruceanBogdan.Wintoys_2.4.12.0_x64__ankwhmsh70gj6",
       "Name": "Wintoys",
-      "Version": "2.0.91.0",
+      "Version": "2.4.12.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1770,15 +1795,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25164.824.3.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25174.907.3.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25164.824.3.0",
+      "Version": "25174.907.3.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.ScreenSketch_11.2507.15.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.ScreenSketch_11.2508.28.0_x64__8wekyb3d8bbwe",
       "Name": "\u622A\u56FE\u5DE5\u5177",
-      "Version": "11.2507.15.0",
+      "Version": "11.2508.28.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1800,9 +1825,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.StorePurchaseApp_22508.1401.2.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.StorePurchaseApp_22508.1401.3.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store \u4F53\u9A8C\u4E3B\u673A",
-      "Version": "22508.1401.2.0",
+      "Version": "22508.1401.3.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1956,15 +1981,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22508.1401.4.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22508.1401.8.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22508.1401.4.0",
+      "Version": "22508.1401.8.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.1001.937.26_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.1012.753.44_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.1001.937.26",
+      "Version": "2025.1012.753.44",
       "Source": "Microsoft Store"
     },
     {

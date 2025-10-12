@@ -12,3 +12,4 @@ sudo npm install -g aicommit2
 komorebic.exe fetch-app-specific-configuration
 pip cache purge
 docker system prune
+sudo trash-empty -f --all-users
