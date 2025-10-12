@@ -92,6 +92,7 @@ nuspell
 nvidia-container-toolkit
 nvidia-settings
 nvidia-utils
+openbsd-netcat
 opencl-mesa
 openfst
 orchis-theme
@@ -114,6 +115,7 @@ python-brotlicffi
 python-certifi
 python-dnspython
 python-gitpython
+python-httpx
 python-jieba
 python-keyring
 python-matplotlib
@@ -128,7 +130,6 @@ python-pycryptodome
 python-pycryptodomex
 python-pylatexenc
 python-pynvim
-python-pytorch-cuda
 python-pyxattr
 python-pyxdg
 python-requests
@@ -188,11 +189,17 @@ tldr
 tmux
 tokei
 trash-cli
+tree-sitter
+tree-sitter-bash
 tree-sitter-cli
+tree-sitter-javascript
+tree-sitter-python
+tree-sitter-rust
 ttf-linux-libertine
 typst
 typstyle
 ueberzugpp
+unarchiver
 unrar
 unzip
 uv
