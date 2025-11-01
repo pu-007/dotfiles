@@ -156,7 +156,7 @@ function itts {
 
   # 先检测一次
   if check_service; then
-    echo "服务已就绪，直接执行命令..."
+    #echo "服务已就绪，直接执行命令..."
     "${itts_script[@]}" "$@"
     return 0
   fi
@@ -185,3 +185,6 @@ function itts {
   echo "服务已就绪，执行命令..."
   "${itts_script[@]}" "$@"
 }
+
+alias 3critts="co | itts --repeat-text -v candy,pu,cat"
+alias 3crsitts="co | itts --repeat-text --shuffle-text -v candy,pu,cat"
