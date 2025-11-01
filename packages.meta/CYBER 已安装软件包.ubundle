@@ -89,7 +89,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.75.7",
+      "Version": "1.76.4",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -153,7 +153,7 @@
     {
       "Id": "FastCopy.FastCopy",
       "Name": "FastCopy",
-      "Version": "5.10.0",
+      "Version": "5.11.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -174,7 +174,7 @@
     {
       "Id": "JohnMacFarlane.Pandoc",
       "Name": "Pandoc",
-      "Version": "3.8",
+      "Version": "3.8.2",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -294,7 +294,7 @@
     {
       "Id": "Microsoft.EdgeWebView2Runtime",
       "Name": "Microsoft Edge WebView2 Runtime",
-      "Version": "141.0.3537.71",
+      "Version": "141.0.3537.85",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -305,7 +305,7 @@
     {
       "Id": "Microsoft.GameInput",
       "Name": "Microsoft GameInput",
-      "Version": "2.2.26100.6114",
+      "Version": "3.0.26100.6154",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -319,7 +319,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.174.0907.0003",
+      "Version": "25.179.0914.0003",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -458,7 +458,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.104.2",
+      "Version": "1.105.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -515,7 +515,7 @@
     {
       "Id": "Obsidian.Obsidian",
       "Name": "Obsidian",
-      "Version": "1.9.12",
+      "Version": "1.9.14",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -532,6 +532,13 @@
       "Version": "2.1.12",
       "Source": "winget",
       "ManagerName": "Winget"
+    },
+    {
+      "Id": "PSFzf",
+      "Name": "PSFzf",
+      "Version": "2.7.2",
+      "Source": "PSGallery",
+      "ManagerName": "PowerShell7"
     },
     {
       "Id": "PSFzf",
@@ -627,7 +634,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "6.2.2",
+      "Version": "6.2.3",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -676,7 +683,7 @@
     {
       "Id": "Yuanli.uTools",
       "Name": "uTools",
-      "Version": "7.2.1",
+      "Version": "7.3.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -704,14 +711,14 @@
     {
       "Id": "calibre.calibre",
       "Name": "calibre",
-      "Version": "8.11.1",
+      "Version": "8.12.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "cargo-binstall",
       "Name": "Cargo Binstall",
-      "Version": "1.15.6",
+      "Version": "1.15.7",
       "Source": "crates.io",
       "ManagerName": "Cargo"
     },
@@ -753,7 +760,7 @@
     {
       "Id": "eza",
       "Name": "Eza",
-      "Version": "0.23.3",
+      "Version": "0.23.4",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -809,7 +816,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.6.3",
+      "Version": "1.6.4",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -830,7 +837,7 @@
     {
       "Id": "nodejs",
       "Name": "Nodejs",
-      "Version": "24.9.0",
+      "Version": "24.10.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -926,8 +933,8 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\411ce4c0-0fbb-5462-84d3-941b5e267ae7",
-      "Name": "flomo 5.25.91",
-      "Version": "5.25.91",
+      "Name": "flomo 5.25.101",
+      "Version": "5.25.101",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1705,9 +1712,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\AppUp.IntelArcSoftware_25.32.1758.0_x64__8j3eq9eme6ctt",
+      "Id": "MSIX\\AppUp.IntelArcSoftware_25.36.1853.0_x64__8j3eq9eme6ctt",
       "Name": "Intel\u00AE Graphics Software",
-      "Version": "25.32.1758.0",
+      "Version": "25.36.1853.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1735,9 +1742,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.GamingServices_31.105.23001.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.GamingServices_31.106.13001.0_x64__8wekyb3d8bbwe",
       "Name": "\u6E38\u620F\u670D\u52A1",
-      "Version": "31.105.23001.0",
+      "Version": "31.106.13001.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1795,15 +1802,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25174.907.3.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25179.914.3.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25174.907.3.0",
+      "Version": "25179.914.3.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.ScreenSketch_11.2508.28.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.ScreenSketch_11.2508.29.0_x64__8wekyb3d8bbwe",
       "Name": "\u622A\u56FE\u5DE5\u5177",
-      "Version": "11.2508.28.0",
+      "Version": "11.2508.29.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1825,9 +1832,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.StorePurchaseApp_22508.1401.3.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.StorePurchaseApp_22508.1401.4.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store \u4F53\u9A8C\u4E3B\u673A",
-      "Version": "22508.1401.3.0",
+      "Version": "22508.1401.4.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1951,9 +1958,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.7_7000.617.2103.0_x86__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.7_7000.652.1806.0_x64__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.7",
-      "Version": "7000.617.2103.0",
+      "Version": "7000.652.1806.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.7_7000.652.1806.0_x86__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.7",
+      "Version": "7000.652.1806.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1975,21 +1988,27 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\Microsoft.WindowsCamera_2025.2505.2.0_x64__8wekyb3d8bbwe",
+      "Name": "Windows \u76F8\u673A",
+      "Version": "2025.2505.2.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\Microsoft.WindowsNotepad_11.2507.26.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BB0\u4E8B\u672C",
       "Version": "11.2507.26.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22508.1401.8.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22509.1401.11.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22508.1401.8.0",
+      "Version": "22509.1401.11.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.1012.753.44_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.1012.844.40_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.1012.753.44",
+      "Version": "2025.1012.844.40",
       "Source": "Microsoft Store"
     },
     {
@@ -2017,9 +2036,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25082.81.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25092.33.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25082.81.0",
+      "Version": "1.25092.33.0",
       "Source": "Microsoft Store"
     },
     {

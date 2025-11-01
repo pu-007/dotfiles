@@ -56,6 +56,7 @@ go
 gtk-engine-murrine
 hspell
 hunspell
+hybridfilexfer-git
 hyperfine
 imagemagick
 jdk-openjdk
@@ -64,7 +65,7 @@ kio-admin
 lazygit
 lazyjj
 less
-libappindicator-gtk3
+libappindicator
 libc++
 libreoffice-fresh
 libva-utils
