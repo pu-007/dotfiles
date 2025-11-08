@@ -36,7 +36,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.8.3",
+      "Version": "1.8.4",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -75,7 +75,7 @@
     {
       "Id": "Baidu.BaiduNetdisk",
       "Name": "\u767E\u5EA6\u7F51\u76D8",
-      "Version": "7.60.7",
+      "Version": "7.61.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -89,7 +89,14 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.76.4",
+      "Version": "1.79.8",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "ByteDance.JianyingPro",
+      "Name": "\u526A\u6620\u4E13\u4E1A\u7248",
+      "Version": "8.9.0.13361",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -146,7 +153,7 @@
     {
       "Id": "EcoPaste.EcoPaste",
       "Name": "EcoPaste",
-      "Version": "0.5.0",
+      "Version": "0.6.0-beta.3",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -255,7 +262,7 @@
     {
       "Id": "Microsoft.AppInstaller",
       "Name": "App Installer",
-      "Version": "1.26.510.0",
+      "Version": "1.27.350.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -269,7 +276,7 @@
     {
       "Id": "Microsoft.DotNet.DesktopRuntime.8",
       "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
-      "Version": "8.0.20",
+      "Version": "8.0.21",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -294,7 +301,7 @@
     {
       "Id": "Microsoft.EdgeWebView2Runtime",
       "Name": "Microsoft Edge WebView2 Runtime",
-      "Version": "141.0.3537.85",
+      "Version": "142.0.3595.53",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -305,7 +312,7 @@
     {
       "Id": "Microsoft.GameInput",
       "Name": "Microsoft GameInput",
-      "Version": "3.0.26100.6154",
+      "Version": "3.1.26100.6879",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -319,7 +326,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.179.0914.0003",
+      "Version": "25.194.1005.0003",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -451,7 +458,7 @@
     {
       "Id": "Microsoft.VisualStudio.2022.Community",
       "Name": "Visual Studio Community 2022",
-      "Version": "17.14.16",
+      "Version": "17.14.17",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -472,7 +479,7 @@
     {
       "Id": "Microsoft.WindowsTerminal.Preview",
       "Name": "Windows Terminal Preview",
-      "Version": "1.24.2682.0",
+      "Version": "1.24.2812.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -523,6 +530,13 @@
       "Id": "OnOff.Onlook",
       "Name": "Onlook",
       "Version": "0.2.32",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "OpenJS.NodeJS.23",
+      "Name": "Node.js 23",
+      "Version": "23.11.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -634,7 +648,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "6.2.3",
+      "Version": "6.2.4",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -711,7 +725,7 @@
     {
       "Id": "calibre.calibre",
       "Name": "calibre",
-      "Version": "8.12.0",
+      "Version": "8.13.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -753,7 +767,7 @@
     {
       "Id": "chrox.Readest",
       "Name": "Readest",
-      "Version": "0.9.82",
+      "Version": "0.9.87",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -767,7 +781,7 @@
     {
       "Id": "fastfetch",
       "Name": "Fastfetch",
-      "Version": "2.53.0",
+      "Version": "2.54.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -781,7 +795,7 @@
     {
       "Id": "fzf",
       "Name": "Fzf",
-      "Version": "0.65.2",
+      "Version": "0.66.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -802,21 +816,28 @@
     {
       "Id": "git",
       "Name": "Git",
-      "Version": "2.51.0.2",
+      "Version": "2.51.1",
       "Source": "main",
       "ManagerName": "Scoop"
     },
     {
       "Id": "git-lfs",
       "Name": "Git Lfs",
-      "Version": "3.7.0",
+      "Version": "3.7.1",
       "Source": "main",
       "ManagerName": "Scoop"
     },
     {
+      "Id": "iSlide.iSlide",
+      "Name": "iSlide Tools",
+      "Version": "8.1.1.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.6.4",
+      "Version": "1.6.5",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -837,7 +858,7 @@
     {
       "Id": "nodejs",
       "Name": "Nodejs",
-      "Version": "24.10.0",
+      "Version": "25.0.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -858,7 +879,7 @@
     {
       "Id": "ripgrep",
       "Name": "Ripgrep",
-      "Version": "14.1.1",
+      "Version": "15.0.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -911,7 +932,7 @@
     {
       "Id": "voidtools.Everything",
       "Name": "Everything",
-      "Version": "1.4.1.1026",
+      "Version": "1.4.1.1029",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -933,8 +954,8 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\411ce4c0-0fbb-5462-84d3-941b5e267ae7",
-      "Name": "flomo 5.25.101",
-      "Version": "5.25.101",
+      "Name": "flomo 5.25.103",
+      "Version": "5.25.103",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1012,7 +1033,7 @@
     {
       "Id": "ARP\\Machine\\X64\\ProPlus2024Volume - zh-cn",
       "Name": "Microsoft Office LTSC \u4E13\u4E1A\u589E\u5F3A\u7248 2024 - zh-cn",
-      "Version": "16.0.17932.20540",
+      "Version": "16.0.17932.20574",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1139,12 +1160,6 @@
       "Id": "ARP\\Machine\\X64\\{3DC5F45D-5558-4881-B1C2-80A28EC23637}",
       "Name": "NVIDIA Nsight Systems 2023.4.4",
       "Version": "23.4.4.54",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\{6403CDE6-B8BE-41A9-9887-8D369B2086E5}",
-      "Name": "Node.js",
-      "Version": "23.11.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1432,7 +1447,7 @@
     {
       "Id": "ARP\\Machine\\X86\\{889610CC-4337-4BDB-AC3B-4F21806C0BDE}_is1",
       "Name": "UniGetUI",
-      "Version": "3.3.5",
+      "Version": "3.3.6",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1665,8 +1680,8 @@
     },
     {
       "Id": "ARP\\User\\X64\\{506270E7-E3B5-4157-B53A-3BFFE8E418DB}_is1",
-      "Name": "PixPin \u7248\u672C 2.0.0.3",
-      "Version": "2.0.0.3",
+      "Name": "PixPin \u7248\u672C 2.1.8.4",
+      "Version": "2.1.8.4",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1742,15 +1757,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.GamingServices_31.106.13001.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.GamingServices_32.107.3004.0_x64__8wekyb3d8bbwe",
       "Name": "\u6E38\u620F\u670D\u52A1",
-      "Version": "31.106.13001.0",
+      "Version": "32.107.3004.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.LanguageExperiencePackzh-CN_26100.121.195.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.LanguageExperiencePackzh-CN_26100.134.216.0_neutral__8wekyb3d8bbwe",
       "Name": "\u4E2D\u6587(\u7B80\u4F53)\u672C\u5730\u4F53\u9A8C\u5305",
-      "Version": "26100.121.195.0",
+      "Version": "26100.134.216.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1802,15 +1817,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25179.914.3.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25194.1005.3.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25179.914.3.0",
+      "Version": "25194.1005.3.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.ScreenSketch_11.2508.29.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.ScreenSketch_11.2509.30.0_x64__8wekyb3d8bbwe",
       "Name": "\u622A\u56FE\u5DE5\u5177",
-      "Version": "11.2508.29.0",
+      "Version": "11.2509.30.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1832,9 +1847,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.StorePurchaseApp_22508.1401.4.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.StorePurchaseApp_22509.1401.1.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store \u4F53\u9A8C\u4E3B\u673A",
-      "Version": "22508.1401.4.0",
+      "Version": "22509.1401.1.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1982,9 +1997,21 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsCalculator_11.2502.2.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.642.119.0_x64__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.8",
+      "Version": "8000.642.119.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.642.119.0_x86__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.8",
+      "Version": "8000.642.119.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsCalculator_11.2508.1.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BA1\u7B97\u5668",
-      "Version": "11.2502.2.0",
+      "Version": "11.2508.1.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1994,27 +2021,33 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2507.26.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2508.38.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BB0\u4E8B\u672C",
-      "Version": "11.2507.26.0",
+      "Version": "11.2508.38.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22509.1401.11.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22509.1401.17.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22509.1401.11.0",
+      "Version": "22509.1401.17.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.1012.844.40_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Fonts.Source_2025.1016.311.49_neutral__8wekyb3d8bbwe",
+      "Name": "Windows Package Manager Source (winget-font) V2",
+      "Version": "2025.1016.311.49",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.1108.1400.59_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.1012.844.40",
+      "Version": "2025.1108.1400.59",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25082.142.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25101.25.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25082.142.0",
+      "Version": "1.25101.25.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2036,9 +2069,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25092.33.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25101.30.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25092.33.0",
+      "Version": "1.25101.30.0",
       "Source": "Microsoft Store"
     },
     {
