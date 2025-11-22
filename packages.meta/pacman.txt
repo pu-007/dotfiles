@@ -126,7 +126,6 @@ python-ormsgpack
 python-pickleshare
 python-pip
 python-pipx
-python-pyautogui
 python-pycryptodome
 python-pycryptodomex
 python-pylatexenc
