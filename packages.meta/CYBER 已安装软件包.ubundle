@@ -89,7 +89,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.81.7",
+      "Version": "1.82.5",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -959,14 +959,14 @@
   "incompatible_packages": [
     {
       "Id": "ARP\\Machine\\X64\\402a107a-9bf0-5290-9a9d-68f93d8798e3",
-      "Name": "doc2x 1.5.5",
-      "Version": "1.5.5",
+      "Name": "doc2x 1.5.6",
+      "Version": "1.5.6",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
       "Id": "ARP\\Machine\\X64\\411ce4c0-0fbb-5462-84d3-941b5e267ae7",
-      "Name": "flomo 5.25.103",
-      "Version": "5.25.103",
+      "Name": "flomo 5.25.113",
+      "Version": "5.25.113",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1691,8 +1691,8 @@
     },
     {
       "Id": "ARP\\User\\X64\\{506270E7-E3B5-4157-B53A-3BFFE8E418DB}_is1",
-      "Name": "PixPin \u7248\u672C 2.2.4.0",
-      "Version": "2.2.4.0",
+      "Name": "PixPin \u7248\u672C 2.2.4.1",
+      "Version": "2.2.4.1",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1768,9 +1768,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.GamingServices_32.107.4002.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.GamingServices_33.107.14001.0_x64__8wekyb3d8bbwe",
       "Name": "\u6E38\u620F\u670D\u52A1",
-      "Version": "32.107.4002.0",
+      "Version": "33.107.14001.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1900,6 +1900,12 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\Microsoft.WinAppRuntime.DDLM.4000.1049.117.0-x6_4000.1049.117.0_x64__8wekyb3d8bbwe",
+      "Name": "Windows App Runtime DDLM 4000.1049.117.0-x6",
+      "Version": "4000.1049.117.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\Microsoft.WinAppRuntime.DDLM.8000.500.1427.0-x6-e2_8000.500.1427.0_x64__8wekyb3d8bbwe",
       "Name": "Windows App Runtime DDLM 8000.500.1427.0-x6-e2",
       "Version": "8000.500.1427.0",
@@ -1921,6 +1927,18 @@
       "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.3_3000.934.1904.0_x86__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.3",
       "Version": "3000.934.1904.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.4_4000.1309.2056.0_x64__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.4",
+      "Version": "4000.1309.2056.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.4_4000.1309.2056.0_x86__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.4",
+      "Version": "4000.1309.2056.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2056,15 +2074,21 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.1122.1240.47_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.1129.1055.17_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.1122.1240.47",
+      "Version": "2025.1129.1055.17",
       "Source": "Microsoft Store"
     },
     {
       "Id": "MSIX\\Microsoft.YourPhone_1.25102.64.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
       "Version": "1.25102.64.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Main.1.4_4000.1309.2056.0_x64__8wekyb3d8bbwe",
+      "Name": "WinAppRuntime.Main.1.4",
+      "Version": "4000.1309.2056.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2080,15 +2104,21 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Singleton_8000.642.119.0_x64__8wekyb3d8bbwe",
+      "Name": "WinAppRuntime.Singleton",
+      "Version": "8000.642.119.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\MicrosoftCorporationII.WindowsSubsystemForLinux_2.5.10.0_x64__8wekyb3d8bbwe",
       "Name": "\u9002\u7528\u4E8E Linux \u7684 Windows \u5B50\u7CFB\u7EDF",
       "Version": "2.5.10.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25101.31.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25102.46.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25101.31.0",
+      "Version": "1.25102.46.0",
       "Source": "Microsoft Store"
     },
     {
