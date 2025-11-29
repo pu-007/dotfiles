@@ -188,3 +188,5 @@ function itts {
 
 alias 3critts="co | itts --repeat-text -v candy,pu,cat"
 alias 3crsitts="co | itts --repeat-text --shuffle-text -v candy,pu,cat"
+alias 2critts="co | itts --repeat-text -v pu,cat"
+alias 2crsitts="co | itts --repeat-text --shuffle-text -v pu,cat"
