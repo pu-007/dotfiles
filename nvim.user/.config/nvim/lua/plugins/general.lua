@@ -11,6 +11,16 @@ return {
     "julienvincent/nvim-paredit",
     enabled = false,
   },
+  -- TODO IME 自动选择 可以自动回到中文模式
+  -- {
+  --   "keaising/im-select.nvim",
+  --   config = function()
+  --     require("im_select").setup({
+  --       default_im_select = "cn",
+  --       default_command = "/mnt/c/Users/zion/Apps/im-select.exe",
+  --     })
+  --   end,
+  -- },
   { "sainnhe/gruvbox-material" },
   {
     "kkew3/jieba.vim",
