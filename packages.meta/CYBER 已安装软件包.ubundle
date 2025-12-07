@@ -29,6 +29,13 @@
     {
       "Id": "AltSnap.AltSnap",
       "Name": "AltSnap",
+      "Version": "1.67",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "AltSnap.AltSnap",
+      "Name": "AltSnap",
       "Version": "1.66",
       "Source": "winget",
       "ManagerName": "Winget"
@@ -36,7 +43,14 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.8.4",
+      "Version": "1.8.6",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "AmN.yasb",
+      "Name": "yasb",
+      "Version": "1.8.5",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -89,14 +103,14 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.82.5",
+      "Version": "1.83.5",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "ByteDance.JianyingPro",
       "Name": "\u526A\u6620\u4E13\u4E1A\u7248",
-      "Version": "8.9.0.13361",
+      "Version": "9.5.0.13637",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -139,6 +153,13 @@
         "UpdatesIgnored": true,
         "IgnoredVersion": "*"
       }
+    },
+    {
+      "Id": "Docker.DockerDesktop",
+      "Name": "Docker Desktop",
+      "Version": "4.54.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
     },
     {
       "Id": "Docker.DockerDesktop",
@@ -368,7 +389,7 @@
     },
     {
       "Id": "Microsoft.VCRedist.2005.x86",
-      "Name": "Microsoft Visual C\u002B\u002B 2005 Redistributable",
+      "Name": "Microsoft Visual C\u002B\u002B 2005 Redistributable (x86)",
       "Version": "8.0.61001",
       "Source": "winget",
       "ManagerName": "Winget"
@@ -469,7 +490,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.106.1",
+      "Version": "1.106.3",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -515,6 +536,17 @@
     {
       "Id": "OBSProject.OBSStudio",
       "Name": "OBS Studio",
+      "Version": "32.0.3",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "InstallationOptions": {
+        "OverridesNextLevelOpts": true,
+        "InteractiveInstallation": true
+      }
+    },
+    {
+      "Id": "OBSProject.OBSStudio",
+      "Name": "OBS Studio",
       "Version": "32.0.2",
       "Source": "winget",
       "ManagerName": "Winget",
@@ -526,7 +558,7 @@
     {
       "Id": "Obsidian.Obsidian",
       "Name": "Obsidian",
-      "Version": "1.10.3",
+      "Version": "1.10.6",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -617,6 +649,13 @@
     {
       "Id": "RamenSoftware.Windhawk",
       "Name": "Windhawk",
+      "Version": "1.7.1",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "RamenSoftware.Windhawk",
+      "Name": "Windhawk",
       "Version": "1.6.1",
       "Source": "winget",
       "ManagerName": "Winget"
@@ -659,7 +698,21 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "6.3.2",
+      "Version": "6.3.6",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Telegram.TelegramDesktop",
+      "Name": "Telegram Desktop",
+      "Version": "6.3.4",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Tencent.QQ.NT",
+      "Name": "QQ",
+      "Version": "9.9.25.42941",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -674,6 +727,13 @@
       "Id": "Tencent.TencentMeeting",
       "Name": "Tencent Meeting",
       "Version": "3.39.1.427",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Tencent.WeChat.Universal",
+      "Name": "WeChat",
+      "Version": "4.1.5.24",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -722,9 +782,23 @@
     {
       "Id": "ayangweb.BongoCat",
       "Name": "BongoCat",
+      "Version": "0.8.2",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "ayangweb.BongoCat",
+      "Name": "BongoCat",
       "Version": "0.8.1",
       "Source": "winget",
       "ManagerName": "Winget"
+    },
+    {
+      "Id": "bat",
+      "Name": "Bat",
+      "Version": "0.26.1",
+      "Source": "main",
+      "ManagerName": "Scoop"
     },
     {
       "Id": "bat",
@@ -736,6 +810,13 @@
     {
       "Id": "calibre.calibre",
       "Name": "calibre",
+      "Version": "8.16.2",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "calibre.calibre",
+      "Name": "calibre",
       "Version": "8.15.0",
       "Source": "winget",
       "ManagerName": "Winget"
@@ -743,7 +824,14 @@
     {
       "Id": "cargo-binstall",
       "Name": "Cargo Binstall",
-      "Version": "1.16.1",
+      "Version": "1.16.3",
+      "Source": "crates.io",
+      "ManagerName": "Cargo"
+    },
+    {
+      "Id": "cargo-binstall",
+      "Name": "Cargo Binstall",
+      "Version": "1.16.2",
       "Source": "crates.io",
       "ManagerName": "Cargo"
     },
@@ -778,7 +866,7 @@
     {
       "Id": "chrox.Readest",
       "Name": "Readest",
-      "Version": "0.9.92",
+      "Version": "0.9.93",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -786,6 +874,13 @@
       "Id": "eza",
       "Name": "Eza",
       "Version": "0.23.4",
+      "Source": "main",
+      "ManagerName": "Scoop"
+    },
+    {
+      "Id": "fastfetch",
+      "Name": "Fastfetch",
+      "Version": "2.56.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -820,7 +915,7 @@
     {
       "Id": "geekuninstaller",
       "Name": "Geekuninstaller",
-      "Version": "1.5.2.165",
+      "Version": "1.5.3.170",
       "Source": "community",
       "ManagerName": "Chocolatey"
     },
@@ -848,7 +943,14 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.6.7",
+      "Version": "1.7.1",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "kangfenmao.CherryStudio",
+      "Name": "Cherry Studio",
+      "Version": "1.7.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -944,6 +1046,13 @@
       "Id": "voidtools.Everything",
       "Name": "Everything",
       "Version": "1.4.1.1030",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "xanderfrangos.twinkletray",
+      "Name": "Twinkle Tray",
+      "Version": "1.17.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -1768,9 +1877,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.GamingServices_33.107.14001.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.GamingServices_33.108.2004.0_x64__8wekyb3d8bbwe",
       "Name": "\u6E38\u620F\u670D\u52A1",
-      "Version": "33.107.14001.0",
+      "Version": "33.108.2004.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1834,9 +1943,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.ScreenSketch_11.2509.30.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.ScreenSketch_11.2510.31.0_x64__8wekyb3d8bbwe",
       "Name": "\u622A\u56FE\u5DE5\u5177",
-      "Version": "11.2509.30.0",
+      "Version": "11.2510.31.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2062,9 +2171,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22510.1401.2.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22510.1401.4.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22510.1401.2.0",
+      "Version": "22510.1401.4.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2074,9 +2183,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.1129.1055.17_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.1207.1454.50_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.1129.1055.17",
+      "Version": "2025.1207.1454.50",
       "Source": "Microsoft Store"
     },
     {
@@ -2104,9 +2213,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Singleton_8000.642.119.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Singleton_8000.675.1142.0_x64__8wekyb3d8bbwe",
       "Name": "WinAppRuntime.Singleton",
-      "Version": "8000.642.119.0",
+      "Version": "8000.675.1142.0",
       "Source": "Microsoft Store"
     },
     {
