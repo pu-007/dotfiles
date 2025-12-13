@@ -46,6 +46,7 @@ return {
       }
     end,
   },
+  -- TODO: use lazy extra to config, better AI integration
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
