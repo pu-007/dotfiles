@@ -108,7 +108,7 @@ async def main():
         asyncio.create_task(launch_wt_quake()),
         launch(r"C:\Program Files\EcoPaste\EcoPaste.exe"),
         launch(r"C:\Program Files\Quicker\Quicker.exe"),
-        launch([r"C:\Program Files\Everything\Everything.exe", "-startup"]),
+        launch([r"C:\Users\zion\Apps\Everything\Everything.exe", "-startup"]),
         launch([
             r"C:\Program Files\komorebi\bin\komorebic-no-console.exe",
             "start",
