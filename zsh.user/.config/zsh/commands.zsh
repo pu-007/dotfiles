@@ -188,3 +188,5 @@ function itts {
 
 alias ittsrv="itts --repeat-text -v"
 alias ittsrsv="itts --repeat-text --shuffle-text -v"
+
+alias xo="xdg-open"
