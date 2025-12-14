@@ -134,48 +134,20 @@ def main():
     else:
         # 未指定 output_file，使用 get_default_output_path 中的默认逻辑
         output_path = get_default_output_path(input_path)
-        # --- 输出路径确定完毕 ---
-
-    # Pandoc固定选项 (header-includes 使用原始字符串以正确处理反斜杠)
-    # 注意: 字体名称 "JetXW" 基于之前的讨论。
-    # header-includes 的值是作为 -V 的单个参数。
-    header_includes_value = (r"\usepackage{microtype} "
-                             r"\usepackage{booktabs} "
-                             r"\setlength{\arrayrulewidth}{0.5pt} "
-                             r"\setlength{\heavyrulewidth}{0.5pt} "
-                             r"\setlength{\lightrulewidth}{0.5pt} "
-                             r"\renewcommand{\arraystretch}{1.3}")
 
     pandoc_base_command = [
         "pandoc",
-        str(input_path),  # Pandoc 通常期望路径是字符串形式
+        str(input_path),
         "-o",
         str(output_path),
         "--pdf-engine=xelatex",
-        "-V",
-        "documentclass=ctexart",
-        # 优化：中文主字体 + 多层 fallback（覆盖中文、符号、图标）
-        "-V",
-        "CJKmainfont=JetXW:fallback=Noto Sans CJK SC:fallback=Noto Sans Symbols 2",
-        # 优化：英文主字体 + 多层 fallback（覆盖英文、符号、图标）
-        "-V",
-        "mainfont=JetXW:fallback=Noto Sans:fallback=Noto Sans Symbols 2",
-        # 优化：等宽字体 + fallback（代码中特殊字符/符号）
-        "-V",
-        "monofont=JetXW:fallback=Noto Sans Mono:fallback=Noto Sans Symbols 2",
-        # 优化：无衬线字体 + fallback
-        "-V",
-        "sansfont=JetXW:fallback=Noto Sans:fallback=Noto Sans Symbols 2",
-        # 关键修改：自定义页边距
-        "-V",
-        "geometry:a4paper,left=2cm,top=0.5cm,right=0.5cm,bottom=0.5cm",
-        "-V",
-        "fontsize=12pt",
-        "-V",
-        "linestretch=1.4",
-        "-V",
-        f"header-includes={header_includes_value}",  # 以 key=value 形式传递
-        "--highlight-style=pygments"
+        # 启用代码高亮（必须保留此项，Pandoc 才会生成 $highlighting-includes$）
+        "--highlight-style=pygments",
+        # 启用章节编号
+        "--number-sections",
+        # 引用你的模板
+        "--template",
+        str(pathlib.Path(__file__).parent / "template_a4.tex")
     ]
 
     additional_options = []
