@@ -18,6 +18,11 @@ patch:
       ascii_mode: true
     explorer.exe:
       ascii_mode: true
+    Everything.exe:
+      ascii_mode: true
+    Zed.exe:
+      ascii_mode: true
+      vim_mode: true
     WindowsTerminal.exe:
       ascii_mode: true
       vim_mode: true
