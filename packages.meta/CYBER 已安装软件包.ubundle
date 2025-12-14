@@ -96,7 +96,7 @@
     {
       "Id": "ByteDance.JianyingPro",
       "Name": "\u526A\u6620\u4E13\u4E1A\u7248",
-      "Version": "9.5.0.13637",
+      "Version": "8.9.0.13361",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -164,7 +164,7 @@
     {
       "Id": "FastCopy.FastCopy",
       "Name": "FastCopy",
-      "Version": "5.11.1",
+      "Version": "5.11.2",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -185,7 +185,7 @@
     {
       "Id": "JohnMacFarlane.Pandoc",
       "Name": "Pandoc",
-      "Version": "3.8.2.1",
+      "Version": "3.8.3",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -305,7 +305,7 @@
     {
       "Id": "Microsoft.EdgeWebView2Runtime",
       "Name": "Microsoft Edge WebView2 Runtime",
-      "Version": "142.0.3595.94",
+      "Version": "143.0.3650.80",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -554,6 +554,13 @@
     {
       "Id": "PSFzf",
       "Name": "PSFzf",
+      "Version": "2.7.7",
+      "Source": "PSGallery",
+      "ManagerName": "PowerShell7"
+    },
+    {
+      "Id": "PSFzf",
+      "Name": "PSFzf",
       "Version": "2.7.3",
       "Source": "PSGallery",
       "ManagerName": "PowerShell7"
@@ -617,7 +624,7 @@
     {
       "Id": "RamenSoftware.Windhawk",
       "Name": "Windhawk",
-      "Version": "1.7.1",
+      "Version": "1.7.3",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -673,14 +680,14 @@
     {
       "Id": "Tencent.TencentMeeting",
       "Name": "Tencent Meeting",
-      "Version": "3.39.1.427",
+      "Version": "3.40.1.423",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
-      "Version": "4.1.5.24",
+      "Version": "4.1.5.30",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -778,7 +785,7 @@
     {
       "Id": "chrox.Readest",
       "Name": "Readest",
-      "Version": "0.9.93",
+      "Version": "0.9.95",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -813,7 +820,7 @@
     {
       "Id": "geeksoftwareGmbH.PDF24Creator",
       "Name": "PDF24 Creator",
-      "Version": "11.28.2",
+      "Version": "11.29.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -848,7 +855,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.7.1",
+      "Version": "1.7.3",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -1606,6 +1613,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\79e0bc41a91a5863d9c1e57dab3ce780",
+      "Name": "PhotoPrism",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\9f333b2d4a90448b29284c64e0771bc2",
       "Name": "Openwrt",
       "Version": "1.0",
@@ -1662,6 +1675,12 @@
     {
       "Id": "ARP\\User\\X64\\da66c8c98a639cc60bd24a95d219859b",
       "Name": "DNSPod",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\User\\X64\\e30b345edd3e476856563bd65494fee5",
+      "Name": "yacd",
       "Version": "1.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
@@ -1774,9 +1793,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.LanguageExperiencePackzh-CN_26100.134.216.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.LanguageExperiencePackzh-CN_26100.143.229.0_neutral__8wekyb3d8bbwe",
       "Name": "\u4E2D\u6587(\u7B80\u4F53)\u672C\u5730\u4F53\u9A8C\u5305",
-      "Version": "26100.134.216.0",
+      "Version": "26100.143.229.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2044,15 +2063,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsCalculator_11.2508.1.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsCalculator_11.2508.4.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BA1\u7B97\u5668",
-      "Version": "11.2508.1.0",
+      "Version": "11.2508.4.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsCamera_2025.2505.2.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsCamera_2025.2510.2.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u76F8\u673A",
-      "Version": "2025.2505.2.0",
+      "Version": "2025.2510.2.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2074,15 +2093,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.1212.1502.55_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2025.1214.1149.18_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.1212.1502.55",
+      "Version": "2025.1214.1149.18",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25102.64.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25112.34.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25102.64.0",
+      "Version": "1.25112.34.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2137,6 +2156,12 @@
       "Id": "MSIX\\MicrosoftWindows.Speech.zh-CN.1_1.0.22.0_x64__cw5n1h2txyewy",
       "Name": "Speech Pack - Chinese (Simplified)",
       "Version": "1.0.22.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\MicrosoftWindows.WindowsSandbox_0.5.3.0_x64__cw5n1h2txyewy",
+      "Name": "Windows Sandbox",
+      "Version": "0.5.3.0",
       "Source": "Microsoft Store"
     },
     {

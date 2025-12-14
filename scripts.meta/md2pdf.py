@@ -154,16 +154,21 @@ def main():
         "--pdf-engine=xelatex",
         "-V",
         "documentclass=ctexart",
+        # 优化：中文主字体 + 多层 fallback（覆盖中文、符号、图标）
         "-V",
-        "CJKmainfont=JetXW",
+        "CJKmainfont=JetXW:fallback=Noto Sans CJK SC:fallback=Noto Sans Symbols 2",
+        # 优化：英文主字体 + 多层 fallback（覆盖英文、符号、图标）
         "-V",
-        "mainfont=JetXW",
+        "mainfont=JetXW:fallback=Noto Sans:fallback=Noto Sans Symbols 2",
+        # 优化：等宽字体 + fallback（代码中特殊字符/符号）
         "-V",
-        "monofont=JetXW",
+        "monofont=JetXW:fallback=Noto Sans Mono:fallback=Noto Sans Symbols 2",
+        # 优化：无衬线字体 + fallback
         "-V",
-        "sansfont=JetXW",
+        "sansfont=JetXW:fallback=Noto Sans:fallback=Noto Sans Symbols 2",
+        # 关键修改：自定义页边距
         "-V",
-        "geometry:a4paper,margin=2.5cm",
+        "geometry:a4paper,left=2cm,top=0.5cm,right=0.5cm,bottom=0.5cm",
         "-V",
         "fontsize=12pt",
         "-V",
