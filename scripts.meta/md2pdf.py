@@ -143,8 +143,6 @@ def main():
         "--pdf-engine=xelatex",
         # 启用代码高亮（必须保留此项，Pandoc 才会生成 $highlighting-includes$）
         "--highlight-style=pygments",
-        # 启用章节编号
-        "--number-sections",
         # 引用你的模板
         "--template",
         str(pathlib.Path(__file__).parent / "template_a4.tex")
