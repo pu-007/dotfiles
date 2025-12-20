@@ -146,6 +146,7 @@ read-edid
 reflector
 resvg
 rhino
+rich-cli
 ripgrep
 ripgrep-all
 rsync
