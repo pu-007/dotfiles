@@ -190,3 +190,7 @@ alias ittsrv="itts --repeat-text -v"
 alias ittsrsv="itts --repeat-text --shuffle-text -v"
 
 alias xo="xdg-open"
+
+function mp3t4() {
+  ffmpeg -y -f lavfi -i color=black:s=1280x720:r=25 -i "$1" -c:v libx264 -c:a aac -shortest -pix_fmt yuv420p "${1%.mp3}.mp4"
+}
