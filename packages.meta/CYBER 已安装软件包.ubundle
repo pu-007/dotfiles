@@ -77,7 +77,11 @@
       "Name": "\u767E\u5EA6\u7F51\u76D8",
       "Version": "8.0.4",
       "Source": "winget",
-      "ManagerName": "Winget"
+      "ManagerName": "Winget",
+      "Updates": {
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
+      }
     },
     {
       "Id": "Blinue.Magpie",
@@ -89,7 +93,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.85.7",
+      "Version": "1.85.8",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -108,6 +112,13 @@
       "Id": "ChuyuTeam.DISM\u002B\u002B",
       "Name": "DISM\u002B\u002B Multi Language",
       "Version": "10.1.1002.2",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "CodecGuide.K-LiteCodecPack.Basic",
+      "Name": "K-Lite Codec Pack Basic",
+      "Version": "19.3.5",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -650,6 +661,13 @@
       "ManagerName": "Winget"
     },
     {
+      "Id": "Seewo.PPTService",
+      "Name": "PPT\u5C0F\u5DE5\u5177",
+      "Version": "1.0.0.795",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
       "Id": "SimonKnuth.Scanner",
       "Name": "Scanner",
       "Version": "3.2.9.0",
@@ -715,7 +733,7 @@
     {
       "Id": "Yuanli.uTools",
       "Name": "uTools",
-      "Version": "7.3.2",
+      "Version": "7.5.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -757,7 +775,7 @@
     {
       "Id": "cargo-binstall",
       "Name": "Cargo Binstall",
-      "Version": "1.16.4",
+      "Version": "1.16.6",
       "Source": "crates.io",
       "ManagerName": "Cargo"
     },
@@ -801,7 +819,11 @@
       "Name": "Dokan Library",
       "Version": "2.0.6.1000",
       "Source": "winget",
-      "ManagerName": "Winget"
+      "ManagerName": "Winget",
+      "Updates": {
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
+      }
     },
     {
       "Id": "eza",
@@ -964,7 +986,7 @@
     {
       "Id": "xanderfrangos.twinkletray",
       "Name": "Twinkle Tray",
-      "Version": "1.17.1",
+      "Version": "1.17.2",
       "Source": "winget",
       "ManagerName": "Winget"
     }
@@ -1088,12 +1110,6 @@
     {
       "Id": "ARP\\Machine\\X64\\Steam App 2358720",
       "Name": "\u9ED1\u795E\u8BDD:\u609F\u7A7A",
-      "Version": "Unknown",
-      "Source": "Steam"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\Steam App 2567870",
-      "Name": "Chained Together",
       "Version": "Unknown",
       "Source": "Steam"
     },
@@ -1404,6 +1420,18 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\Adobe Flash Player ActiveX",
+      "Name": "Adobe Flash Player 19 ActiveX",
+      "Version": "19.0.0.226",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\Adobe Flash Player NPAPI",
+      "Name": "Adobe Flash Player 19 NPAPI",
+      "Version": "19.0.0.226",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\EveryonePiano_is1",
       "Name": "EveryonePiano 2.5",
       "Version": "2.5.9.4",
@@ -1470,9 +1498,21 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X86\\{372580DA-09BF-45FF-9C3C-B226CCFC1F79}",
+      "Name": "EasiUpdate",
+      "Version": "1.1.3.403",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X86\\{404581d0-19c1-47ba-bcd3-10178793c239}",
       "Name": "Intel(R) Chipset Device Software",
       "Version": "10.1.19600.8418",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\{54277189-FC4A-4AB1-8179-4EAE98219D6B}",
+      "Name": "EasiAgent",
+      "Version": "0.0.1.136",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1485,6 +1525,12 @@
       "Id": "ARP\\Machine\\X86\\{A09D5493-0D9F-3211-B3BF-DD7ABBB318C1}",
       "Name": "Microsoft Visual C\u002B\u002B 2008 Redistributable - x86 9.0.21022",
       "Version": "9.0.21022",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\{A89E781E-89E0-432D-A06C-92E3F80E09BE}",
+      "Name": "EasiUpdate3",
+      "Version": "3.5.0.911",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1806,9 +1852,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\AppUp.IntelArcSoftware_25.40.1953.0_x64__8j3eq9eme6ctt",
+      "Id": "MSIX\\AppUp.IntelArcSoftware_25.44.2006.0_x64__8j3eq9eme6ctt",
       "Name": "Intel\u00AE Graphics Software",
-      "Version": "25.40.1953.0",
+      "Version": "25.44.2006.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1836,9 +1882,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.GamingServices_33.108.2004.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.GamingServices_33.108.12001.0_x64__8wekyb3d8bbwe",
       "Name": "\u6E38\u620F\u670D\u52A1",
-      "Version": "33.108.2004.0",
+      "Version": "33.108.12001.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1926,9 +1972,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.StorePurchaseApp_22510.1401.2.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.StorePurchaseApp_22510.1401.4.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store \u4F53\u9A8C\u4E3B\u673A",
-      "Version": "22510.1401.2.0",
+      "Version": "22510.1401.4.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2142,9 +2188,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2025.1225.1545.7_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2026.101.954.32_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2025.1225.1545.7",
+      "Version": "2026.101.954.32",
       "Source": "Microsoft Store"
     },
     {
@@ -2187,6 +2233,12 @@
       "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25112.60.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
       "Version": "1.25112.60.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\MicrosoftWindows.NarratorExtension-Word_1.0.3.0_neutral__cw5n1h2txyewy",
+      "Name": "Narrator Extension - Word",
+      "Version": "1.0.3.0",
       "Source": "Microsoft Store"
     },
     {

@@ -54,6 +54,7 @@ glu
 gnome-keyring
 go
 gtk-engine-murrine
+helix
 hspell
 hunspell
 hybridfilexfer-git
