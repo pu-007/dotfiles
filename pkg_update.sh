@@ -7,10 +7,11 @@ scoop cleanup -a -g -k
 sudo pkgfile --update
 conda update --all -y
 #sudo npm -g update -y
-sudo npm install -g @google/gemini-cli
+# sudo npm install -g @google/gemini-cli
 sudo npm install -g aicommit2
 komorebic.exe fetch-app-specific-configuration
 pip cache purge
 docker system prune -a -f
 ssh root@192.168.100.1 docker system prune -a -f
 sudo trash-empty -f --all-users
+git -C /mnt/c/Users/zion/AppData/Roaming/Rime pull
