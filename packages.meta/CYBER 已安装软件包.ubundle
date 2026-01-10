@@ -542,13 +542,6 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "OpenJS.NodeJS.23",
-      "Name": "Node.js 23",
-      "Version": "23.11.0",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
       "Id": "PDFgear.PDFgear",
       "Name": "PDFgear",
       "Version": "2.1.14",
@@ -684,7 +677,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "6.3.9",
+      "Version": "6.4.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -1216,6 +1209,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{6403CDE6-B8BE-41A9-9887-8D369B2086E5}",
+      "Name": "Node.js",
+      "Version": "23.11.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{6F320B93-EE3C-4826-85E0-ADF79F8D4C61}",
       "Name": "Microsoft Visual Studio Installer",
       "Version": "3.14.2075.50697",
@@ -1648,6 +1647,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\40c1b18b575546983b51be8b18ab694e",
+      "Name": "Home Assistant",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\44dd7394f510feb39ed9d474add3f8e0",
       "Name": "Google Gemini",
       "Version": "1.0",
@@ -1805,8 +1810,8 @@
     },
     {
       "Id": "ARP\\User\\X64\\{506270E7-E3B5-4157-B53A-3BFFE8E418DB}_is1",
-      "Name": "PixPin \u7248\u672C 2.2.4.1",
-      "Version": "2.2.4.1",
+      "Name": "PixPin \u7248\u672C 2.3.8.0",
+      "Version": "2.3.8.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1852,9 +1857,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\AppUp.IntelArcSoftware_25.44.2006.0_x64__8j3eq9eme6ctt",
+      "Id": "MSIX\\AppUp.IntelArcSoftware_25.44.2010.0_x64__8j3eq9eme6ctt",
       "Name": "Intel\u00AE Graphics Software",
-      "Version": "25.44.2006.0",
+      "Version": "25.44.2010.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2188,9 +2193,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2026.101.954.32_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2026.110.1112.34_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2026.101.954.32",
+      "Version": "2026.110.1112.34",
       "Source": "Microsoft Store"
     },
     {
@@ -2269,6 +2274,12 @@
       "Id": "MSIX\\NVIDIACorp.NVIDIAControlPanel_8.1.969.0_x64__56jybvy8sckqj",
       "Name": "NVIDIA Control Panel",
       "Version": "8.1.969.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\PixPinContextMenu_1.0.0.0_x64__9mnqdg1kkwem8",
+      "Name": "PixPinContextMenu",
+      "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     },
     {
