@@ -118,7 +118,7 @@
     {
       "Id": "CodecGuide.K-LiteCodecPack.Basic",
       "Name": "K-Lite Codec Pack Basic",
-      "Version": "19.3.5",
+      "Version": "19.4.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -161,7 +161,7 @@
     {
       "Id": "DuongDieuPhap.ImageGlass",
       "Name": "ImageGlass",
-      "Version": "9.4.0.1120",
+      "Version": "9.4.1.15",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -182,7 +182,7 @@
     {
       "Id": "Genymobile.scrcpy",
       "Name": "scrcpy",
-      "Version": "3.3.3",
+      "Version": "3.3.4",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -277,7 +277,7 @@
     {
       "Id": "Microsoft.AppInstaller",
       "Name": "App Installer",
-      "Version": "1.27.350.0",
+      "Version": "1.27.440.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -316,7 +316,7 @@
     {
       "Id": "Microsoft.EdgeWebView2Runtime",
       "Name": "Microsoft Edge WebView2 Runtime",
-      "Version": "143.0.3650.96",
+      "Version": "143.0.3650.139",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -480,14 +480,14 @@
     {
       "Id": "Microsoft.WinGet.Client",
       "Name": "Microsoft.WinGet.Client",
-      "Version": "1.11.460",
+      "Version": "1.12.440",
       "Source": "PSGallery",
       "ManagerName": "PowerShell"
     },
     {
       "Id": "Microsoft.WindowsTerminal.Preview",
       "Name": "Windows Terminal Preview",
-      "Version": "1.24.2812.0",
+      "Version": "1.24.3504.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -684,21 +684,21 @@
     {
       "Id": "Tencent.QQ.NT",
       "Name": "QQ",
-      "Version": "9.9.25.42941",
+      "Version": "9.9.26.44343",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "Tencent.TencentMeeting",
       "Name": "Tencent Meeting",
-      "Version": "3.40.2.407",
+      "Version": "3.41.1.433",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
-      "Version": "4.1.6.14",
+      "Version": "4.1.6.46",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -733,7 +733,7 @@
     {
       "Id": "ZedIndustries.Zed",
       "Name": "Zed",
-      "Version": "0.217.3",
+      "Version": "0.218.6",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -747,7 +747,7 @@
     {
       "Id": "ayangweb.BongoCat",
       "Name": "BongoCat",
-      "Version": "0.8.2",
+      "Version": "0.9.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -884,7 +884,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.7.3",
+      "Version": "1.7.8",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -994,8 +994,8 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\411ce4c0-0fbb-5462-84d3-941b5e267ae7",
-      "Name": "flomo 5.25.123",
-      "Version": "5.25.123",
+      "Name": "flomo 5.26.11",
+      "Version": "5.26.11",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1209,6 +1209,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{4B6C7001-C7D6-3710-913E-5BC23FCE91E6}",
+      "Name": "Microsoft Visual C\u002B\u002B 2008 Redistributable - x64 9.0.30729.4148",
+      "Version": "9.0.30729.4148",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{6403CDE6-B8BE-41A9-9887-8D369B2086E5}",
       "Name": "Node.js",
       "Version": "23.11.0",
@@ -1306,8 +1312,8 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver",
-      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 581.08",
-      "Version": "581.08",
+      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 591.74",
+      "Version": "591.74",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1324,8 +1330,8 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_HDAudio.Driver",
-      "Name": "NVIDIA HD \u97F3\u9891\u9A71\u52A8\u7A0B\u5E8F 1.4.5.0",
-      "Version": "1.4.5.0",
+      "Name": "NVIDIA HD \u97F3\u9891\u9A71\u52A8\u7A0B\u5E8F 1.4.5.7",
+      "Version": "1.4.5.7",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1506,6 +1512,12 @@
       "Id": "ARP\\Machine\\X86\\{404581d0-19c1-47ba-bcd3-10178793c239}",
       "Name": "Intel(R) Chipset Device Software",
       "Version": "10.1.19600.8418",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\{5363CE84-5F09-48A1-8B6C-6BB590FFEDF2}_is1",
+      "Name": "Wondershare Helper Compact 2.6.0",
+      "Version": "2.6.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1893,9 +1905,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.LanguageExperiencePackzh-CN_26100.143.229.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.LanguageExperiencePackzh-CN_26100.150.236.0_neutral__8wekyb3d8bbwe",
       "Name": "\u4E2D\u6587(\u7B80\u4F53)\u672C\u5730\u4F53\u9A8C\u5305",
-      "Version": "26100.143.229.0",
+      "Version": "26100.150.236.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1977,9 +1989,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.StorePurchaseApp_22510.1401.4.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.StorePurchaseApp_22511.1401.2.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store \u4F53\u9A8C\u4E3B\u673A",
-      "Version": "22510.1401.4.0",
+      "Version": "22511.1401.2.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2034,6 +2046,18 @@
       "Id": "MSIX\\Microsoft.WinAppRuntime.DDLM.8000.500.1427.0-x8-e2_8000.500.1427.0_x86__8wekyb3d8bbwe",
       "Name": "Windows App Runtime DDLM 8000.500.1427.0-x8-e2",
       "Version": "8000.500.1427.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WinAppRuntime.DDLM.8000.675.1142.0-x6_8000.675.1142.0_x64__8wekyb3d8bbwe",
+      "Name": "Windows App Runtime DDLM 8000.675.1142.0-x6",
+      "Version": "8000.675.1142.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WinAppRuntime.DDLM.8000.675.1142.0-x8_8000.675.1142.0_x86__8wekyb3d8bbwe",
+      "Name": "Windows App Runtime DDLM 8000.675.1142.0-x8",
+      "Version": "8000.675.1142.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2193,9 +2217,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2026.110.1112.34_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2026.111.1420.1_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2026.110.1112.34",
+      "Version": "2026.111.1420.1",
       "Source": "Microsoft Store"
     },
     {
@@ -2214,6 +2238,12 @@
       "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Main.1.8-e2_8000.500.1427.0_x64__8wekyb3d8bbwe",
       "Name": "WinAppRuntime.Main.1.8-e2",
       "Version": "8000.500.1427.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Main.1.8_8000.675.1142.0_x64__8wekyb3d8bbwe",
+      "Name": "WinAppRuntime.Main.1.8",
+      "Version": "8000.675.1142.0",
       "Source": "Microsoft Store"
     },
     {
