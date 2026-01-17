@@ -73,17 +73,6 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "Baidu.BaiduNetdisk",
-      "Name": "\u767E\u5EA6\u7F51\u76D8",
-      "Version": "8.0.4",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "Updates": {
-        "UpdatesIgnored": true,
-        "IgnoredVersion": "*"
-      }
-    },
-    {
       "Id": "Blinue.Magpie",
       "Name": "Magpie",
       "Version": "0.12.1",
@@ -93,7 +82,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.85.8",
+      "Version": "1.87.7",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -236,6 +225,13 @@
       "ManagerName": "Chocolatey"
     },
     {
+      "Id": "KDE.KDEConnect",
+      "Name": "KDE Connect",
+      "Version": "25.08.3",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
       "Id": "LGUG2Z.komorebi",
       "Name": "komorebi",
       "Version": "0.1.39",
@@ -341,7 +337,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.222.1112.0002",
+      "Version": "25.224.1116.0003",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -450,7 +446,7 @@
     },
     {
       "Id": "Microsoft.VCRedist.2015\u002B.x64",
-      "Name": "Microsoft Visual C\u002B\u002B 2015-2022 Redistributable (x64)",
+      "Name": "Microsoft Visual C\u002B\u002B v14 Redistributable (x64)",
       "Version": "14.44.35211.0",
       "Source": "winget",
       "ManagerName": "Winget",
@@ -461,7 +457,7 @@
     },
     {
       "Id": "Microsoft.VCRedist.2015\u002B.x86",
-      "Name": "Microsoft Visual C\u002B\u002B 2015-2022 Redistributable (x86)",
+      "Name": "Microsoft Visual C\u002B\u002B v14 Redistributable (x86)",
       "Version": "14.44.35211.0",
       "Source": "winget",
       "ManagerName": "Winget",
@@ -654,13 +650,6 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "Seewo.PPTService",
-      "Name": "PPT\u5C0F\u5DE5\u5177",
-      "Version": "1.0.0.795",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
       "Id": "SimonKnuth.Scanner",
       "Name": "Scanner",
       "Version": "3.2.9.0",
@@ -677,7 +666,7 @@
     {
       "Id": "Telegram.TelegramDesktop",
       "Name": "Telegram Desktop",
-      "Version": "6.4.1",
+      "Version": "6.4.2",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -726,14 +715,14 @@
     {
       "Id": "Yuanli.uTools",
       "Name": "uTools",
-      "Version": "7.5.0",
+      "Version": "7.5.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "ZedIndustries.Zed",
       "Name": "Zed",
-      "Version": "0.218.6",
+      "Version": "0.219.4",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -828,7 +817,7 @@
     {
       "Id": "fastfetch",
       "Name": "Fastfetch",
-      "Version": "2.56.1",
+      "Version": "2.57.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -977,6 +966,13 @@
       "ManagerName": "Chocolatey"
     },
     {
+      "Id": "wood3n.Biu",
+      "Name": "Biu",
+      "Version": "1.12.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
       "Id": "xanderfrangos.twinkletray",
       "Name": "Twinkle Tray",
       "Version": "1.17.2",
@@ -1020,12 +1016,6 @@
       "Id": "ARP\\Machine\\X64\\607E81836F3E58EDC7289F7B7047149AE2C7F301",
       "Name": "Windows \u9A71\u52A8\u7A0B\u5E8F\u5305 - libusb-win32 WorldCup Device (02/23/2013 1.2.6.0)",
       "Version": "02/23/2013 1.2.6.0",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\636059ce-4c3c-5063-abc4-aff13ca916b1",
-      "Name": "Biu 1.7.1-beta.0",
-      "Version": "1.7.1-beta.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1097,24 +1087,6 @@
     {
       "Id": "ARP\\Machine\\X64\\Steam App 1973530",
       "Name": "Limbus Company",
-      "Version": "Unknown",
-      "Source": "Steam"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\Steam App 2358720",
-      "Name": "\u9ED1\u795E\u8BDD:\u609F\u7A7A",
-      "Version": "Unknown",
-      "Source": "Steam"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\Steam App 3117820",
-      "Name": "\u82CF\u4E39\u7684\u6E38\u620F",
-      "Version": "Unknown",
-      "Source": "Steam"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\Steam App 413150",
-      "Name": "Stardew Valley",
       "Version": "Unknown",
       "Source": "Steam"
     },
@@ -1383,6 +1355,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{FC609131-6B77-4FC2-BC79-67E01BF894CC}_is1",
+      "Name": "Revision Tool version 2.6.0 (64-bit)",
+      "Version": "2.6.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{ad8a2fa1-06e7-4b0d-927d-6e54b3d31028}",
       "Name": "Microsoft Visual C\u002B\u002B 2005 Redistributable (x64)",
       "Version": "8.0.61000",
@@ -1512,12 +1490,6 @@
       "Id": "ARP\\Machine\\X86\\{404581d0-19c1-47ba-bcd3-10178793c239}",
       "Name": "Intel(R) Chipset Device Software",
       "Version": "10.1.19600.8418",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
-      "Id": "ARP\\Machine\\X86\\{5363CE84-5F09-48A1-8B6C-6BB590FFEDF2}_is1",
-      "Name": "Wondershare Helper Compact 2.6.0",
-      "Version": "2.6.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1809,12 +1781,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\User\\X64\\enjoy",
-      "Name": "Enjoy",
-      "Version": "0.7.9",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\User\\X64\\f7a58666ee7b4f8d6cd990d7bef45585",
       "Name": "XiaoHuAPI",
       "Version": "1.0",
@@ -1851,15 +1817,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\3AD8A913.49937325EFC59_1.0.16.0_x64__j4r74wbqry4cc",
-      "Name": "BaiduNetdiskService",
-      "Version": "1.0.16.0",
-      "Source": "Microsoft Store"
-    },
-    {
       "Id": "MSIX\\4651ED44255E.47979655102CE_3.0.1620.0_x64__k6txddmbb6c52",
       "Name": "Watt Toolkit",
       "Version": "3.0.1620.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\5924EvgeniyNikulov.SFTPExplorer_1.0.7.0_x64__17rtz6ez8a9t6",
+      "Name": "SFTP Explorer",
+      "Version": "1.0.7.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1872,12 +1838,6 @@
       "Id": "MSIX\\AppUp.IntelArcSoftware_25.44.2010.0_x64__8j3eq9eme6ctt",
       "Name": "Intel\u00AE Graphics Software",
       "Version": "25.44.2010.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\BaiduNetdisk.DesktopSyncClient_7.17.5.6_neutral__r5kxaep58dem0",
-      "Name": "\u767E\u5EA6\u7F51\u76D8",
-      "Version": "7.17.5.6",
       "Source": "Microsoft Store"
     },
     {
@@ -1959,9 +1919,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25222.1112.2.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25224.1116.3.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25222.1112.2.0",
+      "Version": "25224.1116.3.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2217,9 +2177,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2026.111.1420.1_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2026.116.1416.28_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2026.111.1420.1",
+      "Version": "2026.116.1416.28",
       "Source": "Microsoft Store"
     },
     {

@@ -42,7 +42,6 @@ freerdp2
 fzf
 gdb
 gemini-cli
-gimp
 gimp-help-zh_cn
 git
 git-delta
