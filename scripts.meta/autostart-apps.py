@@ -147,9 +147,13 @@ async def main():
         launch(r"C:\Users\zion\Apps\capslockpp\CapsLock++.exe"),
         launch(r"C:\Program Files\Docker\Docker\Docker Desktop.exe"),
         launch(r"C:\Users\zion\Apps\ProjectEye\ProjectEye.exe"),
+        launch([
+            r"C:\Program Files (x86)\PasteIntoFile\PasteIntoFile.exe", "tray"
+        ]),
+        launch(r"C:\Users\zion\Apps\IME_Indicator\IME-Indicator.exe"),
     )
 
 
 if __name__ == "__main__":
-    pyautogui.FAILSAFE = False
     asyncio.run(main())
+    pyautogui.FAILSAFE = False
