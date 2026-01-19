@@ -82,7 +82,12 @@
   "ignore_rules": [
     {
       "kind": "Title",
-      "id": "EcoPaste",
+      "id": "EcoPaste-Sync",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "Cap.exe",
       "matching_strategy": "Equals"
     },
     {

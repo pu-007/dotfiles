@@ -106,7 +106,7 @@ async def main():
         asyncio.create_task(launch_flomo()),
         asyncio.create_task(launch_doubao()),
         asyncio.create_task(launch_wt_quake()),
-        launch(r"C:\Program Files\EcoPaste\EcoPaste.exe"),
+        launch(r"C:\Program Files\EcoPaste-Sync\EcoPaste-Sync.exe"),
         launch(r"C:\Program Files\Quicker\Quicker.exe"),
         launch([r"C:\Users\zion\Apps\Everything\Everything.exe", "-startup"]),
         launch([
@@ -122,9 +122,9 @@ async def main():
         launch(r"C:\Program Files\Mem Reduct\memreduct.exe"),
         launch(r"C:\Users\zion\AppData\Local\Programs\Motrix\Motrix.exe"),
         launch(r"C:\Users\zion\AppData\Roaming\AltSnap\AltSnap.exe"),
-        launch(
-            r"C:\Users\zion\AppData\Local\Programs\twinkle-tray\Twinkle Tray.exe"
-        ),
+        # launch(
+        #     r"C:\Users\zion\AppData\Local\Programs\twinkle-tray\Twinkle Tray.exe"
+        # ),
         launch(r"C:\Users\zion\AppData\Local\Programs\PixPin\PixPin.exe"),
         launch(
             [r"C:\Program Files (x86)\Stardock\Fences\Fences.exe",
