@@ -120,11 +120,7 @@ async def main():
         launch(r"C:\Program Files\YASB\yasb.exe"),
         launch(r"C:\Users\zion\AppData\Local\Programs\utools\uTools.exe"),
         launch(r"C:\Program Files\Mem Reduct\memreduct.exe"),
-        launch(r"C:\Users\zion\AppData\Local\Programs\Motrix\Motrix.exe"),
         launch(r"C:\Users\zion\AppData\Roaming\AltSnap\AltSnap.exe"),
-        # launch(
-        #     r"C:\Users\zion\AppData\Local\Programs\twinkle-tray\Twinkle Tray.exe"
-        # ),
         launch(r"C:\Users\zion\AppData\Local\Programs\PixPin\PixPin.exe"),
         launch(
             [r"C:\Program Files (x86)\Stardock\Fences\Fences.exe",
