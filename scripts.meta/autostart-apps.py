@@ -82,10 +82,7 @@ async def _wait_for(name, timeout: float = 10.0, interval: float = 0.2) -> None:
         await asyncio.sleep(interval)
 
 
-async def launch_doubao():
-    await _async_launch_app(
-        r"C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe"
-    )
+async def close_windows_matching_titles():
     await _close_windows_by_title("豆包")
     await _close_windows_by_title("手机连接")
 
@@ -96,7 +93,9 @@ def launch(commands: str | list, cwd: str | None = None) -> asyncio.Task:
 
 async def main():
     await asyncio.gather(
-        asyncio.create_task(launch_doubao()),
+        asyncio.create_task(close_windows_matching_titles()),
+        launch(r"C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe"),
+        launch(r"C:\Program Files\Ditto\Ditto.exe"),
         launch(r"C:\Program Files\flomo\flomo.exe"),
         launch(["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"]),
         launch(r"C:\Program Files\Quicker\Quicker.exe"),
