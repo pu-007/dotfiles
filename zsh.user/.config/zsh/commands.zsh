@@ -3,8 +3,9 @@ alias Aic="gaa; aic"
 alias acp="aic; git push"
 alias Acp="Aic; git push"
 alias G="gemini"
+alias dk="docker"
 alias dkc="docker compose"
-alias dcu="docker compose up -d"
+alias dkcu="docker compose up -d"
 
 alias j="jj"
 function gzr() {
@@ -141,7 +142,7 @@ export ITTS_DIR="/mnt/c/Users/zion/Apps/index-tts-vllm"
 function itts {
   local itts_script=("python" "$ITTS_DIR/itts.py")
   local success_keyword="可用的语音角色"
-  local max_wait=20       # 启动 Docker 后最大等待时间（秒）
+  local max_wait=60       # 启动 Docker 后最大等待时间（秒）
   local sleep_sec=2       # 每次检测间隔
 
   # 检测服务是否可用
