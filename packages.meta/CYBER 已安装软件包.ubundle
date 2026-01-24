@@ -82,7 +82,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "1.87.7",
+      "Version": "2.0.20",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -121,7 +121,7 @@
     {
       "Id": "Daum.PotPlayer",
       "Name": "PotPlayer",
-      "Version": "25.09.09.0",
+      "Version": "26.01.14.0",
       "Source": "winget",
       "ManagerName": "Winget",
       "InstallationOptions": {
@@ -143,7 +143,7 @@
     {
       "Id": "Docker.DockerDesktop",
       "Name": "Docker Desktop",
-      "Version": "4.55.0",
+      "Version": "4.56.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -151,13 +151,6 @@
       "Id": "DuongDieuPhap.ImageGlass",
       "Name": "ImageGlass",
       "Version": "9.4.1.15",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "EcoPaste.EcoPaste",
-      "Name": "EcoPaste",
-      "Version": "0.6.0-beta.3",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -225,13 +218,6 @@
       "ManagerName": "Chocolatey"
     },
     {
-      "Id": "KDE.KDEConnect",
-      "Name": "KDE Connect",
-      "Version": "25.08.3",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
       "Id": "LGUG2Z.komorebi",
       "Name": "komorebi",
       "Version": "0.1.39",
@@ -273,7 +259,7 @@
     {
       "Id": "Microsoft.AppInstaller",
       "Name": "App Installer",
-      "Version": "1.27.440.0",
+      "Version": "1.27.460.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -312,7 +298,7 @@
     {
       "Id": "Microsoft.EdgeWebView2Runtime",
       "Name": "Microsoft Edge WebView2 Runtime",
-      "Version": "143.0.3650.139",
+      "Version": "144.0.3719.82",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -337,7 +323,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.224.1116.0003",
+      "Version": "25.238.1204.0001",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -469,7 +455,7 @@
     {
       "Id": "Microsoft.VisualStudio.2022.Community",
       "Name": "Visual Studio Community 2022",
-      "Version": "17.14.23",
+      "Version": "\u003C 17.14.25",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -513,20 +499,9 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "OBSProject.OBSStudio",
-      "Name": "OBS Studio",
-      "Version": "32.0.4",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "InstallationOptions": {
-        "OverridesNextLevelOpts": true,
-        "InteractiveInstallation": true
-      }
-    },
-    {
       "Id": "Obsidian.Obsidian",
       "Name": "Obsidian",
-      "Version": "1.10.6",
+      "Version": "1.11.4",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -664,13 +639,6 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "Telegram.TelegramDesktop",
-      "Name": "Telegram Desktop",
-      "Version": "6.4.2",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
       "Id": "Tencent.QQ.NT",
       "Name": "QQ",
       "Version": "9.9.26.44343",
@@ -722,7 +690,7 @@
     {
       "Id": "ZedIndustries.Zed",
       "Name": "Zed",
-      "Version": "0.219.4",
+      "Version": "0.219.5",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -731,6 +699,20 @@
       "Name": "Apktool",
       "Version": "2.12.1",
       "Source": "main",
+      "ManagerName": "Scoop"
+    },
+    {
+      "Id": "aria2",
+      "Name": "Aria2",
+      "Version": "1.37.0-1",
+      "Source": "main",
+      "ManagerName": "Scoop"
+    },
+    {
+      "Id": "ariang-native",
+      "Name": "Ariang Native",
+      "Version": "1.3.12",
+      "Source": "extras",
       "ManagerName": "Scoop"
     },
     {
@@ -753,20 +735,6 @@
       "Version": "8.16.2",
       "Source": "winget",
       "ManagerName": "Winget"
-    },
-    {
-      "Id": "cargo-binstall",
-      "Name": "Cargo Binstall",
-      "Version": "1.16.6",
-      "Source": "crates.io",
-      "ManagerName": "Cargo"
-    },
-    {
-      "Id": "cargo-update",
-      "Name": "Cargo Update",
-      "Version": "18.0.0",
-      "Source": "crates.io",
-      "ManagerName": "Cargo"
     },
     {
       "Id": "chocolatey-compatibility.extension",
@@ -817,7 +785,7 @@
     {
       "Id": "fastfetch",
       "Name": "Fastfetch",
-      "Version": "2.57.0",
+      "Version": "2.57.1",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -873,7 +841,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.7.8",
+      "Version": "1.7.13",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -964,20 +932,6 @@
       "Version": "14.0.24215.20170201",
       "Source": "community",
       "ManagerName": "Chocolatey"
-    },
-    {
-      "Id": "wood3n.Biu",
-      "Name": "Biu",
-      "Version": "1.12.0",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "xanderfrangos.twinkletray",
-      "Name": "Twinkle Tray",
-      "Version": "1.17.2",
-      "Source": "winget",
-      "ManagerName": "Winget"
     }
   ],
   "incompatible_packages_info": "Incompatible packages cannot be installed from UniGetUI, either because they came from a local source (for example Local PC) or because the package manager was unavailable. Nevertheless, they have been listed here for logging purposes.",
@@ -1008,8 +962,8 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\53484976-a3c3-518d-a572-4baa926ba04d",
-      "Name": "AlgerMusicPlayer 4.9.0",
-      "Version": "4.9.0",
+      "Name": "AlgerMusicPlayer",
+      "Version": "5.0.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1040,6 +994,12 @@
       "Id": "ARP\\Machine\\X64\\D9F8B4D536F4D3610EF684FB6C8DEA2E08816021",
       "Name": "Windows \u9A71\u52A8\u7A0B\u5E8F\u5305 - Logitech USB  (10/22/2012 13.80.853.0)",
       "Version": "10/22/2012 13.80.853.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\EcoPaste-Sync",
+      "Name": "EcoPaste-Sync",
+      "Version": "0.7.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1075,7 +1035,7 @@
     {
       "Id": "ARP\\Machine\\X64\\ProPlus2024Volume - zh-cn",
       "Name": "Microsoft Office LTSC \u4E13\u4E1A\u589E\u5F3A\u7248 2024 - zh-cn",
-      "Version": "16.0.17932.20620",
+      "Version": "16.0.17932.20638",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1093,12 +1053,6 @@
     {
       "Id": "ARP\\Machine\\X64\\Steam App 493340",
       "Name": "\u8FC7\u5C71\u8F66\u4E4B\u661F",
-      "Version": "Unknown",
-      "Source": "Steam"
-    },
-    {
-      "Id": "ARP\\Machine\\X64\\Steam App 588650",
-      "Name": "Dead Cells",
       "Version": "Unknown",
       "Source": "Steam"
     },
@@ -1601,12 +1555,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\User\\X64\\1c69d6f0-819e-59ee-95e7-e2b930a46bea",
-      "Name": "Motrix 1.8.19",
-      "Version": "1.8.19",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\User\\X64\\1d431877f18ee1a847178e717e7f10f0",
       "Name": "\u5C0F\u7231\u97F3\u7BB1\u64CD\u63A7\u9762\u677F",
       "Version": "1.0",
@@ -1705,7 +1653,7 @@
     {
       "Id": "ARP\\User\\X64\\Cap",
       "Name": "Cap",
-      "Version": "0.3.83",
+      "Version": "0.4.3",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1847,6 +1795,12 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\Microsoft.BingWeather_4.54.63029.0_x64__8wekyb3d8bbwe",
+      "Name": "MSN \u5929\u6C14",
+      "Version": "4.54.63029.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\Microsoft.DirectXRuntime_9.29.1974.0_x64__8wekyb3d8bbwe",
       "Name": "DirectX",
       "Version": "9.29.1974.0",
@@ -1919,9 +1873,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25224.1116.3.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_25238.1204.1.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25224.1116.3.0",
+      "Version": "25238.1204.1.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1949,9 +1903,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.StorePurchaseApp_22511.1401.2.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.StorePurchaseApp_22511.1401.3.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store \u4F53\u9A8C\u4E3B\u673A",
-      "Version": "22511.1401.2.0",
+      "Version": "22511.1401.3.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2093,12 +2047,6 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.7_7000.522.1444.0_x64__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.7",
-      "Version": "7000.522.1444.0",
-      "Source": "Microsoft Store"
-    },
-    {
       "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.7_7000.617.2103.0_x64__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.7",
       "Version": "7000.617.2103.0",
@@ -2117,9 +2065,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.7_7000.676.1651.0_x86__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.7_7000.744.1258.0_x64__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.7",
-      "Version": "7000.676.1651.0",
+      "Version": "7000.744.1258.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.7_7000.744.1258.0_x86__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.7",
+      "Version": "7000.744.1258.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2141,9 +2095,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.675.1142.0_x86__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.731.1532.0_x64__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.8",
-      "Version": "8000.675.1142.0",
+      "Version": "8000.731.1532.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.731.1532.0_x86__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.8",
+      "Version": "8000.731.1532.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2159,15 +2119,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2508.38.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsNotepad_11.2510.14.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BB0\u4E8B\u672C",
-      "Version": "11.2508.38.0",
+      "Version": "11.2510.14.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22511.1401.5.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsStore_22512.1401.5.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22511.1401.5.0",
+      "Version": "22512.1401.5.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2177,15 +2137,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2026.116.1416.28_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2026.123.1038.10_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2026.116.1416.28",
+      "Version": "2026.123.1038.10",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.YourPhone_1.25112.36.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.YourPhone_1.25122.50.0_x64__8wekyb3d8bbwe",
       "Name": "\u624B\u673A\u8FDE\u63A5",
-      "Version": "1.25112.36.0",
+      "Version": "1.25122.50.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2213,15 +2173,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Singleton_8000.675.1142.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Singleton_8000.731.1532.0_x64__8wekyb3d8bbwe",
       "Name": "WinAppRuntime.Singleton",
-      "Version": "8000.675.1142.0",
+      "Version": "8000.731.1532.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftCorporationII.WindowsSubsystemForLinux_2.5.10.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\MicrosoftCorporationII.WindowsSubsystemForLinux_2.6.3.0_x64__8wekyb3d8bbwe",
       "Name": "\u9002\u7528\u4E8E Linux \u7684 Windows \u5B50\u7CFB\u7EDF",
-      "Version": "2.5.10.0",
+      "Version": "2.6.3.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2246,6 +2206,12 @@
       "Id": "MSIX\\MicrosoftWindows.NarratorScript.Outlook_1.0.8.0_neutral__cw5n1h2txyewy",
       "Name": "NarratorExtension - Outlook",
       "Version": "1.0.8.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\MicrosoftWindows.Speech.en-US.1_1.0.24.0_x64__cw5n1h2txyewy",
+      "Name": "Speech Pack - English (United States)",
+      "Version": "1.0.24.0",
       "Source": "Microsoft Store"
     },
     {

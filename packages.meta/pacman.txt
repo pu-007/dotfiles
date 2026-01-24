@@ -10,6 +10,7 @@ bat
 bleachbit
 btop
 btrfs-progs
+bun
 caddy
 chafa
 cifs-utils
