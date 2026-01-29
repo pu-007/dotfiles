@@ -99,7 +99,7 @@ async def main():
         launch(r"C:\Program Files\flomo\flomo.exe"),
         launch(["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"]),
         launch(r"C:\Program Files\Quicker\Quicker.exe"),
-        launch([r"C:\Users\zion\Apps\Everything\Everything.exe", "-startup"]),
+        launch(r"C:\Program Files\Everything\Everything.exe"),
         launch(
             [
                 r"C:\Program Files\komorebi\bin\komorebic-no-console.exe",

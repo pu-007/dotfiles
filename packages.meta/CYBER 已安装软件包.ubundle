@@ -141,6 +141,13 @@
       }
     },
     {
+      "Id": "Ditto.Ditto",
+      "Name": "Ditto",
+      "Version": "3.25.113.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
       "Id": "Docker.DockerDesktop",
       "Name": "Docker Desktop",
       "Version": "4.56.0",
@@ -690,7 +697,7 @@
     {
       "Id": "ZedIndustries.Zed",
       "Name": "Zed",
-      "Version": "0.219.5",
+      "Version": "0.220.5",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -730,11 +737,32 @@
       "ManagerName": "Scoop"
     },
     {
+      "Id": "bggRGjQaUbCoE.PiliPlus",
+      "Name": "PiliPlus",
+      "Version": "1.1.5.4",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
       "Id": "calibre.calibre",
       "Name": "calibre",
       "Version": "8.16.2",
       "Source": "winget",
       "ManagerName": "Winget"
+    },
+    {
+      "Id": "cargo-binstall",
+      "Name": "Cargo Binstall",
+      "Version": "1.16.6",
+      "Source": "crates.io",
+      "ManagerName": "Cargo"
+    },
+    {
+      "Id": "cargo-update",
+      "Name": "Cargo Update",
+      "Version": "18.0.0",
+      "Source": "crates.io",
+      "ManagerName": "Cargo"
     },
     {
       "Id": "chocolatey-compatibility.extension",
@@ -794,6 +822,13 @@
       "Name": "Fd",
       "Version": "10.3.0",
       "Source": "main",
+      "ManagerName": "Scoop"
+    },
+    {
+      "Id": "folo",
+      "Name": "Folo",
+      "Version": "1.2.6",
+      "Source": "extras",
       "ManagerName": "Scoop"
     },
     {
@@ -916,6 +951,13 @@
       "ManagerName": "Winget"
     },
     {
+      "Id": "uvncbvba.UltraVNC",
+      "Name": "UltraVNC",
+      "Version": "1.4.3.6",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
       "Id": "vcredist140",
       "Name": "Vcredist140",
       "Version": "14.42.34438.20250221",
@@ -997,12 +1039,6 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
-      "Id": "ARP\\Machine\\X64\\EcoPaste-Sync",
-      "Name": "EcoPaste-Sync",
-      "Version": "0.7.0",
-      "Source": "\u672C\u5730\u7535\u8111"
-    },
-    {
       "Id": "ARP\\Machine\\X64\\FairlightAudioAccelerator_is1",
       "Name": "Fairlight Audio Accelerator Utility",
       "Version": "1.0.15",
@@ -1036,6 +1072,12 @@
       "Id": "ARP\\Machine\\X64\\ProPlus2024Volume - zh-cn",
       "Name": "Microsoft Office LTSC \u4E13\u4E1A\u589E\u5F3A\u7248 2024 - zh-cn",
       "Version": "16.0.17932.20638",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\Shield",
+      "Name": "RollBack Rx Professional",
+      "Version": "v12.9",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1736,8 +1778,8 @@
     },
     {
       "Id": "ARP\\User\\X64\\{506270E7-E3B5-4157-B53A-3BFFE8E418DB}_is1",
-      "Name": "PixPin \u7248\u672C 2.3.8.0",
-      "Version": "2.3.8.0",
+      "Name": "PixPin \u7248\u672C 2.4.9.1",
+      "Version": "2.4.9.1",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -2137,9 +2179,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2026.123.1038.10_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2026.125.1444.14_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2026.123.1038.10",
+      "Version": "2026.125.1444.14",
       "Source": "Microsoft Store"
     },
     {
