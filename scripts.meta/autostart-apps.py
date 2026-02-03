@@ -95,7 +95,7 @@ async def main():
     await asyncio.gather(
         asyncio.create_task(close_windows_matching_titles()),
         launch(r"C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe"),
-        launch(r"C:\Program Files\Ditto\Ditto.exe"),
+        launch(r"C:\Program Files\EcoPaste-Sync\EcoPaste-Sync.exe"),
         launch(r"C:\Program Files\flomo\flomo.exe"),
         launch(["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"]),
         launch(r"C:\Program Files\Quicker\Quicker.exe"),
