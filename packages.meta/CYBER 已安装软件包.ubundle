@@ -36,7 +36,7 @@
     {
       "Id": "AmN.yasb",
       "Name": "yasb",
-      "Version": "1.8.6",
+      "Version": "1.8.7",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -73,6 +73,17 @@
       "ManagerName": "Winget"
     },
     {
+      "Id": "Baidu.BaiduNetdisk",
+      "Name": "\u767E\u5EA6\u7F51\u76D8",
+      "Version": "8.1.9",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "Updates": {
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
+      }
+    },
+    {
       "Id": "Blinue.Magpie",
       "Name": "Magpie",
       "Version": "0.12.1",
@@ -82,7 +93,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "2.0.20",
+      "Version": "2.0.25",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -101,6 +112,13 @@
       "Id": "ChuyuTeam.DISM\u002B\u002B",
       "Name": "DISM\u002B\u002B Multi Language",
       "Version": "10.1.1002.2",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "CodecGuide.K-LiteCodecPack.Basic",
+      "Name": "K-Lite Codec Pack Basic",
+      "Version": "19.4.5",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -141,9 +159,9 @@
       }
     },
     {
-      "Id": "Ditto.Ditto",
-      "Name": "Ditto",
-      "Version": "3.25.113.0",
+      "Id": "Docker.DockerDesktop",
+      "Name": "Docker Desktop",
+      "Version": "4.58.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -278,6 +296,20 @@
       "ManagerName": "Winget"
     },
     {
+      "Id": "Microsoft.DirectX",
+      "Name": "DirectX End-User Runtime Web Installer",
+      "Version": "9.29.1974.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Microsoft.DotNet.DesktopRuntime.8",
+      "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
+      "Version": "8.0.23",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
       "Id": "Microsoft.DotNet.DesktopRuntime.8",
       "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
       "Version": "8.0.22",
@@ -305,7 +337,7 @@
     {
       "Id": "Microsoft.EdgeWebView2Runtime",
       "Name": "Microsoft Edge WebView2 Runtime",
-      "Version": "144.0.3719.82",
+      "Version": "144.0.3719.93",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -316,7 +348,7 @@
     {
       "Id": "Microsoft.GameInput",
       "Name": "Microsoft GameInput",
-      "Version": "3.1.26100.6879",
+      "Version": "10.1.26100.6879",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -330,7 +362,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "25.238.1204.0001",
+      "Version": "26.002.0105.0001",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -508,6 +540,13 @@
     {
       "Id": "Obsidian.Obsidian",
       "Name": "Obsidian",
+      "Version": "1.11.5",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Obsidian.Obsidian",
+      "Name": "Obsidian",
       "Version": "1.11.4",
       "Source": "winget",
       "ManagerName": "Winget"
@@ -599,6 +638,13 @@
     {
       "Id": "RSSNext.Folo",
       "Name": "Folo",
+      "Version": "0.7.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "RSSNext.Folo",
+      "Name": "Folo",
       "Version": "0.5.0",
       "Source": "winget",
       "ManagerName": "Winget"
@@ -642,6 +688,13 @@
       "Id": "SumatraPDF.SumatraPDF",
       "Name": "SumatraPDF",
       "Version": "3.5.2",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Tencent.QQ.NT",
+      "Name": "QQ",
+      "Version": "9.9.26.44725",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -697,7 +750,7 @@
     {
       "Id": "ZedIndustries.Zed",
       "Name": "Zed",
-      "Version": "0.220.5",
+      "Version": "0.221.5",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -713,6 +766,13 @@
       "Name": "Aria2",
       "Version": "1.37.0-1",
       "Source": "main",
+      "ManagerName": "Scoop"
+    },
+    {
+      "Id": "ariang-native",
+      "Name": "Ariang Native",
+      "Version": "1.3.13",
+      "Source": "extras",
       "ManagerName": "Scoop"
     },
     {
@@ -746,9 +806,23 @@
     {
       "Id": "calibre.calibre",
       "Name": "calibre",
+      "Version": "9.1.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "calibre.calibre",
+      "Name": "calibre",
       "Version": "8.16.2",
       "Source": "winget",
       "ManagerName": "Winget"
+    },
+    {
+      "Id": "cargo-binstall",
+      "Name": "Cargo Binstall",
+      "Version": "1.17.4",
+      "Source": "crates.io",
+      "ManagerName": "Cargo"
     },
     {
       "Id": "cargo-binstall",
@@ -813,6 +887,13 @@
     {
       "Id": "fastfetch",
       "Name": "Fastfetch",
+      "Version": "2.58.0",
+      "Source": "main",
+      "ManagerName": "Scoop"
+    },
+    {
+      "Id": "fastfetch",
+      "Name": "Fastfetch",
       "Version": "2.57.1",
       "Source": "main",
       "ManagerName": "Scoop"
@@ -825,18 +906,18 @@
       "ManagerName": "Scoop"
     },
     {
-      "Id": "folo",
-      "Name": "Folo",
-      "Version": "1.2.6",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
       "Id": "fzf",
       "Name": "Fzf",
       "Version": "0.67.0",
       "Source": "main",
       "ManagerName": "Scoop"
+    },
+    {
+      "Id": "geeksoftwareGmbH.PDF24Creator",
+      "Name": "PDF24 Creator",
+      "Version": "11.29.1",
+      "Source": "winget",
+      "ManagerName": "Winget"
     },
     {
       "Id": "geeksoftwareGmbH.PDF24Creator",
@@ -851,6 +932,13 @@
       "Version": "1.5.3.170",
       "Source": "community",
       "ManagerName": "Chocolatey"
+    },
+    {
+      "Id": "git",
+      "Name": "Git",
+      "Version": "2.53.0",
+      "Source": "main",
+      "ManagerName": "Scoop"
     },
     {
       "Id": "git",
@@ -893,6 +981,13 @@
       "Version": "1.0.6",
       "Source": "winget",
       "ManagerName": "Winget"
+    },
+    {
+      "Id": "nodejs",
+      "Name": "Nodejs",
+      "Version": "25.6.0",
+      "Source": "main",
+      "ManagerName": "Scoop"
     },
     {
       "Id": "nodejs",
@@ -953,6 +1048,13 @@
     {
       "Id": "uvncbvba.UltraVNC",
       "Name": "UltraVNC",
+      "Version": "1.6.4.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "uvncbvba.UltraVNC",
+      "Name": "UltraVNC",
       "Version": "1.4.3.6",
       "Source": "winget",
       "ManagerName": "Winget"
@@ -974,6 +1076,13 @@
       "Version": "14.0.24215.20170201",
       "Source": "community",
       "ManagerName": "Chocolatey"
+    },
+    {
+      "Id": "voidtools.Everything",
+      "Name": "Everything",
+      "Version": "1.4.1.1032",
+      "Source": "winget",
+      "ManagerName": "Winget"
     }
   ],
   "incompatible_packages_info": "Incompatible packages cannot be installed from UniGetUI, either because they came from a local source (for example Local PC) or because the package manager was unavailable. Nevertheless, they have been listed here for logging purposes.",
@@ -986,8 +1095,8 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\411ce4c0-0fbb-5462-84d3-941b5e267ae7",
-      "Name": "flomo 5.26.11",
-      "Version": "5.26.11",
+      "Name": "flomo 5.26.12",
+      "Version": "5.26.12",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1033,9 +1142,21 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\AntiCheatExpert",
+      "Name": "AntiCheatExpert",
+      "Version": "24.3.2511.846",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\D9F8B4D536F4D3610EF684FB6C8DEA2E08816021",
       "Name": "Windows \u9A71\u52A8\u7A0B\u5E8F\u5305 - Logitech USB  (10/22/2012 13.80.853.0)",
       "Version": "10/22/2012 13.80.853.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\EcoPaste-Sync",
+      "Name": "EcoPaste-Sync",
+      "Version": "0.8.0",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1195,6 +1316,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\Machine\\X64\\{890FDD12-20BF-4C65-B8C8-E44EB44929A5}_is1",
+      "Name": "Vovious",
+      "Version": "1.0.8",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\Machine\\X64\\{8B452603-A2AA-4D3E-A29A-54183ECA515B}",
       "Name": "NVIDIA Nsight Systems 2020.3.2",
       "Version": "20.3.2.6",
@@ -1280,20 +1407,20 @@
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.Driver",
-      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 591.74",
-      "Version": "591.74",
+      "Name": "NVIDIA \u56FE\u5F62\u9A71\u52A8\u7A0B\u5E8F 591.86",
+      "Version": "591.86",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_Display.NvApp",
-      "Name": "NVIDIA App 11.0.5.420",
-      "Version": "11.0.5.420",
+      "Name": "NVIDIA App 11.0.6.383",
+      "Version": "11.0.6.383",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
       "Id": "ARP\\Machine\\X64\\{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}_FrameViewSdk",
-      "Name": "NVIDIA FrameView SDK 1.5.11504.36206172",
-      "Version": "1.5.11504.36206172",
+      "Name": "NVIDIA FrameView SDK 1.5.11821.36727370",
+      "Version": "1.5.11821.36727370",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1373,6 +1500,12 @@
       "Name": "Slay the Spire",
       "Version": "2020-12-15-8735c9fe3cc2280b76aa3ec47c953352a7df1f65",
       "Source": "GOG"
+    },
+    {
+      "Id": "ARP\\Machine\\X86\\33a0a6296a20400d503c59ac0fd6341e",
+      "Name": "\u9E70\u89D2\u542F\u52A8\u5668",
+      "Version": "1.0.0.1037",
+      "Source": "\u672C\u5730\u7535\u8111"
     },
     {
       "Id": "ARP\\Machine\\X86\\????",
@@ -1497,7 +1630,7 @@
     {
       "Id": "ARP\\Machine\\X86\\{889610CC-4337-4BDB-AC3B-4F21806C0BDE}_is1",
       "Name": "UniGetUI",
-      "Version": "3.3.6",
+      "Version": "3.3.7",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1717,6 +1850,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\WorkshopDL",
+      "Name": "WorkshopDL",
+      "Version": "Unknown",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\a3f36336e210b19dd3b12374530f59ba",
       "Name": "LoCyanFrp",
       "Version": "1.0",
@@ -1778,8 +1917,8 @@
     },
     {
       "Id": "ARP\\User\\X64\\{506270E7-E3B5-4157-B53A-3BFFE8E418DB}_is1",
-      "Name": "PixPin \u7248\u672C 2.4.9.1",
-      "Version": "2.4.9.1",
+      "Name": "PixPin \u7248\u672C 2.4.9.6",
+      "Version": "2.4.9.6",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1801,9 +1940,21 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\18184wherewhere.CoolapkUWP_3.0.40.0_x64__d0s2e6z6qkbn0",
+      "Name": "Coolapk UWP",
+      "Version": "3.0.40.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\22955VineelSai.ArchWSL_1.3.0.0_x64__qz230bc1wsk9j",
       "Name": "Winch WSL",
       "Version": "1.3.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\3AD8A913.49937325EFC59_1.0.16.0_x64__j4r74wbqry4cc",
+      "Name": "BaiduNetdiskService",
+      "Version": "1.0.16.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1813,9 +1964,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\5924EvgeniyNikulov.SFTPExplorer_1.0.7.0_x64__17rtz6ez8a9t6",
+      "Id": "MSIX\\5924EvgeniyNikulov.SFTPExplorer_1.0.15.0_x64__17rtz6ez8a9t6",
       "Name": "SFTP Explorer",
-      "Version": "1.0.7.0",
+      "Version": "1.0.15.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1825,9 +1976,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\AppUp.IntelArcSoftware_25.44.2010.0_x64__8j3eq9eme6ctt",
+      "Id": "MSIX\\AppUp.IntelArcSoftware_25.50.2012.0_x64__8j3eq9eme6ctt",
       "Name": "Intel\u00AE Graphics Software",
-      "Version": "25.44.2010.0",
+      "Version": "25.50.2012.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\BaiduNetdisk.DesktopSyncClient_7.17.5.6_neutral__r5kxaep58dem0",
+      "Name": "\u767E\u5EA6\u7F51\u76D8",
+      "Version": "7.17.5.6",
       "Source": "Microsoft Store"
     },
     {
@@ -1843,27 +2000,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.DirectXRuntime_9.29.1974.0_x64__8wekyb3d8bbwe",
-      "Name": "DirectX",
-      "Version": "9.29.1974.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.DirectXRuntime_9.29.1974.0_x86__8wekyb3d8bbwe",
-      "Name": "DirectX",
-      "Version": "9.29.1974.0",
-      "Source": "Microsoft Store"
-    },
-    {
       "Id": "MSIX\\Microsoft.GamingServices_33.108.12001.0_x64__8wekyb3d8bbwe",
       "Name": "\u6E38\u620F\u670D\u52A1",
       "Version": "33.108.12001.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.LanguageExperiencePackzh-CN_26100.150.236.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.LanguageExperiencePackzh-CN_26100.158.247.0_neutral__8wekyb3d8bbwe",
       "Name": "\u4E2D\u6587(\u7B80\u4F53)\u672C\u5730\u4F53\u9A8C\u5305",
-      "Version": "26100.150.236.0",
+      "Version": "26100.158.247.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1915,9 +2060,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_25238.1204.1.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_26002.105.1.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "25238.1204.1.0",
+      "Version": "26002.105.1.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1945,9 +2090,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.StorePurchaseApp_22511.1401.3.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.StorePurchaseApp_22512.1401.1.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store \u4F53\u9A8C\u4E3B\u673A",
-      "Version": "22511.1401.3.0",
+      "Version": "22512.1401.1.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2167,9 +2312,15 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsStore_22512.1401.5.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsSoundRecorder_11.2512.0.0_x64__8wekyb3d8bbwe",
+      "Name": "Windows \u5F55\u97F3\u673A",
+      "Version": "11.2512.0.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WindowsStore_22512.1401.6.0_x64__8wekyb3d8bbwe",
       "Name": "Microsoft Store",
-      "Version": "22512.1401.5.0",
+      "Version": "22512.1401.6.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2179,9 +2330,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2026.125.1444.14_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2026.203.1541.12_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2026.125.1444.14",
+      "Version": "2026.203.1541.12",
       "Source": "Microsoft Store"
     },
     {
@@ -2203,9 +2354,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Main.1.8_8000.675.1142.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Main.1.8_8000.731.1532.0_x64__8wekyb3d8bbwe",
       "Name": "WinAppRuntime.Main.1.8",
-      "Version": "8000.675.1142.0",
+      "Version": "8000.731.1532.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2272,6 +2423,12 @@
       "Id": "MSIX\\NVIDIACorp.NVIDIAControlPanel_8.1.969.0_x64__56jybvy8sckqj",
       "Name": "NVIDIA Control Panel",
       "Version": "8.1.969.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\NaturalSelectionLabs.Follow-Yourfavoritesinoneinbo_1.1.3.0_x64__ab18pq3tb1rd0",
+      "Name": "Folo - Follow everything in one place",
+      "Version": "1.1.3.0",
       "Source": "Microsoft Store"
     },
     {
