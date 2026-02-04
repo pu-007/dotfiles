@@ -11,7 +11,9 @@ conda update --all -y
 sudo npm install -g aicommit2
 komorebic.exe fetch-app-specific-configuration
 pip cache purge
+# TODO safe docker cleanup job
 #docker system prune -a -f
-ssh root@192.168.100.1 docker system prune -a -f
+# ssh root@192.168.100.1 docker system prune -a -f
+#  docker volume prune
 sudo trash-empty -f --all-users
 git -C /mnt/c/Users/zion/AppData/Roaming/Rime pull
