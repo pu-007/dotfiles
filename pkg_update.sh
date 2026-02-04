@@ -13,5 +13,6 @@ komorebic.exe fetch-app-specific-configuration
 pip cache purge
 #docker system prune -a -f
 ssh root@192.168.100.1 docker system prune -a -f
-sudo trash-empty -f --all-users
+# TODO: RoolBack RX 造成文件系统部分损坏 Trash 目录损坏 一删除就会让 wsl 崩溃 待修复
+# sudo trash-empty -f --all-users
 git -C /mnt/c/Users/zion/AppData/Roaming/Rime pull

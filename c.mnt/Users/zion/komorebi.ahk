@@ -196,3 +196,35 @@ Komorebic(cmd) {
 ; Hyper + n nvim edit
 ^+!#n:: Run("wt.exe -p Arch wsl nvim -c 'read !win32yank.exe -o'")
 #y:: Run("wsl.exe zsh -ic 'y /mnt/d/Downloads/'")
+
+^+a:: {
+    SetTitleMatchMode "RegEx"
+    DetectHiddenWindows True
+    ; 定义匹配规则
+    targetTitle := " - 豆包浏览器$ ahk_exe Doubao.exe"
+    ; 获取所有符合条件的窗口列表（无论显示还是隐藏）
+    try {
+        idList := WinGetList(targetTitle)
+    } catch {
+        return ; 如果完全没找到豆包进程，直接退出
+    }
+    ; 如果没找到任何窗口，直接返回
+    if (idList.Length == 0)
+        return
+    ; 0x10000000 是 WS_VISIBLE 样式
+    firstWinStyle := WinGetStyle("ahk_id " idList[1])
+    isVisible := firstWinStyle & 0x10000000
+    if (isVisible) {
+        ; --- 执行全部隐藏 ---
+        for this_id in idList {
+            WinHide("ahk_id " this_id)
+        }
+    } else {
+        ; --- 执行全部显示 ---
+        for this_id in idList {
+            WinShow("ahk_id " this_id)
+        }
+        ; 显示完后，激活（置顶）列表中的第一个窗口，方便直接使用
+        WinActivate("ahk_id " idList[1])
+    }
+}
