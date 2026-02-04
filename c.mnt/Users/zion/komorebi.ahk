@@ -206,11 +206,16 @@ Komorebic(cmd) {
     try {
         idList := WinGetList(targetTitle)
     } catch {
-        return ; 如果完全没找到豆包进程，直接退出
-    }
-    ; 如果没找到任何窗口，直接返回
-    if (idList.Length == 0)
         return
+    }
+    ; 如果没找到任何窗口，启动豆包浏览器，并返回
+    if (idList.Length == 0) {
+        Run('C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe  --saman-browser-entry')
+        if WinWait(targetTitle, , 3) {
+            WinActivate targetTitle
+        }
+        return
+    }
     ; 0x10000000 是 WS_VISIBLE 样式
     firstWinStyle := WinGetStyle("ahk_id " idList[1])
     isVisible := firstWinStyle & 0x10000000
