@@ -84,7 +84,6 @@ async def _wait_for(name, timeout: float = 10.0, interval: float = 0.2) -> None:
 
 async def close_windows_matching_titles():
     await _close_windows_by_title("豆包")
-    await _close_windows_by_title("手机连接")
 
 
 def launch(commands: str | list, cwd: str | None = None) -> asyncio.Task:
@@ -94,6 +93,7 @@ def launch(commands: str | list, cwd: str | None = None) -> asyncio.Task:
 async def main():
     await asyncio.gather(
         asyncio.create_task(close_windows_matching_titles()),
+        launch(r"C:\Program Files\KDE Connect\bin\kdeconnect-indicator.exe"),
         launch(r"C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe"),
         launch(r"C:\Program Files\EcoPaste-Sync\EcoPaste-Sync.exe"),
         launch(r"C:\Program Files\flomo\flomo.exe"),

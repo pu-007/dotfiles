@@ -93,7 +93,7 @@
     {
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
-      "Version": "2.0.25",
+      "Version": "2.0.27",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -119,13 +119,6 @@
       "Id": "CodecGuide.K-LiteCodecPack.Basic",
       "Name": "K-Lite Codec Pack Basic",
       "Version": "19.4.5",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "CodecGuide.K-LiteCodecPack.Basic",
-      "Name": "K-Lite Codec Pack Basic",
-      "Version": "19.4.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -162,13 +155,6 @@
       "Id": "Docker.DockerDesktop",
       "Name": "Docker Desktop",
       "Version": "4.58.0",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "Docker.DockerDesktop",
-      "Name": "Docker Desktop",
-      "Version": "4.56.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -297,7 +283,7 @@
     },
     {
       "Id": "Microsoft.DirectX",
-      "Name": "DirectX End-User Runtime Web Installer",
+      "Name": "DirectX End-User Runtime Installer",
       "Version": "9.29.1974.0",
       "Source": "winget",
       "ManagerName": "Winget"
@@ -306,13 +292,6 @@
       "Id": "Microsoft.DotNet.DesktopRuntime.8",
       "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
       "Version": "8.0.23",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "Microsoft.DotNet.DesktopRuntime.8",
-      "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
-      "Version": "8.0.22",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -508,7 +487,7 @@
     {
       "Id": "Microsoft.WindowsTerminal.Preview",
       "Name": "Windows Terminal Preview",
-      "Version": "1.24.3504.0",
+      "Version": "1.24.10212.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -516,6 +495,13 @@
       "Id": "Microsoft.XNARedist",
       "Name": "Microsoft XNA Framework Redistributable Refresh",
       "Version": "4.0.30901.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Nutstore.Nutstore",
+      "Name": "Nutstore",
+      "Version": "7.2.10",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -541,13 +527,6 @@
       "Id": "Obsidian.Obsidian",
       "Name": "Obsidian",
       "Version": "1.11.5",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "Obsidian.Obsidian",
-      "Name": "Obsidian",
-      "Version": "1.11.4",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -643,13 +622,6 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "RSSNext.Folo",
-      "Name": "Folo",
-      "Version": "0.5.0",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
       "Id": "RamenSoftware.Windhawk",
       "Name": "Windhawk",
       "Version": "1.7.3",
@@ -695,13 +667,6 @@
       "Id": "Tencent.QQ.NT",
       "Name": "QQ",
       "Version": "9.9.26.44725",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "Tencent.QQ.NT",
-      "Name": "QQ",
-      "Version": "9.9.26.44343",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -776,13 +741,6 @@
       "ManagerName": "Scoop"
     },
     {
-      "Id": "ariang-native",
-      "Name": "Ariang Native",
-      "Version": "1.3.12",
-      "Source": "extras",
-      "ManagerName": "Scoop"
-    },
-    {
       "Id": "ayangweb.BongoCat",
       "Name": "BongoCat",
       "Version": "0.9.0",
@@ -811,23 +769,9 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "calibre.calibre",
-      "Name": "calibre",
-      "Version": "8.16.2",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
       "Id": "cargo-binstall",
       "Name": "Cargo Binstall",
       "Version": "1.17.4",
-      "Source": "crates.io",
-      "ManagerName": "Cargo"
-    },
-    {
-      "Id": "cargo-binstall",
-      "Name": "Cargo Binstall",
-      "Version": "1.16.6",
       "Source": "crates.io",
       "ManagerName": "Cargo"
     },
@@ -892,13 +836,6 @@
       "ManagerName": "Scoop"
     },
     {
-      "Id": "fastfetch",
-      "Name": "Fastfetch",
-      "Version": "2.57.1",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
       "Id": "fd",
       "Name": "Fd",
       "Version": "10.3.0",
@@ -920,13 +857,6 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "geeksoftwareGmbH.PDF24Creator",
-      "Name": "PDF24 Creator",
-      "Version": "11.29.0",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
       "Id": "geekuninstaller",
       "Name": "Geekuninstaller",
       "Version": "1.5.3.170",
@@ -937,13 +867,6 @@
       "Id": "git",
       "Name": "Git",
       "Version": "2.53.0",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "git",
-      "Name": "Git",
-      "Version": "2.52.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -986,13 +909,6 @@
       "Id": "nodejs",
       "Name": "Nodejs",
       "Version": "25.6.0",
-      "Source": "main",
-      "ManagerName": "Scoop"
-    },
-    {
-      "Id": "nodejs",
-      "Name": "Nodejs",
-      "Version": "25.2.1",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -1049,13 +965,6 @@
       "Id": "uvncbvba.UltraVNC",
       "Name": "UltraVNC",
       "Version": "1.6.4.0",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "uvncbvba.UltraVNC",
-      "Name": "UltraVNC",
-      "Version": "1.4.3.6",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -2330,9 +2239,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2026.203.1541.12_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2026.204.638.40_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2026.203.1541.12",
+      "Version": "2026.204.638.40",
       "Source": "Microsoft Store"
     },
     {
@@ -2372,9 +2281,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftCorporationII.WindowsSubsystemForLinux_2.6.3.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.0.0_x64__8wekyb3d8bbwe",
       "Name": "\u9002\u7528\u4E8E Linux \u7684 Windows \u5B50\u7CFB\u7EDF",
-      "Version": "2.6.3.0",
+      "Version": "2.7.0.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2429,6 +2338,12 @@
       "Id": "MSIX\\NaturalSelectionLabs.Follow-Yourfavoritesinoneinbo_1.1.3.0_x64__ab18pq3tb1rd0",
       "Name": "Folo - Follow everything in one place",
       "Version": "1.1.3.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Nutstore.Sync.DesktopClient_7.2.10.0_neutral__8cbew8s75sr8g",
+      "Name": "\u575A\u679C\u4E91",
+      "Version": "7.2.10.0",
       "Source": "Microsoft Store"
     },
     {
