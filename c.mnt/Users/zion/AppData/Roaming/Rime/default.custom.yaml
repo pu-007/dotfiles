@@ -31,8 +31,13 @@ patch:
     select_last_character: "bracketright" # 右中括号 ]
 
     bindings:
-      - { when: has_menu, accept: Shift+Tab, send: Page_Up }
-      - { when: has_menu, accept: Tab, send: Page_Down }
+      # Tab / Shift+Tab 切换候选项
+      - { when: has_menu, accept: Tab, send: Down }
+      - { when: has_menu, accept: Shift+Tab, send: Up }
+      # Down / Up 切换光标至下/上一个拼音
+      - { when: composing, accept: Up, send: Shift+Left }
+      - { when: composing, accept: Down, send: Shift+Right }
+
       - { when: always, toggle: full_shape, accept: Control+Shift+exclam } # 切换全半角
 
       # 将小键盘 0~9 . 映射到主键盘，数字金额大写的 Lua 如 R1234.5678 可使用小键盘输入
