@@ -1,8 +1,0 @@
-{
-  "selectedAuthType": "gemini-api-key",
-  "vimMode": true,
-  "preferredEditor": "vscode",
-  "checkpointing": {
-    "enabled": true
-  }
-}
