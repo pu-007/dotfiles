@@ -12,8 +12,10 @@ btop
 btrfs-progs
 bun
 caddy
+cc-switch-bin
 chafa
 cifs-utils
+claude-code
 clinfo
 clipboard-bin
 cmake
@@ -50,6 +52,7 @@ git-filter-repo
 git-lfs
 git-secrets
 github-cli
+glab
 glow
 glu
 gnome-keyring
