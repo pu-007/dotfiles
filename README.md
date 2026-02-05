@@ -2,6 +2,7 @@
 
 My dotfiles on Arch WSL & Windows.
 
+- TODO: cc switch and claude code gemini cli settings
 - TODO: simplify the link steps
 - TODO: add docs
 - TODO: all pip and uv changed mirror
