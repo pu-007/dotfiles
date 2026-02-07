@@ -126,7 +126,6 @@ widgets:
         border_color: "System" # Set the border color for the menu (this option is not supported on Windows 10)
         alignment: "right"
         direction: "down"
-        distance: 6
   brightness:
     type: "yasb.brightness.BrightnessWidget"
     options:
