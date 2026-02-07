@@ -14,8 +14,7 @@ git_protect() {
     if [ -d "$DOTFILES_DIR/.git" ]; then
         if [[ -n $(git -C "$DOTFILES_DIR" status --porcelain) ]]; then
             echo ">> Local changes detected in dotfiles. Stashing..."
-            git -C "$DOTFILES_DIR" stash push -m "Auto-stash before refresh at $TIMESTAMP"
-            HAS_STASH=true
+            git -C "$DOTFILES_DIR" stash push -m "Auto-stash before refresh at $TIMESTAMP" -- . ':!packages.meta/'
         fi
     fi
 }
@@ -23,6 +22,10 @@ git_protect() {
 # Restore local changes
 git_restore() {
     if [ "$HAS_STASH" = true ]; then
+        echo ">> Committing package changes..."
+        git add .
+        git commit -m "chore(refresh.sh): update, backup and cleanup"
+
         echo ">> Restoring stashed changes..."
         git -C "$DOTFILES_DIR" stash pop
     fi
@@ -105,8 +108,6 @@ git_protect
 do_update
 do_backup
 do_cleanup
-git add .
-git commit -m "chore(refresh.sh): update, backup and cleanup"
 git_restore
 
 echo "--- Refresh Complete at $(date +'%H:%M:%S') ---"
