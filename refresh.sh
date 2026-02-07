@@ -15,6 +15,7 @@ git_protect() {
         if [[ -n $(git -C "$DOTFILES_DIR" status --porcelain) ]]; then
             echo ">> Local changes detected in dotfiles. Stashing..."
             git -C "$DOTFILES_DIR" stash push -m "Auto-stash before refresh at $TIMESTAMP" -- . ':!packages.meta/'
+            HAS_STASH=true
         fi
     fi
 }
