@@ -49,8 +49,7 @@ do_update() {
 
     # Runtimes
     if command -v conda &> /dev/null; then conda update --all -y; fi
-    #sudo npm -g update -y
-    # sudo npm install -g @google/gemini-cli
+    sudo npm install -g @google/gemini-cli
     if command -v npm &> /dev/null; then sudo npm install -g aicommit2; fi
 
     # WSL / Windows Sync
