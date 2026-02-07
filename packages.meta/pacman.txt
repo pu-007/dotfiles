@@ -14,7 +14,6 @@ bun
 caddy
 chafa
 cifs-utils
-claude-code
 clinfo
 clipboard-bin
 cmake
@@ -43,7 +42,6 @@ fontforge
 freerdp2
 fzf
 gdb
-gemini-cli
 gimp-help-zh_cn
 git
 git-delta
