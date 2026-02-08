@@ -73,17 +73,6 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "Baidu.BaiduNetdisk",
-      "Name": "\u767E\u5EA6\u7F51\u76D8",
-      "Version": "8.1.9",
-      "Source": "winget",
-      "ManagerName": "Winget",
-      "Updates": {
-        "UpdatesIgnored": true,
-        "IgnoredVersion": "*"
-      }
-    },
-    {
       "Id": "Blinue.Magpie",
       "Name": "Magpie",
       "Version": "0.12.1",
@@ -492,6 +481,13 @@
       "ManagerName": "Winget"
     },
     {
+      "Id": "Microsoft.VisualStudioCode",
+      "Name": "Microsoft Visual Studio Code",
+      "Version": "1.109.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
       "Id": "Microsoft.WSL",
       "Name": "Windows Subsystem for Linux",
       "Version": "2.7.0.0",
@@ -680,14 +676,14 @@
     {
       "Id": "Tencent.QQ.NT",
       "Name": "QQ",
-      "Version": "9.9.26.44725",
+      "Version": "9.9.27.45758",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "Tencent.TencentMeeting",
       "Name": "Tencent Meeting",
-      "Version": "3.41.1.433",
+      "Version": "3.41.10.435",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -723,13 +719,6 @@
       "Id": "Yuanli.uTools",
       "Name": "uTools",
       "Version": "7.5.1",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
-      "Id": "ZedIndustries.Zed",
-      "Name": "Zed",
-      "Version": "0.221.5",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -778,7 +767,7 @@
     {
       "Id": "calibre.calibre",
       "Name": "calibre",
-      "Version": "9.1.0",
+      "Version": "9.2.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -908,7 +897,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.7.13",
+      "Version": "1.7.17",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -1744,6 +1733,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\71711699d5be3463fc29afb0ecc86fd3",
+      "Name": "DeepSeek OCR",
+      "Version": "1.0",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\74e53be0-38d8-5309-9f12-098b05fb2a1b",
       "Name": "MIDI Jar 1.7.0",
       "Version": "1.7.0",
@@ -1894,9 +1889,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\3AD8A913.49937325EFC59_1.0.16.0_x64__j4r74wbqry4cc",
-      "Name": "BaiduNetdiskService",
-      "Version": "1.0.16.0",
+      "Id": "MSIX\\36234Yu-Core.12598F3457A93_1.31.5.0_x64__n5xthzrt7j3t2",
+      "Name": "\u4FA0\u5BA2\u65E5\u8BB0",
+      "Version": "1.31.5.0",
       "Source": "Microsoft Store"
     },
     {
@@ -1921,12 +1916,6 @@
       "Id": "MSIX\\AppUp.IntelArcSoftware_25.50.2012.0_x64__8j3eq9eme6ctt",
       "Name": "Intel\u00AE Graphics Software",
       "Version": "25.50.2012.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\BaiduNetdisk.DesktopSyncClient_7.17.5.6_neutral__r5kxaep58dem0",
-      "Name": "\u767E\u5EA6\u7F51\u76D8",
-      "Version": "7.17.5.6",
       "Source": "Microsoft Store"
     },
     {
@@ -2077,6 +2066,12 @@
       "Id": "MSIX\\Microsoft.VCLibs.140.00_14.0.33519.0_x86__8wekyb3d8bbwe",
       "Name": "Microsoft Visual C\u002B\u002B 2015 UWP Runtime Package",
       "Version": "14.0.33519.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.VisualStudioCode_1.0.109.0_neutral__8wekyb3d8bbwe",
+      "Name": "Visual Studio Code",
+      "Version": "1.0.109.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2284,9 +2279,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2026.207.606.47_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2026.208.422.32_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2026.207.606.47",
+      "Version": "2026.208.422.32",
       "Source": "Microsoft Store"
     },
     {
@@ -2418,12 +2413,6 @@
     {
       "Id": "MSIX\\Stardock.Fences.DesktopMenu_1.0.0.0_neutral__a8b8bqct24ect",
       "Name": "Stardock Fences Desktop Menu",
-      "Version": "1.0.0.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\ZedIndustries.Zed_1.0.0.0_neutral__japxn1gcva8rg",
-      "Name": "Zed",
       "Version": "1.0.0.0",
       "Source": "Microsoft Store"
     }

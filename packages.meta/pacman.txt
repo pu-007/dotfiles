@@ -125,12 +125,14 @@ python-matplotlib
 python-mutagen
 python-omegaconf
 python-ormsgpack
+python-pdf2image
 python-pickleshare
 python-pip
 python-pipx
 python-pycryptodome
 python-pycryptodomex
 python-pylatexenc
+python-pymupdf
 python-pynvim
 python-pyxattr
 python-pyxdg
