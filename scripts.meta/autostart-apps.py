@@ -93,6 +93,7 @@ def launch(commands: str | list, cwd: str | None = None) -> asyncio.Task:
 async def main():
     await asyncio.gather(
         asyncio.create_task(close_windows_matching_titles()),
+        launch(r"C:\Users\zion\Apps\KeyStats\KeyStats.exe"),
         launch(r"C:\Program Files\KDE Connect\bin\kdeconnect-indicator.exe"),
         launch(r"C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe"),
         launch(r"C:\Program Files\EcoPaste-Sync\EcoPaste-Sync.exe"),
