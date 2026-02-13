@@ -109,5 +109,6 @@ do_update
 do_backup
 do_cleanup
 git_restore
+git push
 
 echo "--- Refresh Complete at $(date +'%H:%M:%S') ---"
