@@ -49,7 +49,6 @@ ialias scrcpy="scrcpy.exe"
 alias padmode="scrcpy --new-display=1920x1080 --video-codec=h265 --always-on-top --fullscreen --disable-screensaver --video-buffer=50 --audio-buffer=200 --gamepad=uhid"
 ialias winget="winget.exe"
 alias als="alias | rg "
-alias md2pdf="python $DOTFILE_STORE/scripts.meta/md2pdf.py"
 alias b="bat"
 
 

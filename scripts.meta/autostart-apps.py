@@ -84,6 +84,7 @@ async def _wait_for(name, timeout: float = 10.0, interval: float = 0.2) -> None:
 
 async def close_windows_matching_titles():
     await _close_windows_by_title("豆包")
+    await _close_windows_by_title("Health Reminder")
 
 
 def launch(commands: str | list, cwd: str | None = None) -> asyncio.Task:
@@ -93,7 +94,8 @@ def launch(commands: str | list, cwd: str | None = None) -> asyncio.Task:
 async def main():
     await asyncio.gather(
         asyncio.create_task(close_windows_matching_titles()),
-        launch(r"C:\Program Files\Tencent\Weixin\Weixin.exe"),
+        launch(r"C:\Users\zion\scoop\apps\cc-switch\current\cc-switch.exe"),
+        launch(r"C:\Users\zion\AppData\Local\health-reminder\health-reminder.exe"),
         launch(r"C:\Users\zion\Apps\KeyStats\KeyStats.exe"),
         launch(r"C:\Program Files\KDE Connect\bin\kdeconnect-indicator.exe"),
         launch(r"C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe"),

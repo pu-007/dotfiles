@@ -81,6 +81,11 @@
   ],
   "ignore_rules": [
     {
+      "kind": "Exe",
+      "id": "health-reminder.exe",
+      "matching_strategy": "Equals"
+    },
+    {
       "kind": "Title",
       "id": "EcoPaste-Sync",
       "matching_strategy": "Equals"

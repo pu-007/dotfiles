@@ -170,7 +170,9 @@ zinit wait lucid for \
   jeffreytse/zsh-vi-mode \
 
 zinit wait'!0' lucid is-snippet nocd for \
-  ~/.config/zsh/starship.zsh
+  ~/.config/zsh/starship.zsh \
+  ~/.config/zsh/fzf.zsh \
+  ~/.config/zsh/conda.zsh
 
 zinit wait lucid is-snippet for \
     atload"ialias z='__zoxide_z'; ialias zi='__zoxide_zi'" \
@@ -202,9 +204,6 @@ function zvm_after_init() {
   bindkey "^[[A" up-line-or-beginning-search # Up
   bindkey "^[[B" down-line-or-beginning-search # Down
 
-  zinit wait lucid is-snippet for \
-    ~/.config/zsh/fzf.zsh \
-    ~/.config/zsh/conda.zsh
 
   zinit wait lucid for \
     oldkingOK/pinyin-completion \
