@@ -235,3 +235,5 @@ export CUDA_HOME="/opt/cuda/"
 export HF_ENDPOINT="https://hf-mirror.com"
 
 alias cls="clear"
+# use system python for yay instaed of miniconda's one
+ialias yay='PATH="/usr/bin:$PATH" yay'
