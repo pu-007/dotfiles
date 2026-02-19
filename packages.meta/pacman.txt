@@ -8,6 +8,7 @@ base
 base-devel
 bat
 bleachbit
+bottom
 btop
 btrfs-progs
 bun
@@ -42,6 +43,7 @@ fontforge
 freerdp2
 fzf
 gdb
+gdu
 gimp-help-zh_cn
 git
 git-delta
@@ -61,6 +63,7 @@ hunspell
 hybridfilexfer-git
 hyperfine
 imagemagick
+img2pdf
 jdk-openjdk
 jujutsu
 kio-admin
@@ -107,6 +110,7 @@ pigz
 pistol-bin
 pixi
 pkgfile
+pngquant
 pre-commit
 prettier
 prettier-plugin-latex
@@ -134,6 +138,7 @@ python-pycryptodomex
 python-pylatexenc
 python-pymupdf
 python-pynvim
+python-pytweening
 python-pyxattr
 python-pyxdg
 python-requests
