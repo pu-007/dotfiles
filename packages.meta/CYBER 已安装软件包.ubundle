@@ -27,13 +27,6 @@
       "ManagerName": "Winget"
     },
     {
-      "Id": "Alibaba.QuarkCloudDrive",
-      "Name": "\u5938\u514B\u7F51\u76D8",
-      "Version": "3.23.2",
-      "Source": "winget",
-      "ManagerName": "Winget"
-    },
-    {
       "Id": "AltSnap.AltSnap",
       "Name": "AltSnap",
       "Version": "1.67",
@@ -75,9 +68,20 @@
     {
       "Id": "AutoHotkey.AutoHotkey",
       "Name": "AutoHotkey",
-      "Version": "2.0.19",
+      "Version": "2.0.21",
       "Source": "winget",
       "ManagerName": "Winget"
+    },
+    {
+      "Id": "Baidu.BaiduNetdisk",
+      "Name": "\u767E\u5EA6\u7F51\u76D8",
+      "Version": "8.2.5",
+      "Source": "winget",
+      "ManagerName": "Winget",
+      "Updates": {
+        "UpdatesIgnored": true,
+        "IgnoredVersion": "*"
+      }
     },
     {
       "Id": "Blinue.Magpie",
@@ -90,6 +94,13 @@
       "Id": "ByteDance.Doubao",
       "Name": "\u8C46\u5305",
       "Version": "2.0.31",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "ByteDance.Douyin",
+      "Name": "\u6296\u97F3",
+      "Version": "7.3.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -150,7 +161,7 @@
     {
       "Id": "Docker.DockerDesktop",
       "Name": "Docker Desktop",
-      "Version": "4.59.0",
+      "Version": "4.60.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -301,7 +312,7 @@
     {
       "Id": "Microsoft.DotNet.DesktopRuntime.8",
       "Name": "Microsoft .NET Windows Desktop Runtime 8.0",
-      "Version": "8.0.23",
+      "Version": "8.0.24",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -351,7 +362,7 @@
     {
       "Id": "Microsoft.OneDrive",
       "Name": "Microsoft OneDrive",
-      "Version": "26.007.0112.0002",
+      "Version": "26.012.0119.0002",
       "Source": "winget",
       "ManagerName": "Winget",
       "Updates": {
@@ -483,14 +494,14 @@
     {
       "Id": "Microsoft.VisualStudio.2022.Community",
       "Name": "Visual Studio Community 2022",
-      "Version": "17.14.23",
+      "Version": "17.14.26",
       "Source": "winget",
       "ManagerName": "Winget"
     },
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.109.0",
+      "Version": "1.109.2",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -925,7 +936,7 @@
     {
       "Id": "nodejs",
       "Name": "Nodejs",
-      "Version": "25.6.0",
+      "Version": "25.6.1",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -1118,7 +1129,7 @@
     {
       "Id": "ARP\\Machine\\X64\\ProPlus2024Volume - zh-cn",
       "Name": "Microsoft Office LTSC \u4E13\u4E1A\u589E\u5F3A\u7248 2024 - zh-cn",
-      "Version": "16.0.17932.20638",
+      "Version": "16.0.17932.20670",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1401,6 +1412,12 @@
       "Id": "ARP\\Machine\\X64\\{E8F347A5-A5C0-457C-9682-472A947BBCDC}",
       "Name": "NVIDIA Nsight Visual Studio Edition 2024.3.0.24164",
       "Version": "24.3.0.24164",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
+      "Id": "ARP\\Machine\\X64\\{F9CA1F0B-D4A8-41C5-99AD-D39FFA50B09B}_is1",
+      "Name": "OPLUS Tool Driver \u7248\u672C 4.0.1.6",
+      "Version": "4.0.1.6",
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
@@ -1908,6 +1925,12 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\3AD8A913.49937325EFC59_1.0.16.0_x64__j4r74wbqry4cc",
+      "Name": "BaiduNetdiskService",
+      "Version": "1.0.16.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\4651ED44255E.47979655102CE_3.0.1620.0_x64__k6txddmbb6c52",
       "Name": "Watt Toolkit",
       "Version": "3.0.1620.0",
@@ -1929,6 +1952,12 @@
       "Id": "MSIX\\AppUp.IntelArcSoftware_25.50.2012.0_x64__8j3eq9eme6ctt",
       "Name": "Intel\u00AE Graphics Software",
       "Version": "25.50.2012.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\BaiduNetdisk.DesktopSyncClient_7.17.5.6_neutral__r5kxaep58dem0",
+      "Name": "\u767E\u5EA6\u7F51\u76D8",
+      "Version": "7.17.5.6",
       "Source": "Microsoft Store"
     },
     {
@@ -2010,9 +2039,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.OneDriveSync_26007.112.2.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.OneDriveSync_26012.119.2.0_neutral__8wekyb3d8bbwe",
       "Name": "OneDrive",
-      "Version": "26007.112.2.0",
+      "Version": "26012.119.2.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2082,9 +2111,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.VisualStudioCode_1.0.109.0_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.VisualStudioCode_1.0.109.2_neutral__8wekyb3d8bbwe",
       "Name": "Visual Studio Code",
-      "Version": "1.0.109.0",
+      "Version": "1.0.109.2",
       "Source": "Microsoft Store"
     },
     {
@@ -2190,12 +2219,6 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.7_7000.617.2103.0_x64__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.7",
-      "Version": "7000.617.2103.0",
-      "Source": "Microsoft Store"
-    },
-    {
       "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.7_7000.652.1806.0_x64__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.7",
       "Version": "7000.652.1806.0",
@@ -2220,6 +2243,12 @@
       "Source": "Microsoft Store"
     },
     {
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.7_7000.770.750.0_x64__8wekyb3d8bbwe",
+      "Name": "WindowsAppRuntime.1.7",
+      "Version": "7000.770.750.0",
+      "Source": "Microsoft Store"
+    },
+    {
       "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8-experimental2_8000.500.1427.0_x64__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.8-experimental2",
       "Version": "8000.500.1427.0",
@@ -2238,13 +2267,13 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.731.1532.0_x86__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.770.947.0_x64__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.8",
-      "Version": "8000.731.1532.0",
+      "Version": "8000.770.947.0",
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.770.947.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.770.947.0_x86__8wekyb3d8bbwe",
       "Name": "WindowsAppRuntime.1.8",
       "Version": "8000.770.947.0",
       "Source": "Microsoft Store"
@@ -2292,9 +2321,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2026.212.621.40_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2026.219.409.3_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2026.212.621.40",
+      "Version": "2026.219.409.3",
       "Source": "Microsoft Store"
     },
     {
@@ -2352,9 +2381,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.25122.25.0_x64__cw5n1h2txyewy",
+      "Id": "MSIX\\MicrosoftWindows.CrossDevice_1.26011.30.0_x64__cw5n1h2txyewy",
       "Name": "\u8DE8\u8BBE\u5907\u4F53\u9A8C\u4E3B\u673A",
-      "Version": "1.25122.25.0",
+      "Version": "1.26011.30.0",
       "Source": "Microsoft Store"
     },
     {

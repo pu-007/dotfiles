@@ -93,6 +93,7 @@ def launch(commands: str | list, cwd: str | None = None) -> asyncio.Task:
 async def main():
     await asyncio.gather(
         asyncio.create_task(close_windows_matching_titles()),
+        launch(r"C:\Program Files\Tencent\Weixin\Weixin.exe"),
         launch(r"C:\Users\zion\Apps\KeyStats\KeyStats.exe"),
         launch(r"C:\Program Files\KDE Connect\bin\kdeconnect-indicator.exe"),
         launch(r"C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe"),
@@ -138,7 +139,6 @@ async def main():
         ),
         launch(r"C:\Users\zion\Apps\capslockpp\CapsLock++.exe"),
         launch(r"C:\Program Files\Docker\Docker\Docker Desktop.exe"),
-        launch(r"C:\Users\zion\Apps\ProjectEye\ProjectEye.exe"),
         launch([r"C:\Program Files (x86)\PasteIntoFile\PasteIntoFile.exe", "tray"]),
         launch(r"C:\Users\zion\Apps\IME_Indicator\IME-Indicator.exe"),
         launch(
