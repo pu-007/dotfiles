@@ -8,28 +8,6 @@ import pyautogui
 import psutil
 
 
-def __activate_window_by_prefix(
-    prefix: str, timeout: Optional[float] = 10.0, interval: float = 0.20
-) -> bool:
-    start_time = time.time()
-
-    while timeout is None or (time.time() - start_time) < timeout:
-        target_win = next(
-            (w for w in pyautogui.getAllWindows() if w.title.startswith(prefix)), None
-        )
-
-        if target_win:
-            try:
-                target_win.activate()
-                return True
-            except Exception as e:
-                # 捕获可能的系统权限或窗口状态异常（如窗口刚好被销毁）
-                print(f"激活窗口时发生异常: {e}")
-                return False
-
-        time.sleep(interval)
-
-
 async def _close_windows_by_title(
     title: str, timeout: float = 10.0, interval: float = 0.2
 ) -> list | None:
@@ -57,24 +35,35 @@ async def _minimize_windows_by_title(
 
 
 async def _async_launch_app(
-    commands: Union[str, List[str]],
-    cwd: Optional[str] = None,
+    commands: Union[str, List[str]], cwd: Optional[str] = None, hide_window=True
 ):
     try:
-        startupinfo = subprocess.STARTUPINFO()
-        startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-        startupinfo.wShowWindow = 0  # SW_HIDE
+        if hide_window:
+            startupinfo = subprocess.STARTUPINFO()
+            startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = 0  # SW_HIDE
 
-        await asyncio.to_thread(
-            lambda: subprocess.Popen(
-                commands,
-                shell=False,
-                close_fds=True,
-                cwd=cwd,
-                creationflags=subprocess.CREATE_NO_WINDOW | subprocess.DETACHED_PROCESS,
-                startupinfo=startupinfo,
+            await asyncio.to_thread(
+                lambda: subprocess.Popen(
+                    commands,
+                    shell=False,
+                    close_fds=True,
+                    cwd=cwd,
+                    creationflags=subprocess.CREATE_NO_WINDOW
+                    | subprocess.DETACHED_PROCESS,
+                    startupinfo=startupinfo,
+                )
             )
-        )
+        else:
+            await asyncio.to_thread(
+                lambda: subprocess.Popen(
+                    commands,
+                    shell=False,
+                    close_fds=True,
+                    cwd=cwd,
+                    creationflags=subprocess.DETACHED_PROCESS,
+                )
+            )
     except FileNotFoundError as e:
         print(f"Error launching application: {e}")
     except Exception as e:
@@ -104,9 +93,39 @@ async def _wait_for(name, timeout: float = 10.0, interval: float = 0.2) -> None:
         await asyncio.sleep(interval)
 
 
-async def close_windows_matching_titles():
-    await _close_windows_by_title("豆包")
-    await _close_windows_by_title("Health Reminder")
+def getWechatWin():
+    return next(
+        (w for w in pyautogui.getAllWindows() if w.title.startswith("微信")), None
+    )
+
+
+async def launch_wechat():
+    await _async_launch_app(
+        r"C:\Program Files\Tencent\Weixin\Weixin.exe", hide_window=False
+    )
+
+    start_time = time()
+
+    # Find WeChat window and Login by pressing Enter within 5 seconds    start_time = time()
+    while (time() - start_time) < 20:
+        target_win = getWechatWin()
+        if target_win:
+            init_width, init_height = target_win.width, target_win.height
+            for _ in range(3):
+                target_win.activate()
+                pyautogui.press("Enter")
+                await asyncio.sleep(0.5)
+            break
+        await asyncio.sleep(0.2)
+
+    # Wait for login by monitoring window size in real time
+    try:
+        while target_win.width <= init_width or target_win.height <= init_height:
+            await asyncio.sleep(0.2)
+    # When the window changes, an exception will be thrown
+    except Exception:
+        target_win = getWechatWin()
+        target_win.close()
 
 
 def launch(commands: str | list, cwd: str | None = None) -> asyncio.Task:
@@ -115,8 +134,10 @@ def launch(commands: str | list, cwd: str | None = None) -> asyncio.Task:
 
 async def main():
     await asyncio.gather(
-        asyncio.create_task(close_windows_matching_titles()),
+        asyncio.create_task(launch_wechat()),
+        asyncio.create_task(_close_windows_by_title("豆包")),
         launch(r"C:\Users\zion\scoop\apps\cc-switch\current\cc-switch.exe"),
+        launch(r"C:\Users\zion\AppData\Local\Focust\focust.exe"),
         launch(r"C:\Users\zion\AppData\Local\health-reminder\health-reminder.exe"),
         launch(r"C:\Users\zion\Apps\KeyStats\KeyStats.exe"),
         launch(r"C:\Program Files\KDE Connect\bin\kdeconnect-indicator.exe"),
