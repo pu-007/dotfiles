@@ -86,23 +86,12 @@ function M.entry()
 		ya.dbg("==>QuickLook WSL Path: " .. quicklook_exe_wsl)
 	end
 
+	-- 用 PowerShell 直接调用 Windows API 激活窗口，注意设置执行策略
+	-- Set-ExecutionPolicy -ExecutionPolicy Bypass
+	os.execute("pwsh.exe -NoProfile -WindowStyle Hidden -File ./assets/activate_quicklook.ps1 &")
+
+	-- 启动 QuickLook
 	os.execute(quicklook_exe_wsl .. " " .. file_path_win .. " -top")
-
-	local pipe = io.popen("pwsh.exe -Command python.exe -", "w")
-
-	pipe:write([[
-from time import time, sleep
-from pyautogui import getWindowsWithTitle
-
-end_time = time() + 3
-while time() <= end_time:
-    windows = getWindowsWithTitle("QuickLook")
-    if windows:
-        for window in windows:
-            window.activate()
-        break
-]])
-	pipe:close()
 end
 
 return M

@@ -8,6 +8,28 @@ import pyautogui
 import psutil
 
 
+def __activate_window_by_prefix(
+    prefix: str, timeout: Optional[float] = 10.0, interval: float = 0.20
+) -> bool:
+    start_time = time.time()
+
+    while timeout is None or (time.time() - start_time) < timeout:
+        target_win = next(
+            (w for w in pyautogui.getAllWindows() if w.title.startswith(prefix)), None
+        )
+
+        if target_win:
+            try:
+                target_win.activate()
+                return True
+            except Exception as e:
+                # 捕获可能的系统权限或窗口状态异常（如窗口刚好被销毁）
+                print(f"激活窗口时发生异常: {e}")
+                return False
+
+        time.sleep(interval)
+
+
 async def _close_windows_by_title(
     title: str, timeout: float = 10.0, interval: float = 0.2
 ) -> list | None:

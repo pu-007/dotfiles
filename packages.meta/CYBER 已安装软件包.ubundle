@@ -4,7 +4,7 @@
     {
       "Id": "7zip",
       "Name": "7zip",
-      "Version": "25.01",
+      "Version": "26.00",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -125,7 +125,7 @@
     {
       "Id": "CodecGuide.K-LiteCodecPack.Basic",
       "Name": "K-Lite Codec Pack Basic",
-      "Version": "19.4.5",
+      "Version": "19.5.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -161,7 +161,7 @@
     {
       "Id": "Docker.DockerDesktop",
       "Name": "Docker Desktop",
-      "Version": "4.60.0",
+      "Version": "4.60.1",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -203,7 +203,7 @@
     {
       "Id": "JohnMacFarlane.Pandoc",
       "Name": "Pandoc",
-      "Version": "3.8.3",
+      "Version": "3.9",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -252,7 +252,7 @@
     {
       "Id": "LGUG2Z.komorebi",
       "Name": "komorebi",
-      "Version": "0.1.39",
+      "Version": "0.1.40",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -291,7 +291,7 @@
     {
       "Id": "Microsoft.AppInstaller",
       "Name": "App Installer",
-      "Version": "1.27.460.0",
+      "Version": "1.27.470.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -388,6 +388,13 @@
       "Id": "Microsoft.UI.Xaml.2.8",
       "Name": "Microsoft.UI.Xaml",
       "Version": "8.2501.31001.0",
+      "Source": "winget",
+      "ManagerName": "Winget"
+    },
+    {
+      "Id": "Microsoft.VCLibs.14",
+      "Name": "Microsoft Visual C\u002B\u002B 2015 UWP Runtime Package",
+      "Version": "14.0.33519.0",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -501,7 +508,7 @@
     {
       "Id": "Microsoft.VisualStudioCode",
       "Name": "Microsoft Visual Studio Code",
-      "Version": "1.109.2",
+      "Version": "1.109.4",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -518,6 +525,13 @@
       "Version": "1.12.440",
       "Source": "PSGallery",
       "ManagerName": "PowerShell"
+    },
+    {
+      "Id": "Microsoft.WindowsAppRuntime.1.8",
+      "Name": "Windows App Runtime 1.8",
+      "Version": "1.8.5",
+      "Source": "winget",
+      "ManagerName": "Winget"
     },
     {
       "Id": "Microsoft.WindowsTerminal.Preview",
@@ -708,7 +722,7 @@
     {
       "Id": "Tencent.WeChat.Universal",
       "Name": "WeChat",
-      "Version": "4.1.6.46",
+      "Version": "4.1.7.30",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -792,7 +806,7 @@
     {
       "Id": "cargo-binstall",
       "Name": "Cargo Binstall",
-      "Version": "1.17.4",
+      "Version": "1.17.5",
       "Source": "crates.io",
       "ManagerName": "Cargo"
     },
@@ -859,7 +873,7 @@
     {
       "Id": "fastfetch",
       "Name": "Fastfetch",
-      "Version": "2.58.0",
+      "Version": "2.59.0",
       "Source": "main",
       "ManagerName": "Scoop"
     },
@@ -915,7 +929,7 @@
     {
       "Id": "kangfenmao.CherryStudio",
       "Name": "Cherry Studio",
-      "Version": "1.7.17",
+      "Version": "1.7.19",
       "Source": "winget",
       "ManagerName": "Winget"
     },
@@ -1883,6 +1897,12 @@
       "Source": "\u672C\u5730\u7535\u8111"
     },
     {
+      "Id": "ARP\\User\\X64\\health-reminder",
+      "Name": "health-reminder",
+      "Version": "1.6.1",
+      "Source": "\u672C\u5730\u7535\u8111"
+    },
+    {
       "Id": "ARP\\User\\X64\\{506270E7-E3B5-4157-B53A-3BFFE8E418DB}_is1",
       "Name": "PixPin \u7248\u672C 2.4.9.6",
       "Version": "2.4.9.6",
@@ -1949,9 +1969,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\AppUp.IntelArcSoftware_25.50.2012.0_x64__8j3eq9eme6ctt",
+      "Id": "MSIX\\AppUp.IntelArcSoftware_25.52.2110.0_x64__8j3eq9eme6ctt",
       "Name": "Intel\u00AE Graphics Software",
-      "Version": "25.50.2012.0",
+      "Version": "25.52.2110.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2099,21 +2119,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.VCLibs.140.00_14.0.33519.0_x64__8wekyb3d8bbwe",
-      "Name": "Microsoft Visual C\u002B\u002B 2015 UWP Runtime Package",
-      "Version": "14.0.33519.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.VCLibs.140.00_14.0.33519.0_x86__8wekyb3d8bbwe",
-      "Name": "Microsoft Visual C\u002B\u002B 2015 UWP Runtime Package",
-      "Version": "14.0.33519.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.VisualStudioCode_1.0.109.2_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.VisualStudioCode_1.0.109.4_neutral__8wekyb3d8bbwe",
       "Name": "Visual Studio Code",
-      "Version": "1.0.109.2",
+      "Version": "1.0.109.4",
       "Source": "Microsoft Store"
     },
     {
@@ -2144,6 +2152,18 @@
       "Id": "MSIX\\Microsoft.WinAppRuntime.DDLM.8000.675.1142.0-x8_8000.675.1142.0_x86__8wekyb3d8bbwe",
       "Name": "Windows App Runtime DDLM 8000.675.1142.0-x8",
       "Version": "8000.675.1142.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WinAppRuntime.DDLM.8000.770.947.0-x6_8000.770.947.0_x64__8wekyb3d8bbwe",
+      "Name": "Windows App Runtime DDLM 8000.770.947.0-x6",
+      "Version": "8000.770.947.0",
+      "Source": "Microsoft Store"
+    },
+    {
+      "Id": "MSIX\\Microsoft.WinAppRuntime.DDLM.8000.770.947.0-x8_8000.770.947.0_x86__8wekyb3d8bbwe",
+      "Name": "Windows App Runtime DDLM 8000.770.947.0-x8",
+      "Version": "8000.770.947.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2261,24 +2281,6 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.731.1532.0_x64__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.8",
-      "Version": "8000.731.1532.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.770.947.0_x64__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.8",
-      "Version": "8000.770.947.0",
-      "Source": "Microsoft Store"
-    },
-    {
-      "Id": "MSIX\\Microsoft.WindowsAppRuntime.1.8_8000.770.947.0_x86__8wekyb3d8bbwe",
-      "Name": "WindowsAppRuntime.1.8",
-      "Version": "8000.770.947.0",
-      "Source": "Microsoft Store"
-    },
-    {
       "Id": "MSIX\\Microsoft.WindowsCalculator_11.2508.4.0_x64__8wekyb3d8bbwe",
       "Name": "Windows \u8BA1\u7B97\u5668",
       "Version": "11.2508.4.0",
@@ -2321,9 +2323,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\Microsoft.Winget.Source_2026.219.409.3_neutral__8wekyb3d8bbwe",
+      "Id": "MSIX\\Microsoft.Winget.Source_2026.219.856.46_neutral__8wekyb3d8bbwe",
       "Name": "Windows Package Manager Source (winget) V2",
-      "Version": "2026.219.409.3",
+      "Version": "2026.219.856.46",
       "Source": "Microsoft Store"
     },
     {
@@ -2363,9 +2365,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Main.1.8_8000.731.1532.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Main.1.8_8000.770.947.0_x64__8wekyb3d8bbwe",
       "Name": "WinAppRuntime.Main.1.8",
-      "Version": "8000.731.1532.0",
+      "Version": "8000.770.947.0",
       "Source": "Microsoft Store"
     },
     {
@@ -2375,9 +2377,9 @@
       "Source": "Microsoft Store"
     },
     {
-      "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Singleton_8000.731.1532.0_x64__8wekyb3d8bbwe",
+      "Id": "MSIX\\MicrosoftCorporationII.WinAppRuntime.Singleton_8000.770.947.0_x64__8wekyb3d8bbwe",
       "Name": "WinAppRuntime.Singleton",
-      "Version": "8000.731.1532.0",
+      "Version": "8000.770.947.0",
       "Source": "Microsoft Store"
     },
     {
