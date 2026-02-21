@@ -2,8 +2,8 @@
 return {
   "AstroNvim/astrocommunity",
 
+  { import = "astrocommunity.recipes.ai" },
   -- ## appearance
-  { import = "astrocommunity.colorscheme.gruvbox-nvim" },
   { import = "astrocommunity.markdown-and-latex.markview-nvim" },
   { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
 

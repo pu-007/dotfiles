@@ -55,8 +55,8 @@ hash = "384464b6df8cb807425c521f8cd790f3"
 
 [[plugin.deps]]
 use = "pu-007/quicklook"
-rev = "839afeb"
-hash = "1d51550ba30553478201933c239b051b"
+rev = "f084fcd"
+hash = "a95c7332c93286a5b1019fcbe266be59"
 
 [[plugin.deps]]
 use = "macydnah/office"

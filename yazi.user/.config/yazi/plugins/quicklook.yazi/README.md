@@ -35,36 +35,22 @@ run = "plugin quicklook"
 desc = "Quick look file/dir"
 ```
 
-4. Setup Python Environment
+## Requirements
 
-To activate automatically, you need to install `pyautogui` in your Python environment.
+- **WSL** (Windows Subsystem for Linux)
+- **QuickLook** installed on Windows
+- **pwsh.exe** (PowerShell Core) available in your PATH (usually default in WSL)
+- Standard Linux tools: `iconv`, `base64`, `tr` (usually pre-installed)
 
-```bash
-pip install pyautogui
-```
 
-Or you can choose vbs commands to activate QuickLook, but it may not work in some cases.
+## How it works
 
-```Lua
-[[powershell.exe -Command "Add-Type -AssemblyName Microsoft.VisualBasic; [Microsoft.VisualBasic.Interaction]::AppActivate('QuickLook')"]]
-```
+1. **Path Resolution**: Resolves the selected file/directory to a real absolute path (handling symlinks).
 
-The method will be opptional in the future, and you can choose to use it or not.
+2. **Path Conversion**:
+   - If in a Windows mounted drive (e.g., `/mnt/c/...`), converts to a native Windows path (`C:\...`).
+   - If in a WSL internal directory (e.g., `/home/user/...`), converts to a UNC path (`\\wsl.localhost\Distro\...`).
 
-## Brief Introduction
+3. **Window Activation**: Generates and executes a temporary PowerShell script (encoded via Base64) to bring the QuickLook window to the foreground if it's already running.
 
-1. if in Windows mounted dir
-
-transform current file/dir path like `/mnt/c/Users/zion/AppData/Local/Programs/QuickLook`
-
-to win_native_path like `C:\Users\zion\AppData\Local\Programs\QuickLook`
-
-2. if in WSL innter dir
-
-transform current file/dir path like `/home/zion/Downloads`
-
-to win_wslnet_path like `\\wsl.localhost\Arch\home\zion\Downloads`
-
-3. exec `QuickLook.exe '$file_or_dir'`
-
-(Note that the new path should be enclosed in quotation marks to prevent ambiguity caused by spaces, use async ways to exec)
+4. **Execution**: Runs `QuickLook.exe` with the converted path to preview the file.

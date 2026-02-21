@@ -6,17 +6,8 @@ end
 
 ---
 -- 解析路径为最终的、真实的绝对路径。
--- 此函数假定脚本的当前工作目录 (CWD) 已经是正确的上下文。
--- 它能处理任意路径（相对/绝对/含符号链接）。
---
--- @param path_str string        需要解析的路径。
--- @return string|nil, string   成功则返回真实的绝对路径；失败则返回 nil 和错误信息。
---
 local function to_abs_path(path_str)
-	-- 使用 %q 为 shell 命令安全地引用路径。
 	local safe_path = string.format("%q", path_str)
-
-	-- 命令现在非常简单，readlink 会自动使用当前进程的 CWD 来解析相对路径。
 	local command = "readlink -f " .. safe_path
 
 	local f = io.popen(command)
@@ -27,28 +18,21 @@ local function to_abs_path(path_str)
 	local real_path = f:read("*a")
 	local success, _, exit_code = f:close()
 
-	-- 如果命令执行失败或没有返回任何内容，则解析失败。
 	if not success or exit_code ~= 0 or real_path == "" then
 		return nil, "Failed to resolve path: " .. path_str
 	end
 
-	-- 清理并返回结果。
 	return real_path:gsub("[\r\n]$", "")
 end
 
 -- Converts a WSL path to a Windows path.
--- @param wsl_path (string) The WSL path to convert.
--- @param distro (string) The name of the WSL distribution.
--- @return (string) The converted Windows path.
 local function to_win_path(wsl_path, distro)
 	local win_path
-	-- Check if it's a mounted Windows path (e.g., /mnt/c/...)
 	if string.sub(wsl_path, 1, 5) == "/mnt/" then
 		local drive = string.sub(wsl_path, 6, 6)
 		win_path = string.upper(drive) .. ":" .. string.sub(wsl_path, 7)
 		win_path = string.gsub(win_path, "/", "\\")
 	else
-		-- Assume it's a WSL-native path (e.g., /home/user/...)
 		win_path = "\\\\wsl.localhost\\" .. distro .. wsl_path
 		win_path = string.gsub(win_path, "/", "\\")
 	end
@@ -60,13 +44,10 @@ local get_current_abs_path = ya.sync(function()
 	if current_file.cha.is_link then
 		return to_abs_path(tostring(current_file.link_to))
 	else
-		-- to deal with a file that is not a link but a parent directory
 		return to_abs_path(tostring(current_file.url))
 	end
 end)
 
--- it's necessary to use ya.sync to get sync context vars
--- bacause the plugin is async for default
 local get_cfg = ya.sync(function(_)
 	return M.cfg
 end)
@@ -77,6 +58,7 @@ function M.entry()
 	local quicklook_exe_wsl = cfg.quicklook_path or "/mnt/c/Users/zion/AppData/Local/Programs/QuickLook/QuickLook.exe"
 	local file_path_wsl = get_current_abs_path()
 
+	-- 给文件路径加单引号，防止包含空格
 	local file_path_win = "'" .. to_win_path(file_path_wsl, distro) .. "'"
 
 	if cfg.debug then
@@ -86,12 +68,59 @@ function M.entry()
 		ya.dbg("==>QuickLook WSL Path: " .. quicklook_exe_wsl)
 	end
 
-	-- 用 PowerShell 直接调用 Windows API 激活窗口，注意设置执行策略
-	-- Set-ExecutionPolicy -ExecutionPolicy Bypass
-	os.execute("pwsh.exe -NoProfile -WindowStyle Hidden -File ./assets/activate_quicklook.ps1 &")
+	-- 1. 将脚本临时写入 /tmp
+	local tmp_ps_wsl_path = "/tmp/yazi_quicklook_activate.ps1"
+	local f = io.open(tmp_ps_wsl_path, "w")
+	if f then
+		f:write([[
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+public class Win32 {
+    [DllImport("user32.dll")]
+    public static extern IntPtr GetForegroundWindow();
+    [DllImport("user32.dll")]
+    public static extern bool SetForegroundWindow(IntPtr hWnd);
+    [DllImport("user32.dll", CharSet = CharSet.Auto)]
+    public static extern int GetWindowText(IntPtr hWnd, System.Text.StringBuilder text, int count);
+    [DllImport("user32.dll")]
+    public static extern bool EnumWindows(EnumWindowsProc enumProc, IntPtr lParam);
+    public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+}
+"@
+$sw = [Diagnostics.Stopwatch]::StartNew()
+while ($sw.ElapsedMilliseconds -lt 5000) {
+    $found = $false
+    [Win32]::EnumWindows({
+        param($hWnd, $lParam)
+        $sb = New-Object System.Text.StringBuilder 256
+        [Win32]::GetWindowText($hWnd, $sb, $sb.Capacity) | Out-Null
+        if ($sb.ToString().StartsWith("QuickLook - ")) {
+            [Win32]::SetForegroundWindow($hWnd) | Out-Null
+            $script:found = $true
+            return $false
+        }
+        return $true
+    }, [IntPtr]::Zero) | Out-Null
 
-	-- 启动 QuickLook
-	os.execute(quicklook_exe_wsl .. " " .. file_path_win .. " -top")
+    if ($found) { break }
+    Start-Sleep -Milliseconds 50
+}
+]])
+		f:close()
+	end
+
+	-- 2. 终极魔法：使用 Linux 自带工具转换为 Base64，彻底无视报错！
+	-- 先用 iconv 将 utf-8 转换为 utf-16le，再 base64 编码，去掉换行符。
+	-- 最后使用 pwsh.exe -EncodedCommand 直接执行编码后的字符串。
+	local ps_cmd = [[B64=$(iconv -f UTF-8 -t UTF-16LE ']]
+		.. tmp_ps_wsl_path
+		.. [[' | base64 | tr -d '\n\r') && pwsh.exe -WindowStyle Hidden -NoProfile -NonInteractive -EncodedCommand "$B64" &]]
+	os.execute(ps_cmd)
+
+	-- 3. 启动 QuickLook
+	local ql_cmd = quicklook_exe_wsl .. " " .. file_path_win .. " -top &"
+	os.execute(ql_cmd)
 end
 
 return M
