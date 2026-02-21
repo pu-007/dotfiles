@@ -39,6 +39,7 @@ ffmpegthumbnailer
 ffmpegthumbnailer-mp3
 ffmpegthumbs
 fish
+flite1
 fontforge
 freerdp2
 fzf
@@ -62,6 +63,7 @@ hspell
 hunspell
 hybridfilexfer-git
 hyperfine
+icu76
 imagemagick
 img2pdf
 jdk-openjdk
@@ -93,6 +95,8 @@ neovim
 neovim-qt
 neovim-symlinks
 noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts-extra
 npm
 nuspell
 nvidia-container-toolkit
@@ -100,6 +104,7 @@ nvidia-settings
 nvidia-utils
 openbsd-netcat
 opencl-mesa
+opencode
 openfst
 orchis-theme
 otf-libertinus
@@ -279,8 +284,6 @@ xorg-xwud
 yapf
 yay
 yazi
-zathura-git
-zathura-pdf-mupdf-git
 zbar
 zoxide
 zsh
