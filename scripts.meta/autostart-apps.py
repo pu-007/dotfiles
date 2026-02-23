@@ -21,7 +21,7 @@ class AppConfig:
     """定义应用启动配置的数据类，方便统一管理"""
 
     cmd: Union[str, List[str]]
-    cwd: str = None
+    cwd: str | None = None
     hide_window: bool = True
 
 

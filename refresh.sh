@@ -36,24 +36,24 @@ git_restore() {
 
 do_update() {
     echo ">> Updating packages..."
-    
+
     # Zsh plugins
     [ -f "$HOME/.zinit/bin/zinit.zsh" ] && zsh -ic "zinit update --all"
 
     # Arch Linux
-    if command -v yay &> /dev/null; then
+    if command -v yay &>/dev/null; then
         yay -Syu --noconfirm
     fi
 
     sudo pkgfile --update 2>/dev/null
 
     # Runtimes
-    if command -v conda &> /dev/null; then conda update --all -y; fi
+    if command -v conda &>/dev/null; then conda update --all -y; fi
     sudo npm install -g @google/gemini-cli
-    if command -v npm &> /dev/null; then sudo npm install -g aicommit2; fi
+    if command -v npm &>/dev/null; then sudo npm install -g aicommit2; fi
 
     # WSL / Windows Sync
-    if command -v komorebic.exe &> /dev/null; then komorebic.exe fetch-app-specific-configuration; fi
+    if command -v komorebic.exe &>/dev/null; then komorebic.exe fetch-app-specific-configuration; fi
     if [ -d "/mnt/c/Users/zion/AppData/Roaming/Rime" ]; then
         git -C "/mnt/c/Users/zion/AppData/Roaming/Rime" pull
     fi
@@ -62,9 +62,9 @@ do_update() {
 do_backup() {
     echo ">> Exporting package metadata..."
     mkdir -p "$DOTFILES_DIR/packages.meta"
-    
-    if command -v pacman &> /dev/null; then
-        pacman -Qqe > "$DOTFILES_DIR/packages.meta/pacman.txt"
+
+    if command -v pacman &>/dev/null; then
+        pacman -Qqe >"$DOTFILES_DIR/packages.meta/pacman.txt"
     fi
 
     if [ -d "$DOTFILES_DIR/.git" ]; then
@@ -80,24 +80,25 @@ do_backup() {
 
 do_cleanup() {
     echo ">> Deep cleaning caches..."
-    
+
     # Dev Caches
     [ -d "$HOME/.cache/uv" ] && uv cache clean
     [ -d "$HOME/.cache/pip" ] && pip cache purge
     if [ -d "$HOME/.cache/huggingface/hub" ]; then
         rm -rf "$HOME/.cache/huggingface/hub" "$HOME/.cache/huggingface/download"
     fi
-    
-    command -v go &> /dev/null && go clean -cache -modcache
-    command -v npm &> /dev/null && npm cache clean --force
-    command -v yay &> /dev/null && yay -Sc --noconfirm
-    command -v scoop &> /dev/null && scoop cleanup -a -g -k
+
+    command -v go &>/dev/null && go clean -cache -modcache
+    command -v npm &>/dev/null && npm cache clean --force
+    command -v yay &>/dev/null && yay -Sc --noconfirm
+    command -v scoop &>/dev/null && scoop cleanup -a -g -k
 
     # System Garbage
     # TODO safe docker cleanup job
-    #docker system prune -a -f
+    # docker system prune -a -f
     # ssh root@192.168.100.1 docker system prune -a -f
     #  docker volume prune
+    echo "--- Check 'ssh root@192.168.100.1 docker system prune -a -f' ---"
 
     sudo trash-empty -f --all-users 2>/dev/null || trash-empty -f
 }
