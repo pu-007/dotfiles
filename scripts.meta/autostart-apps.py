@@ -7,6 +7,9 @@ from time import time
 import pyautogui
 import psutil
 
+from pywinauto import Application
+from pywinauto.findwindows import ElementNotFoundError
+
 
 async def _close_windows_by_title(
     title: str, timeout: float = 10.0, interval: float = 0.2
@@ -93,39 +96,84 @@ async def _wait_for(name, timeout: float = 10.0, interval: float = 0.2) -> None:
         await asyncio.sleep(interval)
 
 
-def getWechatWin():
-    return next(
-        (w for w in pyautogui.getAllWindows() if w.title.startswith("微信")), None
-    )
-
-
 async def launch_wechat():
-    await _async_launch_app(
-        r"C:\Program Files\Tencent\Weixin\Weixin.exe", hide_window=False
+    # 启动微信 (使用 uia 后端对现代 UI 兼容性更好)
+    app = Application(backend="uia").start(
+        r"C:\Program Files\Tencent\Weixin\Weixin.exe"
     )
 
+    # 【1】等待登录窗口出现 (开机时给予 15 秒缓冲)
+    login_dlg = app.window(title="微信")
     start_time = time()
-
-    # Find WeChat window and Login by pressing Enter within 5 seconds    start_time = time()
-    while (time() - start_time) < 20:
-        target_win = getWechatWin()
-        if target_win:
-            init_width, init_height = target_win.width, target_win.height
-            for _ in range(3):
-                target_win.activate()
-                pyautogui.press("Enter")
-                await asyncio.sleep(0.5)
+    while time() - start_time < 15:
+        if login_dlg.exists(timeout=0):
             break
         await asyncio.sleep(0.2)
+    else:
+        print("超时：未能找到微信登录窗口")
+        return
 
-    # Wait for login by monitoring window size in real time
+    # 【2】记录初始窗口大小并发送回车
     try:
-        while target_win.width <= init_width or target_win.height <= init_height:
-            await asyncio.sleep(0.2)
-    # When the window changes, an exception will be thrown
-    except Exception:
-        target_win = getWechatWin()
-        target_win.close()
+        # 获取登录窗口的初始长宽
+        rect = login_dlg.rectangle()
+        init_width, init_height = rect.width(), rect.height()
+
+        # 强制获取焦点并发送回车键
+        login_dlg.set_focus()
+        login_dlg.type_keys("{ENTER}")
+        print("已发送回车登录指令")
+    except Exception as e:
+        print(f"操作登录窗口失败: {e}")
+        return
+
+    # 【3】实时监控窗口变化，判断是否登录成功
+    logged_in = False
+    monitor_start = time()
+
+    # 给予 20 秒的时间等待网络登录和主窗口加载
+    while time() - monitor_start < 20:
+        try:
+            # 重新寻找名为“微信”的窗口（因为登录后会生成新的同名主窗口）
+            current_dlg = app.window(title="微信")
+
+            if current_dlg.exists(timeout=0):
+                new_rect = current_dlg.rectangle()
+                new_width, new_height = new_rect.width(), new_rect.height()
+
+                # 如果长或宽明显大于登录窗口（加50像素作为容差），说明主窗口已加载
+                if new_width > init_width + 50 or new_height > init_height + 50:
+                    logged_in = True
+                    break
+
+        except ElementNotFoundError:
+            # 在登录过渡瞬间，旧窗口销毁、新窗口还未建立时会触发此异常，安全忽略即可
+            pass
+        except Exception as e:
+            # 忽略过渡期间其他由于 COM 接口刷新导致的临时异常
+            pass
+
+        await asyncio.sleep(0.2)
+
+    # 【4】登录成功后，隐藏到系统托盘
+    if logged_in:
+        print("检测到窗口变大，登录成功！")
+        # 额外等待 1.5 秒，确保主窗口的内容和后台进程完全初始化完毕，避免过早关闭导致微信退出
+        # await asyncio.sleep(1.5)
+
+        try:
+            main_dlg = app.window(title="微信")
+            # 在微信的默认设置中，触发关闭操作（Close）并不会结束进程，而是隐藏到右下角托盘
+            main_dlg.close()
+            print("已成功将微信隐藏至任务托盘。")
+        except Exception as e:
+            print(f"隐藏窗口失败: {e}")
+    else:
+        print("超时：登录未能成功或窗口大小未发生变化。")
+
+
+# 测试运行
+# asyncio.run(launch_wechat())
 
 
 def launch(commands: str | list, cwd: str | None = None) -> asyncio.Task:
