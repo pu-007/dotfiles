@@ -8,7 +8,7 @@ import pyautogui
 from pywinauto import Application
 from pywinauto.findwindows import ElementNotFoundError
 
-# 提前关闭安全保护，防止鼠标移动到角落导致脚本抛出异常中止
+# 提前关闭安全保护，防止意外中止
 pyautogui.FAILSAFE = False
 
 # ==========================================
@@ -18,14 +18,12 @@ pyautogui.FAILSAFE = False
 
 @dataclass
 class AppConfig:
-    """定义应用启动配置的数据类，方便统一管理"""
-
     cmd: Union[str, List[str]]
     cwd: str | None = None
     hide_window: bool = True
 
 
-# 统一维护的开机自启应用列表 (增删应用只需在这里修改)
+# 统一维护的开机自启应用列表
 STARTUP_APPS = [
     AppConfig(r"C:\Users\zion\scoop\apps\cc-switch\current\cc-switch.exe"),
     AppConfig(r"C:\Users\zion\AppData\Local\Focust\focust.exe"),
@@ -102,40 +100,42 @@ STARTUP_APPS = [
 # ==========================================
 
 
-def launch_app_sync(config: AppConfig):
+async def launch_app_async(config: AppConfig):
     """
-    同步启动应用程序。
-    说明：subprocess.Popen 本身就是非阻塞的，无需使用 async 包装。
+    异步多线程启动应用程序。
+    利用线程池将进程创建请求瞬间并发甩给 Windows 操作系统。
     """
-    try:
-        flags = subprocess.DETACHED_PROCESS
-        startupinfo = None
 
-        if config.hide_window:
-            flags |= subprocess.CREATE_NO_WINDOW
-            startupinfo = subprocess.STARTUPINFO()
-            startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-            startupinfo.wShowWindow = 0  # SW_HIDE
+    def _start_process():
+        try:
+            flags = subprocess.DETACHED_PROCESS
+            startupinfo = None
 
-        subprocess.Popen(
-            config.cmd,
-            shell=False,
-            close_fds=True,
-            cwd=config.cwd,
-            creationflags=flags,
-            startupinfo=startupinfo,
-        )
-    except Exception as e:
-        cmd_name = config.cmd[0] if isinstance(config.cmd, list) else config.cmd
-        print(f"启动失败 [{cmd_name}]: {e}")
+            if config.hide_window:
+                flags |= subprocess.CREATE_NO_WINDOW
+                startupinfo = subprocess.STARTUPINFO()
+                startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+                startupinfo.wShowWindow = 0  # SW_HIDE
+
+            subprocess.Popen(
+                config.cmd,
+                shell=False,
+                close_fds=True,
+                cwd=config.cwd,
+                creationflags=flags,
+                startupinfo=startupinfo,
+            )
+        except Exception as e:
+            cmd_name = config.cmd[0] if isinstance(config.cmd, list) else config.cmd
+            print(f"启动失败 [{cmd_name}]: {e}")
+
+    # 将阻塞的 Popen 调用推入 asyncio 底层的线程池执行
+    await asyncio.to_thread(_start_process)
 
 
 async def manage_window_by_title(
     title: str, action: str = "close", timeout: float = 10.0, interval: float = 0.5
 ) -> bool:
-    """
-    异步管理（关闭/最小化）指定标题的窗口。整合了以前的 close 和 minimize 方法。
-    """
     end_time = time() + timeout
     while time() <= end_time:
         windows = await asyncio.to_thread(pyautogui.getWindowsWithTitle, title)
@@ -150,11 +150,9 @@ async def manage_window_by_title(
 async def auto_login_wechat(
     wechat_path: str = r"C:\Program Files\Tencent\Weixin\Weixin.exe",
 ):
-    """微信全自动登录并隐藏的逻辑封装"""
     app = Application(backend="uia").start(wechat_path)
-
-    # 1. 等待登录窗口出现
     login_dlg = app.window(title="微信")
+
     start_time = time()
     while time() - start_time < 15:
         if login_dlg.exists(timeout=0):
@@ -164,7 +162,6 @@ async def auto_login_wechat(
         print("超时：未能找到微信登录窗口")
         return
 
-    # 2. 记录初始大小并发送回车
     try:
         rect = login_dlg.rectangle()
         init_width, init_height = rect.width(), rect.height()
@@ -174,7 +171,6 @@ async def auto_login_wechat(
         print(f"操作登录窗口失败: {e}")
         return
 
-    # 3. 监控窗口变化判断登录成功
     logged_in = False
     monitor_start = time()
     while time() - monitor_start < 20:
@@ -188,22 +184,16 @@ async def auto_login_wechat(
                 ):
                     logged_in = True
                     break
-        except ElementNotFoundError:
-            pass  # 过渡瞬间的正常现象
-        except Exception:
-            pass  # 忽略 COM 接口刷新异常
-
+        except (ElementNotFoundError, Exception):
+            pass
         await asyncio.sleep(0.5)
 
-    # 4. 登录成功后隐藏
     if logged_in:
         try:
             app.window(title="微信").close()
-            print("微信已登录并隐藏至托盘")
+            print("微信已登录并隐藏")
         except Exception as e:
             print(f"微信隐藏失败: {e}")
-    else:
-        print("微信登录超时或未检测到窗口变化")
 
 
 # ==========================================
@@ -212,12 +202,13 @@ async def auto_login_wechat(
 
 
 async def main():
-    # 1. 瞬间遍历触发所有基础应用的启动 (由于是进程分离，瞬间完成，不会阻塞)
-    for app_config in STARTUP_APPS:
-        launch_app_sync(app_config)
+    # 将所有的普通应用启动任务打包
+    startup_tasks = [launch_app_async(app) for app in STARTUP_APPS]
 
-    # 2. 并发执行需要长时间轮询和等待的异步任务（例如微信UI自动化、等待豆包窗口出现并关闭）
+    # 【核心改动】：使用 gather 将所有任务一次性全部推入事件循环！
+    # 这意味着 30个软件的启动 + 微信自动化登录 + 等待豆包窗口关闭，全部在同一时间点并发执行。
     await asyncio.gather(
+        *startup_tasks,
         auto_login_wechat(),
         manage_window_by_title("豆包", action="close", timeout=15.0),
     )
