@@ -9,7 +9,7 @@ import time
 # --- Configuration (can be overridden by CLI args or function params) ---
 # Expands to /home/your_wsl_user/dotfiles/c.mnt (or similar)
 DEFAULT_WSL_CONFIG_ROOT_STR = str(Path.home() / "dotfiles" / "c.mnt")
-DEFAULT_WSL_DISTRO_NAME = "Arch"  # Change if your distro name is different
+DEFAULT_WSL_DISTRO_NAME = "archlinux"  # Change if your distro name is different
 
 # --- Helper Functions for Command Execution ---
 

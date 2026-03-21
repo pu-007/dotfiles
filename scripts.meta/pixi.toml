@@ -1,0 +1,11 @@
+[workspace]
+authors = ["Zion Pu <pu.007@qq.com>"]
+channels = ["conda-forge"]
+name = "scripts.meta"
+platforms = ["win-64"]
+version = "0.1.0"
+
+[tasks]
+autostart = "python autostart-apps.py"
+
+[dependencies]

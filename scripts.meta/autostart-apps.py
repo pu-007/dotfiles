@@ -25,12 +25,24 @@ class AppConfig:
 
 # 统一维护的开机自启应用列表
 STARTUP_APPS = [
-    AppConfig(r"C:\Users\zion\scoop\apps\cc-switch\current\cc-switch.exe"),
-    AppConfig(r"C:\Users\zion\AppData\Local\Focust\focust.exe"),
-    AppConfig(r"C:\Users\zion\AppData\Local\health-reminder\health-reminder.exe"),
-    AppConfig(r"C:\Users\zion\Apps\KeyStats\KeyStats.exe"),
-    AppConfig(r"C:\Program Files\KDE Connect\bin\kdeconnect-indicator.exe"),
-    AppConfig(r"C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe"),
+    # AppConfig(r"C:\Users\zion\scoop\apps\cc-switch\current\cc-switch.exe"),
+    # AppConfig(r"C:\Users\zionpu\AppData\Local\Focust\focust.exe"),
+    # AppConfig(r"C:\Users\zionpu\AppData\Local\health-reminder\health-reminder.exe"),
+    # AppConfig(r"C:\Users\zionpu\Apps\KeyStats\KeyStats.exe"),
+    # AppConfig(r"C:\Program Files\KDE Connect\bin\kdeconnect-indicator.exe"),
+    # AppConfig(r"C:\Users\zionpu\Apps\IME_Indicator\IME-Indicator.exe"),
+    # AppConfig(r"C:\Program Files\Rime\weasel-0.17.4\WeaselServer.exe"),
+    # AppConfig(
+    #     [
+    #         r"C:\Windows\System32\DriverStore\FileRepository\realtekservice.inf_amd64_d2d4c5f34960aaac\RtkAudUService64.exe",
+    #         "-background",
+    #     ]
+    # ),
+    # AppConfig(r"C:\Users\zionpu\Apps\Controller Companion\ControllerCompanion.exe"),
+    AppConfig(
+        [r"C:\Users\zionpu\AppData\Local\Programs\QuickLook\QuickLook.exe", "-autorun"]
+    ),
+    AppConfig(r"C:\Users\zionpu\AppData\Local\Doubao\Application\Doubao.exe"),
     AppConfig(r"C:\Program Files\EcoPaste-Sync\EcoPaste-Sync.exe"),
     AppConfig(r"C:\Program Files\flomo\flomo.exe"),
     AppConfig(["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"]),
@@ -40,35 +52,24 @@ STARTUP_APPS = [
     AppConfig(
         [
             r"C:\Program Files\AutoHotkey\v2\AutoHotkey.exe",
-            r"C:\Users\zion\komorebi.ahk",
+            r"C:\Users\zionpu\komorebi.ahk",
         ]
     ),
+    AppConfig(r"C:\Program Files (x86)\滴答清单\TickTick.exe"),
     AppConfig(r"C:\Program Files\YASB\yasb.exe"),
-    AppConfig(r"C:\Users\zion\AppData\Local\Programs\utools\uTools.exe"),
+    AppConfig(r"C:\Users\zionpu\AppData\Local\Programs\utools\uTools.exe"),
     AppConfig(r"C:\Program Files\Mem Reduct\memreduct.exe"),
-    AppConfig(r"C:\Users\zion\AppData\Roaming\AltSnap\AltSnap.exe"),
-    AppConfig(r"C:\Users\zion\AppData\Local\Programs\PixPin\PixPin.exe"),
+    AppConfig(r"C:\Users\zionpu\AppData\Roaming\AltSnap\AltSnap.exe"),
+    AppConfig(r"C:\Users\zionpu\AppData\Local\Programs\PixPin\PixPin.exe"),
     AppConfig([r"C:\Program Files (x86)\Stardock\Fences\Fences.exe", "/startup"]),
-    AppConfig(r"C:\Users\zion\Apps\Controller Companion\ControllerCompanion.exe"),
     AppConfig(
         r"C:\Program Files\Pantum\ptm6700\SCANNER\PushScan\ptm6700PushMonitor.exe"
     ),
-    AppConfig(
-        [
-            r"C:\Windows\System32\DriverStore\FileRepository\realtekservice.inf_amd64_d2d4c5f34960aaac\RtkAudUService64.exe",
-            "-background",
-        ]
-    ),
-    AppConfig(r"C:\Program Files\Rime\weasel-0.17.4\WeaselServer.exe"),
-    AppConfig(
-        [r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe", "-autorun"]
-    ),
-    AppConfig(r"C:\Users\zion\Apps\capslockpp\CapsLock++.exe"),
+    AppConfig(r"C:\Users\zionpu\Apps\capslockpp\CapsLock++.exe"),
     AppConfig(r"C:\Program Files\Docker\Docker\Docker Desktop.exe"),
     AppConfig([r"C:\Program Files (x86)\PasteIntoFile\PasteIntoFile.exe", "tray"]),
-    AppConfig(r"C:\Users\zion\Apps\IME_Indicator\IME-Indicator.exe"),
     AppConfig(
-        ["pythonw", r"\\wsl.localhost\Arch\home\pu\Source\cut_in_xiaoai\main.py"]
+        ["pixi", "run" "-m",r"C:\Users\zionpu\cut_in_xiaoai\pyproject.toml", "start"]
     ),
     AppConfig(
         [
@@ -215,4 +216,6 @@ async def main():
 
 
 if __name__ == "__main__":
+    print(1)
     asyncio.run(main())
+    print(1)

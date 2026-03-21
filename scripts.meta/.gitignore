@@ -1,5 +1,3 @@
-gnupg
-recent_files.txt
 # pixi environments
 .pixi/*
 !.pixi/config.toml
