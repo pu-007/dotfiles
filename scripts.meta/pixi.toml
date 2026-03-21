@@ -6,6 +6,10 @@ platforms = ["win-64"]
 version = "0.1.0"
 
 [tasks]
-autostart = "python autostart-apps.py"
+autostart = ".pixi/envs/default/pythonw.exe autostart-apps.py"
 
 [dependencies]
+python = ">=3.14.3,<3.15"
+pyautogui = ">=0.9.54,<0.10"
+pywinauto = ">=0.6.9,<0.7"
+pip = ">=26.0.1,<27"

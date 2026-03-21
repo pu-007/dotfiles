@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "metrics": [
+    {
+      "timestamp": 1774115141752,
+      "provider": "generativelanguage.googleapis.com",
+      "model": "gemini-2.5-flash-lite",
+      "responseTimeMs": 2409,
+      "success": true
+    }
+  ],
+  "selections": [
+    {
+      "timestamp": 1774115143732,
+      "provider": "generativelanguage.googleapis.com",
+      "model": "gemini-2.5-flash-lite"
+    }
+  ]
+}

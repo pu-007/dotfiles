@@ -5,8 +5,6 @@ from time import time
 from typing import Union, List
 
 import pyautogui
-from pywinauto import Application
-from pywinauto.findwindows import ElementNotFoundError
 
 # 提前关闭安全保护，防止意外中止
 pyautogui.FAILSAFE = False
@@ -51,7 +49,7 @@ STARTUP_APPS = [
     AppConfig([r"C:\Program Files\komorebi\bin\komorebic-no-console.exe", "start"]),
     AppConfig(
         [
-            r"C:\Program Files\AutoHotkey\v2\AutoHotkey.exe",
+            r"C:\Users\zionpu\AppData\Local\Programs\AutoHotkey\v2\AutoHotkey64.exe",
             r"C:\Users\zionpu\komorebi.ahk",
         ]
     ),
@@ -69,7 +67,7 @@ STARTUP_APPS = [
     AppConfig(r"C:\Program Files\Docker\Docker\Docker Desktop.exe"),
     AppConfig([r"C:\Program Files (x86)\PasteIntoFile\PasteIntoFile.exe", "tray"]),
     AppConfig(
-        ["pixi", "run" "-m",r"C:\Users\zionpu\cut_in_xiaoai\pyproject.toml", "start"]
+        ["pixi", "run", "-m", r"C:\Users\zionpu\cut_in_xiaoai\pyproject.toml", "start"]
     ),
     AppConfig(
         [
@@ -151,6 +149,9 @@ async def manage_window_by_title(
 async def auto_login_wechat(
     wechat_path: str = r"C:\Program Files\Tencent\Weixin\Weixin.exe",
 ):
+    from pywinauto import Application
+    from pywinauto.findwindows import ElementNotFoundError
+
     app = Application(backend="uia").start(wechat_path)
     login_dlg = app.window(title="微信")
 
@@ -210,12 +211,11 @@ async def main():
     # 这意味着 30个软件的启动 + 微信自动化登录 + 等待豆包窗口关闭，全部在同一时间点并发执行。
     await asyncio.gather(
         *startup_tasks,
-        auto_login_wechat(),
+        # auto_login_wechat(),
         manage_window_by_title("豆包", action="close", timeout=15.0),
+        manage_window_by_title("滴答清单", action="close", timeout=15.0),
     )
 
 
 if __name__ == "__main__":
-    print(1)
     asyncio.run(main())
-    print(1)
