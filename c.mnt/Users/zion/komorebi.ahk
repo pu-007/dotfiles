@@ -1,6 +1,12 @@
 #Requires AutoHotkey v2.0.2
 #SingleInstance Force
 
+; 将 CapsLock 键映射为 Esc
+CapsLock::Esc
+
+; 将 Esc 键映射为 CapsLock
+Esc::CapsLock
+
 ; ### Alt 键交换 (持久化版本) ###
 
 ; 保存配置文件路径（在脚本同目录）
@@ -81,13 +87,14 @@ Komorebic(cmd) {
 ; alt+r 重新加载 komorebi
 <!r:: {
     RunWait("taskkill /F /IM komorebi.exe", , "Hide")
-    Run("komorebic-no-console.exe start --ahk")
+    Run("komorebic-no-console.exe start")
 }
 ; alt+shift+r 重新加载 komorebi, yasb
 <!+r:: {
     RunWait("taskkill /F /IM komorebi.exe", , "Hide")
     RunWait("taskkill /F /IM yasb.exe", , "Hide")
-    Run("komorebic-no-console.exe start --ahk")
+    Run("komorebic-no-console.exe start")
+    Run("C:\Users\zionpu\komorebi.ahk")
     Run("yasb.exe")
 }
 ; ctrl+shift+r 重新加载 komorebi, yasb, explorer
@@ -96,7 +103,8 @@ Komorebic(cmd) {
     RunWait("taskkill /F /IM yasb.exe", , "Hide")
     RunWait("taskkill /F /IM explorer.exe", , "Hide")
     Run("explorer.exe")
-    Run("komorebic-no-console.exe start --ahk")
+    Run("komorebic-no-console.exe start")
+    Run("C:\Users\zionpu\komorebi.ahk")
     Run("yasb.exe")
 }
 
@@ -156,7 +164,7 @@ Komorebic(cmd) {
 ; Apps
 ; 启动终端
 <!Enter:: Run("wt.exe -p Arch -d D:\Downloads")
-<!+Enter:: Run(format('wt.exe -p Arch -d "{}"', FileRead("C:\Users\zion\.workdir")))
+<!+Enter:: Run(format('wt.exe -p Arch -d "{}"', FileRead("C:\Users\zionpu\.workdir")))
 
 ; Focus monitors
 <!F1:: Komorebic("focus-monitor 0")
@@ -172,7 +180,7 @@ Komorebic(cmd) {
 ; ### hyper keys and terminal app ###
 ; some are defiend in uTools, ecopaste
 ; Hyper + W 启动/切换微信
-^+!#w:: {
+^+!#c:: {
     ; 检查 Weixin.exe 进程是否存在
     if !ProcessExist("Weixin.exe") {
         ; 如果不存在，就运行它

@@ -40,7 +40,7 @@ alias R="source ~/.zshrc"
 ialias e="explorer.exe ."
 ialias ex="explorer.exe .;exit 0"
 ialias p="pwsh.exe -NoProfile"
-export win_home="/mnt/c/Users/zion"
+export win_home="/mnt/c/Users/zionpu"
 balias 'c:'="/mnt/c/"
 balias 'd:'="/mnt/d/"
 balias 'e:'="/mnt/e/"
@@ -172,15 +172,12 @@ zinit wait lucid for \
 zinit wait'!0' lucid is-snippet nocd for \
   ~/.config/zsh/starship.zsh \
   ~/.config/zsh/fzf.zsh \
-  ~/.config/zsh/conda.zsh
 
 zinit wait lucid is-snippet for \
     atload"ialias z='__zoxide_z'; ialias zi='__zoxide_zi'" \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
   ~/.config/zsh/powershell.zsh \
-  ~/.config/zsh/xcmd.zsh \
-  ~/.x-cmd.root/X
 
 function expand-alias-space() {
   [[ $LBUFFER =~ "\<(${(j:|:)baliases})\$" ]]; insertBlank=$?

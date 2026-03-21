@@ -16,13 +16,11 @@ export DOTFILES_STORE="~/dotfiles"
 1.1. Existing Linux Config <==> Stow Profile
 
 - A->B {target: ~/.config/example}
-
   - `mkdir $DOTFILE_STORE/{app_name: example}/.config/example`
 
   - `mv  ~/.config/example/* $DOTFILE_STORE/{app_name: example}/.config/example/` (rescursive and force)
 
 - B->A
-
   - Plan 1(link dir, not rerecommended): use `stow --adopt -t ~ "$dir"`
 
   - Plan 2(link files respectively):yield files, create its parents, and stow them respectively
@@ -30,7 +28,6 @@ export DOTFILES_STORE="~/dotfiles"
     1.2. Existing Windows Config <==> Symlinks to Arch on Windows (or copy mode optionally)
 
 - A->B: Windows to WSL stotage
-
   - 1.1 put your files manually
     put your Windows config file in ~/dotfiles/c.mnt/<your_windows_path>
     e.g. C:\Users\zion\test.conf ==> ~/dotfiles/c.mnt/Users/zion/test.conf

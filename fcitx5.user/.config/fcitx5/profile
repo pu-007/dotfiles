@@ -8,12 +8,6 @@ DefaultIM=keyboard-cn
 
 [Groups/0/Items/0]
 # Name
-Name=shuangpin
-# Layout
-Layout=
-
-[Groups/0/Items/1]
-# Name
 Name=keyboard-cn
 # Layout
 Layout=
