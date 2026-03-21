@@ -7,11 +7,23 @@
       "model": "gemini-2.5-flash-lite",
       "responseTimeMs": 2409,
       "success": true
+    },
+    {
+      "timestamp": 1774117189028,
+      "provider": "generativelanguage.googleapis.com",
+      "model": "gemini-2.5-flash-lite",
+      "responseTimeMs": 2685,
+      "success": true
     }
   ],
   "selections": [
     {
       "timestamp": 1774115143732,
+      "provider": "generativelanguage.googleapis.com",
+      "model": "gemini-2.5-flash-lite"
+    },
+    {
+      "timestamp": 1774117190642,
       "provider": "generativelanguage.googleapis.com",
       "model": "gemini-2.5-flash-lite"
     }
