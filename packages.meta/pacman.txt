@@ -86,7 +86,6 @@ luarocks
 markdownlint-cli2
 mediainfo
 mesa-utils
-miniconda3
 moreutils
 mpv
 msgpack-cxx
@@ -105,7 +104,6 @@ nvidia-utils
 openbsd-netcat
 opencl-mesa
 opencode
-openfst
 orchis-theme
 otf-libertinus
 pandoc-cli
@@ -204,7 +202,6 @@ tldr
 tmux
 tokei
 trash-cli
-tree-sitter
 tree-sitter-bash
 tree-sitter-cli
 tree-sitter-javascript
@@ -235,8 +232,6 @@ weston
 wget
 win32yank-bin
 wlroots0.18
-wslu
-x-cmd
 xdg-desktop-portal
 xdotool
 xf86-video-vesa
