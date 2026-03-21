@@ -211,7 +211,7 @@ async def main():
     # 这意味着 30个软件的启动 + 微信自动化登录 + 等待豆包窗口关闭，全部在同一时间点并发执行。
     await asyncio.gather(
         *startup_tasks,
-        # auto_login_wechat(),
+        auto_login_wechat(),
         manage_window_by_title("豆包", action="close", timeout=15.0),
         manage_window_by_title("滴答清单", action="close", timeout=15.0),
     )

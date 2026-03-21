@@ -3,3 +3,5 @@ recent_files.txt
 # pixi environments
 .pixi/*
 !.pixi/config.toml
+ 
+aicommit2.user/.config/aicommit2/stats.json
