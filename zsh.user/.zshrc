@@ -177,7 +177,7 @@ zinit wait lucid is-snippet for \
     atload"ialias z='__zoxide_z'; ialias zi='__zoxide_zi'" \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
-  ~/.config/zsh/powershell.zsh \
+  ~/.config/zsh/powershell.zsh
 
 function expand-alias-space() {
   [[ $LBUFFER =~ "\<(${(j:|:)baliases})\$" ]]; insertBlank=$?
@@ -200,6 +200,9 @@ function zvm_after_init() {
   bindkey -M vicmd 'j' down-line-or-beginning-search
   bindkey "^[[A" up-line-or-beginning-search # Up
   bindkey "^[[B" down-line-or-beginning-search # Down
+  zle     -N            fzf-history-widget
+  bindkey -M vicmd '^R' fzf-history-widget
+  bindkey -M viins '^R' fzf-history-widget
 
 
   zinit wait lucid for \
@@ -220,7 +223,7 @@ function zvm_after_init() {
     zdharma-continuum/fast-syntax-highlighting \
       atload"compdef _adb adb.exe" \
     zsh-users/zsh-completions \
-    Aloxaf/fzf-tab \
+    Aloxaf/fzf-tab
 }
 
 export PATH="$PATH:$HOME/.local/bin"
