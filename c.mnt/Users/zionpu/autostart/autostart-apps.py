@@ -214,6 +214,7 @@ async def main():
         auto_login_wechat(),
         manage_window_by_title("豆包", action="close", timeout=15.0),
         manage_window_by_title("滴答清单", action="close", timeout=15.0),
+        manage_window_by_title("archlinux", action="close", timeout=15.0),
     )
 
 
