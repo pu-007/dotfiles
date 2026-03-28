@@ -236,3 +236,6 @@ export HF_ENDPOINT="https://hf-mirror.com"
 alias cls="clear"
 # use system python for yay instaed of miniconda's one
 ialias yay='PATH="/usr/bin:$PATH" yay'
+
+# 覆盖默认的 API 地址
+export ANTHROPIC_BASE_URL="https://xiaohumini.site"
