@@ -19,15 +19,22 @@ return {
 
   {
     "pu-007/im-select-ahk.nvim",
-    event = { "InsertEnter", "InsertLeave", "CmdlineEnter" },
+    event = { "InsertEnter", "InsertLeave", "CmdlineEnter", "CmdlineLeave", "ModeChanged" },
     opts = {
       -- 可选配置，以下为默认值
       toggle_key = "RShift", -- 回退模式的切换键
       ime_timeout = 500, -- SendMessage 超时时间 (ms)
-      set_en_on_insert_leave = true, -- 离开 Insert 切换英文
-      restore_on_insert_enter = true, -- 进入 Insert 恢复状态
-      set_en_on_cmdline_enter = true, -- 进入 Command-line 切换英文
-      async = true, -- 异步执行
+      async = true, -- 异步执行（推荐）
+      mode_config = {
+        normal = "always_en", -- Normal 模式始终英文
+        insert = "restore", -- Insert 模式记忆恢复
+        cmdline = "restore", -- Command-line 模式记忆恢复
+        search = "restore", -- 搜索模式记忆恢复
+        visual = false, -- Visual 模式不干预
+        replace = "restore", -- Replace 模式记忆恢复
+        terminal = false, -- Terminal 模式不干预
+        select = false, -- Select 模式不干预
+      },
     },
   },
 
