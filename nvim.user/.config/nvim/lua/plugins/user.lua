@@ -9,9 +9,25 @@ return {
     event = "BufRead",
     config = function() require("lsp_signature").setup() end,
   },
+
+  {
+    "pu-007/im-select-ahk.nvim",
+    event = { "InsertEnter", "InsertLeave", "CmdlineEnter" },
+    opts = {
+      -- 可选配置，以下为默认值
+      toggle_key = "RShift", -- 回退模式的切换键
+      ime_timeout = 500, -- SendMessage 超时时间 (ms)
+      set_en_on_insert_leave = true, -- 离开 Insert 切换英文
+      restore_on_insert_enter = true, -- 进入 Insert 恢复状态
+      set_en_on_cmdline_enter = true, -- 进入 Command-line 切换英文
+      async = true, -- 异步执行
+    },
+  },
+
   {
     "kkew3/jieba.vim",
-    build = "./build.sh",
+    tag = "v2.1.0",
+    build = ":call jieba_vim#install()",
     init = function()
       vim.g.jieba_vim_lazy = 1
       vim.g.jieba_vim_keymap = 1
