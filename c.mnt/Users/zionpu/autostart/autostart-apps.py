@@ -23,20 +23,6 @@ class AppConfig:
 
 # 统一维护的开机自启应用列表
 STARTUP_APPS = [
-    # AppConfig(r"C:\Users\zion\scoop\apps\cc-switch\current\cc-switch.exe"),
-    # AppConfig(r"C:\Users\zionpu\AppData\Local\Focust\focust.exe"),
-    # AppConfig(r"C:\Users\zionpu\AppData\Local\health-reminder\health-reminder.exe"),
-    # AppConfig(r"C:\Users\zionpu\Apps\KeyStats\KeyStats.exe"),
-    # AppConfig(r"C:\Program Files\KDE Connect\bin\kdeconnect-indicator.exe"),
-    # AppConfig(r"C:\Users\zionpu\Apps\IME_Indicator\IME-Indicator.exe"),
-    # AppConfig(r"C:\Program Files\Rime\weasel-0.17.4\WeaselServer.exe"),
-    # AppConfig(
-    #     [
-    #         r"C:\Windows\System32\DriverStore\FileRepository\realtekservice.inf_amd64_d2d4c5f34960aaac\RtkAudUService64.exe",
-    #         "-background",
-    #     ]
-    # ),
-    # AppConfig(r"C:\Users\zionpu\Apps\Controller Companion\ControllerCompanion.exe"),
     AppConfig(
         [r"C:\Users\zionpu\AppData\Local\Programs\QuickLook\QuickLook.exe", "-autorun"]
     ),
@@ -45,7 +31,6 @@ STARTUP_APPS = [
     AppConfig(r"C:\Program Files\flomo\flomo.exe"),
     AppConfig(["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"]),
     AppConfig(r"C:\Program Files\Quicker\Quicker.exe"),
-    AppConfig([r"C:\Program Files\Everything\Everything.exe", "-startup"]),
     AppConfig([r"C:\Program Files\komorebi\bin\komorebic-no-console.exe", "start"]),
     AppConfig(
         [
