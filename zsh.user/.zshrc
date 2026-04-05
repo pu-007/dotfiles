@@ -172,6 +172,11 @@ zinit wait lucid for \
 zinit wait'!0' lucid is-snippet nocd for \
   ~/.config/zsh/starship.zsh \
   ~/.config/zsh/fzf.zsh \
+  atinit'export IM_SELECT_EXE_PATH="/mnt/c/Users/zionpu/im-select.exe"' \
+    https://raw.githubusercontent.com/pu-007/im-select-ahk.nvim/refs/heads/main/zsh/im-select-vimmode.zsh
+
+
+
 
 zinit wait lucid is-snippet for \
     atload"ialias z='__zoxide_z'; ialias zi='__zoxide_zi'" \
