@@ -82,6 +82,11 @@
   "ignore_rules": [
     {
       "kind": "Exe",
+      "id": "Flow.Launcher.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
       "id": "health-reminder.exe",
       "matching_strategy": "Equals"
     },

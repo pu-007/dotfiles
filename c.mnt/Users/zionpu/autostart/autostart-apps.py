@@ -40,7 +40,7 @@ STARTUP_APPS = [
     ),
     AppConfig(r"C:\Program Files (x86)\滴答清单\TickTick.exe"),
     AppConfig(r"C:\Program Files\YASB\yasb.exe"),
-    AppConfig(r"C:\Users\zionpu\AppData\Local\Programs\utools\uTools.exe"),
+    AppConfig(r"C:\Users\zionpu\AppData\Local\FlowLauncher\Flow.Launcher.exe"),
     AppConfig(r"C:\Program Files\Mem Reduct\memreduct.exe"),
     AppConfig(r"C:\Users\zionpu\AppData\Roaming\AltSnap\AltSnap.exe"),
     AppConfig(r"C:\Users\zionpu\AppData\Local\Programs\PixPin\PixPin.exe"),

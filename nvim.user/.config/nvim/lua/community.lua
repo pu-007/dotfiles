@@ -3,11 +3,22 @@ return {
   "AstroNvim/astrocommunity",
 
   { import = "astrocommunity.recipes.ai" },
+  -- ## completion
+  { import = "astrocommunity.completion.blink-cmp" },
+  { import = "astrocommunity.completion.blink-copilot" },
+  { import = "astrocommunity.completion.blink-cmp-emoji" },
+  { import = "astrocommunity.completion.blink-cmp-git" },
   -- ## appearance
   { import = "astrocommunity.markdown-and-latex.markview-nvim" },
   { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
-
+  { import = "astrocommunity.utility.noice-nvim" },
+  { import = "astrocommunity.utility.nvzone-menu" },
+  { import = "astrocommunity.utility.hover-nvim" },
+  -- ## tools
   { import = "astrocommunity.pack.jj" },
+  -- ## edit
+  { import = "astrocommunity.utility.nvim-toggler" },
+  -- ## keybindings
   { import = "astrocommunity.pack.diff-keybindings" },
   -- ## language
   { import = "astrocommunity.pack.lua" },
