@@ -27,7 +27,7 @@ STARTUP_APPS = [
         [r"C:\Users\zionpu\AppData\Local\Programs\QuickLook\QuickLook.exe", "-autorun"]
     ),
     AppConfig(r"C:\Users\zionpu\AppData\Local\Doubao\Application\Doubao.exe"),
-    AppConfig([r"C:\Program Files\Everything 1.5a\Everything.exe", "-startup "]),
+    AppConfig([r"C:\Program Files\Everything 1.5a\Everything.exe", "-startup"]),
     AppConfig(r"C:\Users\zionpu\AppData\Local\TieZ\tiez-app.exe"),
     AppConfig(r"C:\Program Files\flomo\flomo.exe"),
     AppConfig(["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"]),
