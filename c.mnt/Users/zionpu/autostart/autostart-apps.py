@@ -1,4 +1,5 @@
 import asyncio
+import os
 import subprocess
 from dataclasses import dataclass
 from time import time
@@ -6,92 +7,164 @@ from typing import Union, List
 
 import pyautogui
 
-# 提前关闭安全保护，防止意外中止
+# 提前关闭安全保护，防止鼠标移动到角落时引发异常中止
 pyautogui.FAILSAFE = False
 
 # ==========================================
-# 1. 配置区域 (Configuration)
+# 1. 任务类型定义 (Task Definitions)
 # ==========================================
 
 
 @dataclass
-class AppConfig:
+class AppLaunch:
+    """定义一个应用程序启动任务"""
+
     cmd: Union[str, List[str]]
     cwd: str | None = None
     hide_window: bool = True
+    use_shell: bool = False
+    # 新增：绑定启动后的窗口管理。例如填入 "豆包"，程序启动后会自动去寻找并关闭该窗口
+    after_launch_close: str | None = None
+    wait_window_timeout: float = 15.0
 
 
-# 统一维护的开机自启应用列表
-STARTUP_APPS = [
-    AppConfig(
+@dataclass
+class WindowAction:
+    """定义一个独立的窗口管理任务（针对非本脚本直接启动的窗口）"""
+
+    title: str
+    action: str = "close"  # "close" 或 "minimize"
+    timeout: float = 15.0
+
+
+@dataclass
+class WechatAutoLogin:
+    """定义一个微信自动登录任务"""
+
+    path: str = r"C:\Program Files\Tencent\Weixin\Weixin.exe"
+
+
+# 定义配置项的类型提示
+TaskType = Union[AppLaunch, WindowAction, WechatAutoLogin]
+
+
+# ==========================================
+# 2. 统一配置清单 (Unified Configuration)
+# ==========================================
+# 【核心优势】：以后无论是加软件、删软件、加自动关闭窗口，全部只在这里修改！
+
+STARTUP_TASKS: List[TaskType] = [
+    # ---------------- 娇贵 GUI 软件 (Shell启动) ----------------
+    AppLaunch(
+        cmd=r"C:\Program Files\Quicker\Quicker.exe",
+        cwd=r"C:\Program Files\Quicker",
+        use_shell=True,
+    ),
+    AppLaunch(
+        cmd=r"C:\Program Files\Controller Companion\ControllerCompanion.exe",
+        cwd=r"C:\Program Files\Controller Companion",
+        use_shell=True,
+    ),
+    AppLaunch(
+        cmd=r"C:\Users\zionpu\Apps\InputTip\InputTip.bat",
+        cwd=r"C:\Users\zionpu\Apps\InputTip",
+        use_shell=True,
+    ),
+    # ---------------- 带随附动作的软件 (启动后自动关闭窗口) ----------------
+    AppLaunch(
+        cmd=r"C:\Users\zionpu\AppData\Local\Doubao\Application\Doubao.exe",
+        after_launch_close="豆包",
+        wait_window_timeout=15.0,
+    ),
+    AppLaunch(
+        cmd=r"C:\Program Files (x86)\滴答清单\TickTick.exe",
+        after_launch_close="滴答清单",
+        wait_window_timeout=15.0,
+    ),
+    # ---------------- 自动化 Hook 任务 ----------------
+    WechatAutoLogin(),
+    # ---------------- 独立窗口管理任务 ----------------
+    WindowAction(title="archlinux", action="close", timeout=15.0),
+    # ---------------- 普通后台/命令行软件 ----------------
+    AppLaunch(
         [r"C:\Users\zionpu\AppData\Local\Programs\QuickLook\QuickLook.exe", "-autorun"]
     ),
-    AppConfig(r"C:\Users\zionpu\AppData\Local\Doubao\Application\Doubao.exe"),
-    AppConfig([r"C:\Program Files\Everything 1.5a\Everything.exe", "-startup"]),
-    AppConfig(r"C:\Users\zionpu\AppData\Local\TieZ\tiez-app.exe"),
-    AppConfig(r"C:\Program Files\flomo\flomo.exe"),
-    AppConfig(["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"]),
-    AppConfig(r"C:\Program Files\Quicker\Quicker.exe"),
-    AppConfig([r"C:\Program Files\komorebi\bin\komorebic-no-console.exe", "start"]),
-    AppConfig(
+    AppLaunch([r"C:\Program Files\Everything 1.5a\Everything.exe", "-startup"]),
+    AppLaunch(r"C:\Users\zionpu\AppData\Local\TieZ\tiez-app.exe"),
+    AppLaunch(r"C:\Program Files\flomo\flomo.exe"),
+    AppLaunch(["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"]),
+    AppLaunch([r"C:\Program Files\komorebi\bin\komorebic-no-console.exe", "start"]),
+    AppLaunch(
         [
             r"C:\Users\zionpu\AppData\Local\Programs\AutoHotkey\v2\AutoHotkey64.exe",
             r"C:\Users\zionpu\komorebi.ahk",
         ]
     ),
-    AppConfig(r"C:\Program Files (x86)\滴答清单\TickTick.exe"),
-    AppConfig(r"C:\Program Files\YASB\yasb.exe"),
-    AppConfig(r"C:\Users\zionpu\AppData\Local\FlowLauncher\Flow.Launcher.exe"),
-    AppConfig(r"C:\Program Files\Mem Reduct\memreduct.exe"),
-    AppConfig(r"C:\Users\zionpu\AppData\Roaming\AltSnap\AltSnap.exe"),
-    AppConfig(r"C:\Users\zionpu\AppData\Local\Programs\PixPin\PixPin.exe"),
-    AppConfig([r"C:\Program Files (x86)\Stardock\Fences\Fences.exe", "/startup"]),
-    AppConfig(
+    AppLaunch(r"C:\Program Files\YASB\yasb.exe"),
+    AppLaunch(r"C:\Users\zionpu\AppData\Local\FlowLauncher\Flow.Launcher.exe"),
+    AppLaunch(r"C:\Program Files\Mem Reduct\memreduct.exe"),
+    AppLaunch(r"C:\Users\zionpu\AppData\Roaming\AltSnap\AltSnap.exe"),
+    AppLaunch(r"C:\Users\zionpu\AppData\Local\Programs\PixPin\PixPin.exe"),
+    AppLaunch([r"C:\Program Files (x86)\Stardock\Fences\Fences.exe", "/startup"]),
+    AppLaunch(
         r"C:\Program Files\Pantum\ptm6700\SCANNER\PushScan\ptm6700PushMonitor.exe"
     ),
-    # AppConfig(r"C:\Users\zionpu\Apps\capslockpp\CapsLock++.exe"),
-    # AppConfig(r"C:\Program Files\Docker\Docker\Docker Desktop.exe"),
-    AppConfig([r"C:\Program Files (x86)\PasteIntoFile\PasteIntoFile.exe", "tray"]),
-    AppConfig(
+    AppLaunch(r"C:\Users\zionpu\Apps\CapsLockX\CapsLockX.exe"),
+    AppLaunch([r"C:\Program Files (x86)\PasteIntoFile\PasteIntoFile.exe", "tray"]),
+    AppLaunch(
         ["pixi", "run", "-m", r"C:\Users\zionpu\cut_in_xiaoai\pyproject.toml", "start"]
     ),
-    AppConfig(
+    AppLaunch(
         [
             r"C:\Program Files\Google\Chrome\Application\chrome.exe",
             "--no-startup-window",
             "/prefetch:5",
         ]
     ),
-    AppConfig(
-        [
-            r"C:\Program Files\Google\Drive File Stream\123.0.1.0\GoogleDriveFS.exe",
-            "--startup_mode",
-        ]
-    ),
-    AppConfig(r"C:\Users\zionpu\Apps\InputTip\src\AutoHotkey\AutoHotkey64.exe"),
 ]
 
+
 # ==========================================
-# 2. 核心功能方法 (Core Functions)
+# 3. 核心执行引擎 (Core Execution Engines)
 # ==========================================
 
 
-async def launch_app_async(config: AppConfig):
-    """
-    异步多线程启动应用程序。
-    利用线程池将进程创建请求瞬间并发甩给 Windows 操作系统。
-    """
+async def manage_window_by_title(
+    title: str, action: str = "close", timeout: float = 10.0, interval: float = 0.5
+) -> bool:
+    """循环检测并操作目标窗口"""
+    end_time = time() + timeout
+    while time() <= end_time:
+        windows = await asyncio.to_thread(pyautogui.getWindowsWithTitle, title)
+        if windows:
+            for w in windows:
+                w.close() if action == "close" else w.minimize()
+            return True
+        await asyncio.sleep(interval)
+    return False
+
+
+async def execute_app_launch(config: AppLaunch):
+    """处理 AppLaunch 任务，包含程序启动和关联的窗口处理"""
 
     def _start_process():
         try:
+            if config.use_shell:
+                target = config.cmd[0] if isinstance(config.cmd, list) else config.cmd
+                original_cwd = os.getcwd()
+                if config.cwd and os.path.exists(config.cwd):
+                    os.chdir(config.cwd)
+                os.startfile(target)
+                os.chdir(original_cwd)
+                return
+
             flags = subprocess.DETACHED_PROCESS
             startupinfo = None
-
             if config.hide_window:
                 flags |= subprocess.CREATE_NO_WINDOW
                 startupinfo = subprocess.STARTUPINFO()
                 startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-                startupinfo.wShowWindow = 0  # SW_HIDE
+                startupinfo.wShowWindow = 0
 
             subprocess.Popen(
                 config.cmd,
@@ -105,31 +178,22 @@ async def launch_app_async(config: AppConfig):
             cmd_name = config.cmd[0] if isinstance(config.cmd, list) else config.cmd
             print(f"启动失败 [{cmd_name}]: {e}")
 
-    # 将阻塞的 Popen 调用推入 asyncio 底层的线程池执行
+    # 1. 触发底层启动
     await asyncio.to_thread(_start_process)
 
-
-async def manage_window_by_title(
-    title: str, action: str = "close", timeout: float = 10.0, interval: float = 0.5
-) -> bool:
-    end_time = time() + timeout
-    while time() <= end_time:
-        windows = await asyncio.to_thread(pyautogui.getWindowsWithTitle, title)
-        if windows:
-            for w in windows:
-                w.close() if action == "close" else w.minimize()
-            return True
-        await asyncio.sleep(interval)
-    return False
+    # 2. 如果配置了启动后关闭窗口，立刻开始非阻塞监听
+    if config.after_launch_close:
+        await manage_window_by_title(
+            config.after_launch_close, "close", config.wait_window_timeout
+        )
 
 
-async def auto_login_wechat(
-    wechat_path: str = r"C:\Program Files\Tencent\Weixin\Weixin.exe",
-):
+async def execute_wechat_login(config: WechatAutoLogin):
+    """处理微信自动化登录任务"""
     from pywinauto import Application
     from pywinauto.findwindows import ElementNotFoundError
 
-    app = Application(backend="uia").start(wechat_path)
+    app = Application(backend="uia").start(config.path)
     login_dlg = app.window(title="微信")
 
     start_time = time()
@@ -176,23 +240,27 @@ async def auto_login_wechat(
 
 
 # ==========================================
-# 3. 主流程 (Main Flow)
+# 4. 任务调度器 (Task Dispatcher & Main)
 # ==========================================
 
 
 async def main():
-    # 将所有的普通应用启动任务打包
-    startup_tasks = [launch_app_async(app) for app in STARTUP_APPS]
+    """解析配置列表，生成协程并并发执行"""
+    coroutines = []
 
-    # 【核心改动】：使用 gather 将所有任务一次性全部推入事件循环！
-    # 这意味着 30个软件的启动 + 微信自动化登录 + 等待豆包窗口关闭，全部在同一时间点并发执行。
-    await asyncio.gather(
-        *startup_tasks,
-        auto_login_wechat(),
-        manage_window_by_title("豆包", action="close", timeout=15.0),
-        manage_window_by_title("滴答清单", action="close", timeout=15.0),
-        manage_window_by_title("archlinux", action="close", timeout=15.0),
-    )
+    # 动态分发任务到对应的执行器
+    for task in STARTUP_TASKS:
+        if isinstance(task, AppLaunch):
+            coroutines.append(execute_app_launch(task))
+        elif isinstance(task, WindowAction):
+            coroutines.append(
+                manage_window_by_title(task.title, task.action, task.timeout)
+            )
+        elif isinstance(task, WechatAutoLogin):
+            coroutines.append(execute_wechat_login(task))
+
+    # 一次性将所有任务推入事件循环，瞬间并发！
+    await asyncio.gather(*coroutines)
 
 
 if __name__ == "__main__":

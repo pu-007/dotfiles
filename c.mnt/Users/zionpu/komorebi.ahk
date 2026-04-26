@@ -1,11 +1,17 @@
 #Requires AutoHotkey v2.0.2
 #SingleInstance Force
 
-; 将 CapsLock 键映射为 Esc
-CapsLock::Esc
-
 ; 将 Esc 键映射为 CapsLock
-Esc::CapsLock
+Esc::
+{
+    if (GetKeyState("CapsLock", "T")) {
+        SetCapsLockState("Off")
+    } else {
+        SetCapsLockState("On")
+    }
+}
+
+
 
 ; ### Alt 键交换 (持久化版本) ###
 
@@ -205,6 +211,7 @@ Komorebic(cmd) {
 ^+!#n:: Run("wt.exe -p Arch wsl nvim -c 'read !win32yank.exe -o'")
 #y:: Run("wsl.exe zsh -ic 'y /mnt/d/Downloads/'")
 
+; TODO: Adapt Chrome
 ^+a:: {
     SetTitleMatchMode "RegEx"
     DetectHiddenWindows True

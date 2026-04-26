@@ -1,3 +1,5 @@
+# TODO: zoxide sync
+
 ### better alias
 typeset -g baliases=()
 
@@ -19,12 +21,12 @@ ialias() {
 }
 
 function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
 }
 ialias ff="fastfetch"
 ialias eza="eza -I 'NTUSER.DAT*|ntuser.*'"
@@ -90,7 +92,7 @@ setopt pushdminus
 setopt interactivecomments # 交互式注释
 ### for sync_directory_change
 sync_directory_change() {
-  pwd | tr -d '\n' > "$win_home/.workdir"
+  pwd | tr -d '\n' >"$win_home/.workdir"
 }
 
 autoload -U add-zsh-hook
@@ -101,7 +103,7 @@ autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 # In Defense of Maintaining Search History Despite the Absence of FZF-History-Search
-bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[A" up-line-or-beginning-search   # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 # FZF Config and fzf-tab
 export FZF_DEFAULT_OPTS="
@@ -153,39 +155,36 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:z:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:complete:j:*' fzf-preview 'eza -1 --color=always $realpath'
 
-
 ### autoload zinit
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
+  print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+  command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+  command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" &&
+    print -P "%F{33} %F{34}Installation successful.%f%b" ||
+    print -P "%F{160} The clone has failed.%f%b"
 fi
 export fpath=($fpath ~/.config/zsh/completions/)
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -U compinit && compinit
 ### plugins
 zinit wait lucid for \
-  jeffreytse/zsh-vi-mode \
+  jeffreytse/zsh-vi-mode
 
 zinit wait'!0' lucid is-snippet nocd for \
   ~/.config/zsh/starship.zsh \
   ~/.config/zsh/fzf.zsh \
   atinit'export IM_SELECT_EXE_PATH="/mnt/c/Users/zionpu/im-select.exe"' \
-    https://raw.githubusercontent.com/pu-007/im-select-ahk.nvim/refs/heads/main/zsh/im-select-vimmode.zsh
-
-
-
+  https://raw.githubusercontent.com/pu-007/im-select-ahk.nvim/refs/heads/main/zsh/im-select-vimmode.zsh
 
 zinit wait lucid is-snippet for \
-    atload"ialias z='__zoxide_z'; ialias zi='__zoxide_zi'" \
+  atload"ialias z='__zoxide_z'; ialias zi='__zoxide_zi'" \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
   ~/.config/zsh/powershell.zsh
 
 function expand-alias-space() {
-  [[ $LBUFFER =~ "\<(${(j:|:)baliases})\$" ]]; insertBlank=$?
+  [[ $LBUFFER =~ "\<(${(j:|:)baliases})\$" ]]
+  insertBlank=$?
   if [[ ! $LBUFFER =~ "\<(${(j:|:)ialiases})\$" ]]; then
     zle _expand_alias
   fi
@@ -203,30 +202,28 @@ function zvm_after_init() {
   bindkey -M vicmd 'L' end-of-line
   bindkey -M vicmd 'k' up-line-or-beginning-search
   bindkey -M vicmd 'j' down-line-or-beginning-search
-  bindkey "^[[A" up-line-or-beginning-search # Up
+  bindkey "^[[A" up-line-or-beginning-search   # Up
   bindkey "^[[B" down-line-or-beginning-search # Down
-  zle     -N            fzf-history-widget
+  zle -N fzf-history-widget
   bindkey -M vicmd '^R' fzf-history-widget
   bindkey -M viins '^R' fzf-history-widget
-
 
   zinit wait lucid for \
     oldkingOK/pinyin-completion \
     OMZP::cp \
-      atinit"export ZSH_CODEX_PREEXECUTE_COMMENT='true'" \
-      atload"bindkey '^O' create_completion"\
+    atinit"export ZSH_CODEX_PREEXECUTE_COMMENT='true'" \
+    atload"bindkey '^O' create_completion" \
     pu-007/zsh_codex \
     OMZP::colored-man-pages \
     OMZP::command-not-found \
     OMZP::copypath \
-    OMZL::functions.zsh\
-    OMZL::clipboard.zsh \
+    OMZL::functions.zsh OMZL::clipboard.zsh \
     OMZL::git.zsh \
     OMZL::termsupport.zsh \
     OMZP::git \
-      atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
-      atload"compdef _adb adb.exe" \
+    atload"compdef _adb adb.exe" \
     zsh-users/zsh-completions \
     Aloxaf/fzf-tab
 }
