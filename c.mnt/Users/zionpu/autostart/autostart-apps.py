@@ -49,35 +49,26 @@ STARTUP_APPS = [
     AppConfig(
         r"C:\Program Files\Pantum\ptm6700\SCANNER\PushScan\ptm6700PushMonitor.exe"
     ),
-    AppConfig(r"C:\Users\zionpu\Apps\capslockpp\CapsLock++.exe"),
-    AppConfig(r"C:\Program Files\Docker\Docker\Docker Desktop.exe"),
+    # AppConfig(r"C:\Users\zionpu\Apps\capslockpp\CapsLock++.exe"),
+    # AppConfig(r"C:\Program Files\Docker\Docker\Docker Desktop.exe"),
     AppConfig([r"C:\Program Files (x86)\PasteIntoFile\PasteIntoFile.exe", "tray"]),
     AppConfig(
         ["pixi", "run", "-m", r"C:\Users\zionpu\cut_in_xiaoai\pyproject.toml", "start"]
     ),
     AppConfig(
         [
-            "aria2c",
-            "--dir=D:\\Downloads",
-            "--enable-rpc",
-            "--rpc-listen-all=true",
-            "--rpc-allow-origin-all=true",
-            "--file-allocation=falloc",
-            "-c",
-            "-x",
-            "16",
-            "-s",
-            "16",
-            "-j",
-            "10",
-            "-k",
-            "1M",
-            "--disk-cache=256M",
-            "--enable-dht=true",
-            "--bt-enable-lpd=true",
-            "--enable-peer-exchange=true",
+            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+            "--no-startup-window",
+            "/prefetch:5",
         ]
     ),
+    AppConfig(
+        [
+            r"C:\Program Files\Google\Drive File Stream\123.0.1.0\GoogleDriveFS.exe",
+            "--startup_mode",
+        ]
+    ),
+    AppConfig(r"C:\Users\zionpu\Apps\InputTip\src\AutoHotkey\AutoHotkey64.exe"),
 ]
 
 # ==========================================

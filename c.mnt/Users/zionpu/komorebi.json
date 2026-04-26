@@ -16,7 +16,7 @@
     "unfocused": "#808080"
   },
   "animation": {
-    "enabled": false,
+    "enabled": true,
     "duration": 180,
     "fps": 120,
     "style": "EaseInOutSine"
@@ -83,6 +83,11 @@
     {
       "kind": "Exe",
       "id": "Flow.Launcher.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
+      "id": "tiez-app.exe",
       "matching_strategy": "Equals"
     },
     {
