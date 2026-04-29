@@ -77,9 +77,12 @@ STARTUP_TASKS: List[TaskType] = [
         wait_window_timeout=15.0,
     ),
     AppLaunch(
-        cmd=r"C:\Program Files (x86)\滴答清单\TickTick.exe",
+        cmd=[r"C:\Program Files (x86)\滴答清单\TickTick.exe", "-hide"],
         after_launch_close="滴答清单",
         wait_window_timeout=15.0,
+    ),
+    AppLaunch(
+        cmd=[r"C:\Program Files\MI\PcContinuity\Launch.exe", "--AutoRun=1"],
     ),
     # ---------------- 自动化 Hook 任务 ----------------
     WechatAutoLogin(),
@@ -113,13 +116,6 @@ STARTUP_TASKS: List[TaskType] = [
     AppLaunch([r"C:\Program Files (x86)\PasteIntoFile\PasteIntoFile.exe", "tray"]),
     AppLaunch(
         ["pixi", "run", "-m", r"C:\Users\zionpu\cut_in_xiaoai\pyproject.toml", "start"]
-    ),
-    AppLaunch(
-        [
-            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
-            "--no-startup-window",
-            "/prefetch:5",
-        ]
     ),
 ]
 

@@ -87,6 +87,11 @@
     },
     {
       "kind": "Exe",
+      "id": "MiPcContinuity.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
       "id": "tiez-app.exe",
       "matching_strategy": "Equals"
     },
