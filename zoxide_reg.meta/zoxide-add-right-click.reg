@@ -1,0 +1,32 @@
+Windows Registry Editor Version 5.00
+
+; ==============================================
+; Zoxide 右键添加菜单 最终稳定版
+; 必须先把 zoxide-add.vbs 放到一个固定位置，然后修改下面的路径
+; ==============================================
+
+; 1. 文件夹空白处右键菜单（置顶）
+[HKEY_CLASSES_ROOT\Directory\Background\shell\ZoxideAdd]
+@="添加到zoxide(&Z)"
+"Icon"="zoxide.exe,0"
+"Position"="Top"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\ZoxideAdd\command]
+@="wscript.exe //b \"C:\\Users\\zionpu\\zoxide-add.vbs\" \"%V\""
+
+; 2. 右键点击文件夹图标菜单
+[HKEY_CLASSES_ROOT\Directory\shell\ZoxideAdd]
+@="添加到zoxide(&Z)"
+"Icon"="zoxide.exe,0"
+
+[HKEY_CLASSES_ROOT\Directory\shell\ZoxideAdd\command]
+@="wscript.exe //b \"C:\\Users\\zionpu\\zoxide-add.vbs\" \"%V\""
+
+; 3. 库文件夹空白处右键菜单
+[HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\ZoxideAdd]
+@="添加到zoxide(&Z)"
+"Icon"="zoxide.exe,0"
+"Position"="Top"
+
+[HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\ZoxideAdd\command]
+@="wscript.exe //b \"C:\\Users\\zionpu\\zoxide-add.vbs\" \"%V\""
