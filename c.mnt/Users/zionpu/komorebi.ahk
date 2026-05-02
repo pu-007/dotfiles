@@ -216,7 +216,7 @@ Komorebic(cmd) {
     SetTitleMatchMode "RegEx"
     DetectHiddenWindows True
     ; 定义匹配规则
-    targetTitle := " - 豆包浏览器$ ahk_exe Doubao.exe"
+    targetTitle := " - Google Chrome$ ahk_exe chrome.exe"
     ; 获取所有符合条件的窗口列表（无论显示还是隐藏）
     try {
         idList := WinGetList(targetTitle)
@@ -225,7 +225,7 @@ Komorebic(cmd) {
     }
     ; 如果没找到任何窗口，启动豆包浏览器，并返回
     if (idList.Length == 0) {
-        Run('C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe  --saman-browser-entry')
+        Run('C:\Program Files\Google\Chrome\Application\chrome.exe')
         if WinWait(targetTitle, , 3) {
             WinActivate targetTitle
         }
