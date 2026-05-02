@@ -208,8 +208,8 @@ Komorebic(cmd) {
     }
 }
 ; Hyper + n nvim edit
-^+!#n:: Run("wt.exe -p Arch wsl nvim -c 'read !win32yank.exe -o'")
-#y:: Run("wsl.exe zsh -ic 'y /mnt/d/Downloads/'")
+^+!#n:: Run("wt.exe -p archlinux wsl nvim -c 'read !win32yank.exe -o'")
+#y:: Run("wt.exe -p archlinux wsl zsh -ic 'y /mnt/d/Downloads/'")
 
 ; TODO: Adapt Chrome
 ^+a:: {
