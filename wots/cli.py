@@ -193,12 +193,24 @@ def cmd_sync(
     app: Optional[str] = None,
     dry_run: bool = False,
     verbose: bool = False,
+    bypass: bool = False,
+    quiet: bool = False,
 ):
     """Sync packages to their targets."""
     from .display import info, success, error, warning, rule
+    from .types import type_label
 
     packages = find_packages()
     types_to_sync = list(PkgType) if pkg_type_str is None else [PkgType(pkg_type_str)]
+
+    # Root safety: require explicit confirmation
+    has_root = any(pt == PkgType.ROOT for pt in types_to_sync)
+    if has_root and not bypass and not dry_run:
+        info(f"\n[bold yellow]⚠ Root sync requires sudo and will modify system files.[/]")
+        resp = input("  Continue? [y/N]: ").strip().lower()
+        if resp != "y":
+            info("Cancelled.")
+            return
 
     for pt in types_to_sync:
         pkgs = packages.get(pt, [])
@@ -214,6 +226,9 @@ def cmd_sync(
                 error("GNU Stow not installed — skipping.")
                 continue
             for pkg in pkgs:
+                if not quiet:
+                    label = type_label(pt)
+                    info(f"  {pkg.name}  →  [dim]{label}[/]")
                 do_stow(pkg, pt.sync_target, sudo=pt.needs_sudo, dry_run=dry_run)
 
         elif pt.uses_copy_sync:
@@ -329,8 +344,9 @@ def cmd_stats(*, json_output: bool = False, verbose: bool = False):
 def cmd_list(
     pkg_type_str: Optional[str] = None,
     *, json_output: bool = False, verbose: bool = False,
+    unsynced: bool = False, diff: bool = False,
 ):
-    from .display import render_list, warning
+    from .display import render_list, warning, info as _info
     from .status import check_copy_status, status_text as _st
 
     packages = find_packages()
@@ -361,6 +377,64 @@ def cmd_list(
     if not rows:
         warning("No packages found."); return
     render_list(rows)
+
+    # --diff: show per-package file differences
+    if diff:
+        _info("\n[bold]File differences:[/]")
+        for pt in types_to_show:
+            for pkg in packages.get(pt, []):
+                if not pt.uses_copy_sync and not pt.uses_stow:
+                    continue
+                _show_diff(pkg, pt)
+
+
+def _show_diff(pkg: Path, pt: PkgType):
+    """Print per-file sync differences for a package."""
+    from .display import info, warning, dim
+    from .status import check_copy_status
+    from .discover import list_syncable_files, build_mnt_path
+
+    if pt.uses_stow:
+        # Show which files are not symlinked
+        target = pt.sync_target
+        if target:
+            missing = []
+            for f in pkg.rglob("*"):
+                if not f.is_file() or ".git" in f.parts:
+                    continue
+                dest = target / f.relative_to(pkg)
+                try:
+                    if not (dest.is_symlink() and dest.exists()):
+                        missing.append(str(dest))
+                except PermissionError:
+                    pass
+            if missing:
+                warning(f"  {pkg.name} — {len(missing)} file(s) not stowed:")
+                for m in missing[:20]:
+                    dim(f"    {m}")
+                if len(missing) > 20:
+                    dim(f"    ... and {len(missing)-20} more")
+    elif pt.uses_copy_sync:
+        counts = check_copy_status(pkg, pt)
+        if counts.get("outdated_local") or counts.get("outdated_remote") or counts.get("missing_remote"):
+            warning(f"  {pkg.name} — {status_text(counts)}")
+            # List specific outdated files
+            files = list_syncable_files(pkg, pt)
+            for f in files:
+                win_path = build_mnt_path(f, pt)
+                try:
+                    ws = f.stat()
+                    try:
+                        wn = win_path.stat()
+                    except OSError:
+                        wn = None
+                except OSError:
+                    continue
+                if wn is None:
+                    dim(f"    missing-win: {f.relative_to(pkg)}")
+                elif abs(ws.st_mtime - wn.st_mtime) >= 1.0 or ws.st_size != wn.st_size:
+                    newer = "local" if ws.st_mtime > wn.st_mtime else "remote"
+                    dim(f"    {newer}-newer: {f.relative_to(pkg)}")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -425,9 +499,12 @@ def _build_typer_app():
         pkg_type: Optional[str] = typer.Option(None, "--type", "-t", help=type_help),
         json_output: bool = typer.Option(False, "--json", "-j", help="JSON output."),
         verbose: bool = typer.Option(False, "--verbose", "-v", help="Per-file status."),
+        unsynced: bool = typer.Option(False, "--unsynced", "-u", help="Only show unsynced packages."),
+        diff: bool = typer.Option(False, "--diff", "-d", help="Show per-file differences."),
     ):
         """List all packages: name, type, files, size, status."""
-        cmd_list(pkg_type, json_output=json_output, verbose=verbose)
+        cmd_list(pkg_type, json_output=json_output, verbose=verbose,
+                 unsynced=unsynced, diff=diff)
 
     return app
 
@@ -454,6 +531,8 @@ def _build_argparse_parser():
     sp.add_argument("--app", default=None)
     sp.add_argument("-n", "--dry-run", action="store_true")
     sp.add_argument("-v", "--verbose", action="store_true")
+    sp.add_argument("--bypass", action="store_true")
+    sp.add_argument("-q", "--quiet", action="store_true")
 
     sp = sub.add_parser("stats", help="Statistics")
     sp.add_argument("-j", "--json", dest="json_output", action="store_true")
@@ -480,11 +559,15 @@ def main():
                        dry_run=args.dry_run, yes=getattr(args, 'yes', False))
         elif args.command == "sync":
             cmd_sync(args.pkg_type, direction=args.direction, app=args.app,
-                     dry_run=args.dry_run, verbose=args.verbose)
+                     dry_run=args.dry_run, verbose=args.verbose,
+                     bypass=getattr(args, 'bypass', False),
+                     quiet=getattr(args, 'quiet', False))
         elif args.command == "stats":
             cmd_stats(json_output=args.json_output, verbose=args.verbose)
         elif args.command == "list":
-            cmd_list(args.pkg_type, json_output=args.json_output, verbose=args.verbose)
+            cmd_list(args.pkg_type, json_output=args.json_output, verbose=args.verbose,
+                     unsynced=getattr(args, 'unsynced', False),
+                     diff=getattr(args, 'diff', False))
 
 
 if __name__ == "__main__":

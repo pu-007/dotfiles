@@ -35,6 +35,7 @@ function ghd() {
 }
 
 alias py="python"
+alias pxr="pixi r"
 alias apy="source .venv/bin/activate"
 alias wy="p python"
 alias xz="x z"
