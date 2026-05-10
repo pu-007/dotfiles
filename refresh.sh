@@ -48,7 +48,7 @@ do_update() {
     sudo pkgfile --update 2>/dev/null
 
     # Runtimes
-    if command -v conda &>/dev/null; then conda update --all -y; fi
+    # if command -v conda &>/dev/null; then conda update --all -y; fi
     sudo npm install -g @google/gemini-cli
     if command -v npm &>/dev/null; then sudo npm install -g aicommit2; fi
 
