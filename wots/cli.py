@@ -88,9 +88,7 @@ def cmd_create(
                 info(f"Using type: [cyan]{pt.value}[/]")
 
     # 3 ─ determine app name
-    if pt == PkgType.MNT:
-        app_name = None
-    elif app_name is None:
+    if app_name is None:
         default = resolved[0].stem or resolved[0].name
         if not yes:
             resp = input(f"  App name [[cyan]{default}[/]]: ").strip()
@@ -99,10 +97,9 @@ def cmd_create(
             app_name = default
 
     # 4 ─ destination root
-    else:
-        dest_root = config.DOTFILES_DIR / f"{app_name}{pt.suffix}"
+    dest_root = config.DOTFILES_DIR / f"{app_name}{pt.suffix}"
 
-    if dest_root.exists() and pt != PkgType.MNT:
+    if dest_root.exists():
         error(f"Package already exists: {dest_root}")
         raise Exit(1)
 
@@ -270,7 +267,7 @@ def cmd_sync(
     success("Sync complete.")
 
 
-def _print_sync_summary(counts: Dict[str, int]):
+def _print_sync_summary(counts: Dict[str, int], *, quiet: bool = False):
     from .display import info
     parts = []
     if counts.get("copied_to_win"): parts.append(f"{counts['copied_to_win']}→win")
@@ -278,7 +275,7 @@ def _print_sync_summary(counts: Dict[str, int]):
     if counts.get("up_to_date"):    parts.append(f"{counts['up_to_date']} ok")
     if counts.get("skipped"):       parts.append(f"{counts['skipped']} skipped")
     if counts.get("error"):         parts.append(f"{counts['error']} errors")
-    if parts:
+    if parts and not quiet:
         info(f"    Result: {', '.join(parts)}")
 
 

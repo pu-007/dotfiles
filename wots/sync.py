@@ -4,6 +4,7 @@ Sync operations: stow (user/root) + copy-sync (winuser/mnt) + async batch.
 All Windows operations use **copy** (not symlink) for maximum compatibility.
 File comparison is based on mtime + size.
 """
+
 from __future__ import annotations
 
 import asyncio
@@ -21,6 +22,7 @@ from .utils import has_stow, has_pwsh, is_wsl, is_excluded
 # ═══════════════════════════════════════════════════════════════════════════════
 #  Stow (user / root)
 # ═══════════════════════════════════════════════════════════════════════════════
+
 
 def do_stow(
     pkg: Path,
@@ -58,7 +60,9 @@ def do_stow(
     try:
         run(
             ["stow", "-v", "--adopt", "-t", str(target), pkg_name],
-            sudo=False, cwd=config.DOTFILES_DIR, dry_run=dry_run,
+            sudo=False,
+            cwd=config.DOTFILES_DIR,
+            dry_run=dry_run,
         )
         if dry_run:
             dim(f"    DRY-RUN  would stow  {pkg_name}  →  {target}")
@@ -127,6 +131,7 @@ def _stow_file_by_file(pkg: Path, target: Path, *, sudo: bool, dry_run: bool):
             r = subprocess.run(ln_cmd, capture_output=True, text=True)
             if r.returncode != 0:
                 from .display import error
+
                 error(f"ln failed: {dest}: {r.stderr.strip()}")
             else:
                 dim(f"       LINK: {rel} => {f.resolve()}")
@@ -136,9 +141,10 @@ def _stow_file_by_file(pkg: Path, target: Path, *, sudo: bool, dry_run: bool):
 #  Windows copy (sync, blocking)
 # ═══════════════════════════════════════════════════════════════════════════════
 
+
 def _win_copy(
     wsl_src: Path,
-    win_dst: str,       # e.g. "C:\\Users\\zion\\.gitconfig"
+    win_dst: str,  # e.g. "C:\\Users\\zion\\.gitconfig"
     *,
     is_dir: bool = False,
     dry_run: bool = False,
@@ -164,8 +170,12 @@ def _win_copy(
 
     try:
         r = subprocess.run(
-            full, capture_output=True, text=True,
-            cwd=str(config.MNT_C), encoding="gbk", errors="replace",
+            full,
+            capture_output=True,
+            text=True,
+            cwd=str(config.MNT_C),
+            encoding="gbk",
+            errors="replace",
         )
         if r.stdout.strip():
             dim(f"       {r.stdout.strip()}")
@@ -181,8 +191,8 @@ def _win_copy(
 
 
 def _wsl_copy(
-    win_src: Path,        # /mnt/c/Users/zion/...
-    wsl_dst: Path,        # c.mnt/Users/zion/...  or  {pkg}.winuser/zion/...
+    win_src: Path,  # /mnt/c/Users/zion/...
+    wsl_dst: Path,  # c.mnt/Users/zion/...  or  {pkg}.winuser/zion/...
     *,
     is_dir: bool = False,
     dry_run: bool = False,
@@ -209,6 +219,7 @@ def _wsl_copy(
 # ═══════════════════════════════════════════════════════════════════════════════
 #  Async Windows copy (for batch operations)
 # ═══════════════════════════════════════════════════════════════════════════════
+
 
 async def _win_copy_async(
     wsl_src: Path,
@@ -261,13 +272,19 @@ async def _wsl_copy_async(
     """Async WSL-side copy (runs in thread to avoid blocking)."""
     loop = asyncio.get_running_loop()
     return await loop.run_in_executor(
-        None, _wsl_copy, win_src, wsl_dst, is_dir, dry_run,
+        None,
+        _wsl_copy,
+        win_src,
+        wsl_dst,
+        is_dir,
+        dry_run,
     )
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 #  Single file sync (sync version — used by create)
 # ═══════════════════════════════════════════════════════════════════════════════
+
 
 def sync_one_file(
     wsl_path: Path,
@@ -301,8 +318,9 @@ def sync_one_file(
         if not wsl_exists:
             warning(f"WSL source missing: {wsl_path}")
             return "missing_source"
-        if _win_copy(wsl_path, _win_path_str(win_path),
-                     is_dir=wsl_path.is_dir(), dry_run=dry_run):
+        if _win_copy(
+            wsl_path, _win_path_str(win_path), is_dir=wsl_path.is_dir(), dry_run=dry_run
+        ):
             return "copied_to_win"
         return "error"
 
@@ -317,8 +335,9 @@ def sync_one_file(
 
     # ── direction: sync (bidirectional) ──
     if wsl_exists and not win_exists:
-        if _win_copy(wsl_path, _win_path_str(win_path),
-                     is_dir=wsl_path.is_dir(), dry_run=dry_run):
+        if _win_copy(
+            wsl_path, _win_path_str(win_path), is_dir=wsl_path.is_dir(), dry_run=dry_run
+        ):
             return "copied_to_win"
         return "error"
 
@@ -339,8 +358,9 @@ def sync_one_file(
         return "up_to_date"
 
     if ws.st_mtime > wn.st_mtime:
-        if _win_copy(wsl_path, _win_path_str(win_path),
-                     is_dir=wsl_path.is_dir(), dry_run=dry_run):
+        if _win_copy(
+            wsl_path, _win_path_str(win_path), is_dir=wsl_path.is_dir(), dry_run=dry_run
+        ):
             return "copied_to_win"
         return "error"
     elif wn.st_mtime > ws.st_mtime:
@@ -354,6 +374,7 @@ def sync_one_file(
 # ═══════════════════════════════════════════════════════════════════════════════
 #  Async single file sync (for batch)
 # ═══════════════════════════════════════════════════════════════════════════════
+
 
 async def _sync_one_async(
     wsl_path: Path,
@@ -369,15 +390,19 @@ async def _sync_one_async(
     async def _do_win_copy():
         async with sem if sem else _null_context():
             return await _win_copy_async(
-                wsl_path, _win_path_str(win_path),
-                is_dir=wsl_path.is_dir(), dry_run=dry_run,
+                wsl_path,
+                _win_path_str(win_path),
+                is_dir=wsl_path.is_dir(),
+                dry_run=dry_run,
             )
 
     async def _do_wsl_copy():
         async with sem if sem else _null_context():
             return await _wsl_copy_async(
-                win_path, wsl_path,
-                is_dir=win_path.is_dir(), dry_run=dry_run,
+                win_path,
+                wsl_path,
+                is_dir=win_path.is_dir(),
+                dry_run=dry_run,
             )
 
     wsl_exists = wsl_path.exists()
@@ -427,8 +452,9 @@ async def _sync_one_async(
 #  Async batch sync (with progress)
 # ═══════════════════════════════════════════════════════════════════════════════
 
+
 def sync_batch(
-    items: List[Tuple[Path, Path]],   # [(wsl_path, win_path), ...]
+    items: List[Tuple[Path, Path]],  # [(wsl_path, win_path), ...]
     *,
     direction: str = "sync",
     dry_run: bool = False,
@@ -440,10 +466,15 @@ def sync_batch(
 
     Returns counts by result category.
     """
-    return asyncio.run(_sync_batch_async(
-        items, direction=direction, dry_run=dry_run,
-        max_concurrent=max_concurrent, progress_cb=progress_cb,
-    ))
+    return asyncio.run(
+        _sync_batch_async(
+            items,
+            direction=direction,
+            dry_run=dry_run,
+            max_concurrent=max_concurrent,
+            progress_cb=progress_cb,
+        )
+    )
 
 
 async def _sync_batch_async(
@@ -465,8 +496,12 @@ async def _sync_batch_async(
     sem = asyncio.Semaphore(max(1, mc))
 
     counts: Dict[str, int] = {
-        "copied_to_win": 0, "copied_to_wsl": 0, "up_to_date": 0,
-        "missing_source": 0, "error": 0, "skipped": 0,
+        "copied_to_win": 0,
+        "copied_to_wsl": 0,
+        "up_to_date": 0,
+        "missing_source": 0,
+        "error": 0,
+        "skipped": 0,
     }
     total = len(items)
     done = 0
@@ -477,13 +512,20 @@ async def _sync_batch_async(
         if is_excluded(wsl_p):
             return "skipped"
         try:
-            if config.MAX_SYNC_SIZE_BYTES > 0 and wsl_p.stat().st_size > config.MAX_SYNC_SIZE_BYTES:
+            if (
+                config.MAX_SYNC_SIZE_BYTES > 0
+                and wsl_p.stat().st_size > config.MAX_SYNC_SIZE_BYTES
+            ):
                 return "skipped"
         except OSError:
             return "error"
 
         result = await _sync_one_async(
-            wsl_p, win_p, direction=direction, dry_run=dry_run, sem=sem,
+            wsl_p,
+            win_p,
+            direction=direction,
+            dry_run=dry_run,
+            sem=sem,
         )
         done += 1
         if progress_cb:
@@ -506,6 +548,7 @@ async def _sync_batch_async(
 #  Helpers
 # ═══════════════════════════════════════════════════════════════════════════════
 
+
 def _win_path_str(p: Path) -> str:
     """Convert a /mnt/c-based Path to a C:\\ string for Windows commands."""
     s = str(Path("C:/") / p.relative_to(config.MNT_C))
@@ -514,20 +557,24 @@ def _win_path_str(p: Path) -> str:
 
 class _null_context:
     """Async no-op context manager."""
+
     async def __aenter__(self):
         return None
+
     async def __aexit__(self, *args):
         pass
 
 
 def prepare_sync_items(
-    pkg: Path, pt: PkgType,
+    pkg: Path,
+    pt: PkgType,
 ) -> List[Tuple[Path, Path]]:
     """
     Build a list of (wsl_path, win_path) pairs for every syncable file
     in *pkg* (any copy-sync type).
     """
     from .discover import list_syncable_files, build_mnt_path
+
     items: List[Tuple[Path, Path]] = []
 
     if not pt.uses_copy_sync:
@@ -541,7 +588,9 @@ def prepare_sync_items(
     return items
 
 
-def build_winuser_wsl_path(pkg: Path, win_path_on_mnt: Path, pt: PkgType | None = None) -> Path:
+def build_winuser_wsl_path(
+    pkg: Path, win_path_on_mnt: Path, pt: PkgType | None = None
+) -> Path:
     """
     Given a package and a /mnt/c/... path, return the corresponding
     path inside the package (reverse of build_mnt_path).
