@@ -30,11 +30,13 @@ def check_stow_status(pkg: Path, pt: PkgType) -> Tuple[int, int]:
         rel = f.relative_to(pkg)
         dest = target / rel
 
-        linked = dest.is_symlink()
+        # Only count as *stowed* if the symlink target is reachable
+        # (is_symlink() alone is true even for broken symlinks).
+        linked = dest.is_symlink() and dest.exists()
         if not linked:
             p = dest.parent
             while p != target and p != p.parent:
-                if p.is_symlink():
+                if p.is_symlink() and p.exists():
                     linked = True
                     break
                 p = p.parent
