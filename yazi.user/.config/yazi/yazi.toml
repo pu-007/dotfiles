@@ -3,13 +3,15 @@ show_hidden = true
 
 [[plugin.prepend_fetchers]]
 id = "git"
-name = "*"
+url = "*"
 run = "git"
+group = "git"
 
 [[plugin.prepend_fetchers]]
 id = "git"
-name = "*/"
+url = "*/"
 run = "git"
+group = "git"
 
 [plugin]
 prepend_previewers = [
@@ -17,15 +19,18 @@ prepend_previewers = [
   { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", run = "lsar" },
   { mime = "{audio,video,image}/*", run = "mediainfo" },
   { mime = "application/subrip", run = "mediainfo" },
-  { name = "*.csv", run = 'piper -- rich -j --left --panel=rounded --guides --line-numbers --force-terminal "$1"' },   # for csv files
-  { name = "*.md", run = 'piper -- rich -j --left --panel=rounded --guides --line-numbers --force-terminal "$1"' },    # for markdown (.md) files
-  { name = "*.rst", run = 'piper -- rich -j --left --panel=rounded --guides --line-numbers --force-terminal "$1"' },   # for restructured text (.rst) files
-  { name = "*.ipynb", run = 'piper -- rich -j --left --panel=rounded --guides --line-numbers --force-terminal "$1"' }, # for jupyter notebooks (.ipynb)
+
+  # 文本/表格文件使用 piper + rich
+  { url = "*.csv", run = 'piper -- rich -j --left --panel=rounded --guides --line-numbers --force-terminal "$1"' },
+  { url = "*.md", run = 'piper -- rich -j --left --panel=rounded --guides --line-numbers --force-terminal "$1"' },
+  { url = "*.rst", run = 'piper -- rich -j --left --panel=rounded --guides --line-numbers --force-terminal "$1"' },
+  { url = "*.ipynb", run = 'piper -- rich -j --left --panel=rounded --guides --line-numbers --force-terminal "$1"' },
+
   { mime = "application/openxmlformats-officedocument.*", run = "office" },
   { mime = "application/oasis.opendocument.*", run = "office" },
   { mime = "application/ms-*", run = "office" },
   { mime = "application/msword", run = "office" },
-  { name = "*.docx", run = "office" },
+  { url = "*.docx", run = "office" },                                       # ← 这里改成 url
 ]
 
 prepend_preloaders = [
@@ -35,5 +40,5 @@ prepend_preloaders = [
   { mime = "application/oasis.opendocument.*", run = "office" },
   { mime = "application/ms-*", run = "office" },
   { mime = "application/msword", run = "office" },
-  { name = "*.docx", run = "office" },
+  { url = "*.docx", run = "office" },                                       # ← 这里也改成 url
 ]
