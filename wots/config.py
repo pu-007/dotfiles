@@ -40,8 +40,6 @@ WINROAMING_TARGET = WINUSER_TARGET / "AppData" / "Roaming"
 # /mnt/c mount point
 MNT_C = Path("/mnt/c")
 
-# WSL-side mirror of C:\ (legacy mnt type)
-WSL_MNT_BASE = DOTFILES_DIR / "c.mnt"
 
 # ── Performance ────────────────────────────────────────────────────
 MNT_MAX_CONCURRENT = int(os.environ.get("WOTS_CONCURRENT", "15"))

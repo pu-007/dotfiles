@@ -25,13 +25,12 @@ class PkgType(Enum):
     WINROAMING = "winroaming"  # C:\Users\{name}\AppData\Roaming\
 
     # ── Legacy ─────────────────────────────────────────────────
-    MNT = "mnt"          # c.mnt/  →  C:\  (full drive mirror)
 
     # ── properties ──────────────────────────────────────────────
 
     @property
     def suffix(self) -> str:
-        return "" if self == PkgType.MNT else f".{self.value}"
+        return f".{self.value}"
 
     @property
     def sync_target(self) -> Optional[Path]:
@@ -62,7 +61,7 @@ class PkgType(Enum):
         """Windows types managed by copy-based bidirectional sync."""
         return self in (
             PkgType.WINUSER, PkgType.WINCONFIG,
-            PkgType.WINLOCAL, PkgType.WINROAMING, PkgType.MNT,
+            PkgType.WINLOCAL, PkgType.WINROAMING, 
         )
 
     @property
@@ -73,7 +72,7 @@ class PkgType(Enum):
     def is_windows(self) -> bool:
         return self in (
             PkgType.WINUSER, PkgType.WINCONFIG,
-            PkgType.WINLOCAL, PkgType.WINROAMING, PkgType.MNT,
+            PkgType.WINLOCAL, PkgType.WINROAMING, 
         )
 
     @property
@@ -93,7 +92,7 @@ def suffix_to_type(suffix: str) -> Optional[PkgType]:
 
 def type_from_dir_name(name: str) -> Optional[PkgType]:
     """Infer PkgType from a directory name, or None."""
-    if name == config.WSL_MNT_BASE.name:
+    if name == Path("/dev/null").name:
         return PkgType.MNT
     for pt in PkgType:
         s = pt.suffix
@@ -113,7 +112,6 @@ _TYPE_LABELS: dict[PkgType, str] = {
     PkgType.WINCONFIG:  f"C:\\Users\\{config.WIN_USERNAME}\\.config",
     PkgType.WINLOCAL:   f"C:\\Users\\{config.WIN_USERNAME}\\AppData\\Local",
     PkgType.WINROAMING: f"C:\\Users\\{config.WIN_USERNAME}\\AppData\\Roaming",
-    PkgType.MNT:        "C:\\",
 }
 
 def type_label(pt: PkgType) -> str:

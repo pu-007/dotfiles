@@ -99,8 +99,6 @@ def cmd_create(
             app_name = default
 
     # 4 ─ destination root
-    if pt == PkgType.MNT:
-        dest_root = config.WSL_MNT_BASE
     else:
         dest_root = config.DOTFILES_DIR / f"{app_name}{pt.suffix}"
 
@@ -164,9 +162,6 @@ def _validate_source(src: Path, pt: PkgType):
 
 def _compute_dest(src: Path, pt: PkgType, dest_root: Path) -> Path:
     """Compute destination path inside the package."""
-    if pt == PkgType.MNT:
-        return dest_root / src.relative_to(config.MNT_C)
-
     if pt.is_windows:
         # Strip the Windows target prefix from src (/mnt/c path)
         return build_winuser_wsl_path(dest_root, src, pt)
@@ -197,8 +192,8 @@ def cmd_sync(
     quiet: bool = False,
 ):
     """Sync packages to their targets."""
-    from .display import info, success, error, warning, rule
-    from .types import type_label
+    from .display import info, success, error, warning, rule, dim
+    from .types import type_label, PkgType as PT
 
     packages = find_packages()
     types_to_sync = list(PkgType) if pkg_type_str is None else [PkgType(pkg_type_str)]
@@ -246,21 +241,27 @@ def cmd_sync(
                     continue
                 info(f"  {pkg.name}: {len(items)} file(s)")
 
+                if not quiet:
+                    # Show first few WSL→Windows mappings
+                    for wsl_p, win_p in items[:3]:
+                        win_str = str(Path("C:/") / win_p.relative_to(config.MNT_C)).replace("/", "\\")
+                        dim(f"    {wsl_p.relative_to(pkg)}  →  [cyan]{win_str}[/]")
+                    if len(items) > 3:
+                        dim(f"    ... and {len(items)-3} more")
+
                 last_pct = 0
                 def _progress(result: str, done: int, total: int):
                     nonlocal last_pct
                     pct = done * 100 // total
-                    if verbose or pct != last_pct:
+                    if pct != last_pct:
                         last_pct = pct
-                        if verbose:
-                            info(f"    [{done}/{total}] {result}")
-                        else:
-                            print(f"\r    [{done}/{total}] synced", end="", flush=True)
+                        if not quiet:
+                            print(f"\r    [{done}/{total}]" + (" " * 10), end="", flush=True)
 
                 counts = sync_batch(items, direction=direction, dry_run=dry_run, progress_cb=_progress)
-                if not verbose:
+                if not quiet:
                     print()
-                _print_sync_summary(counts)
+                _print_sync_summary(counts, quiet=quiet)
 
         else:
             info("  (meta packages are manually managed)")
@@ -403,7 +404,7 @@ def cmd_list(
 def _show_diff(pkg: Path, pt: PkgType):
     """Print per-file sync differences for a package."""
     from .display import info, warning, dim
-    from .status import check_copy_status
+    from .status import check_copy_status, _is_symlink
     from .discover import list_syncable_files, build_mnt_path
 
     if pt.uses_stow:
@@ -416,13 +417,12 @@ def _show_diff(pkg: Path, pt: PkgType):
                     continue
                 dest = target / f.relative_to(pkg)
                 try:
-                    linked = dest.is_symlink() and dest.exists()
+                    linked = _is_symlink(dest) and (dest.exists() or _is_symlink(dest))
                     if not linked:
-                        # Check ancestor dirs — if parent is symlinked, file is synced
                         p = dest.parent
                         while p != target and p != p.parent:
                             try:
-                                if p.is_symlink() and p.exists():
+                                if _is_symlink(p) and (p.exists() or _is_symlink(p)):
                                     linked = True
                                     break
                             except PermissionError:
@@ -505,31 +505,28 @@ def _build_typer_app():
                                       help="Copy direction: sync, to-windows, to-wsl."),
         app: Optional[str] = typer.Option(None, "--app", help="Sync only a specific package."),
         dry_run: bool = typer.Option(False, "--dry-run", "-n", help="Preview only."),
-        verbose: bool = typer.Option(False, "--verbose", "-v", help="Per-file details."),
         bypass: bool = typer.Option(False, "--bypass", help="Skip root confirmation."),
-        quiet: bool = typer.Option(False, "--quiet", "-q", help="Summary output only."),
+        quiet: bool = typer.Option(False, "--quiet", "-q", help="Minimal output."),
     ):
         """Sync packages to their targets.  Stow for Linux, copy-sync for Windows."""
         cmd_sync(pkg_type, direction=direction, app=app,
-                 dry_run=dry_run, verbose=verbose, bypass=bypass, quiet=quiet)
+                 dry_run=dry_run, bypass=bypass, quiet=quiet)
 
     @app.command()
     def stats(
         json_output: bool = typer.Option(False, "--json", "-j", help="JSON output."),
-        verbose: bool = typer.Option(False, "--verbose", "-v", help="Per-package detail."),
     ):
         """Repository statistics: packages, files, sizes, sync status."""
-        cmd_stats(json_output=json_output, verbose=verbose)
+        cmd_stats(json_output=json_output)
 
     @app.command()
     def list(
         pkg_type: Optional[str] = typer.Option(None, "--type", "-t", help=type_help),
         json_output: bool = typer.Option(False, "--json", "-j", help="JSON output."),
-        verbose: bool = typer.Option(False, "--verbose", "-v", help="Per-file status."),
         unsynced: bool = typer.Option(False, "--unsynced", "-u", help="Show unsynced packages with file diffs."),
     ):
         """List all packages: name, type, files, size, status."""
-        cmd_list(pkg_type, json_output=json_output, verbose=verbose,
+        cmd_list(pkg_type, json_output=json_output,
                  unsynced=unsynced)
 
     return app
@@ -562,9 +559,7 @@ def _build_argparse_parser():
 
     sp = sub.add_parser("stats", help="Statistics")
     sp.add_argument("-j", "--json", dest="json_output", action="store_true")
-    sp.add_argument("-v", "--verbose", action="store_true")
-
-    sp = sub.add_parser("list", help="List packages")
+    
     sp.add_argument("-t", "--type", dest="pkg_type", choices=tc)
     sp.add_argument("-j", "--json", dest="json_output", action="store_true")
     sp.add_argument("-v", "--verbose", action="store_true")
@@ -591,7 +586,7 @@ def main():
                      bypass=getattr(args, 'bypass', False),
                      quiet=getattr(args, 'quiet', False))
         elif args.command == "stats":
-            cmd_stats(json_output=args.json_output, verbose=args.verbose)
+            cmd_stats(json_output=args.json_output)
         elif args.command == "list":
             cmd_list(args.pkg_type, json_output=args.json_output, verbose=args.verbose,
                      unsynced=getattr(args, 'unsynced', False),

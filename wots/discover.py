@@ -37,7 +37,7 @@ def detect_type(path: Path) -> PkgType:
 
         # c.mnt path → map to /mnt/c for detection
         try:
-            rp.relative_to(config.WSL_MNT_BASE)
+            rp.relative_to(Path("/dev/null"))
             # Already in c.mnt, treat as MNT (legacy)
             return PkgType.MNT
         except ValueError:
@@ -123,7 +123,7 @@ def find_packages(base: Path | None = None) -> Dict[PkgType, List[Path]]:
 def pkg_basename(pkg_path: Path) -> str:
     """Human-readable package name (strip suffix)."""
     name = pkg_path.name
-    if name == config.WSL_MNT_BASE.name:
+    if name == Path("/dev/null").name:
         return "c.mnt"
     pt = type_from_dir_name(name)
     if pt and pt.suffix:
@@ -201,7 +201,7 @@ def build_mnt_path(wsl_path: Path, pt: PkgType) -> Path:
         return config.MNT_C / "Users" / config.WIN_USERNAME / "AppData" / "Roaming" / real_rel
     elif pt == PkgType.MNT:
         try:
-            return config.MNT_C / wsl_path.relative_to(config.WSL_MNT_BASE)
+            return config.MNT_C / wsl_path.relative_to(Path("/dev/null"))
         except ValueError:
             pass
     return config.MNT_C / real_rel
@@ -211,7 +211,7 @@ def _find_pkg_root(file_path: Path, pt: PkgType) -> Path:
     """Walk up from *file_path* to find the package root directory."""
     p = file_path
     while p != p.parent:
-        if p.name.endswith(pt.suffix) or p == config.WSL_MNT_BASE:
+        if p.name.endswith(pt.suffix) or p == Path("/dev/null"):
             return p
         p = p.parent
     return file_path.parent
