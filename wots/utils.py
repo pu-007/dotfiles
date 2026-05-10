@@ -1,7 +1,9 @@
 """Utility functions: shell, filesystem, environment checks."""
 from __future__ import annotations
 
+import asyncio
 import fnmatch
+import os
 import shutil
 import subprocess
 from pathlib import Path
@@ -23,26 +25,38 @@ def has_stow() -> bool:
     return shutil.which("stow") is not None
 
 
-# ── filesystem metrics ─────────────────────────────────────────
+# ── filesystem metrics (os.scandir for speed) ──────────────────
 
 def count_files(directory: Path) -> int:
-    """Count regular files recursively, skipping excluded patterns."""
+    """Count regular files recursively, skipping excluded patterns.
+    Uses os.scandir for fast traversal."""
     if not directory.is_dir():
         return 0
     n = 0
-    for p in directory.rglob("*"):
-        if p.is_file() and not _is_excluded(p):
-            n += 1
+    for dirpath, dirnames, filenames in os.walk(directory):
+        dirnames[:] = [d for d in dirnames if not _quick_exclude_dir(d)]
+        dp = Path(dirpath)
+        for fn in filenames:
+            if not _is_excluded(dp / fn):
+                n += 1
     return n
 
 def dir_size(directory: Path) -> int:
-    """Total byte size of all regular files, skipping excluded patterns."""
+    """Total byte size of all regular files, skipping excluded patterns.
+    Uses os.scandir for fast traversal."""
     if not directory.is_dir():
         return 0
     total = 0
-    for p in directory.rglob("*"):
-        if p.is_file() and not _is_excluded(p):
-            total += p.stat().st_size
+    for dirpath, dirnames, filenames in os.walk(directory):
+        dirnames[:] = [d for d in dirnames if not _quick_exclude_dir(d)]
+        dp = Path(dirpath)
+        for fn in filenames:
+            fp = dp / fn
+            if not _is_excluded(fp):
+                try:
+                    total += os.stat(fp).st_size
+                except OSError:
+                    pass
     return total
 
 def fmt_size(n_bytes: int) -> str:
@@ -59,6 +73,11 @@ def fmt_size(n_bytes: int) -> str:
 
 # ── exclusion ──────────────────────────────────────────────────
 
+def _quick_exclude_dir(dirname: str) -> bool:
+    """Fast exclusion for directory names (no fnmatch)."""
+    return dirname in {".git", "__pycache__", "node_modules", ".mypy_cache",
+                       ".ruff_cache", ".pixi"}
+
 def _is_excluded(path: Path) -> bool:
     """Check whether *path* matches any EXCLUDE_PATTERNS."""
     for part in path.parts:
@@ -70,6 +89,15 @@ def _is_excluded(path: Path) -> bool:
 def is_excluded(path: Path) -> bool:
     """Public alias."""
     return _is_excluded(path)
+
+
+# ── async wrappers ────────────────────────────────────────────
+
+async def count_files_async(directory: Path) -> int:
+    return await asyncio.to_thread(count_files, directory)
+
+async def dir_size_async(directory: Path) -> int:
+    return await asyncio.to_thread(dir_size, directory)
 
 
 # ── subprocess ─────────────────────────────────────────────────

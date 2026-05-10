@@ -37,12 +37,11 @@ WINCONFIG_TARGET  = WINUSER_TARGET / ".config"
 WINLOCAL_TARGET   = WINUSER_TARGET / "AppData" / "Local"
 WINROAMING_TARGET = WINUSER_TARGET / "AppData" / "Roaming"
 
-# /mnt/c mount point
+# /mnt/c mount point — used for WSL↔Windows path translation
 MNT_C = Path("/mnt/c")
 
-
 # ── Performance ────────────────────────────────────────────────────
-MNT_MAX_CONCURRENT = int(os.environ.get("WOTS_CONCURRENT", "15"))
+SYNC_MAX_CONCURRENT = int(os.environ.get("WOTS_CONCURRENT", "15"))
 
 # ── Exclusion ──────────────────────────────────────────────────────
 EXCLUDE_PATTERNS = [

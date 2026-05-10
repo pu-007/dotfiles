@@ -3,20 +3,20 @@ CLI — typer app with argparse fallback.
 
 Commands:
   create   Create a new package from existing files (interactive)
-  sync     Sync (stow / copy) packages to their targets
-  stats    Show repository statistics
-  list     List all packages with details
+  sync     Force-copy packages to their targets
+  stats    Show repository statistics (async parallel)
+  list     List all packages with details (async parallel)
 """
 from __future__ import annotations
 
-import sys, json, shutil
+import asyncio, sys, json, shutil
 from pathlib import Path
 from typing import Optional, List, Dict, Tuple
 
 from . import config
 from .types import PkgType, type_label
-from .discover import detect_type, find_packages, pkg_basename, build_mnt_path
-from .sync import do_stow, sync_one_file, sync_batch, prepare_sync_items, build_winuser_wsl_path
+from .discover import detect_type, find_packages, pkg_basename, build_win_path
+from .sync import do_stow, sync_one_file, sync_batch, prepare_sync_items
 from .status import check_stow_status, check_copy_status, status_text
 from .utils import count_files, dir_size, fmt_size, is_wsl, has_pwsh, has_stow, is_excluded
 
@@ -29,9 +29,9 @@ except ImportError:
     pass
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════════════════
 #  Command: create
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════════════════
 
 def cmd_create(
     sources: List[str],
@@ -46,7 +46,7 @@ def cmd_create(
     """Create a new package from existing files."""
     from .display import info, success, error, warning, dim, rule
 
-    # 1 ─ resolve source paths
+    # 1 — resolve source paths
     resolved: List[Path] = []
     for s in sources:
         p = Path(s).expanduser().resolve()
@@ -55,7 +55,7 @@ def cmd_create(
             raise Exit(1)
         resolved.append(p)
 
-    # 2 ─ determine type (with interactive confirmation)
+    # 2 — determine type
     if pkg_type_str:
         try:
             pt = PkgType(pkg_type_str)
@@ -79,7 +79,6 @@ def cmd_create(
                 info("Cancelled.")
                 raise Exit(0)
             elif resp and resp not in ("y", ""):
-                # custom type
                 try:
                     pt = PkgType(resp)
                 except ValueError:
@@ -87,7 +86,7 @@ def cmd_create(
                     raise Exit(1)
                 info(f"Using type: [cyan]{pt.value}[/]")
 
-    # 3 ─ determine app name
+    # 3 — determine app name
     if app_name is None:
         default = resolved[0].stem or resolved[0].name
         if not yes:
@@ -96,18 +95,17 @@ def cmd_create(
         else:
             app_name = default
 
-    # 4 ─ destination root
+    # 4 — destination root
     dest_root = config.DOTFILES_DIR / f"{app_name}{pt.suffix}"
-
     if dest_root.exists():
         error(f"Package already exists: {dest_root}")
         raise Exit(1)
 
-    # 5 ─ validate source
+    # 5 — validate source
     for src in resolved:
         _validate_source(src, pt)
 
-    # 6 ─ copy / move files
+    # 6 — copy / move files
     rule(f"Creating {pt.value} package: {dest_root.name}")
 
     for src in resolved:
@@ -120,85 +118,90 @@ def cmd_create(
         else:
             if pt.is_linux_config and pt != PkgType.META:
                 shutil.move(str(src), str(dest))
-                success(f"Moved   {src.name}  →  {dest}")
             else:
                 if src.is_dir():
-                    shutil.copytree(str(src), str(dest), dirs_exist_ok=True)
+                    shutil.copytree(str(src), str(dest))
                 else:
                     shutil.copy2(str(src), str(dest))
-                success(f"Copied  {src.name}  →  {dest}")
 
-    # 7 ─ post-create: stow or sync
+    success(f"Package '{dest_root.name}' created.")
+
+    # 7 — post-create sync
     if pt.uses_stow and not no_stow:
         do_stow(dest_root, pt.sync_target, sudo=pt.needs_sudo, dry_run=dry_run)
     elif pt.uses_copy_sync and not no_sync:
         items = prepare_sync_items(dest_root, pt)
         for wsl_p, win_p in items:
-            sync_one_file(wsl_p, win_p, direction="to-windows", dry_run=dry_run)
+            sync_one_file(wsl_p, win_p, dry_run=dry_run)
 
     info("")
-    success(f"Package '{dest_root.name}' created.")
+    success(f"Package '{dest_root.name}' ready.")
 
 
 def _validate_source(src: Path, pt: PkgType):
-    """Raise Exit if source is invalid for the given type."""
     from .display import error
-    if pt.is_linux_config and pt != PkgType.META:
-        try:
-            src.relative_to(Path.home())
-        except ValueError:
-            error(f"Source must be under $HOME for {pt.value} type: {src}")
-            raise Exit(1)
-    elif pt.is_windows and pt != PkgType.MNT:
+
+    if pt.is_linux_config and src.is_relative_to(Path.home()):
+        return
+    if pt == PkgType.ROOT and src.is_relative_to(Path("/")):
+        return
+    if pt == PkgType.META:
+        return
+    if pt.is_windows:
         try:
             src.relative_to(config.MNT_C)
         except ValueError:
             error(f"Source must be under /mnt/c for {pt.value} type: {src}")
             raise Exit(1)
+        return
+    error(f"Source '{src}' does not match package type '{pt.value}'.")
+    raise Exit(1)
 
 
-def _compute_dest(src: Path, pt: PkgType, dest_root: Path) -> Path:
-    """Compute destination path inside the package."""
+def _compute_dest(src: Path, pt: PkgType, pkg_root: Path) -> Path:
+    """Compute the destination path inside the package for a source file."""
+    if pt.is_linux_config:
+        return pkg_root / src.relative_to(Path.home())
+    if pt == PkgType.ROOT:
+        return pkg_root / src.relative_to(Path("/"))
     if pt.is_windows:
-        # Strip the Windows target prefix from src (/mnt/c path)
-        return build_winuser_wsl_path(dest_root, src, pt)
-
+        # Strip Windows target prefix to get path relative to package
+        target_mnt = Path(str(pt.sync_target).replace("C:", str(config.MNT_C)))
+        try:
+            return pkg_root / src.relative_to(target_mnt)
+        except ValueError:
+            pass
+        try:
+            return pkg_root / src.relative_to(config.MNT_C)
+        except ValueError:
+            return pkg_root / src.name
     if pt == PkgType.META:
-        return dest_root / src.name
-
-    # Linux types: strip HOME or ROOT prefix
-    root = Path.home() if pt.is_linux_config else Path("/")
-    try:
-        return dest_root / src.relative_to(root)
-    except ValueError:
-        return dest_root / src.name
+        return pkg_root / src.name
+    return pkg_root / src.name
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════════════════
 #  Command: sync
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════════════════
 
 def cmd_sync(
     pkg_type_str: Optional[str] = None,
     *,
-    direction: str = "sync",
     app: Optional[str] = None,
     dry_run: bool = False,
     verbose: bool = False,
     bypass: bool = False,
     quiet: bool = False,
 ):
-    """Sync packages to their targets."""
+    """Force-copy packages to targets. Dotfiles always overwrites Windows."""
     from .display import info, success, error, warning, rule, dim
-    from .types import type_label, PkgType as PT
 
     packages = find_packages()
     types_to_sync = list(PkgType) if pkg_type_str is None else [PkgType(pkg_type_str)]
 
-    # Root safety: require explicit confirmation
     has_root = any(pt == PkgType.ROOT for pt in types_to_sync)
     if has_root and not bypass and not dry_run:
-        info(f"\n[bold yellow]⚠ Root sync requires sudo and will modify system files.[/]")
+        info("\n[bold yellow]⚠ Root sync requires sudo and will modify system files.[/]")
         resp = input("  Continue? [y/N]: ").strip().lower()
         if resp != "y":
             info("Cancelled.")
@@ -219,8 +222,7 @@ def cmd_sync(
                 continue
             for pkg in pkgs:
                 if not quiet:
-                    label = type_label(pt)
-                    info(f"  {pkg.name}  →  [dim]{label}[/]")
+                    info(f"  {pkg.name}  →  [dim]{type_label(pt)}[/]")
                 do_stow(pkg, pt.sync_target, sudo=pt.needs_sudo, dry_run=dry_run)
 
         elif pt.uses_copy_sync:
@@ -239,7 +241,6 @@ def cmd_sync(
                 info(f"  {pkg.name}: {len(items)} file(s)")
 
                 if not quiet:
-                    # Show first few WSL→Windows mappings
                     for wsl_p, win_p in items[:3]:
                         win_str = str(Path("C:/") / win_p.relative_to(config.MNT_C)).replace("/", "\\")
                         dim(f"    {wsl_p.relative_to(pkg)}  →  [cyan]{win_str}[/]")
@@ -255,11 +256,10 @@ def cmd_sync(
                         if not quiet:
                             print(f"\r    [{done}/{total}]" + (" " * 10), end="", flush=True)
 
-                counts = sync_batch(items, direction=direction, dry_run=dry_run, progress_cb=_progress)
+                counts = sync_batch(items, dry_run=dry_run, progress_cb=_progress)
                 if not quiet:
                     print()
                 _print_sync_summary(counts, quiet=quiet)
-
         else:
             info("  (meta packages are manually managed)")
 
@@ -270,22 +270,27 @@ def cmd_sync(
 def _print_sync_summary(counts: Dict[str, int], *, quiet: bool = False):
     from .display import info
     parts = []
-    if counts.get("copied_to_win"): parts.append(f"{counts['copied_to_win']}→win")
-    if counts.get("copied_to_wsl"): parts.append(f"{counts['copied_to_wsl']}→wsl")
-    if counts.get("up_to_date"):    parts.append(f"{counts['up_to_date']} ok")
+    if counts.get("copied_to_win"): parts.append(f"{counts['copied_to_win']} copied")
     if counts.get("skipped"):       parts.append(f"{counts['skipped']} skipped")
+    if counts.get("missing_source"): parts.append(f"{counts['missing_source']} missing")
     if counts.get("error"):         parts.append(f"{counts['error']} errors")
     if parts and not quiet:
         info(f"    Result: {', '.join(parts)}")
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════════════════
 #  Command: stats
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════════════════
 
-def cmd_stats(*, json_output: bool = False, verbose: bool = False):
+def cmd_stats(*, json_output: bool = False):
+    return asyncio.run(_cmd_stats_async(json_output=json_output))
+
+
+async def _cmd_stats_async(*, json_output: bool = False):
     from .display import render_stats
-    from .status import check_copy_status, status_text as _st
+    from .status import check_copy_status_async, status_text as _st
+    from .status import check_stow_status_async
+    from .utils import count_files_async, dir_size_async
 
     packages = find_packages()
     stats_data: Dict[str, dict] = {}
@@ -294,22 +299,43 @@ def cmd_stats(*, json_output: bool = False, verbose: bool = False):
     for pt in PkgType:
         pkgs = packages[pt]
         n_pkgs = len(pkgs)
-        n_files = sum(count_files(p) for p in pkgs)
-        n_bytes = sum(dir_size(p) for p in pkgs)
-        total_pkgs += n_pkgs; total_files += n_files; total_bytes += n_bytes
+        total_pkgs += n_pkgs
 
+        if n_pkgs == 0:
+            stats_data[pt.value] = {
+                "packages": 0, "files": 0,
+                "size_bytes": 0, "size_human": "0 B",
+                "status_text": "empty", "names": [],
+            }
+            continue
+
+        # parallel: count files + measure size per package
+        file_counts, dir_sizes = await asyncio.gather(
+            asyncio.gather(*[count_files_async(p) for p in pkgs]),
+            asyncio.gather(*[dir_size_async(p) for p in pkgs]),
+        )
+        n_files = sum(file_counts)
+        n_bytes = sum(dir_sizes)
+        total_files += n_files
+        total_bytes += n_bytes
+
+        # parallel: status check per package
         if pt.uses_stow:
-            stowed = stowable = 0
-            for p in pkgs:
-                s, t = check_stow_status(p, pt)
-                stowed += s; stowable += t
+            results = await asyncio.gather(
+                *[check_stow_status_async(p, pt) for p in pkgs]
+            )
+            stowed = sum(r[0] for r in results)
+            stowable = sum(r[1] for r in results)
             st = f"{stowed}/{stowable} stowed" if stowable else "empty"
         elif pt.uses_copy_sync:
-            tc = {"synced":0,"outdated_local":0,"outdated_remote":0,
-                  "missing_remote":0,"missing_local":0,"skipped":0,"error":0}
-            for p in pkgs:
-                c = check_copy_status(p, pt)
-                for k in tc: tc[k] += c.get(k, 0)
+            results = await asyncio.gather(
+                *[check_copy_status_async(p, pt) for p in pkgs]
+            )
+            tc: Dict[str, int] = {"synced": 0, "outdated_local": 0,
+                                   "missing_remote": 0, "skipped": 0, "error": 0}
+            for c in results:
+                for k in tc:
+                    tc[k] += c.get(k, 0)
             st = _st(tc)
         else:
             st = "manual"
@@ -335,57 +361,91 @@ def cmd_stats(*, json_output: bool = False, verbose: bool = False):
     render_stats(stats_data, total_pkgs, total_files, total_bytes)
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════════════════
 #  Command: list
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════════════════
 
 def cmd_list(
     pkg_type_str: Optional[str] = None,
-    *, json_output: bool = False, verbose: bool = False,
+    *, json_output: bool = False,
+    unsynced: bool = False,
+):
+    return asyncio.run(_cmd_list_async(
+        pkg_type_str, json_output=json_output, unsynced=unsynced))
+
+
+async def _cmd_list_async(
+    pkg_type_str: Optional[str] = None,
+    *, json_output: bool = False,
     unsynced: bool = False,
 ):
     from .display import render_list, warning, info as _info
-    from .status import check_copy_status, status_text as _st
+    from .status import check_copy_status_async, status_text as _st
+    from .status import check_stow_status_async
+    from .utils import count_files_async, dir_size_async
 
     packages = find_packages()
     types_to_show = list(PkgType) if pkg_type_str is None else [PkgType(pkg_type_str)]
     rows: List[Dict] = []
 
+    pkg_list: List[Tuple[Path, PkgType]] = []
     for pt in types_to_show:
         for pkg in packages.get(pt, []):
-            name = pkg_basename(pkg)
-            files = count_files(pkg)
-            size = dir_size(pkg)
-            if pt.uses_stow:
-                s, t = check_stow_status(pkg, pt)
-                st = "stowed" if (s == t and t > 0) else f"{s}/{t} stowed" if t > 0 else "empty"
-            elif pt.uses_copy_sync:
-                st = _st(check_copy_status(pkg, pt))
-            else:
-                st = "manual"
+            pkg_list.append((pkg, pt))
 
-            # --unsynced filter: skip fully-synced packages
-            if unsynced:
-                if st in ("stowed", "empty", "manual"):
-                    continue
-                if "synced" in str(st) and "missing" not in str(st) and "outdated" not in str(st):
-                    continue
-                if "stowed" in str(st) and "/" in str(st):
-                    parts = str(st).split("/")
-                    if parts[0] == parts[1].split()[0]:
-                        continue
+    if not pkg_list:
+        warning("No packages found.")
+        return
 
-            rows.append({
-                "name": name, "type": pt.value, "files": files,
-                "size_bytes": size, "size_human": fmt_size(size),
-                "status": st, "path": str(pkg),
-            })
+    # parallel: count files + measure size per package
+    file_counts, dir_sizes = await asyncio.gather(
+        asyncio.gather(*[count_files_async(p) for p, _ in pkg_list]),
+        asyncio.gather(*[dir_size_async(p) for p, _ in pkg_list]),
+    )
+
+    # parallel: status check per package
+    status_futures = []
+    for pkg, pt in pkg_list:
+        if pt.uses_stow:
+            status_futures.append(check_stow_status_async(pkg, pt))
+        elif pt.uses_copy_sync:
+            status_futures.append(check_copy_status_async(pkg, pt))
+        else:
+            status_futures.append(asyncio.sleep(0))
+    status_results = await asyncio.gather(*status_futures)
+
+    for idx, (pkg, pt) in enumerate(pkg_list):
+        name = pkg_basename(pkg)
+        files = file_counts[idx]
+        size = dir_sizes[idx]
+
+        if pt.uses_stow:
+            s, t = status_results[idx]
+            st = "stowed" if (s == t and t > 0) else f"{s}/{t} stowed" if t > 0 else "empty"
+        elif pt.uses_copy_sync:
+            st = _st(status_results[idx])
+        else:
+            st = "manual"
+
+        # --unsynced filter: skip fully-synced packages
+        if unsynced:
+            if st in ("stowed", "empty", "manual"):
+                continue
+            if "needs-sync" not in st and "missing-win" not in st:
+                continue
+
+        rows.append({
+            "name": name, "type": pt.value, "files": files,
+            "size_bytes": size, "size_human": fmt_size(size),
+            "status": st, "path": str(pkg),
+        })
 
     if json_output:
         print(json.dumps(rows, indent=2, ensure_ascii=False))
         return
     if not rows:
-        warning("No packages found."); return
+        warning("No packages found.")
+        return
     render_list(rows)
 
     # --unsynced: show per-package file differences
@@ -399,13 +459,12 @@ def cmd_list(
 
 
 def _show_diff(pkg: Path, pt: PkgType):
-    """Print per-file sync differences for a package."""
+    """Print per-file sync differences (WSL→Win only)."""
     from .display import info, warning, dim
     from .status import check_copy_status, _is_symlink
-    from .discover import list_syncable_files, build_mnt_path
+    from .discover import list_syncable_files, build_win_path
 
     if pt.uses_stow:
-        # Show which files are not symlinked
         target = pt.sync_target
         if target:
             missing = []
@@ -435,14 +494,14 @@ def _show_diff(pkg: Path, pt: PkgType):
                     dim(f"    {m}")
                 if len(missing) > 20:
                     dim(f"    ... and {len(missing)-20} more")
+
     elif pt.uses_copy_sync:
         counts = check_copy_status(pkg, pt)
-        if counts.get("outdated_local") or counts.get("outdated_remote") or counts.get("missing_remote"):
+        if counts.get("outdated_local") or counts.get("missing_remote"):
             warning(f"  {pkg.name} — {status_text(counts)}")
-            # List specific outdated files
-            files = list_syncable_files(pkg, pt)
+            files = list_syncable_files(pkg)
             for f in files:
-                win_path = build_mnt_path(f, pt)
+                win_path = build_win_path(f, pkg, pt)
                 try:
                     ws = f.stat()
                     try:
@@ -454,13 +513,12 @@ def _show_diff(pkg: Path, pt: PkgType):
                 if wn is None:
                     dim(f"    missing-win: {f.relative_to(pkg)}")
                 elif abs(ws.st_mtime - wn.st_mtime) >= 1.0 or ws.st_size != wn.st_size:
-                    newer = "local" if ws.st_mtime > wn.st_mtime else "remote"
-                    dim(f"    {newer}-newer: {f.relative_to(pkg)}")
+                    dim(f"    needs-sync: {f.relative_to(pkg)}")
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════════════════
 #  CLI builders
-# ═══════════════════════════════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════════════════
 
 def _build_typer_app():
     app = typer.Typer(
@@ -498,16 +556,13 @@ def _build_typer_app():
     @app.command()
     def sync(
         pkg_type: Optional[str] = typer.Option(None, "--type", "-t", help=type_help),
-        direction: str = typer.Option("sync", "--direction", "-d",
-                                      help="Copy direction: sync, to-windows, to-wsl."),
         app: Optional[str] = typer.Option(None, "--app", help="Sync only a specific package."),
         dry_run: bool = typer.Option(False, "--dry-run", "-n", help="Preview only."),
         bypass: bool = typer.Option(False, "--bypass", help="Skip root confirmation."),
         quiet: bool = typer.Option(False, "--quiet", "-q", help="Minimal output."),
     ):
-        """Sync packages to their targets.  Stow for Linux, copy-sync for Windows."""
-        cmd_sync(pkg_type, direction=direction, app=app,
-                 dry_run=dry_run, bypass=bypass, quiet=quiet)
+        """Force-copy packages to targets. Dotfiles always overwrites Windows."""
+        cmd_sync(pkg_type, app=app, dry_run=dry_run, bypass=bypass, quiet=quiet)
 
     @app.command()
     def stats(
@@ -523,8 +578,7 @@ def _build_typer_app():
         unsynced: bool = typer.Option(False, "--unsynced", "-u", help="Show unsynced packages with file diffs."),
     ):
         """List all packages: name, type, files, size, status."""
-        cmd_list(pkg_type, json_output=json_output,
-                 unsynced=unsynced)
+        cmd_list(pkg_type, json_output=json_output, unsynced=unsynced)
 
     return app
 
@@ -547,21 +601,18 @@ def _build_argparse_parser():
 
     sp = sub.add_parser("sync", help="Sync packages")
     sp.add_argument("-t", "--type", dest="pkg_type", choices=tc)
-    sp.add_argument("-d", "--direction", default="sync")
     sp.add_argument("--app", default=None)
     sp.add_argument("-n", "--dry-run", action="store_true")
-    sp.add_argument("-v", "--verbose", action="store_true")
     sp.add_argument("--bypass", action="store_true")
     sp.add_argument("-q", "--quiet", action="store_true")
 
     sp = sub.add_parser("stats", help="Statistics")
     sp.add_argument("-j", "--json", dest="json_output", action="store_true")
-    
+
+    sp = sub.add_parser("list", help="List packages")
     sp.add_argument("-t", "--type", dest="pkg_type", choices=tc)
     sp.add_argument("-j", "--json", dest="json_output", action="store_true")
-    sp.add_argument("-v", "--verbose", action="store_true")
     sp.add_argument("-u", "--unsynced", action="store_true")
-    sp.add_argument("--diff", action="store_true")
 
     return p
 
@@ -572,22 +623,22 @@ def main():
     else:
         args = _build_argparse_parser().parse_args()
         if args.command is None:
-            _build_argparse_parser().print_help(); sys.exit(0)
+            _build_argparse_parser().print_help()
+            sys.exit(0)
         if args.command == "create":
             cmd_create(args.sources, args.app_name, args.pkg_type,
                        no_stow=args.no_stow, no_sync=args.no_sync,
                        dry_run=args.dry_run, yes=getattr(args, 'yes', False))
         elif args.command == "sync":
-            cmd_sync(args.pkg_type, direction=args.direction, app=args.app,
-                     dry_run=args.dry_run, verbose=args.verbose,
+            cmd_sync(args.pkg_type, app=args.app,
+                     dry_run=args.dry_run,
                      bypass=getattr(args, 'bypass', False),
                      quiet=getattr(args, 'quiet', False))
         elif args.command == "stats":
             cmd_stats(json_output=args.json_output)
         elif args.command == "list":
-            cmd_list(args.pkg_type, json_output=args.json_output, verbose=args.verbose,
-                     unsynced=getattr(args, 'unsynced', False),
-                     diff=getattr(args, 'diff', False))
+            cmd_list(args.pkg_type, json_output=args.json_output,
+                     unsynced=getattr(args, 'unsynced', False))
 
 
 if __name__ == "__main__":

@@ -24,8 +24,6 @@ class PkgType(Enum):
     WINLOCAL   = "winlocal"    # C:\Users\{name}\AppData\Local\
     WINROAMING = "winroaming"  # C:\Users\{name}\AppData\Roaming\
 
-    # ── Legacy ─────────────────────────────────────────────────
-
     # ── properties ──────────────────────────────────────────────
 
     @property
@@ -34,7 +32,7 @@ class PkgType(Enum):
 
     @property
     def sync_target(self) -> Optional[Path]:
-        """Target directory for this type (stow or copy-sync)."""
+        """Target directory for this type (stow or force-copy)."""
         return {
             PkgType.USER:       config.USER_TARGET,
             PkgType.CONFIG:     config.CONFIG_TARGET,
@@ -44,7 +42,6 @@ class PkgType(Enum):
             PkgType.WINCONFIG:  config.WINCONFIG_TARGET,
             PkgType.WINLOCAL:   config.WINLOCAL_TARGET,
             PkgType.WINROAMING: config.WINROAMING_TARGET,
-            # MNT targets the whole C:\ drive
         }.get(self)
 
     @property
@@ -58,10 +55,10 @@ class PkgType(Enum):
 
     @property
     def uses_copy_sync(self) -> bool:
-        """Windows types managed by copy-based bidirectional sync."""
+        """Windows types managed by force-copy (WSL → Windows)."""
         return self in (
             PkgType.WINUSER, PkgType.WINCONFIG,
-            PkgType.WINLOCAL, PkgType.WINROAMING, 
+            PkgType.WINLOCAL, PkgType.WINROAMING,
         )
 
     @property
@@ -72,7 +69,7 @@ class PkgType(Enum):
     def is_windows(self) -> bool:
         return self in (
             PkgType.WINUSER, PkgType.WINCONFIG,
-            PkgType.WINLOCAL, PkgType.WINROAMING, 
+            PkgType.WINLOCAL, PkgType.WINROAMING,
         )
 
     @property
@@ -92,8 +89,6 @@ def suffix_to_type(suffix: str) -> Optional[PkgType]:
 
 def type_from_dir_name(name: str) -> Optional[PkgType]:
     """Infer PkgType from a directory name, or None."""
-    if name == Path("/dev/null").name:
-        return PkgType.MNT
     for pt in PkgType:
         s = pt.suffix
         if s and name.endswith(s) and len(name) > len(s):

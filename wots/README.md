@@ -4,7 +4,7 @@
 > It manages your dotfiles *from* the repo *to* the system, and *back*.
 
 WOTS is a unified CLI tool for managing dotfiles across **WSL**, **Linux**, and **Windows**.  
-It handles symlink-based stowing for Linux configs and copy-based bidirectional sync for Windows configs.
+It handles symlink-based stowing for Linux configs and copy-based force-sync (dotfiles → Windows) for Windows configs.
 
 ---
 
@@ -13,7 +13,7 @@ It handles symlink-based stowing for Linux configs and copy-based bidirectional 
 | Command | What it does |
 |---------|-------------|
 | `wots create` | Create a new package from existing config files (interactive, auto-detects type) |
-| `wots sync` | Deploy all packages — stow for Linux, copy-sync for Windows |
+| `wots sync` | Deploy all packages — stow for Linux, force-copy dotfiles → Windows |
 | `wots stats` | Show repository statistics with sync status |
 | `wots list` | List all packages with file counts and status |
 | `wots list -u` | Show only unsynced packages + per-file differences |
@@ -47,10 +47,10 @@ It handles symlink-based stowing for Linux configs and copy-based bidirectional 
 | `.config` | `~/.config/` | stow symlink |
 | `.local` | `~/.local/` | stow symlink |
 | `.root` | `/` | stow + file-by-file fallback (sudo) |
-| `.winuser` | `C:\Users\{name}\` | copy + compare (async) |
-| `.winconfig` | `C:\Users\{name}\.config\` | copy + compare (async) |
-| `.winroaming` | `C:\Users\{name}\AppData\Roaming\` | copy + compare (async) |
-| `.winlocal` | `C:\Users\{name}\AppData\Local\` | copy + compare (async) |
+| `.winuser` | `C:\Users\{name}\` | force-copy (async) |
+| `.winconfig` | `C:\Users\{name}\.config\` | force-copy (async) |
+| `.winroaming` | `C:\Users\{name}\AppData\Roaming\` | force-copy (async) |
+| `.winlocal` | `C:\Users\{name}\AppData\Local\` | force-copy (async) |
 | `.meta` | manual only | none |
 
 ## Prerequisites  /  前置条件
@@ -126,9 +126,8 @@ Auto-detection: `WIN_USER` is read from `/mnt/c/Users/` if not set explicitly.
 **Linux (stow)**: GNU Stow creates symlinks from the target directory into the package.  
 If stow encounters a "not owned by stow" conflict (e.g., system directories), it falls back to file-by-file `ln -sf`.
 
-**Windows (copy)**: No symlinks — files are copied via `pwsh.exe` + `cmd /c copy|xcopy`.  
-Each sync compares mtime + size on both sides. The newer version wins (in `sync` mode).  
-Async batch operations run multiple copies in parallel.
+**Windows (copy)**: No symlinks — files are force-copied from dotfiles repo to Windows via `pwsh.exe` + `cmd /c copy|xcopy`.  
+The dotfiles repo is always the source of truth. Async batch operations run multiple copies in parallel.
 
 ## Contributing / template  /  模板
 

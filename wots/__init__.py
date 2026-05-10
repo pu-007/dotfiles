@@ -6,9 +6,8 @@ Unified dotfile management for WSL & Linux & Windows.
 Package types:
   .user    → stow to $HOME
   .root    → stow to / (sudo)
-  .winuser → copy-sync to C:\\Users\\{name}
+  .winuser → force-copy to C:\\Users\\{name}
   .meta    → manual storage
-  c.mnt/   → legacy Windows mirror (compat)
 
 Usage:
   python -m wots create ~/.config/nvim

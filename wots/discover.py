@@ -1,6 +1,7 @@
 """Package discovery and type auto-detection."""
 from __future__ import annotations
 
+import os
 from pathlib import Path
 from typing import Dict, List
 
@@ -19,7 +20,7 @@ def detect_type(path: Path) -> PkgType:
       /mnt/c/Users/{name}/AppData/Local/*    →  WINLOCAL
       /mnt/c/Users/{name}/.config/*          →  WINCONFIG
       /mnt/c/Users/{name}/*                  →  WINUSER
-      /mnt/c/* (not Users)                   →  MNT
+      /mnt/c/* (not Users)                   →  META (manual)
 
     Linux:
       ~/.config/*   →  CONFIG
@@ -35,16 +36,7 @@ def detect_type(path: Path) -> PkgType:
         rp.relative_to(config.MNT_C)
         parts = Path(*rp.relative_to(config.MNT_C).parts)
 
-        # c.mnt path → map to /mnt/c for detection
-        try:
-            rp.relative_to(Path("/dev/null"))
-            # Already in c.mnt, treat as MNT (legacy)
-            return PkgType.MNT
-        except ValueError:
-            pass
-
         if len(parts.parts) >= 3 and parts.parts[0] == "Users":
-            user = parts.parts[1]
             sub = Path(*parts.parts[2:]) if len(parts.parts) > 2 else Path(".")
 
             # AppData\Roaming
@@ -67,11 +59,9 @@ def detect_type(path: Path) -> PkgType:
             if len(parts.parts) >= 3 and parts.parts[2] == ".config":
                 return PkgType.WINCONFIG
 
-            # Everything else under Users/{name}
             return PkgType.WINUSER
 
-        # /mnt/c but not Users → MNT
-        return PkgType.MNT
+        return PkgType.META
     except ValueError:
         pass
 
@@ -123,8 +113,6 @@ def find_packages(base: Path | None = None) -> Dict[PkgType, List[Path]]:
 def pkg_basename(pkg_path: Path) -> str:
     """Human-readable package name (strip suffix)."""
     name = pkg_path.name
-    if name == Path("/dev/null").name:
-        return "c.mnt"
     pt = type_from_dir_name(name)
     if pt and pt.suffix:
         return name[: -len(pt.suffix)]
@@ -133,17 +121,29 @@ def pkg_basename(pkg_path: Path) -> str:
 
 # ── file listing ──────────────────────────────────────────────
 
-def list_syncable_files(pkg: Path, pt: PkgType) -> List[Path]:
-    """Return all syncable files inside *pkg*, skipping excluded patterns."""
+def list_syncable_files(pkg: Path) -> List[Path]:
+    """Return all syncable files inside *pkg*, skipping excluded patterns.
+    Uses os.scandir for performance."""
     from .utils import is_excluded
     files: List[Path] = []
     if not pkg.is_dir():
         return files
-    for f in pkg.rglob("*"):
-        if not f.is_file() or is_excluded(f):
-            continue
-        files.append(f)
+    for dirpath, dirnames, filenames in os.walk(pkg):
+        # filter excluded dirs in-place to skip traversal
+        dirnames[:] = [d for d in dirnames if not _quick_exclude(d)]
+        dp = Path(dirpath)
+        for fn in filenames:
+            fp = dp / fn
+            if is_excluded(fp):
+                continue
+            files.append(fp)
     return files
+
+
+def _quick_exclude(dirname: str) -> bool:
+    """Fast exclusion check for directory names (no fnmatch overhead)."""
+    return dirname in {".git", "__pycache__", "node_modules", ".mypy_cache",
+                       ".ruff_cache", ".pixi"}
 
 
 # ── winuser relative path (no username nesting) ───────────────
@@ -174,44 +174,23 @@ def winuser_rel_path(pkg: Path, file_path: Path) -> Path:
     return file_path.relative_to(pkg)
 
 
-def build_mnt_path(wsl_path: Path, pt: PkgType) -> Path:
-    """
-    Given a WSL-side file in a package and its type, return the
-    corresponding /mnt/c path on the Windows side.
+# ── Windows path mapping ──────────────────────────────────────
 
-      winuser:    {pkg}/.gitconfig  →  /mnt/c/Users/{WIN_USERNAME}/.gitconfig
-      winconfig:  {pkg}/nvim/...    →  /mnt/c/Users/{WIN_USERNAME}/.config/nvim/...
+def build_win_path(file_path: Path, pkg: Path, pt: PkgType) -> Path:
     """
-    rel = winuser_rel_path(wsl_path.parent if wsl_path.is_file() else wsl_path, pt) if False else None
+    Map a file inside a Windows-type package to its /mnt/c target path.
 
-    # Actually compute from the file itself
-    real_rel = winuser_rel_path(
-        # Find the package root
-        _find_pkg_root(wsl_path, pt),
-        wsl_path,
-    )
+      pkg=git.winuser, file=.gitconfig  →  /mnt/c/Users/{WIN_USERNAME}/.gitconfig
+      pkg=nvim.winconfig, file=init.lua →  /mnt/c/Users/{WIN_USERNAME}/.config/nvim/init.lua
+    """
+    rel = winuser_rel_path(pkg, file_path)
 
     if pt == PkgType.WINUSER:
-        return config.MNT_C / "Users" / config.WIN_USERNAME / real_rel
+        return config.MNT_C / "Users" / config.WIN_USERNAME / rel
     elif pt == PkgType.WINCONFIG:
-        return config.MNT_C / "Users" / config.WIN_USERNAME / ".config" / real_rel
+        return config.MNT_C / "Users" / config.WIN_USERNAME / ".config" / rel
     elif pt == PkgType.WINLOCAL:
-        return config.MNT_C / "Users" / config.WIN_USERNAME / "AppData" / "Local" / real_rel
+        return config.MNT_C / "Users" / config.WIN_USERNAME / "AppData" / "Local" / rel
     elif pt == PkgType.WINROAMING:
-        return config.MNT_C / "Users" / config.WIN_USERNAME / "AppData" / "Roaming" / real_rel
-    elif pt == PkgType.MNT:
-        try:
-            return config.MNT_C / wsl_path.relative_to(Path("/dev/null"))
-        except ValueError:
-            pass
-    return config.MNT_C / real_rel
-
-
-def _find_pkg_root(file_path: Path, pt: PkgType) -> Path:
-    """Walk up from *file_path* to find the package root directory."""
-    p = file_path
-    while p != p.parent:
-        if p.name.endswith(pt.suffix) or p == Path("/dev/null"):
-            return p
-        p = p.parent
-    return file_path.parent
+        return config.MNT_C / "Users" / config.WIN_USERNAME / "AppData" / "Roaming" / rel
+    return config.MNT_C / rel
