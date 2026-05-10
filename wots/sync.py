@@ -30,7 +30,7 @@ def do_stow(
     dry_run: bool = False,
 ) -> bool:
     """Run `stow --adopt -t <target> <pkg>` inside DOTFILES_DIR."""
-    from .display import success, error, dim
+    from .display import success, error, warning, dim
     from .utils import run
 
     if not has_stow():
@@ -48,8 +48,73 @@ def do_stow(
         else:
             success(f"Stowed  {pkg_name}  →  {target}")
         return True
-    except subprocess.CalledProcessError:
+    except subprocess.CalledProcessError as e:
+        stderr = (e.stderr or "").strip()
+        if "existing target is not owned by stow" in stderr:
+            conflict_paths: list[str] = []
+            for ln in stderr.splitlines():
+                if "existing target is not owned by stow:" in ln:
+                    p = ln.split("existing target is not owned by stow:")[-1].strip()
+                    if p:
+                        conflict_paths.append(p)
+
+            warning(f"Stow conflict in {pkg_name}: {', '.join(conflict_paths)}")
+            warning(f"  → Retrying file-by-file (ln -sf) ...")
+
+            # Fallback: create symlinks file-by-file, avoiding stow's
+            # directory-ownership checks.
+            try:
+                _stow_file_by_file(pkg, target, sudo=sudo, dry_run=dry_run)
+                if dry_run:
+                    dim(f"    DRY-RUN  would stow  {pkg_name}  →  {target}")
+                else:
+                    success(f"Stowed (file-by-file)  {pkg_name}  →  {target}")
+                return True
+            except Exception:
+                error(f"File-by-file stow also failed for {pkg_name}")
+                return False
+        elif "Permission denied" in stderr or "cannot stow" in stderr:
+            warning(f"Stow permission error in {pkg_name}: {stderr[:200]}")
+        else:
+            error(f"Stow failed for {pkg_name}: {stderr[:300]}")
         return False
+
+
+def _stow_file_by_file(pkg: Path, target: Path, *, sudo: bool, dry_run: bool):
+    """Stow by creating individual symlinks for each file, bypassing
+    stow's directory-ownership checks."""
+    from .display import dim, success as ok
+
+    for f in sorted(pkg.rglob("*")):
+        if not f.is_file() or ".git" in f.parts:
+            continue
+        rel = f.relative_to(pkg)
+        dest = target / rel
+        # Ensure parent directory exists (with sudo if needed)
+        if sudo:
+            subprocess.run(["sudo", "mkdir", "-p", str(dest.parent)], check=False)
+        else:
+            dest.parent.mkdir(parents=True, exist_ok=True)
+
+        # Remove existing symlink / file at destination
+        rm_cmd = ["rm", "-f", str(dest)]
+        if sudo:
+            rm_cmd = ["sudo"] + rm_cmd
+
+        ln_cmd = ["ln", "-sf", str(f.resolve()), str(dest)]
+        if sudo:
+            ln_cmd = ["sudo"] + ln_cmd
+
+        if dry_run:
+            dim(f"    DRY-RUN  ln -sf {f.resolve()} → {dest}")
+        else:
+            subprocess.run(rm_cmd, check=False)
+            r = subprocess.run(ln_cmd, capture_output=True, text=True)
+            if r.returncode != 0:
+                from .display import error
+                error(f"ln failed: {dest}: {r.stderr.strip()}")
+            else:
+                dim(f"       LINK: {rel} => {f.resolve()}")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
