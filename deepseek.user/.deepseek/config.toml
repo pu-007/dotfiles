@@ -1,0 +1,5 @@
+default_text_model = "deepseek-v4-pro"
+reasoning_effort = "auto"
+
+[projects."/home/pu/dotfiles"]
+trust_level = "trusted"

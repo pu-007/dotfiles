@@ -7,4 +7,6 @@ recent_files.txt
 aicommit2.user/.config/aicommit2/stats.json
 __pycache__/
 
-.deepseek/state
+/deepseek.user/**
+!/deepseek.user/.deepseek/
+!/deepseek.user/.deepseek/config.toml
