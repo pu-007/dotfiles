@@ -1,50 +1,20 @@
 # Dotfiles
 
-Managed by **[WOTS](wots/)** — WSL Dotfile Stow Tool.
+Managed by **[WOTS](wots/README.md)** — WSL Dotfile Stow Tool.
 
 ```bash
-# Quick start
 pixi install
-pixi run wots --help
 pixi run stats
 pixi run sync
 ```
 
-## Package types
+| Type | Count | Files | Status |
+|------|-------|-------|--------|
+| user | 8 | 26 | 26/26 stowed |
+| config | 9 | 93 | 93/93 stowed |
+| root | 3 | 12 | 12/12 stowed |
+| meta | 7 | 15 | manual |
+| winuser | 14 | 21 | 21 synced |
+| **Total** | **41** | **167** | **7.0 MB** |
 
-| Type | Suffix | Target |
-|------|--------|--------|
-| user | `.user` | `~/` |
-| config | `.config` | `~/.config/` |
-| local | `.local` | `~/.local/` |
-| root | `.root` | `/` (sudo) |
-| winuser | `.winuser` | `C:\Users\{name}\` |
-| winconfig | `.winconfig` | `C:\Users\{name}\.config\` |
-| winlocal | `.winlocal` | `C:\Users\{name}\AppData\Local\` |
-| winroaming | `.winroaming` | `C:\Users\{name}\AppData\Roaming\` |
-| meta | `.meta` | manual |
-
-## Common commands
-
-```bash
-# Statistics
-pixi run stats
-
-# List packages (filter unsynced)
-pixi run wots list --diff --type root
-
-# Sync all
-pixi run sync
-
-# Sync specific type
-pixi run sync-user    # user + config
-pixi run sync-root    # sudo, requires confirmation
-pixi run sync-win     # Windows copy-sync
-
-# Dry run (preview)
-pixi run sync-dry
-
-# Create a new package (interactive)
-pixi run wots create ~/.config/newapp
-pixi run wots create /mnt/c/Users/zion/AppData/Roaming/MyApp
-```
+See [wots/README.md](wots/README.md) for full documentation.

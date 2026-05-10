@@ -471,6 +471,7 @@ def _build_typer_app():
         help="WSL Dotfile Stow Tool — unified dotfile management.",
         no_args_is_help=True,
         pretty_exceptions_show_locals=False,
+        context_settings={"help_option_names": ["-h", "--help"]},
     )
 
     type_help = "Type: " + ", ".join(t.value for t in PkgType)
