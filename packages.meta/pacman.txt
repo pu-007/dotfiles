@@ -17,6 +17,7 @@ chafa
 cifs-utils
 clinfo
 clipboard-bin
+cloc
 cmake
 cpp-pinyin
 cuda
@@ -93,6 +94,7 @@ nano
 neovim
 neovim-qt
 neovim-symlinks
+nodejs-vite
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
@@ -114,6 +116,7 @@ pistol-bin
 pixi
 pkgfile
 pngquant
+pnpm
 pre-commit
 prettier
 prettier-plugin-latex
@@ -279,6 +282,7 @@ xorg-xwud
 yapf
 yay
 yazi
+yt-dlp
 zbar
 zoxide
 zsh
