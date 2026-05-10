@@ -344,7 +344,7 @@ def cmd_stats(*, json_output: bool = False, verbose: bool = False):
 def cmd_list(
     pkg_type_str: Optional[str] = None,
     *, json_output: bool = False, verbose: bool = False,
-    unsynced: bool = False, diff: bool = False,
+    unsynced: bool = False,
 ):
     from .display import render_list, warning, info as _info
     from .status import check_copy_status, status_text as _st
@@ -390,8 +390,8 @@ def cmd_list(
         warning("No packages found."); return
     render_list(rows)
 
-    # --diff: show per-package file differences
-    if diff:
+    # --unsynced: show per-package file differences
+    if unsynced:
         _info("\n[bold]File differences:[/]")
         for pt in types_to_show:
             for pkg in packages.get(pt, []):
@@ -525,12 +525,11 @@ def _build_typer_app():
         pkg_type: Optional[str] = typer.Option(None, "--type", "-t", help=type_help),
         json_output: bool = typer.Option(False, "--json", "-j", help="JSON output."),
         verbose: bool = typer.Option(False, "--verbose", "-v", help="Per-file status."),
-        unsynced: bool = typer.Option(False, "--unsynced", "-u", help="Only show unsynced packages."),
-        diff: bool = typer.Option(False, "--diff", "-d", help="Show per-file differences."),
+        unsynced: bool = typer.Option(False, "--unsynced", "-u", help="Show unsynced packages with file diffs."),
     ):
         """List all packages: name, type, files, size, status."""
         cmd_list(pkg_type, json_output=json_output, verbose=verbose,
-                 unsynced=unsynced, diff=diff)
+                 unsynced=unsynced)
 
     return app
 

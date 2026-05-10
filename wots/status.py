@@ -1,12 +1,28 @@
 """Status checks for stow and copy-sync packages."""
 from __future__ import annotations
 
+import subprocess as _sp
 from pathlib import Path
 from typing import Dict, List, Tuple
 
 from . import config
 from .types import PkgType
 from .discover import list_syncable_files, winuser_rel_path
+
+
+def _is_symlink(path: Path) -> bool:
+    """Like path.is_symlink() but falls back to sudo test -L
+    for paths the user cannot stat (e.g. /root/...)."""
+    try:
+        if path.is_symlink():
+            return True
+    except PermissionError:
+        pass
+    # is_symlink() may return False for root-owned paths — try sudo
+    try:
+        return _sp.run(["sudo", "test", "-L", str(path)], capture_output=True).returncode == 0
+    except Exception:
+        return False
 
 
 # ── stow status (Linux types) ─────────────────────────────────
@@ -32,11 +48,14 @@ def check_stow_status(pkg: Path, pt: PkgType) -> Tuple[int, int]:
 
         # Only count as *stowed* if the symlink target is reachable
         # (is_symlink() alone is true even for broken symlinks).
-        linked = dest.is_symlink() and dest.exists()
+        linked = _is_symlink(dest)
+        if linked:
+            # For sudo-detected symlinks, exists() may return False
+            linked = dest.exists() or _is_symlink(dest)
         if not linked:
             p = dest.parent
             while p != target and p != p.parent:
-                if p.is_symlink() and p.exists():
+                if _is_symlink(p) and (p.exists() or _is_symlink(p)):
                     linked = True
                     break
                 p = p.parent
