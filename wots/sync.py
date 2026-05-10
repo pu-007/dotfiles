@@ -38,10 +38,27 @@ def do_stow(
         return False
 
     pkg_name = pkg.name
+
+    # Root packages: skip stow (always conflicts with system dirs),
+    # go directly to file-by-file ln -sf.
+    if sudo:
+        if dry_run:
+            dim(f"    DRY-RUN  would link  {pkg_name}  →  {target}  (file-by-file)")
+        else:
+            dim(f"  {pkg_name}  →  {target}  (file-by-file)")
+        try:
+            _stow_file_by_file(pkg, target, sudo=True, dry_run=dry_run)
+            if not dry_run:
+                success(f"Linked (file-by-file)  {pkg_name}  →  {target}")
+            return True
+        except Exception:
+            error(f"File-by-file link failed for {pkg_name}")
+            return False
+
     try:
         run(
             ["stow", "-v", "--adopt", "-t", str(target), pkg_name],
-            sudo=sudo, cwd=config.DOTFILES_DIR, dry_run=dry_run,
+            sudo=False, cwd=config.DOTFILES_DIR, dry_run=dry_run,
         )
         if dry_run:
             dim(f"    DRY-RUN  would stow  {pkg_name}  →  {target}")
@@ -61,17 +78,15 @@ def do_stow(
             warning(f"Stow conflict in {pkg_name}: {', '.join(conflict_paths)}")
             warning(f"  → Retrying file-by-file (ln -sf) ...")
 
-            # Fallback: create symlinks file-by-file, avoiding stow's
-            # directory-ownership checks.
             try:
-                _stow_file_by_file(pkg, target, sudo=sudo, dry_run=dry_run)
+                _stow_file_by_file(pkg, target, sudo=False, dry_run=dry_run)
                 if dry_run:
                     dim(f"    DRY-RUN  would stow  {pkg_name}  →  {target}")
                 else:
-                    success(f"Stowed (file-by-file)  {pkg_name}  →  {target}")
+                    success(f"Linked (file-by-file)  {pkg_name}  →  {target}")
                 return True
             except Exception:
-                error(f"File-by-file stow also failed for {pkg_name}")
+                error(f"File-by-file link also failed for {pkg_name}")
                 return False
         elif "Permission denied" in stderr or "cannot stow" in stderr:
             warning(f"Stow permission error in {pkg_name}: {stderr[:200]}")
