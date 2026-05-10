@@ -445,43 +445,45 @@ def prepare_sync_items(
 ) -> List[Tuple[Path, Path]]:
     """
     Build a list of (wsl_path, win_path) pairs for every syncable file
-    in *pkg* (winuser or mnt type).
+    in *pkg* (any copy-sync type).
     """
-    from .discover import list_syncable_files, winuser_rel_path
+    from .discover import list_syncable_files, build_mnt_path
     items: List[Tuple[Path, Path]] = []
+
+    if not pt.uses_copy_sync:
+        return items
 
     files = list_syncable_files(pkg, pt)
     for f in files:
-        if pt == PkgType.WINUSER:
-            rel = winuser_rel_path(pkg, f)
-            win_path = config.MNT_C / "Users" / config.WIN_USERNAME / rel
-        elif pt == PkgType.MNT:
-            try:
-                rel = f.relative_to(config.WSL_MNT_BASE)
-            except ValueError:
-                continue
-            win_path = config.MNT_C / rel
-        else:
-            continue
+        win_path = build_mnt_path(f, pt)
         items.append((f, win_path))
 
     return items
 
 
-def build_winuser_wsl_path(pkg: Path, win_path_on_mnt: Path) -> Path:
+def build_winuser_wsl_path(pkg: Path, win_path_on_mnt: Path, pt: PkgType | None = None) -> Path:
     """
-    Given a .winuser package and a /mnt/c/Users/... path,
-    return the corresponding path inside the package.
+    Given a package and a /mnt/c/... path, return the corresponding
+    path inside the package (reverse of build_mnt_path).
 
-    Package structure:
-      {name}.winuser/
-        {WIN_USERNAME}/
-          ...
+    For winuser packages, the package root maps to C:\\Users\\{WIN_USERNAME}\\
+    For winconfig,          → C:\\Users\\{WIN_USERNAME}\\.config\\
+    etc.
     """
+    # Try to figure out the relative path from the target
+    target = pt.sync_target if pt else None
+    if target:
+        try:
+            rel = win_path_on_mnt.relative_to(
+                Path(str(target).replace("C:", str(config.MNT_C)))
+            )
+            return pkg / rel
+        except ValueError:
+            pass
+
+    # Fallback: relative to /mnt/c
     try:
-        rel = win_path_on_mnt.relative_to(
-            config.MNT_C / "Users" / config.WIN_USERNAME
-        )
-    except ValueError:
         rel = win_path_on_mnt.relative_to(config.MNT_C)
-    return pkg / config.WIN_USERNAME / rel
+    except ValueError:
+        rel = win_path_on_mnt
+    return pkg / rel

@@ -6,22 +6,20 @@ from typing import Dict, List, Tuple
 
 from . import config
 from .types import PkgType
+from .discover import list_syncable_files, winuser_rel_path
 
 
-# ── stow status (user / root) ─────────────────────────────────
+# ── stow status (Linux types) ─────────────────────────────────
 
 def check_stow_status(pkg: Path, pt: PkgType) -> Tuple[int, int]:
     """
     Return (stowed_count, total_stowable).
-
-    A file is *stowed* when its target path exists via a symlink
-    ancestor — i.e. the destination itself or a parent directory
-    is a symlink pointing into the package.
+    Uses pt.sync_target to find the stow destination.
     """
-    if not pt.uses_stow or pt.stow_target is None or not pkg.is_dir():
+    target = pt.sync_target
+    if not pt.uses_stow or target is None or not pkg.is_dir():
         return (0, 0)
 
-    target = pt.stow_target
     stowed = 0
     total = 0
 
@@ -46,24 +44,22 @@ def check_stow_status(pkg: Path, pt: PkgType) -> Tuple[int, int]:
     return (stowed, total)
 
 
-# ── copy-sync status (winuser / mnt) ──────────────────────────
+# ── copy-sync status (Windows types) ──────────────────────────
 
-def check_copy_status(
-    pkg: Path, pt: PkgType,
-) -> Dict[str, int]:
+def check_copy_status(pkg: Path, pt: PkgType) -> Dict[str, int]:
     """
     Check sync status for all syncable files in *pkg*.
 
-    Returns a dict with counts:
+    Returns:
       synced           — both sides exist and are identical
       outdated_local   — WSL side is newer than Windows
       outdated_remote  — Windows side is newer than WSL
-      missing_remote   — exists in WSL only (not on Windows)
+      missing_remote   — exists in WSL only
       missing_local    — exists on Windows only
       skipped          — excluded or too large
       error            — stat failed
     """
-    from .discover import list_syncable_files, winuser_rel_path
+    from .discover import build_mnt_path
     from .utils import is_excluded
 
     counts = {
@@ -77,7 +73,6 @@ def check_copy_status(
 
     files = list_syncable_files(pkg, pt)
     for f in files:
-        # size check
         try:
             if config.MAX_SYNC_SIZE_BYTES > 0 and f.stat().st_size > config.MAX_SYNC_SIZE_BYTES:
                 counts["skipped"] += 1
@@ -86,19 +81,8 @@ def check_copy_status(
             counts["error"] += 1
             continue
 
-        # Determine the corresponding Windows path
-        if pt == PkgType.WINUSER:
-            rel = winuser_rel_path(pkg, f)
-            win_path = config.MNT_C / "Users" / config.WIN_USERNAME / rel
-        elif pt == PkgType.MNT:
-            try:
-                rel = f.relative_to(config.WSL_MNT_BASE)
-            except ValueError:
-                counts["error"] += 1
-                continue
-            win_path = config.MNT_C / rel
-        else:
-            continue
+        # Compute Windows-side path via /mnt/c
+        win_path = build_mnt_path(f, pt)
 
         wsl_exists = f.exists()
         try:
@@ -114,17 +98,15 @@ def check_copy_status(
             continue
 
         try:
-            wsl_stat = f.stat()
-            win_stat = win_path.stat()
+            ws = f.stat()
+            wn = win_path.stat()
         except OSError:
             counts["error"] += 1
             continue
 
-        # Consider files identical if mtime within 1 s AND same size
-        if (abs(wsl_stat.st_mtime - win_stat.st_mtime) < 1.0
-                and wsl_stat.st_size == win_stat.st_size):
+        if abs(ws.st_mtime - wn.st_mtime) < 1.0 and ws.st_size == wn.st_size:
             counts["synced"] += 1
-        elif wsl_stat.st_mtime > win_stat.st_mtime:
+        elif ws.st_mtime > wn.st_mtime:
             counts["outdated_local"] += 1
         else:
             counts["outdated_remote"] += 1
