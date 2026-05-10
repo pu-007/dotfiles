@@ -17,15 +17,16 @@ chafa
 cifs-utils
 clinfo
 clipboard-bin
-cloc
 cmake
 cpp-pinyin
 cuda
 ddcutil
+deepseek-tui-git
 directx-headers
 docker
 docker-buildx
 dos2unix
+dust
 eza
 fastfetch
 fcitx5
