@@ -5,3 +5,4 @@ recent_files.txt
 !.pixi/config.toml
  
 aicommit2.user/.config/aicommit2/stats.json
+__pycache__/

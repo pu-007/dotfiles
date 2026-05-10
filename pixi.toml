@@ -1,0 +1,35 @@
+[workspace]
+authors = ["Zion Pu <pu.007@qq.com>"]
+channels = ["conda-forge"]
+name = "wots"
+platforms = ["linux-64"]
+version = "1.0.0"
+
+[tasks]
+# 运行 wots（显示帮助）
+wots = "python -m wots"
+# 同步所有包
+sync = "python -m wots sync"
+# 同步用户包到 $HOME
+sync-user = "python -m wots sync --type user"
+# 同步 root 包到 /（需要 sudo）
+sync-root = "python -m wots sync --type root"
+# 同步 Windows 文件：双向对比，以新为准
+sync-win = "python -m wots sync --type winuser"
+# 只推送到 Windows
+sync-push = "python -m wots sync --type mnt --direction to-windows"
+# 只从 Windows 拉取
+sync-pull = "python -m wots sync --type mnt --direction to-wsl"
+# 预览模式
+sync-dry = "python -m wots sync --dry-run"
+# 统计
+stats = "python -m wots stats"
+# 列出所有包
+list = "python -m wots list"
+# 列出 Windows 相关包
+list-win = "python -m wots list --type winuser"
+
+[dependencies]
+python = ">=3.10"
+typer = ">=0.9.0,<1"
+rich = ">=13.0.0,<14"
