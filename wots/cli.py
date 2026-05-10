@@ -365,6 +365,18 @@ def cmd_list(
                 st = _st(check_copy_status(pkg, pt))
             else:
                 st = "manual"
+
+            # --unsynced filter: skip fully-synced packages
+            if unsynced:
+                if st in ("stowed", "empty", "manual"):
+                    continue
+                if "synced" in str(st) and "missing" not in str(st) and "outdated" not in str(st):
+                    continue
+                if "stowed" in str(st) and "/" in str(st):
+                    parts = str(st).split("/")
+                    if parts[0] == parts[1].split()[0]:
+                        continue
+
             rows.append({
                 "name": name, "type": pt.value, "files": files,
                 "size_bytes": size, "size_human": fmt_size(size),
@@ -404,7 +416,19 @@ def _show_diff(pkg: Path, pt: PkgType):
                     continue
                 dest = target / f.relative_to(pkg)
                 try:
-                    if not (dest.is_symlink() and dest.exists()):
+                    linked = dest.is_symlink() and dest.exists()
+                    if not linked:
+                        # Check ancestor dirs — if parent is symlinked, file is synced
+                        p = dest.parent
+                        while p != target and p != p.parent:
+                            try:
+                                if p.is_symlink() and p.exists():
+                                    linked = True
+                                    break
+                            except PermissionError:
+                                pass
+                            p = p.parent
+                    if not linked:
                         missing.append(str(dest))
                 except PermissionError:
                     pass
@@ -481,10 +505,12 @@ def _build_typer_app():
         app: Optional[str] = typer.Option(None, "--app", help="Sync only a specific package."),
         dry_run: bool = typer.Option(False, "--dry-run", "-n", help="Preview only."),
         verbose: bool = typer.Option(False, "--verbose", "-v", help="Per-file details."),
+        bypass: bool = typer.Option(False, "--bypass", help="Skip root confirmation."),
+        quiet: bool = typer.Option(False, "--quiet", "-q", help="Summary output only."),
     ):
         """Sync packages to their targets.  Stow for Linux, copy-sync for Windows."""
         cmd_sync(pkg_type, direction=direction, app=app,
-                 dry_run=dry_run, verbose=verbose)
+                 dry_run=dry_run, verbose=verbose, bypass=bypass, quiet=quiet)
 
     @app.command()
     def stats(
@@ -542,6 +568,8 @@ def _build_argparse_parser():
     sp.add_argument("-t", "--type", dest="pkg_type", choices=tc)
     sp.add_argument("-j", "--json", dest="json_output", action="store_true")
     sp.add_argument("-v", "--verbose", action="store_true")
+    sp.add_argument("-u", "--unsynced", action="store_true")
+    sp.add_argument("--diff", action="store_true")
 
     return p
 
