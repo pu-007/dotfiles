@@ -70,6 +70,7 @@ imagemagick
 img2pdf
 jdk-openjdk
 jujutsu
+just
 kio-admin
 lazygit
 lazyjj
@@ -87,6 +88,7 @@ lua51
 luarocks
 markdownlint-cli2
 mediainfo
+mermaid-cli
 mesa-utils
 moreutils
 mpv
