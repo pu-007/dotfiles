@@ -1,8 +1,3 @@
-这是一个为你量身定制的英文版 `README.md`。它既展示了你强大的跨平台配置工作流，又清晰地声明了个人属性（便于他人参考借鉴）。
-
----
-
-````markdown
 # 🚀 Zion's Dotfiles
 
 > **WOTS (Stow Backwards) — A unified dotfile engine for WSL, Linux, and Windows.**
@@ -47,7 +42,8 @@ git clone https://github.com/pu-007/dotfiles.git
 cd dotfiles
 pixi install
 ```
-````
+
+```
 
 ---
 
@@ -96,6 +92,8 @@ Run `just` to see all available tasks. Here are the highlights:
 **This repository is a personal setup tailored to my workflow.**
 If you are looking for a reliable way to manage dotfiles across WSL, feel free to **reference** the architecture.
 
+Template files are pending addition.
+
 **If you want to adopt this workflow:**
 You only really need to copy these three components into your own repository:
 
@@ -110,13 +108,4 @@ Then, rename your folders with the suffixes defined above, and you're ready to g
 ## 📝 License
 
 MIT
-
-```
-
----
-
-### 给你的开源小贴士：
-1. **GitHub 仓库设置**：记得在 GitHub 仓库主页右侧的 "About" 栏里添加描述，例如："A cross-platform dotfile management engine for WSL, Linux, and Windows using Pixi and Just."
-2. **README 渲染**：GitHub 会自动渲染 `README.md`。这种排版在移动端和桌面端阅读体验都很好。
-3. **Template 的可能性**：如果你之后想让这个项目火起来，可以考虑写一个 `template.justfile` 和 `template.pixi.toml`，把你的个人路径（如 `zion`）全部改成变量占位符，这样别人就能更轻松地 fork 了！
 ```
