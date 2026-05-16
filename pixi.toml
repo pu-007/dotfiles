@@ -7,7 +7,7 @@ version = "1.0.0"
 
 [tasks]
 # 运行 wots（显示帮助）
-wots = "python -m wots"
+wots = "python -m _wots"
 
 [dependencies]
 python = ">=3.14.4,<3.15"

@@ -1,4 +1,5 @@
 """Entry point for `python -m wots`."""
-from wots.cli import main
+
+from .cli import main
 
 main()
