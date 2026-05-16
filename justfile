@@ -23,9 +23,9 @@ default:
 # 🛠️ 1. 系统维护 (System Maintenance)
 # =============================================================================
 
-# [一键执行] 保护 -> 更新 -> 备份 -> 清理 -> 恢复 -> 推送
+# [一键执行] 保护 -> 更新 -> 备份 -> 清理 -> 同步远程 -> 恢复本地
 [group('1. 系统维护 (System Maintenance)')]
-refresh: _protect _update _backup _cleanup _restore _push
+refresh: _protect _update _backup _cleanup _sync_remote _restore
     @echo -e "{{c_green}}🎉 === Refresh Complete at $(date +'%H:%M:%S') ==={{c_reset}}"
 
 # =============================================================================
@@ -133,10 +133,18 @@ _cleanup:
     sudo trash-empty -f --all-users 2>/dev/null || trash-empty -f || true
     echo -e "{{c_yellow}}💡 (提示) Docker 清理建议手动检查: ssh root@192.168.100.1 docker system prune -a -f{{c_reset}}"
 
-# 5. 恢复工作区
+# 5. 安全推送 (在恢复本地状态之前执行，保持工作区干净以允许 Rebase)
+_sync_remote:
+    #!/usr/bin/env bash
+    echo -e "{{c_blue}}=== [5/6] 同步远程仓库 (Pull & Push) ==={{c_reset}}"
+    cd "{{dotfiles}}" || exit 1
+    git pull --rebase || echo -e "{{c_yellow}}⚠️ Pull 遇到问题，尝试继续 Push...{{c_reset}}"
+    git push || echo -e "{{c_red}}⚠️ 推送失败，请检查网络或远端冲突！{{c_reset}}"
+
+# 6. 恢复工作区 (最后一步，把之前的代码还给你)
 _restore:
     #!/usr/bin/env bash
-    echo -e "{{c_blue}}=== [5/6] 恢复本地状态 ==={{c_reset}}"
+    echo -e "{{c_blue}}=== [6/6] 恢复本地状态 ==={{c_reset}}"
     cd "{{dotfiles}}" || exit 1
     
     # 精确匹配刚刚创建的 Stash 的 ID
@@ -148,11 +156,3 @@ _restore:
     else
         echo -e "{{c_gray}}>> 没有需要恢复的拦截状态。{{c_reset}}"
     fi
-
-# 6. 安全推送
-_push:
-    #!/usr/bin/env bash
-    echo -e "{{c_blue}}=== [6/6] 推送更新到远程 ==={{c_reset}}"
-    cd "{{dotfiles}}" || exit 1
-    git pull --rebase || echo -e "{{c_yellow}}⚠️ Pull 遇到问题，尝试继续 Push...{{c_reset}}"
-    git push || echo -e "{{c_red}}⚠️ 推送失败，请检查网络或远端冲突！{{c_reset}}"

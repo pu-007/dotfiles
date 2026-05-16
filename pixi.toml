@@ -8,22 +8,6 @@ version = "1.0.0"
 [tasks]
 # 运行 wots（显示帮助）
 wots = "python -m wots"
-# 同步所有包
-sync = "python -m wots sync"
-# 同步用户包到 $HOME
-sync-user = "python -m wots sync --type user"
-# 同步 root 包到 /（需要 sudo）
-sync-root = "python -m wots sync --type root"
-# 同步 Windows 文件：强制从 dotfiles 覆盖到 Windows
-sync-win = "python -m wots sync --type winuser"
-# 预览模式
-sync-dry = "python -m wots sync --dry-run"
-# 统计
-stats = "python -m wots stats"
-# 列出所有包
-list = "python -m wots list"
-# 列出 Windows 相关包
-list-win = "python -m wots list --type winuser"
 
 [dependencies]
 python = ">=3.14.4,<3.15"
