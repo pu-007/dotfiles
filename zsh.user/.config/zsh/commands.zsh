@@ -5,8 +5,7 @@ alias dk="docker"
 alias dkc="docker compose"
 alias dkcu="docker compose up -d"
 
-alias j="jj"
-alias s="just"
+alias j="just"
 function gzr() {
   cd $(git rev-parse --show-toplevel)
 }
