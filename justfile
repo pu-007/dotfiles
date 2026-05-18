@@ -32,48 +32,45 @@ refresh: _protect _update _backup _cleanup _sync_remote _restore
 # ⚙️ 2. 配置管理 (Wots CLI)
 # =============================================================================
 
-# TODO: wots 脚本在成功执行时偶尔会莫名返回非零错误码（导致 just 意外中断），
-# 因此当前统一使用 `-@` (忽略错误并静默) 的方式执行。以后需要排查并修复 wots 自身的返回码逻辑。
-
 # [核心] 运行 wots 基础命令。用法: just wots [参数]
 [group('2. 配置管理 (Wots CLI)')]
 wots *args:
-    -@pixi run wots {{ if args == "" { "--help" } else { args } }}
+    @pixi run wots {{ if args == "" { "--help" } else { args } }}
 
 # 创建新配置包。用法: just create ~/.config/nvim -a nvim -t config
 [group('2. 配置管理 (Wots CLI)')]
 create +args:
-    -@pixi run wots create {{args}}
+    @pixi run wots create {{args}}
 
 # 同步所有配置 (覆盖 Windows)
 [group('2. 配置管理 (Wots CLI)')]
 sync:
-    -@pixi run wots sync
+    @pixi run wots sync
 
 # 同步特定类型。可选: user, root, winuser。用法: just sync-type user
 [group('2. 配置管理 (Wots CLI)')]
 sync-type type:
-    -@{{ if type == "root" { "sudo " } else { "" } }}pixi run wots sync --type {{type}}
+    @{{ if type == "root" { "sudo " } else { "" } }}pixi run wots sync --type {{type}}
 
 # 预览同步差异 (Dry run)
 [group('2. 配置管理 (Wots CLI)')]
 sync-dry:
-    -@pixi run wots sync --dry-run
+    @pixi run wots sync --dry-run
 
 # 查看仓库与包统计
 [group('2. 配置管理 (Wots CLI)')]
 stats:
-    -@pixi run wots stats
+    @pixi run wots stats
 
 # 查看所有包列表
 [group('2. 配置管理 (Wots CLI)')]
 list:
-    -@pixi run wots list
+    @pixi run wots list
 
 # 查看需要同步的文件差异
 [group('2. 配置管理 (Wots CLI)')]
 diff:
-    -@pixi run wots list --unsynced
+    @pixi run wots list --unsynced
 
 # =============================================================================
 # 📦 私有子任务 (Private Sub-tasks) - 带有 "_" 前缀，列表中自动隐身
