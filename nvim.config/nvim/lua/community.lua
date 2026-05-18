@@ -9,6 +9,7 @@ return {
   { import = "astrocommunity.completion.blink-cmp-emoji" },
   { import = "astrocommunity.completion.blink-cmp-git" },
   -- ## appearance
+  { import = "astrocommunity.colorscheme.gruvbox-nvim" },
   { import = "astrocommunity.markdown-and-latex.markview-nvim" },
   { import = "astrocommunity.pack.rainbow-delimiter-indent-blankline" },
   { import = "astrocommunity.utility.noice-nvim" },
