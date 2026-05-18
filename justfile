@@ -136,6 +136,7 @@ _cleanup:
 # 5. 安全推送 (在恢复本地状态之前执行，保持工作区干净以允许 Rebase)
 _sync_remote:
     #!/usr/bin/env bash
+    # TODO: 会因为 restore 之后有 changes 无法 push 应该 push 之后再 restore
     echo -e "{{c_blue}}=== [5/6] 同步远程仓库 (Pull & Push) ==={{c_reset}}"
     cd "{{dotfiles}}" || exit 1
     git pull --rebase || echo -e "{{c_yellow}}⚠️ Pull 遇到问题，尝试继续 Push...{{c_reset}}"
