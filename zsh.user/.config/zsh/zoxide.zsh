@@ -28,10 +28,30 @@ function __zoxide_hook() {
 }
 
 # Initialize hook.
-# shellcheck disable=SC2154
-if [[ ${precmd_functions[(Ie)__zoxide_hook]:-} -eq 0 ]] && [[ ${chpwd_functions[(Ie)__zoxide_hook]:-} -eq 0 ]]; then
-    chpwd_functions+=(__zoxide_hook)
-fi
+\builtin typeset -ga precmd_functions
+\builtin typeset -ga chpwd_functions
+# shellcheck disable=SC2034,SC2296
+precmd_functions=("${(@)precmd_functions:#__zoxide_hook}")
+# shellcheck disable=SC2034,SC2296
+chpwd_functions=("${(@)chpwd_functions:#__zoxide_hook}")
+chpwd_functions+=(__zoxide_hook)
+
+# Report common issues.
+function __zoxide_doctor() {
+    [[ ${_ZO_DOCTOR:-1} -ne 0 ]] || return 0
+    [[ ${chpwd_functions[(Ie)__zoxide_hook]:-} -eq 0 ]] || return 0
+
+    _ZO_DOCTOR=0
+    \builtin printf '%s\n' \
+        'zoxide: detected a possible configuration issue.' \
+        'Please ensure that zoxide is initialized right at the end of your shell configuration file (usually ~/.zshrc).' \
+        '' \
+        'If the issue persists, consider filing an issue at:' \
+        'https://github.com/ajeetdsouza/zoxide/issues' \
+        '' \
+        'Disable this message by setting _ZO_DOCTOR=0.' \
+        '' >&2
+}
 
 # =============================================================================
 #
@@ -40,10 +60,10 @@ fi
 
 # Jump to a directory using only keywords.
 function __zoxide_z() {
-    # shellcheck disable=SC2199
+    __zoxide_doctor
     if [[ "$#" -eq 0 ]]; then
         __zoxide_cd ~
-    elif [[ "$#" -eq 1 ]] && { [[ -d "$1" ]] || [[ "$1" = '-' ]] || [[ "$1" =~ ^[-+][0-9]$ ]]; }; then
+    elif [[ "$#" -eq 1 ]] && { [[ -d "$1" ]] || [[ "$1" = '-' ]] || [[ "$1" =~ ^[-+][0-9]+$ ]]; }; then
         __zoxide_cd "$1"
     elif [[ "$#" -eq 2 ]] && [[ "$1" = "--" ]]; then
         __zoxide_cd "$2"
@@ -56,6 +76,7 @@ function __zoxide_z() {
 
 # Jump to a directory using interactive search.
 function __zoxide_zi() {
+    __zoxide_doctor
     \builtin local result
     result="$(\command zoxide query --interactive -- "$@")" && __zoxide_cd "${result}"
 }
@@ -65,6 +86,13 @@ function __zoxide_zi() {
 # Commands for zoxide. Disable these using --no-cmd.
 #
 
+function z() {
+    __zoxide_z "$@"
+}
+
+function zi() {
+    __zoxide_zi "$@"
+}
 
 # Completions.
 if [[ -o zle ]]; then
@@ -101,7 +129,7 @@ if [[ -o zle ]]; then
     function __zoxide_z_complete_helper() {
         if [[ -n "${__zoxide_result}" ]]; then
             # shellcheck disable=SC2034,SC2296
-            BUFFER="j ${(q-)__zoxide_result}"
+            BUFFER="z ${(q-)__zoxide_result}"
             __zoxide_result=''
             \builtin zle reset-prompt
             \builtin zle accept-line
@@ -111,11 +139,11 @@ if [[ -o zle ]]; then
     }
     \builtin zle -N __zoxide_z_complete_helper
 
-    [[ "${+functions[compdef]}" -ne 0 ]] && \compdef __zoxide_z_complete j
+    [[ "${+functions[compdef]}" -ne 0 ]] && \compdef __zoxide_z_complete z
 fi
 
 # =============================================================================
 #
-# To initialize zoxide, add this to your configuration (usually ~/.zshrc):
+# To initialize zoxide, add this to your shell configuration file (usually ~/.zshrc):
 #
 # eval "$(zoxide init zsh)"
