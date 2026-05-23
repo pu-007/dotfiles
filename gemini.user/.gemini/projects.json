@@ -1,5 +1,6 @@
 {
   "projects": {
-    "/mnt/d/Downloads": "downloads"
+    "/mnt/d/Downloads": "downloads",
+    "/home/pu/dotfiles": "dotfiles"
   }
 }
