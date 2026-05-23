@@ -187,6 +187,11 @@ _update:
     command -v yay &>/dev/null && { echo -e "{{ c_gray }}  ↳ 更新 yay 包...{{ c_reset }}"; yay -Syu --noconfirm || true; } || true
     command -v pkgfile &>/dev/null && { echo -e "{{ c_gray }}  ↳ 更新 pkgfile...{{ c_reset }}"; sudo pkgfile --update 2>/dev/null || true; } || true
 
+    # Cli Tools init script for zsh
+    fzf --zsh > ./zsh.user/.config/zsh/fzf.zsh
+    starship init zsh > ./zsh.user/.config/zsh/starship.zsh
+    zoxide init zsh > ./zsh.user/.config/zsh/zoxide.zsh
+
     # 【UI 优化】: 解决 nvim headless 严重刷屏问题。将其置于后台静默运行，前台单行显示加载动画
     if command -v nvim &>/dev/null; then
         echo -ne "{{ c_gray }}  ↳ 同步 Neovim 插件 (静默进行中) "
