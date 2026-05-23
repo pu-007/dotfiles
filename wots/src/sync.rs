@@ -244,7 +244,7 @@ pub fn sync_batch(
     let missing_source = Arc::new(AtomicUsize::new(0));
     let errors = Arc::new(AtomicUsize::new(0));
 
-    let n_threads = max_concurrent.max(1).min(4);
+    let n_threads = max_concurrent.clamp(1, 4);
 
     let pool = rayon::ThreadPoolBuilder::new()
         .num_threads(n_threads)

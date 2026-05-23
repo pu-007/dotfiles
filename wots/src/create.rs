@@ -62,12 +62,12 @@ pub fn run(args: CreateArgs) -> Result<()> {
             }
 
             if resp != "y" && !resp.is_empty() && resp != pt.value() {
-                match PkgType::from_str(&resp) {
-                    Some(new_pt) => {
+                match resp.parse::<PkgType>() {
+                    Ok(new_pt) => {
                         display::info(&format!("Using type: {}", new_pt.value()));
                         pt = new_pt;
                     }
-                    None => {
+                    Err(_) => {
                         display::error(&format!("Unknown type: {}", resp));
                         bail!("unknown type: {}", resp);
                     }

@@ -5,19 +5,6 @@ use std::process;
 use anyhow::Result;
 use colored::Colorize;
 
-mod cli;
-mod config;
-mod create;
-mod discover;
-mod display;
-mod status;
-mod sync;
-mod types;
-mod util;
-
-use cli::{Cli, Command};
-use types::PkgType;
-
 fn main() {
     let result = run();
 
@@ -35,28 +22,28 @@ fn main() {
 }
 
 fn run() -> Result<()> {
-    let cli = <Cli as clap::Parser>::parse();
+    let cli = <wots::cli::Cli as clap::Parser>::parse();
 
     match cli.command {
-        Command::Create(args) => create::run(args),
-        Command::Sync(args) => sync::run(args),
-        Command::Stats(args) => cmd_stats(&args),
-        Command::List(args) => cmd_list(&args),
-        Command::Diff(args) => cmd_diff(&args),
+        wots::cli::Command::Create(args) => wots::create::run(args),
+        wots::cli::Command::Sync(args) => wots::sync::run(args),
+        wots::cli::Command::Stats(args) => cmd_stats(&args),
+        wots::cli::Command::List(args) => cmd_list(&args),
+        wots::cli::Command::Diff(args) => cmd_diff(&args),
     }
 }
 
-fn cmd_stats(args: &cli::StatsArgs) -> Result<()> {
+fn cmd_stats(args: &wots::cli::StatsArgs) -> Result<()> {
     use rayon::prelude::*;
 
-    let packages = discover::find_packages(&config::DOTFILES_DIR);
-    let mut stats_data: std::collections::HashMap<&'static str, display::TypeStats> =
+    let packages = wots::discover::find_packages(&wots::config::DOTFILES_DIR);
+    let mut stats_data: std::collections::HashMap<&'static str, wots::display::TypeStats> =
         std::collections::HashMap::new();
     let mut total_pkgs = 0usize;
     let mut total_files = 0usize;
     let mut total_bytes = 0u64;
 
-    for pt in &types::SYNCABLE_TYPES {
+    for pt in &wots::types::SYNCABLE_TYPES {
         let pkgs = packages.get(pt).cloned().unwrap_or_default();
         let n_pkgs = pkgs.len();
         total_pkgs += n_pkgs;
@@ -67,7 +54,7 @@ fn cmd_stats(args: &cli::StatsArgs) -> Result<()> {
 
         let counts: Vec<(usize, u64)> = pkgs
             .par_iter()
-            .map(|p| util::count_and_size(p))
+            .map(|p| wots::util::count_and_size(p))
             .collect();
 
         let n_files: usize = counts.iter().map(|(c, _)| c).sum();
@@ -75,28 +62,28 @@ fn cmd_stats(args: &cli::StatsArgs) -> Result<()> {
         total_files += n_files;
         total_bytes += n_bytes;
 
-        let names: Vec<String> = pkgs.iter().map(|p| discover::pkg_basename(p)).collect();
+        let names: Vec<String> = pkgs.iter().map(|p| wots::discover::pkg_basename(p)).collect();
         let st = if pt.uses_stow() {
-            let (stowed, stowable) = status::check_stow_status_batch(&pkgs, *pt);
+            let (stowed, stowable) = wots::status::check_stow_status_batch(&pkgs, *pt);
             if stowable > 0 {
                 format!("{}/{} stowed", stowed, stowable)
             } else {
                 "empty".to_string()
             }
         } else if pt.uses_copy_sync() {
-            let counts = status::check_copy_status_batch(&pkgs, *pt);
-            status::status_text(&counts)
+            let counts = wots::status::check_copy_status_batch(&pkgs, *pt);
+            wots::status::status_text(&counts)
         } else {
             "manual".to_string()
         };
 
         stats_data.insert(
             pt.value(),
-            display::TypeStats {
+            wots::display::TypeStats {
                 packages: n_pkgs,
                 files: n_files,
                 size_bytes: n_bytes,
-                size_human: util::fmt_size(n_bytes),
+                size_human: wots::util::fmt_size(n_bytes),
                 status_text: st,
                 names,
             },
@@ -105,11 +92,11 @@ fn cmd_stats(args: &cli::StatsArgs) -> Result<()> {
 
     if args.json_output {
         let json = serde_json::json!({
-            "dotfiles": config::DOTFILES_DIR.to_string_lossy(),
+            "dotfiles": wots::config::DOTFILES_DIR.to_string_lossy(),
             "total_packages": total_pkgs,
             "total_files": total_files,
             "total_size_bytes": total_bytes,
-            "total_size_human": util::fmt_size(total_bytes),
+            "total_size_human": wots::util::fmt_size(total_bytes),
             "by_type": stats_data.iter().map(|(k, v)| {
                 ((*k).to_string(), serde_json::json!({
                     "packages": v.packages,
@@ -124,21 +111,21 @@ fn cmd_stats(args: &cli::StatsArgs) -> Result<()> {
         return Ok(());
     }
 
-    display::render_stats(&stats_data, total_pkgs, total_files, total_bytes);
+    wots::display::render_stats(&stats_data, total_pkgs, total_files, total_bytes);
     Ok(())
 }
 
-fn cmd_list(args: &cli::ListArgs) -> Result<()> {
+fn cmd_list(args: &wots::cli::ListArgs) -> Result<()> {
     use rayon::prelude::*;
 
-    let packages = discover::find_packages(&config::DOTFILES_DIR);
-    let types_to_show: Vec<PkgType> = if let Some(pt) = &args.pkg_type {
+    let packages = wots::discover::find_packages(&wots::config::DOTFILES_DIR);
+    let types_to_show: Vec<wots::types::PkgType> = if let Some(pt) = &args.pkg_type {
         vec![*pt]
     } else {
-        types::SYNCABLE_TYPES.to_vec()
+        wots::types::SYNCABLE_TYPES.to_vec()
     };
 
-    let mut pkg_list: Vec<(PathBuf, PkgType)> = Vec::new();
+    let mut pkg_list: Vec<(PathBuf, wots::types::PkgType)> = Vec::new();
     for pt in &types_to_show {
         if let Some(pkgs) = packages.get(pt) {
             for pkg in pkgs {
@@ -148,22 +135,22 @@ fn cmd_list(args: &cli::ListArgs) -> Result<()> {
     }
 
     if pkg_list.is_empty() {
-        display::warning("No packages found.");
+        wots::display::warning("No packages found.");
         return Ok(());
     }
 
     let counts: Vec<(usize, u64)> = pkg_list
         .par_iter()
-        .map(|(p, _)| util::count_and_size(p))
+        .map(|(p, _)| wots::util::count_and_size(p))
         .collect();
 
-    let mut rows: Vec<display::ListRow> = Vec::new();
+    let mut rows: Vec<wots::display::ListRow> = Vec::new();
     for (idx, (pkg, pt)) in pkg_list.iter().enumerate() {
-        let name = discover::pkg_basename(pkg);
+        let name = wots::discover::pkg_basename(pkg);
         let (files, size) = counts[idx];
 
         let st = if pt.uses_stow() {
-            let (stowed, stowable) = status::check_stow_status(pkg, pt);
+            let (stowed, stowable) = wots::status::check_stow_status(pkg, pt);
             if stowed == stowable && stowable > 0 {
                 "stowed".to_string()
             } else if stowable > 0 {
@@ -172,18 +159,18 @@ fn cmd_list(args: &cli::ListArgs) -> Result<()> {
                 "empty".to_string()
             }
         } else if pt.uses_copy_sync() {
-            let counts = status::check_copy_status(pkg, pt);
-            status::status_text(&counts)
+            let counts = wots::status::check_copy_status(pkg, pt);
+            wots::status::status_text(&counts)
         } else {
             "manual".to_string()
         };
 
-        rows.push(display::ListRow {
+        rows.push(wots::display::ListRow {
             name,
             pkg_type: pt.value().to_string(),
             files,
             size_bytes: size,
-            size_human: util::fmt_size(size),
+            size_human: wots::util::fmt_size(size),
             status: st,
             path: pkg.to_string_lossy().to_string(),
         });
@@ -209,15 +196,15 @@ fn cmd_list(args: &cli::ListArgs) -> Result<()> {
     }
 
     if rows.is_empty() {
-        display::warning("No packages found.");
+        wots::display::warning("No packages found.");
         return Ok(());
     }
 
-    display::render_list(&rows);
+    wots::display::render_list(&rows);
     Ok(())
 }
 
-fn cmd_diff(args: &cli::DiffArgs) -> Result<()> {
+fn cmd_diff(args: &wots::cli::DiffArgs) -> Result<()> {
     #[derive(serde::Serialize)]
     struct DiffEntry {
         package: String,
@@ -232,11 +219,11 @@ fn cmd_diff(args: &cli::DiffArgs) -> Result<()> {
         path: String,
     }
 
-    let packages = discover::find_packages(&config::DOTFILES_DIR);
-    let types_to_show: Vec<PkgType> = if let Some(pt) = &args.pkg_type {
+    let packages = wots::discover::find_packages(&wots::config::DOTFILES_DIR);
+    let types_to_show: Vec<wots::types::PkgType> = if let Some(pt) = &args.pkg_type {
         vec![*pt]
     } else {
-        types::SYNCABLE_TYPES.to_vec()
+        wots::types::SYNCABLE_TYPES.to_vec()
     };
 
     let mut entries: Vec<DiffEntry> = Vec::new();
@@ -249,72 +236,47 @@ fn cmd_diff(args: &cli::DiffArgs) -> Result<()> {
 
         for pkg in pkgs {
             if let Some(ref app) = args.app
-                && discover::pkg_basename(pkg) != *app {
+                && wots::discover::pkg_basename(pkg) != *app {
                     continue;
                 }
 
             if pt.uses_copy_sync() {
-                let counts = status::check_copy_status(pkg, pt);
-                if counts.outdated_local > 0 || counts.missing_remote > 0 || counts.outdated_remote > 0 {
-                    let mut files: Vec<DiffFile> = Vec::new();
-                    let f_list = discover::list_syncable_files(pkg);
-                    for f in &f_list {
-                        let win_path = discover::build_win_path(f, pkg, pt);
-                        let ws = match f.metadata() {
-                            Ok(m) => m,
-                            Err(_) => continue,
-                        };
-                        let wn = win_path.metadata().ok();
+                let (counts, file_entries) = wots::status::check_copy_status_detailed(pkg, pt);
 
-                        if wn.is_none() {
-                            if let Ok(rel) = f.strip_prefix(pkg) {
-                                files.push(DiffFile {
-                                    status: "missing-win".into(),
-                                    path: rel.display().to_string(),
-                                });
-                            }
-                        } else if let Some(wn_m) = wn {
-                            let mtime_diff = ws
-                                .modified()
-                                .unwrap()
-                                .duration_since(wn_m.modified().unwrap())
-                                .unwrap_or_default()
-                                .as_secs_f64()
-                                .abs();
-                            if mtime_diff >= 1.0 || ws.len() != wn_m.len() {
-                                if let Ok(rel) = f.strip_prefix(pkg) {
-                                    let st = if ws.modified().unwrap() > wn_m.modified().unwrap() {
-                                        "needs-sync"
-                                    } else {
-                                        "newer-on-win"
-                                    };
-                                    files.push(DiffFile {
-                                        status: st.into(),
-                                        path: rel.display().to_string(),
-                                    });
-                                }
-                            }
-                        }
-                    }
-                    if !files.is_empty() || counts.outdated_local > 0 || counts.missing_remote > 0 || counts.outdated_remote > 0 {
-                        entries.push(DiffEntry {
-                            package: discover::pkg_basename(pkg),
-                            pkg_type: pt.value().to_string(),
-                            status: status::status_text(&counts),
-                            files,
-                        });
-                    }
+                let has_work = counts.outdated_local > 0
+                    || counts.missing_remote > 0
+                    || counts.outdated_remote > 0
+                    || counts.missing_wsl > 0;
+                if !has_work {
+                    continue;
                 }
+
+                let files: Vec<DiffFile> = file_entries
+                    .iter()
+                    .filter(|e| e.status != wots::status::FileSyncStatus::Synced
+                              && e.status != wots::status::FileSyncStatus::Skipped)
+                    .map(|e| DiffFile {
+                        status: e.status.label().to_string(),
+                        path: e.relative_path.display().to_string(),
+                    })
+                    .collect();
+
+                entries.push(DiffEntry {
+                    package: wots::discover::pkg_basename(pkg),
+                    pkg_type: pt.value().to_string(),
+                    status: wots::status::status_text(&counts),
+                    files,
+                });
             } else if pt.uses_stow() {
-                let (stowed, stowable) = status::check_stow_status(pkg, pt);
+                let (stowed, stowable) = wots::status::check_stow_status(pkg, pt);
                 if stowed < stowable {
                     let mut files: Vec<DiffFile> = Vec::new();
                     let target = pt.sync_target();
                     if let Some(target) = target {
-                        for f in discover::list_syncable_files(pkg) {
+                        for f in wots::discover::list_syncable_files(pkg) {
                             if let Ok(rel) = f.strip_prefix(pkg) {
                                 let dest = target.join(rel);
-                                if !status::is_symlink_or_parent(&dest, &target) {
+                                if !wots::status::is_symlink_or_parent(&dest, &target) {
                                     files.push(DiffFile {
                                         status: "not-stowed".into(),
                                         path: dest.display().to_string(),
@@ -324,7 +286,7 @@ fn cmd_diff(args: &cli::DiffArgs) -> Result<()> {
                         }
                     }
                     entries.push(DiffEntry {
-                        package: discover::pkg_basename(pkg),
+                        package: wots::discover::pkg_basename(pkg),
                         pkg_type: pt.value().to_string(),
                         status: format!("{}/{} stowed", stowed, stowable),
                         files,
@@ -338,7 +300,7 @@ fn cmd_diff(args: &cli::DiffArgs) -> Result<()> {
         if args.json_output {
             println!("[]");
         } else {
-            display::success("All packages are in sync.");
+            wots::display::success("All packages are in sync.");
         }
         return Ok(());
     }
@@ -349,9 +311,9 @@ fn cmd_diff(args: &cli::DiffArgs) -> Result<()> {
     }
 
     for entry in &entries {
-        display::warning(&format!("  {} — {}", entry.package, entry.status));
+        wots::display::warning(&format!("  {} — {}", entry.package, entry.status));
         for f in &entry.files {
-            display::dim(&format!("    {}: {}", f.status, f.path));
+            wots::display::dim(&format!("    {}: {}", f.status, f.path));
         }
     }
 

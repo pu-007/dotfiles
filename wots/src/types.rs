@@ -29,22 +29,26 @@ pub enum PkgType {
     WinRoaming,
 }
 
-impl PkgType {
-    pub fn from_str(s: &str) -> Option<Self> {
+impl std::str::FromStr for PkgType {
+    type Err = String;
+
+    fn from_str(s: &str) -> std::result::Result<Self, Self::Err> {
         match s {
-            "user" => Some(PkgType::User),
-            "config" => Some(PkgType::Config),
-            "local" => Some(PkgType::Local),
-            "root" => Some(PkgType::Root),
-            "meta" => Some(PkgType::Meta),
-            "winuser" => Some(PkgType::WinUser),
-            "winconfig" => Some(PkgType::WinConfig),
-            "winlocal" => Some(PkgType::WinLocal),
-            "winroaming" => Some(PkgType::WinRoaming),
-            _ => None,
+            "user" => Ok(PkgType::User),
+            "config" => Ok(PkgType::Config),
+            "local" => Ok(PkgType::Local),
+            "root" => Ok(PkgType::Root),
+            "meta" => Ok(PkgType::Meta),
+            "winuser" => Ok(PkgType::WinUser),
+            "winconfig" => Ok(PkgType::WinConfig),
+            "winlocal" => Ok(PkgType::WinLocal),
+            "winroaming" => Ok(PkgType::WinRoaming),
+            _ => Err(format!("unknown package type: {}", s)),
         }
     }
+}
 
+impl PkgType {
     pub fn suffix(&self) -> String {
         format!(".{}", self.value())
     }
@@ -151,3 +155,211 @@ pub const SYNCABLE_TYPES: [PkgType; 8] = [
     PkgType::WinLocal,
     PkgType::WinRoaming,
 ];
+
+// ---------------------------------------------------------------------------
+// Tests
+// ---------------------------------------------------------------------------
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn from_str_valid() {
+        assert_eq!("user".parse::<PkgType>().unwrap(), PkgType::User);
+        assert_eq!("config".parse::<PkgType>().unwrap(), PkgType::Config);
+        assert_eq!("local".parse::<PkgType>().unwrap(), PkgType::Local);
+        assert_eq!("root".parse::<PkgType>().unwrap(), PkgType::Root);
+        assert_eq!("meta".parse::<PkgType>().unwrap(), PkgType::Meta);
+        assert_eq!("winuser".parse::<PkgType>().unwrap(), PkgType::WinUser);
+        assert_eq!(
+            "winconfig".parse::<PkgType>().unwrap(),
+            PkgType::WinConfig
+        );
+        assert_eq!(
+            "winlocal".parse::<PkgType>().unwrap(),
+            PkgType::WinLocal
+        );
+        assert_eq!(
+            "winroaming".parse::<PkgType>().unwrap(),
+            PkgType::WinRoaming
+        );
+    }
+
+    #[test]
+    fn from_str_invalid() {
+        assert!("bogus".parse::<PkgType>().is_err());
+        assert!("".parse::<PkgType>().is_err());
+    }
+
+    #[test]
+    fn suffix() {
+        assert_eq!(PkgType::User.suffix(), ".user");
+        assert_eq!(PkgType::Config.suffix(), ".config");
+        assert_eq!(PkgType::Local.suffix(), ".local");
+        assert_eq!(PkgType::Root.suffix(), ".root");
+        assert_eq!(PkgType::Meta.suffix(), ".meta");
+        assert_eq!(PkgType::WinUser.suffix(), ".winuser");
+        assert_eq!(PkgType::WinConfig.suffix(), ".winconfig");
+        assert_eq!(PkgType::WinLocal.suffix(), ".winlocal");
+        assert_eq!(PkgType::WinRoaming.suffix(), ".winroaming");
+    }
+
+    #[test]
+    fn value() {
+        assert_eq!(PkgType::User.value(), "user");
+        assert_eq!(PkgType::Config.value(), "config");
+        assert_eq!(PkgType::Local.value(), "local");
+        assert_eq!(PkgType::Root.value(), "root");
+        assert_eq!(PkgType::Meta.value(), "meta");
+        assert_eq!(PkgType::WinUser.value(), "winuser");
+        assert_eq!(PkgType::WinConfig.value(), "winconfig");
+        assert_eq!(PkgType::WinLocal.value(), "winlocal");
+        assert_eq!(PkgType::WinRoaming.value(), "winroaming");
+    }
+
+    #[test]
+    fn needs_sudo_only_root() {
+        assert!(!PkgType::User.needs_sudo());
+        assert!(PkgType::Root.needs_sudo());
+        assert!(!PkgType::WinUser.needs_sudo());
+        assert!(!PkgType::Meta.needs_sudo());
+    }
+
+    #[test]
+    fn uses_stow_linux_types() {
+        assert!(PkgType::User.uses_stow());
+        assert!(PkgType::Config.uses_stow());
+        assert!(PkgType::Local.uses_stow());
+        assert!(PkgType::Root.uses_stow());
+        assert!(!PkgType::Meta.uses_stow());
+        assert!(!PkgType::WinUser.uses_stow());
+    }
+
+    #[test]
+    fn uses_copy_sync_windows_types() {
+        assert!(!PkgType::User.uses_copy_sync());
+        assert!(PkgType::WinUser.uses_copy_sync());
+        assert!(PkgType::WinConfig.uses_copy_sync());
+        assert!(PkgType::WinLocal.uses_copy_sync());
+        assert!(PkgType::WinRoaming.uses_copy_sync());
+    }
+
+    #[test]
+    fn is_windows() {
+        assert!(PkgType::WinUser.is_windows());
+        assert!(PkgType::WinConfig.is_windows());
+        assert!(!PkgType::User.is_windows());
+        assert!(!PkgType::Config.is_windows());
+    }
+
+    #[test]
+    fn is_linux_config() {
+        assert!(PkgType::User.is_linux_config());
+        assert!(PkgType::Config.is_linux_config());
+        assert!(PkgType::Local.is_linux_config());
+        assert!(!PkgType::Root.is_linux_config());
+        assert!(!PkgType::WinUser.is_linux_config());
+    }
+
+    #[test]
+    fn sync_target_user_is_home() {
+        let t = PkgType::User.sync_target().unwrap();
+        assert!(t.to_string_lossy().contains(std::env::var("HOME").unwrap().as_str()));
+    }
+
+    #[test]
+    fn sync_target_meta_is_none() {
+        assert!(PkgType::Meta.sync_target().is_none());
+    }
+
+    #[test]
+    fn type_from_dir_name_recognizes_suffixes() {
+        assert_eq!(
+            type_from_dir_name("git.config"),
+            Some(PkgType::Config)
+        );
+        assert_eq!(
+            type_from_dir_name("foo.user"),
+            Some(PkgType::User)
+        );
+        assert_eq!(
+            type_from_dir_name("bar.local"),
+            Some(PkgType::Local)
+        );
+        assert_eq!(
+            type_from_dir_name("baz.root"),
+            Some(PkgType::Root)
+        );
+        assert_eq!(
+            type_from_dir_name("qux.meta"),
+            Some(PkgType::Meta)
+        );
+        assert_eq!(
+            type_from_dir_name("myapp.winuser"),
+            Some(PkgType::WinUser)
+        );
+        assert_eq!(
+            type_from_dir_name("myapp.winconfig"),
+            Some(PkgType::WinConfig)
+        );
+        assert_eq!(
+            type_from_dir_name("myapp.winlocal"),
+            Some(PkgType::WinLocal)
+        );
+        assert_eq!(
+            type_from_dir_name("myapp.winroaming"),
+            Some(PkgType::WinRoaming)
+        );
+    }
+
+    #[test]
+    fn type_from_dir_name_no_suffix() {
+        assert_eq!(type_from_dir_name("justaname"), None);
+        assert_eq!(type_from_dir_name(".hidden"), None);
+    }
+
+    #[test]
+    fn type_label_contains_user_home() {
+        let u = PkgType::User;
+        assert_eq!(type_label(u), "~");
+
+        let c = PkgType::Config;
+        assert_eq!(type_label(c), "~/.config");
+
+        let l = PkgType::Local;
+        assert_eq!(type_label(l), "~/.local");
+    }
+
+    #[test]
+    fn type_label_windows_contains_users() {
+        for pt in [
+            PkgType::WinUser,
+            PkgType::WinConfig,
+            PkgType::WinLocal,
+            PkgType::WinRoaming,
+        ] {
+            let label = type_label(pt);
+            assert!(label.contains("Users"), "label for {pt:?} missing 'Users': {label}");
+        }
+    }
+
+    #[test]
+    fn all_types_has_nine() {
+        assert_eq!(ALL_TYPES.len(), 9);
+    }
+
+    #[test]
+    fn syncable_types_has_eight() {
+        assert_eq!(SYNCABLE_TYPES.len(), 8);
+        // Meta should not be syncable
+        assert!(!SYNCABLE_TYPES.contains(&PkgType::Meta));
+    }
+
+    #[test]
+    fn value_roundtrip() {
+        for pt in ALL_TYPES {
+            assert_eq!(pt.value().parse::<PkgType>().unwrap(), pt);
+        }
+    }
+}

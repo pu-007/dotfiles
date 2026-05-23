@@ -135,3 +135,158 @@ pub fn copy_dir_all(src: &Path, dst: &Path) -> Result<()> {
     }
     Ok(())
 }
+
+// ---------------------------------------------------------------------------
+// Tests
+// ---------------------------------------------------------------------------
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::fs;
+
+    fn temp_dir() -> std::path::PathBuf {
+        let dir =
+            std::env::temp_dir().join(format!("wots_test_util_{}", std::process::id()));
+        let _ = fs::create_dir_all(&dir);
+        dir
+    }
+
+    fn write_file(path: &Path, content: &str) {
+        if let Some(p) = path.parent() {
+            let _ = fs::create_dir_all(p);
+        }
+        fs::write(path, content).unwrap();
+    }
+
+    // ------------------------------------------------------------------
+    // fmt_size
+    // ------------------------------------------------------------------
+
+    #[test]
+    fn fmt_bytes() {
+        assert_eq!(fmt_size(0), "0 B");
+        assert_eq!(fmt_size(512), "512 B");
+        assert_eq!(fmt_size(1023), "1023 B");
+    }
+
+    #[test]
+    fn fmt_kb() {
+        let s = fmt_size(2048);
+        assert!(s.contains("KB"));
+    }
+
+    #[test]
+    fn fmt_mb() {
+        let s = fmt_size(5 * 1024 * 1024);
+        assert!(s.contains("MB"));
+    }
+
+    #[test]
+    fn fmt_gb() {
+        let s = fmt_size(3u64 * 1024 * 1024 * 1024);
+        assert!(s.contains("GB"));
+    }
+
+    // ------------------------------------------------------------------
+    // count_and_size
+    // ------------------------------------------------------------------
+
+    #[test]
+    fn count_and_size_regular() {
+        let dir = temp_dir();
+        let pkg = dir.join("pkg.user");
+        write_file(&pkg.join("a.txt"), "hello");
+        write_file(&pkg.join("b.txt"), "world!!");
+        let (count, size) = count_and_size(&pkg);
+        assert_eq!(count, 2);
+        assert!(size > 0);
+    }
+
+    #[test]
+    fn count_and_size_excludes_dirs() {
+        let dir = temp_dir();
+        let pkg = dir.join("pkg2.user");
+        write_file(&pkg.join("x.txt"), "x");
+        write_file(
+            &pkg.join("node_modules/ignored.js"),
+            "console.log(1)",
+        );
+        let (count, _size) = count_and_size(&pkg);
+        // node_modules should be excluded by is_quick_exclude_dir
+        assert_eq!(count, 1);
+    }
+
+    #[test]
+    fn count_and_size_nonexistent_is_zero() {
+        assert_eq!(count_and_size(Path::new("/no/such/dir")), (0, 0));
+    }
+
+    // ------------------------------------------------------------------
+    // is_excluded
+    // ------------------------------------------------------------------
+
+    #[test]
+    fn excluded_git_dir() {
+        assert!(is_excluded(Path::new("/some/pkg/.git/config")));
+    }
+
+    #[test]
+    fn excluded_node_modules() {
+        assert!(is_excluded(Path::new("/some/pkg/node_modules/x.js")));
+    }
+
+    #[test]
+    fn excluded_pyc() {
+        assert!(is_excluded(Path::new("/some/pkg/foo.pyc")));
+    }
+
+    #[test]
+    fn not_excluded_normal() {
+        assert!(!is_excluded(Path::new("/some/pkg/readme.md")));
+        assert!(!is_excluded(Path::new("/some/pkg/src/main.rs")));
+    }
+
+    // ------------------------------------------------------------------
+    // is_quick_exclude_dir
+    // ------------------------------------------------------------------
+
+    #[test]
+    fn quick_exclude_known_dirs() {
+        assert!(!is_quick_exclude_dir(OsStr::new(".git")));
+        assert!(!is_quick_exclude_dir(OsStr::new("node_modules")));
+        assert!(!is_quick_exclude_dir(OsStr::new("__pycache__")));
+    }
+
+    #[test]
+    fn quick_exclude_normal_dir() {
+        assert!(is_quick_exclude_dir(OsStr::new("src")));
+        assert!(is_quick_exclude_dir(OsStr::new("config")));
+    }
+
+    // ------------------------------------------------------------------
+    // copy_dir_all
+    // ------------------------------------------------------------------
+
+    #[test]
+    fn copy_dir_all_preserves_structure() {
+        let dir = temp_dir();
+        let src = dir.join("src_dir");
+        let dst = dir.join("dst_dir");
+        write_file(&src.join("a.txt"), "a");
+        write_file(&src.join("sub/b.txt"), "b");
+
+        copy_dir_all(&src, &dst).unwrap();
+
+        assert!(dst.join("a.txt").exists());
+        assert!(dst.join("sub/b.txt").exists());
+        assert_eq!(
+            fs::read_to_string(dst.join("a.txt")).unwrap(),
+            "a"
+        );
+        assert_eq!(
+            fs::read_to_string(dst.join("sub/b.txt")).unwrap(),
+            "b"
+        );
+    }
+}

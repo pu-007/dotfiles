@@ -196,3 +196,244 @@ pub fn propose_name(sources: &[PathBuf]) -> String {
         .to_string_lossy()
         .to_string()
 }
+
+// ---------------------------------------------------------------------------
+// Tests
+// ---------------------------------------------------------------------------
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::fs;
+
+    fn temp_dir() -> std::path::PathBuf {
+        let dir =
+            std::env::temp_dir().join(format!("wots_test_disc_{}", std::process::id()));
+        let _ = fs::create_dir_all(&dir);
+        dir
+    }
+
+    fn write_file(path: &Path, content: &str) {
+        if let Some(p) = path.parent() {
+            let _ = fs::create_dir_all(p);
+        }
+        fs::write(path, content).unwrap();
+    }
+
+    // ------------------------------------------------------------------
+    // pkg_basename
+    // ------------------------------------------------------------------
+
+    #[test]
+    fn basename_strips_suffix() {
+        assert_eq!(pkg_basename(Path::new("/tmp/git.config")), "git");
+        assert_eq!(pkg_basename(Path::new("/tmp/foo.user")), "foo");
+        assert_eq!(pkg_basename(Path::new("/tmp/bar.winuser")), "bar");
+        assert_eq!(
+            pkg_basename(Path::new("/tmp/baz.winconfig")),
+            "baz"
+        );
+        assert_eq!(
+            pkg_basename(Path::new("/tmp/qux.winlocal")),
+            "qux"
+        );
+        assert_eq!(
+            pkg_basename(Path::new("/tmp/quux.winroaming")),
+            "quux"
+        );
+        assert_eq!(pkg_basename(Path::new("/tmp/abc.root")), "abc");
+        assert_eq!(pkg_basename(Path::new("/tmp/xyz.meta")), "xyz");
+    }
+
+    #[test]
+    fn basename_no_suffix_returns_full() {
+        assert_eq!(pkg_basename(Path::new("/tmp/plain_dir")), "plain_dir");
+    }
+
+    // ------------------------------------------------------------------
+    // list_syncable_files
+    // ------------------------------------------------------------------
+
+    #[test]
+    fn list_syncable_files_lists_correctly() {
+        let dir = temp_dir();
+        let pkg = dir.join("testapp.winuser");
+        write_file(&pkg.join("a.txt"), "a");
+        write_file(&pkg.join("sub/b.txt"), "b");
+        // Excluded directory should be skipped
+        write_file(&pkg.join("node_modules/pkg.json"), "{}");
+        // Hidden file inside package should be included (not a dot-prefix dir)
+        write_file(&pkg.join(".hidden"), "secret");
+
+        let files = list_syncable_files(&pkg);
+        let names: Vec<String> = files
+            .iter()
+            .map(|f| f.file_name().unwrap().to_string_lossy().to_string())
+            .collect();
+        assert!(names.contains(&"a.txt".to_string()));
+        assert!(names.contains(&"b.txt".to_string()));
+        assert!(!names.contains(&"pkg.json".to_string()), "node_modules excluded");
+        assert!(names.contains(&".hidden".to_string()));
+    }
+
+    #[test]
+    fn list_syncable_files_nonexistent_is_empty() {
+        let v = list_syncable_files(Path::new("/nonexistent/pkg"));
+        assert!(v.is_empty());
+    }
+
+    // ------------------------------------------------------------------
+    // winuser_rel_path
+    // ------------------------------------------------------------------
+
+    #[test]
+    fn winuser_rel_path_fallback_when_no_username_subdir() {
+        let dir = temp_dir();
+        let pkg = dir.join("myapp.winuser");
+        // File directly inside pkg (no matching username subdir)
+        let file = pkg.join("Documents/notes.txt");
+        write_file(&file, "notes");
+
+        let rel = winuser_rel_path(&pkg, &file);
+        assert_eq!(rel, PathBuf::from("Documents/notes.txt"));
+    }
+
+    #[test]
+    fn winuser_rel_path_fallback_to_pkg_prefix() {
+        let dir = temp_dir();
+        let pkg = dir.join("myapp.winuser");
+        let file = pkg.join("config.ini"); // no username subdir
+        write_file(&file, "cfg");
+
+        let rel = winuser_rel_path(&pkg, &file);
+        assert_eq!(rel, PathBuf::from("config.ini"));
+    }
+
+    // ------------------------------------------------------------------
+    // build_win_path
+    // ------------------------------------------------------------------
+
+    #[test]
+    fn build_win_path_winuser() {
+        let pkg = PathBuf::from("/tmp/myapp.winuser");
+        let file = pkg.join("data.txt");
+        let path = build_win_path(&file, &pkg, &PkgType::WinUser);
+        // Should map to /mnt/c/Users/<user>/data.txt
+        assert!(path.starts_with("/mnt/c/Users/"));
+        assert!(path.ends_with("data.txt"));
+    }
+
+    #[test]
+    fn build_win_path_winconfig() {
+        let pkg = PathBuf::from("/tmp/myapp.winconfig");
+        let file = pkg.join("settings.json");
+        let path = build_win_path(&file, &pkg, &PkgType::WinConfig);
+        assert!(path.starts_with("/mnt/c/Users/"));
+        assert!(path.to_string_lossy().contains(".config"));
+        assert!(path.ends_with("settings.json"));
+    }
+
+    #[test]
+    fn build_win_path_winlocal() {
+        let pkg = PathBuf::from("/tmp/myapp.winlocal");
+        let file = pkg.join("app.cfg");
+        let path = build_win_path(&file, &pkg, &PkgType::WinLocal);
+        assert!(path.to_string_lossy().contains("AppData/Local"));
+    }
+
+    #[test]
+    fn build_win_path_winroaming() {
+        let pkg = PathBuf::from("/tmp/myapp.winroaming");
+        let file = pkg.join("roam.dat");
+        let path = build_win_path(&file, &pkg, &PkgType::WinRoaming);
+        assert!(path.to_string_lossy().contains("AppData/Roaming"));
+    }
+
+    // ------------------------------------------------------------------
+    // propose_name
+    // ------------------------------------------------------------------
+
+    #[test]
+    fn propose_name_empty() {
+        assert_eq!(propose_name(&[]), "unnamed");
+    }
+
+    #[test]
+    fn propose_name_from_file_stem() {
+        let name = propose_name(&[PathBuf::from("/home/user/.zshrc")]);
+        assert_eq!(name, ".zshrc");
+    }
+
+    #[test]
+    fn propose_name_init_config() {
+        // When the source is a known init file, use the parent dir name
+        let name = propose_name(&[PathBuf::from("/home/user/nvim/init.lua")]);
+        assert_eq!(name, "nvim");
+    }
+
+    #[test]
+    fn propose_name_directory() {
+        let name = propose_name(&[PathBuf::from("/home/user/.config/wezterm")]);
+        assert_eq!(name, "wezterm");
+    }
+
+    // ------------------------------------------------------------------
+    // detect_type
+    // ------------------------------------------------------------------
+
+    #[test]
+    fn detect_type_config() {
+        let t = detect_type(Path::new(
+            &format!("{}/.config/alacritty", std::env::var("HOME").unwrap()),
+        ));
+        assert_eq!(t, PkgType::Config);
+    }
+
+    #[test]
+    fn detect_type_user() {
+        let t = detect_type(
+            Path::new(&format!("{}/.bashrc", std::env::var("HOME").unwrap())),
+        );
+        assert_eq!(t, PkgType::User);
+    }
+
+    #[test]
+    fn detect_type_local() {
+        let t = detect_type(
+            Path::new(&format!("{}/.local/share/app", std::env::var("HOME").unwrap())),
+        );
+        assert_eq!(t, PkgType::Local);
+    }
+
+    #[test]
+    fn detect_type_root() {
+        let t = detect_type(Path::new("/etc/hosts"));
+        assert_eq!(t, PkgType::Root);
+    }
+
+    #[test]
+    fn detect_type_meta_for_proc() {
+        let t = detect_type(Path::new("/proc/cpuinfo"));
+        assert_eq!(t, PkgType::Meta);
+    }
+
+    #[test]
+    fn detect_type_winuser() {
+        let t = detect_type(Path::new("/mnt/c/Users/john/Documents/notes.txt"));
+        assert_eq!(t, PkgType::WinUser);
+    }
+
+    #[test]
+    fn detect_type_winconfig() {
+        let t = detect_type(Path::new("/mnt/c/Users/john/.config/pwsh/profile.ps1"));
+        assert_eq!(t, PkgType::WinConfig);
+    }
+
+    #[test]
+    fn detect_type_winroaming() {
+        let t = detect_type(Path::new(
+            "/mnt/c/Users/john/AppData/Roaming/Code/User/settings.json",
+        ));
+        assert_eq!(t, PkgType::WinRoaming);
+    }
+}
