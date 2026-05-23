@@ -1,0 +1,26 @@
+#compdef just
+
+_just() {
+  # When completing after 'just wots', delegate to _wots completion.
+  # This allows `just wots sync --<TAB>` to use wots-native completions
+  # instead of just-recipe completions.
+  if (( ${+functions[_wots]} )); then
+    local -i i
+    for ((i = 2; i < CURRENT; i++)); do
+      if [[ "${words[$i]}" == "wots" ]]; then
+        shift $((i - 1)) words
+        (( CURRENT -= (i - 1) ))
+        _wots "$@"
+        return
+      fi
+    done
+  fi
+
+  # Fall through to standard just dynamic completion
+  source <(JUST_COMPLETE=zsh just)
+  if [[ "$funcstack[1]" == "_just" ]]; then
+    _clap_dynamic_completer_just "$@"
+  fi
+}
+
+_just "$@"

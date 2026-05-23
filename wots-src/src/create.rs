@@ -12,6 +12,11 @@ use crate::types::{type_label, PkgType};
 use crate::util::copy_dir_all;
 
 pub fn run(args: CreateArgs) -> Result<()> {
+    if args.sources.is_empty() {
+        display::error("No sources specified. Usage: wots create <source> [source2 ...] [-t <type>] [-a <name>]");
+        bail!("no sources provided");
+    }
+
     let resolved: Vec<PathBuf> = args
         .sources
         .iter()

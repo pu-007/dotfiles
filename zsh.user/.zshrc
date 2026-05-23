@@ -163,7 +163,9 @@ if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{34}Installation successful.%f%b" ||
     print -P "%F{160} The clone has failed.%f%b"
 fi
-export fpath=($fpath ~/.config/zsh/completions/)
+fpath=(~/.config/zsh/completions/ $fpath)
+# Note: ~/.config/zsh/completions/ is added first so custom completions
+# (e.g. _just wrapping _wots) override system ones at /usr/share/zsh/site-functions/
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -U compinit && compinit
 ### plugins
@@ -211,9 +213,6 @@ function zvm_after_init() {
   zinit wait lucid for \
     oldkingOK/pinyin-completion \
     OMZP::cp \
-    atinit"export ZSH_CODEX_PREEXECUTE_COMMENT='true'" \
-    atload"bindkey '^O' create_completion" \
-    pu-007/zsh_codex \
     OMZP::colored-man-pages \
     OMZP::command-not-found \
     OMZP::copypath \
@@ -225,7 +224,9 @@ function zvm_after_init() {
     zdharma-continuum/fast-syntax-highlighting \
     atload"compdef _adb adb.exe" \
     zsh-users/zsh-completions \
-    Aloxaf/fzf-tab
+    Aloxaf/fzf-tab \
+    atinit'export ZSH_AI_PROVIDER="gemini"' \
+    matheusml/zsh-ai
 }
 
 export PATH="$PATH:$HOME/.local/bin"

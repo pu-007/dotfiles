@@ -47,7 +47,7 @@ pub enum CompletionShell {
 
 #[derive(Args)]
 pub struct CreateArgs {
-    #[arg(help = "Source file(s) or dir(s).")]
+    #[arg(help = "Source file(s) or dir(s).", required = true, num_args = 1..)]
     pub sources: Vec<String>,
 
     #[arg(short = 'a', long = "app-name", help = "Custom app name.")]
