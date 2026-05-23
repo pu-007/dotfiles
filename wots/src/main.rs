@@ -65,17 +65,13 @@ fn cmd_stats(args: &cli::StatsArgs) -> Result<()> {
             continue;
         }
 
-        let file_counts: Vec<usize> = pkgs
+        let counts: Vec<(usize, u64)> = pkgs
             .par_iter()
-            .map(|p| util::count_files(p))
-            .collect();
-        let dir_sizes: Vec<u64> = pkgs
-            .par_iter()
-            .map(|p| util::dir_size(p))
+            .map(|p| util::count_and_size(p))
             .collect();
 
-        let n_files: usize = file_counts.iter().sum();
-        let n_bytes: u64 = dir_sizes.iter().sum();
+        let n_files: usize = counts.iter().map(|(c, _)| c).sum();
+        let n_bytes: u64 = counts.iter().map(|(_, s)| s).sum();
         total_files += n_files;
         total_bytes += n_bytes;
 
@@ -156,20 +152,15 @@ fn cmd_list(args: &cli::ListArgs) -> Result<()> {
         return Ok(());
     }
 
-    let file_counts: Vec<usize> = pkg_list
+    let counts: Vec<(usize, u64)> = pkg_list
         .par_iter()
-        .map(|(p, _)| util::count_files(p))
-        .collect();
-    let dir_sizes: Vec<u64> = pkg_list
-        .par_iter()
-        .map(|(p, _)| util::dir_size(p))
+        .map(|(p, _)| util::count_and_size(p))
         .collect();
 
     let mut rows: Vec<display::ListRow> = Vec::new();
     for (idx, (pkg, pt)) in pkg_list.iter().enumerate() {
         let name = discover::pkg_basename(pkg);
-        let files = file_counts[idx];
-        let size = dir_sizes[idx];
+        let (files, size) = counts[idx];
 
         let st = if pt.uses_stow() {
             let (stowed, stowable) = status::check_stow_status(pkg, pt);

@@ -234,7 +234,7 @@ pub fn prepare_sync_items(pkg: &Path, pt: &PkgType) -> Vec<(PathBuf, PathBuf)> {
 pub fn sync_batch(
     items: &[(PathBuf, PathBuf)],
     dry_run: bool,
-    _max_concurrent: usize,
+    max_concurrent: usize,
 ) -> HashMap<String, usize> {
     let use_robocopy = has_robocopy();
 
@@ -244,10 +244,17 @@ pub fn sync_batch(
     let missing_source = Arc::new(AtomicUsize::new(0));
     let errors = Arc::new(AtomicUsize::new(0));
 
-    items
-        .par_iter()
-        .with_max_len(1)
-        .try_for_each(|(wsl_path, win_path)| {
+    let n_threads = max_concurrent.max(1).min(4);
+
+    let pool = rayon::ThreadPoolBuilder::new()
+        .num_threads(n_threads)
+        .build()
+        .unwrap_or_else(|_| rayon::ThreadPoolBuilder::new().num_threads(1).build().unwrap());
+
+    pool.install(|| {
+        items
+            .par_iter()
+            .try_for_each(|(wsl_path, win_path)| {
             total.fetch_add(1, Ordering::Relaxed);
 
             if is_excluded(wsl_path) {
@@ -286,6 +293,7 @@ pub fn sync_batch(
             Ok(())
         })
         .ok();
+    });
 
     let mut counts = HashMap::new();
     counts.insert("copied_to_win".to_string(), copied.load(Ordering::Relaxed));

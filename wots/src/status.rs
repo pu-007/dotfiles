@@ -4,9 +4,10 @@ use std::path::{Path, PathBuf};
 
 use serde::{Deserialize, Serialize};
 
-use crate::config::{DOTFILES_DIR, MAX_SYNC_SIZE_BYTES};
+use crate::config::DOTFILES_DIR;
 use crate::discover::{build_win_path, list_syncable_files};
 use crate::types::PkgType;
+use crate::util::skip_size_limit;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct IndexEntry {
@@ -104,12 +105,6 @@ pub struct CopyStatusCounts {
     pub error: usize,
 }
 
-impl CopyStatusCounts {
-    pub fn total(&self) -> usize {
-        self.synced + self.outdated_local + self.outdated_remote + self.missing_remote + self.skipped + self.error
-    }
-}
-
 pub fn status_text(counts: &CopyStatusCounts) -> String {
     let mut parts: Vec<String> = Vec::new();
     if counts.synced > 0 {
@@ -163,14 +158,12 @@ pub fn check_stow_status(pkg: &Path, pt: &PkgType) -> (usize, usize) {
 }
 
 pub fn check_stow_status_batch(pkgs: &[PathBuf], pt: PkgType) -> (usize, usize) {
-    let mut stowed = 0usize;
-    let mut total = 0usize;
-    for pkg in pkgs {
-        let (s, t) = check_stow_status(pkg, &pt);
-        stowed += s;
-        total += t;
-    }
-    (stowed, total)
+    use rayon::prelude::*;
+    let (s, t): (Vec<usize>, Vec<usize>) = pkgs
+        .par_iter()
+        .map(|pkg| check_stow_status(pkg, &pt))
+        .unzip();
+    (s.iter().sum(), t.iter().sum())
 }
 
 pub fn check_copy_status(pkg: &Path, pt: &PkgType) -> CopyStatusCounts {
@@ -180,67 +173,99 @@ pub fn check_copy_status(pkg: &Path, pt: &PkgType) -> CopyStatusCounts {
         return counts;
     }
 
+    let mut index = SyncIndex::load();
     let files = list_syncable_files(pkg);
+
     for f in &files {
+        let key = index_key(pkg, f.strip_prefix(pkg).unwrap_or(f));
+
         if let Ok(meta) = f.metadata() {
-            if *MAX_SYNC_SIZE_BYTES > 0 && meta.len() > *MAX_SYNC_SIZE_BYTES {
+            if skip_size_limit(f).unwrap_or(false) {
                 counts.skipped += 1;
                 continue;
             }
-        } else {
-            counts.error += 1;
-            continue;
-        }
+            let mtime_ns = meta
+                .modified()
+                .ok()
+                .and_then(|t| t.duration_since(std::time::UNIX_EPOCH).ok())
+                .map(|d| d.as_nanos() as u64)
+                .unwrap_or(0);
+            let size = meta.len();
 
-        let win_path = build_win_path(f, pkg, pt);
+            if let Some(entry) = index.get(&key) {
+                if entry.mtime_ns == mtime_ns && entry.size == size {
+                    if entry.win_mtime_ns.is_some() && entry.win_size.is_some() {
+                        counts.synced += 1;
+                        continue;
+                    }
+                }
+            }
 
-        let win_exists = win_path.symlink_metadata().is_ok();
+            let win_path = build_win_path(f, pkg, pt);
+            let win_exists = win_path.symlink_metadata().is_ok();
 
-        if !win_exists {
-            counts.missing_remote += 1;
-            continue;
-        }
-
-        let ws = match f.metadata() {
-            Ok(m) => m,
-            Err(_) => {
-                counts.error += 1;
+            if !win_exists {
+                counts.missing_remote += 1;
+                index.set(key, IndexEntry {
+                    mtime_ns,
+                    size,
+                    win_mtime_ns: None,
+                    win_size: None,
+                });
                 continue;
             }
-        };
-        let wn = match win_path.metadata() {
-            Ok(m) => m,
-            Err(_) => {
-                counts.error += 1;
-                continue;
-            }
-        };
 
-        let ws_mtime = ws
-            .modified()
-            .ok()
-            .and_then(|t| t.duration_since(std::time::UNIX_EPOCH).ok())
-            .map(|d| d.as_secs());
-        let wn_mtime = wn
-            .modified()
-            .ok()
-            .and_then(|t| t.duration_since(std::time::UNIX_EPOCH).ok())
-            .map(|d| d.as_secs());
+            let wn = match win_path.metadata() {
+                Ok(m) => m,
+                Err(_) => {
+                    counts.error += 1;
+                    continue;
+                }
+            };
 
-        if let (Some(wsm), Some(wnm)) = (ws_mtime, wn_mtime) {
-            let mtime_diff = wsm.abs_diff(wnm);
-            if mtime_diff < 1 && ws.len() == wn.len() {
-                counts.synced += 1;
-            } else if wsm > wnm {
-                counts.outdated_local += 1;
+            let ws_mtime = meta
+                .modified()
+                .ok()
+                .and_then(|t| t.duration_since(std::time::UNIX_EPOCH).ok())
+                .map(|d| d.as_secs());
+            let wn_mtime = wn
+                .modified()
+                .ok()
+                .and_then(|t| t.duration_since(std::time::UNIX_EPOCH).ok())
+                .map(|d| d.as_secs());
+
+            let wn_mtime_ns = wn
+                .modified()
+                .ok()
+                .and_then(|t| t.duration_since(std::time::UNIX_EPOCH).ok())
+                .map(|d| d.as_nanos() as u64);
+            let wn_size = wn.len();
+
+            index.set(key, IndexEntry {
+                mtime_ns,
+                size,
+                win_mtime_ns: wn_mtime_ns,
+                win_size: Some(wn_size),
+            });
+
+            if let (Some(wsm), Some(wnm)) = (ws_mtime, wn_mtime) {
+                let mtime_diff = wsm.abs_diff(wnm);
+                if mtime_diff < 1 && size == wn_size {
+                    counts.synced += 1;
+                } else if wsm > wnm {
+                    counts.outdated_local += 1;
+                } else {
+                    counts.outdated_remote += 1;
+                }
             } else {
-                counts.outdated_remote += 1;
+                counts.error += 1;
             }
         } else {
             counts.error += 1;
         }
     }
 
+    index.save();
     counts
 }
 

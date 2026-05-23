@@ -61,21 +61,9 @@ pub fn has_robocopy() -> bool {
         .unwrap_or(false)
 }
 
-pub fn count_files(dir: &Path) -> usize {
+pub fn count_and_size(dir: &Path) -> (usize, u64) {
     if !dir.is_dir() {
-        return 0;
-    }
-    WalkDir::new(dir)
-        .into_iter()
-        .filter_entry(|e| is_quick_exclude_dir(e.file_name()))
-        .filter_map(|e| e.ok())
-        .filter(|e| e.file_type().is_file() && !is_excluded(e.path()))
-        .count()
-}
-
-pub fn dir_size(dir: &Path) -> u64 {
-    if !dir.is_dir() {
-        return 0;
+        return (0, 0);
     }
     WalkDir::new(dir)
         .into_iter()
@@ -84,7 +72,7 @@ pub fn dir_size(dir: &Path) -> u64 {
         .filter(|e| e.file_type().is_file() && !is_excluded(e.path()))
         .filter_map(|e| e.metadata().ok())
         .map(|m| m.len())
-        .sum()
+        .fold((0usize, 0u64), |(count, sum), len| (count + 1, sum + len))
 }
 
 pub fn fmt_size(bytes: u64) -> String {
