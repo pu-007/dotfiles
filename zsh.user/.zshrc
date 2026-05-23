@@ -215,7 +215,7 @@ zinit wait lucid for \
   matheusml/zsh-ai \
   jeffreytse/zsh-vi-mode \
   atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-  atload"compdef _adb adb.exe" \
+  atload"compdef _adb adb.exe; compdef _files trash-put" \
   zdharma-continuum/fast-syntax-highlighting
 # }}}
 

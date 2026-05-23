@@ -1,16 +1,14 @@
+# {{{ Git & GitHub
 alias Aic="gaa; aic2"
 alias acp="aic2; git push"
 alias Acp="Aic; git push"
-alias dk="docker"
-alias dkc="docker compose"
-alias dkcu="docker compose up -d"
+alias lg="lazygit"
+ialias 'gc@'='git reset --soft HEAD^'
 
-alias j="just"
 function gzr() {
   cd $(git rev-parse --show-toplevel)
 }
-ialias 'gc@'='git reset --soft HEAD^'
-alias lg="lazygit"
+
 function ghd() {
   # 检查参数是否提供
   if [ -z "$1" ]; then
@@ -33,15 +31,24 @@ function ghd() {
     return 1
   fi
 }
+# }}}
 
+# {{{ Docker
+alias dk="docker"
+alias dkc="docker compose"
+alias dkcu="docker compose up -d"
+# }}}
+
+# {{{ Python & Pixi
 alias py="python"
 alias i="pixi"
 alias ir="pixi run"
 alias apy="source .venv/bin/activate"
 alias wy="p python"
-alias xz="x z"
-alias uz="x uz"
 alias iy="ipython"
+# }}}
+
+# {{{ WSL & Windows Interop
 ialias adb="adb.exe"
 ialias fastboot="fastboot.exe"
 ialias ollama="ollama.exe"
@@ -50,26 +57,33 @@ ialias wg="winget.exe"
 ialias scrcpy="scrcpy.exe"
 alias padmode="scrcpy --new-display=1920x1080 --video-codec=h265 --always-on-top --fullscreen --disable-screensaver --video-buffer=50 --audio-buffer=200 --gamepad=uhid"
 ialias winget="winget.exe"
-alias als="alias | rg "
-alias b="bat"
-
 alias ci="win32yank.exe -i"
 alias co="win32yank.exe -o"
+# }}}
+
+# {{{ System & General Utilities
+alias j="just"
+alias xz="x z"
+alias uz="x uz"
+alias als="alias | rg "
+alias b="bat"
 alias re-cmp=": rm .zcompdump; compinit"
 alias uc="zinit update home--pu--.config--zsh/commands.zsh"
 alias ec="v $DOTFILE_STORE/zsh.user/.config/zsh/commands.zsh"
-alias re-pkg="pacman -Qdqt | xargs yay -Rnsc"
 alias re-cmake-install="sudo xargs rm < install_manifest.txt"
-alias re-mirror="sudo reflector --country China --protocol https --latest 10 --sort rate --save /etc/pacman.d/mirrorlist"
-
-# ssh to openwrt server
 alias wrt="ssh root@192.168.100.1"
+# }}}
 
+# {{{ Package Management (Pacman & Yay)
+alias re-pkg="pacman -Qdqt | xargs yay -Rnsc"
+alias re-mirror="sudo reflector --country China --protocol https --latest 10 --sort rate --save /etc/pacman.d/mirrorlist"
 alias yai="yay -S"
 alias yas="yay -Ss"
 alias yar="yay -Rnsc"
 alias yaif="yay -S --overwrite='*'"
+# }}}
 
+# {{{ Navigation
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
@@ -85,21 +99,28 @@ ialias 6='cd -6'
 ialias 7='cd -7'
 ialias 8='cd -8'
 ialias 9='cd -9'
+# }}}
 
+# {{{ Suffix Aliases
 alias -s html=v
 alias -s css=v
 alias -s ts=v
-# alias -s py=v
 alias -s py='env python'
 alias -s js=v
 alias -s c=v
 alias -s txt=v
 alias -s md=v
 alias -s ini=v
-alias -s txt=v
 alias -s toml=v
 alias -s {yaml,yml}=v
 alias -s json=v
+# }}}
+
+# {{{ Media & Audio Utilities
+alias xo="xdg-open"
+export ITTS_DIR="/mnt/c/Users/zion/Apps/index-tts-vllm"
+alias ittsrv="itts --repeat-text -v"
+alias ittsrsv="itts --repeat-text --shuffle-text -v"
 
 function speedup-audio() {
   local speed=$1
@@ -135,9 +156,7 @@ function speedup-audio() {
   done
 }
 
-export ITTS_DIR="/mnt/c/Users/zion/Apps/index-tts-vllm"
-
-function itts {
+function itts() {
   local itts_script=("python" "$ITTS_DIR/itts.py")
   local success_keyword="可用的语音角色"
   local max_wait=60 # 启动 Docker 后最大等待时间（秒）
@@ -185,11 +204,9 @@ function itts {
   "${itts_script[@]}" "$@"
 }
 
-alias ittsrv="itts --repeat-text -v"
-alias ittsrsv="itts --repeat-text --shuffle-text -v"
-
-alias xo="xdg-open"
-
 function mp3t4() {
   ffmpeg -y -f lavfi -i color=black:s=1280x720:r=25 -i "$1" -c:v libx264 -c:a aac -shortest -pix_fmt yuv420p "${1%.mp3}.mp4"
 }
+# }}}
+
+# vim: set foldmethod=marker foldlevel=0 :
