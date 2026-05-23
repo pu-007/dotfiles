@@ -31,7 +31,7 @@ default:
 # =============================================================================
 
 # [一键执行] 保护工作区 -> 更新依赖 -> 备份元数据 -> 深度清理 -> 同步远程 -> 恢复本地
-[group('1. 系统维护 (System Maintenance)')]
+[group('0. 系统维护 (System Maintenance)')]
 refresh: _protect _update _backup _cleanup _sync_remote _restore
     @echo -e "\n{{ c_green }}{{ c_bold }}🎉 === WOTS Refresh All Done at $(date +'%H:%M:%S') ==={{ c_reset }}"
 
@@ -40,7 +40,7 @@ refresh: _protect _update _backup _cleanup _sync_remote _restore
 # =============================================================================
 
 # [构建] 编译 Rust 二进制 (release) + 更新补全脚本
-[group('0. 构建 (Build)')]
+[group('1. 构建 (Build)')]
 build *args:
     @cargo build --release --manifest-path {{ wots_crate }}/Cargo.toml {{ args }}
     @cp -f {{ wots_crate }}/target/release/wots {{ wots }}
@@ -51,7 +51,7 @@ build *args:
     @echo -e "{{ c_green }}✓  Completion updated: {{ comp_dir }}/_wots{{ c_reset }}"
 
 # [构建] 编译 Rust 二进制 (debug, with backtraces) + 更新补全脚本
-[group('0. 构建 (Build)')]
+[group('1. 构建 (Build)')]
 build-debug *args:
     @cargo build --manifest-path {{ wots_crate }}/Cargo.toml {{ args }}
     @cp -f {{ wots_crate }}/target/debug/wots {{ wots }}
@@ -62,22 +62,27 @@ build-debug *args:
     @echo -e "{{ c_green }}✓  Completion updated: {{ comp_dir }}/_wots{{ c_reset }}"
 
 # [测试] 运行 cargo test
-[group('0. 构建 (Build)')]
+[group('1. 构建 (Build)')]
 test *args:
     @cargo test --manifest-path {{ wots_crate }}/Cargo.toml {{ args }}
 
 # [测试] 运行 cargo clippy
-[group('0. 构建 (Build)')]
+[group('1. 构建 (Build)')]
 lint *args:
     @cargo clippy --manifest-path {{ wots_crate }}/Cargo.toml -- -D warnings {{ args }}
 
-# [补全] 打印 shell 补全脚本 (从编译好的 wots 生成)
-[group('0. 构建 (Build)')]
+# [补全] 打印指定 shell 的补全脚本到 stdout
+#   just completion zsh          → zsh  补全脚本
+#   just completion bash         → bash 补全脚本
+#   just completion fish         → fish 补全脚本
+[group('1. 构建 (Build)')]
 completion shell='zsh':
     @{{ wots }} completion {{ shell }}
 
-# [补全] 安装 zsh 补全脚本到仓库补全目录 (zsh.user)
-[group('0. 构建 (Build)')]
+# [补全] 安装 zsh 补全到仓库 (zsh.user)，stow 到 ~/.config/zsh/completions/
+#   安装后执行 exec zsh 激活。之后 wots create/sync/stats <TAB> 即可补全子命令。
+#   注意: just wots ... 不支持子命令补全，请使用独立的 wots 命令。
+[group('1. 构建 (Build)')]
 completion-install shell='zsh':
     @echo -e "{{ c_blue }}▶ Installing {{ shell }} completion for wots...{{ c_reset }}"
     @mkdir -p "{{ comp_dir }}"
@@ -92,9 +97,6 @@ completion-install shell='zsh':
 
 # 运行任意 wots 命令 (默认显示帮助)
 # 用法: just wots -- list --json
-[group('2. 配置管理 (Wots CLI)')]
-wots *args:
-    @{{ wots }} {{ if args == "" { "--help" } else { args } }}
 
 # 创建新包: just create ~/.zshrc -t user -a zsh
 [group('2. 配置管理 (Wots CLI)')]
@@ -131,11 +133,6 @@ sync-root *args:
 stats *args:
     @{{ wots }} stats {{ args }}
 
-# JSON 格式统计
-[group('2. 配置管理 (Wots CLI)')]
-stats-json *args:
-    @{{ wots }} stats --json {{ args }}
-
 # 列出所有包及其状态
 [group('2. 配置管理 (Wots CLI)')]
 list *args:
@@ -145,11 +142,6 @@ list *args:
 [group('2. 配置管理 (Wots CLI)')]
 list-type type *args:
     @{{ wots }} list --type {{ type }} {{ args }}
-
-# JSON 格式列出包
-[group('2. 配置管理 (Wots CLI)')]
-list-json *args:
-    @{{ wots }} list --json {{ args }}
 
 # 显示差异: 哪些文件需要同步
 [group('2. 配置管理 (Wots CLI)')]
