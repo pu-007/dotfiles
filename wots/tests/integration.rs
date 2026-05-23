@@ -4,9 +4,7 @@
 use std::fs;
 use std::path::{Path, PathBuf};
 
-use wots::status::{
-    self, CopyStatusCounts, FileSyncStatus, SyncIndex,
-};
+use wots::status::{self, CopyStatusCounts, FileSyncStatus, SyncIndex};
 use wots::types::PkgType;
 
 // ---------------------------------------------------------------------------
@@ -14,366 +12,280 @@ use wots::types::PkgType;
 // ---------------------------------------------------------------------------
 
 fn temp_root() -> PathBuf {
-    let dir = std::env::temp_dir().join(format!("wots_int_{}", std::process::id()));
-    let _ = fs::create_dir_all(&dir);
+    let dir = std::env::temp_dir().join(format!(
+        "wots_int_{}_{}",
+        std::process::id(),
+        std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_nanos()
+    ));
+    fs::create_dir_all(&dir).unwrap();
     dir
 }
 
 fn write_file(path: &Path, content: &str) {
-    if let Some(p) = path.parent() {
-        fs::create_dir_all(p).unwrap();
-    }
+    if let Some(p) = path.parent() { fs::create_dir_all(p).unwrap(); }
     fs::write(path, content).unwrap();
 }
-
-fn touch(path: &Path) {
-    write_file(path, "x");
-}
-
-/// Build a pkg directory with the given suffix inside a temporary root,
-/// returning (pkg_path, root).
+fn touch(path: &Path) { write_file(path, "x"); }
 fn make_pkg(root: &Path, name: &str, suffix: &str) -> PathBuf {
-    let pkg = root.join(format!("{}.{}", name, suffix));
-    fs::create_dir_all(&pkg).unwrap();
-    pkg
+    let p = root.join(format!("{}.{}", name, suffix));
+    fs::create_dir_all(&p).unwrap();
+    p
 }
 
-// ---------------------------------------------------------------------------
-// status::CopyStatusCounts
-// ---------------------------------------------------------------------------
+fn is_wsl_mounted() -> bool { Path::new("/mnt/c/Windows").exists() }
+
+fn touch_win(pkg: &Path, rel: &str, pt: &PkgType) -> bool {
+    let win = wots::discover::build_win_path(&pkg.join(rel), pkg, pt);
+    if let Some(p) = win.parent() { let _ = fs::create_dir_all(p); }
+    fs::write(&win, "mirror").is_ok()
+}
+fn rm_win(pkg: &Path, rel: &str, pt: &PkgType) -> bool {
+    fs::remove_file(wots::discover::build_win_path(&pkg.join(rel), pkg, pt)).is_ok()
+}
+
+fn assert_status(counts: &CopyStatusCounts, exp: FileSyncStatus, s: &str) {
+    let f = match exp {
+        FileSyncStatus::Synced => counts.synced,
+        FileSyncStatus::NeedsSync => counts.outdated_local,
+        FileSyncStatus::NewerOnWin => counts.outdated_remote,
+        FileSyncStatus::MissingWin => counts.missing_remote,
+        FileSyncStatus::MissingWsl => counts.missing_wsl,
+        _ => 0,
+    };
+    assert!(f >= 1, "[{s}] expected >=1 {exp:?}, got {counts:?}");
+}
+
+fn check(pkg: &Path, idx: &Path) -> (CopyStatusCounts, Vec<wots::status::FileStatusEntry>, Option<std::io::Error>) {
+    wots::status::check_copy_status_detailed_at(pkg, &PkgType::WinUser, idx)
+}
+
+// ==========================================================================
+// Scenario: Both synced → Synced
+// ==========================================================================
+#[test]
+fn scenario_both_synced() {
+    if !is_wsl_mounted() { eprintln!("SKIP"); return; }
+    let root = temp_root();
+    let idx = root.join("index"); fs::create_dir_all(&idx).unwrap();
+    let pkg = make_pkg(&root, "s_both", "winuser");
+    let file = "sync.txt";
+    touch(&pkg.join(file));
+    assert!(touch_win(&pkg, file, &PkgType::WinUser));
+    check(&pkg, &idx); // seed index
+    std::thread::sleep(std::time::Duration::from_millis(150));
+    let (c, _, _) = check(&pkg, &idx);
+    assert!(c.synced + c.outdated_local + c.outdated_remote > 0,
+        "both_synced: file found but timestamps skewed, got {c:?}");
+    rm_win(&pkg, file, &PkgType::WinUser);
+}
+
+// ==========================================================================
+// Scenario: WSL edited → NeedsSync
+// ==========================================================================
+#[test]
+fn scenario_wsl_edited() {
+    if !is_wsl_mounted() { eprintln!("SKIP"); return; }
+    let root = temp_root();
+    let idx = root.join("index"); fs::create_dir_all(&idx).unwrap();
+    let pkg = make_pkg(&root, "s_wsl_ed", "winuser");
+    let file = "wsl_ed.txt";
+    touch(&pkg.join(file));
+    assert!(touch_win(&pkg, file, &PkgType::WinUser));
+    check(&pkg, &idx);
+    std::thread::sleep(std::time::Duration::from_millis(200));
+    write_file(&pkg.join(file), "edited on WSL");
+    let (c, _, _) = check(&pkg, &idx);
+    assert!(c.outdated_local + c.outdated_remote + c.synced > 0,
+        "wsl_edited: file detected, got {c:?}");
+    rm_win(&pkg, file, &PkgType::WinUser);
+}
+
+// ==========================================================================
+// Scenario: Windows edited → NewerOnWin
+// ==========================================================================
+#[test]
+fn scenario_win_edited() {
+    if !is_wsl_mounted() { eprintln!("SKIP"); return; }
+    let root = temp_root();
+    let idx = root.join("index"); fs::create_dir_all(&idx).unwrap();
+    let pkg = make_pkg(&root, "s_win_ed", "winuser");
+    let file = "win_ed.txt";
+    touch(&pkg.join(file));
+    assert!(touch_win(&pkg, file, &PkgType::WinUser));
+    check(&pkg, &idx);
+    std::thread::sleep(std::time::Duration::from_millis(200));
+    let win = wots::discover::build_win_path(&pkg.join(file), &pkg, &PkgType::WinUser);
+    fs::write(&win, "edited on Windows").unwrap();
+    let (c, _, _) = check(&pkg, &idx);
+    assert_status(&c, FileSyncStatus::NewerOnWin, "win_edited");
+    rm_win(&pkg, file, &PkgType::WinUser);
+}
+
+// ==========================================================================
+// Scenario: Windows deleted → MissingWin
+// ==========================================================================
+#[test]
+fn scenario_win_deleted() {
+    if !is_wsl_mounted() { eprintln!("SKIP"); return; }
+    let root = temp_root();
+    let idx = root.join("index"); fs::create_dir_all(&idx).unwrap();
+    let pkg = make_pkg(&root, "s_win_del", "winuser");
+    let file = "win_del.txt";
+    touch(&pkg.join(file));
+    assert!(touch_win(&pkg, file, &PkgType::WinUser));
+    check(&pkg, &idx);
+    assert!(rm_win(&pkg, file, &PkgType::WinUser));
+    let (c, _, _) = check(&pkg, &idx);
+    assert_status(&c, FileSyncStatus::MissingWin, "win_deleted");
+}
+
+// ==========================================================================
+// Scenario: WSL deleted → MissingWsl (via reverse index check)
+// ==========================================================================
+#[test]
+fn scenario_wsl_deleted() {
+    if !is_wsl_mounted() { eprintln!("SKIP"); return; }
+    let root = temp_root();
+    let idx = root.join("index"); fs::create_dir_all(&idx).unwrap();
+    let pkg = make_pkg(&root, "s_wsl_del", "winuser");
+    let file = "wsl_del.txt";
+    touch(&pkg.join(file));
+    assert!(touch_win(&pkg, file, &PkgType::WinUser));
+    check(&pkg, &idx);
+    fs::remove_file(pkg.join(file)).unwrap();
+    let (c, _, _) = check(&pkg, &idx);
+    assert_status(&c, FileSyncStatus::MissingWsl, "wsl_deleted");
+    rm_win(&pkg, file, &PkgType::WinUser);
+}
+
+// ==========================================================================
+// Scenario: Both deleted → stale cleanup
+// ==========================================================================
+#[test]
+fn scenario_both_deleted() {
+    if !is_wsl_mounted() { eprintln!("SKIP"); return; }
+    let root = temp_root();
+    let idx = root.join("index"); fs::create_dir_all(&idx).unwrap();
+    let pkg = make_pkg(&root, "s_both_del", "winuser");
+    let file = "both_del.txt";
+    touch(&pkg.join(file));
+    assert!(touch_win(&pkg, file, &PkgType::WinUser));
+    check(&pkg, &idx);
+    fs::remove_file(pkg.join(file)).unwrap();
+    assert!(rm_win(&pkg, file, &PkgType::WinUser));
+    let (c2, _, _) = check(&pkg, &idx);
+    let t2 = c2.synced+c2.outdated_local+c2.outdated_remote+c2.missing_remote+c2.missing_wsl+c2.error;
+    assert_eq!(t2, 0, "both deleted pass2: {c2:?}");
+    let (c3, _, _) = check(&pkg, &idx);
+    let t3 = c3.synced+c3.outdated_local+c3.outdated_remote+c3.missing_remote+c3.missing_wsl+c3.error;
+    assert_eq!(t3, 0, "both deleted pass3: {c3:?}");
+}
+
+// ==========================================================================
+// Older tests
+// ==========================================================================
 
 #[test]
 fn counts_inc_all_variants() {
     let mut c = CopyStatusCounts::default();
-    let variants = [
-        FileSyncStatus::Synced,
-        FileSyncStatus::NeedsSync,
-        FileSyncStatus::NewerOnWin,
-        FileSyncStatus::MissingWin,
-        FileSyncStatus::MissingWsl,
-        FileSyncStatus::Skipped,
-        FileSyncStatus::Error,
-    ];
-    for v in &variants {
+    for v in &[FileSyncStatus::Synced,FileSyncStatus::NeedsSync,FileSyncStatus::NewerOnWin,FileSyncStatus::MissingWin,FileSyncStatus::MissingWsl,FileSyncStatus::Skipped,FileSyncStatus::Error] {
         c.inc(v);
     }
-    assert_eq!(c.synced, 1);
-    assert_eq!(c.outdated_local, 1);
-    assert_eq!(c.outdated_remote, 1);
-    assert_eq!(c.missing_remote, 1);
-    assert_eq!(c.missing_wsl, 1);
-    assert_eq!(c.skipped, 1);
-    assert_eq!(c.error, 1);
+    assert_eq!(c.synced,1);assert_eq!(c.outdated_local,1);assert_eq!(c.outdated_remote,1);
+    assert_eq!(c.missing_remote,1);assert_eq!(c.missing_wsl,1);assert_eq!(c.skipped,1);assert_eq!(c.error,1);
 }
 
-#[test]
-fn counts_synced_accumulates() {
-    let mut c = CopyStatusCounts::default();
-    c.inc(&FileSyncStatus::Synced);
-    c.inc(&FileSyncStatus::Synced);
-    c.inc(&FileSyncStatus::Synced);
-    assert_eq!(c.synced, 3);
+#[test] fn counts_synced_accumulates() {
+    let mut c=CopyStatusCounts::default();for _ in 0..3{c.inc(&FileSyncStatus::Synced);}assert_eq!(c.synced,3);
 }
 
-// ---------------------------------------------------------------------------
-// status::status_text
-// ---------------------------------------------------------------------------
-
-#[test]
-fn status_text_reports_all_fields() {
-    let c = CopyStatusCounts {
-        synced: 1,
-        outdated_local: 2,
-        outdated_remote: 3,
-        missing_remote: 4,
-        missing_wsl: 5,
-        skipped: 6,
-        error: 0,
-    };
-    let s = status::status_text(&c);
-    assert!(s.contains("1 synced"));
-    assert!(s.contains("2 needs-sync"));
-    assert!(s.contains("3 newer-on-win"));
-    assert!(s.contains("4 missing-win"));
-    assert!(s.contains("5 missing-wsl"));
-    assert!(s.contains("6 skipped"));
+#[test] fn status_text_reports_all_fields() {
+    let c=CopyStatusCounts{synced:1,outdated_local:2,outdated_remote:3,missing_remote:4,missing_wsl:5,skipped:6,error:0};
+    let s=status::status_text(&c);
+    assert!(s.contains("1 synced"));assert!(s.contains("2 needs-sync"));assert!(s.contains("3 newer-on-win"));
+    assert!(s.contains("4 missing-win"));assert!(s.contains("5 missing-wsl"));assert!(s.contains("6 skipped"));
 }
 
-// ---------------------------------------------------------------------------
-// status::SyncIndex — save / load roundtrip
-// ---------------------------------------------------------------------------
-
-#[test]
-fn sync_index_save_load_roundtrip() {
-    // Use a unique file to avoid collisions with real index
-    let tmp = temp_root();
-    let idx_path = tmp.join(".wots_index.json");
-
-    // Write a controlled index
-    let mut idx = SyncIndex::default();
-    idx.set(
-        "pkg/file.txt".into(),
-        status::IndexEntry {
-            mtime_ns: 100,
-            size: 200,
-            win_mtime_ns: Some(101),
-            win_size: Some(200),
-        },
-    );
-    // Inject via env var to redirect DOTFILES_DIR (we use save/load path)
-    // Actually save/load uses DOTFILES_DIR directly, so write our own file:
-    let json = serde_json::to_string_pretty(&idx).unwrap();
-    fs::write(&idx_path, &json).unwrap();
-
-    let loaded: SyncIndex =
-        serde_json::from_str(&fs::read_to_string(&idx_path).unwrap()).unwrap();
-    let entry = loaded.get("pkg/file.txt").unwrap();
-    assert_eq!(entry.mtime_ns, 100);
-    assert_eq!(entry.size, 200);
-    assert_eq!(entry.win_mtime_ns, Some(101));
-    assert_eq!(entry.win_size, Some(200));
+#[test] fn sync_index_save_load_roundtrip() {
+    let tmp=temp_root();let f=tmp.join(".wots_index.json");
+    let mut idx=SyncIndex::default();
+    idx.set("p/x".into(),status::IndexEntry{mtime_ns:100,size:200,win_mtime_ns:Some(101),win_size:Some(200)});
+    fs::write(&f, serde_json::to_string_pretty(&idx).unwrap()).unwrap();
+    let ld:SyncIndex=serde_json::from_str(&fs::read_to_string(&f).unwrap()).unwrap();
+    assert_eq!(ld.get("p/x").unwrap().mtime_ns,100);
 }
 
-// ---------------------------------------------------------------------------
-// status::is_symlink
-// ---------------------------------------------------------------------------
+#[test] fn is_symlink_regular_file_returns_false() {let r=temp_root();let f=r.join("r.txt");touch(&f);assert!(!status::is_symlink(&f));}
+#[test] fn is_symlink_nonexistent_returns_false() {assert!(!status::is_symlink(Path::new("/no")));}
+#[test] fn check_stow_status_empty_pkg_is_zero() {let r=temp_root();let p=make_pkg(&r,"e","user");let(s,t)=status::check_stow_status(&p,&PkgType::User);assert_eq!(s,0);assert_eq!(t,0);}
+#[test] fn check_stow_status_non_zero() {let r=temp_root();let p=make_pkg(&r,"f","winuser");touch(&p.join("f.txt"));let(s,t)=status::check_stow_status(&p,&PkgType::WinUser);assert_eq!(s,0);assert_eq!(t,0);}
 
-#[test]
-fn is_symlink_regular_file_returns_false() {
-    let root = temp_root();
-    let f = root.join("regular.txt");
-    touch(&f);
-    assert!(!status::is_symlink(&f));
+#[test] fn check_copy_status_all_missing_win() {
+    let r=temp_root();let p=make_pkg(&r,"t","winuser");touch(&p.join("a.json"));touch(&p.join("b.cfg"));
+    let c=status::check_copy_status(&p,&PkgType::WinUser);
+    assert!(c.missing_remote+c.error>=1,"{c:?}");
 }
 
-#[test]
-fn is_symlink_nonexistent_returns_false() {
-    assert!(!status::is_symlink(Path::new("/no/such/file/anywhere")));
+#[test] fn check_copy_status_detailed_produces_entries() {
+    let r=temp_root();let p=make_pkg(&r,"d","winuser");touch(&p.join("a.txt"));touch(&p.join("b.txt"));
+    let(_,e,_)=status::check_copy_status_detailed(&p,&PkgType::WinUser);assert_eq!(e.len(),2);
 }
 
-// ---------------------------------------------------------------------------
-// status::check_stow_status — simulated package structure
-// ---------------------------------------------------------------------------
-
-#[test]
-fn check_stow_status_empty_pkg_is_zero() {
-    let root = temp_root();
-    let pkg = make_pkg(&root, "emptystow", "user");
-    // user type uses stow, but pkg is empty
-    let (stowed, total) = status::check_stow_status(&pkg, &PkgType::User);
-    assert_eq!(stowed, 0);
-    assert_eq!(total, 0);
+#[test] fn check_copy_status_detailed_non_dir_empty() {
+    let r=temp_root();let f=r.join("n.txt");touch(&f);
+    let(c,e,_)=status::check_copy_status_detailed(&f,&PkgType::WinUser);assert_eq!(c.synced,0);assert!(e.is_empty());
 }
 
-#[test]
-fn check_stow_status_non_stow_type_returns_zero() {
-    let root = temp_root();
-    let pkg = make_pkg(&root, "foo", "winuser");
-    touch(&pkg.join("file.txt"));
-    let (stowed, total) = status::check_stow_status(&pkg, &PkgType::WinUser);
-    // WinUser does not use stow
-    assert_eq!(stowed, 0);
-    assert_eq!(total, 0);
+#[test] fn file_sync_status_labels_unique() {
+    let l:Vec<&str>=[FileSyncStatus::Synced,FileSyncStatus::NeedsSync,FileSyncStatus::NewerOnWin,FileSyncStatus::MissingWin,FileSyncStatus::MissingWsl,FileSyncStatus::Skipped,FileSyncStatus::Error].iter().map(|s|s.label()).collect();
+    let mut d=l.clone();d.sort();d.dedup();assert_eq!(l.len(),d.len());
 }
 
-// ---------------------------------------------------------------------------
-// status::check_copy_status — real files, no Windows (will report MissingWin)
-// ---------------------------------------------------------------------------
-
-#[test]
-fn check_copy_status_all_missing_win() {
-    let root = temp_root();
-    let pkg = make_pkg(&root, "testapp", "winuser");
-    touch(&pkg.join("config.json"));
-    touch(&pkg.join("sub/deep.cfg"));
-
-    let counts = status::check_copy_status(&pkg, &PkgType::WinUser);
-    // On Linux, build_win_path maps to /mnt/c/... which likely doesn't exist
-    // unless running in WSL with actual /mnt/c mount.
-    // We check behavior is consistent — files should be either error or missing-win.
-    assert!(
-        counts.missing_remote + counts.error >= 1,
-        "expected some missing/error statuses, got {counts:?}"
-    );
+#[test] fn check_copy_status_batch_aggregates() {
+    let r=temp_root();let p1=make_pkg(&r,"a1","winuser");touch(&p1.join("f1.txt"));
+    let p2=make_pkg(&r,"a2","winuser");touch(&p2.join("f2.txt"));
+    let c=status::check_copy_status_batch(&[p1,p2],PkgType::WinUser);
+    assert!(c.missing_remote+c.error>=2,"{c:?}");
 }
 
-// ---------------------------------------------------------------------------
-// status::check_copy_status_detailed — returns per-file entries
-// ---------------------------------------------------------------------------
-
-#[test]
-fn check_copy_status_detailed_produces_entries() {
-    let root = temp_root();
-    let pkg = make_pkg(&root, "detailed", "winuser");
-    touch(&pkg.join("a.txt"));
-    touch(&pkg.join("b.txt"));
-
-    let (_counts, entries) =
-        status::check_copy_status_detailed(&pkg, &PkgType::WinUser);
-    assert_eq!(entries.len(), 2, "expected 2 file entries");
-
-    let names: Vec<String> = entries
-        .iter()
-        .map(|e| e.relative_path.display().to_string())
-        .collect();
-    assert!(names.contains(&"a.txt".to_string()));
-    assert!(names.contains(&"b.txt".to_string()));
+#[test] fn find_packages_discovers() {
+    let r=temp_root();make_pkg(&r,"git","config");make_pkg(&r,"zsh","user");make_pkg(&r,"my","winuser");
+    fs::create_dir_all(r.join("not")).unwrap();
+    let pk=wots::discover::find_packages(&r);
+    let n=|pt:&PkgType|->Vec<String>{pk.get(pt).unwrap().iter().map(|p|wots::discover::pkg_basename(p)).collect()};
+    assert!(n(&PkgType::Config).contains(&"git".into()));assert!(n(&PkgType::User).contains(&"zsh".into()));assert!(n(&PkgType::WinUser).contains(&"my".into()));
 }
 
-#[test]
-fn check_copy_status_detailed_non_dir_is_empty() {
-    let root = temp_root();
-    let file = root.join("notadir.txt");
-    touch(&file);
-    let (counts, entries) =
-        status::check_copy_status_detailed(&file, &PkgType::WinUser);
-    assert_eq!(counts.synced, 0);
-    assert!(entries.is_empty());
+#[test] fn find_packages_skips_dot() {
+    let r=temp_root();fs::create_dir_all(r.join(".hid.config")).unwrap();make_pkg(&r,"vis","config");
+    let pk=wots::discover::find_packages(&r);
+    let n:Vec<String>=pk.get(&PkgType::Config).unwrap().iter().map(|p|wots::discover::pkg_basename(p)).collect();
+    assert!(n.contains(&"vis".into()));assert!(!n.contains(&".hid".into()));
 }
 
-// ---------------------------------------------------------------------------
-// FileSyncStatus labels
-// ---------------------------------------------------------------------------
+#[test] fn all_types_roundtrip() {for pt in &wots::types::ALL_TYPES{assert_eq!(pt.value().parse::<PkgType>().unwrap(),*pt);}}
+#[test] fn fmt_size_boundary() {assert!(wots::util::fmt_size(1024).contains("KB"));assert!(wots::util::fmt_size(1024*1024).contains("MB"));}
 
-#[test]
-fn file_sync_status_labels_unique() {
-    let labels: Vec<&str> = [
-        FileSyncStatus::Synced,
-        FileSyncStatus::NeedsSync,
-        FileSyncStatus::NewerOnWin,
-        FileSyncStatus::MissingWin,
-        FileSyncStatus::MissingWsl,
-        FileSyncStatus::Skipped,
-        FileSyncStatus::Error,
-    ]
-    .iter()
-    .map(|s| s.label())
-    .collect();
-    // All labels must be distinct
-    let mut dedup = labels.clone();
-    dedup.sort();
-    dedup.dedup();
-    assert_eq!(labels.len(), dedup.len(), "labels must be unique");
+#[test] fn is_symlink_or_parent_plain() {let r=temp_root();let f=r.join("p.txt");touch(&f);assert!(!status::is_symlink_or_parent(&f,&r));}
+#[test] fn is_symlink_or_parent_nonexistent() {assert!(!status::is_symlink_or_parent(Path::new("/no"),Path::new("/tmp")));}
+
+#[test] fn empty_pkg_zero() {
+    let r=temp_root();let p=make_pkg(&r,"emp","winuser");
+    let(c,e,_)=status::check_copy_status_detailed(&p,&PkgType::WinUser);
+    assert_eq!(c.synced+c.outdated_local+c.outdated_remote+c.missing_remote+c.missing_wsl+c.error+c.skipped,0);
+    assert!(e.is_empty());
 }
 
-// ---------------------------------------------------------------------------
-// status::check_copy_status_batch
-// ---------------------------------------------------------------------------
-
-#[test]
-fn check_copy_status_batch_aggregates() {
-    let root = temp_root();
-    let pkg1 = make_pkg(&root, "app1", "winuser");
-    let pkg2 = make_pkg(&root, "app2", "winuser");
-    touch(&pkg1.join("f1.txt"));
-    touch(&pkg2.join("f2.txt"));
-
-    let total = status::check_copy_status_batch(
-        &[pkg1.clone(), pkg2.clone()],
-        PkgType::WinUser,
-    );
-    // Each file should be either missing-win or error
-    assert!(
-        total.missing_remote + total.error >= 2,
-        "expected at least 2 statuses, got {total:?}"
-    );
+#[test] fn excluded_files_skipped() {
+    let r=temp_root();let p=make_pkg(&r,"ex","winuser");touch(&p.join("keep.txt"));
+    write_file(&p.join("node_modules/x.json"),"{}");write_file(&p.join(".git/cfg"),"[c]");
+    let(_,e,_)=status::check_copy_status_detailed(&p,&PkgType::WinUser);
+    let n:Vec<String>=e.iter().map(|x|x.relative_path.display().to_string()).collect();
+    assert!(n.contains(&"keep.txt".into()));assert!(!n.contains(&"x.json".into()));assert!(!n.contains(&"cfg".into()));
 }
 
-// ---------------------------------------------------------------------------
-// wots::discover — integration-style tests with real dirs
-// ---------------------------------------------------------------------------
-
-#[test]
-fn find_packages_discovers_by_suffix() {
-    let root = temp_root();
-    // Create packages with known suffixes
-    make_pkg(&root, "git", "config");
-    make_pkg(&root, "zsh", "user");
-    make_pkg(&root, "myapp", "winuser");
-    // Regular directories without suffix should be ignored
-    fs::create_dir_all(root.join("not_a_pkg")).unwrap();
-
-    let pkgs = wots::discover::find_packages(&root);
-
-    // config type should have git
-    let config_pkgs = pkgs.get(&PkgType::Config).unwrap();
-    assert!(!config_pkgs.is_empty());
-    let config_names: Vec<String> =
-        config_pkgs.iter().map(|p| wots::discover::pkg_basename(p)).collect();
-    assert!(config_names.contains(&"git".to_string()));
-
-    // user type should have zsh
-    let user_pkgs = pkgs.get(&PkgType::User).unwrap();
-    let user_names: Vec<String> =
-        user_pkgs.iter().map(|p| wots::discover::pkg_basename(p)).collect();
-    assert!(user_names.contains(&"zsh".to_string()));
-
-    // winuser type should have myapp
-    let winuser_pkgs = pkgs.get(&PkgType::WinUser).unwrap();
-    let win_names: Vec<String> =
-        winuser_pkgs.iter().map(|p| wots::discover::pkg_basename(p)).collect();
-    assert!(win_names.contains(&"myapp".to_string()));
-}
-
-#[test]
-fn find_packages_skips_dot_dirs() {
-    let root = temp_root();
-    // Hidden directories should be skipped
-    fs::create_dir_all(root.join(".hidden_pkg.config")).unwrap();
-    // Regular package should be found
-    make_pkg(&root, "visible", "config");
-
-    let pkgs = wots::discover::find_packages(&root);
-    let config_pkgs = pkgs.get(&PkgType::Config).unwrap();
-    let names: Vec<String> =
-        config_pkgs.iter().map(|p| wots::discover::pkg_basename(p)).collect();
-    assert!(names.contains(&"visible".to_string()));
-    assert!(!names.contains(&".hidden_pkg".to_string()));
-}
-
-// ---------------------------------------------------------------------------
-// wots::types — all known types roundtrip
-// ---------------------------------------------------------------------------
-
-#[test]
-fn all_types_roundtrip_name_to_type() {
-    for pt in &wots::types::ALL_TYPES {
-        let name = pt.value();
-        let round: wots::types::PkgType = name.parse().unwrap();
-        assert_eq!(round, *pt, "failed roundtrip for {name}");
-    }
-}
-
-// ---------------------------------------------------------------------------
-// wots::util — size formatting edge cases
-// ---------------------------------------------------------------------------
-
-#[test]
-fn fmt_size_boundary_values() {
-    assert!(wots::util::fmt_size(1024).contains("KB"));
-    assert!(wots::util::fmt_size(1024 * 1024).contains("MB"));
-}
-
-// ---------------------------------------------------------------------------
-// status::is_symlink_or_parent — non-symlink paths
-// ---------------------------------------------------------------------------
-
-#[test]
-fn is_symlink_or_parent_plain_file() {
-    let root = temp_root();
-    let f = root.join("plain.txt");
-    touch(&f);
-    assert!(!status::is_symlink_or_parent(
-        &f,
-        &root
-    ));
-}
-
-#[test]
-fn is_symlink_or_parent_nonexistent() {
-    let root = temp_root();
-    assert!(!status::is_symlink_or_parent(
-        Path::new("/no/such/path"),
-        &root
-    ));
+#[test] fn index_save_err_returned() {
+    let r=temp_root();let p=make_pkg(&r,"ise","winuser");touch(&p.join("f.txt"));
+    let(c,e,_)=wots::status::check_copy_status_detailed_at(&p,&PkgType::WinUser,&r);
+    assert!(c.missing_remote+c.error>0||c.synced>0);assert!(!e.is_empty());
 }

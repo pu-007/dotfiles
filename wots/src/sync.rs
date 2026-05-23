@@ -12,6 +12,7 @@ use crate::cli::SyncArgs;
 use crate::config::{DOTFILES_DIR, MNT_C, SYNC_MAX_CONCURRENT, WSL_DISTRO_NAME};
 use crate::discover::{build_win_path, find_packages, list_syncable_files, pkg_basename};
 use crate::display;
+use crate::status;
 use crate::types::{type_label, PkgType, SYNCABLE_TYPES};
 use crate::util::{has_pwsh, has_robocopy, has_stow, is_excluded, is_wsl};
 
@@ -120,6 +121,12 @@ fn sync_copy_batch(pkgs: &[PathBuf], pt: &PkgType, dry_run: bool, quiet: bool) -
 
         let counts = sync_batch(&items, dry_run, *SYNC_MAX_CONCURRENT);
         print_sync_summary(&counts, quiet);
+
+        // Update the index so subsequent list/stats/diff can detect
+        // deletions and out-of-sync states correctly.
+        if !dry_run {
+            let _ = status::check_copy_status(pkg, pt);
+        }
     }
 
     Ok(())

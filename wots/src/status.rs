@@ -4,6 +4,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use serde::{Deserialize, Serialize};
+use walkdir::WalkDir;
 
 use crate::config::DOTFILES_DIR;
 use crate::discover::{build_win_path, list_syncable_files};
@@ -32,18 +33,28 @@ pub struct SyncIndex {
 
 impl SyncIndex {
     pub fn load() -> Self {
-        let path = DOTFILES_DIR.join(".wots_index.json");
+        Self::load_from(&DOTFILES_DIR)
+    }
+
+    pub fn load_from(base: &Path) -> Self {
+        let path = base.join(".wots_index.json");
         match fs::read_to_string(&path) {
             Ok(contents) => serde_json::from_str(&contents).unwrap_or_default(),
             Err(_) => Self::default(),
         }
     }
 
-    pub fn save(&self) {
-        let path = DOTFILES_DIR.join(".wots_index.json");
-        if let Ok(json) = serde_json::to_string_pretty(self) {
-            let _ = fs::write(&path, json);
-        }
+    pub fn save(&self) -> std::io::Result<()> {
+        self.save_to(&DOTFILES_DIR)
+    }
+
+    pub fn save_to(&self, base: &Path) -> std::io::Result<()> {
+        let path = base.join(".wots_index.json");
+        let json = serde_json::to_string_pretty(self)
+            .map_err(std::io::Error::other)?;
+        let tmp = path.with_extension("tmp");
+        fs::write(&tmp, &json)?;
+        fs::rename(&tmp, &path)
     }
 
     pub fn get(&self, key: &str) -> Option<&IndexEntry> {
@@ -298,8 +309,9 @@ fn file_sync_status(
     let size = meta.len();
 
     // Fast-path: index says this was synced before and WSL hasn't changed.
-    // BUT we must verify the Windows file still exists — it could have been
-    // deleted manually outside the tool.
+    // BUT we must verify the Windows side is truly unchanged:
+    //  1. File must still exist (could have been deleted manually)
+    //  2. mtime must match (could have been edited on Windows)
     let win_path = build_win_path(wsl_path, pkg, pt);
     if let Some(entry) = index.get(&key)
         && entry.mtime_ns == mtime_ns
@@ -307,28 +319,43 @@ fn file_sync_status(
         && entry.win_mtime_ns.is_some()
         && entry.win_size.is_some()
     {
-        // Lightweight existence check — symlink_metadata is fast.
-        if win_path.symlink_metadata().is_ok() {
-            return FileSyncResult {
-                key,
-                status: FileSyncStatus::Synced,
-                mtime_ns,
-                size,
-                win_mtime_ns: entry.win_mtime_ns,
-                win_size: entry.win_size,
-                index_ok: true, // index already correct — skip update
-            };
+        match win_path.metadata() {
+            Ok(wn) => {
+                let actual_wn_mtime_ns = wn
+                    .modified()
+                    .ok()
+                    .and_then(|t| t.duration_since(std::time::UNIX_EPOCH).ok())
+                    .map(|d| d.as_nanos() as u64);
+                if actual_wn_mtime_ns == entry.win_mtime_ns
+                    && Some(wn.len()) == entry.win_size
+                {
+                    // Truly synced — both sides unchanged.
+                    return FileSyncResult {
+                        key,
+                        status: FileSyncStatus::Synced,
+                        mtime_ns,
+                        size,
+                        win_mtime_ns: entry.win_mtime_ns,
+                        win_size: entry.win_size,
+                        index_ok: true,
+                    };
+                }
+                // Windows file was modified since last sync.
+                // Fall through to slow-path for full comparison.
+            }
+            Err(_) => {
+                // Windows file vanished since last sync.
+                return FileSyncResult {
+                    key,
+                    status: FileSyncStatus::MissingWin,
+                    mtime_ns,
+                    size,
+                    win_mtime_ns: None,
+                    win_size: None,
+                    index_ok: false,
+                };
+            }
         }
-        // Windows file vanished since last sync.
-        return FileSyncResult {
-            key,
-            status: FileSyncStatus::MissingWin,
-            mtime_ns,
-            size,
-            win_mtime_ns: None,
-            win_size: None,
-            index_ok: false,
-        };
     }
 
     // Slow-path: read Windows metadata and compare in detail.
@@ -446,24 +473,117 @@ fn detect_missing_wsl(
     (missing, remove_keys)
 }
 
+/// Public test wrapper for `detect_missing_wsl`.  Only used by integration tests.
+#[doc(hidden)]
+pub fn detect_missing_wsl_test(
+    pkg: &Path,
+    pt: &PkgType,
+    index: &SyncIndex,
+    seen_keys: &HashSet<String>,
+) -> (Vec<(String, FileSyncStatus)>, Vec<String>) {
+    detect_missing_wsl(pkg, pt, index, seen_keys)
+}
+
+// ---------------------------------------------------------------------------
+// Direct Windows-side scan — does NOT depend on the index.
+// Walks the Windows target directory and reports files that exist there
+// but have no WSL counterpart.
+// ---------------------------------------------------------------------------
+
+/// Walk the Windows target directory for a package and return entries for
+/// files that don't exist in the WSL package.
+#[allow(dead_code)]
+fn scan_windows_for_orphans(
+    pkg: &Path,
+    pt: &PkgType,
+) -> Vec<FileStatusEntry> {
+    let mut orphans: Vec<FileStatusEntry> = Vec::new();
+
+    // Determine the Windows base directory for this package type.
+    let win_base = match pt {
+        PkgType::WinUser => {
+            let user = crate::config::WIN_USERNAME.as_deref().unwrap_or("user");
+            crate::config::MNT_C.join("Users").join(user)
+        }
+        PkgType::WinConfig => {
+            let user = crate::config::WIN_USERNAME.as_deref().unwrap_or("user");
+            crate::config::MNT_C.join("Users").join(user).join(".config")
+        }
+        PkgType::WinLocal => {
+            let user = crate::config::WIN_USERNAME.as_deref().unwrap_or("user");
+            crate::config::MNT_C.join("Users").join(user).join("AppData").join("Local")
+        }
+        PkgType::WinRoaming => {
+            let user = crate::config::WIN_USERNAME.as_deref().unwrap_or("user");
+            crate::config::MNT_C.join("Users").join(user).join("AppData").join("Roaming")
+        }
+        _ => return orphans, // no Windows target for non-copy-sync types
+    };
+
+    if !win_base.is_dir() {
+        return orphans;
+    }
+
+    // Collect the set of WSL files (relative paths) for O(1) lookup.
+    let wsl_set: HashSet<PathBuf> = list_syncable_files(pkg)
+        .into_iter()
+        .filter_map(|f| f.strip_prefix(pkg).ok().map(Path::to_path_buf))
+        .collect();
+
+    let max_depth: usize = 8; // prevent runaway walk on huge trees
+
+    for entry in WalkDir::new(&win_base)
+        .max_depth(max_depth)
+        .into_iter()
+        .filter_entry(|e| crate::util::is_quick_exclude_dir(e.file_name()))
+        .filter_map(|e| e.ok())
+        .filter(|e| e.file_type().is_file() && !crate::util::is_excluded(e.path()))
+    {
+        let win_file = entry.path();
+        if let Ok(rel) = win_file.strip_prefix(&win_base)
+            && !wsl_set.contains(rel)
+        {
+            orphans.push(FileStatusEntry {
+                relative_path: rel.to_path_buf(),
+                status: FileSyncStatus::MissingWsl,
+            });
+        }
+    }
+
+    orphans
+}
+
 // ---------------------------------------------------------------------------
 // Full copy-status check (counts + per-file details)
 // ---------------------------------------------------------------------------
 
-/// Returns both aggregate counts and per-file status entries, performing
-/// forward (WSL → Win) and reverse (Win → WSL) checks.
+/// Returns both aggregate counts, per-file status entries, and any index
+/// save error.  The caller should check and log the error when non-None.
+///
+/// Performs forward (WSL → Win) and reverse (Win → WSL) checks.
 pub fn check_copy_status_detailed(
     pkg: &Path,
     pt: &PkgType,
-) -> (CopyStatusCounts, Vec<FileStatusEntry>) {
+) -> (CopyStatusCounts, Vec<FileStatusEntry>, Option<std::io::Error>) {
+    check_copy_status_detailed_at(pkg, pt, &DOTFILES_DIR)
+}
+
+/// Same as `check_copy_status_detailed` but uses a custom index base
+/// directory (for testing).
+#[doc(hidden)]
+pub fn check_copy_status_detailed_at(
+    pkg: &Path,
+    pt: &PkgType,
+    index_base: &Path,
+) -> (CopyStatusCounts, Vec<FileStatusEntry>, Option<std::io::Error>) {
     let mut counts = CopyStatusCounts::default();
     let mut entries: Vec<FileStatusEntry> = Vec::new();
 
     if !pkg.is_dir() {
-        return (counts, entries);
+        return (counts, entries, None);
     }
 
-    let mut index = SyncIndex::load();
+    let mut index = SyncIndex::load_from(index_base);
     let files = list_syncable_files(pkg);
     let mut seen_keys: HashSet<String> = HashSet::new();
 
@@ -497,7 +617,10 @@ pub fn check_copy_status_detailed(
         }
     }
 
-    // --- Reverse check: stale index entries ----------------------------
+    // --- Reverse check: index-based stale entry detection ------------
+    // Detects files that were previously synced (in the index) but whose
+    // WSL file no longer exists.  If the Windows file still exists,
+    // reports MissingWsl.  If both are gone, removes the stale entry.
     let (reverse, remove_keys) = detect_missing_wsl(pkg, pt, &index, &seen_keys);
 
     for (key, status) in &reverse {
@@ -515,13 +638,20 @@ pub fn check_copy_status_detailed(
         index.entries.remove(key);
     }
 
-    index.save();
-    (counts, entries)
+    let save_err = index.save_to(index_base).err();
+    if let Some(ref e) = save_err {
+        eprintln!("  wots: warning — failed to save sync index: {e}");
+    }
+    (counts, entries, save_err)
 }
 
 /// Simplified wrapper: counts-only, ignores per-file details.
 pub fn check_copy_status(pkg: &Path, pt: &PkgType) -> CopyStatusCounts {
-    check_copy_status_detailed(pkg, pt).0
+    let (counts, _, save_err) = check_copy_status_detailed(pkg, pt);
+    if let Some(e) = save_err {
+        eprintln!("  wots: warning — failed to save sync index: {e}");
+    }
+    counts
 }
 
 /// Check copy status for multiple packages sequentially (avoids index

@@ -63,9 +63,11 @@ lint *args:
 
 # -----------------------------------------------------------------------------
 # ⚙️ 2. 配置管理 (Wots CLI)
+#  可用类型: user, config, local, root, meta, winuser, winconfig, winlocal, winroaming
 # -----------------------------------------------------------------------------
 
 # 运行任意 wots 命令 (默认显示帮助)
+# 用法: just wots -- list --json
 [group('2. 配置管理 (Wots CLI)')]
 wots *args:
     @{{ dotfiles }}/wots_bin {{ if args == "" { "--help" } else { args } }}
@@ -75,70 +77,70 @@ wots *args:
 create +args:
     @{{ dotfiles }}/wots_bin create {{ args }}
 
-# 同步所有包到目标
+# 同步所有包到目标 (转发额外参数: just sync -- -h)
 [group('2. 配置管理 (Wots CLI)')]
-sync:
-    @{{ dotfiles }}/wots_bin sync
+sync *args:
+    @{{ dotfiles }}/wots_bin sync {{ args }}
 
-# 按类型同步: just sync-type user
+# 按类型同步 (root 由 wots 内部处理 sudo): just sync-type root
 [group('2. 配置管理 (Wots CLI)')]
-sync-type type:
-    @{{ if type == "root" { "sudo " } else { "" } }}{{ dotfiles }}/wots_bin sync --type {{ type }}
+sync-type type *args:
+    @{{ dotfiles }}/wots_bin sync --type {{ type }} {{ args }}
 
 # 按包名同步: just sync-app git
 [group('2. 配置管理 (Wots CLI)')]
-sync-app app:
-    @{{ dotfiles }}/wots_bin sync --app {{ app }}
+sync-app app *args:
+    @{{ dotfiles }}/wots_bin sync --app {{ app }} {{ args }}
 
-# 预览同步 (干运行)
+# 预览同步 (干运行): just sync-dry --type winuser
 [group('2. 配置管理 (Wots CLI)')]
-sync-dry:
-    @{{ dotfiles }}/wots_bin sync --dry-run
+sync-dry *args:
+    @{{ dotfiles }}/wots_bin sync --dry-run {{ args }}
 
 # 同步 root 包 (带 sudo, 跳过确认)
 [group('2. 配置管理 (Wots CLI)')]
-sync-root:
-    @sudo {{ dotfiles }}/wots_bin sync --type root --bypass
+sync-root *args:
+    @sudo {{ dotfiles }}/wots_bin sync --type root --bypass {{ args }}
 
 # 仓库统计: 包数量、文件数、大小、状态
 [group('2. 配置管理 (Wots CLI)')]
-stats:
-    @{{ dotfiles }}/wots_bin stats
+stats *args:
+    @{{ dotfiles }}/wots_bin stats {{ args }}
 
 # JSON 格式统计
 [group('2. 配置管理 (Wots CLI)')]
-stats-json:
-    @{{ dotfiles }}/wots_bin stats --json
+stats-json *args:
+    @{{ dotfiles }}/wots_bin stats --json {{ args }}
 
 # 列出所有包及其状态
 [group('2. 配置管理 (Wots CLI)')]
-list:
-    @{{ dotfiles }}/wots_bin list
+list *args:
+    @{{ dotfiles }}/wots_bin list {{ args }}
 
 # 按类型列出包: just list-type user
 [group('2. 配置管理 (Wots CLI)')]
-list-type type:
-    @{{ dotfiles }}/wots_bin list --type {{ type }}
+list-type type *args:
+    @{{ dotfiles }}/wots_bin list --type {{ type }} {{ args }}
 
 # JSON 格式列出包
 [group('2. 配置管理 (Wots CLI)')]
-list-json:
-    @{{ dotfiles }}/wots_bin list --json
+list-json *args:
+    @{{ dotfiles }}/wots_bin list --json {{ args }}
 
 # 显示差异: 哪些文件需要同步
 [group('2. 配置管理 (Wots CLI)')]
-diff:
-    @{{ dotfiles }}/wots_bin diff
+diff *args:
+    @{{ dotfiles }}/wots_bin diff {{ args }}
 
 # 按类型查看差异: just diff-type winuser
 [group('2. 配置管理 (Wots CLI)')]
-diff-type type:
-    @{{ dotfiles }}/wots_bin diff --type {{ type }}
+diff-type type *args:
+    @{{ dotfiles }}/wots_bin diff --type {{ type }} {{ args }}
 
 # 按包名查看差异: just diff-app git
 [group('2. 配置管理 (Wots CLI)')]
-diff-app app:
-    @{{ dotfiles }}/wots_bin diff --app {{ app }}
+diff-app app *args:
+    @{{ dotfiles }}/wots_bin diff --app {{ app }} {{ args }}
 
 # =============================================================================
 # 📦 核心流水线子任务 (Private Sub-tasks) - 列表隐身，提供模块化原子操作

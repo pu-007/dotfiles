@@ -241,7 +241,10 @@ fn cmd_diff(args: &wots::cli::DiffArgs) -> Result<()> {
                 }
 
             if pt.uses_copy_sync() {
-                let (counts, file_entries) = wots::status::check_copy_status_detailed(pkg, pt);
+                let (counts, file_entries, save_err) = wots::status::check_copy_status_detailed(pkg, pt);
+                if let Some(e) = save_err {
+                    eprintln!("  Warning: failed to save sync index: {e}");
+                }
 
                 let has_work = counts.outdated_local > 0
                     || counts.missing_remote > 0
