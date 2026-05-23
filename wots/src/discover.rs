@@ -173,22 +173,29 @@ pub fn propose_name(sources: &[PathBuf]) -> String {
     }
 
     let first = &sources[0];
-    let file_name = first
-        .file_name()
-        .unwrap_or(OsStr::new("unnamed"))
-        .to_string_lossy()
-        .to_string();
 
-    let init_names: &[&str] = &["init.lua", "init.vim", "config", "config.yaml", "settings.json"];
-
-    if init_names.contains(&file_name.as_str())
-        && let Some(parent) = first.parent()
-            && let Some(parent_name) = parent.file_name() {
-                let pn = parent_name.to_string_lossy();
-                if !pn.is_empty() && pn != "." && pn != ".." && pn != "~" {
-                    return pn.to_string();
+    // When the source is a regular file (not a directory), the file's own
+    // name is rarely a meaningful package name (e.g. config.yml, a.yml).
+    // Prefer the parent directory name instead, unless the parent is HOME,
+    // /, or some other generic top-level directory.
+    if first.is_file()
+        && let Some(parent) = first.parent() {
+            let parent_str = parent.to_string_lossy();
+            let home_str = HOME.to_string_lossy();
+            if parent_str != home_str.as_ref()
+                && parent_str != "/"
+                && let Some(parent_name) = parent.file_name() {
+                    let pn = parent_name.to_string_lossy();
+                    if !pn.is_empty()
+                        && pn != "."
+                        && pn != ".."
+                        && pn != "~"
+                        && pn != ".config"
+                        && pn != ".local" {
+                            return pn.to_string();
+                        }
                 }
-            }
+        }
 
     first
         .file_stem()
@@ -365,16 +372,54 @@ mod tests {
     }
 
     #[test]
-    fn propose_name_init_config() {
-        // When the source is a known init file, use the parent dir name
-        let name = propose_name(&[PathBuf::from("/home/user/nvim/init.lua")]);
-        assert_eq!(name, "nvim");
+    fn propose_name_file_uses_parent_dir() {
+        let dir = temp_dir();
+        let sub = dir.join("myapp");
+        fs::create_dir_all(&sub).unwrap();
+        write_file(&sub.join("config.yml"), "x");
+        let name = propose_name(&[sub.join("config.yml")]);
+        assert_eq!(name, "myapp");
     }
 
     #[test]
-    fn propose_name_directory() {
-        let name = propose_name(&[PathBuf::from("/home/user/.config/wezterm")]);
-        assert_eq!(name, "wezterm");
+    fn propose_name_file_parent_is_home_falls_back_to_stem() {
+        let home = std::env::var("HOME").unwrap();
+        let name = propose_name(&[PathBuf::from(format!("{}/.zshrc", home))]);
+        // ~/.zshrc is a file but parent is HOME → falls back to stem
+        assert_eq!(name, ".zshrc");
+    }
+
+    #[test]
+    fn propose_name_file_parent_is_dot_config_falls_back() {
+        let dir = temp_dir();
+        let dotconfig = dir.join(".config");
+        let file = dotconfig.join("settings.yml");
+        write_file(&file, "{}");
+        // Override HOME to point to `dir` so the path looks like ~/.config/settings.yml
+        // Can't override HOME per-test, so just test that .config parent falls back
+        let name = propose_name(&[file]);
+        // Parent is ".config" which is excluded → falls back to file_stem
+        assert_eq!(name, "settings");
+    }
+
+    #[test]
+    fn propose_name_file_parent_is_dot_local_falls_back() {
+        let dir = temp_dir();
+        let dotlocal = dir.join(".local");
+        let file = dotlocal.join("state.json");
+        write_file(&file, "{}");
+        let name = propose_name(&[file]);
+        assert_eq!(name, "state");
+    }
+
+    #[test]
+    fn propose_name_deeply_nested_file_uses_immediate_parent() {
+        let dir = temp_dir();
+        let deep = dir.join("foo/bar/baz");
+        fs::create_dir_all(&deep).unwrap();
+        write_file(&deep.join("data.txt"), "x");
+        let name = propose_name(&[deep.join("data.txt")]);
+        assert_eq!(name, "baz");
     }
 
     // ------------------------------------------------------------------

@@ -4,7 +4,7 @@ use std::path::{Path, PathBuf};
 use anyhow::{bail, Context, Result};
 
 use crate::cli::CreateArgs;
-use crate::config::{DOTFILES_DIR, HOME, MNT_C, ROOT_TARGET};
+use crate::config::{CONFIG_TARGET, DOTFILES_DIR, HOME, LOCAL_TARGET, MNT_C, ROOT_TARGET};
 use crate::discover::{detect_type, propose_name};
 use crate::display;
 use crate::sync::{do_stow, prepare_sync_items, sync_batch};
@@ -197,8 +197,26 @@ fn validate_sources(sources: &[PathBuf], pt: &PkgType) -> Result<()> {
 }
 
 fn compute_dest(src: &Path, pt: &PkgType, pkg_root: &Path) -> Result<PathBuf> {
-    if pt.is_linux_config() {
+    if *pt == PkgType::User {
         if let Ok(rel) = src.strip_prefix(&*HOME) {
+            return Ok(pkg_root.join(rel));
+        }
+        return Ok(pkg_root.join(
+            src.file_name()
+                .unwrap_or(std::ffi::OsStr::new("")),
+        ));
+    }
+    if *pt == PkgType::Config {
+        if let Ok(rel) = src.strip_prefix(&*CONFIG_TARGET) {
+            return Ok(pkg_root.join(rel));
+        }
+        return Ok(pkg_root.join(
+            src.file_name()
+                .unwrap_or(std::ffi::OsStr::new("")),
+        ));
+    }
+    if *pt == PkgType::Local {
+        if let Ok(rel) = src.strip_prefix(&*LOCAL_TARGET) {
             return Ok(pkg_root.join(rel));
         }
         return Ok(pkg_root.join(
@@ -334,24 +352,37 @@ mod tests {
     }
 
     #[test]
-    fn compute_dest_user_type_strips_home() {
-        let dir = temp_dir();
-        let pkg_root = dir.join("test.user");
-        let src = PathBuf::from(format!("{}/.bashrc", HOME.to_string_lossy()));
-
-        let dest = compute_dest(&src, &PkgType::User, &pkg_root).unwrap();
-        assert_eq!(dest, pkg_root.join(".bashrc"));
-    }
-
-    #[test]
-    fn compute_dest_config_type_preserves_subdir() {
+    fn compute_dest_config_strips_config_target() {
         let dir = temp_dir();
         let pkg_root = dir.join("nvim.config");
         let src = PathBuf::from(format!("{}/.config/nvim/init.lua", HOME.to_string_lossy()));
 
         let dest = compute_dest(&src, &PkgType::Config, &pkg_root).unwrap();
-        assert!(dest.ends_with("init.lua"));
-        assert!(dest.to_string_lossy().contains("nvim"));
+        // Should strip ~/.config/, NOT ~/.  Package structure: nvim/init.lua
+        assert!(!dest.to_string_lossy().contains(".config/.config"));
+        assert!(!dest.to_string_lossy().contains("init.lua.config"));
+        assert_eq!(dest, pkg_root.join("nvim/init.lua"));
+    }
+
+    #[test]
+    fn compute_dest_local_strips_local_target() {
+        let dir = temp_dir();
+        let pkg_root = dir.join("share.local");
+        let src = PathBuf::from(format!("{}/.local/share/app/config", HOME.to_string_lossy()));
+
+        let dest = compute_dest(&src, &PkgType::Local, &pkg_root).unwrap();
+        assert!(!dest.to_string_lossy().contains(".local/.local"));
+        assert_eq!(dest, pkg_root.join("share/app/config"));
+    }
+
+    #[test]
+    fn compute_dest_user_strips_home() {
+        let dir = temp_dir();
+        let pkg_root = dir.join("zsh.user");
+        let src = PathBuf::from(format!("{}/.zshrc", HOME.to_string_lossy()));
+
+        let dest = compute_dest(&src, &PkgType::User, &pkg_root).unwrap();
+        assert_eq!(dest, pkg_root.join(".zshrc"));
     }
 
     #[test]
