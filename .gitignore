@@ -1,9 +1,9 @@
 gnupg
 recent_files.txt
-# pixi environments
-.pixi/*
-!.pixi/config.toml
- 
+
+# Rust build artifacts
+wots/target/
+
 aicommit2.user/.config/aicommit2/stats.json
 __pycache__/
 

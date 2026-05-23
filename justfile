@@ -37,37 +37,43 @@ refresh: _protect _update _backup _cleanup _sync_remote _restore
 # ⚙️ 2. 配置管理 (Wots CLI)
 # =============================================================================
 
+# [构建] 编译 Rust 二进制 (release)
+[group('0. 构建 (Build)')]
+build:
+    @cargo build --release --manifest-path {{dotfiles}}/wots/Cargo.toml
+    @cp {{dotfiles}}/wots/target/release/wots {{dotfiles}}/wots_bin
+
 [group('2. 配置管理 (Wots CLI)')]
 wots *args:
-    @pixi run wots {{ if args == "" { "--help" } else { args } }}
+    @{{dotfiles}}/wots_bin {{ if args == "" { "--help" } else { args } }}
 
 [group('2. 配置管理 (Wots CLI)')]
 create +args:
-    @pixi run wots create {{args}}
+    @{{dotfiles}}/wots_bin create {{args}}
 
 [group('2. 配置管理 (Wots CLI)')]
 sync:
-    @pixi run wots sync
+    @{{dotfiles}}/wots_bin sync
 
 [group('2. 配置管理 (Wots CLI)')]
 sync-type type:
-    @{{ if type == "root" { "sudo " } else { "" } }}pixi run wots sync --type {{type}}
+    @{{ if type == "root" { "sudo " } else { "" } }}{{dotfiles}}/wots_bin sync --type {{type}}
 
 [group('2. 配置管理 (Wots CLI)')]
 sync-dry:
-    @pixi run wots sync --dry-run
+    @{{dotfiles}}/wots_bin sync --dry-run
 
 [group('2. 配置管理 (Wots CLI)')]
 stats:
-    @pixi run wots stats
+    @{{dotfiles}}/wots_bin stats
 
 [group('2. 配置管理 (Wots CLI)')]
 list:
-    @pixi run wots list
+    @{{dotfiles}}/wots_bin list
 
 [group('2. 配置管理 (Wots CLI)')]
 diff:
-    @pixi run wots list --unsynced
+    @{{dotfiles}}/wots_bin diff
 
 # =============================================================================
 # 📦 核心流水线子任务 (Private Sub-tasks) - 列表隐身，提供模块化原子操作
