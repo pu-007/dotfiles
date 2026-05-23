@@ -42,7 +42,7 @@ pub fn run(args: CreateArgs) -> Result<()> {
             bail!("mixed source types");
         }
 
-        let pt = unique[0];
+        let mut pt = unique[0];
         display::info(&format!(
             "Detected type: {} → {}",
             pt.value(),
@@ -65,6 +65,7 @@ pub fn run(args: CreateArgs) -> Result<()> {
                 match PkgType::from_str(&resp) {
                     Some(new_pt) => {
                         display::info(&format!("Using type: {}", new_pt.value()));
+                        pt = new_pt;
                     }
                     None => {
                         display::error(&format!("Unknown type: {}", resp));
