@@ -63,8 +63,6 @@ alias co="win32yank.exe -o"
 
 # {{{ System & General Utilities
 alias j="just"
-alias xz="x z"
-alias uz="x uz"
 alias als="alias | rg "
 alias b="bat"
 alias re-cmp=": rm .zcompdump; compinit"

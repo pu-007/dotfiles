@@ -205,6 +205,7 @@ zinit wait lucid for \
   OMZP::command-not-found \
   OMZP::copypath \
   OMZL::functions.zsh \
+  OMZP::extract \
   OMZL::clipboard.zsh \
   OMZL::git.zsh \
   OMZL::termsupport.zsh \
