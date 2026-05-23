@@ -92,13 +92,6 @@ impl PkgType {
         )
     }
 
-    pub fn is_linux(&self) -> bool {
-        matches!(
-            self,
-            PkgType::User | PkgType::Config | PkgType::Local | PkgType::Root | PkgType::Meta
-        )
-    }
-
     pub fn is_windows(&self) -> bool {
         matches!(
             self,
@@ -109,18 +102,6 @@ impl PkgType {
     pub fn is_linux_config(&self) -> bool {
         matches!(self, PkgType::User | PkgType::Config | PkgType::Local)
     }
-}
-
-pub fn suffix_to_type(suffix: &str) -> Option<PkgType> {
-    if suffix.is_empty() {
-        return None;
-    }
-    for pt in ALL_TYPES.iter() {
-        if pt.suffix() == suffix {
-            return Some(*pt);
-        }
-    }
-    None
 }
 
 pub fn type_from_dir_name(name: &str) -> Option<PkgType> {

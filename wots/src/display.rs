@@ -50,12 +50,14 @@ pub fn render_stats(stats_data: &HashMap<&'static str, TypeStats>, total_pkgs: u
                 continue;
             }
             let status = &d.status_text;
+            let names = d.names.join(", ");
             println!(
-                "{:<12} {:>5} {:>7} {:>10}  {}",
+                "{:<12} {:>5} {:>7} {:>10}  {:40}  {}",
                 key,
                 d.packages,
                 d.files,
                 d.size_human,
+                names,
                 status,
             );
         }

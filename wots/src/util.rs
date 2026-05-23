@@ -1,13 +1,13 @@
 use std::ffi::OsStr;
 use std::fs;
 use std::path::Path;
-use std::process::{Command, Output};
+use std::process::Command;
 use std::sync::LazyLock;
 
-use anyhow::{Context, Result};
+use anyhow::Result;
 use walkdir::WalkDir;
 
-use crate::config::{EXCLUDE_PATTERNS, MAX_SYNC_SIZE_BYTES, WSL_DISTRO_NAME};
+use crate::config::{EXCLUDE_PATTERNS, MAX_SYNC_SIZE_BYTES};
 
 static QUICK_EXCLUDE_DIRS: LazyLock<std::collections::HashSet<&'static OsStr>> =
     LazyLock::new(|| {
@@ -129,42 +129,6 @@ fn glob_match(pattern: &str, name: &str) -> Result<bool> {
 
 pub fn skip_size_limit(path: &Path) -> Result<bool> {
     Ok(*MAX_SYNC_SIZE_BYTES > 0 && fs::metadata(path)?.len() > *MAX_SYNC_SIZE_BYTES)
-}
-
-pub fn win_path_str(win_path: &Path, mnt_c: &Path) -> String {
-    let relative = win_path.strip_prefix(mnt_c).unwrap_or(win_path);
-    format!(
-        "C:\\{}",
-        relative.to_string_lossy().replace('/', "\\")
-    )
-}
-
-pub fn win_unc_path(wsl_src: &Path) -> String {
-    let distro = &*WSL_DISTRO_NAME;
-    format!(
-        "\\\\wsl$\\{}\\{}",
-        distro,
-        wsl_src.to_string_lossy().replace('/', "\\")
-    )
-}
-
-pub fn run_command(cmd: &[&str], cwd: Option<&Path>, dry_run: bool) -> Result<Output> {
-    if dry_run {
-        return Ok(Output {
-            status: std::process::ExitStatus::default(),
-            stdout: Vec::new(),
-            stderr: Vec::new(),
-        });
-    }
-
-    let (prog, args) = cmd.split_first().context("empty command")?;
-    let mut c = Command::new(prog);
-    c.args(args);
-    if let Some(dir) = cwd {
-        c.current_dir(dir);
-    }
-    let output = c.output().context("failed to execute command")?;
-    Ok(output)
 }
 
 pub fn copy_dir_all(src: &Path, dst: &Path) -> Result<()> {

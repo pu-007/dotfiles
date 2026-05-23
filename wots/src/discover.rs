@@ -196,28 +196,3 @@ pub fn propose_name(sources: &[PathBuf]) -> String {
         .to_string_lossy()
         .to_string()
 }
-
-pub fn lcp_of(paths: &[PathBuf]) -> Option<PathBuf> {
-    if paths.is_empty() {
-        return None;
-    }
-
-    let canonical: Vec<PathBuf> = paths
-        .iter()
-        .map(|p| p.canonicalize().unwrap_or_else(|_| p.to_path_buf()))
-        .collect();
-
-    let mut common = canonical[0].clone();
-
-    for p in &canonical[1..] {
-        while !p.starts_with(&common) {
-            if let Some(parent) = common.parent() {
-                common = parent.to_path_buf();
-            } else {
-                return None;
-            }
-        }
-    }
-
-    Some(common)
-}
