@@ -1,9 +1,7 @@
-use std::collections::HashMap;
 use std::collections::HashSet;
 use std::fs;
 use std::path::{Path, PathBuf};
 
-use serde::{Deserialize, Serialize};
 use walkdir::WalkDir;
 
 use crate::config::DOTFILES_DIR;
@@ -11,87 +9,11 @@ use crate::discover::{build_win_path, list_syncable_files};
 use crate::types::PkgType;
 use crate::util::skip_size_limit;
 
-// ---------------------------------------------------------------------------
-// Index data model
-// ---------------------------------------------------------------------------
+pub use crate::index::{IndexEntry, SyncIndex};
 
-#[derive(Debug, Default, Clone, Serialize, Deserialize)]
-pub struct IndexEntry {
-    pub mtime_ns: u64,
-    pub size: u64,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub win_mtime_ns: Option<u64>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub win_size: Option<u64>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub blake3_wsl: Option<String>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub blake3_win: Option<String>,
-    /// Whether this entry represents a successfully synced file.
-    /// Only synced entries qualify for the fast-path shortcut;
-    /// unsynced entries are tracked for deletion detection.
-    #[serde(default)]
-    pub synced: bool,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct SyncIndex {
-    pub version: u32,
-    pub entries: HashMap<String, IndexEntry>,
-}
-
-impl SyncIndex {
-    pub fn load() -> Self {
-        Self::load_from(&DOTFILES_DIR)
-    }
-
-    pub fn load_from(base: &Path) -> Self {
-        let path = base.join(".wots_index.json");
-        match fs::read_to_string(&path) {
-            Ok(contents) => serde_json::from_str(&contents).unwrap_or_default(),
-            Err(_) => Self::default(),
-        }
-    }
-
-    pub fn save(&self) -> std::io::Result<()> {
-        self.save_to(&DOTFILES_DIR)
-    }
-
-    pub fn save_to(&self, base: &Path) -> std::io::Result<()> {
-        let path = base.join(".wots_index.json");
-        let json = serde_json::to_string_pretty(self)
-            .map_err(std::io::Error::other)?;
-        let tmp = path.with_extension("tmp");
-        fs::write(&tmp, &json)?;
-        fs::rename(&tmp, &path)
-    }
-
-    pub fn get(&self, key: &str) -> Option<&IndexEntry> {
-        self.entries.get(key)
-    }
-
-    pub fn set(&mut self, key: String, entry: IndexEntry) {
-        self.entries.insert(key, entry);
-    }
-
-    #[cfg(test)]
-    pub fn keys_cloned(&self) -> HashSet<String> {
-        self.entries.keys().cloned().collect()
-    }
-}
-
-impl Default for SyncIndex {
-    fn default() -> Self {
-        Self {
-            version: 1,
-            entries: HashMap::new(),
-        }
-    }
-}
-
-// ---------------------------------------------------------------------------
+// ===========================================================================
 // Per-file sync status
-// ---------------------------------------------------------------------------
+// ===========================================================================
 
 /// Detailed sync status for a single file.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -128,9 +50,9 @@ pub struct FileStatusEntry {
     pub status: FileSyncStatus,
 }
 
-// ---------------------------------------------------------------------------
+// ===========================================================================
 // Copy-status accumulator
-// ---------------------------------------------------------------------------
+// ===========================================================================
 
 #[derive(Debug, Default, Clone)]
 pub struct CopyStatusCounts {
@@ -189,9 +111,9 @@ pub fn status_text(counts: &CopyStatusCounts) -> String {
     }
 }
 
-// ---------------------------------------------------------------------------
+// ===========================================================================
 // Symlink helpers
-// ---------------------------------------------------------------------------
+// ===========================================================================
 
 pub fn is_symlink_or_parent(path: &Path, root: &Path) -> bool {
     if is_symlink(path) {
@@ -227,9 +149,9 @@ pub fn is_symlink(path: &Path) -> bool {
     }
 }
 
-// ---------------------------------------------------------------------------
+// ===========================================================================
 // Stow status
-// ---------------------------------------------------------------------------
+// ===========================================================================
 
 pub fn check_stow_status(pkg: &Path, pt: &PkgType) -> (usize, usize) {
     let target = match pt.sync_target() {
@@ -263,9 +185,9 @@ pub fn check_stow_status_batch(pkgs: &[PathBuf], pt: PkgType) -> (usize, usize) 
     (s.iter().sum(), t.iter().sum())
 }
 
-// ---------------------------------------------------------------------------
+// ===========================================================================
 // Core file-status check (shared between copy-status and diff)
-// ---------------------------------------------------------------------------
+// ===========================================================================
 
 /// Result of `file_sync_status`: carries metadata alongside the status so
 /// the caller can update the index without re-reading the file system.
@@ -279,9 +201,6 @@ struct FileSyncResult {
     blake3_wsl: Option<String>,
     blake3_win: Option<String>,
     /// True when the index entry is already up-to-date (fast-path Synced).
-    /// The caller should skip re-writing the same values to avoid a TOCTOU
-    /// window where the Windows file could vanish between the existence
-    /// check and the index-update metadata read.
     index_ok: bool,
 }
 
@@ -411,7 +330,6 @@ fn file_sync_status(
         (wsm, Some(wnm)) => {
             let mtime_diff = wsm.abs_diff(wnm);
             if mtime_diff < 2_000_000 && size == wn_size {
-                // Metadata matched — verify content to catch same-mtime/size edits.
                 let (w_hash, n_hash, content_status) =
                     hash_compare(wsl_path, &win_path, index.get(&key));
                 match content_status {
@@ -451,7 +369,6 @@ fn file_sync_status(
 }
 
 /// Compare content hashes of WSL and Windows copies.
-/// Returns (blake3_wsl, blake3_win, optional mismatch status).
 fn hash_compare(
     wsl_path: &Path,
     win_path: &Path,
@@ -469,11 +386,9 @@ fn hash_compare(
             }
         }
         (Some(_), None) | (None, Some(_)) => {
-            // Could read one side but not the other — report as error.
             (h_wsl, h_win, Some(FileSyncStatus::Error))
         }
         (None, None) => {
-            // Both unreadable — preserve old hashes from index.
             let w = idx_entry.and_then(|e| e.blake3_wsl.clone());
             let n = idx_entry.and_then(|e| e.blake3_win.clone());
             (w, n, None)
@@ -492,11 +407,10 @@ fn hash_file(path: &Path) -> Option<String> {
     Some(blake3::hash(&data).to_hex().to_string())
 }
 
-// ---------------------------------------------------------------------------
+// ===========================================================================
 // Helpers
-// ---------------------------------------------------------------------------
+// ===========================================================================
 
-/// Build the index-key prefix used to scope keys to a single package.
 fn pkg_key_prefix(pkg: &Path) -> String {
     let n = pkg
         .file_name()
@@ -505,10 +419,17 @@ fn pkg_key_prefix(pkg: &Path) -> String {
     format!("{}/", n)
 }
 
-// ---------------------------------------------------------------------------
+fn index_key(pkg: &Path, rel: &Path) -> String {
+    let pkg_name = pkg
+        .file_name()
+        .unwrap_or(std::ffi::OsStr::new(""))
+        .to_string_lossy();
+    format!("{}/{}", pkg_name, rel.display())
+}
+
+// ===========================================================================
 // Reverse check: detect index entries whose WSL file no longer exists.
-// Returns (reported-missing-wsl, keys-to-remove-from-index).
-// ---------------------------------------------------------------------------
+// ===========================================================================
 
 fn detect_missing_wsl(
     pkg: &Path,
@@ -532,13 +453,10 @@ fn detect_missing_wsl(
         let rel_str = key[pkg_prefix.len()..].to_string();
         let wsl_path = pkg.join(&rel_str);
 
-        // WSL file is gone. Check if Windows still has a copy.
         let win_path = build_win_path(&wsl_path, pkg, pt);
         if win_path.symlink_metadata().is_ok() {
-            // Orphaned: Windows still has it, WSL doesn't.
             missing.push((key.clone(), FileSyncStatus::MissingWsl));
         } else {
-            // Both sides gone — stale index entry, safe to remove.
             remove_keys.push(key.clone());
         }
     }
@@ -546,7 +464,7 @@ fn detect_missing_wsl(
     (missing, remove_keys)
 }
 
-/// Public test wrapper for `detect_missing_wsl`.  Only used by integration tests.
+/// Public test wrapper for `detect_missing_wsl`.
 #[doc(hidden)]
 pub fn detect_missing_wsl_test(
     pkg: &Path,
@@ -557,14 +475,10 @@ pub fn detect_missing_wsl_test(
     detect_missing_wsl(pkg, pt, index, seen_keys)
 }
 
-// ---------------------------------------------------------------------------
+// ===========================================================================
 // Direct Windows-side scan — does NOT depend on the index.
-// Walks the Windows target directory and reports files that exist there
-// but have no WSL counterpart.
-// ---------------------------------------------------------------------------
+// ===========================================================================
 
-/// Walk the Windows target directory for a package and return entries for
-/// files that don't exist in the WSL package.
 #[allow(dead_code)]
 fn scan_windows_for_orphans(
     pkg: &Path,
@@ -572,7 +486,6 @@ fn scan_windows_for_orphans(
 ) -> Vec<FileStatusEntry> {
     let mut orphans: Vec<FileStatusEntry> = Vec::new();
 
-    // Determine the Windows base directory for this package type.
     let win_base = match pt {
         PkgType::WinUser => {
             let user = crate::config::WIN_USERNAME.as_deref().unwrap_or("user");
@@ -590,20 +503,19 @@ fn scan_windows_for_orphans(
             let user = crate::config::WIN_USERNAME.as_deref().unwrap_or("user");
             crate::config::MNT_C.join("Users").join(user).join("AppData").join("Roaming")
         }
-        _ => return orphans, // no Windows target for non-copy-sync types
+        _ => return orphans,
     };
 
     if !win_base.is_dir() {
         return orphans;
     }
 
-    // Collect the set of WSL files (relative paths) for O(1) lookup.
     let wsl_set: HashSet<PathBuf> = list_syncable_files(pkg)
         .into_iter()
         .filter_map(|f| f.strip_prefix(pkg).ok().map(Path::to_path_buf))
         .collect();
 
-    let max_depth: usize = 8; // prevent runaway walk on huge trees
+    let max_depth: usize = 8;
 
     for entry in WalkDir::new(&win_base)
         .max_depth(max_depth)
@@ -626,14 +538,10 @@ fn scan_windows_for_orphans(
     orphans
 }
 
-// ---------------------------------------------------------------------------
+// ===========================================================================
 // Full copy-status check (counts + per-file details)
-// ---------------------------------------------------------------------------
+// ===========================================================================
 
-/// Returns both aggregate counts, per-file status entries, and any index
-/// save error.  The caller should check and log the error when non-None.
-///
-/// Performs forward (WSL → Win) and reverse (Win → WSL) checks.
 pub fn check_copy_status_detailed(
     pkg: &Path,
     pt: &PkgType,
@@ -641,8 +549,6 @@ pub fn check_copy_status_detailed(
     check_copy_status_detailed_at(pkg, pt, &DOTFILES_DIR)
 }
 
-/// Same as `check_copy_status_detailed` but uses a custom index base
-/// directory (for testing).
 #[doc(hidden)]
 pub fn check_copy_status_detailed_at(
     pkg: &Path,
@@ -660,7 +566,6 @@ pub fn check_copy_status_detailed_at(
     let files = list_syncable_files(pkg);
     let mut seen_keys: HashSet<String> = HashSet::new();
 
-    // --- Forward check: each WSL file ----------------------------------
     for f in &files {
         let result = file_sync_status(f, pkg, pt, &index);
         seen_keys.insert(result.key.clone());
@@ -673,10 +578,6 @@ pub fn check_copy_status_detailed_at(
             });
         }
 
-        // Always track files in the index for deletion detection,
-        // but only mark them synced when truly synced.  The fast path
-        // requires entry.synced, so unsynced entries can't poison
-        // future status checks.
         if !result.index_ok {
             index.set(
                 result.key,
@@ -693,10 +594,6 @@ pub fn check_copy_status_detailed_at(
         }
     }
 
-    // --- Reverse check: index-based stale entry detection ------------
-    // Detects files that were previously synced (in the index) but whose
-    // WSL file no longer exists.  If the Windows file still exists,
-    // reports MissingWsl.  If both are gone, removes the stale entry.
     let (reverse, remove_keys) = detect_missing_wsl(pkg, pt, &index, &seen_keys);
 
     for (key, status) in &reverse {
@@ -709,7 +606,6 @@ pub fn check_copy_status_detailed_at(
         });
     }
 
-    // Remove entries for files that have disappeared from both sides.
     for key in &remove_keys {
         index.entries.remove(key);
     }
@@ -721,7 +617,6 @@ pub fn check_copy_status_detailed_at(
     (counts, entries, save_err)
 }
 
-/// Simplified wrapper: counts-only, ignores per-file details.
 pub fn check_copy_status(pkg: &Path, pt: &PkgType) -> CopyStatusCounts {
     let (counts, _, save_err) = check_copy_status_detailed(pkg, pt);
     if let Some(e) = save_err {
@@ -730,8 +625,6 @@ pub fn check_copy_status(pkg: &Path, pt: &PkgType) -> CopyStatusCounts {
     counts
 }
 
-/// Check copy status for multiple packages sequentially (avoids index
-/// write conflicts from parallel access).
 pub fn check_copy_status_batch(pkgs: &[PathBuf], pt: PkgType) -> CopyStatusCounts {
     let mut total = CopyStatusCounts::default();
     for pkg in pkgs {
@@ -748,21 +641,9 @@ pub fn check_copy_status_batch(pkgs: &[PathBuf], pt: PkgType) -> CopyStatusCount
     total
 }
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-fn index_key(pkg: &Path, rel: &Path) -> String {
-    let pkg_name = pkg
-        .file_name()
-        .unwrap_or(std::ffi::OsStr::new(""))
-        .to_string_lossy();
-    format!("{}/{}", pkg_name, rel.display())
-}
-
-// ---------------------------------------------------------------------------
+// ===========================================================================
 // Tests
-// ---------------------------------------------------------------------------
+// ===========================================================================
 
 #[cfg(test)]
 mod tests {
@@ -804,14 +685,12 @@ mod tests {
     #[test]
     fn file_sync_status_missing_win() {
         let dir = temp_dir();
-        // Create a minimal package structure
         let pkg = dir.join("testapp.winuser");
         fs::create_dir_all(&pkg).unwrap();
         let file = pkg.join("test.txt");
         write_file(&file, "content");
 
         let index = SyncIndex::default();
-        // build_win_path will produce a path that almost certainly doesn't exist
         let result = file_sync_status(&file, &pkg, &PkgType::WinUser, &index);
         assert_eq!(result.status, FileSyncStatus::MissingWin);
     }
@@ -910,44 +789,6 @@ mod tests {
     }
 
     #[test]
-    fn sync_index_default() {
-        let idx = SyncIndex::default();
-        assert_eq!(idx.version, 1);
-        assert!(idx.entries.is_empty());
-    }
-
-    #[test]
-    fn sync_index_set_get() {
-        let mut idx = SyncIndex::default();
-        idx.set(
-            "test.file".into(),
-            IndexEntry {
-                mtime_ns: 100,
-                size: 50,
-                win_mtime_ns: Some(101),
-                win_size: Some(50),
-                blake3_wsl: None,
-                blake3_win: None,
-                synced: false,
-            },
-        );
-        assert!(idx.get("test.file").is_some());
-        assert_eq!(idx.get("test.file").unwrap().size, 50);
-        assert!(idx.get("nonexistent").is_none());
-    }
-
-    #[test]
-    fn sync_index_keys_cloned() {
-        let mut idx = SyncIndex::default();
-        idx.set("a".into(), IndexEntry { mtime_ns: 0, size: 0, win_mtime_ns: None, win_size: None, blake3_wsl: None, blake3_win: None, synced: false });
-        idx.set("b".into(), IndexEntry { mtime_ns: 0, size: 0, win_mtime_ns: None, win_size: None, blake3_wsl: None, blake3_win: None, synced: false });
-        let keys = idx.keys_cloned();
-        assert_eq!(keys.len(), 2);
-        assert!(keys.contains("a"));
-        assert!(keys.contains("b"));
-    }
-
-    #[test]
     fn file_sync_status_label() {
         assert_eq!(FileSyncStatus::Synced.label(), "synced");
         assert_eq!(FileSyncStatus::NeedsSync.label(), "needs-sync");
@@ -989,49 +830,6 @@ mod tests {
     #[test]
     fn hash_file_nonexistent_is_none() {
         assert!(hash_file(Path::new("/nonexistent/hash_test")).is_none());
-    }
-
-    #[test]
-    fn index_entry_hash_serialization() {
-        let mut idx = SyncIndex::default();
-        idx.set(
-            "h.txt".into(),
-            IndexEntry {
-                mtime_ns: 100,
-                size: 50,
-                win_mtime_ns: Some(101),
-                win_size: Some(50),
-                blake3_wsl: Some("abc123".into()),
-                blake3_win: Some("def456".into()),
-                synced: true,
-            },
-        );
-        let json = serde_json::to_value(&idx).unwrap();
-        let entry = &json["entries"]["h.txt"];
-        assert_eq!(entry["blake3_wsl"], "abc123");
-        assert_eq!(entry["blake3_win"], "def456");
-        assert_eq!(entry["synced"], true);
-
-        let restored: SyncIndex = serde_json::from_value(json).unwrap();
-        let e = restored.get("h.txt").unwrap();
-        assert_eq!(e.blake3_wsl.as_deref(), Some("abc123"));
-        assert_eq!(e.blake3_win.as_deref(), Some("def456"));
-    }
-
-    #[test]
-    fn index_entry_hash_none_omitted() {
-        let entry = IndexEntry {
-            mtime_ns: 100,
-            size: 50,
-            win_mtime_ns: None,
-            win_size: None,
-            blake3_wsl: None,
-            blake3_win: None,
-            synced: false,
-        };
-        let json = serde_json::to_value(&entry).unwrap();
-        assert!(json.get("blake3_wsl").is_none());
-        assert!(json.get("blake3_win").is_none());
     }
 
     #[test]

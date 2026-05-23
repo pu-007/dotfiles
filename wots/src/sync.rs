@@ -457,3 +457,140 @@ fn print_sync_summary(counts: &HashMap<String, usize>, quiet: bool) {
         display::info(&format!("    Result: {}", parts.join(", ")));
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::fs;
+
+    fn temp_dir() -> std::path::PathBuf {
+        let dir = std::env::temp_dir()
+            .join(format!("wots_test_sync_{}", std::process::id()));
+        let _ = fs::create_dir_all(&dir);
+        dir
+    }
+
+    fn write_file(path: &Path, content: &str) {
+        if let Some(p) = path.parent() {
+            let _ = fs::create_dir_all(p);
+        }
+        fs::write(path, content).unwrap();
+    }
+
+    #[test]
+    fn prepare_sync_items_winuser() {
+        let dir = temp_dir();
+        let pkg = dir.join("test.winuser");
+        write_file(&pkg.join("data.txt"), "hello");
+        write_file(&pkg.join("sub/cfg.json"), "{}");
+
+        let items = prepare_sync_items(&pkg, &PkgType::WinUser);
+        assert_eq!(items.len(), 2);
+
+        for (wsl, win) in &items {
+            assert!(wsl.exists());
+            assert!(win.to_string_lossy().contains("Users"));
+        }
+    }
+
+    #[test]
+    fn prepare_sync_items_winconfig() {
+        let dir = temp_dir();
+        let pkg = dir.join("cfg.winconfig");
+        write_file(&pkg.join("settings.json"), "{}");
+
+        let items = prepare_sync_items(&pkg, &PkgType::WinConfig);
+        assert_eq!(items.len(), 1);
+        let (_wsl, win) = &items[0];
+        assert!(win.to_string_lossy().contains(".config"));
+    }
+
+    #[test]
+    fn prepare_sync_items_winlocal() {
+        let dir = temp_dir();
+        let pkg = dir.join("app.winlocal");
+        write_file(&pkg.join("state.json"), "{}");
+
+        let items = prepare_sync_items(&pkg, &PkgType::WinLocal);
+        assert_eq!(items.len(), 1);
+        let (_wsl, win) = &items[0];
+        assert!(win.to_string_lossy().contains("AppData/Local"));
+    }
+
+    #[test]
+    fn prepare_sync_items_winroaming() {
+        let dir = temp_dir();
+        let pkg = dir.join("roam.winroaming");
+        write_file(&pkg.join("prefs.json"), "{}");
+
+        let items = prepare_sync_items(&pkg, &PkgType::WinRoaming);
+        assert_eq!(items.len(), 1);
+        let (_wsl, win) = &items[0];
+        assert!(win.to_string_lossy().contains("AppData/Roaming"));
+    }
+
+    #[test]
+    fn prepare_sync_items_excludes_ignored_dirs() {
+        let dir = temp_dir();
+        let pkg = dir.join("app.winuser");
+        write_file(&pkg.join("keep.txt"), "keep");
+        write_file(&pkg.join("node_modules/ignored.js"), "ignored");
+
+        let items = prepare_sync_items(&pkg, &PkgType::WinUser);
+        assert_eq!(items.len(), 1);
+    }
+
+    #[test]
+    fn prepare_sync_items_empty_package() {
+        let dir = temp_dir();
+        let pkg = dir.join("empty.winuser");
+        fs::create_dir_all(&pkg).unwrap();
+
+        let items = prepare_sync_items(&pkg, &PkgType::WinUser);
+        assert!(items.is_empty());
+    }
+
+    #[test]
+    fn print_sync_summary_all_fields() {
+        let mut counts = HashMap::new();
+        counts.insert("copied_to_win".into(), 3);
+        counts.insert("skipped".into(), 1);
+        counts.insert("missing_source".into(), 2);
+        counts.insert("error".into(), 1);
+        // Should not panic
+        print_sync_summary(&counts, false);
+    }
+
+    #[test]
+    fn print_sync_summary_quiet() {
+        let mut counts = HashMap::new();
+        counts.insert("copied_to_win".into(), 10);
+        // In quiet mode, should produce no output
+        print_sync_summary(&counts, true);
+    }
+
+    #[test]
+    fn print_sync_summary_empty() {
+        let counts = HashMap::new();
+        // Should not panic, produces no output
+        print_sync_summary(&counts, false);
+    }
+
+    #[test]
+    fn print_sync_summary_all_zero() {
+        let mut counts = HashMap::new();
+        counts.insert("copied_to_win".into(), 0);
+        counts.insert("skipped".into(), 0);
+        // Zeros are skipped, should not panic
+        print_sync_summary(&counts, false);
+    }
+
+    #[test]
+    fn sync_batch_no_pwsh_no_robocopy_is_wsl() {
+        // If we're not in WSL, sync_batch won't call robocopy/pwsh.
+        // Test that sync_batch handles empty items gracefully.
+        let items: Vec<(PathBuf, PathBuf)> = Vec::new();
+        let counts = sync_batch(&items, true, 1);
+        assert_eq!(counts.get("copied_to_win").copied().unwrap_or(0), 0);
+    }
+}

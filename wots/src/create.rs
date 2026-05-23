@@ -313,3 +313,217 @@ fn validate_copy(src: &Path, dest: &Path) -> Result<()> {
 
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::fs;
+
+    fn temp_dir() -> std::path::PathBuf {
+        let dir = std::env::temp_dir()
+            .join(format!("wots_test_create_{}", std::process::id()));
+        let _ = fs::create_dir_all(&dir);
+        dir
+    }
+
+    fn write_file(path: &Path, content: &str) {
+        if let Some(p) = path.parent() {
+            let _ = fs::create_dir_all(p);
+        }
+        fs::write(path, content).unwrap();
+    }
+
+    #[test]
+    fn compute_dest_user_type_strips_home() {
+        let dir = temp_dir();
+        let pkg_root = dir.join("test.user");
+        let src = PathBuf::from(format!("{}/.bashrc", HOME.to_string_lossy()));
+
+        let dest = compute_dest(&src, &PkgType::User, &pkg_root).unwrap();
+        assert_eq!(dest, pkg_root.join(".bashrc"));
+    }
+
+    #[test]
+    fn compute_dest_config_type_preserves_subdir() {
+        let dir = temp_dir();
+        let pkg_root = dir.join("nvim.config");
+        let src = PathBuf::from(format!("{}/.config/nvim/init.lua", HOME.to_string_lossy()));
+
+        let dest = compute_dest(&src, &PkgType::Config, &pkg_root).unwrap();
+        assert!(dest.ends_with("init.lua"));
+        assert!(dest.to_string_lossy().contains("nvim"));
+    }
+
+    #[test]
+    fn compute_dest_root_type_strips_root() {
+        let dir = temp_dir();
+        let pkg_root = dir.join("wsl.root");
+        let src = PathBuf::from("/etc/wsl.conf");
+
+        let dest = compute_dest(&src, &PkgType::Root, &pkg_root).unwrap();
+        assert_eq!(dest, pkg_root.join("etc/wsl.conf"));
+    }
+
+    #[test]
+    fn compute_dest_meta_type_uses_filename() {
+        let dir = temp_dir();
+        let pkg_root = dir.join("scripts.meta");
+        let src = PathBuf::from("/tmp/some-script.sh");
+
+        let dest = compute_dest(&src, &PkgType::Meta, &pkg_root).unwrap();
+        assert_eq!(dest.file_name().unwrap(), "some-script.sh");
+    }
+
+    #[test]
+    fn compute_dest_winuser_under_mnt_c() {
+        let dir = temp_dir();
+        let pkg_root = dir.join("git.winuser");
+        let src = PathBuf::from("/mnt/c/Users/testuser/.gitconfig");
+
+        let dest = compute_dest(&src, &PkgType::WinUser, &pkg_root).unwrap();
+        assert!(dest.to_string_lossy().contains(".gitconfig"));
+    }
+
+    #[test]
+    fn create_atomic_copy_file() {
+        let dir = temp_dir();
+        let src = dir.join("original.txt");
+        let dest = dir.join("copied.txt");
+        write_file(&src, "hello world");
+
+        create_atomic(&src, &dest, false).unwrap();
+
+        assert!(dest.exists());
+        assert_eq!(fs::read_to_string(&dest).unwrap(), "hello world");
+        assert!(src.exists());
+    }
+
+    #[test]
+    fn create_atomic_move_file() {
+        let dir = temp_dir();
+        let src = dir.join("to_move.txt");
+        let dest = dir.join("moved.txt");
+        write_file(&src, "move me");
+
+        create_atomic(&src, &dest, true).unwrap();
+
+        assert!(dest.exists());
+        assert_eq!(fs::read_to_string(&dest).unwrap(), "move me");
+        assert!(!src.exists());
+    }
+
+    #[test]
+    fn create_atomic_copy_dir() {
+        let dir = temp_dir();
+        let src = dir.join("src_dir");
+        let dest = dir.join("dst_dir");
+        write_file(&src.join("a.txt"), "a");
+        write_file(&src.join("sub/b.txt"), "b");
+
+        create_atomic(&src, &dest, false).unwrap();
+
+        assert!(dest.join("a.txt").exists());
+        assert!(dest.join("sub/b.txt").exists());
+        assert!(src.exists());
+    }
+
+    #[test]
+    fn create_atomic_move_dir() {
+        let dir = temp_dir();
+        let src = dir.join("src_dir2");
+        let dest = dir.join("dst_dir2");
+        write_file(&src.join("x.txt"), "x");
+
+        create_atomic(&src, &dest, true).unwrap();
+
+        assert!(dest.join("x.txt").exists());
+        assert!(!src.exists());
+    }
+
+    #[test]
+    fn validate_copy_files_same_size_ok() {
+        let dir = temp_dir();
+        let a = dir.join("a.txt");
+        let b = dir.join("b.txt");
+        write_file(&a, "hello");
+        fs::copy(&a, &b).unwrap();
+
+        assert!(validate_copy(&a, &b).is_ok());
+    }
+
+    #[test]
+    fn validate_copy_files_different_size_err() {
+        let dir = temp_dir();
+        let a = dir.join("big.txt");
+        let b = dir.join("small.txt");
+        write_file(&a, "hello world");
+        write_file(&b, "hi");
+
+        assert!(validate_copy(&a, &b).is_err());
+    }
+
+    #[test]
+    fn validate_copy_dirs_same_file_count_ok() {
+        let dir = temp_dir();
+        let a = dir.join("a_dir");
+        let b = dir.join("b_dir");
+        write_file(&a.join("1.txt"), "1");
+        write_file(&a.join("2.txt"), "2");
+        copy_dir_all(&a, &b).unwrap();
+
+        assert!(validate_copy(&a, &b).is_ok());
+    }
+
+    #[test]
+    fn validate_copy_dirs_different_count_err() {
+        let dir = temp_dir();
+        let a = dir.join("a_dir2");
+        let b = dir.join("b_dir2");
+        write_file(&a.join("1.txt"), "1");
+        write_file(&b.join("1.txt"), "1");
+        write_file(&b.join("2.txt"), "2");
+
+        assert!(validate_copy(&a, &b).is_err());
+    }
+
+    #[test]
+    fn validate_copy_type_mismatch_err() {
+        let dir = temp_dir();
+        let f = dir.join("file.txt");
+        let d = dir.join("subdir");
+        write_file(&f, "x");
+        fs::create_dir_all(&d).unwrap();
+
+        assert!(validate_copy(&f, &d).is_err());
+    }
+
+    #[test]
+    fn validate_sources_linux_config_inside_home_ok() {
+        let src = vec![PathBuf::from(format!("{}/.config/test", HOME.to_string_lossy()))];
+        assert!(validate_sources(&src, &PkgType::Config).is_ok());
+    }
+
+    #[test]
+    fn validate_sources_root_under_root_ok() {
+        let src = vec![PathBuf::from("/etc/hosts")];
+        assert!(validate_sources(&src, &PkgType::Root).is_ok());
+    }
+
+    #[test]
+    fn validate_sources_meta_always_ok() {
+        let src = vec![PathBuf::from("/any/path")];
+        assert!(validate_sources(&src, &PkgType::Meta).is_ok());
+    }
+
+    #[test]
+    fn validate_sources_winuser_not_under_mnt_c_err() {
+        let src = vec![PathBuf::from("/etc/hosts")];
+        assert!(validate_sources(&src, &PkgType::WinUser).is_err());
+    }
+
+    #[test]
+    fn validate_sources_winuser_under_mnt_c_ok() {
+        let src = vec![PathBuf::from("/mnt/c/Users/test/.gitconfig")];
+        assert!(validate_sources(&src, &PkgType::WinUser).is_ok());
+    }
+}

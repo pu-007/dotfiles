@@ -1,4 +1,3 @@
-# GLOBAL PROFILE @ C:\Program Files\PowerShell\7\profile.ps1
 # Install-Module PSReadLine
 # Install-Module PSFzf
 # Install-Module WslInterop
