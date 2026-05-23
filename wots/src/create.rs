@@ -207,11 +207,19 @@ fn compute_dest(src: &Path, pt: &PkgType, pkg_root: &Path) -> Result<PathBuf> {
         ));
     }
     if *pt == PkgType::Root {
-        return Ok(pkg_root.join(src.strip_prefix(&*ROOT_TARGET)?));
+        if let Ok(rel) = src.strip_prefix(&*ROOT_TARGET) {
+            return Ok(pkg_root.join(rel));
+        }
+        return Ok(pkg_root.join(
+            src.file_name()
+                .unwrap_or(std::ffi::OsStr::new("")),
+        ));
     }
     if pt.is_windows() {
         if let Some(target) = pt.sync_target() {
-            let target_mnt = PathBuf::from(target.to_string_lossy().replace("C:", &MNT_C.to_string_lossy()));
+            let target_str = target.to_string_lossy();
+            let without_drive = target_str.strip_prefix("C:").unwrap_or(&target_str);
+            let target_mnt = MNT_C.join(without_drive.trim_start_matches('/').trim_start_matches('\\'));
             if let Ok(rel) = src.strip_prefix(&target_mnt) {
                 return Ok(pkg_root.join(rel));
             }
