@@ -227,6 +227,20 @@ fn cmd_list(args: &cli::ListArgs) -> Result<()> {
 }
 
 fn cmd_diff(args: &cli::DiffArgs) -> Result<()> {
+    #[derive(serde::Serialize)]
+    struct DiffEntry {
+        package: String,
+        pkg_type: String,
+        status: String,
+        files: Vec<DiffFile>,
+    }
+
+    #[derive(serde::Serialize)]
+    struct DiffFile {
+        status: String,
+        path: String,
+    }
+
     let packages = discover::find_packages(&config::DOTFILES_DIR);
     let types_to_show: Vec<PkgType> = if let Some(pt) = &args.pkg_type {
         vec![*pt]
@@ -234,7 +248,7 @@ fn cmd_diff(args: &cli::DiffArgs) -> Result<()> {
         types::SYNCABLE_TYPES.to_vec()
     };
 
-    let mut has_diff = false;
+    let mut entries: Vec<DiffEntry> = Vec::new();
 
     for pt in &types_to_show {
         let pkgs = match packages.get(pt) {
@@ -250,16 +264,10 @@ fn cmd_diff(args: &cli::DiffArgs) -> Result<()> {
 
             if pt.uses_copy_sync() {
                 let counts = status::check_copy_status(pkg, pt);
-                if counts.outdated_local > 0 || counts.missing_remote > 0 {
-                    has_diff = true;
-                    display::warning(&format!(
-                        "  {} — {}",
-                        discover::pkg_basename(pkg),
-                        status::status_text(&counts)
-                    ));
-
-                    let files = discover::list_syncable_files(pkg);
-                    for f in &files {
+                if counts.outdated_local > 0 || counts.missing_remote > 0 || counts.outdated_remote > 0 {
+                    let mut files: Vec<DiffFile> = Vec::new();
+                    let f_list = discover::list_syncable_files(pkg);
+                    for f in &f_list {
                         let win_path = discover::build_win_path(f, pkg, pt);
                         let ws = match f.metadata() {
                             Ok(m) => m,
@@ -269,7 +277,10 @@ fn cmd_diff(args: &cli::DiffArgs) -> Result<()> {
 
                         if wn.is_none() {
                             if let Ok(rel) = f.strip_prefix(pkg) {
-                                display::dim(&format!("    missing-win: {}", rel.display()));
+                                files.push(DiffFile {
+                                    status: "missing-win".into(),
+                                    path: rel.display().to_string(),
+                                });
                             }
                         } else if let Some(wn_m) = wn {
                             let mtime_diff = ws
@@ -279,43 +290,78 @@ fn cmd_diff(args: &cli::DiffArgs) -> Result<()> {
                                 .unwrap_or_default()
                                 .as_secs_f64()
                                 .abs();
-                            if (mtime_diff >= 1.0 || ws.len() != wn_m.len())
-                                && let Ok(rel) = f.strip_prefix(pkg) {
-                                    display::dim(&format!("    needs-sync: {}", rel.display()));
+                            if mtime_diff >= 1.0 || ws.len() != wn_m.len() {
+                                if let Ok(rel) = f.strip_prefix(pkg) {
+                                    let st = if ws.modified().unwrap() > wn_m.modified().unwrap() {
+                                        "needs-sync"
+                                    } else {
+                                        "newer-on-win"
+                                    };
+                                    files.push(DiffFile {
+                                        status: st.into(),
+                                        path: rel.display().to_string(),
+                                    });
                                 }
+                            }
                         }
+                    }
+                    if !files.is_empty() || counts.outdated_local > 0 || counts.missing_remote > 0 || counts.outdated_remote > 0 {
+                        entries.push(DiffEntry {
+                            package: discover::pkg_basename(pkg),
+                            pkg_type: pt.value().to_string(),
+                            status: status::status_text(&counts),
+                            files,
+                        });
                     }
                 }
             } else if pt.uses_stow() {
                 let (stowed, stowable) = status::check_stow_status(pkg, pt);
                 if stowed < stowable {
-                    has_diff = true;
-                    display::warning(&format!(
-                        "  {} — {}/{} stowed",
-                        discover::pkg_basename(pkg),
-                        stowed,
-                        stowable
-                    ));
-
+                    let mut files: Vec<DiffFile> = Vec::new();
                     let target = pt.sync_target();
                     if let Some(target) = target {
                         for f in discover::list_syncable_files(pkg) {
                             if let Ok(rel) = f.strip_prefix(pkg) {
                                 let dest = target.join(rel);
-                                let is_linked = status::is_symlink_or_parent(&dest, &target);
-                                if !is_linked {
-                                    display::dim(&format!("    not-stowed: {}", dest.display()));
+                                if !status::is_symlink_or_parent(&dest, &target) {
+                                    files.push(DiffFile {
+                                        status: "not-stowed".into(),
+                                        path: dest.display().to_string(),
+                                    });
                                 }
                             }
                         }
                     }
+                    entries.push(DiffEntry {
+                        package: discover::pkg_basename(pkg),
+                        pkg_type: pt.value().to_string(),
+                        status: format!("{}/{} stowed", stowed, stowable),
+                        files,
+                    });
                 }
             }
         }
     }
 
-    if !has_diff {
-        display::success("All packages are in sync.");
+    if entries.is_empty() {
+        if args.json_output {
+            println!("[]");
+        } else {
+            display::success("All packages are in sync.");
+        }
+        return Ok(());
+    }
+
+    if args.json_output {
+        println!("{}", serde_json::to_string_pretty(&entries)?);
+        return Ok(());
+    }
+
+    for entry in &entries {
+        display::warning(&format!("  {} — {}", entry.package, entry.status));
+        for f in &entry.files {
+            display::dim(&format!("    {}: {}", f.status, f.path));
+        }
     }
 
     Ok(())
