@@ -8,6 +8,7 @@ license = "MIT"
 
 [dependencies]
 clap = { version = "4", features = ["derive"] }
+clap_complete = "4"
 walkdir = "2"
 rayon = "1"
 serde = { version = "1", features = ["derive"] }

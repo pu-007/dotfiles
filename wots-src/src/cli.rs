@@ -1,4 +1,4 @@
-use clap::{Args, Parser, Subcommand};
+use clap::{Args, Parser, Subcommand, ValueEnum};
 
 use crate::types::PkgType;
 
@@ -28,6 +28,21 @@ pub enum Command {
     List(ListArgs),
     #[command(about = "Show file differences between repo and targets")]
     Diff(DiffArgs),
+    #[command(about = "Generate shell completion script", hide = true)]
+    Completion(CompletionArgs),
+}
+
+#[derive(Args)]
+pub struct CompletionArgs {
+    #[arg(help = "Target shell")]
+    pub shell: CompletionShell,
+}
+
+#[derive(Clone, Copy, ValueEnum)]
+pub enum CompletionShell {
+    Bash,
+    Zsh,
+    Fish,
 }
 
 #[derive(Args)]

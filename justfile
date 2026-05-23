@@ -6,10 +6,12 @@
 # -----------------------------------------------------------------------------
 # 🌐 全局变量配置
 # -----------------------------------------------------------------------------
-dotfiles := env_var("HOME") + "/dotfiles"
+dotfiles := justfile_directory()
 timestamp := `date +'%Y-%m-%d %H:%M:%S'`
-# 动态拼接时间戳，确保每次执行的 Stash ID 全局唯一，杜绝恢复错乱
 stash_msg := "WOTS_AUTO_STASH_" + timestamp
+wots := dotfiles / "wots"
+wots_crate := dotfiles / "wots-src"
+comp_dir := dotfiles / "zsh.user" / ".config" / "zsh" / "completions"
 
 # 🎨 UI 色彩与排版配置
 c_reset := '\033[0m'
@@ -37,29 +39,51 @@ refresh: _protect _update _backup _cleanup _sync_remote _restore
 # ⚙️ 2. 配置管理 (Wots CLI)
 # =============================================================================
 
-# [构建] 编译 Rust 二进制 (release)
+# [构建] 编译 Rust 二进制 (release) + 更新补全脚本
 [group('0. 构建 (Build)')]
 build *args:
-    @cargo build --release --manifest-path {{ dotfiles }}/wots/Cargo.toml {{ args }}
-    @cp -f {{ dotfiles }}/wots/target/release/wots {{ dotfiles }}/wots_bin
-    @echo -e "{{ c_green }}✓  Build complete: {{ dotfiles }}/wots_bin{{ c_reset }}"
+    @cargo build --release --manifest-path {{ wots_crate }}/Cargo.toml {{ args }}
+    @cp -f {{ wots_crate }}/target/release/wots {{ wots }}
+    @chmod +x {{ wots }}
+    @echo -e "{{ c_green }}✓  Build complete: {{ wots }}{{ c_reset }}"
+    @mkdir -p "{{ comp_dir }}"
+    @{{ wots }} completion zsh > "{{ comp_dir }}/_wots"
+    @echo -e "{{ c_green }}✓  Completion updated: {{ comp_dir }}/_wots{{ c_reset }}"
 
-# [构建] 编译 Rust 二进制 (debug, with backtraces)
+# [构建] 编译 Rust 二进制 (debug, with backtraces) + 更新补全脚本
 [group('0. 构建 (Build)')]
 build-debug *args:
-    @cargo build --manifest-path {{ dotfiles }}/wots/Cargo.toml {{ args }}
-    @cp {{ dotfiles }}/wots/target/debug/wots {{ dotfiles }}/wots_bin
-    @echo -e "{{ c_green }}✓  Debug build complete: {{ dotfiles }}/wots_bin{{ c_reset }}"
+    @cargo build --manifest-path {{ wots_crate }}/Cargo.toml {{ args }}
+    @cp -f {{ wots_crate }}/target/debug/wots {{ wots }}
+    @chmod +x {{ wots }}
+    @echo -e "{{ c_green }}✓  Debug build complete: {{ wots }}{{ c_reset }}"
+    @mkdir -p "{{ comp_dir }}"
+    @{{ wots }} completion zsh > "{{ comp_dir }}/_wots"
+    @echo -e "{{ c_green }}✓  Completion updated: {{ comp_dir }}/_wots{{ c_reset }}"
 
 # [测试] 运行 cargo test
 [group('0. 构建 (Build)')]
 test *args:
-    @cargo test --manifest-path {{ dotfiles }}/wots/Cargo.toml {{ args }}
+    @cargo test --manifest-path {{ wots_crate }}/Cargo.toml {{ args }}
 
 # [测试] 运行 cargo clippy
 [group('0. 构建 (Build)')]
 lint *args:
-    @cargo clippy --manifest-path {{ dotfiles }}/wots/Cargo.toml -- -D warnings {{ args }}
+    @cargo clippy --manifest-path {{ wots_crate }}/Cargo.toml -- -D warnings {{ args }}
+
+# [补全] 打印 shell 补全脚本 (从编译好的 wots 生成)
+[group('0. 构建 (Build)')]
+completion shell='zsh':
+    @{{ wots }} completion {{ shell }}
+
+# [补全] 安装 zsh 补全脚本到仓库补全目录 (zsh.user)
+[group('0. 构建 (Build)')]
+completion-install shell='zsh':
+    @echo -e "{{ c_blue }}▶ Installing {{ shell }} completion for wots...{{ c_reset }}"
+    @mkdir -p "{{ comp_dir }}"
+    @{{ wots }} completion {{ shell }} > "{{ comp_dir }}/_wots"
+    @echo -e "{{ c_green }}✓  Installed: {{ comp_dir }}/_wots{{ c_reset }}"
+    @echo -e "{{ c_gray }}  ↳ Run 'exec {{ shell }}' or restart your shell to activate.{{ c_reset }}"
 
 # -----------------------------------------------------------------------------
 # ⚙️ 2. 配置管理 (Wots CLI)
@@ -70,77 +94,77 @@ lint *args:
 # 用法: just wots -- list --json
 [group('2. 配置管理 (Wots CLI)')]
 wots *args:
-    @{{ dotfiles }}/wots_bin {{ if args == "" { "--help" } else { args } }}
+    @{{ wots }} {{ if args == "" { "--help" } else { args } }}
 
 # 创建新包: just create ~/.zshrc -t user -a zsh
 [group('2. 配置管理 (Wots CLI)')]
 create +args:
-    @{{ dotfiles }}/wots_bin create {{ args }}
+    @{{ wots }} create {{ args }}
 
 # 同步所有包到目标 (转发额外参数: just sync -- -h)
 [group('2. 配置管理 (Wots CLI)')]
 sync *args:
-    @{{ dotfiles }}/wots_bin sync {{ args }}
+    @{{ wots }} sync {{ args }}
 
 # 按类型同步 (root 由 wots 内部处理 sudo): just sync-type root
 [group('2. 配置管理 (Wots CLI)')]
 sync-type type *args:
-    @{{ dotfiles }}/wots_bin sync --type {{ type }} {{ args }}
+    @{{ wots }} sync --type {{ type }} {{ args }}
 
 # 按包名同步: just sync-app git
 [group('2. 配置管理 (Wots CLI)')]
 sync-app app *args:
-    @{{ dotfiles }}/wots_bin sync --app {{ app }} {{ args }}
+    @{{ wots }} sync --app {{ app }} {{ args }}
 
 # 预览同步 (干运行): just sync-dry --type winuser
 [group('2. 配置管理 (Wots CLI)')]
 sync-dry *args:
-    @{{ dotfiles }}/wots_bin sync --dry-run {{ args }}
+    @{{ wots }} sync --dry-run {{ args }}
 
 # 同步 root 包 (带 sudo, 跳过确认)
 [group('2. 配置管理 (Wots CLI)')]
 sync-root *args:
-    @sudo {{ dotfiles }}/wots_bin sync --type root --bypass {{ args }}
+    @sudo {{ wots }} sync --type root --bypass {{ args }}
 
 # 仓库统计: 包数量、文件数、大小、状态
 [group('2. 配置管理 (Wots CLI)')]
 stats *args:
-    @{{ dotfiles }}/wots_bin stats {{ args }}
+    @{{ wots }} stats {{ args }}
 
 # JSON 格式统计
 [group('2. 配置管理 (Wots CLI)')]
 stats-json *args:
-    @{{ dotfiles }}/wots_bin stats --json {{ args }}
+    @{{ wots }} stats --json {{ args }}
 
 # 列出所有包及其状态
 [group('2. 配置管理 (Wots CLI)')]
 list *args:
-    @{{ dotfiles }}/wots_bin list {{ args }}
+    @{{ wots }} list {{ args }}
 
 # 按类型列出包: just list-type user
 [group('2. 配置管理 (Wots CLI)')]
 list-type type *args:
-    @{{ dotfiles }}/wots_bin list --type {{ type }} {{ args }}
+    @{{ wots }} list --type {{ type }} {{ args }}
 
 # JSON 格式列出包
 [group('2. 配置管理 (Wots CLI)')]
 list-json *args:
-    @{{ dotfiles }}/wots_bin list --json {{ args }}
+    @{{ wots }} list --json {{ args }}
 
 # 显示差异: 哪些文件需要同步
 [group('2. 配置管理 (Wots CLI)')]
 diff *args:
-    @{{ dotfiles }}/wots_bin diff {{ args }}
+    @{{ wots }} diff {{ args }}
 
 # 按类型查看差异: just diff-type winuser
 [group('2. 配置管理 (Wots CLI)')]
 diff-type type *args:
-    @{{ dotfiles }}/wots_bin diff --type {{ type }} {{ args }}
+    @{{ wots }} diff --type {{ type }} {{ args }}
 
 # 按包名查看差异: just diff-app git
 [group('2. 配置管理 (Wots CLI)')]
 diff-app app *args:
-    @{{ dotfiles }}/wots_bin diff --app {{ app }} {{ args }}
+    @{{ wots }} diff --app {{ app }} {{ args }}
 
 # =============================================================================
 # 📦 核心流水线子任务 (Private Sub-tasks) - 列表隐身，提供模块化原子操作

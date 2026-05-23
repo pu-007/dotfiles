@@ -30,17 +30,22 @@ WSL 上的 dotfile 管理通常涉及两个独立世界：
 
 WOTS 用单一 CLI 统一处理两者，通过目录后缀自动检测包类型和目标路径。
 
+## TODOs
+
+- [ ] Add config to an existed app
+- [ ] Delete symlink and app
+
 ---
 
 ## 🏗️ 核心工具链 / Core Toolchain
 
-| 组件 / Component | 作用 / Role |
-|---|---|
-| **wots** (Rust binary) | 点文件管理引擎：create, sync, stats, list, diff |
-| **[Just](https://github.com/casey/just)** | 任务编排器 — `just refresh` 执行完整系统维护周期 |
-| **[GNU Stow](https://www.gnu.org/software/stow/)** | Linux 包符号链接管理 |
-| **[Robocopy](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy)** | 多线程 Windows 文件同步（主引擎） |
-| **pwsh.exe / xcopy** | Windows 同步回退方案（robocopy 不可用时） |
+| 组件 / Component                                                                                          | 作用 / Role                                      |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| **wots** (Rust binary)                                                                                    | 点文件管理引擎：create, sync, stats, list, diff  |
+| **[Just](https://github.com/casey/just)**                                                                 | 任务编排器 — `just refresh` 执行完整系统维护周期 |
+| **[GNU Stow](https://www.gnu.org/software/stow/)**                                                        | Linux 包符号链接管理                             |
+| **[Robocopy](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy)** | 多线程 Windows 文件同步（主引擎）                |
+| **pwsh.exe / xcopy**                                                                                      | Windows 同步回退方案（robocopy 不可用时）        |
 
 ---
 
@@ -75,7 +80,7 @@ just test
 just wots --help
 ```
 
-**无需 Python、pixi、虚拟环境。** `wots_bin` 是独立的静态链接二进制文件（约 1.7 MB）。
+**无需 Python、pixi、虚拟环境。** `wots` 是独立的静态链接二进制文件（约 1.7 MB）。
 
 ---
 
@@ -85,53 +90,53 @@ just wots --help
 
 ### 构建 / Build
 
-| 命令 / Command | 说明 / Description |
-|---|---|
-| `just build` | 编译 Rust Release 二进制 |
-| `just build-debug` | 编译 Rust Debug 二进制 |
-| `just test` | 运行 `cargo test` |
-| `just lint` | 运行 `cargo clippy` |
-| `just wots <args>` | 直接运行 wots 二进制 |
+| 命令 / Command     | 说明 / Description       |
+| ------------------ | ------------------------ |
+| `just build`       | 编译 Rust Release 二进制 |
+| `just build-debug` | 编译 Rust Debug 二进制   |
+| `just test`        | 运行 `cargo test`        |
+| `just lint`        | 运行 `cargo clippy`      |
+| `just wots <args>` | 直接运行 wots 二进制     |
 
 ### 系统维护 / System Maintenance
 
-| 命令 / Command | 说明 / Description |
-|---|---|
+| 命令 / Command | 说明 / Description                                |
+| -------------- | ------------------------------------------------- |
 | `just refresh` | **一键全流程**：保护→更新→备份→清理→同步远端→恢复 |
 
 ### 同步操作 / Sync Operations
 
-| 命令 / Command | 等价于 / Equivalent | 说明 / Description |
-|---|---|---|
-| `just sync` | `wots sync` | 同步所有包到目标 |
-| `just sync-type <type>` | `wots sync --type <type>` | 按类型同步；`root` 类型自动加 `sudo` |
-| `just sync-app <app>` | `wots sync --app <app>` | 按包名同步 |
-| `just sync-dry` | `wots sync --dry-run` | 预览同步（干运行） |
-| `just sync-root` | `sudo wots sync --type root --bypass` | 同步 root 包（跳过确认） |
+| 命令 / Command          | 等价于 / Equivalent                   | 说明 / Description                   |
+| ----------------------- | ------------------------------------- | ------------------------------------ |
+| `just sync`             | `wots sync`                           | 同步所有包到目标                     |
+| `just sync-type <type>` | `wots sync --type <type>`             | 按类型同步；`root` 类型自动加 `sudo` |
+| `just sync-app <app>`   | `wots sync --app <app>`               | 按包名同步                           |
+| `just sync-dry`         | `wots sync --dry-run`                 | 预览同步（干运行）                   |
+| `just sync-root`        | `sudo wots sync --type root --bypass` | 同步 root 包（跳过确认）             |
 
 ### 信息查询 / Information
 
-| 命令 / Command | 等价于 / Equivalent | 说明 / Description |
-|---|---|---|
-| `just stats` | `wots stats` | 仓库统计 |
-| `just stats-json` | `wots stats --json` | JSON 格式统计 |
-| `just list` | `wots list` | 列出所有包 |
-| `just list-type <type>` | `wots list --type <type>` | 按类型列出包 |
-| `just list-json` | `wots list --json` | JSON 格式列出包 |
+| 命令 / Command          | 等价于 / Equivalent       | 说明 / Description |
+| ----------------------- | ------------------------- | ------------------ |
+| `just stats`            | `wots stats`              | 仓库统计           |
+| `just stats-json`       | `wots stats --json`       | JSON 格式统计      |
+| `just list`             | `wots list`               | 列出所有包         |
+| `just list-type <type>` | `wots list --type <type>` | 按类型列出包       |
+| `just list-json`        | `wots list --json`        | JSON 格式列出包    |
 
 ### 差异对比 / Diff
 
-| 命令 / Command | 等价于 / Equivalent | 说明 / Description |
-|---|---|---|
-| `just diff` | `wots diff` | 显示所有差异 |
-| `just diff-type <type>` | `wots diff --type <type>` | 按类型查看差异 |
-| `just diff-app <app>` | `wots diff --app <app>` | 按包名查看差异 |
+| 命令 / Command          | 等价于 / Equivalent       | 说明 / Description |
+| ----------------------- | ------------------------- | ------------------ |
+| `just diff`             | `wots diff`               | 显示所有差异       |
+| `just diff-type <type>` | `wots diff --type <type>` | 按类型查看差异     |
+| `just diff-app <app>`   | `wots diff --app <app>`   | 按包名查看差异     |
 
 ### 创建包 / Create
 
-| 命令 / Command | 等价于 / Equivalent | 说明 / Description |
-|---|---|---|
-| `just create <args>` | `wots create <args>` | 创建新包 |
+| 命令 / Command       | 等价于 / Equivalent  | 说明 / Description |
+| -------------------- | -------------------- | ------------------ |
+| `just create <args>` | `wots create <args>` | 创建新包           |
 
 ---
 
@@ -141,16 +146,16 @@ just wots --help
 
 Packages are stored as **suffixed directories** directly under `DOTFILES_DIR` (default `~/dotfiles`). WOTS auto-detects type from the suffix.
 
-| 后缀 / Suffix | 类型 / Type | 目标路径 / Target | 同步策略 / Strategy |
-|:---|---|---|:---|
-| `.user` | `user` | `~/` | GNU Stow (symlink) |
-| `.config` | `config` | `~/.config/` | GNU Stow (symlink) |
-| `.local` | `local` | `~/.local/` | GNU Stow (symlink) |
-| `.root` | `root` | `/` | `ln -sf` (sudo) |
-| `.meta` | `meta` | N/A | 手动管理 / Manual |
-| `.winuser` | `winuser` | `C:\Users\{name}\` | Robocopy mirror / pwsh copy |
-| `.winconfig` | `winconfig` | `C:\Users\{name}\.config\` | Robocopy mirror / pwsh copy |
-| `.winlocal` | `winlocal` | `C:\Users\{name}\AppData\Local\` | Robocopy mirror / pwsh copy |
+| 后缀 / Suffix | 类型 / Type  | 目标路径 / Target                  | 同步策略 / Strategy         |
+| :------------ | ------------ | ---------------------------------- | :-------------------------- |
+| `.user`       | `user`       | `~/`                               | GNU Stow (symlink)          |
+| `.config`     | `config`     | `~/.config/`                       | GNU Stow (symlink)          |
+| `.local`      | `local`      | `~/.local/`                        | GNU Stow (symlink)          |
+| `.root`       | `root`       | `/`                                | `ln -sf` (sudo)             |
+| `.meta`       | `meta`       | N/A                                | 手动管理 / Manual           |
+| `.winuser`    | `winuser`    | `C:\Users\{name}\`                 | Robocopy mirror / pwsh copy |
+| `.winconfig`  | `winconfig`  | `C:\Users\{name}\.config\`         | Robocopy mirror / pwsh copy |
+| `.winlocal`   | `winlocal`   | `C:\Users\{name}\AppData\Local\`   | Robocopy mirror / pwsh copy |
 | `.winroaming` | `winroaming` | `C:\Users\{name}\AppData\Roaming\` | Robocopy mirror / pwsh copy |
 
 ### 目录结构示例 / Example Layout
@@ -186,15 +191,15 @@ Packages are stored as **suffixed directories** directly under `DOTFILES_DIR` (d
 just create [OPTIONS] [SOURCES]...
 ```
 
-| 选项 / Option | 说明 / Description |
-|---|---|
-| `SOURCES` | 源文件/目录（支持 `~` 展开） |
-| `-a, --app-name <NAME>` | 自定义包名 |
-| `-t, --type <TYPE>` | 显式指定类型：`user`, `config`, `local`, `root`, `meta`, `winuser`, `winconfig`, `winlocal`, `winroaming` |
-| `-y, --yes` | 跳过所有确认提示 |
-| `-n, --dry-run` | 仅预览，不移动文件 |
-| `--no-stow` | 创建后不自动 stow（Linux 类型） |
-| `--no-sync` | 创建后不自动 Windows 同步（Windows 类型） |
+| 选项 / Option           | 说明 / Description                                                                                        |
+| ----------------------- | --------------------------------------------------------------------------------------------------------- |
+| `SOURCES`               | 源文件/目录（支持 `~` 展开）                                                                              |
+| `-a, --app-name <NAME>` | 自定义包名                                                                                                |
+| `-t, --type <TYPE>`     | 显式指定类型：`user`, `config`, `local`, `root`, `meta`, `winuser`, `winconfig`, `winlocal`, `winroaming` |
+| `-y, --yes`             | 跳过所有确认提示                                                                                          |
+| `-n, --dry-run`         | 仅预览，不移动文件                                                                                        |
+| `--no-stow`             | 创建后不自动 stow（Linux 类型）                                                                           |
+| `--no-sync`             | 创建后不自动 Windows 同步（Windows 类型）                                                                 |
 
 **存储策略**: Linux config (`user/config/local`) 类型使用 **move**（从原始位置移动到仓库，然后 stow 回 symlink）；Windows 和 meta 类型使用 **copy**。Move 操作使用临时文件 + 原子 rename，并通过文件数量/大小验证拷贝完整性。
 
@@ -230,13 +235,13 @@ just sync-dry            # 干运行预览
 just sync-root           # 同步 root 包（sudo）
 ```
 
-| 选项 / Option | 说明 / Description |
-|---|---|
-| `-t, --type <TYPE>` | 仅同步该类型的包 |
-| `--app <NAME>` | 仅同步指定包 |
-| `-n, --dry-run` | 仅预览 |
-| `--bypass` | 跳过 root 确认提示 |
-| `-q, --quiet` | 减少输出 |
+| 选项 / Option       | 说明 / Description |
+| ------------------- | ------------------ |
+| `-t, --type <TYPE>` | 仅同步该类型的包   |
+| `--app <NAME>`      | 仅同步指定包       |
+| `-n, --dry-run`     | 仅预览             |
+| `--bypass`          | 跳过 root 确认提示 |
+| `-q, --quiet`       | 减少输出           |
 
 **Linux 同步** (`user`, `config`, `local`, `root`): 使用 GNU Stow `--adopt` 模式。若 stow 失败则降级为逐文件 `ln -sf`。`root` 包使用 `sudo ln -sf`。
 
@@ -277,8 +282,8 @@ just diff-app <app>     # 按包名
 
 ```text
 dotfiles/
-├── wots_bin                  # 预编译 Rust 二进制 (~1.7 MB)
-├── wots/                     # Rust 源码 crate
+├── wots                      # 预编译 Rust 二进制 (~1.7 MB)
+├── wots-src/                 # Rust 源码 crate
 │   ├── Cargo.toml
 │   ├── Cargo.lock
 │   ├── src/
@@ -318,44 +323,44 @@ dotfiles/
 
 ### 总体评分 / Overall
 
-| 维度 / Aspect | 评分 / Rating | 说明 / Notes |
-|---|---|---|
-| 架构设计 / Architecture | ★★★★★ | 13 个模块职责清晰，index 独立，commands 独立 |
-| Rust 惯用性 / Idiomatic Rust | ★★★★☆ | clap derive, rayon, thiserror, serde, LazyLock |
-| 错误处理 / Error Handling | ★★★★☆ | anyhow + 自定义上下文, broken-pipe 处理 |
-| 单元测试 / Unit Tests | ★★★★☆ | 139 个单元测试覆盖所有模块 |
-| 集成测试 / Integration Tests | ★★★★★ | 30 个集成测试覆盖同步状态全场景 |
-| 文档 / Documentation | ★★★☆☆ | 注释较少，依赖 README 和类型系统 |
+| 维度 / Aspect                | 评分 / Rating | 说明 / Notes                                   |
+| ---------------------------- | ------------- | ---------------------------------------------- |
+| 架构设计 / Architecture      | ★★★★★         | 13 个模块职责清晰，index 独立，commands 独立   |
+| Rust 惯用性 / Idiomatic Rust | ★★★★☆         | clap derive, rayon, thiserror, serde, LazyLock |
+| 错误处理 / Error Handling    | ★★★★☆         | anyhow + 自定义上下文, broken-pipe 处理        |
+| 单元测试 / Unit Tests        | ★★★★☆         | 139 个单元测试覆盖所有模块                     |
+| 集成测试 / Integration Tests | ★★★★★         | 30 个集成测试覆盖同步状态全场景                |
+| 文档 / Documentation         | ★★★☆☆         | 注释较少，依赖 README 和类型系统               |
 
 ### 架构改进记录 / Architecture Improvements
 
-| 版本 | 改进 |
-|---|---|
-| v1.0 | 初始版本：`status.rs` 1057 行，命令实现在 `main.rs` 内联 |
+| 版本 | 改进                                                               |
+| ---- | ------------------------------------------------------------------ |
+| v1.0 | 初始版本：`status.rs` 1057 行，命令实现在 `main.rs` 内联           |
 | v1.1 | 拆分 `status.rs` → `index.rs`（同步索引）+ `status.rs`（状态检查） |
-| v1.1 | 提取 `commands.rs` 独立存放 stats/list/diff 命令逻辑 |
+| v1.1 | 提取 `commands.rs` 独立存放 stats/list/diff 命令逻辑               |
 | v1.1 | `SyncIndex::load_from` 在 JSON 解析失败时输出 warning 而非静默丢弃 |
-| v1.1 | 补全 `sync.rs`, `create.rs`, `config.rs`, `display.rs` 单元测试 |
-| v1.1 | 总测试数 139 unit + 30 integration = **169 tests** |
+| v1.1 | 补全 `sync.rs`, `create.rs`, `config.rs`, `display.rs` 单元测试    |
+| v1.1 | 总测试数 139 unit + 30 integration = **169 tests**                 |
 
 ### 源码统计 / Source Statistics
 
-| 文件 / File | 行数 / Lines | 职责 |
-|---|---|---|
-| `status.rs` | ~550 | 同步状态检查、blake3 哈希比较 |
-| `sync.rs` | ~560 | stow + robocopy/pwsh 同步编排（含完整单测） |
-| `discover.rs` | 439 | 包发现、类型检测、路径映射（含完整单测） |
-| `types.rs` | 365 | PkgType 枚举 + 方法（含完整单测） |
-| `commands.rs` | ~230 | stats/list/diff 命令实现 |
-| `create.rs` | ~450 | 包创建（含完整单测：原子拷贝、验证） |
-| `util.rs` | 292 | 文件系统工具（含完整单测） |
-| `display.rs` | ~290 | 终端输出和交互（含渲染测试） |
-| `index.rs` | ~170 | 同步索引数据模型（SyncIndex, IndexEntry） |
-| `cli.rs` | 100 | clap CLI 定义 |
-| `config.rs` | ~170 | LazyLock 全局配置（含默认值测试） |
-| `main.rs` | 33 | 入口点：解析 + 分发 |
-| `tests/integration.rs` | 347 | 集成测试（30 tests） |
-| **总计 / Total** | **~4,000** | |
+| 文件 / File            | 行数 / Lines | 职责                                        |
+| ---------------------- | ------------ | ------------------------------------------- |
+| `status.rs`            | ~550         | 同步状态检查、blake3 哈希比较               |
+| `sync.rs`              | ~560         | stow + robocopy/pwsh 同步编排（含完整单测） |
+| `discover.rs`          | 439          | 包发现、类型检测、路径映射（含完整单测）    |
+| `types.rs`             | 365          | PkgType 枚举 + 方法（含完整单测）           |
+| `commands.rs`          | ~230         | stats/list/diff 命令实现                    |
+| `create.rs`            | ~450         | 包创建（含完整单测：原子拷贝、验证）        |
+| `util.rs`              | 292          | 文件系统工具（含完整单测）                  |
+| `display.rs`           | ~290         | 终端输出和交互（含渲染测试）                |
+| `index.rs`             | ~170         | 同步索引数据模型（SyncIndex, IndexEntry）   |
+| `cli.rs`               | 100          | clap CLI 定义                               |
+| `config.rs`            | ~170         | LazyLock 全局配置（含默认值测试）           |
+| `main.rs`              | 33           | 入口点：解析 + 分发                         |
+| `tests/integration.rs` | 347          | 集成测试（30 tests）                        |
+| **总计 / Total**       | **~4,000**   |                                             |
 
 ### 优缺点分析 / Strengths & Issues
 
@@ -370,27 +375,27 @@ dotfiles/
 
 #### 待改进项 / Areas for Improvement
 
-| # | 问题 / Issue | 严重度 | 建议 / Suggestion |
-|---|---|---|---|
-| 1 | **`wots_bin` 提交到 Git** | 中 | 1.7 MB 二进制不应版本化。考虑 GitHub Releases 或 git LFS |
-| 2 | **集成测试 WSL 依赖** | 低 | 7 个核心集成测试需要 `/mnt/c/Windows` 存在，Linux CI 环境被跳过 |
-| 3 | **`synced: false` 字段语义** | 低 | `IndexEntry.synced` 默认 `false`，"已确认同步"才为 `true`。状态机正确，但命名可优化 |
+| #   | 问题 / Issue                 | 严重度 | 建议 / Suggestion                                                                   |
+| --- | ---------------------------- | ------ | ----------------------------------------------------------------------------------- |
+| 1   | **`wots` 二进制提交到 Git**    | 低     | ~1.7 MB 二进制已版本化。`just build` 可随时本地编译，可考虑加 `.gitignore` |
+| 2   | **集成测试 WSL 依赖**        | 低     | 7 个核心集成测试需要 `/mnt/c/Windows` 存在，Linux CI 环境被跳过                     |
+| 3   | **`synced: false` 字段语义** | 低     | `IndexEntry.synced` 默认 `false`，"已确认同步"才为 `true`。状态机正确，但命名可优化 |
 
 ### 测试覆盖 / Test Coverage
 
 **单元测试 (139 tests)**: 所有模块均有 `#[cfg(test)]` 块覆盖。
 
-| 模块 / Module | 测试数 | 覆盖内容 |
-|---|---|---|
-| `types.rs` | 18 | PkgType 所有方法、字符串转换、目录名检测 |
-| `discover.rs` | 14 | 包发现、类型检测、路径映射、名提议 |
-| `status.rs` | 21 | 计数累加、状态文本、哈希比较、索引键 |
-| `index.rs` | 7 | 序列化、损坏 JSON 降级、保存/加载往返 |
-| `sync.rs` | 11 | prepare_sync_items、print_sync_summary |
-| `create.rs` | 20 | compute_dest、create_atomic、validate_copy、validate_sources |
-| `util.rs` | 12 | fmt_size、count_and_size、is_excluded、copy_dir_all |
-| `config.rs` | 13 | 默认值、排除模式、目标路径 |
-| `display.rs` | 14 | 渲染函数、数据结构构造 |
+| 模块 / Module | 测试数 | 覆盖内容                                                     |
+| ------------- | ------ | ------------------------------------------------------------ |
+| `types.rs`    | 18     | PkgType 所有方法、字符串转换、目录名检测                     |
+| `discover.rs` | 14     | 包发现、类型检测、路径映射、名提议                           |
+| `status.rs`   | 21     | 计数累加、状态文本、哈希比较、索引键                         |
+| `index.rs`    | 7      | 序列化、损坏 JSON 降级、保存/加载往返                        |
+| `sync.rs`     | 11     | prepare_sync_items、print_sync_summary                       |
+| `create.rs`   | 20     | compute_dest、create_atomic、validate_copy、validate_sources |
+| `util.rs`     | 12     | fmt_size、count_and_size、is_excluded、copy_dir_all          |
+| `config.rs`   | 13     | 默认值、排除模式、目标路径                                   |
+| `display.rs`  | 14     | 渲染函数、数据结构构造                                       |
 
 **集成测试 (30 tests)**: 覆盖同步状态机全场景（双方同步、WSL 编辑、Windows 编辑、删除、索引毒化回归）、CopyStatusCounts、SyncIndex、符号链接检测、包发现、排除规则。
 
@@ -398,14 +403,14 @@ dotfiles/
 
 ## 🌐 环境变量 / Environment Variables
 
-| 变量 / Variable | 默认值 / Default | 说明 / Description |
-|---|---|---|
-| `DOTFILES_DIR` | `$HOME/dotfiles` | 仓库根目录 |
-| `WSL_DISTRO` | `archlinux` | WSL 发行版名称 |
-| `WSL_MNT` | `/mnt/c` | WSL 挂载 C: 盘的位置 |
-| `WIN_USER` | 自动检测 | Windows 用户名（`/mnt/c/Users` 下首个非系统用户） |
-| `WOTS_CONCURRENT` | `8` | 最大并发同步操作数 |
-| `WOTS_MAX_SIZE_MB` | `50` | 跳过超过此大小的文件（MB） |
+| 变量 / Variable    | 默认值 / Default | 说明 / Description                                |
+| ------------------ | ---------------- | ------------------------------------------------- |
+| `DOTFILES_DIR`     | `$HOME/dotfiles` | 仓库根目录                                        |
+| `WSL_DISTRO`       | `archlinux`      | WSL 发行版名称                                    |
+| `WSL_MNT`          | `/mnt/c`         | WSL 挂载 C: 盘的位置                              |
+| `WIN_USER`         | 自动检测         | Windows 用户名（`/mnt/c/Users` 下首个非系统用户） |
+| `WOTS_CONCURRENT`  | `8`              | 最大并发同步操作数                                |
+| `WOTS_MAX_SIZE_MB` | `50`             | 跳过超过此大小的文件（MB）                        |
 
 ---
 
@@ -413,11 +418,11 @@ dotfiles/
 
 ```bash
 # Debug 构建
-cargo build --manifest-path wots/Cargo.toml
+cargo build --manifest-path wots-src/Cargo.toml
 
 # Release 构建（优化 + LTO，单二进制 ~1.7 MB）
-cargo build --release --manifest-path wots/Cargo.toml
-cp wots/target/release/wots ./wots_bin
+cargo build --release --manifest-path wots-src/Cargo.toml
+cp wots-src/target/release/wots ./wots
 ```
 
 或使用 `just build` / `just build-debug`。
@@ -432,9 +437,10 @@ cp wots/target/release/wots ./wots_bin
 
 这是个人配置。欢迎参考架构。如需采用此工作流，你需要：
 
-1. `wots/` — Rust crate（或预编译 `wots_bin` 二进制）
+1. `wots-src/` — Rust crate（`just build` 编译出 `./wots` 二进制）
 2. `justfile` — 任务编排器
 3. 按上述后缀命名约定组织的包目录
+4. 可选：`zsh.user/` 中已包含 `_wots` 补全脚本（`just build` 自动更新）
 
 ---
 

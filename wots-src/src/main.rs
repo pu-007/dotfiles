@@ -2,6 +2,7 @@ use std::io;
 use std::process;
 
 use anyhow::Result;
+use clap::CommandFactory;
 use colored::Colorize;
 
 fn main() {
@@ -29,5 +30,18 @@ fn run() -> Result<()> {
         wots::cli::Command::Stats(args) => wots::commands::cmd_stats(&args),
         wots::cli::Command::List(args) => wots::commands::cmd_list(&args),
         wots::cli::Command::Diff(args) => wots::commands::cmd_diff(&args),
+        wots::cli::Command::Completion(args) => {
+            use clap_complete::{generate, Shell};
+            use wots::cli::CompletionShell;
+
+            let mut cmd = wots::cli::Cli::command();
+            let shell = match args.shell {
+                CompletionShell::Bash => Shell::Bash,
+                CompletionShell::Zsh => Shell::Zsh,
+                CompletionShell::Fish => Shell::Fish,
+            };
+            generate(shell, &mut cmd, "wots", &mut io::stdout());
+            Ok(())
+        }
     }
 }

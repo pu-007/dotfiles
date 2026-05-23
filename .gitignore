@@ -2,7 +2,7 @@ gnupg
 recent_files.txt
 
 # Rust build artifacts
-wots/target/
+wots-src/target/
 
 aicommit2.user/.config/aicommit2/stats.json
 __pycache__/
