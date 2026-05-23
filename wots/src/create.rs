@@ -155,7 +155,13 @@ pub fn run(args: CreateArgs) -> Result<()> {
 
 fn validate_sources(sources: &[PathBuf], pt: &PkgType) -> Result<()> {
     for src in sources {
-        if pt.is_linux_config() && src.starts_with(&*HOME) {
+        if pt.is_linux_config() {
+            if !src.starts_with(&*HOME) {
+                display::warning(&format!(
+                    "Source '{}' is outside HOME; only filename will be used for path mapping.",
+                    src.display()
+                ));
+            }
             continue;
         }
         if *pt == PkgType::Root && src.starts_with(&*ROOT_TARGET) {
@@ -192,7 +198,13 @@ fn validate_sources(sources: &[PathBuf], pt: &PkgType) -> Result<()> {
 
 fn compute_dest(src: &Path, pt: &PkgType, pkg_root: &Path) -> Result<PathBuf> {
     if pt.is_linux_config() {
-        return Ok(pkg_root.join(src.strip_prefix(&*HOME)?));
+        if let Ok(rel) = src.strip_prefix(&*HOME) {
+            return Ok(pkg_root.join(rel));
+        }
+        return Ok(pkg_root.join(
+            src.file_name()
+                .unwrap_or(std::ffi::OsStr::new("")),
+        ));
     }
     if *pt == PkgType::Root {
         return Ok(pkg_root.join(src.strip_prefix(&*ROOT_TARGET)?));
