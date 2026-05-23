@@ -55,7 +55,10 @@ pub fn detect_type(path: &Path) -> PkgType {
         return PkgType::User;
     }
 
-    if rp.starts_with(&*ROOT_TARGET.join("etc")) || rp == *ROOT_TARGET {
+    if rp.starts_with(&*ROOT_TARGET) {
+        if rp.starts_with("/proc") || rp.starts_with("/sys") || rp.starts_with("/dev") || rp.starts_with("/run") || rp.starts_with("/tmp") {
+            return PkgType::Meta;
+        }
         return PkgType::Root;
     }
 
