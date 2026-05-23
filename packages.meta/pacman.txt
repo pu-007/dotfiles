@@ -63,7 +63,6 @@ gtk-engine-murrine
 helix
 hspell
 hunspell
-hybridfilexfer-git
 hyperfine
 icu76
 imagemagick
