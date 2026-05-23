@@ -98,6 +98,7 @@ pub fn is_symlink(path: &Path) -> bool {
 pub struct CopyStatusCounts {
     pub synced: usize,
     pub outdated_local: usize,
+    pub outdated_remote: usize,
     pub missing_remote: usize,
     pub skipped: usize,
     pub error: usize,
@@ -105,7 +106,7 @@ pub struct CopyStatusCounts {
 
 impl CopyStatusCounts {
     pub fn total(&self) -> usize {
-        self.synced + self.outdated_local + self.missing_remote + self.skipped + self.error
+        self.synced + self.outdated_local + self.outdated_remote + self.missing_remote + self.skipped + self.error
     }
 }
 
@@ -116,6 +117,9 @@ pub fn status_text(counts: &CopyStatusCounts) -> String {
     }
     if counts.outdated_local > 0 {
         parts.push(format!("{} needs-sync", counts.outdated_local));
+    }
+    if counts.outdated_remote > 0 {
+        parts.push(format!("{} newer-on-win", counts.outdated_remote));
     }
     if counts.missing_remote > 0 {
         parts.push(format!("{} missing-win", counts.missing_remote));
@@ -229,6 +233,8 @@ pub fn check_copy_status(pkg: &Path, pt: &PkgType) -> CopyStatusCounts {
                 counts.synced += 1;
             } else if wsm > wnm {
                 counts.outdated_local += 1;
+            } else {
+                counts.outdated_remote += 1;
             }
         } else {
             counts.error += 1;
@@ -244,6 +250,7 @@ pub fn check_copy_status_batch(pkgs: &[PathBuf], pt: PkgType) -> CopyStatusCount
         let c = check_copy_status(pkg, &pt);
         total.synced += c.synced;
         total.outdated_local += c.outdated_local;
+        total.outdated_remote += c.outdated_remote;
         total.missing_remote += c.missing_remote;
         total.skipped += c.skipped;
         total.error += c.error;
