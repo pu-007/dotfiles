@@ -7,6 +7,8 @@ $env:SHELL = "pwsh"
 $env:EDITOR = "vim"
 $env:FZF_DEFAULT_OPTS = "--preview-window=hidden"
 
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
 ### PSReadLine
 Set-PSReadLineOption -EditMode Vi
 Set-PSReadLineKeyHandler -Chord Ctrl+l -Function ClearScreen

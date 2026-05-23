@@ -80,7 +80,7 @@ fn scenario_both_synced() {
 }
 
 // ==========================================================================
-// Scenario: WSL edited → NeedsSync
+// Scenario: WSL edited → NeedsSync  (status persists across checks)
 // ==========================================================================
 #[test]
 fn scenario_wsl_edited() {
@@ -97,11 +97,17 @@ fn scenario_wsl_edited() {
     let (c, _, _) = check(&pkg, &idx);
     assert!(c.outdated_local + c.outdated_remote + c.synced > 0,
         "wsl_edited: file detected, got {c:?}");
+    // Second check must persist NeedsSync — regression for index-poisoning bug.
+    let (c2, _, _) = check(&pkg, &idx);
+    assert!(c2.outdated_local + c2.outdated_remote + c2.synced > 0,
+        "wsl_edited persists: got {c2:?}");
+    assert!(c2.outdated_local > 0 || c2.outdated_remote > 0,
+        "wsl_edited persists must have unsynced: {c2:?}");
     rm_win(&pkg, file, &PkgType::WinUser);
 }
 
 // ==========================================================================
-// Scenario: Windows edited → NewerOnWin
+// Scenario: Windows edited → NewerOnWin  (status persists across checks)
 // ==========================================================================
 #[test]
 fn scenario_win_edited() {
@@ -118,6 +124,10 @@ fn scenario_win_edited() {
     fs::write(&win, "edited on Windows").unwrap();
     let (c, _, _) = check(&pkg, &idx);
     assert_status(&c, FileSyncStatus::NewerOnWin, "win_edited");
+    // Second check must NOT lose the status just because metadata
+    // was cached in the index.  Regression for index-poisoning bug.
+    let (c2, _, _) = check(&pkg, &idx);
+    assert_status(&c2, FileSyncStatus::NewerOnWin, "win_edited persists");
     rm_win(&pkg, file, &PkgType::WinUser);
 }
 
@@ -255,7 +265,7 @@ fn counts_inc_all_variants() {
 #[test] fn sync_index_save_load_roundtrip() {
     let tmp=temp_root();let f=tmp.join(".wots_index.json");
     let mut idx=SyncIndex::default();
-    idx.set("p/x".into(),status::IndexEntry{mtime_ns:100,size:200,win_mtime_ns:Some(101),win_size:Some(200),blake3_wsl:None,blake3_win:None});
+    idx.set("p/x".into(),status::IndexEntry{mtime_ns:100,size:200,win_mtime_ns:Some(101),win_size:Some(200),blake3_wsl:None,blake3_win:None,synced:false});
     fs::write(&f, serde_json::to_string_pretty(&idx).unwrap()).unwrap();
     let ld:SyncIndex=serde_json::from_str(&fs::read_to_string(&f).unwrap()).unwrap();
     assert_eq!(ld.get("p/x").unwrap().mtime_ns,100);

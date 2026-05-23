@@ -1,9 +1,6 @@
 use std::collections::HashMap;
 
 use colored::Colorize;
-use tabled::settings::Style;
-use tabled::Table;
-use tabled::Tabled;
 
 pub fn info(msg: &str) {
     println!("{}", msg);
@@ -33,20 +30,6 @@ pub fn rule(title: &str) {
     }
 }
 
-#[derive(Tabled)]
-struct StatsRow {
-    #[tabled(rename = "Type")]
-    r#type: String,
-    #[tabled(rename = "Pkgs")]
-    pkgs: String,
-    #[tabled(rename = "Files")]
-    files: String,
-    #[tabled(rename = "Size")]
-    size: String,
-    #[tabled(rename = "Status")]
-    status: String,
-}
-
 pub fn render_stats(
     stats_data: &HashMap<&'static str, TypeStats>,
     total_pkgs: usize,
@@ -54,72 +37,77 @@ pub fn render_stats(
     total_bytes: u64,
 ) {
     use crate::util::fmt_size;
+    use comfy_table::presets::UTF8_FULL;
+    use comfy_table::{Attribute, Cell, Table};
 
     let repo_path = crate::config::DOTFILES_DIR.display();
     println!("WOTS Repository  —  {}\n", repo_path);
 
-    let mut rows: Vec<StatsRow> = Vec::new();
+    let mut table = Table::new();
+    table
+        .load_preset(UTF8_FULL)
+        .set_header(vec![
+            Cell::new("Type").add_attribute(Attribute::Bold),
+            Cell::new("Pkgs").add_attribute(Attribute::Bold).set_alignment(comfy_table::CellAlignment::Right),
+            Cell::new("Files").add_attribute(Attribute::Bold).set_alignment(comfy_table::CellAlignment::Right),
+            Cell::new("Size").add_attribute(Attribute::Bold).set_alignment(comfy_table::CellAlignment::Right),
+            Cell::new("Status").add_attribute(Attribute::Bold),
+        ]);
+
     for pt in &crate::types::SYNCABLE_TYPES {
         let key = pt.value();
         if let Some(d) = stats_data.get(key) {
             if d.packages == 0 {
                 continue;
             }
-            rows.push(StatsRow {
-                r#type: key.to_string(),
-                pkgs: d.packages.to_string(),
-                files: d.files.to_string(),
-                size: d.size_human.clone(),
-                status: d.status_text.clone(),
-            });
+            table.add_row(vec![
+                Cell::new(key),
+                Cell::new(d.packages).set_alignment(comfy_table::CellAlignment::Right),
+                Cell::new(d.files).set_alignment(comfy_table::CellAlignment::Right),
+                Cell::new(&d.size_human).set_alignment(comfy_table::CellAlignment::Right),
+                Cell::new(&d.status_text),
+            ]);
         }
     }
 
-    let total_pkgs_str = total_pkgs.to_string();
-    let total_files_str = total_files.to_string();
     let total_size = fmt_size(total_bytes);
-    rows.push(StatsRow {
-        r#type: "TOTAL".bold().to_string(),
-        pkgs: total_pkgs_str.bold().to_string(),
-        files: total_files_str.bold().to_string(),
-        size: total_size.bold().to_string(),
-        status: "(synced + pending shown above)".clear().to_string(),
-    });
+    table.add_row(vec![
+        Cell::new("TOTAL").add_attribute(Attribute::Bold),
+        Cell::new(total_pkgs).add_attribute(Attribute::Bold).set_alignment(comfy_table::CellAlignment::Right),
+        Cell::new(total_files).add_attribute(Attribute::Bold).set_alignment(comfy_table::CellAlignment::Right),
+        Cell::new(total_size).add_attribute(Attribute::Bold).set_alignment(comfy_table::CellAlignment::Right),
+        Cell::new("(synced + pending shown above)").add_attribute(Attribute::Dim),
+    ]);
 
-    let mut table = Table::new(rows);
-    table.with(Style::modern_rounded());
-    println!("{}", table);
-}
-
-#[derive(Tabled)]
-struct ListRowOut {
-    #[tabled(rename = "Package")]
-    name: String,
-    #[tabled(rename = "Type")]
-    r#type: String,
-    #[tabled(rename = "Files")]
-    files: String,
-    #[tabled(rename = "Size")]
-    size: String,
-    #[tabled(rename = "Status")]
-    status: String,
+    println!("{table}");
 }
 
 pub fn render_list(rows: &[ListRow]) {
-    let out_rows: Vec<ListRowOut> = rows
-        .iter()
-        .map(|r| ListRowOut {
-            name: r.name.cyan().bold().to_string(),
-            r#type: r.pkg_type.green().to_string(),
-            files: r.files.to_string(),
-            size: r.size_human.clone(),
-            status: r.status.clone(),
-        })
-        .collect();
+    use comfy_table::presets::UTF8_FULL;
+    use comfy_table::{Attribute, Cell, Table};
 
-    let mut table = Table::new(out_rows);
-    table.with(Style::modern_rounded());
-    println!("{}", table);
+    let mut table = Table::new();
+    table
+        .load_preset(UTF8_FULL)
+        .set_header(vec![
+            Cell::new("Package").add_attribute(Attribute::Bold),
+            Cell::new("Type").add_attribute(Attribute::Bold),
+            Cell::new("Files").add_attribute(Attribute::Bold).set_alignment(comfy_table::CellAlignment::Right),
+            Cell::new("Size").add_attribute(Attribute::Bold).set_alignment(comfy_table::CellAlignment::Right),
+            Cell::new("Status").add_attribute(Attribute::Bold),
+        ]);
+
+    for r in rows {
+        table.add_row(vec![
+            Cell::new(&r.name),
+            Cell::new(&r.pkg_type),
+            Cell::new(r.files).set_alignment(comfy_table::CellAlignment::Right),
+            Cell::new(&r.size_human).set_alignment(comfy_table::CellAlignment::Right),
+            Cell::new(&r.status),
+        ]);
+    }
+
+    println!("{table}");
     println!("\n  {} package(s) total.", rows.len());
 }
 

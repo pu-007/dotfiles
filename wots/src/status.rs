@@ -15,7 +15,7 @@ use crate::util::skip_size_limit;
 // Index data model
 // ---------------------------------------------------------------------------
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, Clone, Serialize, Deserialize)]
 pub struct IndexEntry {
     pub mtime_ns: u64,
     pub size: u64,
@@ -27,6 +27,11 @@ pub struct IndexEntry {
     pub blake3_wsl: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub blake3_win: Option<String>,
+    /// Whether this entry represents a successfully synced file.
+    /// Only synced entries qualify for the fast-path shortcut;
+    /// unsynced entries are tracked for deletion detection.
+    #[serde(default)]
+    pub synced: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -325,8 +330,9 @@ fn file_sync_status(
 
     let win_path = build_win_path(wsl_path, pkg, pt);
 
-    // Fast-path: index says both sides unchanged.
+    // Fast-path: index says both sides unchanged AND the file was synced.
     if let Some(entry) = index.get(&key)
+        && entry.synced
         && entry.mtime_ns == mtime_ns
         && entry.size == size
         && entry.win_mtime_ns.is_some()
@@ -663,14 +669,14 @@ pub fn check_copy_status_detailed_at(
         if let Ok(rel) = f.strip_prefix(pkg) {
             entries.push(FileStatusEntry {
                 relative_path: rel.to_path_buf(),
-                status: result.status,
+                status: result.status.clone(),
             });
         }
 
-        // Update index with the metadata already collected by file_sync_status.
-        // Skip the update when index_ok is true (fast-path Synced) to avoid a
-        // TOCTOU race where the Windows file could vanish between the existence
-        // check and this second metadata read.
+        // Always track files in the index for deletion detection,
+        // but only mark them synced when truly synced.  The fast path
+        // requires entry.synced, so unsynced entries can't poison
+        // future status checks.
         if !result.index_ok {
             index.set(
                 result.key,
@@ -681,6 +687,7 @@ pub fn check_copy_status_detailed_at(
                     win_size: result.win_size,
                     blake3_wsl: result.blake3_wsl,
                     blake3_win: result.blake3_win,
+                    synced: result.status == FileSyncStatus::Synced,
                 },
             );
         }
@@ -762,7 +769,14 @@ mod tests {
     use super::*;
 
     fn temp_dir() -> std::path::PathBuf {
-        let dir = std::env::temp_dir().join(format!("wots_test_{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!(
+            "wots_test_{}_{}",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
         let _ = fs::create_dir_all(&dir);
         dir
     }
@@ -914,6 +928,7 @@ mod tests {
                 win_size: Some(50),
                 blake3_wsl: None,
                 blake3_win: None,
+                synced: false,
             },
         );
         assert!(idx.get("test.file").is_some());
@@ -924,8 +939,8 @@ mod tests {
     #[test]
     fn sync_index_keys_cloned() {
         let mut idx = SyncIndex::default();
-        idx.set("a".into(), IndexEntry { mtime_ns: 0, size: 0, win_mtime_ns: None, win_size: None, blake3_wsl: None, blake3_win: None });
-        idx.set("b".into(), IndexEntry { mtime_ns: 0, size: 0, win_mtime_ns: None, win_size: None, blake3_wsl: None, blake3_win: None });
+        idx.set("a".into(), IndexEntry { mtime_ns: 0, size: 0, win_mtime_ns: None, win_size: None, blake3_wsl: None, blake3_win: None, synced: false });
+        idx.set("b".into(), IndexEntry { mtime_ns: 0, size: 0, win_mtime_ns: None, win_size: None, blake3_wsl: None, blake3_win: None, synced: false });
         let keys = idx.keys_cloned();
         assert_eq!(keys.len(), 2);
         assert!(keys.contains("a"));
@@ -988,12 +1003,14 @@ mod tests {
                 win_size: Some(50),
                 blake3_wsl: Some("abc123".into()),
                 blake3_win: Some("def456".into()),
+                synced: true,
             },
         );
         let json = serde_json::to_value(&idx).unwrap();
         let entry = &json["entries"]["h.txt"];
         assert_eq!(entry["blake3_wsl"], "abc123");
         assert_eq!(entry["blake3_win"], "def456");
+        assert_eq!(entry["synced"], true);
 
         let restored: SyncIndex = serde_json::from_value(json).unwrap();
         let e = restored.get("h.txt").unwrap();
@@ -1010,6 +1027,7 @@ mod tests {
             win_size: None,
             blake3_wsl: None,
             blake3_win: None,
+            synced: false,
         };
         let json = serde_json::to_value(&entry).unwrap();
         assert!(json.get("blake3_wsl").is_none());
