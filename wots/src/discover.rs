@@ -178,7 +178,7 @@ pub fn propose_name(sources: &[PathBuf]) -> String {
 
     let init_names: &[&str] = &["init.lua", "init.vim", "config", "config.yaml", "settings.json"];
 
-    if (init_names.contains(&file_name.as_str()) || sources.len() == 1)
+    if init_names.contains(&file_name.as_str())
         && let Some(parent) = first.parent()
             && let Some(parent_name) = parent.file_name() {
                 let pn = parent_name.to_string_lossy();
