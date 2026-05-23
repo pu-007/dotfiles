@@ -3,6 +3,7 @@ alias Aic="gaa; aic2"
 alias acp="aic2; git push"
 alias Acp="Aic; git push"
 alias lg="lazygit"
+ialias rg="rg --hidden"
 ialias 'gc@'='git reset --soft HEAD^'
 
 function gzr() {
