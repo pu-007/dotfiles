@@ -23,6 +23,10 @@ pub struct IndexEntry {
     pub win_mtime_ns: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub win_size: Option<u64>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub blake3_wsl: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub blake3_win: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -94,6 +98,7 @@ pub enum FileSyncStatus {
     MissingWsl,
     Skipped,
     Error,
+    ContentChanged,
 }
 
 impl FileSyncStatus {
@@ -106,6 +111,7 @@ impl FileSyncStatus {
             FileSyncStatus::MissingWsl => "missing-wsl",
             FileSyncStatus::Skipped => "skipped",
             FileSyncStatus::Error => "error",
+            FileSyncStatus::ContentChanged => "content-changed",
         }
     }
 }
@@ -130,6 +136,7 @@ pub struct CopyStatusCounts {
     pub missing_wsl: usize,
     pub skipped: usize,
     pub error: usize,
+    pub content_mat_mismatch: usize,
 }
 
 impl CopyStatusCounts {
@@ -142,6 +149,7 @@ impl CopyStatusCounts {
             FileSyncStatus::MissingWsl => self.missing_wsl += 1,
             FileSyncStatus::Skipped => self.skipped += 1,
             FileSyncStatus::Error => self.error += 1,
+            FileSyncStatus::ContentChanged => self.content_mat_mismatch += 1,
         }
     }
 }
@@ -153,6 +161,9 @@ pub fn status_text(counts: &CopyStatusCounts) -> String {
     }
     if counts.outdated_local > 0 {
         parts.push(format!("{} needs-sync", counts.outdated_local));
+    }
+    if counts.content_mat_mismatch > 0 {
+        parts.push(format!("{} content-mismatch", counts.content_mat_mismatch));
     }
     if counts.outdated_remote > 0 {
         parts.push(format!("{} newer-on-win", counts.outdated_remote));
@@ -260,6 +271,8 @@ struct FileSyncResult {
     size: u64,
     win_mtime_ns: Option<u64>,
     win_size: Option<u64>,
+    blake3_wsl: Option<String>,
+    blake3_win: Option<String>,
     /// True when the index entry is already up-to-date (fast-path Synced).
     /// The caller should skip re-writing the same values to avoid a TOCTOU
     /// window where the Windows file could vanish between the existence
@@ -276,6 +289,8 @@ impl FileSyncResult {
             size: 0,
             win_mtime_ns: None,
             win_size: None,
+            blake3_wsl: None,
+            blake3_win: None,
             index_ok: false,
         }
     }
@@ -308,11 +323,9 @@ fn file_sync_status(
         .unwrap_or(0);
     let size = meta.len();
 
-    // Fast-path: index says this was synced before and WSL hasn't changed.
-    // BUT we must verify the Windows side is truly unchanged:
-    //  1. File must still exist (could have been deleted manually)
-    //  2. mtime must match (could have been edited on Windows)
     let win_path = build_win_path(wsl_path, pkg, pt);
+
+    // Fast-path: index says both sides unchanged.
     if let Some(entry) = index.get(&key)
         && entry.mtime_ns == mtime_ns
         && entry.size == size
@@ -329,7 +342,6 @@ fn file_sync_status(
                 if actual_wn_mtime_ns == entry.win_mtime_ns
                     && Some(wn.len()) == entry.win_size
                 {
-                    // Truly synced — both sides unchanged.
                     return FileSyncResult {
                         key,
                         status: FileSyncStatus::Synced,
@@ -337,14 +349,13 @@ fn file_sync_status(
                         size,
                         win_mtime_ns: entry.win_mtime_ns,
                         win_size: entry.win_size,
+                        blake3_wsl: entry.blake3_wsl.clone(),
+                        blake3_win: entry.blake3_win.clone(),
                         index_ok: true,
                     };
                 }
-                // Windows file was modified since last sync.
-                // Fall through to slow-path for full comparison.
             }
             Err(_) => {
-                // Windows file vanished since last sync.
                 return FileSyncResult {
                     key,
                     status: FileSyncStatus::MissingWin,
@@ -352,13 +363,15 @@ fn file_sync_status(
                     size,
                     win_mtime_ns: None,
                     win_size: None,
+                    blake3_wsl: entry.blake3_wsl.clone(),
+                    blake3_win: None,
                     index_ok: false,
                 };
             }
         }
     }
 
-    // Slow-path: read Windows metadata and compare in detail.
+    // Slow-path: read Windows metadata.
     if win_path.symlink_metadata().is_err() {
         return FileSyncResult {
             key,
@@ -367,6 +380,8 @@ fn file_sync_status(
             size,
             win_mtime_ns: None,
             win_size: None,
+            blake3_wsl: None,
+            blake3_win: None,
             index_ok: false,
         };
     }
@@ -376,17 +391,7 @@ fn file_sync_status(
         Err(_) => return FileSyncResult::new(key, FileSyncStatus::Error),
     };
 
-    let ws_mtime_secs = meta
-        .modified()
-        .ok()
-        .and_then(|t| t.duration_since(std::time::UNIX_EPOCH).ok())
-        .map(|d| d.as_secs());
-    let wn_mtime_secs = wn
-        .modified()
-        .ok()
-        .and_then(|t| t.duration_since(std::time::UNIX_EPOCH).ok())
-        .map(|d| d.as_secs());
-
+    let ws_mtime_ns = mtime_ns;
     let wn_mtime_ns = wn
         .modified()
         .ok()
@@ -394,29 +399,91 @@ fn file_sync_status(
         .map(|d| d.as_nanos() as u64);
     let wn_size = wn.len();
 
-    let status = match (ws_mtime_secs, wn_mtime_secs) {
-        (Some(wsm), Some(wnm)) => {
+    // Compare WSL and Windows metadata with nanosecond-level precision.
+    // 2 ms tolerance to handle cross-filesystem timestamp rounding.
+    let (wn_mtime_ns_val, status, blake3_wsl, blake3_win) = match (ws_mtime_ns, wn_mtime_ns) {
+        (wsm, Some(wnm)) => {
             let mtime_diff = wsm.abs_diff(wnm);
-            if mtime_diff < 1 && size == wn_size {
-                FileSyncStatus::Synced
+            if mtime_diff < 2_000_000 && size == wn_size {
+                // Metadata matched — verify content to catch same-mtime/size edits.
+                let (w_hash, n_hash, content_status) =
+                    hash_compare(wsl_path, &win_path, index.get(&key));
+                match content_status {
+                    Some(FileSyncStatus::ContentChanged) => {
+                        (Some(wnm), FileSyncStatus::ContentChanged, w_hash, n_hash)
+                    }
+                    Some(FileSyncStatus::Error) => {
+                        (Some(wnm), FileSyncStatus::Error, w_hash, n_hash)
+                    }
+                    Some(other) => {
+                        (Some(wnm), other, w_hash, n_hash)
+                    }
+                    None => {
+                        (Some(wnm), FileSyncStatus::Synced, w_hash, n_hash)
+                    }
+                }
             } else if wsm > wnm {
-                FileSyncStatus::NeedsSync
+                (Some(wnm), FileSyncStatus::NeedsSync, None, None)
             } else {
-                FileSyncStatus::NewerOnWin
+                (Some(wnm), FileSyncStatus::NewerOnWin, None, None)
             }
         }
-        _ => FileSyncStatus::Error,
+        _ => (wn_mtime_ns, FileSyncStatus::Error, None, None),
     };
 
     FileSyncResult {
         key,
-        status,
+        status: status.clone(),
         mtime_ns,
         size,
-        win_mtime_ns: wn_mtime_ns,
+        win_mtime_ns: wn_mtime_ns_val,
         win_size: Some(wn_size),
+        blake3_wsl,
+        blake3_win,
         index_ok: false,
     }
+}
+
+/// Compare content hashes of WSL and Windows copies.
+/// Returns (blake3_wsl, blake3_win, optional mismatch status).
+fn hash_compare(
+    wsl_path: &Path,
+    win_path: &Path,
+    idx_entry: Option<&IndexEntry>,
+) -> (Option<String>, Option<String>, Option<FileSyncStatus>) {
+    let h_wsl = hash_file(wsl_path);
+    let h_win = hash_file(win_path);
+
+    match (&h_wsl, &h_win) {
+        (Some(wsl_hash), Some(win_hash)) => {
+            if wsl_hash == win_hash {
+                (h_wsl, h_win, None)
+            } else {
+                (h_wsl, h_win, Some(FileSyncStatus::ContentChanged))
+            }
+        }
+        (Some(_), None) | (None, Some(_)) => {
+            // Could read one side but not the other — report as error.
+            (h_wsl, h_win, Some(FileSyncStatus::Error))
+        }
+        (None, None) => {
+            // Both unreadable — preserve old hashes from index.
+            let w = idx_entry.and_then(|e| e.blake3_wsl.clone());
+            let n = idx_entry.and_then(|e| e.blake3_win.clone());
+            (w, n, None)
+        }
+    }
+}
+
+/// Public test wrapper for hash_file.  Only used by integration tests.
+#[doc(hidden)]
+pub fn hash_file_test(path: &Path) -> Option<String> {
+    hash_file(path)
+}
+
+fn hash_file(path: &Path) -> Option<String> {
+    let data = std::fs::read(path).ok()?;
+    Some(blake3::hash(&data).to_hex().to_string())
 }
 
 // ---------------------------------------------------------------------------
@@ -612,6 +679,8 @@ pub fn check_copy_status_detailed_at(
                     size: result.size,
                     win_mtime_ns: result.win_mtime_ns,
                     win_size: result.win_size,
+                    blake3_wsl: result.blake3_wsl,
+                    blake3_win: result.blake3_win,
                 },
             );
         }
@@ -667,6 +736,7 @@ pub fn check_copy_status_batch(pkgs: &[PathBuf], pt: PkgType) -> CopyStatusCount
         total.missing_wsl += c.missing_wsl;
         total.skipped += c.skipped;
         total.error += c.error;
+        total.content_mat_mismatch += c.content_mat_mismatch;
     }
     total
 }
@@ -742,6 +812,7 @@ mod tests {
         assert_eq!(c.missing_wsl, 0);
         assert_eq!(c.skipped, 0);
         assert_eq!(c.error, 0);
+        assert_eq!(c.content_mat_mismatch, 0);
     }
 
     #[test]
@@ -841,6 +912,8 @@ mod tests {
                 size: 50,
                 win_mtime_ns: Some(101),
                 win_size: Some(50),
+                blake3_wsl: None,
+                blake3_win: None,
             },
         );
         assert!(idx.get("test.file").is_some());
@@ -851,8 +924,8 @@ mod tests {
     #[test]
     fn sync_index_keys_cloned() {
         let mut idx = SyncIndex::default();
-        idx.set("a".into(), IndexEntry { mtime_ns: 0, size: 0, win_mtime_ns: None, win_size: None });
-        idx.set("b".into(), IndexEntry { mtime_ns: 0, size: 0, win_mtime_ns: None, win_size: None });
+        idx.set("a".into(), IndexEntry { mtime_ns: 0, size: 0, win_mtime_ns: None, win_size: None, blake3_wsl: None, blake3_win: None });
+        idx.set("b".into(), IndexEntry { mtime_ns: 0, size: 0, win_mtime_ns: None, win_size: None, blake3_wsl: None, blake3_win: None });
         let keys = idx.keys_cloned();
         assert_eq!(keys.len(), 2);
         assert!(keys.contains("a"));
@@ -868,6 +941,79 @@ mod tests {
         assert_eq!(FileSyncStatus::MissingWsl.label(), "missing-wsl");
         assert_eq!(FileSyncStatus::Skipped.label(), "skipped");
         assert_eq!(FileSyncStatus::Error.label(), "error");
+        assert_eq!(FileSyncStatus::ContentChanged.label(), "content-changed");
+    }
+
+    #[test]
+    fn content_changed_status_inc() {
+        let mut c = CopyStatusCounts::default();
+        c.inc(&FileSyncStatus::ContentChanged);
+        assert_eq!(c.content_mat_mismatch, 1);
+    }
+
+    #[test]
+    fn hash_file_same_content_same_hash() {
+        let dir = temp_dir();
+        let fa = dir.join("a.txt");
+        let fb = dir.join("b.txt");
+        write_file(&fa, "identical");
+        write_file(&fb, "identical");
+        assert_eq!(hash_file(&fa), hash_file(&fb));
+    }
+
+    #[test]
+    fn hash_file_different_content_different_hash() {
+        let dir = temp_dir();
+        let fa = dir.join("a.txt");
+        let fb = dir.join("b.txt");
+        write_file(&fa, "one");
+        write_file(&fb, "two");
+        assert_ne!(hash_file(&fa), hash_file(&fb));
+    }
+
+    #[test]
+    fn hash_file_nonexistent_is_none() {
+        assert!(hash_file(Path::new("/nonexistent/hash_test")).is_none());
+    }
+
+    #[test]
+    fn index_entry_hash_serialization() {
+        let mut idx = SyncIndex::default();
+        idx.set(
+            "h.txt".into(),
+            IndexEntry {
+                mtime_ns: 100,
+                size: 50,
+                win_mtime_ns: Some(101),
+                win_size: Some(50),
+                blake3_wsl: Some("abc123".into()),
+                blake3_win: Some("def456".into()),
+            },
+        );
+        let json = serde_json::to_value(&idx).unwrap();
+        let entry = &json["entries"]["h.txt"];
+        assert_eq!(entry["blake3_wsl"], "abc123");
+        assert_eq!(entry["blake3_win"], "def456");
+
+        let restored: SyncIndex = serde_json::from_value(json).unwrap();
+        let e = restored.get("h.txt").unwrap();
+        assert_eq!(e.blake3_wsl.as_deref(), Some("abc123"));
+        assert_eq!(e.blake3_win.as_deref(), Some("def456"));
+    }
+
+    #[test]
+    fn index_entry_hash_none_omitted() {
+        let entry = IndexEntry {
+            mtime_ns: 100,
+            size: 50,
+            win_mtime_ns: None,
+            win_size: None,
+            blake3_wsl: None,
+            blake3_win: None,
+        };
+        let json = serde_json::to_value(&entry).unwrap();
+        assert!(json.get("blake3_wsl").is_none());
+        assert!(json.get("blake3_win").is_none());
     }
 
     #[test]
@@ -880,6 +1026,7 @@ mod tests {
         c.inc(&FileSyncStatus::MissingWsl);
         c.inc(&FileSyncStatus::Skipped);
         c.inc(&FileSyncStatus::Error);
+        c.inc(&FileSyncStatus::ContentChanged);
         assert_eq!(c.synced, 1);
         assert_eq!(c.outdated_local, 1);
         assert_eq!(c.outdated_remote, 1);
@@ -887,5 +1034,6 @@ mod tests {
         assert_eq!(c.missing_wsl, 1);
         assert_eq!(c.skipped, 1);
         assert_eq!(c.error, 1);
+        assert_eq!(c.content_mat_mismatch, 1);
     }
 }

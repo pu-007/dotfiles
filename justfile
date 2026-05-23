@@ -41,7 +41,7 @@ refresh: _protect _update _backup _cleanup _sync_remote _restore
 [group('0. 构建 (Build)')]
 build *args:
     @cargo build --release --manifest-path {{ dotfiles }}/wots/Cargo.toml {{ args }}
-    @cp {{ dotfiles }}/wots/target/release/wots {{ dotfiles }}/wots_bin
+    @cp -f {{ dotfiles }}/wots/target/release/wots {{ dotfiles }}/wots_bin
     @echo -e "{{ c_green }}✓  Build complete: {{ dotfiles }}/wots_bin{{ c_reset }}"
 
 # [构建] 编译 Rust 二进制 (debug, with backtraces)

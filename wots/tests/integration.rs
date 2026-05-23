@@ -174,25 +174,70 @@ fn scenario_both_deleted() {
     fs::remove_file(pkg.join(file)).unwrap();
     assert!(rm_win(&pkg, file, &PkgType::WinUser));
     let (c2, _, _) = check(&pkg, &idx);
-    let t2 = c2.synced+c2.outdated_local+c2.outdated_remote+c2.missing_remote+c2.missing_wsl+c2.error;
+    let t2 = c2.synced+c2.outdated_local+c2.outdated_remote+c2.missing_remote+c2.missing_wsl+c2.error+c2.content_mat_mismatch;
     assert_eq!(t2, 0, "both deleted pass2: {c2:?}");
     let (c3, _, _) = check(&pkg, &idx);
-    let t3 = c3.synced+c3.outdated_local+c3.outdated_remote+c3.missing_remote+c3.missing_wsl+c3.error;
+    let t3 = c3.synced+c3.outdated_local+c3.outdated_remote+c3.missing_remote+c3.missing_wsl+c3.error+c3.content_mat_mismatch;
     assert_eq!(t3, 0, "both deleted pass3: {c3:?}");
 }
 
 // ==========================================================================
-// Older tests
+// Scenario: Content changed but metadata same → ContentChanged
 // ==========================================================================
+#[test]
+fn scenario_content_changed_same_metadata() {
+    use std::io::Write;
+    let root = temp_root();
+    let dir_a = root.join("pkg_a"); fs::create_dir_all(&dir_a).unwrap();
+    let dir_b = root.join("pkg_b"); fs::create_dir_all(&dir_b).unwrap();
+    let fa = dir_a.join("cfg.txt");
+    let fb = dir_b.join("cfg.txt");
+
+    {
+        let mut f = std::fs::File::create(&fa).unwrap();
+        f.write_all(b"AAAA").unwrap();
+    }
+    {
+        let mut f = std::fs::File::create(&fb).unwrap();
+        f.write_all(b"BBBB").unwrap();
+    }
+
+    let hfa = wots::status::hash_file_test(&fa);
+    let hfb = wots::status::hash_file_test(&fb);
+    assert!(hfa.is_some());
+    assert!(hfb.is_some());
+    assert_ne!(hfa, hfb, "different content must produce different hashes");
+}
+
+#[test]
+fn scenario_same_content_same_metadata() {
+    use std::io::Write;
+    let root = temp_root();
+    let dir_a = root.join("same_a"); fs::create_dir_all(&dir_a).unwrap();
+    let dir_b = root.join("same_b"); fs::create_dir_all(&dir_b).unwrap();
+    let fa = dir_a.join("cfg.txt");
+    let fb = dir_b.join("cfg.txt");
+
+    for p in &[&fa, &fb] {
+        let mut f = std::fs::File::create(p).unwrap();
+        f.write_all(b"identical content").unwrap();
+    }
+
+    assert_eq!(
+        wots::status::hash_file_test(&fa),
+        wots::status::hash_file_test(&fb)
+    );
+}
 
 #[test]
 fn counts_inc_all_variants() {
     let mut c = CopyStatusCounts::default();
-    for v in &[FileSyncStatus::Synced,FileSyncStatus::NeedsSync,FileSyncStatus::NewerOnWin,FileSyncStatus::MissingWin,FileSyncStatus::MissingWsl,FileSyncStatus::Skipped,FileSyncStatus::Error] {
+    for v in &[FileSyncStatus::Synced,FileSyncStatus::NeedsSync,FileSyncStatus::NewerOnWin,FileSyncStatus::MissingWin,FileSyncStatus::MissingWsl,FileSyncStatus::Skipped,FileSyncStatus::Error,FileSyncStatus::ContentChanged] {
         c.inc(v);
     }
     assert_eq!(c.synced,1);assert_eq!(c.outdated_local,1);assert_eq!(c.outdated_remote,1);
     assert_eq!(c.missing_remote,1);assert_eq!(c.missing_wsl,1);assert_eq!(c.skipped,1);assert_eq!(c.error,1);
+    assert_eq!(c.content_mat_mismatch,1);
 }
 
 #[test] fn counts_synced_accumulates() {
@@ -200,16 +245,17 @@ fn counts_inc_all_variants() {
 }
 
 #[test] fn status_text_reports_all_fields() {
-    let c=CopyStatusCounts{synced:1,outdated_local:2,outdated_remote:3,missing_remote:4,missing_wsl:5,skipped:6,error:0};
+    let c=CopyStatusCounts{synced:1,outdated_local:2,outdated_remote:3,missing_remote:4,missing_wsl:5,skipped:6,error:0,content_mat_mismatch:7};
     let s=status::status_text(&c);
     assert!(s.contains("1 synced"));assert!(s.contains("2 needs-sync"));assert!(s.contains("3 newer-on-win"));
     assert!(s.contains("4 missing-win"));assert!(s.contains("5 missing-wsl"));assert!(s.contains("6 skipped"));
+    assert!(s.contains("7 content-mismatch"));
 }
 
 #[test] fn sync_index_save_load_roundtrip() {
     let tmp=temp_root();let f=tmp.join(".wots_index.json");
     let mut idx=SyncIndex::default();
-    idx.set("p/x".into(),status::IndexEntry{mtime_ns:100,size:200,win_mtime_ns:Some(101),win_size:Some(200)});
+    idx.set("p/x".into(),status::IndexEntry{mtime_ns:100,size:200,win_mtime_ns:Some(101),win_size:Some(200),blake3_wsl:None,blake3_win:None});
     fs::write(&f, serde_json::to_string_pretty(&idx).unwrap()).unwrap();
     let ld:SyncIndex=serde_json::from_str(&fs::read_to_string(&f).unwrap()).unwrap();
     assert_eq!(ld.get("p/x").unwrap().mtime_ns,100);
@@ -237,7 +283,7 @@ fn counts_inc_all_variants() {
 }
 
 #[test] fn file_sync_status_labels_unique() {
-    let l:Vec<&str>=[FileSyncStatus::Synced,FileSyncStatus::NeedsSync,FileSyncStatus::NewerOnWin,FileSyncStatus::MissingWin,FileSyncStatus::MissingWsl,FileSyncStatus::Skipped,FileSyncStatus::Error].iter().map(|s|s.label()).collect();
+    let l:Vec<&str>=[FileSyncStatus::Synced,FileSyncStatus::NeedsSync,FileSyncStatus::NewerOnWin,FileSyncStatus::MissingWin,FileSyncStatus::MissingWsl,FileSyncStatus::Skipped,FileSyncStatus::Error,FileSyncStatus::ContentChanged].iter().map(|s|s.label()).collect();
     let mut d=l.clone();d.sort();d.dedup();assert_eq!(l.len(),d.len());
 }
 
@@ -272,7 +318,7 @@ fn counts_inc_all_variants() {
 #[test] fn empty_pkg_zero() {
     let r=temp_root();let p=make_pkg(&r,"emp","winuser");
     let(c,e,_)=status::check_copy_status_detailed(&p,&PkgType::WinUser);
-    assert_eq!(c.synced+c.outdated_local+c.outdated_remote+c.missing_remote+c.missing_wsl+c.error+c.skipped,0);
+    assert_eq!(c.synced+c.outdated_local+c.outdated_remote+c.missing_remote+c.missing_wsl+c.error+c.skipped+c.content_mat_mismatch,0);
     assert!(e.is_empty());
 }
 

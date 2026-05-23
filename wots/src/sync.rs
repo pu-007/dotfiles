@@ -261,17 +261,17 @@ pub fn sync_batch(
     pool.install(|| {
         items
             .par_iter()
-            .try_for_each(|(wsl_path, win_path)| {
+            .for_each(|(wsl_path, win_path)| {
             total.fetch_add(1, Ordering::Relaxed);
 
             if is_excluded(wsl_path) {
                 skipped.fetch_add(1, Ordering::Relaxed);
-                return Ok::<_, anyhow::Error>(());
+                return;
             }
 
             if !wsl_path.exists() {
                 missing_source.fetch_add(1, Ordering::Relaxed);
-                return Ok(());
+                return;
             }
 
             if use_robocopy {
@@ -279,8 +279,9 @@ pub fn sync_batch(
                     Ok(_) => {
                         copied.fetch_add(1, Ordering::Relaxed);
                     }
-                    Err(_) => {
+                    Err(e) => {
                         errors.fetch_add(1, Ordering::Relaxed);
+                        display::error(&format!("robocopy failed for {}: {e}", wsl_path.display()));
                     }
                 }
             } else {
@@ -291,15 +292,13 @@ pub fn sync_batch(
                     Ok(false) => {
                         errors.fetch_add(1, Ordering::Relaxed);
                     }
-                    Err(_) => {
+                    Err(e) => {
                         errors.fetch_add(1, Ordering::Relaxed);
+                        display::error(&format!("pwsh copy failed for {}: {e}", wsl_path.display()));
                     }
                 }
             }
-
-            Ok(())
-        })
-        .ok();
+        });
     });
 
     let mut counts = HashMap::new();

@@ -1,6 +1,9 @@
 use std::collections::HashMap;
 
 use colored::Colorize;
+use tabled::settings::Style;
+use tabled::Table;
+use tabled::Tabled;
 
 pub fn info(msg: &str) {
     println!("{}", msg);
@@ -30,106 +33,93 @@ pub fn rule(title: &str) {
     }
 }
 
-pub fn render_stats(stats_data: &HashMap<&'static str, TypeStats>, total_pkgs: usize, total_files: usize, total_bytes: u64) {
+#[derive(Tabled)]
+struct StatsRow {
+    #[tabled(rename = "Type")]
+    r#type: String,
+    #[tabled(rename = "Pkgs")]
+    pkgs: String,
+    #[tabled(rename = "Files")]
+    files: String,
+    #[tabled(rename = "Size")]
+    size: String,
+    #[tabled(rename = "Status")]
+    status: String,
+}
+
+pub fn render_stats(
+    stats_data: &HashMap<&'static str, TypeStats>,
+    total_pkgs: usize,
+    total_files: usize,
+    total_bytes: u64,
+) {
     use crate::util::fmt_size;
 
     let repo_path = crate::config::DOTFILES_DIR.display();
     println!("WOTS Repository  —  {}\n", repo_path);
 
-    // Collect rows so we can compute max widths dynamically
-    let mut rows: Vec<(String, usize, usize, String, String)> = Vec::new();
+    let mut rows: Vec<StatsRow> = Vec::new();
     for pt in &crate::types::SYNCABLE_TYPES {
         let key = pt.value();
         if let Some(d) = stats_data.get(key) {
             if d.packages == 0 {
                 continue;
             }
-            rows.push((
-                key.to_string(),
-                d.packages,
-                d.files,
-                d.size_human.clone(),
-                d.status_text.clone(),
-            ));
+            rows.push(StatsRow {
+                r#type: key.to_string(),
+                pkgs: d.packages.to_string(),
+                files: d.files.to_string(),
+                size: d.size_human.clone(),
+                status: d.status_text.clone(),
+            });
         }
     }
 
-    // Headers
-    let h_type = "Type";
-    let h_pkgs = "Pkgs";
-    let h_files = "Files";
-    let h_size = "Size";
-    let h_status = "Status";
-
-    // Compute column widths
-    let w_type = rows.iter().map(|r| r.0.len()).max().unwrap_or(12).max(h_type.len());
-    let w_pkgs = rows.iter().map(|r| r.1.to_string().len()).max().unwrap_or(5).max(h_pkgs.len());
-    let w_files = rows.iter().map(|r| r.2.to_string().len()).max().unwrap_or(5).max(h_files.len());
-    let w_size = rows.iter().map(|r| r.3.len()).max().unwrap_or(8).max(h_size.len());
-    let w_status = rows.iter().map(|r| r.4.len()).max().unwrap_or(20).max(h_status.len());
-
-    let sep_w = w_type + w_pkgs + w_files + w_size + w_status + 10;
-
-    // Header
-    println!(
-        "  {:<w_type$}  {:>w_pkgs$}  {:>w_files$}  {:>w_size$}  {}",
-        h_type, h_pkgs, h_files, h_size, h_status,
-    );
-    println!("{}", "─".repeat(sep_w));
-
-    // Data rows
-    for (typ, pkgs, files, size, status) in &rows {
-        println!(
-            "  {:<w_type$}  {:>w_pkgs$}  {:>w_files$}  {:>w_size$}  {}",
-            typ, pkgs, files, size, status,
-        );
-    }
-
-    // Footer
     let total_pkgs_str = total_pkgs.to_string();
     let total_files_str = total_files.to_string();
     let total_size = fmt_size(total_bytes);
-    println!("{}", "─".repeat(sep_w));
-    println!(
-        "  {:<w_type$}  {:>w_pkgs$}  {:>w_files$}  {:>w_size$}  (synced + pending shown above)",
-        "TOTAL".bold(),
-        total_pkgs_str.bold(),
-        total_files_str.bold(),
-        total_size.bold(),
-    );
+    rows.push(StatsRow {
+        r#type: "TOTAL".bold().to_string(),
+        pkgs: total_pkgs_str.bold().to_string(),
+        files: total_files_str.bold().to_string(),
+        size: total_size.bold().to_string(),
+        status: "(synced + pending shown above)".clear().to_string(),
+    });
+
+    let mut table = Table::new(rows);
+    table.with(Style::modern_rounded());
+    println!("{}", table);
+}
+
+#[derive(Tabled)]
+struct ListRowOut {
+    #[tabled(rename = "Package")]
+    name: String,
+    #[tabled(rename = "Type")]
+    r#type: String,
+    #[tabled(rename = "Files")]
+    files: String,
+    #[tabled(rename = "Size")]
+    size: String,
+    #[tabled(rename = "Status")]
+    status: String,
 }
 
 pub fn render_list(rows: &[ListRow]) {
-    let h_pkg = "Package";
-    let h_type = "Type";
-    let h_files = "Files";
-    let h_size = "Size";
-    let h_status = "Status";
+    let out_rows: Vec<ListRowOut> = rows
+        .iter()
+        .map(|r| ListRowOut {
+            name: r.name.cyan().bold().to_string(),
+            r#type: r.pkg_type.green().to_string(),
+            files: r.files.to_string(),
+            size: r.size_human.clone(),
+            status: r.status.clone(),
+        })
+        .collect();
 
-    let w_pkg = rows.iter().map(|r| r.name.len()).max().unwrap_or(12).max(h_pkg.len());
-    let w_type = rows.iter().map(|r| r.pkg_type.len()).max().unwrap_or(8).max(h_type.len());
-    let w_files = rows.iter().map(|r| r.files.to_string().len()).max().unwrap_or(5).max(h_files.len());
-    let w_size = rows.iter().map(|r| r.size_human.len()).max().unwrap_or(8).max(h_size.len());
-    let w_status = rows.iter().map(|r| r.status.len()).max().unwrap_or(24).max(h_status.len());
-    let sep_w = w_pkg + w_type + w_files + w_size + w_status + 12;
-
-    println!(
-        "  {:<w_pkg$}  {:<w_type$}  {:>w_files$}  {:>w_size$}  {}",
-        h_pkg, h_type, h_files, h_size, h_status,
-    );
-    println!("{}", "─".repeat(sep_w));
-
-    for r in rows {
-        println!(
-            "  {:<w_pkg$}  {:<w_type$}  {:>w_files$}  {:>w_size$}  {}",
-            r.name.cyan().bold(),
-            r.pkg_type.green(),
-            r.files,
-            r.size_human,
-            r.status,
-        );
-    }
-
+    let mut table = Table::new(out_rows);
+    table.with(Style::modern_rounded());
+    println!("{}", table);
     println!("\n  {} package(s) total.", rows.len());
 }
 

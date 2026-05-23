@@ -249,7 +249,8 @@ fn cmd_diff(args: &wots::cli::DiffArgs) -> Result<()> {
                 let has_work = counts.outdated_local > 0
                     || counts.missing_remote > 0
                     || counts.outdated_remote > 0
-                    || counts.missing_wsl > 0;
+                    || counts.missing_wsl > 0
+                    || counts.content_mat_mismatch > 0;
                 if !has_work {
                     continue;
                 }
