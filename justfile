@@ -1,5 +1,5 @@
 # =============================================================================
-# 🚀 WOTS & Dotfiles 现代自动化管理脚本 (Powered by Just & Pixi)
+# 🚀 WOTS & Dotfiles 现代自动化管理脚本 (Rust Engine + Just Orchestrator)
 # 🛡️ 工业级优化版：具备防崩溃、防锁死、状态精准恢复特性
 # =============================================================================
 
@@ -42,38 +42,103 @@ refresh: _protect _update _backup _cleanup _sync_remote _restore
 build:
     @cargo build --release --manifest-path {{dotfiles}}/wots/Cargo.toml
     @cp {{dotfiles}}/wots/target/release/wots {{dotfiles}}/wots_bin
+    @echo -e "{{c_green}}✓  Build complete: {{dotfiles}}/wots_bin{{c_reset}}"
 
+# [构建] 编译 Rust 二进制 (debug, with backtraces)
+[group('0. 构建 (Build)')]
+build-debug:
+    @cargo build --manifest-path {{dotfiles}}/wots/Cargo.toml
+    @cp {{dotfiles}}/wots/target/debug/wots {{dotfiles}}/wots_bin
+    @echo -e "{{c_green}}✓  Debug build complete: {{dotfiles}}/wots_bin{{c_reset}}"
+
+# [测试] 运行 cargo test
+[group('0. 构建 (Build)')]
+test:
+    @cargo test --manifest-path {{dotfiles}}/wots/Cargo.toml
+
+# [测试] 运行 cargo clippy
+[group('0. 构建 (Build)')]
+lint:
+    @cargo clippy --manifest-path {{dotfiles}}/wots/Cargo.toml -- -D warnings
+
+# -----------------------------------------------------------------------------
+# ⚙️ 2. 配置管理 (Wots CLI)
+# -----------------------------------------------------------------------------
+
+# 运行任意 wots 命令 (默认显示帮助)
 [group('2. 配置管理 (Wots CLI)')]
 wots *args:
     @{{dotfiles}}/wots_bin {{ if args == "" { "--help" } else { args } }}
 
+# 创建新包: just create ~/.zshrc -t user -a zsh
 [group('2. 配置管理 (Wots CLI)')]
 create +args:
     @{{dotfiles}}/wots_bin create {{args}}
 
+# 同步所有包到目标
 [group('2. 配置管理 (Wots CLI)')]
 sync:
     @{{dotfiles}}/wots_bin sync
 
+# 按类型同步: just sync-type user
 [group('2. 配置管理 (Wots CLI)')]
 sync-type type:
     @{{ if type == "root" { "sudo " } else { "" } }}{{dotfiles}}/wots_bin sync --type {{type}}
 
+# 按包名同步: just sync-app git
+[group('2. 配置管理 (Wots CLI)')]
+sync-app app:
+    @{{dotfiles}}/wots_bin sync --app {{app}}
+
+# 预览同步 (干运行)
 [group('2. 配置管理 (Wots CLI)')]
 sync-dry:
     @{{dotfiles}}/wots_bin sync --dry-run
 
+# 同步 root 包 (带 sudo, 跳过确认)
+[group('2. 配置管理 (Wots CLI)')]
+sync-root:
+    @sudo {{dotfiles}}/wots_bin sync --type root --bypass
+
+# 仓库统计: 包数量、文件数、大小、状态
 [group('2. 配置管理 (Wots CLI)')]
 stats:
     @{{dotfiles}}/wots_bin stats
 
+# JSON 格式统计
+[group('2. 配置管理 (Wots CLI)')]
+stats-json:
+    @{{dotfiles}}/wots_bin stats --json
+
+# 列出所有包及其状态
 [group('2. 配置管理 (Wots CLI)')]
 list:
     @{{dotfiles}}/wots_bin list
 
+# 按类型列出包: just list-type user
+[group('2. 配置管理 (Wots CLI)')]
+list-type type:
+    @{{dotfiles}}/wots_bin list --type {{type}}
+
+# JSON 格式列出包
+[group('2. 配置管理 (Wots CLI)')]
+list-json:
+    @{{dotfiles}}/wots_bin list --json
+
+# 显示差异: 哪些文件需要同步
 [group('2. 配置管理 (Wots CLI)')]
 diff:
     @{{dotfiles}}/wots_bin diff
+
+# 按类型查看差异: just diff-type winuser
+[group('2. 配置管理 (Wots CLI)')]
+diff-type type:
+    @{{dotfiles}}/wots_bin diff --type {{type}}
+
+# 按包名查看差异: just diff-app git
+[group('2. 配置管理 (Wots CLI)')]
+diff-app app:
+    @{{dotfiles}}/wots_bin diff --app {{app}}
 
 # =============================================================================
 # 📦 核心流水线子任务 (Private Sub-tasks) - 列表隐身，提供模块化原子操作

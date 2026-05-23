@@ -10,3 +10,6 @@ __pycache__/
 /deepseek.user/**
 !/deepseek.user/.deepseek/
 !/deepseek.user/.deepseek/config.toml
+
+# WOTS sync index (generated cache)
+.wots_index.json
