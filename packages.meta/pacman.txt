@@ -21,12 +21,12 @@ cmake
 cpp-pinyin
 cuda
 ddcutil
-deepseek-tui-git
 directx-headers
 docker
 docker-buildx
 dos2unix
 dust
+evcxr_repl
 eza
 fastfetch
 fcitx5
