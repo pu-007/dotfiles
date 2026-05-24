@@ -1,6 +1,7 @@
 {
   "projects": {
     "/mnt/d/Downloads": "downloads",
-    "/home/pu/dotfiles": "dotfiles"
+    "/home/pu/dotfiles": "dotfiles",
+    "/home/pu/dotfiles/wots-src": "wots-src"
   }
 }

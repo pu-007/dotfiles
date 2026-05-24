@@ -1,0 +1,16 @@
+[
+  {
+    "sessionId": "3eef53f1-4b49-4839-a8a3-28ea1da312e7",
+    "messageId": 0,
+    "type": "user",
+    "message": "看看这个 @tests/integration.rs 写的怎么样? 有用吗?有哪些问题? 写一个 md 报告保存到本地",
+    "timestamp": "2026-05-24T05:36:48.293Z"
+  },
+  {
+    "sessionId": "3eef53f1-4b49-4839-a8a3-28ea1da312e7",
+    "messageId": 1,
+    "type": "user",
+    "message": "再来一份中文的",
+    "timestamp": "2026-05-24T05:39:54.262Z"
+  }
+]
