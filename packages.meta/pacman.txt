@@ -113,6 +113,7 @@ otf-libertinus
 pandoc-cli
 paru
 payload-dumper-go
+perl-www-robotrules
 pigz
 pistol-bin
 pixi
