@@ -1,0 +1,70 @@
+{
+  "export_version": 3,
+  "packages": [
+    {
+      "Id": "7zip",
+      "Name": "7zip",
+      "Version": "26.01",
+      "Source": "main",
+      "ManagerName": "scoop"
+    },
+    {
+      "Id": "PSFzf",
+      "Name": "PSFzf",
+      "Version": "2.7.10",
+      "Source": "PSGallery",
+      "ManagerName": "pwsh"
+    },
+    {
+      "Id": "WslInterop",
+      "Name": "WslInterop",
+      "Version": "0.4.1",
+      "Source": "PSGallery",
+      "ManagerName": "pwsh"
+    },
+    {
+      "Id": "adb",
+      "Name": "Adb",
+      "Version": "37.0.0",
+      "Source": "main",
+      "ManagerName": "scoop"
+    },
+    {
+      "Id": "git",
+      "Name": "Git",
+      "Version": "2.54.0",
+      "Source": "main",
+      "ManagerName": "scoop"
+    },
+    {
+      "Id": "innounp",
+      "Name": "Innounp",
+      "Version": "2.67.9",
+      "Source": "main",
+      "ManagerName": "scoop"
+    },
+    {
+      "Id": "llmfit",
+      "Name": "Llmfit",
+      "Version": "0.9.27",
+      "Source": "main",
+      "ManagerName": "scoop"
+    },
+    {
+      "Id": "pear-desktop",
+      "Name": "Pear Desktop",
+      "Version": "3.11.0",
+      "Source": "extras",
+      "ManagerName": "scoop"
+    },
+    {
+      "Id": "scoop-search",
+      "Name": "Scoop Search",
+      "Version": "2.1.0",
+      "Source": "main",
+      "ManagerName": "scoop"
+    }
+  ],
+  "incompatible_packages_info": "Incompatible packages cannot be installed from UniGetUI, either because they came from a local source (for example Local PC) or because the package manager was unavailable. Nevertheless, they have been listed here for logging purposes.",
+  "incompatible_packages": []
+}
