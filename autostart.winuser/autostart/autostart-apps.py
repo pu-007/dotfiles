@@ -82,6 +82,11 @@ STARTUP_TASKS: List[TaskType] = [
         wait_window_timeout=15.0,
     ),
     AppLaunch(
+        cmd=[r"C:\Program Files\MotrixNext\motrix-next.exe", "--autostart"],
+        after_launch_close="Motrix Next",
+        wait_window_timeout=15.0,
+    ),
+    AppLaunch(
         cmd=[r"C:\Program Files\MI\PcContinuity\Launch.exe", "--AutoRun=1"],
     ),
     # ---------------- 自动化 Hook 任务 ----------------
@@ -89,6 +94,9 @@ STARTUP_TASKS: List[TaskType] = [
     # ---------------- 独立窗口管理任务 ----------------
     WindowAction(title="archlinux", action="close", timeout=15.0),
     # ---------------- 普通后台/命令行软件 ----------------
+    AppLaunch(
+        cmd=r"C:\Users\zionpu\AppData\Local\UniGetUI\Chocolatey\lib\eartrumpet\tools\EarTrumpet\EarTrumpet.exe"
+    ),
     AppLaunch(
         [r"C:\Users\zionpu\AppData\Local\Programs\QuickLook\QuickLook.exe", "-autorun"]
     ),
