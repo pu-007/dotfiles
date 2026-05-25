@@ -1,0 +1,30 @@
+Better file sizes in Explorer details
+Change Explorer Default Location
+Chrome/Edge scroll tabs with mouse wheel
+Close Explorer on Esc
+CTRL+SHIFT+C quotes remover
+Dark mode context menus
+Disable grouping on the taskbar
+Explorer Ctrl+Q to New Folder
+Explorer Double Click Up
+Explorer Up → New Window/Tab (Ctrl-click or...)
+Explorerframe fixes for Win11 22H2+
+F1 Blocker
+File Explorer WinUI-Like Content Animation
+Fix white flashes in explorer
+Hide Search Bar
+Middle click to close on the taskbar
+Open With - Remove Microsoft Store Menu It...
+Remove "Exit Fullscreen" popup in Chrome
+Resource Redirect
+Select filename extension on double F2
+Slick Window Arrangement
+Taskbar auto-hide when maximized
+Taskbar tray system icon tweaks
+Turn off change file extension warning
+Windows 11 File Explorer Styler
+Windows 11 Notification Center Styler
+Windows 11 Start Menu Styler
+Windows 11 Taskbar Styler
+任务栏 Dock 动画
+用 ctrl+n 创建新文件
