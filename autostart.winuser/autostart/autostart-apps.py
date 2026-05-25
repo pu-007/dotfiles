@@ -87,6 +87,11 @@ STARTUP_TASKS: List[TaskType] = [
         wait_window_timeout=15.0,
     ),
     AppLaunch(
+        cmd=r"C:\Program Files\LocalSend\localsend_app.exe",
+        after_launch_close="LocalSend",
+        wait_window_timeout=15.0,
+    ),
+    AppLaunch(
         cmd=[r"C:\Program Files\MI\PcContinuity\Launch.exe", "--AutoRun=1"],
     ),
     # ---------------- 自动化 Hook 任务 ----------------
