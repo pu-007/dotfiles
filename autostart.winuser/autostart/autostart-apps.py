@@ -100,7 +100,8 @@ STARTUP_TASKS: List[TaskType] = [
     AppLaunch(
         [r"C:\Users\zionpu\AppData\Local\Programs\QuickLook\QuickLook.exe", "-autorun"]
     ),
-    AppLaunch([r"C:\Program Files\Everything 1.5a\Everything.exe", "-startup"]),
+    # NOTE: Everything need to be added into Windhawk exception list
+    AppLaunch([r"C:\Program Files\Everything\Everything.exe", "-startup"]),
     AppLaunch(r"C:\Users\zionpu\AppData\Local\TieZ\tiez-app.exe"),
     AppLaunch(r"C:\Program Files\flomo\flomo.exe"),
     AppLaunch(["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"]),
