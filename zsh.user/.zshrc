@@ -250,6 +250,15 @@ function zvm_after_init() {
   bindkey "^[[B" down-line-or-beginning-search # Down
   bindkey -M viins '^R' fzf-history-widget
 
+  # Ctrl+← 左跳词
+  bindkey '^[[1;5D' backward-word
+  # Ctrl+→ 右跳词
+  bindkey '^[[1;5C' forward-word
+
+  # 兼容部分终端（如 Alacritty）
+  bindkey '\e\e[D' backward-word
+  bindkey '\e\e[C' forward-word
+
   # Vi Command 模式映射
   bindkey -M vicmd 'H' beginning-of-line
   bindkey -M vicmd 'L' end-of-line

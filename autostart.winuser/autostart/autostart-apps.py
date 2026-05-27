@@ -113,8 +113,8 @@ STARTUP_TASKS: List[TaskType] = [
     AppLaunch([r"C:\Program Files\komorebi\bin\komorebic-no-console.exe", "start"]),
     AppLaunch(
         [
-            r"C:\Users\zionpu\AppData\Local\Programs\AutoHotkey\v2\AutoHotkey64.exe",
-            r"C:\Users\zionpu\komorebi.ahk",
+            r"C:\Users\zionpu\apps\NeoCapsLockX\AutoHotkey\AutoHotkeyU64.exe",
+            r"C:\Users\zionpu\apps\NeoCapsLockX\CapsLockX.ahk",
         ]
     ),
     AppLaunch(r"C:\Program Files\YASB\yasb.exe"),
@@ -126,7 +126,6 @@ STARTUP_TASKS: List[TaskType] = [
     AppLaunch(
         r"C:\Program Files\Pantum\ptm6700\SCANNER\PushScan\ptm6700PushMonitor.exe"
     ),
-    AppLaunch(r"C:\Users\zionpu\Apps\CapsLockX\CapsLockX.exe"),
     AppLaunch([r"C:\Program Files (x86)\PasteIntoFile\PasteIntoFile.exe", "tray"]),
     AppLaunch(
         ["pixi", "run", "-m", r"C:\Users\zionpu\cut_in_xiaoai\pyproject.toml", "start"]
