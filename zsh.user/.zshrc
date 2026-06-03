@@ -195,7 +195,7 @@ zinit wait lucid is-snippet for \
   atload"ialias z='__zoxide_z'; ialias zi='__zoxide_zi'" \
   ~/.config/zsh/zoxide.zsh \
   ~/.config/zsh/commands.zsh \
-  ~/.config/zsh/powershell.zsh
+  ~/.config/zsh/toggle-pwsh-or-sudo.zsh
 
 # Plugins (注意：已将这里从 zvm_after_init 中抽出)
 zinit wait lucid for \
