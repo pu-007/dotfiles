@@ -1,0 +1,2 @@
+md2pdf-mermaid v1.4.3
+- md2pdf

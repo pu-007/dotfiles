@@ -143,6 +143,7 @@ python-pdf2image
 python-pickleshare
 python-pip
 python-pipx
+python-playwright
 python-pycryptodome
 python-pycryptodomex
 python-pylatexenc
