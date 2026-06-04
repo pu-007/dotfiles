@@ -403,22 +403,30 @@ fn pwsh_copy(wsl_src: &Path, win_dst: &Path, is_dir: bool, dry_run: bool) -> Res
             .replace('/', "\\")
     );
 
-    let copy_cmd = if is_dir {
-        format!("xcopy /E /I /Y \"{}\" \"{}\"", wsl_unc, win_str)
+    // Use PowerShell's native Copy-Item instead of cmd /c xcopy/copy
+    // because CMD does not support UNC paths (e.g. \\wsl$\...).
+    let ps_cmd = if is_dir {
+        format!(
+            "$ErrorActionPreference='Stop'; Copy-Item -LiteralPath '{}' -Destination '{}' -Recurse -Force",
+            wsl_unc, win_str
+        )
     } else {
-        format!("copy /Y \"{}\" \"{}\"", wsl_unc, win_str)
+        format!(
+            "$ErrorActionPreference='Stop'; New-Item -ItemType Directory -Force -Path (Split-Path '{}' -Parent) | Out-Null; Copy-Item -LiteralPath '{}' -Destination '{}' -Force",
+            win_str, wsl_unc, win_str
+        )
     };
 
     if dry_run {
         display::dim(&format!(
-            "    DRY-RUN  pwsh.exe -Command cmd /c {}",
-            copy_cmd
+            "    DRY-RUN  pwsh.exe -Command {}",
+            ps_cmd
         ));
         return Ok(true);
     }
 
     let output = Command::new("pwsh.exe")
-        .args(["-NoProfile", "-Command", &format!("cmd /c {}", copy_cmd)])
+        .args(["-NoProfile", "-Command", &ps_cmd])
         .output()?;
 
     if output.status.success() {
