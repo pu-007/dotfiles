@@ -117,7 +117,7 @@ alias -s json=v
 
 # {{{ Media & Audio Utilities
 alias xo="xdg-open"
-export ITTS_DIR="/mnt/c/Users/zion/Apps/index-tts-vllm"
+export ITTS_DIR="/mnt/c/Users/zionpu/Apps/index-tts-vllm"
 alias ittsrv="itts --repeat-text -v"
 alias ittsrsv="itts --repeat-text --shuffle-text -v"
 

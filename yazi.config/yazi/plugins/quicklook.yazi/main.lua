@@ -55,7 +55,7 @@ end)
 function M.entry()
 	local cfg = get_cfg()
 	local distro = cfg.wsl_distro or "Arch"
-	local quicklook_exe_wsl = cfg.quicklook_path or "/mnt/c/Users/zion/AppData/Local/Programs/QuickLook/QuickLook.exe"
+	local quicklook_exe_wsl = cfg.quicklook_path or "/mnt/c/Users/zionpu/AppData/Local/Programs/QuickLook/QuickLook.exe"
 	local file_path_wsl = get_current_abs_path()
 
 	-- 给文件路径加单引号，防止包含空格

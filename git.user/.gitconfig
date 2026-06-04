@@ -5,7 +5,7 @@
 	quotepath = false
 	pager = delta
 [safe]
-	directory = /mnt/c/Users/zion/AppData/Roaming/Rime
+	directory = /mnt/c/Users/zionpu/AppData/Roaming/Rime
 	directory = /mnt/e/Obsidian/
 	directory = /mnt/d/AppData/oxa-server
 [user]

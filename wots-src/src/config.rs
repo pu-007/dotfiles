@@ -29,10 +29,9 @@ fn is_short_name(name: &str) -> bool {
     }
 }
 
-pub static WIN_USERNAME: LazyLock<Option<String>> = LazyLock::new(|| {
-    if let Ok(u) = env::var("WIN_USER") {
-        return Some(u);
-    }
+/// Auto-detect the Windows username by scanning `/mnt/c/Users/`.
+/// This function is safe to call before `WIN_USERNAME` (the `LazyLock`) is evaluated.
+pub fn detect_win_username() -> Option<String> {
     let mnt_users = PathBuf::from("/mnt/c/Users");
     if !mnt_users.exists() {
         return env::var("USER").ok();
@@ -66,6 +65,14 @@ pub static WIN_USERNAME: LazyLock<Option<String>> = LazyLock::new(|| {
         return dirs.into_iter().next();
     }
     env::var("USER").ok()
+}
+
+pub static WIN_USERNAME: LazyLock<Option<String>> = LazyLock::new(|| {
+    // WIN_USER env var take priority (can be set via --win-user CLI or at runtime).
+    if let Ok(u) = env::var("WIN_USER") {
+        return Some(u);
+    }
+    detect_win_username()
 });
 
 pub static USER_TARGET: LazyLock<PathBuf> = LazyLock::new(|| HOME.clone());
