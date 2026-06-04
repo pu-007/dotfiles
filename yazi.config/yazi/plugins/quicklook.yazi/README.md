@@ -19,7 +19,7 @@ add follwing config in `init.lua`
 ```Lua
 require("quicklook"):setup({
   wsl_distro = "Arch",
-  quicklook_path = "/mnt/c/Users/zionpu/AppData/Local/Programs/QuickLook/QuickLook.exe",
+  quicklook_path = "/mnt/c/Users/zion/AppData/Local/Programs/QuickLook/QuickLook.exe",
   debug = false
 })
 ```
