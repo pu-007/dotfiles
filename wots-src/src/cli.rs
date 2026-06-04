@@ -12,6 +12,14 @@ use crate::types::PkgType;
     disable_colored_help = false,
 )]
 pub struct Cli {
+    #[arg(
+        short = 'u',
+        long = "win-user",
+        global = true,
+        help = "Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var."
+    )]
+    pub win_user: Option<String>,
+
     #[command(subcommand)]
     pub command: Command,
 }

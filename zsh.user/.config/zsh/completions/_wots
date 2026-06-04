@@ -15,6 +15,8 @@ _wots() {
 
     local context curcontext="$curcontext" state line
     _arguments "${_arguments_options[@]}" : \
+'-u+[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
+'--win-user=[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
 '-h[Print help]' \
 '--help[Print help]' \
 ":: :_wots_commands" \
@@ -32,6 +34,8 @@ _arguments "${_arguments_options[@]}" : \
 '--app-name=[Custom app name.]:APP_NAME:_default' \
 '-t+[Package type]:PKG_TYPE:(user config local root meta winuser winconfig winlocal winroaming)' \
 '--type=[Package type]:PKG_TYPE:(user config local root meta winuser winconfig winlocal winroaming)' \
+'-u+[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
+'--win-user=[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
 '--no-stow[Skip stow after creation.]' \
 '--no-sync[Skip Windows sync after creation.]' \
 '-n[Preview only.]' \
@@ -48,6 +52,8 @@ _arguments "${_arguments_options[@]}" : \
 '-t+[Only sync this type]:PKG_TYPE:(user config local root meta winuser winconfig winlocal winroaming)' \
 '--type=[Only sync this type]:PKG_TYPE:(user config local root meta winuser winconfig winlocal winroaming)' \
 '--app=[Sync only a specific package.]:APP:_default' \
+'-u+[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
+'--win-user=[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
 '-n[Preview only.]' \
 '--dry-run[Preview only.]' \
 '--bypass[Skip root confirmation.]' \
@@ -59,6 +65,8 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (stats)
 _arguments "${_arguments_options[@]}" : \
+'-u+[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
+'--win-user=[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
 '-j[JSON output.]' \
 '--json[JSON output.]' \
 '-h[Print help]' \
@@ -69,6 +77,8 @@ _arguments "${_arguments_options[@]}" : \
 _arguments "${_arguments_options[@]}" : \
 '-t+[Filter by type]:PKG_TYPE:(user config local root meta winuser winconfig winlocal winroaming)' \
 '--type=[Filter by type]:PKG_TYPE:(user config local root meta winuser winconfig winlocal winroaming)' \
+'-u+[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
+'--win-user=[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
 '-j[JSON output.]' \
 '--json[JSON output.]' \
 '-h[Print help]' \
@@ -80,6 +90,8 @@ _arguments "${_arguments_options[@]}" : \
 '-t+[Filter by type]:PKG_TYPE:(user config local root meta winuser winconfig winlocal winroaming)' \
 '--type=[Filter by type]:PKG_TYPE:(user config local root meta winuser winconfig winlocal winroaming)' \
 '--app=[Show diff for a specific package.]:APP:_default' \
+'-u+[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
+'--win-user=[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
 '-j[JSON output.]' \
 '--json[JSON output.]' \
 '-h[Print help]' \
@@ -88,6 +100,8 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (completion)
 _arguments "${_arguments_options[@]}" : \
+'-u+[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
+'--win-user=[Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var.]:WIN_USER:_default' \
 '-h[Print help]' \
 '--help[Print help]' \
 ':shell -- Target shell:(bash zsh fish)' \

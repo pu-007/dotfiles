@@ -24,6 +24,12 @@ fn main() {
 fn run() -> Result<()> {
     let cli = <wots::cli::Cli as clap::Parser>::parse();
 
+    // Apply --win-user override via WIN_USER env var before any LazyLock is evaluated.
+    // SAFETY: called at program start before any threads are spawned.
+    if let Some(ref user) = cli.win_user {
+        unsafe { std::env::set_var("WIN_USER", user) };
+    }
+
     match cli.command {
         wots::cli::Command::Create(args) => wots::create::run(args),
         wots::cli::Command::Sync(args) => wots::sync::run(args),
