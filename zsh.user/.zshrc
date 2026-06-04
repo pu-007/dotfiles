@@ -4,7 +4,7 @@
 # ================================================
 
 # {{{ 1. Environment Variables & Paths
-export win_home="/mnt/c/Users/zionpu"
+export win_home="/mnt/c/Users/zion"
 export GO111MODULE=on
 export VCPKG_ROOT="$HOME/.local/share/vcpkg"
 export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
@@ -188,7 +188,7 @@ zstyle ':fzf-tab:complete:man:*' fzf-preview 'man "$word" | bat -plman --color=a
 zinit wait'!0' lucid is-snippet nocd for \
   ~/.config/zsh/starship.zsh \
   ~/.config/zsh/fzf.zsh \
-  atinit'export IM_SELECT_EXE_PATH="/mnt/c/Users/zionpu/im-select.exe"' \
+  atinit'export IM_SELECT_EXE_PATH="/mnt/c/Users/zion/im-select.exe"' \
   https://raw.githubusercontent.com/pu-007/im-select-ahk.nvim/refs/heads/main/zsh/im-select-vimmode.zsh
 
 zinit wait lucid is-snippet for \

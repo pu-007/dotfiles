@@ -12,7 +12,7 @@ Windows Registry Editor Version 5.00
 "Position"="Top"
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\ZoxideAdd\command]
-@="wscript.exe //b \"C:\\Users\\zionpu\\zoxide-add.vbs\" \"%V\""
+@="wscript.exe //b \"C:\\Users\\zion\\zoxide-add.vbs\" \"%V\""
 
 ; 2. 右键点击文件夹图标菜单
 [HKEY_CLASSES_ROOT\Directory\shell\ZoxideAdd]
@@ -20,7 +20,7 @@ Windows Registry Editor Version 5.00
 "Icon"="zoxide.exe,0"
 
 [HKEY_CLASSES_ROOT\Directory\shell\ZoxideAdd\command]
-@="wscript.exe //b \"C:\\Users\\zionpu\\zoxide-add.vbs\" \"%V\""
+@="wscript.exe //b \"C:\\Users\\zion\\zoxide-add.vbs\" \"%V\""
 
 ; 3. 库文件夹空白处右键菜单
 [HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\ZoxideAdd]
@@ -29,4 +29,4 @@ Windows Registry Editor Version 5.00
 "Position"="Top"
 
 [HKEY_CLASSES_ROOT\LibraryFolder\Background\shell\ZoxideAdd\command]
-@="wscript.exe //b \"C:\\Users\\zionpu\\zoxide-add.vbs\" \"%V\""
+@="wscript.exe //b \"C:\\Users\\zion\\zoxide-add.vbs\" \"%V\""

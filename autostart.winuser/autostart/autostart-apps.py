@@ -66,13 +66,13 @@ STARTUP_TASKS: List[TaskType] = [
         use_shell=True,
     ),
     AppLaunch(
-        cmd=r"C:\Users\zionpu\Apps\InputTip\InputTip.bat",
-        cwd=r"C:\Users\zionpu\Apps\InputTip",
+        cmd=r"C:\Users\zion\Apps\InputTip\InputTip.bat",
+        cwd=r"C:\Users\zion\Apps\InputTip",
         use_shell=True,
     ),
     # ---------------- 带随附动作的软件 (启动后自动关闭窗口) ----------------
     AppLaunch(
-        cmd=r"C:\Users\zionpu\AppData\Local\Doubao\Application\Doubao.exe",
+        cmd=r"C:\Users\zion\AppData\Local\Doubao\Application\Doubao.exe",
         after_launch_close="豆包",
         wait_window_timeout=15.0,
     ),
@@ -100,35 +100,35 @@ STARTUP_TASKS: List[TaskType] = [
     WindowAction(title="archlinux", action="close", timeout=15.0),
     # ---------------- 普通后台/命令行软件 ----------------
     AppLaunch(
-        cmd=r"C:\Users\zionpu\AppData\Local\UniGetUI\Chocolatey\lib\eartrumpet\tools\EarTrumpet\EarTrumpet.exe"
+        cmd=r"C:\Users\zion\AppData\Local\UniGetUI\Chocolatey\lib\eartrumpet\tools\EarTrumpet\EarTrumpet.exe"
     ),
     AppLaunch(
-        [r"C:\Users\zionpu\AppData\Local\Programs\QuickLook\QuickLook.exe", "-autorun"]
+        [r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe", "-autorun"]
     ),
     # NOTE: Everything need to be added into Windhawk exception list
     AppLaunch([r"C:\Program Files\Everything\Everything.exe", "-startup"]),
-    AppLaunch(r"C:\Users\zionpu\AppData\Local\TieZ\tiez-app.exe"),
+    AppLaunch(r"C:\Users\zion\AppData\Local\TieZ\tiez-app.exe"),
     AppLaunch(r"C:\Program Files\flomo\flomo.exe"),
     AppLaunch(["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"]),
     AppLaunch([r"C:\Program Files\komorebi\bin\komorebic-no-console.exe", "start"]),
     AppLaunch(
         [
-            r"C:\Users\zionpu\apps\NeoCapsLockX\AutoHotkey\AutoHotkeyU64.exe",
-            r"C:\Users\zionpu\apps\NeoCapsLockX\CapsLockX.ahk",
+            r"C:\Users\zion\apps\NeoCapsLockX\AutoHotkey\AutoHotkeyU64.exe",
+            r"C:\Users\zion\apps\NeoCapsLockX\CapsLockX.ahk",
         ]
     ),
     AppLaunch(r"C:\Program Files\YASB\yasb.exe"),
-    AppLaunch(r"C:\Users\zionpu\AppData\Local\FlowLauncher\Flow.Launcher.exe"),
+    AppLaunch(r"C:\Users\zion\AppData\Local\FlowLauncher\Flow.Launcher.exe"),
     AppLaunch(r"C:\Program Files\Mem Reduct\memreduct.exe"),
-    AppLaunch(r"C:\Users\zionpu\AppData\Roaming\AltSnap\AltSnap.exe"),
-    AppLaunch(r"C:\Users\zionpu\AppData\Local\Programs\PixPin\PixPin.exe"),
+    AppLaunch(r"C:\Users\zion\AppData\Roaming\AltSnap\AltSnap.exe"),
+    AppLaunch(r"C:\Users\zion\AppData\Local\Programs\PixPin\PixPin.exe"),
     AppLaunch([r"C:\Program Files (x86)\Stardock\Fences\Fences.exe", "/startup"]),
     AppLaunch(
         r"C:\Program Files\Pantum\ptm6700\SCANNER\PushScan\ptm6700PushMonitor.exe"
     ),
     AppLaunch([r"C:\Program Files (x86)\PasteIntoFile\PasteIntoFile.exe", "tray"]),
     AppLaunch(
-        ["pixi", "run", "-m", r"C:\Users\zionpu\cut_in_xiaoai\pyproject.toml", "start"]
+        ["pixi", "run", "-m", r"C:\Users\zion\cut_in_xiaoai\pyproject.toml", "start"]
     ),
 ]
 
