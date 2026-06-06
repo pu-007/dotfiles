@@ -54,6 +54,10 @@ TaskType = Union[AppLaunch, WindowAction, WechatAutoLogin]
 # 【核心优势】：以后无论是加软件、删软件、加自动关闭窗口，全部只在这里修改！
 
 STARTUP_TASKS: List[TaskType] = [
+    # ---------------- 自动化 Hook 任务 ----------------
+    # WechatAutoLogin(),
+    # ---------------- 独立窗口管理任务 ----------------
+    WindowAction(title="archlinux", action="close", timeout=15.0),
     # ---------------- 娇贵 GUI 软件 (Shell启动) ----------------
     AppLaunch(
         cmd=r"C:\Program Files\Quicker\Quicker.exe",
@@ -61,8 +65,8 @@ STARTUP_TASKS: List[TaskType] = [
         use_shell=True,
     ),
     AppLaunch(
-        cmd=r"C:\Program Files\Controller Companion\ControllerCompanion.exe",
-        cwd=r"C:\Program Files\Controller Companion",
+        cmd=r"C:\Users\zion\Apps\Controller Companion\ControllerCompanion.exe",
+        cwd=r"C:\Users\zion\Apps\Controller Companion",
         use_shell=True,
     ),
     AppLaunch(
@@ -87,20 +91,16 @@ STARTUP_TASKS: List[TaskType] = [
         wait_window_timeout=15.0,
     ),
     AppLaunch(
-        cmd=r"C:\Program Files\LocalSend\localsend_app.exe",
+        cmd=r"C:\Users\zion\AppData\Local\Programs\LocalSend\localsend_app.exe",
         after_launch_close="LocalSend",
         wait_window_timeout=15.0,
     ),
     AppLaunch(
         cmd=[r"C:\Program Files\MI\PcContinuity\Launch.exe", "--AutoRun=1"],
     ),
-    # ---------------- 自动化 Hook 任务 ----------------
-    WechatAutoLogin(),
-    # ---------------- 独立窗口管理任务 ----------------
-    WindowAction(title="archlinux", action="close", timeout=15.0),
     # ---------------- 普通后台/命令行软件 ----------------
     AppLaunch(
-        cmd=r"C:\Users\zion\AppData\Local\UniGetUI\Chocolatey\lib\eartrumpet\tools\EarTrumpet\EarTrumpet.exe"
+        cmd=r"C:\ProgramData\chocolatey\lib\eartrumpet\tools\EarTrumpet\EarTrumpet.exe"
     ),
     AppLaunch(
         [r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe", "-autorun"]
@@ -109,7 +109,7 @@ STARTUP_TASKS: List[TaskType] = [
     AppLaunch([r"C:\Program Files\Everything\Everything.exe", "-startup"]),
     AppLaunch(r"C:\Users\zion\AppData\Local\TieZ\tiez-app.exe"),
     AppLaunch(r"C:\Program Files\flomo\flomo.exe"),
-    AppLaunch(["wt.exe", "-w", "_quake", "-p", "special_quake_window_title"]),
+    AppLaunch(["wt.exe", "-w", "_quake", "-p", "Arch_quake"]),
     AppLaunch([r"C:\Program Files\komorebi\bin\komorebic-no-console.exe", "start"]),
     AppLaunch(
         [
@@ -119,17 +119,16 @@ STARTUP_TASKS: List[TaskType] = [
     ),
     AppLaunch(r"C:\Program Files\YASB\yasb.exe"),
     AppLaunch(r"C:\Users\zion\AppData\Local\FlowLauncher\Flow.Launcher.exe"),
-    AppLaunch(r"C:\Program Files\Mem Reduct\memreduct.exe"),
+    AppLaunch(r"C:\Users\zion\scoop\apps\memreduct\current\memreduct.exe"),
     AppLaunch(r"C:\Users\zion\AppData\Roaming\AltSnap\AltSnap.exe"),
     AppLaunch(r"C:\Users\zion\AppData\Local\Programs\PixPin\PixPin.exe"),
     AppLaunch([r"C:\Program Files (x86)\Stardock\Fences\Fences.exe", "/startup"]),
-    AppLaunch(
-        r"C:\Program Files\Pantum\ptm6700\SCANNER\PushScan\ptm6700PushMonitor.exe"
-    ),
     AppLaunch([r"C:\Program Files (x86)\PasteIntoFile\PasteIntoFile.exe", "tray"]),
+    AppLaunch(r"C:\Program Files\Docker\Docker\Docker Desktop.exe"),
     AppLaunch(
-        ["pixi", "run", "-m", r"C:\Users\zion\cut_in_xiaoai\pyproject.toml", "start"]
+        r"C:\Windows\System32\DriverStore\FileRepository\realtekservice.inf_amd64_26f0df01c9da165d\RtkAudUService64.exe"
     ),
+    AppLaunch(r"C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe"),
 ]
 
 
