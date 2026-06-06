@@ -1,14 +1,14 @@
 /usr/lib
-├── @google/gemini-cli@0.44.1
+├── @google/gemini-cli@0.45.1
 ├── @mermaid-js/mermaid-cli@11.15.0
-├── aicommit2@2.5.21
+├── aicommit2@2.5.22
 ├── markdownlint-cli2@0.22.0
-├── node-gyp@12.3.0
-├── nopt@10.0.0
-├── npm@11.14.1
+├── node-gyp@12.4.0
+├── nopt@10.0.1
+├── npm@11.16.0
 ├── pnpm@11.3.0
 ├── prettier-plugin-latex@2.0.1
 ├── prettier@3.8.1
 ├── semver@7.8.1
-└── vite@8.0.14
+└── vite@8.0.16
 

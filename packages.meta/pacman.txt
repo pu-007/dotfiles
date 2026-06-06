@@ -143,7 +143,6 @@ python-pdf2image
 python-pickleshare
 python-pip
 python-pipx
-python-playwright
 python-pycryptodome
 python-pycryptodomex
 python-pylatexenc
@@ -240,6 +239,7 @@ weston
 wget
 win32yank-bin
 wlroots0.18
+wslu
 xdg-desktop-portal
 xdotool
 xf86-video-vesa
