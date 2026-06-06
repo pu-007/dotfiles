@@ -14,7 +14,7 @@ bars:
       position: "top"
       center: true
     blur_effect:
-      enabled: false # Blur effect will be applied to the bar
+      enabled: true # Blur effect will be applied to the bar
       acrylic: false # Acrylic effect will be applied to the bar
       dark_mode: true # Dark mode will also add more shadow to the bar
       round_corners: false # Default radius from OS
@@ -24,23 +24,22 @@ bars:
       windows_app_bar: true
     dimensions:
       width: "100%"
-      height: 40
+      height: 30
     padding:
       top: 0
       left: 0
       bottom: 0
       right: 0
     widgets:
-      left: ["memory", "cpu", "gpu", "komorebi_workspaces"]
+      left: ["traffic", "memory", "cpu", "gpu"]
       center: ["komorebi_stack"]
       right:
         [
           "media",
-          "microphone",
           "github",
           "obs",
           "komorebi_active_layout",
-          "traffic",
+          "komorebi_workspaces",
         ]
 widgets:
   komorebi_stack:
@@ -96,25 +95,11 @@ widgets:
         paused: "\ueba7"
       hide_when_not_recording: true
       blinking_icon: true
-  microphone:
-    type: "yasb.microphone.MicrophoneWidget"
-    options:
-      label: "<span>{icon}</span>"
-      label_alt: "<span>{icon}</span> {level}%"
-      icons:
-        normal: "\uf130"
-        muted: "\uf131"
-      callbacks:
-        on_left: "toggle_mute"
-        on_middle: "toggle_label"
-        on_right: "exec cmd.exe /c start ms-settings:sound"
   github:
     type: "yasb.github.GithubWidget"
     options:
       label: "<span>\ueba1</span>"
       label_alt: "Notifications {data}" # {data} return number of unread notification
-      # set in env variable YASB_GITHUB_TOKEN
-      token: env
       max_notification: 20 # Max number of notification displaying in menu max: 50
       only_unread: false # Show only unread or all notifications;
       max_field_size: 54 # Max characters in title before truncation.
@@ -240,41 +225,12 @@ widgets:
         on_left: "next_layout"
         on_middle: "toggle_monocle"
         on_right: "prev_layout"
-  volume:
-    type: "yasb.volume.VolumeWidget"
-    options:
-      label: "<span>{icon}</span> {level}"
-      label_alt: "{volume}"
-      volume_icons:
-        - "\ueee8" # Icon for muted
-        - "\uf026" # Icon for 0-10% volume
-        - "\uf027" # Icon for 11-30% volume
-        - "\uf027" # Icon for 31-60% volume
-        - "\uf028" # Icon for 61-100% volume
-      callbacks:
-        on_right: "exec cmd.exe /c start ms-settings:sound"
-  power_menu:
-    type: "yasb.power_menu.PowerMenuWidget"
-    options:
-      label: "\uf011"
-      uptime: True
-      blur: False
-      blur_background: True
-      animation_duration: 250 # Milisecond
-      button_row: 3 # Number of buttons in row, min 1 max 5
-      buttons:
-        lock: ["\uea75", "Lock"]
-        signout: ["\udb80\udf43", "Sign out"]
-        shutdown: ["\uf011", "Shut Down"]
-        restart: ["\uead2", "Restart"]
-        hibernate: ["\uf28e", "Hibernate"]
-        cancel: ["\udb81\udf3a", "Cancel"]
   traffic:
     type: "yasb.traffic.TrafficWidget"
     options:
-      label: "\ueab4{download_speed} <br> \ueab7{upload_speed}"
-      label_alt: "Download {download_speed} | Upload {upload_speed}"
-      update_interval: 1000
+      label: "\ueab4{download_speed} \ueab7{upload_speed}"
+      speed_unit: "bytes"
+      hide_decimal: true
       menu:
         blur: true
         round_corners: true
@@ -286,12 +242,6 @@ widgets:
         offset_left: 0
       callbacks:
         on_left: "toggle_menu"
-        on_right: "toggle_label"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
   cpu:
     type: "yasb.cpu.CpuWidget"
     options:

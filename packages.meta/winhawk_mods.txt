@@ -28,3 +28,8 @@ Windows 11 Start Menu Styler
 Windows 11 Taskbar Styler
 任务栏 Dock 动画
 用 ctrl+n 创建新文件
+Explorer Nav DragOver Fix
+Scrool Window Opacity
+Taskbar minimize/restore on scroll
+Disable Office Hotkeys
+
