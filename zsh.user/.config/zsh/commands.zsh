@@ -60,6 +60,9 @@ alias padmode="scrcpy --new-display=1920x1080 --video-codec=h265 --always-on-top
 ialias winget="winget.exe"
 alias ci="win32yank.exe -i"
 alias co="win32yank.exe -o"
+function ciwd {
+  wslpath -w `pwd` | win32yank.exe -i
+}
 # }}}
 
 # {{{ System & General Utilities

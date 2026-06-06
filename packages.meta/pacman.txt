@@ -60,10 +60,12 @@ glu
 gnome-keyring
 go
 gtk-engine-murrine
+gtk4
 helix
 hspell
 hunspell
 hyperfine
+icu74
 icu76
 imagemagick
 img2pdf
@@ -81,6 +83,7 @@ libreoffice-fresh
 libva-utils
 libvoikko
 libxcrypt-compat
+libxml2-legacy
 lldb
 lua
 lua-sec
@@ -143,6 +146,7 @@ python-pdf2image
 python-pickleshare
 python-pip
 python-pipx
+python-playwright
 python-pycryptodome
 python-pycryptodomex
 python-pylatexenc
