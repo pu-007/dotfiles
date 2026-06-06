@@ -128,7 +128,7 @@ STARTUP_TASKS: List[TaskType] = [
     AppLaunch(
         r"C:\Windows\System32\DriverStore\FileRepository\realtekservice.inf_amd64_26f0df01c9da165d\RtkAudUService64.exe"
     ),
-    AppLaunch(r"C:\Users\zion\AppData\Local\Programs\Ollama\ollama app.exe"),
+    AppLaunch([r"C:\Users\zion\AppData\Local\Programs\Ollama\ollama.exe", "serve"]),
 ]
 
 

@@ -65,6 +65,7 @@ widgets:
       label: "<span>\ue6ae</span> {info[utilization]}%"
       label_alt: "<span>\ue6ae</span> {info[temp]}°C | {info[mem_used]} / {info[mem_total]}"
       update_interval: 2000
+      gpu_index: 1
       gpu_thresholds:
         low: 25
         medium: 50
