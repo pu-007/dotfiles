@@ -1,7 +1,7 @@
 /usr/lib
-├── @google/gemini-cli@0.45.1
+├── @google/gemini-cli@0.45.2
 ├── @mermaid-js/mermaid-cli@11.15.0
-├── aicommit2@2.5.22
+├── aicommit2@2.6.0
 ├── markdownlint-cli2@0.22.0
 ├── node-gyp@12.4.0
 ├── nopt@10.0.1
