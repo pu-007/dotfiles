@@ -91,6 +91,9 @@ pub struct SyncArgs {
     #[arg(long = "bypass", help = "Skip root confirmation.")]
     pub bypass: bool,
 
+    #[arg(short = 'y', long = "yes", help = "Skip confirmation prompts.")]
+    pub yes: bool,
+
     #[arg(short = 'q', long = "quiet", help = "Minimal output.")]
     pub quiet: bool,
 }

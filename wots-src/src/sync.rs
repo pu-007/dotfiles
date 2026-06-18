@@ -24,8 +24,9 @@ pub fn run(args: SyncArgs) -> Result<()> {
         SYNCABLE_TYPES.to_vec()
     };
 
-    let has_root = types_to_sync.contains(&PkgType::Root);
-    if has_root && !args.bypass && !args.dry_run {
+    let root_pkgs = packages.get(&PkgType::Root).cloned().unwrap_or_default();
+    let has_actual_root = types_to_sync.contains(&PkgType::Root) && !root_pkgs.is_empty();
+    if has_actual_root && !args.yes && !args.bypass && !args.dry_run {
         display::info("\n⚠ Root sync requires sudo and will modify system files.");
         if !display::prompt::confirm("  Continue?", false) {
             display::info("Cancelled.");

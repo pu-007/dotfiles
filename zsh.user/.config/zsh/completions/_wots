@@ -57,6 +57,8 @@ _arguments "${_arguments_options[@]}" : \
 '-n[Preview only.]' \
 '--dry-run[Preview only.]' \
 '--bypass[Skip root confirmation.]' \
+'-y[Skip confirmation prompts.]' \
+'--yes[Skip confirmation prompts.]' \
 '-q[Minimal output.]' \
 '--quiet[Minimal output.]' \
 '-h[Print help]' \
