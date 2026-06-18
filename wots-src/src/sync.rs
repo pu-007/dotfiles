@@ -13,13 +13,25 @@ use crate::config::{DOTFILES_DIR, MNT_C, SYNC_MAX_CONCURRENT, WSL_DISTRO_NAME, W
 use crate::discover::{build_win_path, find_packages, list_syncable_files, pkg_basename};
 use crate::display;
 use crate::status;
-use crate::types::{type_label, PkgType, SYNCABLE_TYPES};
+use crate::types::{parse_app_arg, type_label, PkgType, SYNCABLE_TYPES};
 use crate::util::{has_pwsh, has_robocopy, has_stow, is_excluded, is_wsl};
 
 pub fn run(args: SyncArgs) -> Result<()> {
     let packages = find_packages(&DOTFILES_DIR);
+
+    let (detected_type, effective_app): (Option<PkgType>, Option<String>) =
+        match &args.app {
+            Some(raw) => {
+                let (dt, name) = parse_app_arg(raw);
+                (dt, Some(name))
+            }
+            None => (None, None),
+        };
+
     let types_to_sync: Vec<PkgType> = if let Some(pt) = &args.pkg_type {
         vec![*pt]
+    } else if let Some(pt) = detected_type {
+        vec![pt]
     } else {
         SYNCABLE_TYPES.to_vec()
     };
@@ -36,7 +48,7 @@ pub fn run(args: SyncArgs) -> Result<()> {
 
     for pt in &types_to_sync {
         let pkgs = packages.get(pt).cloned().unwrap_or_default();
-        let pkgs: Vec<PathBuf> = if let Some(ref app) = args.app {
+        let pkgs: Vec<PathBuf> = if let Some(ref app) = effective_app {
             pkgs
                 .into_iter()
                 .filter(|p| pkg_basename(p) == *app)

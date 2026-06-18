@@ -8,7 +8,7 @@ use crate::config::DOTFILES_DIR;
 use crate::discover;
 use crate::display;
 use crate::status;
-use crate::types::{self, PkgType, SYNCABLE_TYPES};
+use crate::types::{self, parse_app_arg, PkgType, SYNCABLE_TYPES};
 use crate::util;
 
 pub fn cmd_stats(args: &StatsArgs) -> Result<()> {
@@ -192,8 +192,20 @@ pub fn cmd_diff(args: &DiffArgs) -> Result<()> {
     }
 
     let packages = discover::find_packages(&DOTFILES_DIR);
+
+    let (detected_type, effective_app): (Option<PkgType>, Option<String>) =
+        match &args.app {
+            Some(raw) => {
+                let (dt, name) = parse_app_arg(raw);
+                (dt, Some(name))
+            }
+            None => (None, None),
+        };
+
     let types_to_show: Vec<PkgType> = if let Some(pt) = &args.pkg_type {
         vec![*pt]
+    } else if let Some(pt) = detected_type {
+        vec![pt]
     } else {
         SYNCABLE_TYPES.to_vec()
     };
@@ -207,7 +219,7 @@ pub fn cmd_diff(args: &DiffArgs) -> Result<()> {
         };
 
         for pkg in pkgs {
-            if let Some(ref app) = args.app
+            if let Some(ref app) = effective_app
                 && discover::pkg_basename(pkg) != *app {
                     continue;
                 }

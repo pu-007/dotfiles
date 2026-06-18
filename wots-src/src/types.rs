@@ -118,6 +118,16 @@ pub fn type_from_dir_name(name: &str) -> Option<PkgType> {
     None
 }
 
+pub fn parse_app_arg(raw: &str) -> (Option<PkgType>, String) {
+    if let Some(pt) = type_from_dir_name(raw) {
+        let suffix = pt.suffix();
+        if raw.len() > suffix.len() {
+            return (Some(pt), raw[..raw.len() - suffix.len()].to_string());
+        }
+    }
+    (None, raw.to_string())
+}
+
 pub fn type_label(pt: PkgType) -> String {
     let name = format!("C:\\Users\\{}", WIN_USERNAME.as_deref().unwrap_or("user"));
     match pt {
@@ -361,5 +371,25 @@ mod tests {
         for pt in ALL_TYPES {
             assert_eq!(pt.value().parse::<PkgType>().unwrap(), pt);
         }
+    }
+
+    #[test]
+    fn parse_app_arg_with_suffix() {
+        assert_eq!(parse_app_arg("git.config"), (Some(PkgType::Config), "git".into()));
+        assert_eq!(parse_app_arg("zsh.user"), (Some(PkgType::User), "zsh".into()));
+        assert_eq!(parse_app_arg("nvim.local"), (Some(PkgType::Local), "nvim".into()));
+        assert_eq!(parse_app_arg("wsl.root"), (Some(PkgType::Root), "wsl".into()));
+        assert_eq!(parse_app_arg("pkg.meta"), (Some(PkgType::Meta), "pkg".into()));
+        assert_eq!(parse_app_arg("pwsh.winuser"), (Some(PkgType::WinUser), "pwsh".into()));
+        assert_eq!(parse_app_arg("nvim.winconfig"), (Some(PkgType::WinConfig), "nvim".into()));
+        assert_eq!(parse_app_arg("app.winlocal"), (Some(PkgType::WinLocal), "app".into()));
+        assert_eq!(parse_app_arg("code.winroaming"), (Some(PkgType::WinRoaming), "code".into()));
+    }
+
+    #[test]
+    fn parse_app_arg_without_suffix() {
+        assert_eq!(parse_app_arg("zsh"), (None, "zsh".into()));
+        assert_eq!(parse_app_arg("git"), (None, "git".into()));
+        assert_eq!(parse_app_arg(""), (None, "".into()));
     }
 }

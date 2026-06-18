@@ -254,46 +254,67 @@ _install_completion shell:
 create +args:
     @{{ wots }} create --win-user {{ WIN_USER }} {{ args }}
 
+# [同步] 同步所有包 (--yes 跳过确认)
 [group('2. 配置管理 (Wots CLI)')]
 sync *args:
-    @{{ wots }} sync --win-user {{ WIN_USER }} {{ args }}
+    @{{ wots }} sync --win-user {{ WIN_USER }} --yes {{ args }}
 
+# [同步] 按类型同步 (user/config/local/root/winuser/winconfig/winlocal/winroaming)
 [group('2. 配置管理 (Wots CLI)')]
 sync-type type *args:
-    @{{ wots }} sync --win-user {{ WIN_USER }} --type {{ type }} {{ args }}
+    @{{ wots }} sync --win-user {{ WIN_USER }} --type {{ type }} --yes {{ args }}
 
+# [同步] 按包名同步 (支持后缀: git.config → 自动识别 Config, git → 匹配所有类型)
 [group('2. 配置管理 (Wots CLI)')]
 sync-app app *args:
-    @{{ wots }} sync --win-user {{ WIN_USER }} --app {{ app }} {{ args }}
+    @{{ wots }} sync --win-user {{ WIN_USER }} --app {{ app }} --yes {{ args }}
 
+# [同步] 干运行预览 (不实际修改文件)
 [group('2. 配置管理 (Wots CLI)')]
 sync-dry *args:
     @{{ wots }} sync --win-user {{ WIN_USER }} --dry-run {{ args }}
 
+# [同步] 同步 root 包 (sudo, 跳过确认)
 [group('2. 配置管理 (Wots CLI)')]
 sync-root *args:
     @sudo {{ wots }} sync --win-user {{ WIN_USER }} --type root --bypass {{ args }}
 
+# [统计] JSON 格式: just stats --json 或 just stats-json
 [group('2. 配置管理 (Wots CLI)')]
 stats *args:
-    @{{ wots }} stats {{ args }}
+    @{{ wots }} stats --win-user {{ WIN_USER }} {{ args }}
 
+# [统计] JSON 格式统计
+[group('2. 配置管理 (Wots CLI)')]
+stats-json:
+    @{{ wots }} stats --win-user {{ WIN_USER }} --json
+
+# [列表] 列出所有包 (按类型筛选: just list-type <type>)
 [group('2. 配置管理 (Wots CLI)')]
 list *args:
-    @{{ wots }} list {{ args }}
+    @{{ wots }} list --win-user {{ WIN_USER }} {{ args }}
 
+# [列表] JSON 格式: just list-json
+[group('2. 配置管理 (Wots CLI)')]
+list-json:
+    @{{ wots }} list --win-user {{ WIN_USER }} --json
+
+# [列表] 按类型列出包
 [group('2. 配置管理 (Wots CLI)')]
 list-type type *args:
-    @{{ wots }} list --type {{ type }} {{ args }}
+    @{{ wots }} list --win-user {{ WIN_USER }} --type {{ type }} {{ args }}
 
+# [差异] 显示所有不同步的文件
 [group('2. 配置管理 (Wots CLI)')]
 diff *args:
-    @{{ wots }} diff {{ args }}
+    @{{ wots }} diff --win-user {{ WIN_USER }} {{ args }}
 
+# [差异] 按类型查看差异
 [group('2. 配置管理 (Wots CLI)')]
 diff-type type *args:
-    @{{ wots }} diff --type {{ type }} {{ args }}
+    @{{ wots }} diff --win-user {{ WIN_USER }} --type {{ type }} {{ args }}
 
+# [差异] 按包名查看差异 (支持后缀: git.config → 自动识别类型)
 [group('2. 配置管理 (Wots CLI)')]
 diff-app app *args:
-    @{{ wots }} diff --app {{ app }} {{ args }}
+    @{{ wots }} diff --win-user {{ WIN_USER }} --app {{ app }} {{ args }}

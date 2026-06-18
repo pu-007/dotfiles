@@ -107,31 +107,31 @@ just wots --help
 
 ### 同步操作 / Sync Operations
 
-| 命令 / Command          | 等价于 / Equivalent                   | 说明 / Description                   |
-| ----------------------- | ------------------------------------- | ------------------------------------ |
-| `just sync`             | `wots sync`                           | 同步所有包到目标                     |
-| `just sync-type <type>` | `wots sync --type <type>`             | 按类型同步；`root` 类型自动加 `sudo` |
-| `just sync-app <app>`   | `wots sync --app <app>`               | 按包名同步                           |
-| `just sync-dry`         | `wots sync --dry-run`                 | 预览同步（干运行）                   |
-| `just sync-root`        | `sudo wots sync --type root --bypass` | 同步 root 包（跳过确认）             |
+| 命令 / Command          | 等价于 / Equivalent                    | 说明 / Description                       |
+| ----------------------- | -------------------------------------- | ---------------------------------------- |
+| `just sync`             | `wots sync --win-user zion --yes`      | 同步所有包（`--yes` 跳过确认）           |
+| `just sync-type <type>` | `wots sync --type <type> --yes`        | 按类型同步；`root` 类型需 `just sync-root` |
+| `just sync-app <app>`   | `wots sync --app <app> --yes`          | 按包名同步，支持后缀自动识别类型           |
+| `just sync-dry`         | `wots sync --dry-run`                  | 预览同步（干运行）                       |
+| `just sync-root`        | `sudo wots sync --type root --bypass`  | 同步 root 包（跳过确认）                 |
 
 ### 信息查询 / Information
 
-| 命令 / Command          | 等价于 / Equivalent       | 说明 / Description |
-| ----------------------- | ------------------------- | ------------------ |
-| `just stats`            | `wots stats`              | 仓库统计           |
-| `just stats-json`       | `wots stats --json`       | JSON 格式统计      |
-| `just list`             | `wots list`               | 列出所有包         |
-| `just list-type <type>` | `wots list --type <type>` | 按类型列出包       |
-| `just list-json`        | `wots list --json`        | JSON 格式列出包    |
+| 命令 / Command          | 说明 / Description |
+| ----------------------- | ------------------ |
+| `just stats`            | 仓库统计           |
+| `just stats-json`       | JSON 格式统计      |
+| `just list`             | 列出所有包         |
+| `just list-type <type>` | 按类型列出包       |
+| `just list-json`        | JSON 格式列出包    |
 
 ### 差异对比 / Diff
 
-| 命令 / Command          | 等价于 / Equivalent       | 说明 / Description |
-| ----------------------- | ------------------------- | ------------------ |
-| `just diff`             | `wots diff`               | 显示所有差异       |
-| `just diff-type <type>` | `wots diff --type <type>` | 按类型查看差异     |
-| `just diff-app <app>`   | `wots diff --app <app>`   | 按包名查看差异     |
+| 命令 / Command          | 说明 / Description               |
+| ----------------------- | -------------------------------- |
+| `just diff`             | 显示所有差异                     |
+| `just diff-type <type>` | 按类型查看差异                   |
+| `just diff-app <app>`   | 按包名查看差异（支持后缀自动识别） |
 
 ### 创建包 / Create
 
@@ -230,23 +230,27 @@ just create /etc/wsl.conf -t root -a wsl
 ### `wots sync` — 同步到目标 / Sync to Targets
 
 ```bash
-just sync                # 同步所有 (需 --win-user)
-just sync-type <type>    # 按类型同步
-just sync-app <app>      # 按包名同步
-just sync-dry            # 干运行预览
-just sync-root           # 同步 root 包（sudo）
+just sync                      # 同步所有 (需 --win-user)
+just sync-type <type>          # 按类型同步
+just sync-app <app>            # 按包名同步（支持后缀自动识别类型）
+just sync-dry                  # 干运行预览
+just sync-root                 # 同步 root 包（sudo）
 
 # 直接使用 wots
-wots sync --win-user zion              # 同步所有
-wots sync --win-user zion --type winuser  # 按类型
+wots sync --win-user zion                    # 同步所有
+wots sync --win-user zion --type winuser     # 按类型
+wots sync --win-user zion --app git.config   # 自动识别: type=Config, app=git
+wots sync --win-user zion --app pwsh.winuser # 自动识别: type=WinUser, app=pwsh
+wots sync --win-user zion --app zsh          # 无后缀: 按 app 名匹配所有类型
 ```
 
 | 选项 / Option       | 说明 / Description |
 | ------------------- | ------------------ |
 | `-u, --win-user`    | Windows 用户名 (必须 / required) |
 | `-t, --type <TYPE>` | 仅同步该类型的包   |
-| `--app <NAME>`      | 仅同步指定包       |
+| `--app <NAME>`      | 仅同步指定包。支持 `<name>.<suffix>` 格式自动识别类型 |
 | `-n, --dry-run`     | 仅预览             |
+| `-y, --yes`         | 跳过确认提示       |
 | `--bypass`          | 跳过 root 确认提示 |
 | `-q, --quiet`       | 减少输出           |
 
@@ -278,11 +282,12 @@ just list-json          # JSON 格式
 ```bash
 just diff               # 所有差异
 just diff-type <type>   # 按类型
-just diff-app <app>     # 按包名
+just diff-app <app>     # 按包名（支持后缀自动识别类型）
 
 # 直接使用 wots
 wots diff --win-user zion
-wots diff --win-user zion --app git
+wots diff --win-user zion --app git.config   # 自动识别类型
+wots diff --win-user zion --app git          # 无后缀匹配
 ```
 
 显示仓库与目标之间不同步的文件：Linux 包列出未建立链接的文件，Windows 包显示 mtime/size/blake3 不一致或目标缺失的文件。
