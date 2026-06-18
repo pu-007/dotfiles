@@ -195,6 +195,7 @@ just create [OPTIONS] [SOURCES]...
 | 选项 / Option           | 说明 / Description                                                                                        |
 | ----------------------- | --------------------------------------------------------------------------------------------------------- |
 | `SOURCES`               | 源文件/目录（支持 `~` 展开）                                                                              |
+| `-u, --win-user <USER>` | Windows 用户名（创建 Windows 类型包时）                                                                   |
 | `-a, --app-name <NAME>` | 自定义包名                                                                                                |
 | `-t, --type <TYPE>`     | 显式指定类型：`user`, `config`, `local`, `root`, `meta`, `winuser`, `winconfig`, `winlocal`, `winroaming` |
 | `-y, --yes`             | 跳过所有确认提示                                                                                          |
@@ -229,15 +230,20 @@ just create /etc/wsl.conf -t root -a wsl
 ### `wots sync` — 同步到目标 / Sync to Targets
 
 ```bash
-just sync                # 同步所有
+just sync                # 同步所有 (需 --win-user)
 just sync-type <type>    # 按类型同步
 just sync-app <app>      # 按包名同步
 just sync-dry            # 干运行预览
 just sync-root           # 同步 root 包（sudo）
+
+# 直接使用 wots
+wots sync --win-user zion              # 同步所有
+wots sync --win-user zion --type winuser  # 按类型
 ```
 
 | 选项 / Option       | 说明 / Description |
 | ------------------- | ------------------ |
+| `-u, --win-user`    | Windows 用户名 (必须 / required) |
 | `-t, --type <TYPE>` | 仅同步该类型的包   |
 | `--app <NAME>`      | 仅同步指定包       |
 | `-n, --dry-run`     | 仅预览             |
@@ -273,6 +279,10 @@ just list-json          # JSON 格式
 just diff               # 所有差异
 just diff-type <type>   # 按类型
 just diff-app <app>     # 按包名
+
+# 直接使用 wots
+wots diff --win-user zion
+wots diff --win-user zion --app git
 ```
 
 显示仓库与目标之间不同步的文件：Linux 包列出未建立链接的文件，Windows 包显示 mtime/size/blake3 不一致或目标缺失的文件。
@@ -409,7 +419,7 @@ dotfiles/
 | `DOTFILES_DIR`     | `$HOME/dotfiles` | 仓库根目录                                        |
 | `WSL_DISTRO`       | `archlinux`      | WSL 发行版名称                                    |
 | `WSL_MNT`          | `/mnt/c`         | WSL 挂载 C: 盘的位置                              |
-| `WIN_USER`         | 自动检测         | Windows 用户名（`/mnt/c/Users` 下首个非系统用户） |
+| `WIN_USER`         | (必须设置 / required) | Windows 用户名，如 `zion`。通过 `--win-user` 或环境变量传入 |
 | `WOTS_CONCURRENT`  | `8`              | 最大并发同步操作数                                |
 | `WOTS_MAX_SIZE_MB` | `50`             | 跳过超过此大小的文件（MB）                        |
 

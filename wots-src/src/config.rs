@@ -18,62 +18,8 @@ pub static WSL_DISTRO_NAME: LazyLock<String> = LazyLock::new(|| {
     env::var("WSL_DISTRO").unwrap_or_else(|_| "archlinux".to_string())
 });
 
-/// Returns `true` when `name` looks like an NTFS 8.3 short filename (e.g. `ADMINI~1`).
-fn is_short_name(name: &str) -> bool {
-    if let Some(tilde_pos) = name.find('~') {
-        let after_tilde = &name[tilde_pos + 1..];
-        // 8.3 short names have a single decimal digit after the tilde.
-        after_tilde.len() == 1 && after_tilde.chars().all(|c| c.is_ascii_digit())
-    } else {
-        false
-    }
-}
-
-/// Auto-detect the Windows username by scanning `/mnt/c/Users/`.
-/// This function is safe to call before `WIN_USERNAME` (the `LazyLock`) is evaluated.
-pub fn detect_win_username() -> Option<String> {
-    let mnt_users = PathBuf::from("/mnt/c/Users");
-    if !mnt_users.exists() {
-        return env::var("USER").ok();
-    }
-    let skip: &[&str] = &["Public", "Default", "Default User", "All Users", "desktop.ini"];
-    let linux_user = env::var("USER").unwrap_or_default();
-
-    if let Ok(entries) = std::fs::read_dir(&mnt_users) {
-        let mut dirs: Vec<String> = entries
-            .filter_map(|e| e.ok())
-            .map(|e| e.file_name().to_string_lossy().to_string())
-            .filter(|n| {
-                n.is_ascii()
-                    && !skip.contains(&n.as_str())
-                    && !n.starts_with('.')
-                    && !is_short_name(n)
-            })
-            .collect();
-
-        // Prefer a directory that matches $USER (case-insensitive).
-        if !linux_user.is_empty() {
-            for d in &dirs {
-                if d.eq_ignore_ascii_case(&linux_user) {
-                    return Some(d.clone());
-                }
-            }
-        }
-
-        // No $USER match — fall back to first sorted directory.
-        dirs.sort();
-        return dirs.into_iter().next();
-    }
-    env::var("USER").ok()
-}
-
-pub static WIN_USERNAME: LazyLock<Option<String>> = LazyLock::new(|| {
-    // WIN_USER env var take priority (can be set via --win-user CLI or at runtime).
-    if let Ok(u) = env::var("WIN_USER") {
-        return Some(u);
-    }
-    detect_win_username()
-});
+pub static WIN_USERNAME: LazyLock<Option<String>> =
+    LazyLock::new(|| env::var("WIN_USER").ok());
 
 pub static USER_TARGET: LazyLock<PathBuf> = LazyLock::new(|| HOME.clone());
 
@@ -166,9 +112,7 @@ mod tests {
     }
 
     #[test]
-    fn win_username_is_some_or_none() {
-        // WIN_USERNAME may be Some (if WSL with /mnt/c/Users, or env var set)
-        // or None (bare Linux). Either is valid.
+    fn win_username_reads_env_or_none() {
         let _val = WIN_USERNAME.clone();
     }
 
@@ -226,20 +170,5 @@ mod tests {
         assert!(WINROAMING_TARGET.to_string_lossy().contains("AppData/Roaming"));
     }
 
-    #[test]
-    fn is_short_name_detects_83_names() {
-        assert!(is_short_name("ADMINI~1"));
-        assert!(is_short_name("PROGRA~2"));
-        assert!(is_short_name("ZIOPU~1"));
-    }
-
-    #[test]
-    fn is_short_name_rejects_normal_names() {
-        assert!(!is_short_name("zionpu"));
-        assert!(!is_short_name("Administrator"));
-        assert!(!is_short_name("user~name"));
-        assert!(!is_short_name("~"));
-        assert!(!is_short_name(""));
-    }
 }
 

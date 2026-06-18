@@ -9,7 +9,7 @@ use anyhow::{bail, Context, Result};
 use rayon::prelude::*;
 
 use crate::cli::SyncArgs;
-use crate::config::{detect_win_username, DOTFILES_DIR, MNT_C, SYNC_MAX_CONCURRENT, WSL_DISTRO_NAME};
+use crate::config::{DOTFILES_DIR, MNT_C, SYNC_MAX_CONCURRENT, WSL_DISTRO_NAME, WIN_USERNAME};
 use crate::discover::{build_win_path, find_packages, list_syncable_files, pkg_basename};
 use crate::display;
 use crate::status;
@@ -99,31 +99,20 @@ fn sync_copy_batch(pkgs: &[PathBuf], pt: &PkgType, dry_run: bool, quiet: bool) -
         return Ok(());
     }
 
-    // Confirm Windows username before building any paths.
-    // WIN_USERNAME LazyLock is NOT evaluated yet — we read detection directly.
+    if WIN_USERNAME.is_none() {
+        display::error(
+            "Windows username not set. Pass --win-user <NAME> or set WIN_USER env var.",
+        );
+        display::info("  Example: wots sync --win-user zion");
+        bail!("missing --win-user");
+    }
+
     if !quiet {
-        let env_user = std::env::var("WIN_USER").ok();
-        let detected = detect_win_username();
-        // Effective user: CLI/env override > auto-detection > none
-        let effective = env_user.or(detected);
-        if let Some(ref user) = effective {
-            display::info(&format!(
-                "Windows user = \"{}\"  →  C:\\Users\\{}",
-                user, user,
-            ));
-            let confirmed = display::prompt::ask(
-                "Press Enter to confirm, or type a different username",
-                user,
-            );
-            if confirmed != *user {
-                // SAFETY: called before LazyLock evaluation and before any threads.
-                unsafe { std::env::set_var("WIN_USER", &confirmed) };
-                display::info(&format!(
-                    "Windows user set to \"{}\"  →  C:\\Users\\{}",
-                    confirmed, confirmed,
-                ));
-            }
-        }
+        let user = WIN_USERNAME.as_deref().unwrap();
+        display::info(&format!(
+            "Windows user = \"{}\"  →  C:\\Users\\{}",
+            user, user,
+        ));
     }
 
     for pkg in pkgs {

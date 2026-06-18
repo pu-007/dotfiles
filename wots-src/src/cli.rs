@@ -16,7 +16,7 @@ pub struct Cli {
         short = 'u',
         long = "win-user",
         global = true,
-        help = "Windows username override (e.g. --win-user zion). Also settable via WIN_USER env var."
+        help = "Windows username (required for Windows package sync). Also settable via WIN_USER env var."
     )]
     pub win_user: Option<String>,
 

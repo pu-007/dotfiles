@@ -279,7 +279,7 @@ fn counts_inc_all_variants() {
 #[test] fn check_copy_status_all_missing_win() {
     let r=temp_root();let p=make_pkg(&r,"t","winuser");touch(&p.join("a.json"));touch(&p.join("b.cfg"));
     let c=status::check_copy_status(&p,&PkgType::WinUser);
-    assert!(c.missing_remote+c.error>=1,"{c:?}");
+    assert_eq!(c.missing_remote, 2, "both files should be missing on Windows side: {c:?}");
 }
 
 #[test] fn check_copy_status_detailed_produces_entries() {
@@ -301,7 +301,7 @@ fn counts_inc_all_variants() {
     let r=temp_root();let p1=make_pkg(&r,"a1","winuser");touch(&p1.join("f1.txt"));
     let p2=make_pkg(&r,"a2","winuser");touch(&p2.join("f2.txt"));
     let c=status::check_copy_status_batch(&[p1,p2],PkgType::WinUser);
-    assert!(c.missing_remote+c.error>=2,"{c:?}");
+    assert_eq!(c.missing_remote, 2, "both package files should be missing on Windows side: {c:?}");
 }
 
 #[test] fn find_packages_discovers() {

@@ -12,6 +12,7 @@ stash_msg := "WOTS_AUTO_STASH_" + timestamp
 wots := dotfiles / "wots"
 wots_crate := dotfiles / "wots-src"
 comp_dir := dotfiles / "zsh.user" / ".config" / "zsh" / "completions"
+WIN_USER := "zion"
 
 # 🎨 UI 色彩与排版配置
 c_reset := '\033[0m'
@@ -251,27 +252,27 @@ _install_completion shell:
 
 [group('2. 配置管理 (Wots CLI)')]
 create +args:
-    @{{ wots }} create {{ args }}
+    @{{ wots }} create --win-user {{ WIN_USER }} {{ args }}
 
 [group('2. 配置管理 (Wots CLI)')]
 sync *args:
-    @{{ wots }} sync {{ args }}
+    @{{ wots }} sync --win-user {{ WIN_USER }} {{ args }}
 
 [group('2. 配置管理 (Wots CLI)')]
 sync-type type *args:
-    @{{ wots }} sync --type {{ type }} {{ args }}
+    @{{ wots }} sync --win-user {{ WIN_USER }} --type {{ type }} {{ args }}
 
 [group('2. 配置管理 (Wots CLI)')]
 sync-app app *args:
-    @{{ wots }} sync --app {{ app }} {{ args }}
+    @{{ wots }} sync --win-user {{ WIN_USER }} --app {{ app }} {{ args }}
 
 [group('2. 配置管理 (Wots CLI)')]
 sync-dry *args:
-    @{{ wots }} sync --dry-run {{ args }}
+    @{{ wots }} sync --win-user {{ WIN_USER }} --dry-run {{ args }}
 
 [group('2. 配置管理 (Wots CLI)')]
 sync-root *args:
-    @sudo {{ wots }} sync --type root --bypass {{ args }}
+    @sudo {{ wots }} sync --win-user {{ WIN_USER }} --type root --bypass {{ args }}
 
 [group('2. 配置管理 (Wots CLI)')]
 stats *args:
