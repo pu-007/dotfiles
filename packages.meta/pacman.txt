@@ -72,7 +72,6 @@ img2pdf
 jdk-openjdk
 jujutsu
 just
-kilo-bin
 kio-admin
 lazygit
 lazyjj
