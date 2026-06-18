@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use clap::ValueEnum;
 
@@ -119,13 +119,20 @@ pub fn type_from_dir_name(name: &str) -> Option<PkgType> {
 }
 
 pub fn parse_app_arg(raw: &str) -> (Option<PkgType>, String) {
-    if let Some(pt) = type_from_dir_name(raw) {
+    let name = Path::new(raw)
+        .file_name()
+        .and_then(|n| n.to_str())
+        .unwrap_or(raw);
+    if name.is_empty() {
+        return (None, raw.to_string());
+    }
+    if let Some(pt) = type_from_dir_name(name) {
         let suffix = pt.suffix();
-        if raw.len() > suffix.len() {
-            return (Some(pt), raw[..raw.len() - suffix.len()].to_string());
+        if name.len() > suffix.len() {
+            return (Some(pt), name[..name.len() - suffix.len()].to_string());
         }
     }
-    (None, raw.to_string())
+    (None, name.to_string())
 }
 
 pub fn type_label(pt: PkgType) -> String {
@@ -391,5 +398,39 @@ mod tests {
         assert_eq!(parse_app_arg("zsh"), (None, "zsh".into()));
         assert_eq!(parse_app_arg("git"), (None, "git".into()));
         assert_eq!(parse_app_arg(""), (None, "".into()));
+    }
+
+    #[test]
+    fn parse_app_arg_trailing_slash() {
+        assert_eq!(parse_app_arg("git.config/"), (Some(PkgType::Config), "git".into()));
+        assert_eq!(parse_app_arg("pwsh.winuser/"), (Some(PkgType::WinUser), "pwsh".into()));
+        assert_eq!(parse_app_arg("zsh/"), (None, "zsh".into()));
+    }
+
+    #[test]
+    fn parse_app_arg_dot_slash_prefix() {
+        assert_eq!(parse_app_arg("./im-select.winuser/"), (Some(PkgType::WinUser), "im-select".into()));
+        assert_eq!(parse_app_arg("./git.config/"), (Some(PkgType::Config), "git".into()));
+        assert_eq!(parse_app_arg("./zsh/"), (None, "zsh".into()));
+        assert_eq!(parse_app_arg("./git.config"), (Some(PkgType::Config), "git".into()));
+    }
+
+    #[test]
+    fn parse_app_arg_parent_dir_prefix() {
+        assert_eq!(parse_app_arg("../dotfiles/git.config"), (Some(PkgType::Config), "git".into()));
+        assert_eq!(parse_app_arg("../../foo/pwsh.winuser/"), (Some(PkgType::WinUser), "pwsh".into()));
+    }
+
+    #[test]
+    fn parse_app_arg_multiple_trailing_slashes() {
+        assert_eq!(parse_app_arg("git.config//"), (Some(PkgType::Config), "git".into()));
+        assert_eq!(parse_app_arg("zsh//"), (None, "zsh".into()));
+    }
+
+    #[test]
+    fn parse_app_arg_only_path_separators() {
+        assert_eq!(parse_app_arg("/"), (None, "/".into()));
+        assert_eq!(parse_app_arg("///"), (None, "///".into()));
+        assert_eq!(parse_app_arg("./"), (None, "./".into()));
     }
 }
