@@ -9,6 +9,6 @@
 ├── pnpm@11.3.0
 ├── prettier-plugin-latex@2.0.1
 ├── prettier@3.8.1
-├── semver@7.8.3
+├── semver@7.8.5
 └── vite@8.0.16
 
