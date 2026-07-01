@@ -86,6 +86,11 @@
       "matching_strategy": "Equals"
     },
     {
+      "kind": "Title",
+      "id": "Ueli",
+      "matching_strategy": "Equals"
+    },
+    {
       "kind": "Exe",
       "id": "Flow.Launcher.exe",
       "matching_strategy": "Equals"

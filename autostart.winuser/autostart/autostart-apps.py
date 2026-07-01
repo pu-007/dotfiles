@@ -95,9 +95,6 @@ STARTUP_TASKS: List[TaskType] = [
         after_launch_close="LocalSend",
         wait_window_timeout=15.0,
     ),
-    AppLaunch(
-        cmd=[r"C:\Program Files\MI\PcContinuity\Launch.exe", "--AutoRun=1"],
-    ),
     # ---------------- 普通后台/命令行软件 ----------------
     AppLaunch(
         cmd=r"C:\ProgramData\chocolatey\lib\eartrumpet\tools\EarTrumpet\EarTrumpet.exe"
@@ -116,12 +113,13 @@ STARTUP_TASKS: List[TaskType] = [
         ]
     ),
     AppLaunch(r"C:\Program Files\YASB\yasb.exe"),
-    AppLaunch(r"C:\Users\zion\AppData\Local\FlowLauncher\Flow.Launcher.exe"),
-    AppLaunch(r"C:\Users\zion\scoop\apps\memreduct\current\memreduct.exe"),
+    AppLaunch(
+        r"C:\Users\zion\scoop\apps\memreduct\current\memreduct.exe",
+        after_launch_close="Mem Reduct",
+    ),
     AppLaunch(r"C:\Users\zion\AppData\Roaming\AltSnap\AltSnap.exe"),
     AppLaunch(r"C:\Users\zion\AppData\Local\Programs\PixPin\PixPin.exe"),
     AppLaunch([r"C:\Program Files (x86)\Stardock\Fences\Fences.exe", "/startup"]),
-    AppLaunch([r"C:\Program Files (x86)\PasteIntoFile\PasteIntoFile.exe", "tray"]),
     AppLaunch(r"C:\Program Files\Docker\Docker\Docker Desktop.exe"),
     AppLaunch(
         r"C:\Windows\System32\DriverStore\FileRepository\realtekservice.inf_amd64_26f0df01c9da165d\RtkAudUService64.exe"
@@ -129,6 +127,9 @@ STARTUP_TASKS: List[TaskType] = [
     AppLaunch(
         r"C:\Users\zion\AppData\Local\Microsoft\WinGet\Packages\Martchus.syncthingtray_Microsoft.Winget.Source_8wekyb3d8bbwe\syncthingtray.exe"
     ),
+    AppLaunch([r"C:\Program Files\Everything 1.5a\Everything.exe", "-startup"]),
+    AppLaunch(r"C:\Users\zion\Apps\FlowWheel\FlowWheel.exe"),
+    AppLaunch(r"C:\Users\zion\Apps\Wox\wox-windows-amd64.exe"),
 ]
 
 
