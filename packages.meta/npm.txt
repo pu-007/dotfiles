@@ -10,5 +10,5 @@
 ├── prettier-plugin-latex@2.0.1
 ├── prettier@3.8.1
 ├── semver@7.8.5
-└── vite@8.1.0
+└── vite@8.1.2
 
