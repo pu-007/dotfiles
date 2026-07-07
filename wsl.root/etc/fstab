@@ -4,5 +4,5 @@
 # <file system> <dir> <type> <options> <dump> <pass>
 # \\192.168.100.1\Data /mnt/d cifs user=root,password=China666,iocharset=utf8 0 0
 # \\192.168.100.1\Passport /mnt/e cifs user=root,password=China666,iocharset=utf8 0 0
-Y: /mnt/y drvfs defaults 0 0
-Z: /mnt/z drvfs defaults 0 0
+#Y: /mnt/y drvfs defaults 0 0
+#Z: /mnt/z drvfs defaults 0 0
