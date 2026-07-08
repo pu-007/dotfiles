@@ -39,6 +39,7 @@ chpwd_functions+=(__zoxide_hook)
 # Report common issues.
 function __zoxide_doctor() {
     [[ ${_ZO_DOCTOR:-1} -ne 0 ]] || return 0
+    [[ $- == *i* ]] || return 0
     [[ ${chpwd_functions[(Ie)__zoxide_hook]:-} -eq 0 ]] || return 0
 
     _ZO_DOCTOR=0
@@ -63,7 +64,9 @@ function __zoxide_z() {
     __zoxide_doctor
     if [[ "$#" -eq 0 ]]; then
         __zoxide_cd ~
-    elif [[ "$#" -eq 1 ]] && { [[ -d "$1" ]] || [[ "$1" = '-' ]] || [[ "$1" =~ ^[-+][0-9]+$ ]]; }; then
+    elif [[ "$#" -eq 1 ]] && [[ "$1" = '-' ]]; then
+        __zoxide_cd "${OLDPWD}"
+    elif [[ "$#" -eq 1 ]] && { [[ "$1" =~ ^[-+][0-9]+$ ]] || (\builtin cd -q -- "$1") &>/dev/null; }; then
         __zoxide_cd "$1"
     elif [[ "$#" -eq 2 ]] && [[ "$1" = "--" ]]; then
         __zoxide_cd "$2"
@@ -110,10 +113,10 @@ if [[ -o zle ]]; then
         elif [[ "${words[-1]}" == '' ]]; then
             # Show completions for Space-Tab.
             # shellcheck disable=SC2086
-            __zoxide_result="$(\command zoxide query --exclude "$(__zoxide_pwd || \builtin true)" --interactive -- ${words[2,-1]})" || __zoxide_result=''
+            __zoxide_result="$(\command zoxide query --exclude "$(__zoxide_pwd || \builtin true)" --interactive -- ${words[2,-1]} 2>/dev/null)" || __zoxide_result=''
 
             # Set a result to ensure completion doesn't re-run
-            compadd -Q ""
+            compadd -Q -S "" -- ""
 
             # Bind '\e[0n' to helper function.
             \builtin bindkey '\e[0n' '__zoxide_z_complete_helper'
