@@ -5,7 +5,7 @@
 ├── markdownlint-cli2@0.22.0
 ├── node-gyp@13.0.1
 ├── nopt@10.0.1
-├── npm@12.0.0
+├── npm@12.0.1
 ├── pnpm@11.3.0
 ├── prettier-plugin-latex@2.0.1
 ├── prettier@3.8.1

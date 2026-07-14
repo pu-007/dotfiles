@@ -142,6 +142,7 @@ python-matplotlib
 python-mutagen
 python-omegaconf
 python-ormsgpack
+python-paddleocr
 python-pdf2image
 python-pickleshare
 python-pip
