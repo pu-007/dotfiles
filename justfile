@@ -107,6 +107,7 @@ backup:
     safe_backup "pacman" "pacman -Qqe" "{{ dotfiles }}/packages.meta/pacman.txt"
     safe_backup "npm" "npm list -g --depth=0" "{{ dotfiles }}/packages.meta/npm.txt"
     safe_backup "uv" "uv tool list" "{{ dotfiles }}/packages.meta/uv.txt"
+    safe_backup "pip" "pip list" "{{ dotfiles }}/packages.meta/pip.txt"
 
     cd "{{ dotfiles }}"
     git add packages.meta/
