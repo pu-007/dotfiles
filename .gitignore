@@ -13,3 +13,6 @@ __pycache__/
 
 # WOTS sync index (generated cache)
 .wots_index.json
+
+/pixi-global-env.user/.pixi/bin/
+/pixi-global-env.user/.pixi/envs/

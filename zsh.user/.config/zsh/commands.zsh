@@ -61,11 +61,15 @@ ialias winget="winget.exe"
 alias ci="win32yank.exe -i"
 alias co="win32yank.exe -o"
 function ciwd {
-  wslpath -w `pwd` | win32yank.exe -i
+  wslpath -w $(pwd) | win32yank.exe -i
 }
 # }}}
 
 # {{{ System & General Utilities
+function reload-fstab {
+  sudo systemctl daemon-reload
+  sudo mount -a
+}
 alias j="just"
 alias als="alias | rg "
 alias b="bat"

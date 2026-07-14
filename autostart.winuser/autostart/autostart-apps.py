@@ -130,6 +130,14 @@ STARTUP_TASKS: List[TaskType] = [
     AppLaunch([r"C:\Program Files\Everything 1.5a\Everything.exe", "-startup"]),
     AppLaunch(r"C:\Users\zion\Apps\FlowWheel\FlowWheel.exe"),
     AppLaunch(r"C:\Users\zion\Apps\Wox\wox-windows-amd64.exe"),
+    AppLaunch(
+        [
+            r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+            "--no-startup-window",
+            "/prefetch:5",
+        ]
+    ),
+    AppLaunch([r"C:\Program Files\Tailscale\tailscale-ipn.exe"]),
 ]
 
 
