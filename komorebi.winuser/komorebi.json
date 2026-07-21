@@ -82,6 +82,11 @@
   "ignore_rules": [
     {
       "kind": "Exe",
+      "id": "MirrorSettings.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
       "id": "wetype_update.exe",
       "matching_strategy": "Equals"
     },
