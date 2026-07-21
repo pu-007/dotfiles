@@ -43,7 +43,7 @@ hf-xet                 1.5.2
 httpcore               1.0.9
 httpx                  0.28.1
 huggingface_hub        1.24.0
-identify               2.6.18
+identify               2.6.19
 idna                   3.18
 img2pdf                0.6.3
 iniconfig              2.3.0
@@ -103,7 +103,7 @@ pyee                   13.0.1
 Pygments               2.20.0
 PyGObject              3.56.3
 pylatexenc             2.10
-PyMuPDF                1.27.2.3
+pymupdf                1.28.0
 pynvim                 0.6.0
 pyparsing              3.3.2
 pyproject_hooks        1.2.0
@@ -117,7 +117,7 @@ pyxattr                0.8.1
 pyxdg                  0.28
 PyYAML                 6.0.3
 Reflector              2023.6.28.0.36.1
-regex                  2026.7.10
+regex                  2026.7.19
 requests               2.34.2
 rich                   15.0.0
 rich-cli               1.8.1
@@ -138,7 +138,7 @@ smmap                  6.0.0
 sqlfluff               4.2.2
 sqlfluffrs             4.2.2
 tariff                 1.0.0
-TBB                    2023.0.0
+TBB                    2023.1.0
 tblib                  3.2.2
 termcolor              3.3.0
 textual                8.2.8
@@ -146,7 +146,7 @@ threadpoolctl          3.6.0
 tldr                   3.4.4
 tokenizers             0.23.1
 toml                   0.10.2
-tqdm                   4.68.4
+tqdm                   4.69.0
 transformers           5.14.1
 trash-cli              0.24.5.26
 typer                  0.27.0
@@ -159,7 +159,7 @@ userpath               1.9.2
 VapourSynth            77
 vcs-versioning         2.2.2
 virtualenv             21.6.1
-websockets             16.0
+websockets             16.1.1
 wheel                  0.47.0
 xattr                  1.3.0
 yapf                   0.43.0
