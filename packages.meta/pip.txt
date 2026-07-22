@@ -36,7 +36,7 @@ fonttools              4.63.0
 fsspec                 2026.6.0
 git-filter-repo        2.47.0
 gitdb                  4.0.12
-GitPython              3.1.51
+GitPython              3.1.53
 greenlet               3.5.1
 h11                    0.16.0
 hf-xet                 1.5.2
@@ -87,13 +87,15 @@ pillow                 12.3.0
 pip                    26.1.2
 pipx                   1.15.0
 pkg_resources          81.0.0
-platformdirs           4.10.1
+platformdirs           4.11.0
 playwright             1.61.0
 pluggy                 1.6.0
 poetry-core            2.4.1
 pooch                  1.9.0
 pre_commit             4.6.0
+protobuf               7.35.1
 psutil                 7.2.2
+pybind11               3.0.4
 pycparser              3.0
 pycryptodome           3.23.0
 pycryptodomex          3.23.0
@@ -110,7 +112,7 @@ pyproject_hooks        1.2.0
 PySide6                6.11.1
 pytest                 9.0.3
 python-dateutil        2.9.0
-python-discovery       1.4.4
+python-discovery       1.5.0
 pytokens               0.4.1
 pytweening             1.2.0
 pyxattr                0.8.1
@@ -128,7 +130,7 @@ scikit-learn           1.9.0
 scipy                  1.18.0
 SecretStorage          3.5.0
 setuptools             83.0.0
-setuptools-scm         10.2.0
+setuptools-scm         10.2.1
 shellingham            1.5.4
 shiboken6              6.11.1
 shtab                  1.8.1
