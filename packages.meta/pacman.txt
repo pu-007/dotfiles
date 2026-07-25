@@ -226,6 +226,7 @@ typstyle
 ueberzugpp
 unarchiver
 unrar
+untrunc-git
 unzip
 uv
 vcpkg
