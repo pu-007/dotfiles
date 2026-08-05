@@ -81,6 +81,11 @@
   ],
   "ignore_rules": [
     {
+      "kind": "Title",
+      "id": "控制面板",
+      "matching_strategy": "Equals"
+    },
+    {
       "kind": "Exe",
       "id": "MirrorSettings.exe",
       "matching_strategy": "Equals"

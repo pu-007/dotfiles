@@ -127,7 +127,6 @@ STARTUP_TASKS: List[TaskType] = [
     AppLaunch(
         r"C:\Users\zion\AppData\Local\Microsoft\WinGet\Packages\Martchus.syncthingtray_Microsoft.Winget.Source_8wekyb3d8bbwe\syncthingtray.exe"
     ),
-    AppLaunch([r"C:\Program Files\Everything 1.5a\Everything.exe", "-startup"]),
     AppLaunch(r"C:\Users\zion\Apps\FlowWheel\FlowWheel.exe"),
     AppLaunch(r"C:\Users\zion\Apps\Wox\wox-windows-amd64.exe"),
     AppLaunch(
