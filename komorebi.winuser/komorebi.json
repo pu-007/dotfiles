@@ -81,6 +81,11 @@
   ],
   "ignore_rules": [
     {
+      "kind": "Exe",
+      "id": "ZTools.exe",
+      "matching_strategy": "Equals"
+    },
+    {
       "kind": "Title",
       "id": "控制面板",
       "matching_strategy": "Equals"
