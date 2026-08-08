@@ -1,5 +1,5 @@
 /usr/lib
-├── @google/gemini-cli@0.53.1
+├── @google/gemini-cli@0.54.4
 ├── @mermaid-js/mermaid-cli@11.16.0
 ├── aicommit2@2.10.0
 ├── markdownlint-cli2@0.22.0
