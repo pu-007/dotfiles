@@ -137,6 +137,10 @@ STARTUP_TASKS: List[TaskType] = [
     ),
     AppLaunch([r"C:\Program Files\Tailscale\tailscale-ipn.exe"]),
     AppLaunch(r"C:\Program Files\ZTools\ZTools.exe"),
+    AppLaunch(
+        r"C:\Users\zion\Apps\Everything\Everything.exe",
+        cwd=r"C:\Users\zion\Apps\Everything",
+    ),
 ]
 
 
