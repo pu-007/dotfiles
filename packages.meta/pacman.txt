@@ -97,6 +97,7 @@ mesa-utils
 moreutils
 mpv
 msgpack-cxx
+musl
 nano
 neovim
 neovim-qt
@@ -176,8 +177,8 @@ ripgrep
 ripgrep-all
 rsync
 rtmpdump
-rust
 rust-analyzer
+rustup
 sentencepiece
 speech-dispatcher
 sqlfluff
@@ -296,5 +297,6 @@ yay
 yazi
 yt-dlp
 zbar
+zig
 zoxide
 zsh
