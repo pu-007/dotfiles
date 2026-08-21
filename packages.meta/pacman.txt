@@ -39,13 +39,13 @@ fcitx5-lua
 fcitx5-qt
 fd
 festival
+ffmpeg
 ffmpegthumbnailer
 ffmpegthumbnailer-mp3
 ffmpegthumbs
 fish
 flite1
 fontforge
-freerdp2
 fzf
 gdb
 gdu
@@ -95,7 +95,6 @@ mediainfo
 mermaid-cli
 mesa-utils
 moreutils
-mpv
 msgpack-cxx
 musl
 nano
@@ -235,6 +234,7 @@ vdpauinfo
 vimv
 viu
 vlc
+vpl-gpu-rt
 vte3
 vulkan-intel
 vulkan-mesa-layers
