@@ -128,7 +128,7 @@ rich-rst               2.1.0
 sacremoses             0.2.0
 safetensors            0.8.0
 scikit-learn           1.9.0
-scipy                  1.18.0
+scipy                  1.18.1
 SecretStorage          3.5.0
 setuptools             84.0.0
 setuptools-scm         10.2.1
