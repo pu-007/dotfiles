@@ -2,6 +2,22 @@
 # Install-Module PSFzf
 # Install-Module WslInterop
 
+
+# === 设置 PowerShell 默认编码为 UTF-8（无 BOM）===
+$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
+$PSDefaultParameterValues['Set-Content:Encoding'] = 'utf8'
+$PSDefaultParameterValues['Add-Content:Encoding'] = 'utf8'
+
+# === 控制台输入/输出编码（影响 dotnet 等外部程序）===
+[Console]::InputEncoding  = [System.Text.UTF8Encoding]::new($false)
+[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+
+# === 让 dotnet 输出也用 UTF-8 ===
+$env:DOTNET_CLI_UI_LANGUAGE = 'zh-CN'   # 如需中文输出，可选
+$env:DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = '0'
+
+
+
 $env:SHELL = "pwsh"
 $env:EDITOR = "vim"
 $env:FZF_DEFAULT_OPTS = "--preview-window=hidden"
@@ -71,10 +87,3 @@ function e {
     explorer .
 }
 
-
-#region conda initialize
-# !! Contents within this block are managed by 'conda init' !!
-If (Test-Path "C:\ProgramData\miniconda3\Scripts\conda.exe") {
-    (& "C:\ProgramData\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | ?{$_} | Invoke-Expression
-}
-#endregion
