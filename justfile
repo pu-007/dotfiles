@@ -79,7 +79,7 @@ update:
         echo -e " Done.{{ c_reset }}"
     fi
 
-    command -v npm &>/dev/null && { echo -e "{{ c_gray }}  ↳ 更新 NPM 全局依赖...{{ c_reset }}"; sudo npm install -g @google/gemini-cli aicommit2 || true; } || true
+    command -v npm &>/dev/null && { echo -e "{{ c_gray }}  ↳ 更新 NPM 全局依赖...{{ c_reset }}"; sudo npm install -g aicommit2 || true; } || true
     command -v komorebic.exe &>/dev/null && { echo -e "{{ c_gray }}  ↳ 更新 komorebic 配置...{{ c_reset }}"; komorebic.exe fetch-app-specific-configuration || true; } || true
 
 # [维护步骤 3/6] 导出元数据并收集系统自动变更
