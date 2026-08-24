@@ -141,6 +141,7 @@ STARTUP_TASKS: List[TaskType] = [
         r"C:\Users\zion\Apps\Everything\Everything.exe",
         cwd=r"C:\Users\zion\Apps\Everything",
     ),
+    AppLaunch(r"C:\Users\zion\AppData\Local\Programs\CC Switch\cc-switch.exe"),
 ]
 
 
