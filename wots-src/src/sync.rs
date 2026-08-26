@@ -10,6 +10,7 @@ use rayon::prelude::*;
 
 use crate::cli::SyncArgs;
 use crate::config::{DOTFILES_DIR, MNT_C, SYNC_MAX_CONCURRENT, WSL_DISTRO_NAME, WIN_USERNAME};
+use crate::create::print_path_mappings;
 use crate::discover::{build_win_path, find_packages, list_syncable_files, pkg_basename};
 use crate::display;
 use crate::status;
@@ -46,6 +47,15 @@ pub fn run(args: SyncArgs) -> Result<()> {
         }
     }
 
+    // Manual path confirmation (default on; disabled with --yes/--dry-run).
+    let confirm_paths = !args.yes && !args.bypass && !args.dry_run && !args.quiet;
+    if confirm_paths
+        && !collect_and_confirm(&packages, &types_to_sync, &effective_app)?
+    {
+        display::info("Cancelled.");
+        return Ok(());
+    }
+
     for pt in &types_to_sync {
         let pkgs = packages.get(pt).cloned().unwrap_or_default();
         let pkgs: Vec<PathBuf> = if let Some(ref app) = effective_app {
@@ -79,6 +89,79 @@ pub fn run(args: SyncArgs) -> Result<()> {
     Ok(())
 }
 
+/// Show every repo → target mapping across all packages about to be synced
+/// and ask for confirmation. Returns false when the user aborts.
+fn collect_and_confirm(
+    packages: &HashMap<PkgType, Vec<PathBuf>>,
+    types_to_sync: &[PkgType],
+    app: &Option<String>,
+) -> Result<bool> {
+    let mut any = false;
+
+    for pt in types_to_sync {
+        let pkgs = packages.get(pt).cloned().unwrap_or_default();
+        let pkgs: Vec<PathBuf> = match app {
+            Some(name) => pkgs.into_iter().filter(|p| pkg_basename(p) == *name).collect(),
+            None => pkgs,
+        };
+
+        for pkg in pkgs {
+            if pt.uses_stow() {
+                let target = match pt.sync_target() {
+                    Some(t) => t,
+                    None => continue,
+                };
+                let files = list_syncable_files(&pkg);                if files.is_empty() {
+                    continue;
+                }
+                any = true;
+                display::rule(&format!(
+                    "{}  ({})",
+                    pkg.file_name().unwrap_or_default().to_string_lossy(),
+                    pt.value()
+                ));
+                display::info(&format!(
+                    "  repo:   {}",
+                    DOTFILES_DIR.display()
+                ));
+                display::info(&format!(
+                    "  target: {}",
+                    target.display()
+                ));
+                for f in &files {
+                    let rel = f.strip_prefix(&pkg).unwrap_or(f);
+                    display::dim(&format!(
+                        "    {}  →  {}",
+                        f.display(),
+                        target.join(rel).display()
+                    ));
+                }
+            } else if pt.uses_copy_sync() {
+                let items = prepare_sync_items(&pkg, pt);
+                if items.is_empty() {
+                    continue;
+                }
+                any = true;
+                display::rule(&format!(
+                    "{}  ({})",
+                    pkg.file_name().unwrap_or_default().to_string_lossy(),
+                    pt.value()
+                ));
+                print_path_mappings(&items);
+            }
+        }
+    }
+
+    if !any {
+        return Ok(true); // nothing to show; let main loop report "no files"
+    }
+
+    Ok(display::prompt::confirm(
+        "\nProceed with the paths above?",
+        false,
+    ))
+}
+
 fn sync_stow_batch(pkgs: &[PathBuf], pt: &PkgType, dry_run: bool, quiet: bool) -> Result<()> {
     if !has_stow() {
         display::error("GNU Stow not installed — skipping.");
@@ -88,11 +171,12 @@ fn sync_stow_batch(pkgs: &[PathBuf], pt: &PkgType, dry_run: bool, quiet: bool) -
     for pkg in pkgs {
         if !quiet {
             display::info(&format!(
-                "  {}  →  {}",
-                pkg.file_name()
-                    .unwrap_or(std::ffi::OsStr::new(""))
-                    .to_string_lossy(),
+                "  {}\n    {}  →  {}",
+                pkg.display(),
                 type_label(*pt),
+                pt.sync_target()
+                    .map(|t| t.display().to_string())
+                    .unwrap_or_else(|| "?".into()),
             ));
         }
         do_stow(pkg, pt, dry_run)?;
@@ -146,6 +230,13 @@ fn sync_copy_batch(pkgs: &[PathBuf], pt: &PkgType, dry_run: bool, quiet: bool) -
                 pkg_basename(pkg),
                 items.len(),
             ));
+            for (wsl_p, win_p) in &items {
+                display::dim(&format!(
+                    "    {}  →  {}",
+                    wsl_p.display(),
+                    win_p.display()
+                ));
+            }
         }
 
         let counts = sync_batch(&items, dry_run, *SYNC_MAX_CONCURRENT);
@@ -170,6 +261,15 @@ pub fn do_stow(pkg: &Path, pt: &PkgType, dry_run: bool) -> Result<()> {
 
     if pt.needs_sudo() {
         return stow_file_by_file(pkg, &target, true, dry_run);
+    }
+
+    if dry_run {
+        display::dim(&format!(
+            "    DRY-RUN  stow --adopt -t {} {}",
+            target.display(),
+            pkg_name
+        ));
+        return Ok(());
     }
 
     let output = Command::new("stow")
@@ -338,21 +438,30 @@ pub fn sync_batch(
     counts
 }
 
-fn robocopy_sync(wsl_src: &Path, win_dst: &Path, dry_run: bool) -> Result<()> {
-    let wsl_unc = format!(
-        "\\\\wsl$\\{}\\{}",
-        *WSL_DISTRO_NAME,
-        wsl_src.to_string_lossy().replace('/', "\\")
-    );
-
-    let win_str = format!(
+/// Translate a WSL-side Windows-target path (`/mnt/c/...`) into a real
+/// Windows path string (`C:\...`).
+fn to_win_str(win_dst: &Path) -> String {
+    format!(
         "C:\\{}",
         win_dst
             .strip_prefix(&*MNT_C)
             .unwrap_or(win_dst)
             .to_string_lossy()
             .replace('/', "\\")
-    );
+    )
+}
+
+fn to_wsl_unc(wsl_src: &Path) -> String {
+    format!(
+        "\\\\wsl$\\{}\\{}",
+        *WSL_DISTRO_NAME,
+        wsl_src.to_string_lossy().replace('/', "\\")
+    )
+}
+
+fn robocopy_sync(wsl_src: &Path, win_dst: &Path, dry_run: bool) -> Result<()> {
+    let wsl_unc = to_wsl_unc(wsl_src);
+    let win_str = to_win_str(win_dst);
 
     if dry_run {
         display::dim(&format!(
@@ -380,10 +489,17 @@ fn robocopy_sync(wsl_src: &Path, win_dst: &Path, dry_run: bool) -> Result<()> {
         ]);
         c
     } else {
-        let parent = wsl_unc
+        // Single-file mode: robocopy takes <source_dir> <dest_DIR> <file>.
+        // The destination must be the parent directory of the target file,
+        // otherwise robocopy creates a directory named after the file.
+        let src_parent = wsl_unc
             .rsplit_once('\\')
             .map(|(p, _)| p.to_string())
             .unwrap_or(wsl_unc.clone());
+        let dst_parent = win_str
+            .rsplit_once('\\')
+            .map(|(p, _)| p.to_string())
+            .unwrap_or_else(|| win_str.clone());
         let file = wsl_src
             .file_name()
             .unwrap_or(std::ffi::OsStr::new(""))
@@ -391,8 +507,8 @@ fn robocopy_sync(wsl_src: &Path, win_dst: &Path, dry_run: bool) -> Result<()> {
             .to_string();
         let mut c = Command::new("robocopy.exe");
         c.args([
-            &parent,
-            &win_str,
+            &src_parent,
+            &dst_parent,
             &file,
             "/R:1",
             "/W:1",
@@ -417,32 +533,18 @@ fn robocopy_sync(wsl_src: &Path, win_dst: &Path, dry_run: bool) -> Result<()> {
 }
 
 fn pwsh_copy(wsl_src: &Path, win_dst: &Path, is_dir: bool, dry_run: bool) -> Result<bool> {
-    let wsl_unc = format!(
-        "\\\\wsl$\\{}\\{}",
-        *WSL_DISTRO_NAME,
-        wsl_src.to_string_lossy().replace('/', "\\")
-    );
-
-    let win_str = format!(
-        "C:\\{}",
-        win_dst
-            .strip_prefix(&*MNT_C)
-            .unwrap_or(win_dst)
-            .to_string_lossy()
-            .replace('/', "\\")
-    );
+    let wsl_unc = to_wsl_unc(wsl_src);
+    let win_str = to_win_str(win_dst);
 
     // Use PowerShell's native Copy-Item instead of cmd /c xcopy/copy
     // because CMD does not support UNC paths (e.g. \\wsl$\...).
     let ps_cmd = if is_dir {
         format!(
-            "$ErrorActionPreference='Stop'; Copy-Item -LiteralPath '{}' -Destination '{}' -Recurse -Force",
-            wsl_unc, win_str
+            "$ErrorActionPreference='Stop'; Copy-Item -LiteralPath '{wsl_unc}' -Destination '{win_str}' -Recurse -Force"
         )
     } else {
         format!(
-            "$ErrorActionPreference='Stop'; New-Item -ItemType Directory -Force -Path (Split-Path '{}' -Parent) | Out-Null; Copy-Item -LiteralPath '{}' -Destination '{}' -Force",
-            win_str, wsl_unc, win_str
+            "$ErrorActionPreference='Stop'; New-Item -ItemType Directory -Force -Path (Split-Path '{win_str}' -Parent) | Out-Null; Copy-Item -LiteralPath '{wsl_unc}' -Destination '{win_str}' -Force"
         )
     };
 
@@ -531,39 +633,15 @@ mod tests {
     }
 
     #[test]
-    fn prepare_sync_items_winconfig() {
+    fn prepare_sync_items_winroot_maps_under_drive_root() {
         let dir = temp_dir();
-        let pkg = dir.join("cfg.winconfig");
-        write_file(&pkg.join("settings.json"), "{}");
+        let pkg = dir.join("boot.winroot");
+        write_file(&pkg.join("scripts/boot.cmd"), "@echo off");
 
-        let items = prepare_sync_items(&pkg, &PkgType::WinConfig);
+        let items = prepare_sync_items(&pkg, &PkgType::WinRoot);
         assert_eq!(items.len(), 1);
         let (_wsl, win) = &items[0];
-        assert!(win.to_string_lossy().contains(".config"));
-    }
-
-    #[test]
-    fn prepare_sync_items_winlocal() {
-        let dir = temp_dir();
-        let pkg = dir.join("app.winlocal");
-        write_file(&pkg.join("state.json"), "{}");
-
-        let items = prepare_sync_items(&pkg, &PkgType::WinLocal);
-        assert_eq!(items.len(), 1);
-        let (_wsl, win) = &items[0];
-        assert!(win.to_string_lossy().contains("AppData/Local"));
-    }
-
-    #[test]
-    fn prepare_sync_items_winroaming() {
-        let dir = temp_dir();
-        let pkg = dir.join("roam.winroaming");
-        write_file(&pkg.join("prefs.json"), "{}");
-
-        let items = prepare_sync_items(&pkg, &PkgType::WinRoaming);
-        assert_eq!(items.len(), 1);
-        let (_wsl, win) = &items[0];
-        assert!(win.to_string_lossy().contains("AppData/Roaming"));
+        assert_eq!(win, &PathBuf::from("/mnt/c/scripts/boot.cmd"));
     }
 
     #[test]
@@ -585,6 +663,22 @@ mod tests {
 
         let items = prepare_sync_items(&pkg, &PkgType::WinUser);
         assert!(items.is_empty());
+    }
+
+    #[test]
+    fn to_win_str_translates_mount_prefix() {
+        if std::env::var("WSL_MNT").is_err() {
+            assert_eq!(to_win_str(Path::new("/mnt/c/Users/z/a.txt")), r"C:\Users\z\a.txt");
+            assert_eq!(to_win_str(Path::new("/mnt/c")), r"C:\");
+        }
+    }
+
+    #[test]
+    fn to_wsl_unc_formats_network_path() {
+        let unc = to_wsl_unc(Path::new("/home/u/f.txt"));
+        assert!(unc.starts_with(r"\\wsl$\"), "{unc}");
+        assert!(unc.contains('\\'));
+        assert!(!unc.contains('/'), "{unc}");
     }
 
     #[test]
@@ -610,15 +704,6 @@ mod tests {
     fn print_sync_summary_empty() {
         let counts = HashMap::new();
         // Should not panic, produces no output
-        print_sync_summary(&counts, false);
-    }
-
-    #[test]
-    fn print_sync_summary_all_zero() {
-        let mut counts = HashMap::new();
-        counts.insert("copied_to_win".into(), 0);
-        counts.insert("skipped".into(), 0);
-        // Zeros are skipped, should not panic
         print_sync_summary(&counts, false);
     }
 

@@ -14,55 +14,43 @@ pub fn detect_type(path: &Path) -> PkgType {
 
     if let Ok(rel) = rp.strip_prefix(&*MNT_C) {
         let parts: Vec<&OsStr> = rel.iter().collect();
-        if parts.len() >= 3 && parts[0] == "Users" {
-            let sub = if parts.len() > 2 {
-                PathBuf::from_iter(&parts[2..])
-            } else {
-                PathBuf::from(".")
-            };
-
-            for sub_path in sub.ancestors().skip(1) {
-                if sub_path == Path::new("AppData/Roaming") {
-                    return PkgType::WinRoaming;
-                }
-                if sub_path == Path::new("AppData/Local") {
-                    return PkgType::WinLocal;
-                }
-            }
-
-            if parts.len() >= 3 && parts[2] == ".config" {
-                return PkgType::WinConfig;
-            }
-
+        if parts.len() >= 2 && parts[0] == "Users" {
             return PkgType::WinUser;
         }
-        return PkgType::Meta;
+        return PkgType::WinRoot;
     }
 
-    if let Ok(rel) = rp.strip_prefix(&*HOME) {
+    if rp.starts_with(&*HOME) {
         if rp == *HOME {
             return PkgType::User;
         }
-        let parts: Vec<&OsStr> = rel.iter().collect();
-        if !parts.is_empty() {
-            if parts[0] == ".config" {
-                return PkgType::Config;
-            }
-            if parts[0] == ".local" {
-                return PkgType::Local;
-            }
+        let parts: Vec<&OsStr> = rel_of(&rp, &HOME);
+        if !parts.is_empty() && parts[0] == ".config" {
+            return PkgType::Config;
         }
         return PkgType::User;
     }
 
     if rp.starts_with(&*ROOT_TARGET) {
-        if rp.starts_with("/proc") || rp.starts_with("/sys") || rp.starts_with("/dev") || rp.starts_with("/run") || rp.starts_with("/tmp") {
+        if rp.starts_with("/proc")
+            || rp.starts_with("/sys")
+            || rp.starts_with("/dev")
+            || rp.starts_with("/run")
+            || rp.starts_with("/tmp")
+        {
             return PkgType::Meta;
         }
         return PkgType::Root;
     }
 
     PkgType::Meta
+}
+
+fn rel_of<'a>(path: &'a Path, base: &'a Path) -> Vec<&'a OsStr> {
+    match path.strip_prefix(base) {
+        Ok(rel) => rel.iter().collect(),
+        Err(_) => Vec::new(),
+    }
 }
 
 pub fn find_packages(base: &Path) -> HashMap<PkgType, Vec<PathBuf>> {
@@ -103,8 +91,7 @@ pub fn pkg_basename(pkg_path: &Path) -> String {
         .to_string_lossy()
         .to_string();
 
-    let pt = type_from_dir_name(&name);
-    if let Some(pt) = pt {
+    if let Some(pt) = type_from_dir_name(&name) {
         let suffix = pt.suffix();
         if name.ends_with(&suffix) && name.len() > suffix.len() {
             return name[..name.len() - suffix.len()].to_string();
@@ -127,42 +114,29 @@ pub fn list_syncable_files(pkg: &Path) -> Vec<PathBuf> {
         .collect()
 }
 
+/// Strip the optional `<win-user>/` top-level directory inside a Windows
+/// package. Files placed directly under the package root keep their layout.
 pub fn winuser_rel_path(pkg: &Path, file_path: &Path) -> PathBuf {
-    let user_dir = pkg.join(
-        WIN_USERNAME
-            .as_deref()
-            .unwrap_or("user"),
-    );
+    let user_dir = pkg.join(WIN_USERNAME.as_deref().unwrap_or("user"));
     if user_dir.is_dir()
-        && let Ok(rel) = file_path.strip_prefix(&user_dir) {
-            return rel.to_path_buf();
-        }
+        && let Ok(rel) = file_path.strip_prefix(&user_dir)
+    {
+        return rel.to_path_buf();
+    }
     file_path.strip_prefix(pkg).unwrap_or(file_path).to_path_buf()
 }
 
+/// Map a repo file to its Windows-side counterpart under `WSL_MNT`.
+///
+/// Returns `None` for non-Windows package types — callers must only invoke
+/// this for types where [`PkgType::is_windows`] holds.
 pub fn build_win_path(file_path: &Path, pkg: &Path, pt: &PkgType) -> PathBuf {
     let rel = winuser_rel_path(pkg, file_path);
     let username = WIN_USERNAME.as_deref().unwrap_or("user");
 
     match pt {
         PkgType::WinUser => MNT_C.join("Users").join(username).join(rel),
-        PkgType::WinConfig => MNT_C
-            .join("Users")
-            .join(username)
-            .join(".config")
-            .join(rel),
-        PkgType::WinLocal => MNT_C
-            .join("Users")
-            .join(username)
-            .join("AppData")
-            .join("Local")
-            .join(rel),
-        PkgType::WinRoaming => MNT_C
-            .join("Users")
-            .join(username)
-            .join("AppData")
-            .join("Roaming")
-            .join(rel),
+        PkgType::WinRoot => MNT_C.join(rel),
         _ => MNT_C.join(rel),
     }
 }
@@ -179,23 +153,20 @@ pub fn propose_name(sources: &[PathBuf]) -> String {
     // Prefer the parent directory name instead, unless the parent is HOME,
     // /, or some other generic top-level directory.
     if first.is_file()
-        && let Some(parent) = first.parent() {
-            let parent_str = parent.to_string_lossy();
-            let home_str = HOME.to_string_lossy();
-            if parent_str != home_str.as_ref()
-                && parent_str != "/"
-                && let Some(parent_name) = parent.file_name() {
-                    let pn = parent_name.to_string_lossy();
-                    if !pn.is_empty()
-                        && pn != "."
-                        && pn != ".."
-                        && pn != "~"
-                        && pn != ".config"
-                        && pn != ".local" {
-                            return pn.to_string();
-                        }
-                }
+        && let Some(parent) = first.parent()
+    {
+        let parent_str = parent.to_string_lossy();
+        let home_str = HOME.to_string_lossy();
+        if parent_str != home_str.as_ref()
+            && parent_str != "/"
+            && let Some(parent_name) = parent.file_name()
+        {
+            let pn = parent_name.to_string_lossy();
+            if !pn.is_empty() && pn != "." && pn != ".." && pn != "~" && pn != ".config" {
+                return pn.to_string();
+            }
         }
+    }
 
     first
         .file_stem()
@@ -236,18 +207,7 @@ mod tests {
         assert_eq!(pkg_basename(Path::new("/tmp/git.config")), "git");
         assert_eq!(pkg_basename(Path::new("/tmp/foo.user")), "foo");
         assert_eq!(pkg_basename(Path::new("/tmp/bar.winuser")), "bar");
-        assert_eq!(
-            pkg_basename(Path::new("/tmp/baz.winconfig")),
-            "baz"
-        );
-        assert_eq!(
-            pkg_basename(Path::new("/tmp/qux.winlocal")),
-            "qux"
-        );
-        assert_eq!(
-            pkg_basename(Path::new("/tmp/quux.winroaming")),
-            "quux"
-        );
+        assert_eq!(pkg_basename(Path::new("/tmp/baz.winroot")), "baz");
         assert_eq!(pkg_basename(Path::new("/tmp/abc.root")), "abc");
         assert_eq!(pkg_basename(Path::new("/tmp/xyz.meta")), "xyz");
     }
@@ -297,7 +257,6 @@ mod tests {
     fn winuser_rel_path_fallback_when_no_username_subdir() {
         let dir = temp_dir();
         let pkg = dir.join("myapp.winuser");
-        // File directly inside pkg (no matching username subdir)
         let file = pkg.join("Documents/notes.txt");
         write_file(&file, "notes");
 
@@ -331,29 +290,38 @@ mod tests {
     }
 
     #[test]
-    fn build_win_path_winconfig() {
-        let pkg = PathBuf::from("/tmp/myapp.winconfig");
-        let file = pkg.join("settings.json");
-        let path = build_win_path(&file, &pkg, &PkgType::WinConfig);
-        assert!(path.starts_with("/mnt/c/Users/"));
-        assert!(path.to_string_lossy().contains(".config"));
-        assert!(path.ends_with("settings.json"));
+    fn build_win_path_winconfig_suffix_is_undetected() {
+        // .winconfig was removed; such dirs no longer map to a dedicated path.
+        assert_eq!(type_from_dir_name("myapp.winconfig"), None);
     }
 
     #[test]
-    fn build_win_path_winlocal() {
-        let pkg = PathBuf::from("/tmp/myapp.winlocal");
-        let file = pkg.join("app.cfg");
-        let path = build_win_path(&file, &pkg, &PkgType::WinLocal);
-        assert!(path.to_string_lossy().contains("AppData/Local"));
+    fn build_win_path_winroot_maps_under_mnt_c() {
+        let pkg = PathBuf::from("/tmp/tools.winroot");
+        let file = pkg.join("bin/tool.cmd");
+        let path = build_win_path(&file, &pkg, &PkgType::WinRoot);
+        assert_eq!(path, PathBuf::from("/mnt/c/bin/tool.cmd"));
     }
 
     #[test]
-    fn build_win_path_winroaming() {
-        let pkg = PathBuf::from("/tmp/myapp.winroaming");
-        let file = pkg.join("roam.dat");
-        let path = build_win_path(&file, &pkg, &PkgType::WinRoaming);
-        assert!(path.to_string_lossy().contains("AppData/Roaming"));
+    fn build_win_path_respects_wsl_mnt_override_env() {
+        // MNT_C is a LazyLock captured from env at first use; when WSL_MNT is
+        // unset (default test env) it must be /mnt/c.
+        if std::env::var("WSL_MNT").is_err() {
+            let pkg = PathBuf::from("/tmp/x.winuser");
+            let file = pkg.join("a.txt");
+            assert!(build_win_path(&file, &pkg, &PkgType::WinUser)
+                .starts_with("/mnt/c/Users/"));
+        }
+    }
+
+    #[test]
+    fn build_win_path_winlocal_removed_falls_back_to_drive_root() {
+        // Legacy type no longer exists; non-windows types fall back to MNT_C.
+        let pkg = PathBuf::from("/tmp/app.user");
+        let file = pkg.join("state.json");
+        let path = build_win_path(&file, &pkg, &PkgType::Meta);
+        assert_eq!(path, PathBuf::from("/mnt/c/state.json"));
     }
 
     // ------------------------------------------------------------------
@@ -395,21 +363,9 @@ mod tests {
         let dotconfig = dir.join(".config");
         let file = dotconfig.join("settings.yml");
         write_file(&file, "{}");
-        // Override HOME to point to `dir` so the path looks like ~/.config/settings.yml
-        // Can't override HOME per-test, so just test that .config parent falls back
-        let name = propose_name(&[file]);
         // Parent is ".config" which is excluded → falls back to file_stem
-        assert_eq!(name, "settings");
-    }
-
-    #[test]
-    fn propose_name_file_parent_is_dot_local_falls_back() {
-        let dir = temp_dir();
-        let dotlocal = dir.join(".local");
-        let file = dotlocal.join("state.json");
-        write_file(&file, "{}");
         let name = propose_name(&[file]);
-        assert_eq!(name, "state");
+        assert_eq!(name, "settings");
     }
 
     #[test]
@@ -443,11 +399,12 @@ mod tests {
     }
 
     #[test]
-    fn detect_type_local() {
+    fn detect_type_local_now_maps_to_user() {
+        // `.local` type was removed; paths under ~/.local now detect as User.
         let t = detect_type(
             Path::new(&format!("{}/.local/share/app", std::env::var("HOME").unwrap())),
         );
-        assert_eq!(t, PkgType::Local);
+        assert_eq!(t, PkgType::User);
     }
 
     #[test]
@@ -469,16 +426,39 @@ mod tests {
     }
 
     #[test]
-    fn detect_type_winconfig() {
+    fn detect_type_winconfig_now_maps_to_winuser() {
+        // Windows profile paths all detect as WinUser now.
         let t = detect_type(Path::new("/mnt/c/Users/john/.config/pwsh/profile.ps1"));
-        assert_eq!(t, PkgType::WinConfig);
+        assert_eq!(t, PkgType::WinUser);
     }
 
     #[test]
-    fn detect_type_winroaming() {
+    fn detect_type_appdata_now_maps_to_winuser() {
+        // AppData sub-trees no longer have dedicated types.
         let t = detect_type(Path::new(
             "/mnt/c/Users/john/AppData/Roaming/Code/User/settings.json",
         ));
-        assert_eq!(t, PkgType::WinRoaming);
+        assert_eq!(t, PkgType::WinUser);
+    }
+
+    #[test]
+    fn detect_type_outside_users_is_winroot() {
+        let t = detect_type(Path::new("/mnt/c/tools/script.cmd"));
+        assert_eq!(t, PkgType::WinRoot);
+    }
+
+    #[test]
+    fn find_packages_maps_suffixes() {
+        // Unique subdir: temp_dir() is shared across tests in this process.
+        let base = temp_dir().join(format!("suffix_map_{}", std::process::id()));
+        fs::create_dir_all(base.join("git.config")).unwrap();
+        fs::create_dir_all(base.join("zsh.user")).unwrap();
+        fs::create_dir_all(base.join("boot.winroot")).unwrap();
+        fs::create_dir_all(base.join("legacy.winlocal")).unwrap(); // unknown suffix
+        let pkgs = find_packages(&base);
+        assert_eq!(pkgs.get(&PkgType::Config).unwrap().len(), 1);
+        assert_eq!(pkgs.get(&PkgType::User).unwrap().len(), 1);
+        assert_eq!(pkgs.get(&PkgType::WinRoot).unwrap().len(), 1);
+        assert!(pkgs.get(&PkgType::WinUser).unwrap().is_empty());
     }
 }

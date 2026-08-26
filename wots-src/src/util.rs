@@ -91,10 +91,9 @@ pub fn is_excluded(path: &Path) -> bool {
     for part in path.iter() {
         let s = part.to_string_lossy();
         for pat in &EXCLUDE_PATTERNS {
-            if let Ok(matched) = glob_match(pat, &s)
-                && matched {
-                    return true;
-                }
+            if glob_match(pat, &s) {
+                return true;
+            }
         }
     }
     false
@@ -104,15 +103,16 @@ pub fn is_quick_exclude_dir(name: &OsStr) -> bool {
     !QUICK_EXCLUDE_DIRS.contains(name)
 }
 
-fn glob_match(pattern: &str, name: &str) -> Result<bool> {
+fn glob_match(pattern: &str, name: &str) -> bool {
     if pattern == name {
-        return Ok(true);
+        return true;
     }
     if !pattern.contains('*') && !pattern.contains('?') {
-        return Ok(false);
+        return false;
     }
-    let glob = glob::Pattern::new(pattern)?;
-    Ok(glob.matches(name))
+    glob::Pattern::new(pattern)
+        .map(|g| g.matches(name))
+        .unwrap_or(false)
 }
 
 pub fn skip_size_limit(path: &Path) -> Result<bool> {

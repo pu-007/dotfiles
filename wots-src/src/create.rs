@@ -4,7 +4,7 @@ use std::path::{Path, PathBuf};
 use anyhow::{bail, Context, Result};
 
 use crate::cli::CreateArgs;
-use crate::config::{CONFIG_TARGET, DOTFILES_DIR, HOME, LOCAL_TARGET, MNT_C, ROOT_TARGET};
+use crate::config::{DOTFILES_DIR, HOME, MNT_C, ROOT_TARGET, WIN_USERNAME};
 use crate::discover::{detect_type, propose_name};
 use crate::display;
 use crate::sync::{do_stow, prepare_sync_items, sync_batch};
@@ -27,61 +27,20 @@ pub fn run(args: CreateArgs) -> Result<()> {
         })
         .collect::<Result<Vec<_>>>()?;
 
-    let pt = if let Some(pt_str) = args.pkg_type {
-        pt_str
-    } else {
-        let detected: Vec<PkgType> = resolved.iter().map(|p| detect_type(p)).collect();
-        let unique: Vec<PkgType> = {
-            let mut u = detected.clone();
-            u.sort_by_key(|t| t.value());
-            u.dedup();
-            u
-        };
-
-        if unique.len() > 1 {
-            let labels: Vec<String> = unique.iter().map(|t| t.value().to_string()).collect();
-            display::error(&format!(
-                "Sources have mixed types — specify --type explicitly. Detected: {}",
-                labels.join(", ")
-            ));
-            bail!("mixed source types");
-        }
-
-        let mut pt = unique[0];
-        display::info(&format!(
-            "Detected type: {} → {}",
-            pt.value(),
-            type_label(pt),
-        ));
-
-        if !args.yes {
-            let resp = display::prompt::ask_custom(
-                &format!("  Create as {}?", pt.value()),
-                pt.value(),
-                &[],
-            );
-
-            if resp == "n" {
-                display::info("Cancelled.");
-                return Ok(());
-            }
-
-            if resp != "y" && !resp.is_empty() && resp != pt.value() {
-                match resp.parse::<PkgType>() {
-                    Ok(new_pt) => {
-                        display::info(&format!("Using type: {}", new_pt.value()));
-                        pt = new_pt;
-                    }
-                    Err(_) => {
-                        display::error(&format!("Unknown type: {}", resp));
-                        bail!("unknown type: {}", resp);
-                    }
-                }
-            }
-        }
-
-        pt
+    let pt = match args.pkg_type {
+        Some(pt) => pt,
+        None => match auto_detect_type(&resolved, &args)? {
+            Some(pt) => pt,
+            None => return Ok(()), // user declined
+        },
     };
+
+    if pt.is_windows() && WIN_USERNAME.is_none() {
+        display::error(
+            "Windows username not set. Pass --win-user <NAME> or set WIN_USER env var.",
+        );
+        bail!("missing --win-user");
+    }
 
     let app_name = if let Some(ref name) = args.app_name {
         name.clone()
@@ -146,9 +105,11 @@ pub fn run(args: CreateArgs) -> Result<()> {
     if pt.uses_stow() && !args.no_stow {
         do_stow(&dest_root, &pt, args.dry_run)?;
     } else if pt.uses_copy_sync() && !args.no_sync {
+        // One batch for the whole package so parallelism is preserved.
         let items = prepare_sync_items(&dest_root, &pt);
-        for (wsl_p, win_p) in &items {
-            sync_batch(&[(wsl_p.clone(), win_p.clone())], args.dry_run, 1);
+        if !items.is_empty() {
+            print_path_mappings(&items);
+            sync_batch(&items, args.dry_run, *crate::config::SYNC_MAX_CONCURRENT);
         }
     }
 
@@ -156,6 +117,58 @@ pub fn run(args: CreateArgs) -> Result<()> {
     display::success(&format!("Package '{}' ready.", pkg_name));
 
     Ok(())
+}
+
+/// Returns `Ok(None)` when the user declines creation.
+fn auto_detect_type(resolved: &[PathBuf], args: &CreateArgs) -> Result<Option<PkgType>> {
+    let detected: Vec<PkgType> = resolved.iter().map(|p| detect_type(p)).collect();
+    let mut unique: Vec<PkgType> = detected.clone();
+    unique.sort_by_key(|t| t.value());
+    unique.dedup();
+
+    if unique.len() > 1 {
+        let labels: Vec<String> = unique.iter().map(|t| t.value().to_string()).collect();
+        display::error(&format!(
+            "Sources have mixed types — specify --type explicitly. Detected: {}",
+            labels.join(", ")
+        ));
+        bail!("mixed source types");
+    }
+
+    let mut pt = unique[0];
+    display::info(&format!(
+        "Detected type: {} → {}",
+        pt.value(),
+        type_label(pt),
+    ));
+
+    if !args.yes {
+        let resp = display::prompt::ask_custom(
+            &format!("  Create as {}?", pt.value()),
+            pt.value(),
+            &[],
+        );
+
+        if resp == "n" {
+            display::info("Cancelled.");
+            return Ok(None);
+        }
+
+        if resp != "y" && !resp.is_empty() && resp != pt.value() {
+            match resp.parse::<PkgType>() {
+                Ok(new_pt) => {
+                    display::info(&format!("Using type: {}", new_pt.value()));
+                    pt = new_pt;
+                }
+                Err(_) => {
+                    display::error(&format!("Unknown type: {}", resp));
+                    bail!("unknown type: {}", resp);
+                }
+            }
+        }
+    }
+
+    Ok(Some(pt))
 }
 
 fn validate_sources(sources: &[PathBuf], pt: &PkgType) -> Result<()> {
@@ -183,7 +196,7 @@ fn validate_sources(sources: &[PathBuf], pt: &PkgType) -> Result<()> {
                     pt.value(),
                     src.display()
                 ));
-                bail!("source not under /mnt/c: {}", src.display());
+                bail!("source not under {}: {}", MNT_C.display(), src.display());
             }
             continue;
         }
@@ -201,70 +214,49 @@ fn validate_sources(sources: &[PathBuf], pt: &PkgType) -> Result<()> {
     Ok(())
 }
 
-fn compute_dest(src: &Path, pt: &PkgType, pkg_root: &Path) -> Result<PathBuf> {
-    if *pt == PkgType::User {
-        if let Ok(rel) = src.strip_prefix(&*HOME) {
-            return Ok(pkg_root.join(rel));
-        }
-        return Ok(pkg_root.join(
-            src.file_name()
-                .unwrap_or(std::ffi::OsStr::new("")),
-        ));
-    }
-    if *pt == PkgType::Config {
-        if let Ok(rel) = src.strip_prefix(&*CONFIG_TARGET) {
-            return Ok(pkg_root.join(rel));
-        }
-        return Ok(pkg_root.join(
-            src.file_name()
-                .unwrap_or(std::ffi::OsStr::new("")),
-        ));
-    }
-    if *pt == PkgType::Local {
-        if let Ok(rel) = src.strip_prefix(&*LOCAL_TARGET) {
-            return Ok(pkg_root.join(rel));
-        }
-        return Ok(pkg_root.join(
-            src.file_name()
-                .unwrap_or(std::ffi::OsStr::new("")),
-        ));
-    }
-    if *pt == PkgType::Root {
-        if let Ok(rel) = src.strip_prefix(&*ROOT_TARGET) {
-            return Ok(pkg_root.join(rel));
-        }
-        return Ok(pkg_root.join(
-            src.file_name()
-                .unwrap_or(std::ffi::OsStr::new("")),
-        ));
-    }
-    if pt.is_windows() {
-        if let Some(target) = pt.sync_target() {
+/// Base directory whose prefix should be stripped when laying out files
+/// inside the package. `None` means "store by bare filename".
+fn strip_base_for(pt: &PkgType) -> Option<PathBuf> {
+    match pt {
+        PkgType::User => Some(HOME.clone()),
+        PkgType::Config => Some(crate::config::CONFIG_TARGET.clone()),
+        PkgType::Root => Some(ROOT_TARGET.clone()),
+        PkgType::WinUser | PkgType::WinRoot => {
+            let target = pt.sync_target()?;
             let target_str = target.to_string_lossy();
             let without_drive = target_str.strip_prefix("C:").unwrap_or(&target_str);
-            let target_mnt = MNT_C.join(without_drive.trim_start_matches('/').trim_start_matches('\\'));
-            if let Ok(rel) = src.strip_prefix(&target_mnt) {
-                return Ok(pkg_root.join(rel));
+            let trimmed = without_drive.trim_start_matches('/').trim_start_matches('\\');
+            if trimmed.is_empty() {
+                Some(MNT_C.clone())
+            } else {
+                Some(MNT_C.join(trimmed))
             }
         }
-        if let Ok(rel) = src.strip_prefix(&*MNT_C) {
-            return Ok(pkg_root.join(rel));
-        }
-        return Ok(pkg_root.join(
-            src.file_name()
-                .unwrap_or(std::ffi::OsStr::new("")),
-        ));
+        PkgType::Meta => None,
     }
+}
+
+fn compute_dest(src: &Path, pt: &PkgType, pkg_root: &Path) -> Result<PathBuf> {
+    let fallback = |pkg_root: &Path| -> PathBuf {
+        pkg_root.join(src.file_name().unwrap_or(std::ffi::OsStr::new("")))
+    };
+
     if *pt == PkgType::Meta {
-        return Ok(pkg_root.join(
-            src.file_name()
-                .unwrap_or(std::ffi::OsStr::new("")),
-        ));
+        return Ok(fallback(pkg_root));
     }
-    Ok(pkg_root.join(
-        src.file_name()
-            .unwrap_or(std::ffi::OsStr::new("")),
-    ))
+
+    if let Some(base) = strip_base_for(pt)
+        && let Ok(rel) = src.strip_prefix(&base)
+    {
+        return Ok(pkg_root.join(rel));
+    }
+
+    // Windows sources may sit anywhere under the mount; keep full layout.
+    if pt.is_windows() && let Ok(rel) = src.strip_prefix(&*MNT_C) {
+        return Ok(pkg_root.join(rel));
+    }
+
+    Ok(fallback(pkg_root))
 }
 
 fn create_atomic(src: &Path, dest: &Path, is_move: bool) -> Result<()> {
@@ -337,6 +329,14 @@ fn validate_copy(src: &Path, dest: &Path) -> Result<()> {
     Ok(())
 }
 
+/// Print repo-side and target-side paths for each item about to be copied.
+pub fn print_path_mappings(items: &[(PathBuf, PathBuf)]) {
+    display::rule("Path mappings (repo → target)");
+    for (src, dst) in items {
+        display::info(&format!("  {}  →  {}", src.display(), dst.display()));
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -363,21 +363,8 @@ mod tests {
         let src = PathBuf::from(format!("{}/.config/nvim/init.lua", HOME.to_string_lossy()));
 
         let dest = compute_dest(&src, &PkgType::Config, &pkg_root).unwrap();
-        // Should strip ~/.config/, NOT ~/.  Package structure: nvim/init.lua
         assert!(!dest.to_string_lossy().contains(".config/.config"));
-        assert!(!dest.to_string_lossy().contains("init.lua.config"));
         assert_eq!(dest, pkg_root.join("nvim/init.lua"));
-    }
-
-    #[test]
-    fn compute_dest_local_strips_local_target() {
-        let dir = temp_dir();
-        let pkg_root = dir.join("share.local");
-        let src = PathBuf::from(format!("{}/.local/share/app/config", HOME.to_string_lossy()));
-
-        let dest = compute_dest(&src, &PkgType::Local, &pkg_root).unwrap();
-        assert!(!dest.to_string_lossy().contains(".local/.local"));
-        assert_eq!(dest, pkg_root.join("share/app/config"));
     }
 
     #[test]
@@ -388,6 +375,17 @@ mod tests {
 
         let dest = compute_dest(&src, &PkgType::User, &pkg_root).unwrap();
         assert_eq!(dest, pkg_root.join(".zshrc"));
+    }
+
+    #[test]
+    fn compute_dest_local_removed_falls_back_to_filename_layout() {
+        let dir = temp_dir();
+        let pkg_root = dir.join("share.user");
+        let src = PathBuf::from(format!("{}/.local/share/app/config", HOME.to_string_lossy()));
+
+        // Local type removed: a ~/.local path detected as User strips only HOME.
+        let dest = compute_dest(&src, &PkgType::User, &pkg_root).unwrap();
+        assert_eq!(dest, pkg_root.join(".local/share/app/config"));
     }
 
     #[test]
@@ -418,6 +416,16 @@ mod tests {
 
         let dest = compute_dest(&src, &PkgType::WinUser, &pkg_root).unwrap();
         assert!(dest.to_string_lossy().contains(".gitconfig"));
+    }
+
+    #[test]
+    fn compute_dest_winroot_strips_mnt_c() {
+        let dir = temp_dir();
+        let pkg_root = dir.join("tools.winroot");
+        let src = PathBuf::from("/mnt/c/tools/myscript.cmd");
+
+        let dest = compute_dest(&src, &PkgType::WinRoot, &pkg_root).unwrap();
+        assert_eq!(dest, pkg_root.join("tools/myscript.cmd"));
     }
 
     #[test]
@@ -561,5 +569,21 @@ mod tests {
     fn validate_sources_winuser_under_mnt_c_ok() {
         let src = vec![PathBuf::from("/mnt/c/Users/test/.gitconfig")];
         assert!(validate_sources(&src, &PkgType::WinUser).is_ok());
+    }
+
+    #[test]
+    fn validate_sources_winroot_requires_mnt_c() {
+        assert!(validate_sources(&[PathBuf::from("/mnt/c/tools/a.cmd")], &PkgType::WinRoot).is_ok());
+        assert!(validate_sources(&[PathBuf::from("/home/x/a.cmd")], &PkgType::WinRoot).is_err());
+    }
+
+    #[test]
+    fn strip_base_for_windows_maps_to_mount() {
+        if std::env::var("WSL_MNT").is_err() {
+            let base = strip_base_for(&PkgType::WinUser).unwrap();
+            assert!(base.starts_with("/mnt/c/Users/"));
+            let base = strip_base_for(&PkgType::WinRoot).unwrap();
+            assert_eq!(base.to_string_lossy(), "/mnt/c");
+        }
     }
 }

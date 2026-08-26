@@ -9,7 +9,6 @@ use crate::types::PkgType;
     version = env!("CARGO_PKG_VERSION"),
     disable_version_flag = true,
     disable_help_subcommand = true,
-    disable_colored_help = false,
 )]
 pub struct Cli {
     #[arg(

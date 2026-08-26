@@ -2,8 +2,6 @@ use std::collections::HashSet;
 use std::fs;
 use std::path::{Path, PathBuf};
 
-use walkdir::WalkDir;
-
 use crate::config::DOTFILES_DIR;
 use crate::discover::{build_win_path, list_syncable_files};
 use crate::types::PkgType;
@@ -63,7 +61,7 @@ pub struct CopyStatusCounts {
     pub missing_wsl: usize,
     pub skipped: usize,
     pub error: usize,
-    pub content_mat_mismatch: usize,
+    pub content_mismatch: usize,
 }
 
 impl CopyStatusCounts {
@@ -76,8 +74,24 @@ impl CopyStatusCounts {
             FileSyncStatus::MissingWsl => self.missing_wsl += 1,
             FileSyncStatus::Skipped => self.skipped += 1,
             FileSyncStatus::Error => self.error += 1,
-            FileSyncStatus::ContentChanged => self.content_mat_mismatch += 1,
+            FileSyncStatus::ContentChanged => self.content_mismatch += 1,
         }
+    }
+}
+
+impl std::ops::Add for CopyStatusCounts {
+    type Output = Self;
+
+    fn add(mut self, rhs: Self) -> Self {
+        self.synced += rhs.synced;
+        self.outdated_local += rhs.outdated_local;
+        self.outdated_remote += rhs.outdated_remote;
+        self.missing_remote += rhs.missing_remote;
+        self.missing_wsl += rhs.missing_wsl;
+        self.skipped += rhs.skipped;
+        self.error += rhs.error;
+        self.content_mismatch += rhs.content_mismatch;
+        self
     }
 }
 
@@ -89,8 +103,8 @@ pub fn status_text(counts: &CopyStatusCounts) -> String {
     if counts.outdated_local > 0 {
         parts.push(format!("{} needs-sync", counts.outdated_local));
     }
-    if counts.content_mat_mismatch > 0 {
-        parts.push(format!("{} content-mismatch", counts.content_mat_mismatch));
+    if counts.content_mismatch > 0 {
+        parts.push(format!("{} content-mismatch", counts.content_mismatch));
     }
     if counts.outdated_remote > 0 {
         parts.push(format!("{} newer-on-win", counts.outdated_remote));
@@ -396,13 +410,8 @@ fn hash_compare(
     }
 }
 
-/// Public test wrapper for hash_file.  Only used by integration tests.
-#[doc(hidden)]
-pub fn hash_file_test(path: &Path) -> Option<String> {
-    hash_file(path)
-}
-
-fn hash_file(path: &Path) -> Option<String> {
+/// BLAKE3 hex digest of a file's contents; `None` when unreadable.
+pub fn hash_file(path: &Path) -> Option<String> {
     let data = std::fs::read(path).ok()?;
     Some(blake3::hash(&data).to_hex().to_string())
 }
@@ -431,7 +440,7 @@ fn index_key(pkg: &Path, rel: &Path) -> String {
 // Reverse check: detect index entries whose WSL file no longer exists.
 // ===========================================================================
 
-fn detect_missing_wsl(
+pub fn detect_missing_wsl(
     pkg: &Path,
     pt: &PkgType,
     index: &SyncIndex,
@@ -462,80 +471,6 @@ fn detect_missing_wsl(
     }
 
     (missing, remove_keys)
-}
-
-/// Public test wrapper for `detect_missing_wsl`.
-#[doc(hidden)]
-pub fn detect_missing_wsl_test(
-    pkg: &Path,
-    pt: &PkgType,
-    index: &SyncIndex,
-    seen_keys: &HashSet<String>,
-) -> (Vec<(String, FileSyncStatus)>, Vec<String>) {
-    detect_missing_wsl(pkg, pt, index, seen_keys)
-}
-
-// ===========================================================================
-// Direct Windows-side scan — does NOT depend on the index.
-// ===========================================================================
-
-#[allow(dead_code)]
-fn scan_windows_for_orphans(
-    pkg: &Path,
-    pt: &PkgType,
-) -> Vec<FileStatusEntry> {
-    let mut orphans: Vec<FileStatusEntry> = Vec::new();
-
-    let win_base = match pt {
-        PkgType::WinUser => {
-            let user = crate::config::WIN_USERNAME.as_deref().unwrap_or("user");
-            crate::config::MNT_C.join("Users").join(user)
-        }
-        PkgType::WinConfig => {
-            let user = crate::config::WIN_USERNAME.as_deref().unwrap_or("user");
-            crate::config::MNT_C.join("Users").join(user).join(".config")
-        }
-        PkgType::WinLocal => {
-            let user = crate::config::WIN_USERNAME.as_deref().unwrap_or("user");
-            crate::config::MNT_C.join("Users").join(user).join("AppData").join("Local")
-        }
-        PkgType::WinRoaming => {
-            let user = crate::config::WIN_USERNAME.as_deref().unwrap_or("user");
-            crate::config::MNT_C.join("Users").join(user).join("AppData").join("Roaming")
-        }
-        _ => return orphans,
-    };
-
-    if !win_base.is_dir() {
-        return orphans;
-    }
-
-    let wsl_set: HashSet<PathBuf> = list_syncable_files(pkg)
-        .into_iter()
-        .filter_map(|f| f.strip_prefix(pkg).ok().map(Path::to_path_buf))
-        .collect();
-
-    let max_depth: usize = 8;
-
-    for entry in WalkDir::new(&win_base)
-        .max_depth(max_depth)
-        .into_iter()
-        .filter_entry(|e| crate::util::is_quick_exclude_dir(e.file_name()))
-        .filter_map(|e| e.ok())
-        .filter(|e| e.file_type().is_file() && !crate::util::is_excluded(e.path()))
-    {
-        let win_file = entry.path();
-        if let Ok(rel) = win_file.strip_prefix(&win_base)
-            && !wsl_set.contains(rel)
-        {
-            orphans.push(FileStatusEntry {
-                relative_path: rel.to_path_buf(),
-                status: FileSyncStatus::MissingWsl,
-            });
-        }
-    }
-
-    orphans
 }
 
 // ===========================================================================
@@ -626,19 +561,10 @@ pub fn check_copy_status(pkg: &Path, pt: &PkgType) -> CopyStatusCounts {
 }
 
 pub fn check_copy_status_batch(pkgs: &[PathBuf], pt: PkgType) -> CopyStatusCounts {
-    let mut total = CopyStatusCounts::default();
-    for pkg in pkgs {
-        let c = check_copy_status(pkg, &pt);
-        total.synced += c.synced;
-        total.outdated_local += c.outdated_local;
-        total.outdated_remote += c.outdated_remote;
-        total.missing_remote += c.missing_remote;
-        total.missing_wsl += c.missing_wsl;
-        total.skipped += c.skipped;
-        total.error += c.error;
-        total.content_mat_mismatch += c.content_mat_mismatch;
-    }
-    total
+    pkgs
+        .iter()
+        .map(|pkg| check_copy_status(pkg, &pt))
+        .fold(CopyStatusCounts::default(), |acc, c| acc + c)
 }
 
 // ===========================================================================
@@ -705,7 +631,7 @@ mod tests {
         assert_eq!(c.missing_wsl, 0);
         assert_eq!(c.skipped, 0);
         assert_eq!(c.error, 0);
-        assert_eq!(c.content_mat_mismatch, 0);
+        assert_eq!(c.content_mismatch, 0);
     }
 
     #[test]
@@ -804,7 +730,7 @@ mod tests {
     fn content_changed_status_inc() {
         let mut c = CopyStatusCounts::default();
         c.inc(&FileSyncStatus::ContentChanged);
-        assert_eq!(c.content_mat_mismatch, 1);
+        assert_eq!(c.content_mismatch, 1);
     }
 
     #[test]
@@ -850,6 +776,6 @@ mod tests {
         assert_eq!(c.missing_wsl, 1);
         assert_eq!(c.skipped, 1);
         assert_eq!(c.error, 1);
-        assert_eq!(c.content_mat_mismatch, 1);
+        assert_eq!(c.content_mismatch, 1);
     }
 }

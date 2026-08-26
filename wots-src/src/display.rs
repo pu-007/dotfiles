@@ -254,23 +254,6 @@ mod tests {
         ];
         render_list(&rows);
     }
-
-    #[test]
-    fn prompt_confirm_default_yes_empty_input() {
-        // Cannot test stdin interactively, but verify function signature compiles.
-        // The function exists; actual behavior tested manually.
-        let _ = prompt::confirm;
-    }
-
-    #[test]
-    fn prompt_ask_function_exists() {
-        let _ = prompt::ask;
-    }
-
-    #[test]
-    fn prompt_ask_custom_function_exists() {
-        let _ = prompt::ask_custom;
-    }
 }
 
 

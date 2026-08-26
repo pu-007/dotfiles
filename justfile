@@ -14,6 +14,11 @@ wots_crate := dotfiles / "wots-src"
 comp_dir := dotfiles / "zsh.user" / ".config" / "zsh" / "completions"
 WIN_USER := "zion"
 
+# 同步前手动确认文件路径（"true" 开启 / "false" 跳过确认）
+# Manual path confirmation before syncing ("true" = confirm, "false" = skip)
+CONFIRM := "true"
+confirm_flag := if CONFIRM == "true" { "" } else { "--yes" }
+
 # 🎨 UI 色彩与排版配置
 c_reset := '\033[0m'
 c_green := '\033[1;32m'
@@ -255,20 +260,20 @@ _install_completion shell:
 create +args:
     @{{ wots }} create --win-user {{ WIN_USER }} {{ args }}
 
-# [同步] 同步所有包 (--yes 跳过确认)
+# [同步] 同步所有包 (CONFIRM=true 时同步前确认路径)
 [group('2. 配置管理 (Wots CLI)')]
 sync *args:
-    @{{ wots }} sync --win-user {{ WIN_USER }} --yes {{ args }}
+    @{{ wots }} sync --win-user {{ WIN_USER }} {{ confirm_flag }} {{ args }}
 
-# [同步] 按类型同步 (user/config/local/root/winuser/winconfig/winlocal/winroaming)
+# [同步] 按类型同步 (user/config/root/winuser/winroot)
 [group('2. 配置管理 (Wots CLI)')]
 sync-type type *args:
-    @{{ wots }} sync --win-user {{ WIN_USER }} --type {{ type }} --yes {{ args }}
+    @{{ wots }} sync --win-user {{ WIN_USER }} --type {{ type }} {{ confirm_flag }} {{ args }}
 
-# [同步] 按包名同步 (支持后缀: git.config → 自动识别 Config, git → 匹配所有类型)
+# [同步] 按包名同步 (支持后缀: git.user → 自动识别 User, git → 匹配所有类型)
 [group('2. 配置管理 (Wots CLI)')]
 sync-app app *args:
-    @{{ wots }} sync --win-user {{ WIN_USER }} --app {{ app }} --yes {{ args }}
+    @{{ wots }} sync --win-user {{ WIN_USER }} --app {{ app }} {{ confirm_flag }} {{ args }}
 
 # [同步] 干运行预览 (不实际修改文件)
 [group('2. 配置管理 (Wots CLI)')]

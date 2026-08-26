@@ -184,10 +184,10 @@ fn scenario_both_deleted() {
     fs::remove_file(pkg.join(file)).unwrap();
     assert!(rm_win(&pkg, file, &PkgType::WinUser));
     let (c2, _, _) = check(&pkg, &idx);
-    let t2 = c2.synced+c2.outdated_local+c2.outdated_remote+c2.missing_remote+c2.missing_wsl+c2.error+c2.content_mat_mismatch;
+    let t2 = c2.synced+c2.outdated_local+c2.outdated_remote+c2.missing_remote+c2.missing_wsl+c2.error+c2.content_mismatch;
     assert_eq!(t2, 0, "both deleted pass2: {c2:?}");
     let (c3, _, _) = check(&pkg, &idx);
-    let t3 = c3.synced+c3.outdated_local+c3.outdated_remote+c3.missing_remote+c3.missing_wsl+c3.error+c3.content_mat_mismatch;
+    let t3 = c3.synced+c3.outdated_local+c3.outdated_remote+c3.missing_remote+c3.missing_wsl+c3.error+c3.content_mismatch;
     assert_eq!(t3, 0, "both deleted pass3: {c3:?}");
 }
 
@@ -212,8 +212,8 @@ fn scenario_content_changed_same_metadata() {
         f.write_all(b"BBBB").unwrap();
     }
 
-    let hfa = wots::status::hash_file_test(&fa);
-    let hfb = wots::status::hash_file_test(&fb);
+    let hfa = wots::status::hash_file(&fa);
+    let hfb = wots::status::hash_file(&fb);
     assert!(hfa.is_some());
     assert!(hfb.is_some());
     assert_ne!(hfa, hfb, "different content must produce different hashes");
@@ -234,8 +234,8 @@ fn scenario_same_content_same_metadata() {
     }
 
     assert_eq!(
-        wots::status::hash_file_test(&fa),
-        wots::status::hash_file_test(&fb)
+        wots::status::hash_file(&fa),
+        wots::status::hash_file(&fb)
     );
 }
 
@@ -247,7 +247,7 @@ fn counts_inc_all_variants() {
     }
     assert_eq!(c.synced,1);assert_eq!(c.outdated_local,1);assert_eq!(c.outdated_remote,1);
     assert_eq!(c.missing_remote,1);assert_eq!(c.missing_wsl,1);assert_eq!(c.skipped,1);assert_eq!(c.error,1);
-    assert_eq!(c.content_mat_mismatch,1);
+    assert_eq!(c.content_mismatch,1);
 }
 
 #[test] fn counts_synced_accumulates() {
@@ -255,7 +255,7 @@ fn counts_inc_all_variants() {
 }
 
 #[test] fn status_text_reports_all_fields() {
-    let c=CopyStatusCounts{synced:1,outdated_local:2,outdated_remote:3,missing_remote:4,missing_wsl:5,skipped:6,error:0,content_mat_mismatch:7};
+    let c=CopyStatusCounts{synced:1,outdated_local:2,outdated_remote:3,missing_remote:4,missing_wsl:5,skipped:6,error:0,content_mismatch:7};
     let s=status::status_text(&c);
     assert!(s.contains("1 synced"));assert!(s.contains("2 needs-sync"));assert!(s.contains("3 newer-on-win"));
     assert!(s.contains("4 missing-win"));assert!(s.contains("5 missing-wsl"));assert!(s.contains("6 skipped"));
@@ -274,7 +274,8 @@ fn counts_inc_all_variants() {
 #[test] fn is_symlink_regular_file_returns_false() {let r=temp_root();let f=r.join("r.txt");touch(&f);assert!(!status::is_symlink(&f));}
 #[test] fn is_symlink_nonexistent_returns_false() {assert!(!status::is_symlink(Path::new("/no")));}
 #[test] fn check_stow_status_empty_pkg_is_zero() {let r=temp_root();let p=make_pkg(&r,"e","user");let(s,t)=status::check_stow_status(&p,&PkgType::User);assert_eq!(s,0);assert_eq!(t,0);}
-#[test] fn check_stow_status_non_zero() {let r=temp_root();let p=make_pkg(&r,"f","winuser");touch(&p.join("f.txt"));let(s,t)=status::check_stow_status(&p,&PkgType::WinUser);assert_eq!(s,0);assert_eq!(t,0);}
+// Non-stow types must short-circuit to (0, 0) regardless of contents.
+#[test] fn check_stow_status_non_stow_type_is_zero() {let r=temp_root();let p=make_pkg(&r,"f","winuser");touch(&p.join("f.txt"));let(s,t)=status::check_stow_status(&p,&PkgType::WinUser);assert_eq!(s,0);assert_eq!(t,0);}
 
 #[test] fn check_copy_status_all_missing_win() {
     let r=temp_root();let p=make_pkg(&r,"t","winuser");touch(&p.join("a.json"));touch(&p.join("b.cfg"));
@@ -322,13 +323,19 @@ fn counts_inc_all_variants() {
 #[test] fn all_types_roundtrip() {for pt in &wots::types::ALL_TYPES{assert_eq!(pt.value().parse::<PkgType>().unwrap(),*pt);}}
 #[test] fn fmt_size_boundary() {assert!(wots::util::fmt_size(1024).contains("KB"));assert!(wots::util::fmt_size(1024*1024).contains("MB"));}
 
+#[test] fn build_win_path_winroot_under_mount() {
+    let r=temp_root();let p=make_pkg(&r,"br","winroot");touch(&p.join("tools/x.cmd"));
+    let win=wots::discover::build_win_path(&p.join("tools/x.cmd"),&p,&PkgType::WinRoot);
+    assert_eq!(win,PathBuf::from("/mnt/c/tools/x.cmd"));
+}
+
 #[test] fn is_symlink_or_parent_plain() {let r=temp_root();let f=r.join("p.txt");touch(&f);assert!(!status::is_symlink_or_parent(&f,&r));}
 #[test] fn is_symlink_or_parent_nonexistent() {assert!(!status::is_symlink_or_parent(Path::new("/no"),Path::new("/tmp")));}
 
 #[test] fn empty_pkg_zero() {
     let r=temp_root();let p=make_pkg(&r,"emp","winuser");
     let(c,e,_)=status::check_copy_status_detailed(&p,&PkgType::WinUser);
-    assert_eq!(c.synced+c.outdated_local+c.outdated_remote+c.missing_remote+c.missing_wsl+c.error+c.skipped+c.content_mat_mismatch,0);
+    assert_eq!(c.synced+c.outdated_local+c.outdated_remote+c.missing_remote+c.missing_wsl+c.error+c.skipped+c.content_mismatch,0);
     assert!(e.is_empty());
 }
 

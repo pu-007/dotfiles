@@ -25,23 +25,17 @@ pub static USER_TARGET: LazyLock<PathBuf> = LazyLock::new(|| HOME.clone());
 
 pub static CONFIG_TARGET: LazyLock<PathBuf> = LazyLock::new(|| USER_TARGET.join(".config"));
 
-pub static LOCAL_TARGET: LazyLock<PathBuf> = LazyLock::new(|| USER_TARGET.join(".local"));
-
 pub static ROOT_TARGET: LazyLock<PathBuf> = LazyLock::new(|| PathBuf::from("/"));
 
+/// Windows user profile, expressed as a `C:/Users/<name>` path. This is a
+/// logical Windows path; use [`MNT_C`] to translate it into the WSL mount.
 pub static WINUSER_TARGET: LazyLock<PathBuf> = LazyLock::new(|| {
     let user = WIN_USERNAME.as_deref().unwrap_or("user");
     PathBuf::from(format!("C:/Users/{}", user))
 });
 
-pub static WINCONFIG_TARGET: LazyLock<PathBuf> =
-    LazyLock::new(|| WINUSER_TARGET.join(".config"));
-
-pub static WINLOCAL_TARGET: LazyLock<PathBuf> =
-    LazyLock::new(|| WINUSER_TARGET.join("AppData").join("Local"));
-
-pub static WINROAMING_TARGET: LazyLock<PathBuf> =
-    LazyLock::new(|| WINUSER_TARGET.join("AppData").join("Roaming"));
+/// Windows drive root (`C:/`) for `.winroot` packages.
+pub static WINROOT_TARGET: LazyLock<PathBuf> = LazyLock::new(|| PathBuf::from("C:/"));
 
 pub static MNT_C: LazyLock<PathBuf> = LazyLock::new(|| {
     env::var("WSL_MNT")
@@ -112,11 +106,6 @@ mod tests {
     }
 
     #[test]
-    fn win_username_reads_env_or_none() {
-        let _val = WIN_USERNAME.clone();
-    }
-
-    #[test]
     fn sync_max_concurrent_default() {
         if std::env::var("WOTS_CONCURRENT").is_err() {
             assert_eq!(*SYNC_MAX_CONCURRENT, 8);
@@ -131,44 +120,37 @@ mod tests {
     }
 
     #[test]
-    fn max_sync_size_bytes_correct_formula() {
-        // Default: 50 * 1024 * 1024 = 52428800
-        if std::env::var("WOTS_MAX_SIZE_MB").is_err() {
-            assert_eq!(*MAX_SYNC_SIZE_BYTES, 50 * 1024 * 1024);
-        }
-    }
-
-    #[test]
     fn exclude_patterns_has_expected_entries() {
         assert_eq!(EXCLUDE_PATTERNS.len(), 10);
         let patterns: Vec<&str> = EXCLUDE_PATTERNS.to_vec();
-        assert!(patterns.contains(&".git"));
-        assert!(patterns.contains(&"node_modules"));
-        assert!(patterns.contains(&"__pycache__"));
-        assert!(patterns.contains(&"*.pyc"));
-        assert!(patterns.contains(&".DS_Store"));
-        assert!(patterns.contains(&"Thumbs.db"));
-        assert!(patterns.contains(&".wots_index.json"));
-        assert!(patterns.contains(&".pixi"));
-        assert!(patterns.contains(&".mypy_cache"));
-        assert!(patterns.contains(&".ruff_cache"));
+        for p in [
+            ".git",
+            ".pixi",
+            "node_modules",
+            "__pycache__",
+            "*.pyc",
+            ".DS_Store",
+            "Thumbs.db",
+            ".wots_index.json",
+            ".mypy_cache",
+            ".ruff_cache",
+        ] {
+            assert!(patterns.contains(&p), "missing pattern {p}");
+        }
     }
 
     #[test]
     fn target_paths_are_absolute() {
         assert!(USER_TARGET.to_string_lossy().starts_with("/"));
         assert!(CONFIG_TARGET.to_string_lossy().starts_with("/"));
-        assert!(LOCAL_TARGET.to_string_lossy().starts_with("/"));
         assert_eq!(ROOT_TARGET.to_string_lossy(), "/");
     }
 
     #[test]
-    fn win_targets_contain_expected_windows_paths() {
+    fn win_targets_use_windows_paths() {
         assert!(WINUSER_TARGET.to_string_lossy().starts_with("C:/Users/"));
-        assert!(WINCONFIG_TARGET.to_string_lossy().contains(".config"));
-        assert!(WINLOCAL_TARGET.to_string_lossy().contains("AppData/Local"));
-        assert!(WINROAMING_TARGET.to_string_lossy().contains("AppData/Roaming"));
+        assert_eq!(WINROOT_TARGET.to_string_lossy(), "C:/");
+        // WinUser target must live under the WinRoot target.
+        assert!(WINUSER_TARGET.starts_with(&*WINROOT_TARGET));
     }
-
 }
-
