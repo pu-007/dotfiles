@@ -1,89 +1,184 @@
-# Install-Module PSReadLine
-# Install-Module PSFzf
-# Install-Module WslInterop
+# ============================================================
+# PowerShell Profile
+# ============================================================
+# Philosophy:
+#   - Keep PowerShell native
+#   - zsh-like interactive experience
+#   - Minimal custom aliases/functions
+#   - Safe for VS Code / AI / scripts
+# ============================================================
 
 
-# === 设置 PowerShell 默认编码为 UTF-8（无 BOM）===
+# ============================================================
+# 1. UTF-8
+# ============================================================
+
 $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
 $PSDefaultParameterValues['Set-Content:Encoding'] = 'utf8'
 $PSDefaultParameterValues['Add-Content:Encoding'] = 'utf8'
 
-# === 控制台输入/输出编码（影响 dotnet 等外部程序）===
-[Console]::InputEncoding  = [System.Text.UTF8Encoding]::new($false)
+[Console]::InputEncoding = [System.Text.UTF8Encoding]::new($false)
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 
-# === 让 dotnet 输出也用 UTF-8 ===
-$env:DOTNET_CLI_UI_LANGUAGE = 'zh-CN'   # 如需中文输出，可选
+
+# ============================================================
+# 2. Environment
+# ============================================================
+
+$env:SHELL = 'pwsh'
+$env:EDITOR = 'nvim'
+$env:VISUAL = 'nvim'
+
+$env:DOTNET_CLI_UI_LANGUAGE = 'zh-CN'
 $env:DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = '0'
 
+$env:FZF_DEFAULT_OPTS = '--preview-window=hidden'
 
 
-$env:SHELL = "pwsh"
-$env:EDITOR = "vim"
-$env:FZF_DEFAULT_OPTS = "--preview-window=hidden"
+# ============================================================
+# 3. zoxide
+# ============================================================
 
-Invoke-Expression (& { (zoxide init powershell | Out-String) })
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+    Invoke-Expression (& { zoxide init powershell | Out-String })
+}
 
-### PSReadLine
-Set-PSReadLineOption -EditMode Vi
-Set-PSReadLineKeyHandler -Chord Ctrl+l -Function ClearScreen
-# This example emits a cursor change VT escape in response to a Vi mode change.
-Write-Host -NoNewLine "`e[5 q"
-function OnViModeChange {
-    if ($args[0] -eq 'Command') {
-        # Set the cursor to a blinking block.
-        Write-Host -NoNewLine "`e[1 q"
+
+# ============================================================
+# 4. WSL Interop
+# ============================================================
+
+if (Get-Command Import-WslCommand -ErrorAction SilentlyContinue) {
+
+    # Use Linux nvim from WSL
+    Import-WslCommand 'nvim'
+
+    if (-not $WslDefaultParameterValues) {
+        $WslDefaultParameterValues = @{}
     }
-    else {
-        # Set the cursor to a blinking line.
-        Write-Host -NoNewLine "`e[5 q"
+
+    $WslDefaultParameterValues['eza'] = "-I 'NTUSER.DAT*|ntuser.*'"
+}
+
+
+# ============================================================
+# PSReadLine
+# ============================================================
+
+if (Get-Command Set-PSReadLineOption -ErrorAction SilentlyContinue) {
+
+    # Vi editing
+    Set-PSReadLineOption -EditMode Vi
+
+    # History
+    Set-PSReadLineOption -HistoryNoDuplicates
+    Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+    Set-PSReadLineOption -MaximumHistoryCount 10000
+
+    # No terminal bell
+    Set-PSReadLineOption -BellStyle None
+
+    # History prediction
+    try {
+        Set-PSReadLineOption -PredictionSource History
+        Set-PSReadLineOption -PredictionViewStyle ListView
     }
-}
-Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
+    catch {
+        # Ignore on older PSReadLine versions
+    }
 
-###PSFzf
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
-$commandOverride = [ScriptBlock] { param($Location) Write-Host $Location }
-Set-PsFzfOption -AltCCommand $commandOverride
-Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
-Set-PsFzfOption -TabExpansion
-Set-PsFzfOption -EnableAliasFuzzyEdit -EnableAliasFuzzyFasd -EnableAliasFuzzyHistory -EnableAliasFuzzyKillProcess -EnableAliasFuzzySetLocation -EnableAliasFuzzyScoop -EnableAliasFuzzySetEverything -EnableAliasFuzzyZLocation -EnableAliasFuzzyGitStatus
-### WslInterop
-# use native linux commands from WSL instead of GOW.
-Import-WslCommand "yay", "awk", "find", "grep", "head", "less", "man", "sed", "seq", "ssh", "sudo", "tail", "touch", "vim", "wc"
+    # Ctrl + L
+    Set-PSReadLineKeyHandler `
+        -Chord Ctrl+l `
+        -Function ClearScreen
 
-#### Alias
-if (-not $WslDefaultParameterValues) {
-    $WslDefaultParameterValues = @{}
-}
-$WslDefaultParameterValues["eza"] = "-I 'NTUSER.DAT*|ntuser.*'"
+    # --------------------------------------------------------
+    # Vi cursor
+    # --------------------------------------------------------
 
-function iy {
-    ipython $args
+    $viModeChangeHandler = {
+        param($mode)
+
+        if ($mode -eq 'Command') {
+            # Command mode → block cursor
+            Write-Host -NoNewLine "`e[1 q"
+        }
+        else {
+            # Insert mode → line cursor
+            Write-Host -NoNewLine "`e[5 q"
+        }
+    }
+
+    Set-PSReadLineOption `
+        -ViModeIndicator Script `
+        -ViModeChangeHandler $viModeChangeHandler
 }
-function py {
-    python $args
+
+
+# ============================================================
+# 6. PSFzf
+# ============================================================
+
+if (Get-Command Set-PsFzfOption -ErrorAction SilentlyContinue) {
+
+    # Ctrl + T → file/path search
+    Set-PsFzfOption `
+        -PSReadlineChordProvider 'Ctrl+t'
+
+    # Ctrl + R → history search
+    Set-PsFzfOption `
+        -PSReadlineChordReverseHistory 'Ctrl+r'
+
+    # Tab → fzf completion
+    Set-PsFzfOption -TabExpansion
+
+    # Alt + C → fuzzy directory navigation
+    Set-PsFzfOption -AltCCommand {
+        param($Location)
+        Set-Location $Location
+    }
+
+    Set-PSReadLineKeyHandler `
+        -Key Tab `
+        -ScriptBlock {
+            Invoke-FzfTabCompletion
+        }
+
+    # Optional fuzzy aliases
+    Set-PsFzfOption `
+        -EnableAliasFuzzyEdit `
+        -EnableAliasFuzzyHistory `
+        -EnableAliasFuzzySetLocation `
+        -EnableAliasFuzzyZLocation `
+        -EnableAliasFuzzyGitStatus
 }
+
+
+# ============================================================
+# 7. Minimal aliases
+# ============================================================
+# Only aliases that do not change PowerShell semantics.
+
+Set-Alias -Name v -Value nvim
+Set-Alias -Name e -Value explorer.exe
+
+
+# ============================================================
+# 8. eza
+# ============================================================
+
 function l {
-    eza  --git -a --icons -l
+    eza --git -a --icons -l
 }
-function la {
-    eza -a --icons --no-git
-}
+
 function ll {
     eza -a --total-size --git-repos --icons -l
 }
+
+function lt {
+    eza --tree -a -I '.git' -L 2
+}
+
 function lT {
     eza --tree -a -I '.git'
 }
-function lt {
-    lT -L
-}
-
-function v {
-    vim $args
-}
-function e {
-    explorer .
-}
-
