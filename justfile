@@ -16,7 +16,7 @@ WIN_USER := "zion"
 
 # 同步前手动确认文件路径（"true" 开启 / "false" 跳过确认）
 # Manual path confirmation before syncing ("true" = confirm, "false" = skip)
-CONFIRM := "true"
+CONFIRM := "false"
 confirm_flag := if CONFIRM == "true" { "" } else { "--yes" }
 
 # 🎨 UI 色彩与排版配置
