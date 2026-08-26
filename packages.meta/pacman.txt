@@ -112,7 +112,6 @@ nvidia-settings
 nvidia-utils
 openbsd-netcat
 opencl-mesa
-opencode
 orchis-theme
 otf-libertinus
 pandoc-cli
@@ -163,6 +162,7 @@ python-transformers
 python-u-msgpack
 python-websockets
 python-xattr
+pyzbar
 qt5-wayland
 qt6-multimedia
 rclone
