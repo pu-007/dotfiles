@@ -70,6 +70,12 @@ function reload-fstab {
   sudo systemctl daemon-reload
   sudo mount -a
 }
+function fix-zsh-history {
+  mv ~/.zsh_history ~/.zsh_history_bad
+  strings ~/.zsh_history_bad >~/.zsh_history
+  fc -R ~/.zsh_history
+  rm ~/.zsh_history_bad
+}
 alias j="just"
 alias als="alias | rg "
 alias b="bat"
