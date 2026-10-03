@@ -1,13 +1,13 @@
 /usr/lib
-├── @mermaid-js/mermaid-cli@11.17.0
+├── @mermaid-js/mermaid-cli@12.0.0
 ├── aicommit2@2.12.0
 ├── markdownlint-cli2@0.23.2
-├── node-gyp@13.0.2
+├── node-gyp@13.1.0
 ├── nopt@10.0.1
-├── npm@12.1.0
-├── pnpm@11.26.0
+├── npm@12.2.0
+├── pnpm@11.28.3
 ├── prettier-plugin-latex@2.0.1
 ├── prettier@3.8.1
 ├── semver@7.8.5
-└── vite@8.3.1
+└── vite@8.3.2
 
