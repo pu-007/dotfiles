@@ -37,15 +37,8 @@ class WindowAction:
     timeout: float = 15.0
 
 
-@dataclass
-class WechatAutoLogin:
-    """定义一个微信自动登录任务"""
-
-    path: str = r"C:\Program Files\Tencent\Weixin\Weixin.exe"
-
-
 # 定义配置项的类型提示
-TaskType = Union[AppLaunch, WindowAction, WechatAutoLogin]
+TaskType = Union[AppLaunch, WindowAction]
 
 
 # ==========================================
@@ -54,8 +47,6 @@ TaskType = Union[AppLaunch, WindowAction, WechatAutoLogin]
 # 【核心优势】：以后无论是加软件、删软件、加自动关闭窗口，全部只在这里修改！
 
 STARTUP_TASKS: List[TaskType] = [
-    # ---------------- 自动化 Hook 任务 ----------------
-    # WechatAutoLogin(),
     # ---------------- 独立窗口管理任务 ----------------
     WindowAction(title="archlinux", action="close", timeout=15.0),
     # ---------------- 娇贵 GUI 软件 (Shell启动) ----------------
@@ -86,9 +77,7 @@ STARTUP_TASKS: List[TaskType] = [
         wait_window_timeout=15.0,
     ),
     AppLaunch(
-        cmd=[r"C:\Program Files\MotrixNext\motrix-next.exe", "--autostart"],
-        after_launch_close="Motrix Next",
-        wait_window_timeout=15.0,
+        cmd=[r"C:\Program Files\Rayburst\rayburst.exe", "--autostart"],
     ),
     AppLaunch(
         cmd=r"C:\Users\zion\AppData\Local\Programs\LocalSend\localsend_app.exe",
@@ -209,57 +198,6 @@ async def execute_app_launch(config: AppLaunch):
         )
 
 
-async def execute_wechat_login(config: WechatAutoLogin):
-    """处理微信自动化登录任务"""
-    from pywinauto import Application
-    from pywinauto.findwindows import ElementNotFoundError
-
-    app = Application(backend="uia").start(config.path)
-    login_dlg = app.window(title="微信")
-
-    start_time = time()
-    while time() - start_time < 15:
-        if login_dlg.exists(timeout=0):
-            break
-        await asyncio.sleep(0.5)
-    else:
-        print("超时：未能找到微信登录窗口")
-        return
-
-    try:
-        rect = login_dlg.rectangle()
-        init_width, init_height = rect.width(), rect.height()
-        login_dlg.set_focus()
-        login_dlg.type_keys("{ENTER}")
-    except Exception as e:
-        print(f"操作登录窗口失败: {e}")
-        return
-
-    logged_in = False
-    monitor_start = time()
-    while time() - monitor_start < 20:
-        try:
-            current_dlg = app.window(title="微信")
-            if current_dlg.exists(timeout=0):
-                new_rect = current_dlg.rectangle()
-                if (
-                    new_rect.width() > init_width + 50
-                    or new_rect.height() > init_height + 50
-                ):
-                    logged_in = True
-                    break
-        except (ElementNotFoundError, Exception):
-            pass
-        await asyncio.sleep(0.5)
-
-    if logged_in:
-        try:
-            app.window(title="微信").close()
-            print("微信已登录并隐藏")
-        except Exception as e:
-            print(f"微信隐藏失败: {e}")
-
-
 # ==========================================
 # 4. 任务调度器 (Task Dispatcher & Main)
 # ==========================================
@@ -277,9 +215,6 @@ async def main():
             coroutines.append(
                 manage_window_by_title(task.title, task.action, task.timeout)
             )
-        elif isinstance(task, WechatAutoLogin):
-            coroutines.append(execute_wechat_login(task))
-
     # 一次性将所有任务推入事件循环，瞬间并发！
     await asyncio.gather(*coroutines)
 

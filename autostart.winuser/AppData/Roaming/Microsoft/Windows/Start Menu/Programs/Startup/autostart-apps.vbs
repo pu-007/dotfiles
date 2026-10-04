@@ -11,6 +11,5 @@ Set ws = WScript.CreateObject("WScript.Shell")
 
 ' 以管理员权限静默执行你的命令
 ws.run "pixi run -m C:\Users\zion\autostart\pixi.toml autostart", 0
-ws.run "ollama serve", 0
 
 Set ws = Nothing
