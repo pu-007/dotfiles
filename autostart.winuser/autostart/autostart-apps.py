@@ -37,18 +37,13 @@ class WindowAction:
     timeout: float = 15.0
 
 
-# 定义配置项的类型提示
-TaskType = Union[AppLaunch, WindowAction]
-
-
-# ==========================================
-# 2. 统一配置清单 (Unified Configuration)
-# ==========================================
-# 【核心优势】：以后无论是加软件、删软件、加自动关闭窗口，全部只在这里修改！
-
-STARTUP_TASKS: List[TaskType] = [
-    # ---------------- 独立窗口管理任务 ----------------
+# ---------------- 独立窗口管理任务 ----------------
+ACTION_TASKS: List[WindowAction] = [
     WindowAction(title="archlinux", action="close", timeout=15.0),
+    WindowAction(title="CapsLockX", action="close", timeout=15.0),
+]
+
+STARTUP_TASKS: List[AppLaunch] = [
     # ---------------- 娇贵 GUI 软件 (Shell启动) ----------------
     AppLaunch(
         cmd=r"C:\Program Files\Quicker\Quicker.exe",
@@ -125,6 +120,7 @@ STARTUP_TASKS: List[TaskType] = [
         ]
     ),
     AppLaunch([r"C:\Program Files\Tailscale\tailscale-ipn.exe"]),
+    AppLaunch(r"C:\Program Files\ikuuu_vpn\iKuuuVPN.exe"),
     AppLaunch(r"C:\Program Files\ZTools\ZTools.exe"),
     AppLaunch(
         r"C:\Users\zion\Apps\Everything\Everything.exe",
@@ -205,18 +201,23 @@ async def execute_app_launch(config: AppLaunch):
 
 async def main():
     """解析配置列表，生成协程并并发执行"""
-    coroutines = []
 
-    # 动态分发任务到对应的执行器
-    for task in STARTUP_TASKS:
-        if isinstance(task, AppLaunch):
-            coroutines.append(execute_app_launch(task))
-        elif isinstance(task, WindowAction):
-            coroutines.append(
-                manage_window_by_title(task.title, task.action, task.timeout)
-            )
-    # 一次性将所有任务推入事件循环，瞬间并发！
-    await asyncio.gather(*coroutines)
+    await asyncio.gather(*(execute_app_launch(task) for task in STARTUP_TASKS))
+    await asyncio.gather(
+        *(
+            manage_window_by_title(task.title, task.action, task.timeout)
+            for task in ACTION_TASKS
+        )
+    )
+    await execute_app_launch(
+        AppLaunch(
+            cmd=[
+                r"C:\Users\zion\AppData\Local\Programs\AutoHotkey\v2\AutoHotkey64.exe",
+                r"C:\Users\zion\autostart\wechat_auto_login.ahk",
+            ],
+            hide_window=True,
+        )
+    )
 
 
 if __name__ == "__main__":
