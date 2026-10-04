@@ -83,6 +83,7 @@ STARTUP_TASKS: List[AppLaunch] = [
     AppLaunch(
         cmd=r"C:\ProgramData\chocolatey\lib\eartrumpet\tools\EarTrumpet\EarTrumpet.exe"
     ),
+    AppLaunch(r"C:\Users\zion\scoop\apps\window-switcher\current\window-switcher.exe"),
     AppLaunch(
         [r"C:\Users\zion\AppData\Local\Programs\QuickLook\QuickLook.exe", "-autorun"]
     ),
@@ -126,7 +127,6 @@ STARTUP_TASKS: List[AppLaunch] = [
         r"C:\Users\zion\Apps\Everything\Everything.exe",
         cwd=r"C:\Users\zion\Apps\Everything",
     ),
-    AppLaunch(r"C:\Users\zion\AppData\Local\Programs\CC Switch\cc-switch.exe"),
 ]
 
 
