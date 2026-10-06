@@ -65,7 +65,7 @@
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "3a0fc08dd39e8bf034a4cfef3f2845bd5f565a2e" },
   "resession.nvim": { "branch": "master", "commit": "cc819b0489938d03e4f3532a583354f0287c015b" },
   "rustaceanvim": { "branch": "main", "commit": "9cb125de42c0256ed1bc1f9ded8d8f0381317a17" },
-  "schemastore.nvim": { "branch": "main", "commit": "d93ef1e8365950420ea3e706e82caf65dc9ff968" },
+  "schemastore.nvim": { "branch": "main", "commit": "83b0f1dc1ef1cc736bb4216654b1d173bcaf4ba6" },
   "smart-splits.nvim": { "branch": "master", "commit": "32f67888ac71942442fdab3819864a10449dfc41" },
   "snacks.nvim": { "branch": "main", "commit": "e6fd58c82f2f3fcddd3fe81703d47d6d48fc7b9f" },
   "sqls.nvim": { "branch": "main", "commit": "332caa9ab86af1a00259feb01051ea825e8fc461" },
