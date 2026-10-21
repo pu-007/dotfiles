@@ -1,2 +1,4 @@
 md2pdf-mermaid v1.4.3
 - md2pdf
+trafilatura v2.3.1
+- trafilatura
