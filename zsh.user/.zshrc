@@ -17,8 +17,6 @@ export DOTFILE_STORE="$HOME/dotfiles"
 export CUDA_HOME="/opt/cuda/"
 export HF_ENDPOINT="https://hf-mirror.com"
 
-# 合并 PATH，修复结尾多余冒号的问题
-export PATH="$HOME/.bun/bin:$HOME/.local/bin:$HOME/.moon/bin:$HOME/go/bin:$HOME/.pixi/bin:/usr/bin:$PATH"
 # }}}
 
 # {{{ 2. Shell Options & History

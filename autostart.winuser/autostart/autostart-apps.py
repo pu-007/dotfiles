@@ -103,7 +103,7 @@ STARTUP_TASKS: List[AppLaunch] = [
         after_launch_close="Mem Reduct",
     ),
     AppLaunch(r"C:\Users\zion\AppData\Roaming\AltSnap\AltSnap.exe"),
-    AppLaunch(r"C:\Users\zion\AppData\Local\Programs\PixPin\PixPin.exe"),
+    AppLaunch(r"C:\Users\zion\Apps\SnowAir\SnowAir-Lite.exe"),
     AppLaunch([r"C:\Program Files (x86)\Stardock\Fences\Fences.exe", "/startup"]),
     AppLaunch(r"C:\Program Files\Docker\Docker\Docker Desktop.exe"),
     AppLaunch(
@@ -123,6 +123,7 @@ STARTUP_TASKS: List[AppLaunch] = [
     AppLaunch([r"C:\Program Files\Tailscale\tailscale-ipn.exe"]),
     AppLaunch(r"C:\Program Files\ikuuu_vpn\iKuuuVPN.exe"),
     AppLaunch(r"C:\Program Files\ZTools\ZTools.exe"),
+    AppLaunch([r"C:\Users\zion\scoop\apps\magpie-ai\current\magpie.exe", "tray"]),
     AppLaunch(
         r"C:\Users\zion\Apps\Everything\Everything.exe",
         cwd=r"C:\Users\zion\Apps\Everything",

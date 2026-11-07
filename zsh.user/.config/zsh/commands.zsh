@@ -52,7 +52,6 @@ alias iy="ipython"
 # {{{ WSL & Windows Interop
 ialias adb="adb.exe"
 ialias fastboot="fastboot.exe"
-ialias ollama="ollama.exe"
 ialias wsl="wsl.exe"
 ialias wg="winget.exe"
 ialias scrcpy="scrcpy.exe"
