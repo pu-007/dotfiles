@@ -211,10 +211,9 @@ zinit wait lucid for \
   zsh-users/zsh-completions \
   Aloxaf/fzf-tab \
   atinit'export ZSH_AI_PROVIDER="openai";
-export ZSH_AI_OPENAI_URL="http://localhost:40172/v1/chat/completions";
-export ZSH_AI_OPENAI_MODEL="openrouter/free"
+export ZSH_AI_OPENAI_URL="http://127.0.0.1:3425/v1/chat/completions";
+export ZSH_AI_OPENAI_MODEL="group/light-and-free"
 export ZSH_AI_PROMPT_EXTEND="Prefer rg over grep, fd over find, yay over pacman, exa overt ls, and bat over cat.My system is Arch Linux."
-export ZSH_AI_OPENAI_API_KEY="sk-YK5Vbb6SD2D5YsfCDJg32cBMA6GU77t1Wu9iRIPzMpY3dbos"
 ' \
   matheusml/zsh-ai \
   jeffreytse/zsh-vi-mode \
