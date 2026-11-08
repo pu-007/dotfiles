@@ -82,6 +82,11 @@
   "ignore_rules": [
     {
       "kind": "Exe",
+      "id": "AME Beta.exe",
+      "matching_strategy": "Equals"
+    },
+    {
+      "kind": "Exe",
       "id": "magpie.exe",
       "matching_strategy": "Equals"
     },
