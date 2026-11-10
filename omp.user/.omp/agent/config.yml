@@ -1,18 +1,10 @@
+modelRoles:
+  default: magpie/302ai/sale/glm-5.3
 symbolPreset: nerd
 composer:
-  shape: box
+  shape: band
 theme:
   dark: dark-gruvbox
-setupVersion: 3
-modelRoles:
-  web: web/tavily
-  image: magpie/codex/gpt-image-2
-  smol: magpie/group/light-and-free
-  slow: magpie/group/light-and-free
-  default: magpie/group/light-and-free
-dev:
-  autoqaConsent: granted
-defaultThinkingLevel: auto
 update:
   auto: true
-
+setupVersion: 3
