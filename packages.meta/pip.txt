@@ -1,7 +1,7 @@
 Package                   Version
 ------------------------- -------------------------------
 accelerate                1.15.0
-annotated-doc             0.0.5
+annotated-doc             0.0.6
 annotated-types           0.8.0
 antlr4-python3-runtime    4.13.2
 anyio                     4.16.0
@@ -19,7 +19,7 @@ cffi                      2.1.1
 cfgv                      3.5.0
 chardet                   6.0.0.post1
 charset-normalizer        3.5.1
-click                     8.5.0
+click                     8.5.1
 cloudpickle               3.1.2
 colorama                  0.4.6
 contourpy                 1.4.0
@@ -71,7 +71,7 @@ lxml                      6.1.3
 markdown-it-py            4.2.0
 MarkupSafe                3.0.4
 matplotlib                3.11.2
-mdit-py-plugins           0.6.1
+mdit-py-plugins           0.7.0
 mdurl                     0.1.2
 more-itertools            11.2.1
 msgpack                   1.1.2
@@ -94,7 +94,7 @@ pip                       26.2.2
 pipx                      1.18.4
 pkg_resources             81.0.0
 platformdirs              4.14.3
-playwright                1.64.1
+playwright                1.65.1
 pluggy                    1.7.0
 poetry-core               2.5.0
 pooch                     1.9.0
@@ -111,7 +111,7 @@ pyee                      13.0.1
 Pygments                  2.21.0
 PyGObject                 3.58.1
 pylatexenc                2.11
-pymupdf-lite              2.0
+pymupdf-lite              2.1
 pynvim                    0.6.0
 pyparsing                 3.3.3
 pyproject_hooks           1.3.3
@@ -161,7 +161,7 @@ tqdm                      4.70.1
 transformers              5.22.2
 trash-cli                 0.24.5.26
 truststore                0.10.5
-typer                     0.27.3
+typer                     0.29.0
 typing_extensions         4.16.0
 typing-inspection         0.4.4
 u-msgpack-python          2.8.0
@@ -173,7 +173,7 @@ vcs-versioning            2.6.0
 virtualenv                21.14.7
 websockets                17.2
 wheel                     0.48.0
-xattr                     1.3.0
+xattr                     1.3.1
 yapf                      0.43.0
 yt-dlp                    2026.10.26
 yt-dlp-ejs                0.8.0
