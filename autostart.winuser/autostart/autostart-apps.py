@@ -123,7 +123,7 @@ STARTUP_TASKS: List[AppLaunch] = [
     AppLaunch([r"C:\Program Files\Tailscale\tailscale-ipn.exe"]),
     AppLaunch(r"C:\Program Files\ikuuu_vpn\iKuuuVPN.exe"),
     AppLaunch(r"C:\Program Files\ZTools\ZTools.exe"),
-    AppLaunch([r"C:\Users\zion\scoop\apps\magpie-ai\current\magpie.exe", "tray"]),
+    AppLaunch([r"C:\Users\zion\AppData\Local\Programs\magpie\magpie.exe", "tray"]),
     AppLaunch(
         r"C:\Users\zion\Apps\Everything\Everything.exe",
         cwd=r"C:\Users\zion\Apps\Everything",
