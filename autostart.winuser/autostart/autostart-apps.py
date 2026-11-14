@@ -74,11 +74,6 @@ STARTUP_TASKS: List[AppLaunch] = [
     AppLaunch(
         cmd=[r"C:\Program Files\Rayburst\rayburst.exe", "--autostart"],
     ),
-    AppLaunch(
-        cmd=r"C:\Users\zion\AppData\Local\Programs\LocalSend\localsend_app.exe",
-        after_launch_close="LocalSend",
-        wait_window_timeout=15.0,
-    ),
     # ---------------- 普通后台/命令行软件 ----------------
     AppLaunch(
         cmd=r"C:\ProgramData\chocolatey\lib\eartrumpet\tools\EarTrumpet\EarTrumpet.exe"
