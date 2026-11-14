@@ -19,6 +19,7 @@ return {
   { import = "astrocommunity.pack.jj" },
   -- ## edit
   { import = "astrocommunity.utility.nvim-toggler" },
+  { import = "astrocommunity.motion.nvim-surround" },
   -- ## keybindings
   { import = "astrocommunity.pack.diff-keybindings" },
   -- ## language

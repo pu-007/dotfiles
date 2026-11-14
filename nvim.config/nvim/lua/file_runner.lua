@@ -76,7 +76,7 @@ function M.run()
     return vim.notify(("还没有为 %s 配置运行命令（见 lua/file_runner.lua）"):format(vim.bo.filetype), vim.log.levels.WARN)
   end
   stop_previous()
-  M.term = require("snacks.terminal").open(command, { auto_close = false })
+  M.term = require("snacks.terminal").open(command, { auto_close = false, start_insert = false, auto_insert = false })
 end
 
 --- 显示/隐藏最近一次的运行终端（程序退出后输出仍保留）
