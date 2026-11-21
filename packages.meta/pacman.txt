@@ -72,6 +72,8 @@ icu76
 imagemagick
 img2pdf
 jdk-openjdk
+jdk17-openjdk
+jdk21-openjdk
 jujutsu
 just
 kio-admin
