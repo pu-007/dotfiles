@@ -21,10 +21,10 @@
 | `init.lua`                      | lazy.nvim 引导入口，通常无需改动                                  |
 | `lua/lazy_setup.lua`            | AstroNvim 大版本、Leader / LocalLeader、插件导入顺序              |
 | `lua/community.lua`             | AstroCommunity 插件及语言包的统一入口                             |
-| `lua/plugins/astrocore.lua`     | 通用按键：H/L、加速 j/k、分屏、运行菜单分组                       |
+| `lua/plugins/astrocore.lua`     | 通用按键：H/L、分屏、运行菜单分组                                 |
 | `lua/plugins/astroui.lua`       | Gruvbox 主题、图标和高亮                                          |
 | `lua/plugins/appearance.lua`    | Dashboard、Presence 等外观配置                                    |
-| `lua/plugins/editing.lua`       | 加速移动、LuaSnip、LaTeX `$` 配对                                 |
+| `lua/plugins/editing.lua`       | 普通模式加速 j/k、LuaSnip、LaTeX `$` 配对                         |
 | `lua/plugins/chinese_input.lua` | jieba 中文分词、输入法切换，以及 jieba 的点重复依赖               |
 | `lua/plugins/chinese_find.lua`  | chinese_find.nvim 仓库依赖、选项和 AstroCore 映射适配             |
 | `lua/diagnostic_ignores.lua`    | 日常修改的 LSP 警告忽略规则                                       |
@@ -300,11 +300,16 @@ nvim --headless -u NONE -i NONE -l tests/chinese_find.lua standalone
 
 # 单文件运行终端：真实按键切换、交互输入与退出后的输出保留
 nvim --headless -u NONE -i NONE -l tests/file_runner.lua
+
+# 普通 / V / Ctrl+V 模式下 j、k 与计数
+nvim --headless -u NONE -i NONE -l tests/visual_motion.lua
 ```
 
 独立插件仓库也自带无第三方依赖的回归测试：在其目录下运行 `nvim --headless -u NONE -i NONE -l tests/chinese_find.lua`。源码、许可证和独立测试维护于 [pu-007/chinese_find.nvim](https://github.com/pu-007/chinese_find.nvim)；本配置保留 AstroNvim 及 surround/jieba 的集成验证。
 
-本次修复移除了 Leap 字符查找接管及手工 repeat_tick 同步。独立模块只记录目标字符及方向，并让表达式映射记录可重放的命令；最终移动由原生 f/F/t/T 完成。`,` 与 LocalLeader 的前缀竞争已解除，`j/k` 的 AstroCore 覆盖也显式关闭了继承的 `expr` 属性。
+本次修复移除了 Leap 字符查找接管及手工 repeat_tick 同步。独立模块只记录目标字符及方向，并让表达式映射记录可重放的命令；最终移动由原生 f/F/t/T 完成。`,` 与 LocalLeader 的前缀竞争已解除。
+
+覆盖 AstroNvim 默认映射时要留意：默认的 `x.j`/`x.k` 与 `n.j`/`n.k` 是同一张表，写在静态 `opts.mappings.n` 里的覆盖会被深合并进可视模式。accelerated-jk 的 `<Plug>` 只存在于普通模式，合并后 `V`、`Ctrl+V` 下的 `j/k` 就会失效。因此 `editing.lua` 用函数形式的 `opts` 整表替换普通模式映射，可视模式保留默认的 `gj/gk`。
 
 回归覆盖中英混合标点、全角 `df；/dt；`、顿号、计数、连续点重复、宏、可视模式、失败查找、t/T 邻接边界及强制 motion。Surround 通过 AstroCommunity 导入，不另外实现一套包围符引擎。
 
